@@ -11,41 +11,41 @@ typedef unsigned long long ull;                                             //Ju
 typedef long long lli;                                                      //Just a so long name, sorry
 
 
-
-
 /*===================================================================
-=====================   FUNCTION WITH PRIMES   ======================
+=====================   FUNCTION ABOUT PRIMES   =====================
 ===================================================================*/
 
-// ********* ERATOSTHENES SIEVE / GET PRIMES *****************************
-void SieveEratosthenesBool(vector<bool> &BooleanPrimes, ull Size){          //FN: To check if i is prime: Vector[i]
+// ********* ERATOSTHENES SIEVE / GET PRIMES USING BOOLS *****************
+vector<bool> EratosthenesSieveBoolVector(ull Size){                         //FN: For create Vector, check if i is prime: Vector[i]
+    vector<bool> BoolPrimes(Size+1, true);                                  //Ok, first, resize so I can access it
 
-    BooleanPrimes.resize(Size+1, true);                                     //Ok, first, resize so I can access it
+    BoolPrimes[0] = false;                                                  //Now, 0 is not prime :o
+    BoolPrimes[1] = false;                                                  //Now, 1 (maybe) is not prime :o
 
-    BooleanPrimes[0] = false;                                               //Now, 0 is not prime :o
-    BooleanPrimes[1] = false;                                               //Now, 1 (maybe) is not prime :o
+    for (int i = 4; i <= Size; i+= 2) BoolPrimes[i] = false;                //Eliminate all the pairs
 
-    for(int i = 4; i <= Size; i+=2) BooleanPrimes[i] = false;               //Eliminate all the pairs
-
-    for(int i = 3; i*i <= Size; i+=2) {                                     //Check for every # < √i (Math things) 
-        if (BooleanPrimes[i])                                               //If we still believe it's a prime
-            for(ull j = i*i; j <= Size; j+= 2*i)                            //Remove all his multiples-Special limit
-                BooleanPrimes[j] = false;                                   //For each multiple just remove it
+    for (int i = 3; i*i <= Size; i+= 2) {                                   //Check for every # < √i (Math things) 
+        if (BoolPrimes[i])                                                  //If we still believe it's a prime
+            for (ull j = i*i; j <= Size; j+= 2*i)                           //Remove all his multiples-Special limit
+                BoolPrimes[j] = false;                                      //For each multiple just remove it
     }
+
+    return BoolPrimes;                                                      //Return the info to know witch number is prime
 }
 
 // ********* GET PRIMES / PRIMES UNTIL AN N FACTOR ***********************
-void getPrimes(vector<ull> &Primes, vector<bool> &BooleanPrimes){           //FN: Return a vector give primes
-    ull Size = BooleanPrimes.size();                                        //This is the size of the max prime
+vector<ull> PrimeVectorUsingSieve(const vector<bool> &BoolPrimes){          //FN: Return a vector with all primes of the Sieve
+    vector<ull> VectorOfPrimes;                                             //This is were we will have all the Primes
 
-    for (ull i = 0; i <= Size; ++i)                                         //For each element of the Bool vector
-        if (BooleanPrimes[i])                                               //If it´s prime then:
-            Primes.push_back(i);                                            //Add it to the Vector
+    for (ull i = 0, Size = BoolPrimes.size(); i <= Size; ++i)               //For each element of the Bool vector
+        if (BoolPrimes[i]) VectorOfPrimes.push_back(i);                     //If it´s prime then add it to the Vector
+
+    return VectorOfPrimes;                                                  //Return the complete vector with all the info
 }
 
 
 /*===================================================================
-=============   CLASSIC ALGORITHMS AND EUCLIDES  ====================
+=============   CLASSIC ALGORITHMS AND EUCLIDES   ===================
 ===================================================================*/
 
 // ******************* GREAT COMMON DIVIDER ******************************
@@ -72,23 +72,19 @@ ull LCM(lli numberA, lli numberB){                                          //FN
 // ==============================================
 int main(){
 
+    // ====== SECTION: ALL THE DATA FOR ALGORITHMS ========  
     ull Size = 10000000;
 
     /*
-    // ====== SECTION: ERATOSTHENES SIEVE =======
-    vector<bool> BooleanPrimes;                                             //Get a vector this lets you if Primes
-    vector<ull> Primes;                                                     //This will store all Primes as a Vector
-                                                    
-    SieveEratosthenesBool(BooleanPrimes, Size);                             //The hardcore Function
-    getPrimes(Primes, BooleanPrimes);                                       //Now create a vector
+    // ====== SECTION: ERATOSTHENES SIEVE =================                                                 
+    vector<bool> BoolPrimes = EratosthenesSieveBoolVector(Size);            //Get a vector this lets you if Vectot[i] is Prime
+    vector<ull> VectorPrimes = PrimeVectorUsingSieve(BoolPrimes);           //Now create a vector
 
-    for (auto x : Primes) cout << x << ", ";                                //Show it!
+    for (auto PrimeNumber : VectorPrimes) cout << PrimeNumber << "\n";      //Show it!
     */
 
-
-
     /*
-    // ====== SECTION: EUCLID AND CLASSICS =======
+    // ====== SECTION: EUCLID AND CLASSICS ================
     lli CasualNumber;                                                       //Let's create a Casual Number
 
     CasualNumber = GCD(8,-10);                                              //Now check the GCD of 2 negatives : Problems
