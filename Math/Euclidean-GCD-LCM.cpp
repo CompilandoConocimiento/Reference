@@ -182,7 +182,7 @@ ull GCD(lli a, lli b){                                                      //FN
 
 // ******************* LEAST COMMON MULTIPLE *****************************
 ull LCM(lli a, lli b){                                                      //FN: Return the LCM of 2 numbers 
-    return (abs(a) * abs(b)) / GCD(a, b);                                   //THEOREM: LCM(a, b) = (a x b) / GCD(a,b)
+    return (abs(a*b)) / GCD(a, b);                                          //THEOREM: LCM(a, b) = |ab| / GCD(a,b)
 }
 
 // ******************* GREAT COMMON DIVIDER: EUCLIDEAN EDITION  **********
@@ -224,14 +224,14 @@ int main(){
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
     //EuclideanAlgorithm(141, 96, true);                                  //Remember GCD is Data[Size-1][3] or is obvious 
-    //ExtendedEuclideanAlgorithm(141, 96, true);                          //gcd=Data[S-1][3], m=Data[S-1][4] m=Data[S-1][5]
+    //ExtendedEuclideanAlgorithm(2024, 748, true);                        //gcd=Data[S-1][3], m=Data[S-1][4] m=Data[S-1][5]
 
     //auto Data = BezutCoefficients(141, 96);                             //Get you the pair of m and n 
     //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";           //Show it
 
     // ====== SECTION: APLICATIONS GCD / LCM  ====
-    //cout << "GCD is " << GCD(-5,17) << endl;                            //Show it!
-    //cout << "LCD is " << LCM(-5,17) << endl;                            //Show it!
+    cout << "GCD is " << GCD(-12,30) << endl;                            //Show it!
+    cout << "LCM is " << LCM(-12,30) << endl;                            //Show it!
 
 
     return 0;
