@@ -230,8 +230,8 @@ int main(){
     //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";           //Show it
 
     // ====== SECTION: APLICATIONS GCD / LCM  ====
-    cout << "GCD is " << GCD(-12,30) << endl;                            //Show it!
-    cout << "LCM is " << LCM(-12,30) << endl;                            //Show it!
+    //cout << "GCD is " << GCD(5,) << endl;                               //Show it!
+    //cout << "LCM is " << LCM(-12,30) << endl;                           //Show it!
 
 
     return 0;
