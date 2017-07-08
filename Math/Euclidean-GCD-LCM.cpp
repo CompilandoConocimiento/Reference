@@ -10,6 +10,8 @@ using namespace std;                                                        //Ba
 
 typedef unsigned long long ull;                                             //Just a so long name, sorry
 typedef long long lli;                                                      //Just a so long name, sorry
+typedef pair<lli,lli> PairOflli;                                            //Just a so long name, sorry
+typedef vector< vector<lli> > MatrixOflli;                                  //Just a so long name, sorry
 
 
 
@@ -19,7 +21,7 @@ typedef long long lli;                                                      //Ju
 =============   JUST TO LEARN AND SEE STEP BY STEP   ==============
 =================================================================*/
 // ******************* LONG DIVISION ALGORITHM ************************
-pair<lli, lli> LongDivisionAlgorithm(lli a, lli b, bool ShowIt){            //FN: Return the only q and r 
+PairOflli LongDivisionAlgorithm(lli a, lli b, bool ShowIt){                 //FN: Return the only q and r 
     lli q, r;                                                               //Variables, remember [0,|b|) in r
 
     if (b != 0) {                                                           //If we have work to do
@@ -43,8 +45,8 @@ pair<lli, lli> LongDivisionAlgorithm(lli a, lli b, bool ShowIt){            //FN
 
 
 // ******************* EUCLIDEAN ALGORITHM ****************************
-vector< vector<lli> > EuclideanAlgorithm(lli a, lli b, bool ShowIt){        //FN: Return data for each step
-    vector< vector<lli> > Data;                                             //Step by step Data[i]={a,b,q,r}    
+MatrixOflli EuclideanAlgorithm(lli a, lli b, bool ShowIt){                  //FN: Return data for each step
+    MatrixOflli Data;                                                       //Step by step Data[i]={a,b,q,r}    
     lli RealA = a, RealB = b, r, q;                                         //The last 2 variables for algorithm 
     bool SpecialCase = false;                                               //This is a special case              
     if (b == 0) SpecialCase = true;                                         //Just activate this flag
@@ -77,7 +79,7 @@ vector< vector<lli> > EuclideanAlgorithm(lli a, lli b, bool ShowIt){        //FN
 
 
 // *******************EXTENDED EUCLIDEAN ALGORITHM ********************
-vector< vector<lli> > ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){  //FN: Return data for each step
+MatrixOflli ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){            //FN: Return data for each step
     vector< vector<lli> > Data;                                             //Step by step Data[i]={a,b,q,r,x,y}    
     lli r, q, Temporal;                                                     //Variables for algorithm 
     lli RealA = a, RealB = b, LastM = 1, LastN = 0, m = 0, n = 1;           //Variables for Bezut Identity
@@ -93,11 +95,11 @@ vector< vector<lli> > ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){  //FN
         if (SpecialCase) {Data.push_back({a, b, q, r, 1, 0}); break;}       //If b=0, original info is all we need
 
         Temporal = m;                                                       //Lets save m
-        m = LastM - m*q;                                                    //Lets create the new m as lastm - lastm*q;
+        m = LastM - m*q;                                                    //Lets create the new m as lastm-lastm*q
         LastM = Temporal;                                                   //Now you are the last m 
 
         Temporal = n;                                                       //Lets save n
-        n = LastN - n*q;                                                    //Lets create the new n as lastn - lastn*q;
+        n = LastN - n*q;                                                    //Lets create the new n as lastn-lastn*q
         LastN = Temporal;                                                   //Now you are the last n 
  
         Data.push_back({a, b, q, r, m, n});                                 //Add the result to the data
@@ -150,7 +152,7 @@ vector< vector<lli> > ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){  //FN
 =================================================================*/
 
 // ******************* LONG DIVISION ALGORITHM ************************
-pair<lli, lli> LongDivisionAlgorithm(lli a, lli b){                         //FN: Return the only q and r 
+PairOflli LongDivisionAlgorithm(lli a, lli b){                              //FN: Return the only q and r 
     lli q, r;                                                               //Variables, remember [0,|b|) in r
 
     if (b != 0) {                                                           //If we have work to do
@@ -167,6 +169,7 @@ pair<lli, lli> LongDivisionAlgorithm(lli a, lli b){                         //FN
 }
 
 
+
 // ******************* GREAT COMMON DIVIDER: EUCLIDEAN EDITION  **********
 ull GCD(lli a, lli b){                                                      //FN: Return GreatCommonDivider of 2 #
     lli reminder;                                                           //Lets create a reminder
@@ -180,13 +183,32 @@ ull GCD(lli a, lli b){                                                      //FN
     return abs(a);                                                          //Get me the A when B is 0 GCD(A,0)=|A|
 }
 
+
+
 // ******************* LEAST COMMON MULTIPLE *****************************
 ull LCM(lli a, lli b){                                                      //FN: Return the LCM of 2 numbers 
     return (abs(a*b)) / GCD(a, b);                                          //THEOREM: LCM(a, b) = |ab| / GCD(a,b)
 }
 
-// ******************* GREAT COMMON DIVIDER: EUCLIDEAN EDITION  **********
-pair<lli, lli> BezutCoefficients(lli a, lli b){                             //FN: Return GreatCommonDivider of 2 #
+
+
+/* ******************* BEZUT COEFFICIENTS AND GCD  **********************
+    Info:
+        This function will return a pair so:
+        -   The first of the pair is m
+        -   The seconf of the pair is n
+        
+        So GCD(a,b) = am + bn
+        Tips:
+        -   If you need GCD(a,b) and the Bezut Coeficients just
+            ejecute this function and then find the GCD as:
+            GCD(a,b) = am + bn
+
+        -   If you need LCM(a,b) and the Bezut Coeficients just
+            ejecute this function and then find the LCM as:
+            LCM(a, b) = |ab| / am + bn
+*/
+PairOflli BezutCoefficients(lli a, lli b){                             //FN: Return GreatCommonDivider of 2 #
     lli Temporal, q, r, m = 0, n = 1, LastM = 1, LastN = 0;                 //The variables
 
     while(b != 0){                                                          //Rembember GCD(A,0) = |A|
@@ -198,11 +220,11 @@ pair<lli, lli> BezutCoefficients(lli a, lli b){                             //FN
         b = r;                                                              //Let's calculate GCD(B,R)
 
         Temporal = m;                                                       //Lets save m
-        m = LastM - m*q;                                                    //Lets create the new m as lastm - lastm*q;
+        m = LastM - m*q;                                                    //Lets create the new m as lastm-lastm*q
         LastM = Temporal;                                                   //Now you are the last m 
 
         Temporal = n;                                                       //Lets save n
-        n = LastN - n*q;                                                    //Lets create the new n as lastn - lastn*q;
+        n = LastN - n*q;                                                    //Lets create the new n as lastn-lastn*q
         LastN = Temporal;                                                   //Now you are the last n 
     }
 
@@ -213,9 +235,23 @@ pair<lli, lli> BezutCoefficients(lli a, lli b){                             //FN
 
 
 
-// ==============================================
-// ============     MAIN        =================
-// ==============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ######################################################################
+// ##################          MAIN         #############################
+// ######################################################################
 int main(){
 
     // ====== SECTION: LONG DIVISION =============  
@@ -224,7 +260,7 @@ int main(){
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
     //EuclideanAlgorithm(141, 96, true);                                  //Remember GCD is Data[Size-1][3] or is obvious 
-    //ExtendedEuclideanAlgorithm(2024, 748, true);                        //gcd=Data[S-1][3], m=Data[S-1][4] m=Data[S-1][5]
+    //ExtendedEuclideanAlgorithm(2024, 748, true);                        //GCD=Data[S-1][3], m=Data[S-1][4] N=Data[S-1][5]
 
     //auto Data = BezutCoefficients(141, 96);                             //Get you the pair of m and n 
     //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";           //Show it
