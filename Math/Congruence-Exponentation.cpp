@@ -171,7 +171,16 @@ lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN
 // ##################          MAIN         #############################
 // ######################################################################
 int main(){
-    cout << ModularExponentation(17, 341, 5) << "\n";
+    
+    /* ====== SECTION: BINARY EXPONENTATION  =================                                                 
+        cout << BinaryExponentation(17, 34) << "\n";
+    */
+
+    /* ====== SECTION: MODULAR EXPONENTATION  ============                                               
+        cout << ModularExponentation(17, 341, 5) << "\n";
+    */
+
+    
 
     return 0;
 }
