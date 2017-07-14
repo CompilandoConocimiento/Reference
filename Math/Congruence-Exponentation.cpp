@@ -20,6 +20,13 @@ typedef vector< vector<lli> > MatrixOflli;                                  //Ju
 /*=================================================================
 =============   JUST TO LEARN AND SEE STEP BY STEP   ==============
 =================================================================*/
+
+
+
+/*=================================================================
+========  BEST OPTIMIZATIONS OF THIS FOR REAL LIFE      ===========
+=================================================================*/
+
 // ******************* LONG DIVISION ALGORITHM ************************
 PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN: Return the only q and r so a=bq+r
     lli q, r;                                                               //Variables, remember [0,|b|) in r
@@ -38,33 +45,27 @@ PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN
 }
 
 
+// *******************  BINARY EXPONENTATION ************************
+lli BinaryExponentation(lli Base, lli Exponentation){                       //FN: Just like POW but using Binary Exponentation
+    lli Solution = 1;                                                       //Maybe e=0, so b^0=1
 
-/*=================================================================
-========  BEST OPTIMIZATIONS OF THIS FOR REAL LIFE      ===========
-=================================================================*/
+    while (Exponentation != 0) {                                            //If b^0 then s = 1
+        if (Exponentation % 2 == 1) {                                       //If e odd then s = b(b^2)^{(e-1)/2} = b(new b)^new e
+            Solution = Base * Solution;                                     //If e=1 then we need this
+            Exponentation = (Exponentation - 1 ) / 2;                       //new e = (e-1)/2
+            Base = Base * Base;                                             //new b = b^2
+        }
+        else {                                                              //Id e even then s = (b^2)^(n/2) = new base^new e
+            Base = Base * Base;                                             //new b = b^2
+            Exponentation = Exponentation / 2;                              //new e = e/2
+        }
+    }
 
-
-
-
-
-/*=================================================================
-========          APLICATIONS OF CONGRUENCE             ===========
-=================================================================*/
-lli FindReminderOfAToBDividedByN(lli a, lli b, ull n, bool ShowIt){
-    auto Initial = DivisionAlgorithm(a,n);
-    lli k = 1, q = Initial.first, r = Initial.second;
-
-    if (ShowIt) cout << "\n" << a << " ≡ " << r << "  mod " << n << "\n";
-
-    while ((pow(r,k)) % n == 1) k++;
-
-    if (ShowIt) 
-        cout << a << "^" << k << " ≡ 1" << "  mod " << n << "\n";  
-    
-
-
-    return ( pow(r,k) % n );
+    return Solution;                                                        //Go you are the answer
 }
+
+
+
 
 
 
@@ -89,7 +90,7 @@ lli FindReminderOfAToBDividedByN(lli a, lli b, ull n, bool ShowIt){
 // ######################################################################
 int main(){
 
-    FindReminderOfAToBDividedByN(17, 341, 5, true);
+    cout << BinaryExponentation(3,7) << "\n";
     
 
 
