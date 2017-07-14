@@ -28,7 +28,7 @@ typedef vector< vector<lli> > MatrixOflli;                                  //Ju
 =================================================================*/
 
 // ******************* LONG DIVISION ALGORITHM ************************
-PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN: Return the only q and r so a=bq+r
+PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN: Return the only q and r so a=bq+r
     lli q, r;                                                               //Variables, remember [0,|b|) in r
 
     if (b != 0) {                                                           //If we have work to do
@@ -45,39 +45,121 @@ PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN
 }
 
 
-// *******************  BINARY EXPONENTATION ************************
-lli BinaryExponentation(lli Base, lli Exponentation){                       //FN: Just like POW but using Binary Exponentation
-    lli Solution = 1;                                                       //Maybe e=0, so b^0=1
 
-    while (Exponentation != 0) {                                            //If b^0 then s = 1
-        if (Exponentation % 2 == 1) {                                       //If e odd then s = b(b^2)^{(e-1)/2} = b(new b)^new e
-            Solution = Base * Solution;                                     //If e=1 then we need this
-            Exponentation = (Exponentation - 1 ) / 2;                       //new e = (e-1)/2
-            Base = Base * Base;                                             //new b = b^2
-        }
-        else {                                                              //Id e even then s = (b^2)^(n/2) = new base^new e
-            Base = Base * Base;                                             //new b = b^2
-            Exponentation = Exponentation / 2;                              //new e = e/2
+
+/*
+// *******************  BINARY EXPONENTATION ************************
+    Info:
+        This function will POW(a,b) but a little bit more fast using
+        Exponentation by Squaring 
+
+    Math Observation:
+            x (x^2)^((n-1)/2)   if n is odd
+    x^n =
+            (x^2)^(n/2)         if n is even
+
+    How it does:
+        In simple form we have to optimize this code:
+
+            ·········  CODE V1 ·········
+            lli BinaryExponentation(lli x, lli n) {
+                if (n == 0) return 1;
+                if (n == 1) return x;
+
+                if (n%2 == 0) return BinaryExponentation(x*x,  n/2);
+                else return (x * BinaryExponentation(x*x, (n-1)/2));
+            }
+
+
+        We dont like recursion, so we will do this:
+            
+            ········  CODE V2 ·········
+            lli BinaryExponentation(lli Base, ull Exponent) {                         
+                lli Solution = 1;                
+
+                while (Exponent != 0) {                       
+                    if (Exponent % 2 == 1) {                                           
+                        Solution = Base * Solution;                                   
+                        Exponent = (Exponent - 1 ) / 2;                              
+                        Base = Base * Base;  
+                    }
+                    else {                                           
+                        Base = Base * Base;                                  
+                        Exponent = Exponent / 2;           
+                    }
+                }
+                return Solution;
+            }
+
+
+
+        We now look at the last optimizations:
+
+            - Bitwise Operations:
+                Remember:
+                    -   x << y == x * 2^y
+                    -   x >> y == x / 2^y (integer division or floor division)
+
+                    So x >> 1 is x / 2^1 = x/2
+
+            -   (Exponent & 1):
+                Check for binary (example:000101101010) if Exponent 
+                was odd then their last digit will be 1, so Exponent & 1
+                give true only if their last digit was 1.
+
+            - Why "e = (e-1)/2" is equal to "e = e >> 1":
+                Remember that if you got to this line e is odd, so their
+                last binary digit is 1.
+
+                Remember 1001 >> 1 = 0100 = 100
+                So if I remove one we have 1000 >> 1 = 0100 = 100
+
+                So you find that we end at the same number
+*/
+lli BinaryExponentation(lli Base, ull Exponent) {                           //FN: Modular Exponentation: a^b MOD n
+    lli Solution = 1;                                                       //Solution is our aux variable (If exp=0 then s=1)
+
+    while (Exponent != 0) {                                                 //End were exponent is zero
+
+        if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
+            Solution = Base * Solution;                                     //s = (x * BinaryExponentation(new base, new exp)
+            Base = Base * Base;                                             //new base = b^2 
+            Exponent = Exponent >> 1;                                       //new exp = (e-1)/2 with is e = e >> 1 
+        } 
+        else {                                                              //If Exponent is even:
+            Base = Base * Base;                                             //new base = b^2
+            Exponent = Exponent >> 1;                                       //new exp = e/2
         }
     }
 
-    return Solution;                                                        //Go you are the answer
+    return Solution;                                                        //Return solution
 }
 
 
+/*
+// *******************  MODULAR EXPONENTATION  *********************
+    Info:
+        This function will base^exponent MOD n but a little bit more fast using
+        Exponentation by Squaring, it is base in the above function.
+*/
+lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN: Modular Exponentation: a^b MOD n
+    lli Solution = 1;                                                       //Solution is our aux variable (If exp=0 then s=1)
 
+    while (Exponent != 0) {                                                 //End were exponent is zero
+        
+        if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
+            Solution = (Base * Solution) % n;                               //s = (x * BinaryExponentation(new base, new exp)
+            Base = (Base * Base) % n;                                       //new base = b^2 
+            Exponent = Exponent >> 1;                                       //new exp = (e-1)/2 with is e = e >> 1 
+        } 
+        else {                                                              //If Exponent is even:
+            Base = (Base * Base) % n ;                                      //new base = b^2
+            Exponent = Exponent >> 1;                                       //new exp = e/2
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    return Solution;                                                        //Return solution
+}
 
 
 
@@ -89,10 +171,7 @@ lli BinaryExponentation(lli Base, lli Exponentation){                       //FN
 // ##################          MAIN         #############################
 // ######################################################################
 int main(){
-
-    cout << BinaryExponentation(3,7) << "\n";
-    
-
+    cout << ModularExponentation(17, 341, 5) << "\n";
 
     return 0;
 }
