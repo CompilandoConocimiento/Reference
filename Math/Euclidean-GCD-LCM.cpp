@@ -21,7 +21,7 @@ typedef vector< vector<lli> > MatrixOflli;                                  //Ju
 =============   JUST TO LEARN AND SEE STEP BY STEP   ==============
 =================================================================*/
 // ******************* LONG DIVISION ALGORITHM ************************
-PairOflli LongDivisionAlgorithm(lli a, lli b, bool ShowIt){                 //FN: Return the only q and r 
+PairOflli DivisionAlgorithm(lli a, lli b, bool ShowIt){                     //FN: Return the only q and r 
     lli q, r;                                                               //Variables, remember [0,|b|) in r
 
     if (b != 0) {                                                           //If we have work to do
@@ -52,7 +52,7 @@ MatrixOflli EuclideanAlgorithm(lli a, lli b, bool ShowIt){                  //FN
     if (b == 0) SpecialCase = true;                                         //Just activate this flag
 
     do {                                                                    //Do this at least one time
-        auto Step = LongDivisionAlgorithm(a,b,false);                       //Get the long division
+        auto Step = DivisionAlgorithm(a, b, false);                         //Get the long division
         q = Step.first;                                                     //Get values
         r = Step.second;                                                    //Get values
 
@@ -88,7 +88,7 @@ MatrixOflli ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){            //FN
     if (b == 0) SpecialCase = true;                                         //Just activate this flag
 
     do {                                                                    //Do this at least one time
-        auto Step = LongDivisionAlgorithm(a,b,false);                       //Get the long division
+        auto Step = DivisionAlgorithm(a, b, false);                         //Get the long division
         q = Step.first;                                                     //Get values
         r = Step.second;                                                    //Get values
 
@@ -152,7 +152,7 @@ MatrixOflli ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){            //FN
 =================================================================*/
 
 // ******************* LONG DIVISION ALGORITHM ************************
-PairOflli LongDivisionAlgorithm(lli a, lli b){                              //FN: Return the only q and r 
+PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN: Return the only q and r 
     lli q, r;                                                               //Variables, remember [0,|b|) in r
 
     if (b != 0) {                                                           //If we have work to do
@@ -208,11 +208,11 @@ ull LCM(lli a, lli b){                                                      //FN
             ejecute this function and then find the LCM as:
             LCM(a, b) = |ab| / am + bn
 */
-PairOflli BezutCoefficients(lli a, lli b){                             //FN: Return GreatCommonDivider of 2 #
+PairOflli BezutCoefficients(lli a, lli b){                                  //FN: Return GreatCommonDivider of 2 #
     lli Temporal, q, r, m = 0, n = 1, LastM = 1, LastN = 0;                 //The variables
 
     while(b != 0){                                                          //Rembember GCD(A,0) = |A|
-        auto Step = LongDivisionAlgorithm(a,b);                             //Get the long division
+        auto Step = DivisionAlgorithm(a, b);                                //Get the long division
         q = Step.first;                                                     //Get values
         r = Step.second;                                                    //Get values
         
@@ -255,8 +255,8 @@ PairOflli BezutCoefficients(lli a, lli b){                             //FN: Ret
 int main(){
 
     // ====== SECTION: LONG DIVISION =============  
-    //LongDivisionAlgorithm(-1,-3,true);
-    
+    //DivisionAlgorithm(-1,-3,true);
+    cout << -5%7;
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
     //EuclideanAlgorithm(141, 96, true);                                  //Remember GCD is Data[Size-1][3] or is obvious 
