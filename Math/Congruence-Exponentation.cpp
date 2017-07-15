@@ -168,6 +168,23 @@ lli BinaryExponentation(lli Base, ull Exponent) {                           //FN
         This function will base^exponent MOD n but a little bit more
         fast using exponentation by Squaring, it is base in the above
         function.
+
+        
+        ALTERNATIVE CODE:
+            This also works and rely on my own algorithm from my book
+            in number theory, but, it's not so fast (5% more time)
+
+            ·······  CODE V1·········
+            lli ModularExponentation(lli Base, ull Exponent, ull n) {       //FN: Modular Exponentation: a^b MOD n
+                ull K = 1, R = DivisionAlgorithm(Base, (lli) n).second;     //Get k, a constant and the first step
+
+                while (BinaryExponentation(R, K) % n != 1) K++;             //Find the special k
+
+                lli OtherR = DivisionAlgorithm(Exponent, K).second;         //Get the other r
+
+                return (BinaryExponentation(r, r2) % n);                    //Answer is r^new r (mod n)
+            }
+
 */
 lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN: Modular Exponentation: a^b MOD n
     lli Solution = 1, Auxiliar = Base;                                      //Auxiliar variables for code clarity                
@@ -189,6 +206,8 @@ lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN
 }
 
 
+
+
 // ######################################################################
 // ##################          MAIN         #############################
 // ######################################################################
@@ -198,9 +217,13 @@ int main(){
         cout << BinaryExponentation(17, 34) << "\n";
     */
 
-    /* ====== SECTION: MODULAR EXPONENTATION  ============                                               
-        cout << ModularExponentation(17, 341, 5) << "\n";
-    */
+    /* ====== SECTION: MODULAR EXPONENTATION  ============     */    
+
+    for (int i = 0; i < 3000000; ++i){
+        ModularExponentation2(12, 1212, 5);
+    }
+        
+    
 
 
     return 0;
