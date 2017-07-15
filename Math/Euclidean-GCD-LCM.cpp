@@ -165,7 +165,7 @@ PairOflli DivisionAlgorithm(lli a, lli b){                                  //FN
         }
     }
     else {q = 0; r = a;}                                                    //b=0, this is always the result
-    return {q,r};                                                           //Return the info
+    return {q, r};                                                          //Return the info
 }
 
 
@@ -220,11 +220,11 @@ PairOflli BezutCoefficients(lli a, lli b){                                  //FN
         b = r;                                                              //Let's calculate GCD(B,R)
 
         Temporal = m;                                                       //Lets save m
-        m = LastM - m*q;                                                    //Lets create the new m as lastm-lastm*q
+        m = LastM - m*q;                                                    //Lets create the new m as lastm - m*q
         LastM = Temporal;                                                   //Now you are the last m 
 
         Temporal = n;                                                       //Lets save n
-        n = LastN - n*q;                                                    //Lets create the new n as lastn-lastn*q
+        n = LastN - n*q;                                                    //Lets create the new n as lastn - n*q
         LastN = Temporal;                                                   //Now you are the last n 
     }
 

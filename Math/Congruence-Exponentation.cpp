@@ -41,7 +41,7 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
         }
     }
     else {q = 0; r = a;}                                                    //b=0, this is always the result
-    return {q,r};                                                           //Return the info
+    return {q, r};                                                          //Return the info
 }
 
 
@@ -108,7 +108,7 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
                     -   TRANSFORM THE  "E = (E-1)/2" AND "E = E/2" USING THE BINARY NOTATION:
                             Why "e = (e-1)/2" is equal to "e = e >> 1" and "e = e/2" is also "e = e >> 1":
 
-                            Remember "E >> 1" delete the most significant bit, so is the same of "E / 2"
+                            Remember "E >> 1" delete the least significant bit, so is the same of "E / 2"
 
                             But why it works when we need to do "(E-1)/2":
                                 Remember that if  e is odd their last binary digit is 1. 
@@ -135,7 +135,7 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
             ALGORITM: This deduced from the V1:
                 Start solution to 0
                 Start auxiliar to base
-                For each bit in exponent (Starting at the most important one):
+                For each bit in exponent (Starting at the least important one):
                     If is 1:
                         Update solution = auxiliar * solution
                         Update auxiliar = auxiliar^2
