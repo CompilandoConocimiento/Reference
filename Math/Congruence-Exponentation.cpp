@@ -49,86 +49,111 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
 
 /*
 // *******************  BINARY EXPONENTATION ************************
-    Info:
+    INFO:
         This function will POW(a,b) but a little bit more fast using
         Exponentation by Squaring 
 
-    Math Observation:
-            x (x^2)^((n-1)/2)   if n is odd
-    x^n =
-            (x^2)^(n/2)         if n is even
+        Math Observation:
+                x (x^2)^((n-1)/2)   if n is odd
+        x^n =
+                (x^2)^(n/2)         if n is even
 
-    How it does:
-        In simple form we have to optimize this code:
+        HISTORY - ALTERNATIVE CODES:
 
-            ·········  CODE V1 ·········
-            lli BinaryExponentation(lli x, lli n) {
-                if (n == 0) return 1;
-                if (n == 1) return x;
+            VERSION ALTERNATIVE:
+                Using the Method 1 from my book in Number Theory
 
-                if (n%2 == 0) return BinaryExponentation(x*x,  n/2);
-                else return (x * BinaryExponentation(x*x, (n-1)/2));
-            }
+                ·······  CODE V1·········
+                lli BinaryExponentation(lli Base, ull Exponent) {                   //FN: Binary Exponentation
+                    lli Solution = 1;                                               //Solution is our aux variable (If exp=0 then s=1)
 
-
-        We dont like recursion, so we will do this:
-            
-            ········  CODE V2 ·········
-            lli BinaryExponentation(lli Base, ull Exponent) {                         
-                lli Solution = 1;                
-
-                while (Exponent != 0) {                       
-                    if (Exponent % 2 == 1) {                                           
-                        Solution = Base * Solution;                                   
-                        Exponent = (Exponent - 1 ) / 2;                              
-                        Base = Base * Base;  
+                    for (; Exponent != 0; Exponent = Exponent >> 1) {               //Cool way of: For each bit in Exponent                   
+                        if (Exponent & 1) Solution = (Solution * Solution) * Base;  //If last digit = 1 then new solution = solution^2 * base
+                        else Solution = Solution * Solution;                        //If last digit = 0 then new solution = solution^2
                     }
-                    else {                                           
-                        Base = Base * Base;                                  
-                        Exponent = Exponent / 2;           
-                    }
+
+                    return Solution;                                                //Return solution
                 }
-                return Solution;
-            }
 
 
+            VERSION 2:
+                WE HAVE TO OPTIMIZE THIS:
+                    This is an obvious code if you look from the identities
 
-        We now look at the last optimizations:
+                ·········  CODE V2 ·········
+                lli BinaryExponentation(lli x, lli n) {
+                    if (n == 0) return 1;
+                    if (n == 1) return x;
 
-            - Bitwise Operations:
-                Remember:
-                    -   x << y == x * 2^y
-                    -   x >> y == x / 2^y (integer division or floor division)
+                    if (n%2 == 0) return BinaryExponentation(x*x,  n/2);
+                    else return (x * BinaryExponentation(x*x, (n-1)/2));
+                }
 
-                    So x >> 1 is x / 2^1 = x/2
 
-            -   (Exponent & 1):
-                Check for binary (example:000101101010) if Exponent 
-                was odd then their last digit will be 1, so Exponent & 1
-                give true only if their last digit was 1.
+                ·········  CODE V3: ITERATIVE ·········
+                This code uses a "new" algorithm, with is based from my book
+                Number Theory, this algorithm is deduced from the Above code
+                by creating equivalents instruccions to the machine but a new layer
+                that make it more easy to understand.
 
-            - Why "e = (e-1)/2" is equal to "e = e >> 1":
-                Remember that if you got to this line e is odd, so their
-                last binary digit is 1.
 
-                Remember 1001 >> 1 = 0100 = 100
-                So if I remove one we have 1000 >> 1 = 0100 = 100
+                HOW WE TRANSFORM THAT:
+                    -   Bitwise Operations:
+                        Remember:
+                            -   x << y == x * 2^y
+                            -   x >> y == x / 2^y (integer division or floor division)
 
-                So you find that we end at the same number
+
+                    -   TRANSFORM THE  "E = (E-1)/2" AND "E = E/2" USING THE BINARY NOTATION:
+                            Why "e = (e-1)/2" is equal to "e = e >> 1" and "e = e/2" is also "e = e >> 1":
+
+                            Remember "E >> 1" delete the most significant bit, so is the same of "E / 2"
+
+                            But why it works when we need to do "(E-1)/2":
+                                Remember that if  e is odd their last binary digit is 1. 
+                                
+                                Remember 1001 >> 1 = 0100 = 100 (Add a zero at the start and eliminate the last digit)
+                                So if I remove one, we have 1000 >> 1 = 0100 = 100
+
+                                So you find that we end at the same number it doesnt matter if is odd or even
+                                this will always give you the correct answer
+
+                    -   TRANSFORM THE ODD / EVEN TEST BY CHECKING EACH DIGIT, IS THE SAME:
+                        (Exponent & 1):
+                            Check for binary (example:000101101010) if Exponent 
+                            was odd then their last digit will be 1, so Exponent & 1
+                            give true only if their last digit was 1.
+
+
+                    -   ADD AND AUX VARIABLE TO DELETE RECURSION  
+        
+
+        HOW IT WORK:
+            Thanks to the math identity we create an algoritm that always works:
+
+            ALGORITM: This deduced from the V1:
+                Start solution to 0
+                Start auxiliar to base
+                For each bit in exponent (Starting at the most important one):
+                    If is 1:
+                        Update solution = auxiliar * solution
+                        Update auxiliar = auxiliar^2
+                    If is 0:
+                        Update auxiliar = auxiliar^2
 */
 lli BinaryExponentation(lli Base, ull Exponent) {                           //FN: Modular Exponentation: a^b MOD n
-    lli Solution = 1;                                                       //Solution is our aux variable (If exp=0 then s=1)
+    lli Solution = 1, Auxiliar = Base;                                      //Auxiliar variables for code clarity                
 
     while (Exponent != 0) {                                                 //End were exponent is zero
 
         if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
-            Solution = Base * Solution;                                     //s = (x * BinaryExponentation(new base, new exp)
-            Base = Base * Base;                                             //new base = b^2 
-            Exponent = Exponent >> 1;                                       //new exp = (e-1)/2 with is e = e >> 1 
+            Solution = Auxiliar * Solution;                                 //Update Solution
+            Auxiliar = Auxiliar * Auxiliar;                                 //Always update by squaring the aux variable
+            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
         } 
         else {                                                              //If Exponent is even:
-            Base = Base * Base;                                             //new base = b^2
-            Exponent = Exponent >> 1;                                       //new exp = e/2
+            Auxiliar = Auxiliar * Auxiliar;                                 //Always update by squaring the aux variable
+            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
         }
     }
 
@@ -138,23 +163,24 @@ lli BinaryExponentation(lli Base, ull Exponent) {                           //FN
 
 /*
 // *******************  MODULAR EXPONENTATION  *********************
-    Info:
-        This function will base^exponent MOD n but a little bit more fast using
-        Exponentation by Squaring, it is base in the above function.
+    INFO:
+        This function will base^exponent MOD n but a little bit more
+        fast using exponentation by Squaring, it is base in the above
+        function.
 */
 lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN: Modular Exponentation: a^b MOD n
-    lli Solution = 1;                                                       //Solution is our aux variable (If exp=0 then s=1)
+    lli Solution = 1, Auxiliar = Base;                                      //Auxiliar variables for code clarity                
 
     while (Exponent != 0) {                                                 //End were exponent is zero
-        
+
         if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
-            Solution = (Base * Solution) % n;                               //s = (x * BinaryExponentation(new base, new exp)
-            Base = (Base * Base) % n;                                       //new base = b^2 
-            Exponent = Exponent >> 1;                                       //new exp = (e-1)/2 with is e = e >> 1 
+            Solution = (Auxiliar * Solution) % n;                           //Update Solution
+            Auxiliar = (Auxiliar * Auxiliar) % n;                           //Always update by squaring the aux variable
+            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
         } 
         else {                                                              //If Exponent is even:
-            Base = (Base * Base) % n ;                                      //new base = b^2
-            Exponent = Exponent >> 1;                                       //new exp = e/2
+            Auxiliar = (Auxiliar * Auxiliar) % n;                           //Always update by squaring the aux variable
+            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
         }
     }
 
@@ -162,25 +188,19 @@ lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN
 }
 
 
-
-
-
-
-
 // ######################################################################
 // ##################          MAIN         #############################
 // ######################################################################
 int main(){
+    srand(time(NULL));
     
-    /* ====== SECTION: BINARY EXPONENTATION  =================                                                 
-        cout << BinaryExponentation(17, 34) << "\n";
-    */
-
-    /* ====== SECTION: MODULAR EXPONENTATION  ============                                               
-        cout << ModularExponentation(17, 341, 5) << "\n";
-    */
+    /* ====== SECTION: BINARY EXPONENTATION  =================    */                                             
+        for (lli i = 0; i < 1000000; ++i){
+            ModularExponentation(rand() % 20 , (rand() % 2000) * 3, (rand() % 20) + 1);
+        }
 
     
+
 
     return 0;
 }
