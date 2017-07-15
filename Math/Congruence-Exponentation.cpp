@@ -125,7 +125,7 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
                             give true only if their last digit was 1.
 
 
-                    -   ADD AND AUX VARIABLE TO DELETE RECURSION  
+                    -   ADD AN AUX VARIABLE TO DELETE RECURSION  
         
 
         HOW IT WORK:
@@ -192,14 +192,14 @@ lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN
 // ##################          MAIN         #############################
 // ######################################################################
 int main(){
-    srand(time(NULL));
-    
-    /* ====== SECTION: BINARY EXPONENTATION  =================    */                                             
-        for (lli i = 0; i < 1000000; ++i){
-            ModularExponentation(rand() % 20 , (rand() % 2000) * 3, (rand() % 20) + 1);
-        }
 
-    
+    /* ====== SECTION: BINARY EXPONENTATION  =================                                                 
+        cout << BinaryExponentation(17, 34) << "\n";
+    */
+
+    /* ====== SECTION: MODULAR EXPONENTATION  ============                                               
+        cout << ModularExponentation(17, 341, 5) << "\n";
+    */
 
 
     return 0;
