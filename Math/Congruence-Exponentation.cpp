@@ -64,15 +64,16 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
                 Using the Method 1 from my book in Number Theory
 
                 ·······  CODE V1·········
-                lli BinaryExponentation(lli Base, ull Exponent) {                   //FN: Binary Exponentation
-                    lli Solution = 1;                                               //Solution is our aux variable (If exp=0 then s=1)
+                lli BinaryExponentation(lli Base, ull Exponent) {       //FN: Binary Exponentation
+                    lli Solution = 1;                                   //Solution is aux variable (If exp=0 then s=1)
 
-                    for (; Exponent != 0; Exponent = Exponent >> 1) {               //Cool way of: For each bit in Exponent                   
-                        if (Exponent & 1) Solution = (Solution * Solution) * Base;  //If last digit = 1 then new solution = solution^2 * base
-                        else Solution = Solution * Solution;                        //If last digit = 0 then new solution = solution^2
+                    for (; Exponent != 0; Exponent = Exponent >> 1) {   //Cool way of: For each bit in Exponent                   
+                        if (Exponent & 1)                               //If last digit = 1
+                            Solution = (Solution * Solution) * Base;    //Then new solution = solution^2 * base
+                        else Solution = Solution * Solution;            //If last digit = 0 then new sol = sol^2
                     }
 
-                    return Solution;                                                //Return solution
+                    return Solution;                                    //Return solution
                 }
 
 
@@ -112,7 +113,7 @@ PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN
                             But why it works when we need to do "(E-1)/2":
                                 Remember that if  e is odd their last binary digit is 1. 
                                 
-                                Remember 1001 >> 1 = 0100 = 100 (Add a zero at the start and eliminate the last digit)
+                                Remember 1001 >> 1 = 0100 = 100 (Add a 0 at the start and remove last digit)
                                 So if I remove one, we have 1000 >> 1 = 0100 = 100
 
                                 So you find that we end at the same number it doesnt matter if is odd or even
@@ -146,14 +147,14 @@ lli BinaryExponentation(lli Base, ull Exponent) {                           //FN
 
     while (Exponent != 0) {                                                 //End were exponent is zero
 
-        if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
+        if (Exponent & 1) {                                                 //If Exponent last digit = 1 (Exp is odd):
             Solution = Auxiliar * Solution;                                 //Update Solution
             Auxiliar = Auxiliar * Auxiliar;                                 //Always update by squaring the aux variable
-            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
+            Exponent = Exponent >> 1;                                       //Remove 1 digit from e to read the next one
         } 
         else {                                                              //If Exponent is even:
             Auxiliar = Auxiliar * Auxiliar;                                 //Always update by squaring the aux variable
-            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
+            Exponent = Exponent >> 1;                                       //Remove 1 digit from e to read the next one
         }
     }
 
@@ -173,14 +174,14 @@ lli ModularExponentation(lli Base, ull Exponent, ull n) {                   //FN
 
     while (Exponent != 0) {                                                 //End were exponent is zero
 
-        if (Exponent & 1) {                                                 //If Exponent last digit = 1 therefore is odd:
+        if (Exponent & 1) {                                                 //If Exponent last digit = 1 (Exp is odd):
             Solution = (Auxiliar * Solution) % n;                           //Update Solution
             Auxiliar = (Auxiliar * Auxiliar) % n;                           //Always update by squaring the aux variable
-            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
+            Exponent = Exponent >> 1;                                       //Remove 1 digit from e to read the next one
         } 
         else {                                                              //If Exponent is even:
             Auxiliar = (Auxiliar * Auxiliar) % n;                           //Always update by squaring the aux variable
-            Exponent = Exponent >> 1;                                       //Remove one digit from Exponent to check out the next one
+            Exponent = Exponent >> 1;                                       //Remove 1 digit from e to read the next one
         }
     }
 
