@@ -217,11 +217,9 @@ int main(){
         cout << BinaryExponentation(17, 34) << "\n";
     */
 
-    /* ====== SECTION: MODULAR EXPONENTATION  ============     */    
-
-    for (int i = 0; i < 3000000; ++i){
-        ModularExponentation2(12, 1212, 5);
-    }
+    /* ====== SECTION: MODULAR EXPONENTATION  ============  
+        cout << ModularExponentation(17, 34, 5) << "\n";     
+    */ 
         
     
 
