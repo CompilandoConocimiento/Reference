@@ -256,7 +256,6 @@ int main(){
 
     // ====== SECTION: LONG DIVISION =============  
     //DivisionAlgorithm(-1,-3,true);
-    cout << -5%7;
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
     //EuclideanAlgorithm(141, 96, true);                                  //Remember GCD is Data[Size-1][3] or is obvious 
