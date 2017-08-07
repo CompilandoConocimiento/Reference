@@ -15,16 +15,19 @@ typedef long long lli;                                                          
 
 
 /*===================================================================
-=====================       GRAPH CLASS         =====================
+==============      GRAPH CLASS (USING A LIST)      =================
 ===================================================================*/
 
 /* ******************* INFORMATION   **********************
         Info:
-        This class represent a Directed Graph using Adjencency list 
-        representation.
+        -   This class represent a Directed Graph using Adjencency list 
+            representation.
         
-        This is a map, so the first element is a the Node, 
-        and the Set is all the other Node that are avaible for visit
+        -   This is a map, so the first element is a the Node, 
+            and the Set is all the other Node that are avaible for visit
+
+        -   The advantage of this Implementation is that the Nodes can be any 
+            string
         */
 class GraphUsingList {
 
@@ -60,17 +63,13 @@ void GraphUsingList::BFS(string InitialNode) {                                  
     map<string, bool> VisitedNodes;                                                     //Visited Nodes 
     for (auto& InfoNode : AdjacencyList) VisitedNodes[InfoNode.first] = false;          //Put all nodes to not visited
  
-    list<string> AuxiliarQueue;                                                         //Create a Queue for BFS
-    
+    list<string> AuxiliarQueue = {InitialNode};                                         //Create a Queue for BFS with the 1
     VisitedNodes[InitialNode] = true;                                                   //Mark the Actual node as visited
-    AuxiliarQueue.push_back(InitialNode);                                               //Enqueue it
-    string ActualNode = InitialNode;                                                    //This will be Initial Node
 
-    for (; !AuxiliarQueue.empty(); ActualNode = AuxiliarQueue.front()){                 //For each element in the Queue
-        cout << ActualNode << " ";                                                      //Show it!
-        AuxiliarQueue.pop_front();                                                      //Remove the Actual Node
+    for (; !AuxiliarQueue.empty(); AuxiliarQueue.pop_front()){                          //For each element in the Queue
+        cout << AuxiliarQueue.front() << " ";                                           //Show it!
 
-        for (auto Node : AdjacencyList[ActualNode]) {                                   //For each Adjacent Node
+        for (auto Node : AdjacencyList[AuxiliarQueue.front()]) {                        //For each Adjacent Node
             if (VisitedNodes[Node] == false) {                                          //If we have not visited
                 AuxiliarQueue.push_back(Node);                                          //Add to the queue
                 VisitedNodes[Node] = true;                                              //Now visited
