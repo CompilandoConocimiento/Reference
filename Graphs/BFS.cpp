@@ -8,7 +8,7 @@
 #include <set>                                                                  //Include Libraries
 #include <map>                                                                  //Include Libraries
 #include <list>                                                                 //Include Libraries
-#include "GraphUsingList.cpp"                                                   //Include Libraries
+#include "GraphRepresentations.cpp"                                             //Include Libraries
 using namespace std;                                                            //Bad practice, dont do it kids!
 
 typedef unsigned long long ull;                                                 //Just a so long name, sorry
@@ -18,12 +18,13 @@ typedef long long lli;                                                          
 /*===================================================================
 ==============          BFS: BREADTH FIRST SEARCH       =============
 ===================================================================*/
-void GraphUsingList::BFS(string InitialNode) {                                  //BFS of a Graph
+vector<string> CoolGraphUsingList::BFS(string InitialNode) {                    //Beadth Fisrt Search from A to B
+
+    vector<string> PathToNode = { };                                            //Supose an empty path
+    list<string> AuxiliarQueue = {InitialNode};                                 //Create a Queue for BFS with the 1
 
     map<string, bool> VisitedNodes;                                             //Visited Nodes 
     for (auto& InfoNode : AdjacencyList) VisitedNodes[InfoNode.first] = false;  //Put all nodes to not visited
- 
-    list<string> AuxiliarQueue = {InitialNode};                                 //Create a Queue for BFS with the 1
     VisitedNodes[InitialNode] = true;                                           //Mark the Actual node as visited
 
     for (; !AuxiliarQueue.empty(); AuxiliarQueue.pop_front()){                  //For each element in the Queue
@@ -36,6 +37,8 @@ void GraphUsingList::BFS(string InitialNode) {                                  
             }
         }
     }
+
+    return PathToNode;
 }   
 
 
@@ -43,7 +46,7 @@ void GraphUsingList::BFS(string InitialNode) {                                  
 
 int main() {
 
-    GraphUsingList SomeGraph;
+    CoolGraphUsingList SomeGraph;
 
     SomeGraph.AddEdge("0", {"1", "2"});
     SomeGraph.AddEdge("1", {"2"});

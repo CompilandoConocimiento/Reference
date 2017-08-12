@@ -15,27 +15,19 @@ typedef long long lli;                                                          
 
 
 /*===================================================================
-==============      GRAPH CLASS (USING A LIST)      =================
+==============      GRAPH CLASS (USING A MATRIX)     ================
 ===================================================================*/
 
 /* ******************* INFORMATION   **********************
         Info:
-        -   This class represent a Directed Graph using Adjencency list 
-            representation.
-        
-        -   This is a map, so the first element is a the Node, 
-            and the Set is all the other Node that are avaible for visit
-
-        -   The advantage of this Implementation is that the Nodes can be any 
-            string
         */
-class GraphUsingList {
+class GraphUsingMatrix {
 
   private:
-    map<string, set<string> >AdjacencyList;                                             //The Adjacency List
+    vector< vector<ull> > AdjacentMatrix;                                               //The Adjacency List
 
   public:
-    void AddEdge(string FromThisNode, set<string> Nodes) {                              //Add an Edge to the Graph 
+    void AddEdge(ull FromThisNode, set<ull> Nodes) {                                    //Add an Edge to the Graph 
         for (auto& FinalNode : Nodes)                                                   //For each Node in Final Nodes
             if (AdjacencyList.count(FinalNode) == false)                                //If there isn't this node in list
                 AdjacencyList.insert({FinalNode, {}});                                  //Add the final node to the graph
@@ -57,6 +49,12 @@ class GraphUsingList {
 };
 
                           
+
+
+
+
+CREATE MAS CLASES, UNA COOL Y OTRA EFECTIVA
+
 
 
 
