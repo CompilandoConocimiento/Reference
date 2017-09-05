@@ -234,10 +234,30 @@ PairOflli BezutCoefficients(lli a, lli b){                                  //FN
 
 
 
+/* ******************* PHI OF EULER  **********************
+    The Algorithm:
+        1) Initialize result as n
+        2) Consider every number 'Prime' where 'Prime' is [2, √n] 
+        3) If p divides n, then:
+            3.1) Subtract all multiples of Prime from 1 to n
+            3.2) Update n by repeatedly dividing it by p.
+        4) If the reduced n is more than 1, then remove all multiples
+           of n from result (There can be at-most one such prime factor)
+*/
 
+ull EulerTotient(ull n) {                                                   //FN: Return Phi(n)
+    ull Result = n;                                                         //Lets start with n
 
+    for (int Prime = 2; Prime * Prime <= n; ++Prime) {                      //For each prime factor of n
+        if (n % Prime == 0) {                                               //If it's a PRIME factor:   
+            while (n % Prime == 0) n = n / Prime;                           //Remove multiples to get new n
+            Result -= Result / Prime;                                       //Now update Result
+        }
+    } 
 
-
+    if (n > 1) Result -= Result / n;                                        //If n has a primer factor of sqrt(n)
+    return Result;                                                          //Return it!
+}
 
 
 
@@ -258,16 +278,19 @@ int main(){
     //DivisionAlgorithm(-1,-3,true);
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
-    //EuclideanAlgorithm(141, 96, true);                                  //Remember GCD is Data[Size-1][3] or is obvious 
-    //ExtendedEuclideanAlgorithm(2024, 748, true);                        //GCD=Data[S-1][3], m=Data[S-1][4] N=Data[S-1][5]
+    //EuclideanAlgorithm(1109, 4999, true);                             //GCD is Data[Size-1][3] or is obvious 
+    //ExtendedEuclideanAlgorithm(2024, 748, true);                      //GCD=[S-1][3] m=[S-1][4] n=[S-1][5]
 
-    //auto Data = BezutCoefficients(141, 96);                             //Get you the pair of m and n 
-    //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";           //Show it
+    //auto Data = BezutCoefficients(141, 96);                           //Get you the pair of m and n 
+    //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";         //Show it
 
     // ====== SECTION: APLICATIONS GCD / LCM  ====
-    //cout << "GCD is " << GCD(5,) << endl;                               //Show it!
-    //cout << "LCM is " << LCM(-12,30) << endl;                           //Show it!
+    //cout << "GCD is " << GCD(5,) << endl;                             //Show it!
+    //cout << "LCM is " << LCM(-12,30) << endl;                         //Show it!
 
+    // ====== SECTION: EULER TOTIENT  ====
+    //ull n; cin >> n;                                                  //Get the data
+    //cout << EulerTotient(n) << "\n";                                  //Show it!
 
     return 0;
 }
