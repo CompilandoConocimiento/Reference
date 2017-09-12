@@ -133,7 +133,7 @@ MatrixOflli ExtendedEuclideanAlgorithm(lli a,lli b,bool ShowIt){            //FN
 
         cout << "\nSo GCD("<<RealA<<", "<<RealB<< ") = "<<abs(a)<<"\n";     //You maybe want to know this
         
-        cout << "So BezutNumbers("<< RealA <<", "<< RealB << ") = ";        //You maybe want to know this
+        cout << "So Bezut Numbers("<< RealA <<", "<< RealB << ") = ";       //You maybe want to know this
         cout << "("<< LastM <<", "<< LastN <<")\n";                         //You maybe want to know this
         
         cout << "So Bezut Indentity: (GCD:"<< abs(a) << ") = ";             //You maybe want to know this
@@ -277,8 +277,8 @@ int main(){
     //DivisionAlgorithm(-1,-3,true);
     
     // ====== SECTION: EUCLIDEAN ALGORITHM  ======
-    //EuclideanAlgorithm(1109, 4999, true);                             //GCD is Data[Size-1][3] or is obvious 
-    //ExtendedEuclideanAlgorithm(2024, 748, true);                      //GCD=[S-1][3] m=[S-1][4] n=[S-1][5]
+    //EuclideanAlgorithm(a, b, true);                                   //GCD is Data[Size-1][3] or is obvious 
+    //ExtendedEuclideanAlgorithm(141, 96, true);                        //GCD=[S-1][3] m=[S-1][4] n=[S-1][5]
 
     //auto Data = BezutCoefficients(141, 96);                           //Get you the pair of m and n 
     //cout << "m = "<<Data.first<< " n = "<<Data.second<< "\n";         //Show it
