@@ -12,10 +12,14 @@ using namespace std;                                                            
 typedef unsigned long long ull;                                                         //Just a long name, sorry
 typedef long long lli;                                                                  //Just a long name, sorry
 
+
+
+
+
+
 /*===================================================================
 ======      GRAPH CLASS USING A LIST AND STRINGS NODES       ========
 ===================================================================*/
-
 /* ******************* INFORMATION   **********************
         Info:
         -   This class represent a Directed Graph using Adjencency list 
@@ -55,6 +59,49 @@ class CoolGraphUsingList {
     vector<string> BFS(string InitialNode);                                         //Definition of the BFS!
 };
            
+
+
+
+
+
+
+
+
+/*===================================================================
+========     GRAPH CLASS USING A MATRIX AND NUMBERS NODES     =======
+===================================================================*/
+
+/* ******************* INFORMATION   **********************
+        Info:
+        */
+class GraphUsingMatrix {
+
+  private:
+    vector< vector<ull> > AdjacentMatrix;                                           //The Adjacency List
+
+  public:
+    void AddEdge(ull FromThisNode, set<ull> Nodes) {                                //Add an Edge to the Graph 
+        for (auto& FinalNode : Nodes)                                               //For each Node in Final Nodes
+            if (AdjacencyList.count(FinalNode) == false)                            //If there isn't the node in list
+                AdjacencyList.insert({FinalNode, {}});                              //Add the final node to the graph
+
+        AdjacencyList[FromThisNode].insert(Nodes.begin(), Nodes.end());             //Either way, add the information
+    }
+
+    void ShowInformation() {                                                        //Show the information
+        for (auto& InfoNode : AdjacencyList){                                       //For each Entrade in the List
+            auto NodeName = InfoNode.first; auto AdjacentNodes = InfoNode.second;   //Create var's for clarity
+            
+            cout << "Node Name " << NodeName << ": ";                               //Show the Node Name
+            for (auto AdjacentNode: AdjacentNodes) cout << AdjacentNode << ", ";    //Show each adjacent node
+            cout << "\n";                                                           //Add the space
+        }
+    }
+
+    void BFS(string InitialNode);                                                   //Definition of the BFS!
+};
+
+                          
 
 
 

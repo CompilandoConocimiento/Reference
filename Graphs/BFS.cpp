@@ -41,9 +41,9 @@ vector<string> CoolGraphUsingList::BFS(string InitialNode) {                    
     return PathToNode;
 }   
 
-
-///*
-
+// ######################################################################
+// ##################          MAIN         #############################
+// ######################################################################
 int main() {
 
     CoolGraphUsingList SomeGraph;
@@ -60,6 +60,4 @@ int main() {
 
 }
 
-
-//*/
 
