@@ -27,24 +27,6 @@ typedef vector< vector<lli> > MatrixOflli;                                  //Ju
 ========  BEST OPTIMIZATIONS OF THIS FOR REAL LIFE      ===========
 =================================================================*/
 
-// ******************* LONG DIVISION ALGORITHM ************************
-PairOflli DivisionAlgorithm(lli a, lli b) {                                 //FN: Return the only q and r so a=bq+r
-    lli q, r;                                                               //Variables, remember [0,|b|) in r
-
-    if (b != 0) {                                                           //If we have work to do
-        q = a/b;                                                            //Get me the floor of this
-        r = a%b;                                                            //Get me the reminder
-
-        if (r < 0){                                                         //If we have a problem
-            (q >= 0)? q++: q--;                                             //If q>0 add 1, else sub 1
-            r = a - (b*q);                                                  //Recalculate reminder
-        }
-    }
-    else {q = 0; r = a;}                                                    //b=0, this is always the result
-    return {q, r};                                                          //Return the info
-}
-
-
 
 
 /*
