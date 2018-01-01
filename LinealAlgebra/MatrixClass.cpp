@@ -56,7 +56,10 @@ class Matrix {                                                                  
     int GetColumns() const { return Columns; }                                      //Getter for Columns
 
     // == POPUTALE THE MATRIX WITH INFO ==
-    void Populate (const vector<T> &NewData) {                                         //Populate the Data Matrix
+    void Populate (const vector<T> &NewData) {                                      //Populate the Data Matrix
+        if (NewData.size() < (Columns * Rows))                                      //Check the size
+            throw std::invalid_argument("Not enough data in vector");               //Get the fuck out
+
         Data = NewData;
         Data.resize(Rows * Columns);                                                //Allocate space
     }
@@ -252,7 +255,13 @@ int main(void) {
     M1(1, 0) = 5;
     M1(0, 0) = M1(1, 0);
     cout << "M1(1,0) = " << M1(1, 0) << endl;
-    cout << "New M1" << M1 << endl;
+    cout << "New M1" << endl << M1 << endl;
+
+    Matrix<int> NewMatrix(M1);
+
+    NewMatrix(0, 0) = 0;
+
+    cout << NewMatrix << endl << M1;
 
     return 0;
 }
