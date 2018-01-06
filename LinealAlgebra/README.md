@@ -9,9 +9,9 @@ this code is like a simple documentation.
 * This is a template class, to you can create a Matrix of almost
   everything.
 * To abstract this mathematical object we have 3 elements:
-	* The size of Rows (**Rows**)
-	* The size of Columns (**Columns**)
-	* A vector to store the data (**Data**)
+    * The size of Rows (**Rows**)
+    * The size of Columns (**Columns**)
+    * A vector to store the data (**Data**)
 
 
 
@@ -56,10 +56,10 @@ MatrixA.swap(MatrixB);
 ```c++
 //Check if Matrices are equal
 if (MatrixA == MatrixB)
-	std::cout << "We are equals";
-	
+    std::cout << "We are equals";
+    
 if (MatrixA != MatrixB)
-	std::cout << "We are different";
+    std::cout << "We are different";
 
 //Asign Matrix
 MatrixA = MatrixB;
@@ -77,6 +77,30 @@ NewDiference -= MatrixB;
 
 //Multiplicate 2 Matrices
 Matrix<T> NewMatrix = MatrixA * MatrixB;
+
+```
+
+### General Functions
+```c++
+//Get the Trace of a Matrix
+int SomeTrace = MatrixA.Trace();
+
+//Create an Identity
+auto SomeIdentity = Matrix<double>::CreateIdentity(3, 1.0);
+```
+
+### Gauss Jordan Functions
+```c++
+//Swap Row of Column
+M1.SwapRow(OriginRow, DestinationRow);
+M1.SwapColumn(OriginColumn, DestinationColumn);
+
+M1.ScaleRow(RowNumber, Scale);
+M1.ScaleColumn(ColumnNumber, Scale);
+
+M1.PivotRow(Destination, Reference, Scale);
+M1.PivotColumn(Destination, Reference, Scale);
+
 
 ```
 

@@ -91,6 +91,13 @@ class Matrix {                                                                  
 
     }
 
+    // == CREATE IDENTITY ==
+    static Matrix<T> CreateIdentity(int Dimension, T Unit) {                        //Create a Identity
+        Matrix<T> Result(Dimension, Dimension);                                     //Create a square matrix
+        for (int k = 0; k < Dimension; ++k) (Result)(k, k) = Unit;                  //Matrix(k, k) = Unity
+        return Result;                                                              //Return Indentity
+    }
+
 
     // ========================================================
     // ===============   OPERATIONS   =========================
@@ -214,6 +221,89 @@ class Matrix {                                                                  
     }
 
 
+    // ========================================================
+    // =============     GENERAL FUNCTIONS   ==================
+    // ========================================================
+    T Trace() {                                                                     //Trace a Matrix
+        if (Rows != Columns) throw std::invalid_argument("Not Square Matrix");      //Get the fuck out
+        T Result {};                                                                //Start the Result variable
+        for (int i = 0; i < Rows; ++i) Result += (*this)(i, i);                     //Sum the diagonals
+        return Result;                                                              //return it
+    }
+
+
+    // ========================================================
+    // =============     GAUSS JORDAN        ==================
+    // ========================================================
+
+    // =============================================
+    // =============     SWAP       ================
+    // =============================================
+    void SwapRow(int Origin, int Destination) {                                     //============= Change Row =====
+        
+        if (Origin == Destination) return;                                          //If you want to change nothing
+        if (Origin < 0 || Destination < 0) throw invalid_argument("Negative Row");  //Get the fuck out
+        if (Origin >= Rows || Destination >= Rows)                                  //If you want more that I have 
+            throw std::invalid_argument("Out of Bounderies");                       //Get the fuck out
+
+        for (int k = 0; k < Rows; ++k)                                              //For each Row
+            std::swap((*this)(Origin, k), (*this)(Destination, k));                 //Swap the element of the Row
+    }
+    void SwapColumn(int Origin, int Destination) {                                  //========== Change Column =====
+        
+        if (Origin == Destination) return;                                          //If you want to change nothing
+        if (Origin < 0 || Destination < 0)                                          //If we want negative columns
+            throw invalid_argument("Negative Column");                              //Get the fuck out
+        if (Origin >= Columns || Destination >= Columns)                            //If you want more that I have 
+            throw std::invalid_argument("Out of Bounderies");                       //Get the fuck out
+
+        for (int k = 0; k < Columns; ++k)                                           //For each Row
+            std::swap((*this)(k, Origin), (*this)(k, Destination));                 //Swap the element of the Row
+    }
+
+    // =============================================
+    // =============     SCALE       ===============
+    // =============================================
+    void ScaleRow(int RowNumber, int Scale) {                                       //============= Scale Row =====
+        
+        if (RowNumber < 0 || Scale == 0 || RowNumber >= Rows)                       //If a something go wrong
+            throw std::invalid_argument("Error in Row Number or Scale");            //Get the fuck out
+
+        for (int k = 0; k < Rows; ++k)                                              //For each Row
+            (*this)(RowNumber, k) = (*this)(RowNumber, k) * Scale;                  //Swap the element of the Row
+    }
+    void ScaleColumn(int ColumnNumber, int Scale) {                                 //============= Scale Column ===
+        
+        if (ColumnNumber < 0 || Scale == 0 || ColumnNumber >= Columns)              //If a something go wrong
+            throw std::invalid_argument("Error in Column Number or Scale");         //Get the fuck out
+
+        for (int k = 0; k < Columns; ++k)                                           //For each Row
+            (*this)(k, ColumnNumber) = (*this)(k, ColumnNumber) * Scale;            //Swap the element of the Row
+    }        
+
+    // =============================================
+    // =============     PIVOT       ===============
+    // =============================================
+    void PivotRow(int Destination, int Reference, int Scale) {                      //============= Pivot Row =====
+        
+        if (Destination < 0 || Reference < 0)                                       //If we want negative rows
+            throw std::invalid_argument("Negative Row");                            //Get the fuck out
+        if (Destination >= Rows || Reference >= Rows)                               //If you want more that I have 
+            throw std::invalid_argument("Out of Bounderies");                       //Get the fuck out
+
+        for (int k = 0; k < Rows; ++k)                                              //For each Row
+            (*this)(Destination, k) += (*this)(Reference, k) * Scale;                //Swap the element of the Row
+    }
+    void PivotColumn(int Destination, int Reference, int Scale) {                   //============= Pivot Column ==
+        
+        if (Destination < 0 || Reference < 0)                                       //If we want negative rows
+            throw std::invalid_argument("Negative Row");                            //Get the fuck out
+        if (Destination >= Columns || Reference >= Columns)                         //If you want more that I have 
+            throw std::invalid_argument("Out of Bounderies");                       //Get the fuck out
+
+        for (int k = 0; k < Columns; ++k)                                           //For each Row
+            (*this)(k, Destination) += (*this)(k, Reference) * Scale;               //Swap the element of the Row
+    }
 
 };
 
@@ -227,41 +317,21 @@ class Matrix {                                                                  
 int main(void) {
 
     Matrix<int> M1(3, 3, {1, 2, 3, 4, 5, 6, 7, 8, 9});
+    Matrix<int> NewM1(M1);
+
+    cout << "Before:" << endl << M1 << endl;
+    M1.PivotColumn(1, 2, 2);
+    cout << "After:" << endl << M1 << endl;
+
+    cout << "Before:" << endl << NewM1 << endl;
     
-    cout << "Original M1" << endl << M1 << endl;
+    auto Identity = Matrix<int>::CreateIdentity(3, 1);
+    Identity(2, 1) = 2;
 
-    Matrix<int> M2(3, 1, {10, 11, 12, 13, 14, 15});
+    NewM1 = NewM1 * Identity;
+    cout << "After:" << endl << NewM1 << endl;
 
-    cout << "Original M2" << endl << M2 << endl;
-
-    cout << "M1 * M2" << endl << M1 * M2 << endl;
-
-    M1 += M1;
-
-    cout << "M1 += M1" << endl << M1 << endl;
-
-    cout << "M2 - M2" << endl << M2 - M2 << endl;
-
-    if (M1 != M2)
-        cout << "M1 != M2" << endl;
-
-    if (M2 == M2)
-        cout << "M2 == M2" << endl;
-
-    M1 = M2;
-
-    cout << "M1 = M2" << endl << M1 << endl << M2 << endl;
-
-    M1(1, 0) = 5;
-    M1(0, 0) = M1(1, 0);
-    cout << "M1(1,0) = " << M1(1, 0) << endl;
-    cout << "New M1" << endl << M1 << endl;
-
-    Matrix<int> NewMatrix(M1);
-
-    NewMatrix(0, 0) = 0;
-
-    cout << NewMatrix << endl << M1;
+    if (M1 == NewM1) cout << endl << "Que bonito n.n" << endl;
 
     return 0;
 }
