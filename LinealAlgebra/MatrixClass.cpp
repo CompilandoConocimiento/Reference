@@ -46,6 +46,15 @@ class Matrix {                                                                  
         Populate(Data);                                                             //Now call this
     }
 
+    // == POPULATE LAMDA CONSTRUCTOR ==
+    template<typename F>                                                            //F is for Function
+    Matrix(int Rows, int Columns, F&& Function):                                    //Delegate Construtor
+    Matrix(Rows, Columns) {                                                         //Call this constructor
+        Populate(Function);                                                         //Now call this
+    }
+
+
+
     // ================================================
     // ========  GENERAL FUNCTIONS  ===================
     // ================================================
@@ -62,6 +71,14 @@ class Matrix {                                                                  
 
         Data = NewData;
         Data.resize(Rows * Columns);                                                //Allocate space
+    }
+
+    // == POPULATE WITH A FUNCTION ==
+    template<typename F>                                                            //F is for Function
+    void Populate(F&& Function) {                                                   //Populate with a function
+        for (int i = 0; i < Rows; ++i)                                              //Foreach resultant Row
+            for (int j = 0; j < Columns; ++j)                                       //Foreach resultant Columns
+                (*this)(i, j) = Function(*this, i, j);                              //Call the function to get value
     }
 
     // == SHOW THE MATRIX ==
@@ -91,13 +108,6 @@ class Matrix {                                                                  
 
     }
 
-    // == CREATE IDENTITY ==
-    static Matrix<T> CreateIdentity(int Dimension, T Unit) {                        //Create a Identity
-        Matrix<T> Result(Dimension, Dimension);                                     //Create a square matrix
-        for (int k = 0; k < Dimension; ++k) (Result)(k, k) = Unit;                  //Matrix(k, k) = Unity
-        return Result;                                                              //Return Indentity
-    }
-
 
     // ========================================================
     // ===============   OPERATIONS   =========================
@@ -113,7 +123,7 @@ class Matrix {                                                                  
         return *this;                                                               //return this
     }
 
-    // ========= SWAP  ========================
+    // ====a===== SWAP  ========================
     void swap(Matrix<T> &A, Matrix<T> &B) {                                         //Swap the functions
         using std::swap;                                                            //Now use std swap :3
 
@@ -224,6 +234,8 @@ class Matrix {                                                                  
     // ========================================================
     // =============     GENERAL FUNCTIONS   ==================
     // ========================================================
+    
+    // ========= TRACE  ========
     T Trace() {                                                                     //Trace a Matrix
         if (Rows != Columns) throw std::invalid_argument("Not Square Matrix");      //Get the fuck out
         T Result {};                                                                //Start the Result variable
@@ -231,6 +243,12 @@ class Matrix {                                                                  
         return Result;                                                              //return it
     }
 
+    // ========= CREATE A IDENTITY MATRIX  ========
+    static Matrix<T> CreateIdentity(int Dimension, T Unit) {                        //Create a Identity
+        Matrix<T> Result(Dimension, Dimension);                                     //Create a square matrix
+        for (int k = 0; k < Dimension; ++k) (Result)(k, k) = Unit;                  //Matrix(k, k) = Unity
+        return Result;                                                              //Return Indentity
+    }
 
     // ========================================================
     // =============     GAUSS JORDAN        ==================
@@ -316,7 +334,12 @@ class Matrix {                                                                  
 // ================================================
 int main(void) {
 
-    Matrix<int> M1(3, 3, {1, 2, 3, 4, 5, 6, 7, 8, 9});
+    Matrix<int> M1(3, 3,
+        [](auto &M, int i, int j) {
+            return M.GetRows() * i + j + 1;
+        }
+    );
+
     Matrix<int> NewM1(M1);
 
     cout << "Before:" << endl << M1 << endl;
