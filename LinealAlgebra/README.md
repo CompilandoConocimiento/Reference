@@ -34,9 +34,9 @@ Matrix<T> CopyMatrix(M1);
 You can fill any Matrix with the result of a Function, this
 function should take 3 arguments:
 
-    * First argument is a reference to itself (auto &Matrix should work fine) 
-    * Second argument is a int, refering to the number of Row
-    * Third argument is a int, refering to the number of Column
+* First argument is a reference to itself (auto &Matrix should work fine) 
+* Second argument is a int, refering to the number of Row
+* Third argument is a int, refering to the number of Column
 
 And I should return the value of the Matrix in this spot.
 
