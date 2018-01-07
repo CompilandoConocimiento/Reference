@@ -19,14 +19,24 @@ this code is like a simple documentation.
 
 ### Constructors
 ```c++
-//Create a 'Empty' Vector of 4 Rows and 5 Columns
-Matrix<T> M1(4, 5);
+//Create a 'Empty' Matrix of 4 Rows and 5 Columns
+Matrix<char> M1(4, 5);
 
-//Create with a Vector with Data
-Matrix<T> M2(3, 3, {1, 2, 3, 4, 5, 6, 7, 8, 9}); 
+//Create a Matrix with a Vector with Data
+Matrix<int> M2(3, 3, {1, 2, 3, 4, 5, 6, 7, 8, 9}); 
+
+//This way yo can do this like this
+Matrix<double> M1(3, 4, {
+    1   ,  4    ,  6    , -7    , 
+    -3  , -7    , -8    , 6     , 
+    2   ,  12   , 17    , -32   , 
+});
 
 //Create a copy Matrix
 Matrix<T> CopyMatrix(M1); 
+
+//Create a Matrix and fill it with result of a Lamda Expression
+Matrix<T> M1(3, 3, [](auto &M, int i, int j) {return Value});
 ```
 
 ### Fill a Matrix with a Function
@@ -109,11 +119,11 @@ Matrix<T> NewMatrix = MatrixA * MatrixB;
 //Get the Trace of a Matrix
 int SomeTrace = MatrixA.Trace();
 
-//Create an Identity
-auto SomeIdentity = Matrix<double>::CreateIdentity(3, 1.0);
+//Create an Identity of 1.0
+auto SomeIdentity = Matrix<double>::CreateIdentity(3);
 ```
 
-### Gauss Jordan Functions
+### Elemental Operations Functions
 ```c++
 //Swap Row of Column
 M1.SwapRow(OriginRow, DestinationRow);
@@ -124,9 +134,21 @@ M1.ScaleColumn(ColumnNumber, Scale);
 
 M1.PivotRow(Destination, Reference, Scale);
 M1.PivotColumn(Destination, Reference, Scale);
-
-
 ```
+
+### Set ZERO and UNIT
+```c++
+//Set what it means a zero (epsilon also count)
+Matrix<double>::SetUNIT(1.0);
+Matrix<double>::SetZERO(1e-10);
+```
+
+### Gauss Jordan
+```c++
+//Get Gaussian Elimination
+M1.GaussianElimination();
+```
+
 
 * * *
 
