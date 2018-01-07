@@ -33,14 +33,16 @@ Matrix<T> CopyMatrix(M1);
 
 You can fill any Matrix with the result of a Function, this
 function should take 3 arguments:
+
     * First argument is a reference to itself (auto &Matrix should work fine) 
     * Second argument is a int, refering to the number of Row
     * Third argument is a int, refering to the number of Column
+
 And I should return the value of the Matrix in this spot.
 
 ```c++
 //You can create a Matrix and fill it with a Lamda Expression
-Matrix<T> M1(3, 3, [](auto M, int i, int j) {return Value});
+Matrix<T> M1(3, 3, [](auto &M, int i, int j) {return Value});
 
 //M1 and M2 are the Same
 Matrix<T> M1(3, 3, {1, 2, 3, 4, 5, 6, 7, 8, 9});
