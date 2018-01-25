@@ -33,7 +33,7 @@ Matrix<double> M1(3, 4, {
 });
 
 //Create a copy Matrix
-Matrix<T> CopyMatrix(M1); 
+Matrix<T> NewM1(M1); 
 
 //Create a Matrix and fill it with result of a Lamda Expression
 Matrix<T> M1(3, 3, [](auto &M, int i, int j) {return Value});

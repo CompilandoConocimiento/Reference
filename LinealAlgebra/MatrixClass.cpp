@@ -228,8 +228,8 @@ class Matrix {                                                                  
 
         for (int i = 0; i < this->Rows; ++i) {                                      //Foreach resultant Row
             for (int j = 0; j < that.Columns; ++j) {                                //Foreach resultant Columns
-                
-                Result(i, j) {};                                                    //Ok, let start in 0
+        
+                Result(i, j) = T {};                                                //Ok, let start in 0
                 for (int k = 0; k < this->Columns; ++k)                             //Travel  0..n or 0..Columns
                     Result(i, j) += ( (*this)(i, k) * (that)(k, j) );               //this place is sum of things
 
