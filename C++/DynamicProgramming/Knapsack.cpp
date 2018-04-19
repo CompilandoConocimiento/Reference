@@ -44,10 +44,6 @@ int Knapsack(vector<int> Values, vector<int> Costs, int AvailableCost) {
 }
 
 
-
-
-
-
 int main() {
 
     int NumberOfItems, AvailableCost;
