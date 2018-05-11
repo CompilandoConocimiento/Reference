@@ -1,11 +1,15 @@
 /*================================================================
 =======================     FIBONACCI       ======================
 ================================================================*/
+
 #include <iostream>                                                 //Include Libraries
 #include <vector>                                                   //Include Libraries
 using namespace std;                                                //Bad practice
 
 
+/*========================================
+==========    STUPID FIBONACCI   =========
+========================================*/
 template <class T>                                                  //Templates for all
 T StupidFibonacci (T n) {                                           //Stupid Fibonacci
     if (n == 0) return 0;                                           //Initial form  
@@ -13,6 +17,10 @@ T StupidFibonacci (T n) {                                           //Stupid Fib
     else return StupidFibonacci(n - 1) + StupidFibonacci(n - 2);    //Recursive form
 }
 
+
+/*========================================
+==========      DP FIBONACCI     =========
+========================================*/
 template <class T>                                                  //Templates for all
 T DynamicProgrammingFibonacci (T n) {                               //Cool Fibonacci
     
@@ -27,10 +35,13 @@ T DynamicProgrammingFibonacci (T n) {                               //Cool Fibon
 }
 
 
+/*****************************************************************
+/**********************     MAIN          ************************
+/****************************************************************/
 int main() {
 
-    cout << StupidFibonacci<int>(40) << "\n";                       //Try StupidFibonacci                      
-    cout << DynamicProgrammingFibonacci<int>(40) << "\n";           //Try DP Fibonacci                      
+    cout << StupidFibonacci<int>(40) << "\n";                       //Try StupidFibonacci
+    cout << DynamicProgrammingFibonacci<int>(40) << "\n";           //Try DP Fibonacci 
 
     return 0;
 }

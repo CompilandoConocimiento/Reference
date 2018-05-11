@@ -2,14 +2,12 @@
 ================  KNAPSACK: STEAL A BANK    ======================
 ==================================================================
 
-I would explain the problem, but come on is on Google
-*/
+https://www.geeksforgeeks.org/knapsack-problem/                 */
 
 #include <iostream>                                                     
 #include <vector>                                                       
 #include <cmath>                                                        
 using namespace std;                                                    
-
 
 int Knapsack(vector<int> Values, vector<int> Costs, int AvailableCost) { 
     
