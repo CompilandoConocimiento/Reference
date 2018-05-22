@@ -6,17 +6,16 @@ https://www.geeksforgeeks.org/knapsack-problem/                 */
 
 #include <iostream>                                                     
 #include <vector>                                                       
-#include <cmath>                                                        
 using namespace std;                                                    
 
-int Knapsack(vector<int> Values, vector<int> Costs, int AvailableCost) { 
+int Knapsack(const vector<int>& Values, const vector<int>& Costs, int CapacityInCost) { 
     
     int NumberOfItems = Values.size();
-    int DataStore[NumberOfItems + 1][AvailableCost + 1];
+    int DataStore[NumberOfItems + 1][CapacityInCost + 1];
 
     for (int item = 0; item <= NumberOfItems; ++item) {
         
-        for (int actualCost = 0; actualCost <= AvailableCost; ++actualCost) {
+        for (int actualCost = 0; actualCost <= CapacityInCost; ++actualCost) {
             
             int CostOfPreviousItem = Costs[item - 1];
             int ValueOfPreviousItem = Values[item - 1];
@@ -38,14 +37,14 @@ int Knapsack(vector<int> Values, vector<int> Costs, int AvailableCost) {
         }
     }
 
-    return DataStore[NumberOfItems][AvailableCost];
+    return DataStore[NumberOfItems][CapacityInCost];
 }
 
 
 int main() {
 
-    int NumberOfItems, AvailableCost;
-    cin >> NumberOfItems >> AvailableCost;
+    int NumberOfItems, CapacityInCost;
+    cin >> NumberOfItems >> CapacityInCost;
 
     vector<int> Values(NumberOfItems), Costs(NumberOfItems);
 
@@ -59,7 +58,7 @@ int main() {
         Costs[i] = temporal;
     }
 
-    cout << Knapsack(Values, Costs, AvailableCost) << "\n";
+    cout << Knapsack(Values, Costs, CapacityInCost) << "\n";
 
     return 0;
 }
