@@ -1,12 +1,6 @@
 /*===================================================================
-==================    PRIORITY QUEUE - HEAD     =====================
+==================    PRIORITY QUEUE - HEAP     =====================
 ===================================================================*/
-#include <stdio.h>                                                                  //Put library
-#include <stdlib.h>                                                                 //Put library
-#include <limits.h>                                                                 //Put library
-
-#include "Heap.h"                                                                   //Put library
-
 /**
  * @author  Rosas Hernandez Oscar Andres
  * @author  Alan Enrique Ontiveros Salazar
@@ -15,33 +9,54 @@
  * @team    CompilandoConocimiento
  * @date    1/06/2018
  */
+#include <stdio.h>                                                                  //Put library
+#include <stdlib.h>                                                                 //Put library
+#include <limits.h>                                                                 //Put library
 
+/*=============================================
+============     NODE & HEAP        ===========
+=============================================*/
+typedef struct MinHeap {                                                            //Create a MinHeap type
+    Node** Data;                                                                    //The data
+    unsigned int Capacity;                                                          //And Now the capacity
+    unsigned int CurrentSize;                                                       //Now the current size
+} MinHeap;                                                                          //We will call it MinMinHeap
 
+/*=============================================
+============     ESSENCIAL          ===========
+=============================================*/
+void Initialize(MinHeap * Heap, int Capacity);                                      //Function Definition
+void Insert(MinHeap* Heap, Node* Element);                                          //Function Definition
+void MakeMinHeapFromArray(MinHeap* Heap, Node** Data, int DataSize);                //Function Definition
+void Heapify(MinHeap* Heap, int i);                                                 //Function Definition
+void Destroy(MinHeap * Heap);                                                       //Function Definition
+Node* ExtractMin(MinHeap * Heap);                                                   //Function Definition
 
 /*=============================================
 ============     HELPERS            ===========
 =============================================*/
-int Left(int i)   {return (i << 1) + 1;}                                            
-int Right(int i)  {return (i << 1) + 2;}                                    
-int Parent(int i) {return (i - 1) >> 1;}                                        
+int Left(int i)   {return (i << 1) + 1;}                                            //Where is the left node 
+int Right(int i)  {return (i << 1) + 2;}                                            //Where is the right node
+int Parent(int i) {return (i - 1) >> 1;}                                            //Where is the parent node
     
-Node* GetMin(MinHeap * Heap) {return Heap->Data[0];}
-int GetSize(MinHeap* Heap)   {return Heap->CurrentSize;}
-int IsEmpty(MinHeap* Heap)   {return Heap->CurrentSize == 0;}
-int Bigger(Node* A, Node* B) {return A->Frequency < B->Frequency;}
-void Swap(Node* A, Node* B)  {Node Temporal = *A; *A = *B; *B = Temporal;}
+Node* GetMin(MinHeap * Heap) {return Heap->Data[0];}                                //Get the minimun of Heap
+int GetSize(MinHeap* Heap)   {return Heap->CurrentSize;}                            //Get the size
+int Bigger(Node* A, Node* B) {return A->Frequency < B->Frequency;}                  //Select who is better
+void Swap(Node* A, Node* B)  {Node Temporal = *A; *A = *B; *B = Temporal;}          //Swap 2 nodes
+int MySonIsSmaller(MinHeap* H, int i) {                                             //Check: my son is < than me
+    return Bigger(H->Data[i], H->Data[Parent(i)]);                                  //Using comparations
+}
 
-void Initialize(MinHeap * Heap, int Capacity) {                                     //Create the Heap
+/*=============================================
+============     ESSENCIAL          ===========
+=============================================*/
+void Initialize(MinHeap* Heap, int Capacity) {                                      //Create the Heap
     Heap->Capacity = Capacity;                                                      //Get the capacity
     Heap->CurrentSize = 0;                                                          //Now 1 have nothing
     Heap->Data = calloc(Capacity, sizeof(Node*));                                   //Create the data
 }
 
-int MySonIsSmaller(MinHeap* H, int i) {
-    return Bigger(H->Data[i], H->Data[Parent(i)]);
-}
-
-void Destroy(MinHeap *Heap) {                                                       //Destroy the Heap
+void Destroy(MinHeap* Heap) {                                                       //Destroy the Heap
     for (int i = 0; i < Heap->CurrentSize; ++i) free(Heap->Data[i]);                //Destroy all the nodes data
     free(Heap->Data);                                                               //And the array
     free(Heap);                                                                     //And the struct
@@ -57,95 +72,35 @@ Node* ExtractMin(MinHeap * Heap) {                                              
     return Element;                                                                 //Now return the element
 }
 
-void IncreaseKey(MinHeap* Heap, int i, Node* Element) {
-    Heap->Data[i] = Element;
+void Insert(MinHeap* Heap, Node* Element) {                                         //Insert a element
+    if(Heap->CurrentSize == Heap->Capacity) return;                                 //If we are full no insert
+                    
+    int i = Heap->CurrentSize;                                                      //Put a node
+    Heap->Data[Heap->CurrentSize] = Element;                                        //Put the element
+    Heap->CurrentSize += 1;                                                         //Add the size
     
-    while(i > 0 && MySonIsSmaller(Heap, i)) {
-        Swap(Heap->Data[i], Heap->Data[Parent(i)]);
-        i = Parent(i);
+    while(i > 0 && MySonIsSmaller(Heap, i)) {                                       //Check if my son is smallest
+        Swap(Heap->Data[i], Heap->Data[Parent(i)]);                                 //Swap key
+        i = Parent(i);                                                              //get me the parent
     }
 }
 
-void insert(MinHeap * Heap, Node * e){
-    if(Heap->CurrentSize < Heap->Capacity){
-        Heap->CurrentSize++;
-        int i = Heap->CurrentSize - 1;
-        Heap->Data[i] = e;
-        while(i > 0 && MySonIsSmaller(Heap, i)){
-            Swap(Heap->Data[i], Heap->Data[Parent(i)]);
-            i = Parent(i);
-        }
-    }
+void MakeMinHeapFromArray(MinHeap * Heap, Node** Data, int DataSize) {              //Make a heap from an array
+    Heap->Data = Data;                                                              //Put the data
+    Heap->CurrentSize = Heap->Capacity = DataSize;                                  //Now set the size
+    for(int i = Parent(DataSize - 1); i >= 0; i--)Heapify(Heap, i);                 //Put with Heapify
 }
 
-void delete(MinHeap * Heap, int i){
-    Node * infinity = calloc(1, sizeof(Node));
-    infinity->Frequency = -INT_MAX;
-    IncreaseKey(Heap, i, infinity);
-    ExtractMin(Heap);
-}
+void Heapify(MinHeap* Heap, int i) {                                                //Recursive Function
+    int Largest = i;                                                                //Start largest
 
-void MakeMinHeap(MinHeap * Heap, Node ** Data, int n){
-    Heap->Data = Data;
-    Heap->CurrentSize = Heap->Capacity = n;
-    int i;
-    for(i = Parent(n - 1); i >= 0; i--){
-        Heapify(Heap, i);
+    if(Left(i) < Heap->CurrentSize)                                                 //We can go there?    
+        if (Bigger(Heap->Data[Left(i)], Heap->Data[Largest])) Largest = Left(i);    //Is bigger?
+    if(Right(i) < Heap->CurrentSize)                                                //We can go there?    
+        if (Bigger(Heap->Data[Right(i)], Heap->Data[Largest])) Largest = Right(i);  //Is bigger?
+    
+    if(i != Largest) {                                                              //If we find another largest
+        Swap(Heap->Data[i], Heap->Data[Largest]);                                   //Swap it!
+        Heapify(Heap, Largest);                                                     //Check it!
     }
-}
-
-void Heapify(MinHeap* Heap, int i) {
-    int l = Left(i);
-    int r = Right(i);
-    int largest = i;
-
-    if(l < Heap->CurrentSize && Bigger(Heap->Data[l], Heap->Data[largest]))
-        largest = l;
-    if(r < Heap->CurrentSize && Bigger(Heap->Data[r], Heap->Data[largest]))
-        largest = r;
-    if(i != largest) {
-        Swap(Heap->Data[i], Heap->Data[largest]);
-        Heapify(Heap, largest);
-    }
-}
-
-/*=============================================
-============     NODE & HEAP        ===========
-=============================================*/
-int main() {
-    int Size;
-
-    printf("Size");
-    scanf("%d", &Size);
-
-    MinHeap* Heap = calloc(1, sizeof(MinHeap));
-
-    Initialize(Heap, Size); 
-
-    printf("Enter the elements: \n");
-
-    for (int i = 0; i < Size; i++) {
-        unsigned int a;
-        int b;
-
-        scanf("%d %d", &a, &b);
-
-        Node * e = calloc(1, sizeof(Node));
-        e->Data = a;
-        e->Frequency = b;
-        insert(Heap, e);
-    }
-
-    printf("Sli\n");
-
-    for (int i = 0; i < Size; i++) {
-        Node* Element = ExtractMin(Heap);
-        printf("Element %d has frequency of %llu\n", Element->Data, Element->Frequency);
-    }
-
-    Destroy(Heap);
-
-    printf("\n");
-
-    return 0;
 }
