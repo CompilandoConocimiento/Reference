@@ -15,16 +15,12 @@ typedef unsigned char byte;                                                     
 typedef unsigned long long int ull;                                                 //for short names
 typedef unsigned int uint;                                                          //for short names
 
-#include <bitset> 
-#include <iostream>
-
 #include <stdio.h>                                                                  //Add library
 #include <stdlib.h>                                                                 //Add library
 #include <string.h>                                                                 //Add library
 
-int IsHex = 0;
+int IsHex = 1;
 
-using namespace std;
 
 /*=============================================
 ============         NODE           ===========
@@ -44,28 +40,26 @@ typedef struct Node {                                                           
  * reading it in chunks. Where given a "a" byte Result[a] will tell use how many
  * times exists the byte "a" in the file 
  */
-ull* CreateFrequencyOfBytesArray(FILE* FilePointer, int ChunkSize) {                //Fn: CREATE FREQUENCY ARRAY
+ull* CreateFrequencyOfBytesArray(FILE* OriginalFile, int ChunkSize) {               //Fn: CREATE FREQUENCY ARRAY
     ull *Frequencies = (ull*) malloc(256 * sizeof(ull));                            //Create array from heap memory
     memset(Frequencies, 0, 256);                                                    //Start it!
 
-    int PreviuosState = ftell(FilePointer);                                         //Save a previuos sata
-    fseek(FilePointer, 0L, SEEK_END);                                               //Seek to end of file
+    int PreviuosState = ftell(OriginalFile);                                        //Save a previuos sata
+    fseek(OriginalFile, 0L, SEEK_END);                                              //Seek to end of file
     
-    int FileSize = ftell(FilePointer);                                              //Now we have a size
-    fseek(FilePointer, PreviuosState, SEEK_SET);                                    //Go back to where we were
-
-    int Cycles = FileSize / ChunkSize;                                              //Divide it into pieces
-    int RemainderCycles = FileSize % ChunkSize;                                     //And read the remainder
+    int FileSize = ftell(OriginalFile);                                             //Now we have a size
+    fseek(OriginalFile, PreviuosState, SEEK_SET);                                   //Go back to where we were
+    int Cycles = FileSize / ChunkSize, RemainderCycles = FileSize % ChunkSize;      //And read the remainder
 
     byte StreamInput[ChunkSize];                                                    //Create array of chunck size 
     for (int i = 0, ReadSize = ChunkSize; i <= Cycles; ++i) {                       //Read each cycle
-        fread(&StreamInput, sizeof(byte), ReadSize, FilePointer);                   //Now read from file
+        if (i == Cycles) ReadSize = RemainderCycles;                                //If in the last cycle
+        fread(&StreamInput, sizeof(byte), ReadSize, OriginalFile);                  //Now read from file
         PrintAChunk(StreamInput, ReadSize);                                         //Show it!!!!!!!!!!!!!!!!!!!!   
         for (int j = 0; j < ReadSize; ++j) Frequencies[StreamInput[j]] += 1;        //Now add frequencies
-        if (i + 1 == Cycles) ReadSize = RemainderCycles;                            //If in the last cycle
     }
 
-    fseek(FilePointer, PreviuosState, SEEK_SET);                                    //Go back to where we were
+    fseek(OriginalFile, PreviuosState, SEEK_SET);                                   //Go back to where we were
     return Frequencies;                                                             //Return the pointer
 }
 
@@ -111,97 +105,89 @@ void GetCodeBook(char** Codebook, Node* HuffmanTree, char* Temporal, int i) {   
 
 
 
+/**
+ * This will create a file with a codebook, the return is the number of BITS
+ * you have to ingore at the end
+ */
+int CreateEncodedFile (FILE* EncodedFile, FILE* OriginalFile, char** Codebook,      //Fn: CREATE THE ENCODED
+    int ChunkSize, int BytesToSend) {                                               //Fn: FILE
 
+    int PreviuosState = ftell(OriginalFile);                                        //Save a previuos sata
+    fseek(OriginalFile, 0L, SEEK_END);                                              //Seek to end of file
+    
+    int FileSize = ftell(OriginalFile);                                             //Now we have a size
+    fseek(OriginalFile, PreviuosState, SEEK_SET);                                   //Go back to where we were
+    int Cycles = FileSize / ChunkSize, RemainderCycles = FileSize % ChunkSize;      //And read the remainder
+
+    byte StreamInput[ChunkSize];                                                    //Create array of chunck size 
+    byte DataToSend[BytesToSend];                                                   //Create an array to send data
+    int CurrentPoint = 0;                                                           //Just a counter form 0 to NOBTS
+
+    for (int i = 0, ReadSize = ChunkSize; i <= Cycles; ++i) {                       //Read each cycle
+        if (i == Cycles) ReadSize = RemainderCycles;                                //If in the last cycle
+        fread(&StreamInput, sizeof(byte), ReadSize, OriginalFile);                  //Now read from file
+        
+        for (int j = 0; j < ReadSize; ++j) {                                        //For each byte we read
+            char* String = Codebook[StreamInput[j]];                                //Get me the codebook string
+
+            for (int k = 0, Size = strlen(String); k < Size; ++k, ++CurrentPoint) { //For each bit in the string
+
+                if (String[k] == '1')                                               //If we need to set a bit
+                    DataToSend[CurrentPoint / 8] |= 1 << (7 - (CurrentPoint % 8));  //Put in the data to send
+
+                if (CurrentPoint == (BytesToSend * 8) - 1) {                        //If we have enough data to send
+                    fwrite (&DataToSend, BytesToSend, 1, EncodedFile);              //Write the data
+                    memset(DataToSend, 0, BytesToSend);                             //Start it!
+                    CurrentPoint = -1;                                              //-1. Next iteration return to 0
+                }    
+            }
+        }
+    }
+
+    int Remainder = CurrentPoint % 8;
+    if (Remainder != 0) CurrentPoint = (CurrentPoint / 8) + 1; 
+    else CurrentPoint = CurrentPoint / 8;
+
+    fwrite (&DataToSend, CurrentPoint, 1, EncodedFile);
+
+    return 8 - Remainder;
+}
 
 
 
 
 int main(int argc, char const *argv[]) {
-
-    const char* FileName = argv[1];
-    FILE* FilePointer = fopen(FileName, "rb");
-
-    ull *Frequencies = CreateFrequencyOfBytesArray(FilePointer, 16);
-
-    Node* HuffmanTree = CreateTreeHuffmanTree(Frequencies);
+    const char* OriginalFileName = argv[1];
+    const char* EncodedFileName = argv[2];
 
     char* Codebook[256], TemporalString[257];
+    
+    int ChunkSize = 16;
+    int BytesToSend = 4;
+    
+    FILE* OriginalFile = fopen(OriginalFileName, "rb");
+    FILE* EncodedFile = fopen(EncodedFileName, "wb");
+
+    ull *Frequencies = CreateFrequencyOfBytesArray(OriginalFile, ChunkSize);
+    Node* HuffmanTree = CreateTreeHuffmanTree(Frequencies);
+
     GetCodeBook(Codebook, HuffmanTree, TemporalString, 0);
     DeleteTree(HuffmanTree);
 
+    int Ignore = CreateEncodedFile
+            (EncodedFile, OriginalFile, Codebook, ChunkSize, BytesToSend);
 
+    printf("Remainder is %i\n", Ignore);
 
-
-
-
-
-
-
-
-    FILE* NewFile = fopen ("Encoded.bin", "wb");
-    int ChunkSize = 16;
-
-    int PreviuosState = ftell(FilePointer);                                         //Save a previuos sata
-    fseek(FilePointer, 0L, SEEK_END);                                               //Seek to end of file
-    
-    int FileSize = ftell(FilePointer);                                              //Now we have a size
-    fseek(FilePointer, PreviuosState, SEEK_SET);                                    //Go back to where we were
-
-    int Cycles = FileSize / ChunkSize;                                              //Divide it into pieces
-    int RemainderCycles = FileSize % ChunkSize;                                     //And read the remainder
-
-
-
-
-
-    byte StreamInput[ChunkSize];                                                    //Create array of chunck size 
-    ull Temporal = 0;
-    int Start = 63;
-    int CurrentPoint = 0;
-    for (int i = 0, ReadSize = ChunkSize; i <= Cycles; ++i) {                       //Read each cycle
-        fread(&StreamInput, sizeof(byte), ReadSize, FilePointer);                   //Now read from file
-        for (int j = 0; j < ReadSize; ++j) {
-
-            int k = 0;
-            char* String = Codebook[StreamInput[j]];
-
-            for (int Size = strlen(String); k < Size; ++k, ++CurrentPoint) {
-                if (String[k] == '1') Temporal = Temporal | 1ULL << (Start - k);
-
-
-
-                printf("%c shifting %d - ", String[k], Start - k);
-                bitset<64> bitset1{Temporal};   // the bitset representation of 4  
-                cout << bitset1 << endl;  // 0000000000000100  
-
-                if (CurrentPoint == 23) {
-                    printf("Vamos a escribir\n");
-                    Temporal = Temporal >> (32 + 8);
-
-                    bitset<24> bitset1{Temporal};   // the bitset representation of 4  
-                    cout << bitset1 << endl;  // 0000000000000100  
-
-
-                    printf("%llu\n", Temporal);
-                    fwrite (&Temporal, 3, 1, NewFile);
-                    Start = 63;
-                    Temporal = 0;
-
-                    printf("Escribtura lista\n");
-                    
-                    return 0;
-                    CurrentPoint = 0;
-                }    
-            }
-            
-            Start = Start - k;
-            
-        }
-        if (i + 1 == Cycles) ReadSize = RemainderCycles;                            //If in the last cycle
+    FILE* TreeFile = fopen("Tree.key", "wb");
+    for (byte i = 0; i != 255; ++i) {
+        if (Frequencies[i] != 0) printf("%c is %llu\n", i, Frequencies[i]);
+        fwrite (&Frequencies[i], 8, 1, TreeFile);              //Write the data
     }
 
+    fclose(TreeFile);
 
-    fclose(NewFile);
+
 
 
     return 0;
