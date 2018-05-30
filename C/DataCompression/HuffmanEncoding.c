@@ -109,7 +109,7 @@ void GetCodeBook(char** Codebook, Node* HuffmanTree, char* Temporal, int i) {   
  * This will create a file with a codebook, the return is the number of BITS
  * you have to ingore at the end
  */
-int CreateEncodedFile (FILE* EncodedFile, FILE* OriginalFile, char** Codebook,      //Fn: CREATE THE ENCODED
+byte CreateEncodedFile (FILE* EncodedFile, FILE* OriginalFile, char** Codebook,     //Fn: CREATE THE ENCODED
     int ChunkSize, int BytesToSend) {                                               //Fn: FILE
 
     int PreviuosState = ftell(OriginalFile);                                        //Save a previuos sata
@@ -154,41 +154,45 @@ int CreateEncodedFile (FILE* EncodedFile, FILE* OriginalFile, char** Codebook,  
 }
 
 
-
+/**
+ * This will create an array were for example in Codebook[b] will find a
+ * string that represent the huffman encode of the letter 
+ */
+void CreateTreeFile(FILE* TreeFile, ull Frequencies[], byte IgnoreBits) {           //Fn: CREATE TREE FILE
+    for (int i = 0; i < 256; ++i) fwrite (&Frequencies[i], 8, 1, TreeFile);         //Write the data
+    fwrite (&IgnoreBits, 1, 1, TreeFile);                                           //Write the data
+}
 
 int main(int argc, char const *argv[]) {
-    const char* OriginalFileName = argv[1];
-    const char* EncodedFileName = argv[2];
-
-    char* Codebook[256], TemporalString[257];
     
-    int ChunkSize = 16;
-    int BytesToSend = 4;
+    const char* OriginalFileName = argv[1];
+    const char* EncodedFileName  = argv[2];
+    const char* TreeFileName     = argv[3];
+
+    char* Codebook[256] = {NULL}, TemporalString[257];
+    
+    int ChunkSize = 16, BytesToSend = 4;
     
     FILE* OriginalFile = fopen(OriginalFileName, "rb");
-    FILE* EncodedFile = fopen(EncodedFileName, "wb");
+    FILE* EncodedFile  = fopen(EncodedFileName,  "wb");
+    FILE* TreeFile     = fopen(TreeFileName,     "wb");
 
-    ull *Frequencies = CreateFrequencyOfBytesArray(OriginalFile, ChunkSize);
+    ull *Frequencies  = CreateFrequencyOfBytesArray(OriginalFile, ChunkSize);
     Node* HuffmanTree = CreateTreeHuffmanTree(Frequencies);
 
     GetCodeBook(Codebook, HuffmanTree, TemporalString, 0);
     DeleteTree(HuffmanTree);
 
-    int Ignore = CreateEncodedFile
+    byte IgnoreBits = CreateEncodedFile
             (EncodedFile, OriginalFile, Codebook, ChunkSize, BytesToSend);
+    DeleteCodebook(Codebook);
 
-    printf("Remainder is %i\n", Ignore);
-
-    FILE* TreeFile = fopen("Tree.key", "wb");
-    for (byte i = 0; i != 255; ++i) {
-        if (Frequencies[i] != 0) printf("%c is %llu\n", i, Frequencies[i]);
-        fwrite (&Frequencies[i], 8, 1, TreeFile);              //Write the data
-    }
+    printf("Remainder is %i\n", IgnoreBits);
+    CreateTreeFile(TreeFile, Frequencies, IgnoreBits);
 
     fclose(TreeFile);
-
-
-
+    fclose(EncodedFile);
+    fclose(OriginalFile);
 
     return 0;
 }
