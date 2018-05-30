@@ -2,6 +2,19 @@
 ==================        FUNCTIONS             =====================
 ===================================================================*/
 
+/*=============================================
+============         NODE           ===========
+=============================================*/
+typedef struct Node {                                                   //Create a node type
+    byte Data;                                                          //Have a Data
+    unsigned long long int Frequency;                                   //We will call it Node
+    struct Node* Left;                                                  //For a tree
+    struct Node* Right;                                                 //For a tree
+} Node;  
+
+byte GetBit(byte Data, byte Place) {return (Data >> Place) & 1;}        //Get a bit
+void SetBit(byte *Data, byte Place) {(*Data) |= (1 << Place);}          //Set a bit
+
 /**
  * Delete a tree, just that
  */
@@ -23,7 +36,7 @@ void DeleteCodebook(char** Codebook) {                                  //Delete
 /**
  * This create a standard node
  */
-Node* CreateNode(uint Data, ull Frequency, Node* Left, Node* Right) {   //Create a node
+Node* CreateNode(byte Data, ull Frequency, Node* Left, Node* Right) {   //Create a node
     Node* NewNode = (Node*) calloc(1, sizeof(Node));                    //Reserve memory
     NewNode->Data = Data;                                               //Put data
     NewNode->Frequency = Frequency;                                     //Put data
@@ -33,19 +46,3 @@ Node* CreateNode(uint Data, ull Frequency, Node* Left, Node* Right) {   //Create
     return NewNode;                                                     //Give the data
 }
 
-/**
- * This will print ChunkSize consecutive byte in a cool way
- */
-void PrintAChunk(byte StreamInput[], int ChunkSize) {                   //Print a chunck of data
-    if (IsHex) {
-        for (int i = 0; i < ChunkSize; ++i) {                           //For each element in chunk
-            printf("%02X", StreamInput[i]);                             //Show it
-            if (i % 2) printf(" ");                                     //Add space
-        }
-    }
-    else {
-        for (int i = 0; i < ChunkSize; ++i)                             //For each element in chunk
-            printf("%c", StreamInput[i]);                               //Show it
-    }
-    printf("\n");                                                       //Newline
-}
