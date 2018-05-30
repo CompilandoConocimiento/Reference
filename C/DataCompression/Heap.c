@@ -53,7 +53,7 @@ int MySonIsSmaller(MinHeap* H, int i) {                                         
 void Initialize(MinHeap* Heap, int Capacity) {                                      //Create the Heap
     Heap->Capacity = Capacity;                                                      //Get the capacity
     Heap->CurrentSize = 0;                                                          //Now 1 have nothing
-    Heap->Data = calloc(Capacity, sizeof(Node*));                                   //Create the data
+    Heap->Data = (Node**) calloc(Capacity, sizeof(Node*));                          //Create the data
 }
 
 void Destroy(MinHeap* Heap) {                                                       //Destroy the Heap
