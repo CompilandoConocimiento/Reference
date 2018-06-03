@@ -1,5 +1,5 @@
 /*================================================================
-=====        LONGEST INCREASING SUBSEQUENCE          =============
+=========        LONGEST COMMON SUBSEQUENCE          =============
 ================================================================*/
 #include <iostream>                                                 //Include Libraries
 #include <string>                                                   //Include Libraries
@@ -8,9 +8,9 @@ using namespace std;                                                //Bad practi
 
 
 /*========================================
-==========      DP LIS          =========
+==========      DP LCS          ==========
 ========================================*/
-int DynamicProgrammingLIS (string &A, string &B) {                  //Cool LIS
+int DynamicProgrammingLCS (string &A, string &B) {                  //Cool LIS
     int Table [A.size() + 1][B.size() + 1];                         //Table
 
     for (int i = 0; i <= A.size(); ++i) {                           //For each char
@@ -27,9 +27,9 @@ int DynamicProgrammingLIS (string &A, string &B) {                  //Cool LIS
 }
 
 /*========================================
-==========      BAD LIS          =========
+==========      BAD LCS          =========
 ========================================*/
-int StupidLIS (string &A, string &B, int i, int j) {                //Not Cool LIS
+int StupidLCS (string &A, string &B, int i, int j) {                //Not Cool LIS
     if (i == 0 or j == 0) return 0;                                 //If at start
     if (A[i] == B[j]) return 1 + StupidLIS(A, B, i-1, j-1);         //If equals
     return max(StupidLIS(A, B, i-1, j), StupidLIS(A, B, i, j-1));   //Return maximum
