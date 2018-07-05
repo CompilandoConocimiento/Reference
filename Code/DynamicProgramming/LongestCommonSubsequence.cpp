@@ -4,6 +4,7 @@
 #include <iostream>                                                 //Include Libraries
 #include <string>                                                   //Include Libraries
 #include <vector>                                                   //Include Libraries
+#include <algorithm>                                                //Include Libraries
 using namespace std;                                                //Bad practice
 
 
@@ -31,13 +32,13 @@ int DynamicProgrammingLCS (string &A, string &B) {                  //Cool LIS
 ========================================*/
 int StupidLCS (string &A, string &B, int i, int j) {                //Not Cool LIS
     if (i == 0 or j == 0) return 0;                                 //If at start
-    if (A[i] == B[j]) return 1 + StupidLIS(A, B, i-1, j-1);         //If equals
-    return max(StupidLIS(A, B, i-1, j), StupidLIS(A, B, i, j-1));   //Return maximum
+    if (A[i] == B[j]) return 1 + StupidLCS(A, B, i-1, j-1);         //If equals
+    return max(StupidLCS(A, B, i-1, j), StupidLCS(A, B, i, j-1));   //Return maximum
 }
 
 int main() {
     string A, B; cin >> A >> B;                                     //Read data
-    cout << DynamicProgrammingLIS(A, B) << "\n";                    //Try DP LSI 
+    cout << DynamicProgrammingLCS(A, B) << "\n";                    //Try DP LSI 
 
     return 0;
 }

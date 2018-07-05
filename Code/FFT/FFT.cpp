@@ -179,15 +179,10 @@ string multiplyNumbers(const string & a, const string & b){
 }
 
 
-
-
 int main(){
 
 	vector<int> A = {3, 2, 1};
 	vector<int> B = {5, 0, 2};
-
-
-
 	multiplyPolynomials(A, B);
 
 	for (int i = 0; i < A.size(); i++)
