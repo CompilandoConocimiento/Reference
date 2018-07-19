@@ -10,7 +10,6 @@ export default class AppHeader extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {Languages: this.props.Languages}
 	}
 
 	componentDidMount() {
@@ -20,32 +19,19 @@ export default class AppHeader extends React.Component {
 
 	render () {
 
-		const ManageChangeLanguage = () => {
-			this.props.OnChangeLanguage()
-
-			setTimeout(() => {
-				const Element = document.getElementById('SideMenu')
-				const Instance = M.Sidenav.getInstance(Element)
-				Instance.close()
-			}, 500)
-		}
-
 		const NavigationMenu = (
 			<div className="navbar-fixed">
 				<nav className="blue-grey darken-3">
 					<div className="nav-wrapper z-depth-1">
 						<div className="container">
 							<div className="brand-logo white-text center" style={{fontSize: '1.3rem'}}>
-								<b>Soy</b>Oscar<b>RH</b>
+								<b>Competitive</b> Reference
 							</div>
 							<a href="" data-target="SideMenu" className="sidenav-trigger show-on-large">
 								<i className="material-icons white-text">menu</i>
 							</a>
-							<a href="#AboutMe" className="right" style={{height: "100%"}}>
-								<img 
-									style={{width: '2.2rem', verticalAlign: "middle"}} 
-									src="Assets/Icons/LogoWhite.png"
-								/>
+							<a className="right">
+								<i className="material-icons white-text">home</i>
 							</a>
 						</div>
 					</div>
@@ -53,76 +39,45 @@ export default class AppHeader extends React.Component {
 			</div>
 		)
 		
-		const Parts = []
-		Object.entries(this.props.Data).forEach( ([Key, Values]) => {
-			Parts.push(
-				<li key={Key}>
-					<a className="subheader">{Values.Title}</a>
-				</li>
-			)
-
-			Parts.push(
-				Values.Links.map( 
-					(Link, Index) => (
-						<li key={`${Key} ${Index}`}>
-							<a className="waves-effect" href={`#${Link[1]}`}>
-								{Link[0]}
+		const TopicsLinks = this.props.Data.map(
+			(Topic, IndexTopic) => {
+				const SubTopics = Topic[1].map(
+					(SubTopic, IndexSubTopic) => (
+						<li key={`${Topic[0]} ${IndexTopic} ${IndexSubTopic}`}>
+							<a className="waves-effect">
+								&nbsp;{SubTopic}
 							</a>
 						</li>
 					)
 				)
-			)
-		})
 
+				return (
+					<React.Fragment key={`Render ${IndexTopic}`}>
+						<li key={`Divider ${IndexTopic}`}>
+							<div className="divider" />
+						</li>
+						<li key={Topic[0]}>
+							<a className="subheader">{Topic[0]}</a>
+						</li>
+						{SubTopics}
+					</React.Fragment>
+				)
+
+			}
+		)
 
 		const SideMenu = (
 			<ul id="SideMenu" className="sidenav">
 				
-				<li className="center">
+				<li>
 					<br />
 					<h5 style={{fontWeight: 500, fontSize: "2.1rem"}}>
-						<b>Soy</b>Oscar<b>RH</b>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<b>Topics</b>
 					</h5>
 				</li>
 				<br />
-
-				<li>
-					<div className="row">
-						<div className="col s8 offset-s2">
-							<div className="row">
-								<a target="_blank" href="https://github.com/SoyOscarRH">
-									<img className="col s3" src="Assets/Icons/github.png"/>
-								</a>
-								<a target="_blank" href="http://compilandoconocimiento.com/">
-									<img className="col s3" src="Assets/Icons/wordpress.png"/>
-								</a>
-								<a target="_blank" href="http://twitter.com/SoyOscarRH">
-									<img className="col s3" src="Assets/Icons/twitter.png"/>
-								</a>
-								<a target="_blank" href="https://telegram.me/SoyOscarRH">
-									<img className="col s3" src="Assets/Icons/telegram.png"/>
-								</a>
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<a className="subheader center">Language</a>
-				</li>
-
-				<li className="container">
-					<div className="switch center">
-						<label>
-							{this.state.Languages[0]}
-							<input type="checkbox" onClick={ManageChangeLanguage} />
-							<span className="lever"></span>
-							{this.state.Languages[1]}
-						</label>
-					</div>  
-				</li>
-				<li><div className="divider" /></li>
-				{Parts}
+				{TopicsLinks}
 				<br />
 				<br />
 				<br />

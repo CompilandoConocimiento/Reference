@@ -7,7 +7,6 @@
 typedef unsigned long long ull;                                 //Just a so long name, sorry
 typedef long long int lli;                                      //Just a so long name, sorry
 
-
 // *******   ERATOSTHENES SIEVE / IS PRIME IN O(1)   *******
 std::vector<bool> EratosthenesSieveIsPrime(ull n) {             //To check if i is prime: Vector[i]
     std::vector<bool> isPrime(n + 1, true);                     //Ok, first, allocate space
