@@ -47,9 +47,7 @@ export default class Code extends React.Component {
                                 
                                 <span className="card-title">Hi</span>
                                 
-                                <p>Here a stupid text of {this.props.match.params.Algorithm} 
-                                on the topic of {this.props.Topic}</p>
-
+                                <p>Here a stupid text of {this.props.match.params.Algorithm} on the topic of {this.props.Topic}</p>
                             </div>
                         </div>
                     </div>
