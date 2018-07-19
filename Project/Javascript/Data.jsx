@@ -8,6 +8,7 @@ const NumberTheory = [
 		Link: "SieveOfEratosthenes",
 		File: "SieveOfEratosthenes.cpp",
 		VisibleParts: [ [10, 45] ],
+		Size: 1,
 		Text: null,
 	}
 ]

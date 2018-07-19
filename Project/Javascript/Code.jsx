@@ -12,10 +12,12 @@ export default class Code extends React.Component {
 
 	constructor(props) {
         super(props)
+
+        const AlgorithmData = Data.Topics[props.TopicID].SubTopics.find( e => e.Link === this.props.match.params.Algorithm)
         this.state = {
             Code: null,
-            Size: 0.85,
-            AlgorithmData: Data.Topics[props.TopicID].SubTopics.find( e => e.Link === this.props.match.params.Algorithm)
+            AlgorithmData,
+            Size: AlgorithmData.Size,
         }
 	}
 
@@ -29,6 +31,7 @@ export default class Code extends React.Component {
     
     componentDidUpdate () {
         hljs.initHighlighting()
+        console.log("hi")
     }
 
 	render () {
@@ -40,27 +43,25 @@ export default class Code extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col s10 offset-s1">
-                        <div className="card grey darken-1">
-                            
-                            <div className="card-content white-text">
-                                
-                                <span className="card-title">Hi</span>
-                                
-                                <p>Here a stupid text of {this.props.match.params.Algorithm} on the topic of {this.props.Topic}</p>
-                            </div>
-                        </div>
+                    <div className="col s12 m10 offset-m1 l10 offset-l1">
+                        <p>
+                            Here a stupid text of {this.props.match.params.Algorithm} on the topic of {this.props.Topic}
+                        </p>
+
+                        <br />
+                        <br />
+                        <br />
                     </div>
                 </div>
 
                 <div className="row">
-                    <form className="col s8 offset-s2">
+                    <form className="col s12 m10 offset-m1 l10 offset-l1">
                         <p className="range-field">
                             <input 
                                 type  = "range" 
                                 min   = "0.2"
-                                max   = "1.2"
-                                step  = "0.05"
+                                max   = "2"
+                                step  = "0.075"
                                 value = {this.state.Size}
                                 onInput = {e => this.setState({Size: e.target.value})}
                                 onChange = {e => this.setState({Size: e.target.value})}
@@ -70,11 +71,10 @@ export default class Code extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col s10 offset-s1">
-                        <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#333"}}>
+                    <div className="col s12 m10 offset-m1 l10 offset-l1">
+                        <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#474949"}}>
                             <div className="row">
-                                <br />
-                                <pre style={{fontSize: `${this.state.Size}rem`}} className="ContainerHidden col s10 offset-s1">
+                                <pre style={{fontSize: `${this.state.Size}rem`}} className="ContainerHidden col s12">
                                     <code>
                                         {this.state.Code}
                                     </code>

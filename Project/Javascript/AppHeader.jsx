@@ -73,7 +73,7 @@ export default class AppHeader extends React.Component {
 				
 				<li>
 					<br />
-					<h5 style={{fontWeight: 500, fontSize: "2.1rem"}}>
+					<h5 className="grey-blue-grey-text text-darken-2" style={{fontWeight: 500, fontSize: "2.1rem"}}>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<b>Topics</b>
 					</h5>

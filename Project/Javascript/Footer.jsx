@@ -44,7 +44,7 @@ export default function Footer(props) {
 
             <div className="footer-copyright blue-grey darken-4">
                 <div className="container">
-                    Made by Oscar Andrés Rosas. {DaysSince(new Date("03/23/1998"))} days alive
+                    Made by CompilandoConocimiento. Making the world a happier place
                 </div>
             </div>
         </footer>
