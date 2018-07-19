@@ -40,19 +40,17 @@ class App extends React.Component {
 				</header>
 
 				<main>
-                    <div className="container">
-                        <br />
-                        <Switch>
-							<Route 
-								exact path = '/' 
-								render     = { (props) => <Home {...props} /> }
-							/>
-						  	<Route 
-							  path   = '/Topic/:Topic'
-							  render = { (props) => <Topic {...props} Data={Data.MiniData} /> }
-							/>
-                        </Switch>
-                    </div>
+					<br />
+					<Switch>
+						<Route 
+							exact path = '/' 
+							render     = { (props) => <Home {...props} /> }
+						/>
+						<Route 
+							path   = '/Topic/:Topic'
+							render = { (props) => <Topic {...props} Data={Data.MiniData} /> }
+						/>
+					</Switch>
                 </main>
 
                 <br /><br /><br />

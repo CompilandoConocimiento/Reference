@@ -11,7 +11,7 @@ export default function Home (props) {
 
     return (
         <div className="row">
-            <div className="col s12">
+            <div className="col s8 offset-s2">
                 
                 <div className="card blue-grey darken-1">
                     
@@ -30,6 +30,24 @@ export default function Home (props) {
                     </div>
 
                 </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
             </div>
         </div>
