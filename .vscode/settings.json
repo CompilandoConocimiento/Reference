@@ -6,6 +6,8 @@
         "__split_buffer": "cpp",
         "deque": "cpp",
         "list": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "memory": "cpp",
+        "utility": "cpp"
     }
 }
