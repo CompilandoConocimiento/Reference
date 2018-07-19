@@ -1,0 +1,44 @@
+{
+    "name": "soyoscarrh",
+    "version": "0.0.1",
+    "description": "A page to show my projects -Oscar RH",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack -p --progress --config webpack.config.js",
+        "dev-build": "webpack --progress -d --config webpack.config.js",
+        "stats": "webpack --profile --config webpack.config.js --json > Stats.json",
+        "watch": "webpack --progress -d --config webpack.config.js --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SoyOscarRH/SoyOscarRH.github.io"
+    },
+    "keywords": [
+        "react",
+        "materializecss",
+        "personal"
+    ],
+    "author": "SoyOscarRH",
+    "license": "GPL-2.0",
+    "bugs": {
+        "url": "https://github.com/SoyOscarRH/SoyOscarRH.github.io/issues"
+    },
+    "homepage": "https://soyoscarrh.github.io/",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "css-loader": "^0.28.11",
+        "style-loader": "^0.21.0",
+        "webpack": "^4.12.1",
+        "webpack-cli": "^3.0.8"
+    },
+    "dependencies": {
+        "materialize-css": "^1.0.0-rc.2",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1"
+    }
+}

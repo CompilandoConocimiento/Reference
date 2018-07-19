@@ -15,38 +15,6 @@ typedef vector< vector<lli> > MatrixOflli;                                  //Ju
 
 
 
-// ********* ERATOSTHENES SIEVE / GET PRIMES USING BOOLS *************
-vector<bool> EratosthenesSieveBoolVector(ull Size){                         //FN: To check if i is prime: Vector[i]
-    vector<bool> BoolPrimes(Size+1, true);                                  //Ok, first, allocate space
-
-    BoolPrimes[0] = false;                                                  //Now, 0 is not prime :o
-    BoolPrimes[1] = false;                                                  //Now, 1 (maybe) is not prime :o
-
-    for (lli i = 4; i <= Size; i+= 2) BoolPrimes[i] = false;                //Eliminate all the pairs
-
-    for (lli i = 3; i*i <= Size; i+= 2) {                                   //Check for every # < √i (Math things) 
-        if (BoolPrimes[i])                                                  //If we still believe it's a prime
-            for (ull j = i*i; j <= Size; j+= 2*i)                           //Remove all his multiples-Special limit
-                BoolPrimes[j] = false;                                      //For each multiple just remove it
-    }
-
-    return BoolPrimes;                                                      //Return the info to know if n is prime
-}
-
-// ********* GET PRIMES / PRIMES UNTIL AN N FACTOR ******************
-vector<ull> PrimeVectorUsingSieve(const vector<bool> &BoolPrimes){          //FN: Return vector with all primes < n
-    vector<ull> VectorOfPrimes;                                             //Were we will have all the Primes
-
-    for (ull i = 0, Size = BoolPrimes.size(); i <= Size; ++i)               //For each element of the Bool vector
-        if (BoolPrimes[i] == true) VectorOfPrimes.push_back(i);             //If it´s prime then add it to the Vector
-
-    return VectorOfPrimes;                                                  //Return vector 
-}
-
-
-
-
-
 /* ******************* PRIME FACTORIZATION OF N    **********************
     Info:
         This function will return a n pair so:
@@ -112,17 +80,6 @@ vector<PairOflli> PrimeFactorization(lli Number, vector<ull> &Primes) {     //FN
 // ##################          MAIN         #############################
 // ######################################################################
 int main(){
-    ull Size = 100000;                                                  //Just the max n
-    lli RandomNumber = 315;                                             //Just a random number
-
-    /* ====== SECTION: ERATOSTHENES SIEVE =================                                                 
-    vector<bool> BoolPrimes = EratosthenesSieveBoolVector(Size);        //Bool: check if i is prime using Vector[i]
-    vector<ull> VectorPrimes = PrimeVectorUsingSieve(BoolPrimes);       //Create Vector with all primes until Size
-    
-
-    for (auto PrimeNumber : VectorPrimes) cout << PrimeNumber << "\n";  //Show it!
-    */
-
 
     /* ====== SECTION: PRIME FACTORIZATION ================= 
     cout << "n = " << RandomNumber << "\n = ";                          //Show the Prime factorization          
