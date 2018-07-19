@@ -5,7 +5,8 @@
 const NumberTheory = [
 	{
 		Name: "Sieve of Eratosthenes",
-		Link: "SieveOfEratosthenes.cpp",
+		Link: "SieveOfEratosthenes",
+		File: "SieveOfEratosthenes.cpp",
 		VisibleParts: [ [10, 45] ],
 		Text: null,
 	}
@@ -15,6 +16,7 @@ const NumberTheory = [
 const Topics = [
 	{
 		Name: "Number Theory",
+		Link: "NumberTheory",
 		SubTopics: NumberTheory,
 		BaseLink: "Code/NumberTheory/"
 	},
@@ -22,7 +24,10 @@ const Topics = [
 
 export const Data = {
 	Topics,
-	SideMenu: Topics.map(
-		Topic => [Topic.Name, Topic.SubTopics.map (E => E.Name)]
+	MiniData: Topics.map(
+		(Topic, ID) => [
+			[Topic.Name, Topic.Link, ID],
+			Topic.SubTopics.map ( (E, MiniID) => [E.Name, E.Link, MiniID]),
+		]
 	)
 }

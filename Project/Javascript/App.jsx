@@ -5,7 +5,7 @@
 /* ========= BASIC REACT THINGS ===============*/
 import React from "react"
 import ReactDOM from "react-dom"
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 
 /* ========= MATERIALIZCE CSS =================*/
 import M from "materialize-css"
@@ -14,6 +14,8 @@ import "materialize-css/dist/css/materialize.min.css"
 /* ========= THE COMPONENTS ==================*/
 import {Data} from "./Data"
 import AppHeader from "./AppHeader"
+import Home from "./Home"
+import Topic from "./Topic"
 import Footer from "./Footer"
 
 // =====================================================================
@@ -33,21 +35,27 @@ class App extends React.Component {
 				
 				<header>
 					<AppHeader
-						Data = {Data.SideMenu} 
+						Data = {Data.MiniData} 
 					/>
 				</header>
 
-				<Switch>
-					<Route exact path='/' component={Home}/>
-					<Route path='/roster' component={Roster}/>
-					<Route path='/schedule' component={Schedule}/>
-				</Switch>
-
-
 				<main>
-					<br />
-					<br />
-				</main>
+                    <div className="container">
+                        <br />
+                        <Switch>
+							<Route 
+								exact path = '/' 
+								render     = { (props) => <Home {...props} /> }
+							/>
+						  	<Route 
+							  path   = '/Topic/:Topic'
+							  render = { (props) => <Topic {...props} Data={Data.MiniData} /> }
+							/>
+                        </Switch>
+                    </div>
+                </main>
+
+                <br /><br /><br />
 
 				<footer>
 					<Footer />

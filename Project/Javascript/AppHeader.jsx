@@ -2,6 +2,8 @@
 // ============                 IMPORTS            =====================
 // =====================================================================
 import React from "react"
+import { Link } from 'react-router-dom'
+
 
 // =====================================================================
 // ============     HEADER COMPONENT       =============================
@@ -30,9 +32,9 @@ export default class AppHeader extends React.Component {
 							<a href="" data-target="SideMenu" className="sidenav-trigger show-on-large">
 								<i className="material-icons white-text">menu</i>
 							</a>
-							<a className="right">
+							<Link className="right" to="/">
 								<i className="material-icons white-text">home</i>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</nav>
@@ -43,10 +45,10 @@ export default class AppHeader extends React.Component {
 			(Topic, IndexTopic) => {
 				const SubTopics = Topic[1].map(
 					(SubTopic, IndexSubTopic) => (
-						<li key={`${Topic[0]} ${IndexTopic} ${IndexSubTopic}`}>
-							<a className="waves-effect">
-								&nbsp;{SubTopic}
-							</a>
+						<li key={`${Topic[0][0]} ${IndexTopic} ${IndexSubTopic}`}>
+							<Link className="waves-effect" to={`/Topic/${Topic[0][1]}/${SubTopic[1]}`}>
+								&nbsp;{SubTopic[0]}
+							</Link>
 						</li>
 					)
 				)
@@ -56,8 +58,8 @@ export default class AppHeader extends React.Component {
 						<li key={`Divider ${IndexTopic}`}>
 							<div className="divider" />
 						</li>
-						<li key={Topic[0]}>
-							<a className="subheader">{Topic[0]}</a>
+						<li key={Topic[0][0]}>
+							<a className="subheader">{Topic[0][0]}</a>
 						</li>
 						{SubTopics}
 					</React.Fragment>
