@@ -9,37 +9,37 @@ typedef long long int lli;                                      //Just a so long
 
 // *******   ERATOSTHENES SIEVE / IS PRIME IN O(1)   *******
 std::vector<bool> EratosthenesSieveIsPrime(ull n) {             //To check if i is prime: Vector[i]
-    std::vector<bool> isPrime(n + 1, true);                     //Ok, first, allocate space
-    isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) is not prime
+    std::vector<bool> isPrime(n + 1, true);                     //Ok, first, allocate space 
+    isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) are not prime
 
-    for (ull i = 4; i <= n; i += 2) isPrime[i] = false;         //Eliminate all the evens
+    for (ull i = 4; i <= n; i += 2) isPrime[i] = false;         //Eliminate all the evens numbers
 
-    for (ull i = 3, limit = std::sqrt(n); i <= limit; i += 2)   //Check for every # < √i (Math) 
-        if (isPrime[i])                                         //If we still believe it's a prime
-            for (ull j = i * i; j <= n; j += 2 * i)             //Remove all his multiples- limit
-                isPrime[j] = false;                             //For each multiple just remove it
+    for (ull i = 3, limit = std::sqrt(n); i <= limit; i += 2)   //For every odd number < √n  
+        if (isPrime[i])                                         //If we found a prime :0
+            for (ull j = i * i; j <= n; j += 2 * i)             //ForEach multiple we have'nt check
+                isPrime[j] = false;                             //Each multiple is not prime
 
-    return isPrime;                                             //Return the info to know if n is prime
+    return isPrime;                                             //Return the complete sieve
 }
 
 // *******   ERATOSTHENES SIEVE / VECTOR OF PRIMES   *******
-std::vector<ull> EratosthenesSievePrimes(ull n) {               //Vector of primes
-    std::vector<bool> isPrime(n + 1, true);                     //Ok, the origianl Sieve
+std::vector<ull> EratosthenesSievePrimes(ull n) {               //Return a vector of only primes
+    std::vector<bool> isPrime(n + 1, true);                     //Create the origianl Sieve
     std::vector<ull> Primes(1, 2);                              //2 is a prime, dahhhhh!
     
-    isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) is not prime
+    isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) are not prime
 
-    for (ull i = 4; i <= n; i += 2) isPrime[i] = false;         //Eliminate all the evens
+    for (ull i = 4; i <= n; i += 2) isPrime[i] = false;         //Eliminate all the evens numbers
 
     for (ull i = 3, limit = std::sqrt(n); i <= n; i += 2) {     //Check for every odd number
         if (isPrime[i]) {                                       //If we still believe it's a prime
-            Primes.push_back(i);                                //Add it!
+            Primes.push_back(i);                                //Add it to the vector, it's a prime
             
             if (i <= limit)                                     //It make sense to delete multiples?
-                for (ull j = i * i; j <= n; j += 2 * i)         //Remove all his multiples- limit
+                for (ull j = i * i; j <= n; j += 2 * i)         //ForEach multiple we have'nt check
                     isPrime[j] = false;                         //Each multiple is not prime
         }
     }
 
-    return Primes;                                              //Return the vector of primes
+    return Primes;                                              //Return the vector of only primes
 }
