@@ -39,15 +39,12 @@ export default class Code extends React.Component {
         return (
             <React.Fragment>
                 <div className="row center blue-grey-text text-darken-3">
-                    <h3>{this.state.AlgorithmData.Name}</h3>
+                    <h4>{this.state.AlgorithmData.Name}</h4>
                 </div>
 
                 <div className="row">
-                    <div className="col s12 m10 offset-m1 l10 offset-l1">
-                        <p>
-                            Here a stupid text of {this.props.match.params.Algorithm} on the topic of {this.props.Topic}
-                        </p>
-
+                    <div className="col s10 offset-s1">
+                        {this.state.AlgorithmData.Text}
                         <br />
                         <br />
                         <br />
