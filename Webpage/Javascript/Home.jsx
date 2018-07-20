@@ -91,7 +91,10 @@ export default function Home (props) {
 
                         <br />
 
-                        <a className="waves-effect waves-teal amber lighten-4 btn-flat">
+                        <a 
+                            href      = "https://compilandoconocimiento.github.io/Reference/Book/Reference.pdf" 
+                            target    = "_blank" 
+                            className = "waves-effect waves-teal amber hoverable lighten-4 btn-flat">
                             GET THE PDF
                         </a>
 

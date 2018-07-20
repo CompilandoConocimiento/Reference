@@ -21,7 +21,12 @@ export default function Footer(props) {
                         </p>
 
                         <br />
-                        <a className="waves-effect waves-light btn-large">Get the PDF</a>
+                        <a 
+                            href      = "https://compilandoconocimiento.github.io/Reference/Book/Reference.pdf" 
+                            target    = "_blank" 
+                            className = "waves-effect waves-light btn-large">
+                            Get the PDF
+                        </a>
                     </div>
                     <div className="col l4 offset-l2 s12">
                     <h6 className="white-text">Authors</h6>
