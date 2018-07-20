@@ -13,7 +13,7 @@ function CodeHighlight (props) {
 
     if (props.Code === "Loading") return (
         <div className="row">
-            <div className="col s10 offset-s1">
+            <div className="col s8 offset-s2">
                 <div className="progress">
                     <div className="indeterminate"></div>
                 </div>
