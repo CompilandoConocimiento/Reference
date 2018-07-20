@@ -12,8 +12,12 @@ import './CoolCSS.css'
 function CodeHighlight (props) {
 
     if (props.Code === "Loading") return (
-        <div class="progress">
-            <div class="indeterminate"></div>
+        <div className="row">
+            <div className="col s10 offset-s1">
+                <div className="progress">
+                    <div className="indeterminate"></div>
+                </div>
+            </div>
         </div>
     )
 
