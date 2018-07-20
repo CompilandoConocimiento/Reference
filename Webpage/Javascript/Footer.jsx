@@ -8,18 +8,6 @@ import React from "react"
 // =====================================================================
 export default function Footer(props) {
 
-    function DaysSince(Date1) {
-
-        const SecondsInADay = 1000 * 60 * 60 * 24
-    
-        const Date1InMs = Date1.getTime()
-        const Date2InMs = Date.now()
-
-        const DifferenceMs = Math.abs(Date1InMs - Date2InMs)
-    
-        return Math.round(DifferenceMs / SecondsInADay)
-    }
-
     return (
         <footer className="page-footer blue-grey darken-3">
             <div className="container">
@@ -49,6 +37,12 @@ export default function Footer(props) {
                                 </li>
                             </a>
                         </ul>
+
+                        <br />
+                        <a href="https://github.com/CompilandoConocimiento" target="_blank">
+                            <h6 className="white-text">Github</h6>
+                        </a>
+
                     </div>
                 </div>
             </div>
