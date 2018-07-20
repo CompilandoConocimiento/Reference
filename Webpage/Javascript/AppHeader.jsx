@@ -58,8 +58,15 @@ export default class AppHeader extends React.Component {
 						<li key={`Divider ${IndexTopic}`}>
 							<div className="divider" />
 						</li>
+
 						<li key={Topic[0][0]}>
-							<a className="subheader">{Topic[0][0]}</a>
+							<Link 
+								className = "waves-effect"
+								style     = {{fontSize: "1.1rem"}}
+								to        = {`/Topic/${Topic[0][1]}/`}
+							>
+								{Topic[0][0]}
+							</Link>
 						</li>
 						{SubTopics}
 					</React.Fragment>
@@ -73,7 +80,8 @@ export default class AppHeader extends React.Component {
 				
 				<li>
 					<br />
-					<h5 className="grey-blue-grey-text text-darken-2" style={{fontWeight: 500, fontSize: "2.1rem"}}>
+					<h5 className="blue-grey-text text-darken-3" 
+						style={{fontWeight: 500, fontSize: "2.1rem"}}>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<b>Topics</b>
 					</h5>

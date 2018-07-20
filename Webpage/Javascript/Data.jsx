@@ -9,7 +9,7 @@ const NumberTheory = [
 		Name: "Sieve of Eratosthenes",
 		Link: "SieveOfEratosthenes",
 		File: "SieveOfEratosthenes.cpp",
-		VisibleParts: [ [10, 45] ],
+		VisibleParts: [ [10, 23], [25, 45] ],
 		Size: 1,
 		Text: (
 			<div style={{fontSize: "1.1rem"}}>

@@ -12,8 +12,10 @@ export default function Home (props) {
 
     const ColorsForCards = [
         "red lighten-2",
-        "purple lighten-2",
-        "teal lighten-2",
+        "indigo lighten-2",
+        "cyan lighten-1",
+        "green lighten-2",
+        "orange lighten-2",
         "brown lighten-2",
     ].sort(() => Math.random() - 0.5)
 
@@ -29,8 +31,8 @@ export default function Home (props) {
                         <span className="card-title">{Topics[i][0]}</span>
                     </div>
                     <div className="card-action">
-                        <Link to={`/Topic/${Topics[i][1]}/`}>
-                            See more
+                        <Link to={`/Topic/${Topics[i][1]}/`} className="white-text">
+                            CHECK THE CODE
                         </Link>
                     </div>
                 </div>
@@ -61,33 +63,52 @@ export default function Home (props) {
         )
     }
 
+
+
+    const HelloCard = (
+        <div className="row">
+            <div className="col s12">
+                <div className="card" style={{backgroundColor: "#FFF8E1"}}>
+                    <div className="card-content center blue-grey-text text-darken-3" 
+                        style={{fontSize: "1.2rem"}}>
+                        
+                        <span className="card-title"><b>Hi, Welcome to THE REFERENCE</b></span>
+                        
+                        <p>
+                            This is a competitive reference, a repository of many of 
+                            the algorithms that we have implemented to solve problems.
+
+                            Enjoy, and remember with great code come great responsability.
+                        </p> 
+
+                        <br />
+
+                        <p>
+                            If you wish you can also check all this algorithms in a PDF
+                            form, so you can use it in an ACM-ICPC competence.
+                            
+                        </p>
+
+                        <br />
+
+                        <a className="waves-effect waves-teal amber lighten-4 btn-flat">
+                            GET THE PDF
+                        </a>
+
+                        <br />
+
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    )
+
     return (
 
         <div className="container">
-            <div className="row">
-                <div className="col s12">
-                    
-                    <div className="card amber lighten-5">
-                        
-                        <div className="card-content blue-grey-text text-darken-4">
-                            
-                            <span className="card-title">Hi, welcome to THE REFERENCE</span>
-                            
-                            <p>
-                                Competitive programming Refence.
-                            </p> 
-                            
-                            <p>
-                                By CompilandoConocimiento
-                            </p>
-
-                        </div>
-
-                    </div>
-                    
-                </div>
-            </div>
-
+            {HelloCard}
             {TopicsHTML}
 
             <br />

@@ -8,35 +8,46 @@ import { Link, Switch, Route } from 'react-router-dom'
 // =====================================================================
 // ============                 CODE               =====================
 // =====================================================================
-function TopicInfo (props) {
+function ListOfSubTopics (props) {
     return (
         <div className="container">
             <div className="row">
                 <div className="col s12">
                     <div className="card-panel">
+                        
                         <div className="center">
-                            <h4 className="blue-grey-text text-darken-3">{props.Topic[0]}</h4>
+                            <h4 className="blue-grey-text text-darken-3">
+                                {props.Topic[0]}
+                            </h4>
                             <br />
                             <br />
                         </div>
-                        {
-                            props.SubTopics.map(
-                                (e) => (
-                                    <div className="row" key={e[1]}>
-                                        <Link 
-                                            className="waves-effect waves-light hoverable btn-large col s12"
-                                            to={`/Topic/${props.Topic[1]}/${e[1]}`}
-                                        >
-                                            {e[0]}
-                                        </Link>
-                                    </div>
-                                )
+
+                        {props.SubTopics.map(
+                            (e) => (
+                                <div className="row" key={e[1]}>
+                                    <Link 
+                                        className="waves-effect hoverable btn-large col s12 m10 l8 offset-m1 offset-l2"
+                                        to={`/Topic/${props.Topic[1]}/${e[1]}`}
+                                    >
+                                        {e[0]}
+                                    </Link>
+                                </div>
                             )
-                        }
+                        )}
+
                     </div>
                 </div>
             </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
         </div>
+
     )
 }
 
@@ -55,7 +66,7 @@ export default function Topic (props) {
                         />
                         <Route 
                             exact path = {`/Topic/${Topic[0][1]}/`}
-                            render     = { (props) => <TopicInfo {...props} Topic={Topic[0]} SubTopics={Topic[1]} /> }
+                            render     = { (props) => <ListOfSubTopics {...props} Topic={Topic[0]} SubTopics={Topic[1]} /> }
                         />
                     </React.Fragment>
                 )

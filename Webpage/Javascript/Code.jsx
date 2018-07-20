@@ -8,6 +8,32 @@ import './CoolCSS.css'
 // =====================================================================
 // ============                 CODE               =====================
 // =====================================================================
+
+function CodeHighlight (props) {
+    return (
+        <div className="row">
+            
+            <div className="col s12 m10 offset-m1 l10 offset-l1">
+                <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#2b2b2b"}}>
+                    <div className="row">
+                        <pre id={`Code${props.Number}`} 
+                            style={{fontSize: `${props.Size}rem`}} 
+                            className="ContainerHidden col s12">
+                            <code>
+                                {props.Code}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+    )
+}
+
 export default class Code extends React.Component {
 
 	constructor(props) {
@@ -15,8 +41,8 @@ export default class Code extends React.Component {
 
         const AlgorithmData = Data.Topics[props.TopicID].SubTopics.find( e => e.Link === this.props.match.params.Algorithm)
         this.state = {
-            Code: null,
             AlgorithmData,
+            TextArray: null, 
             Size: AlgorithmData.Size,
         }
 	}
@@ -27,12 +53,20 @@ export default class Code extends React.Component {
         MathJax.Hub.Typeset()
 
         fetch(`https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master/Code/${this.props.Topic}/${this.state.AlgorithmData.File}`)
-        .then( Data => { Data.text().then( (Text) => this.setState({Code: Text}) ) } )
+        .then( Data => { Data.text().then( (Text) => this.setState({TextArray: Text.split("\n")}) ) } )
     }
+
+    
     
     componentDidUpdate () {
-        let Code = document.getElementById("Code")
-        hljs.highlightBlock(Code)
+
+        this.state.AlgorithmData.VisibleParts.forEach(
+            (Element, Index) => {
+                let Code = document.getElementById(`Code${Index}`)
+                hljs.highlightBlock(Code)
+            }
+        )
+
     }
 
 	render () {
@@ -59,7 +93,7 @@ export default class Code extends React.Component {
                                 type  = "range" 
                                 min   = "0.2"
                                 max   = "2"
-                                step  = "0.075"
+                                step  = "0.035"
                                 value = {this.state.Size}
                                 onInput = {e => this.setState({Size: e.target.value})}
                                 onChange = {e => this.setState({Size: e.target.value})}
@@ -68,19 +102,18 @@ export default class Code extends React.Component {
                     </form>
                 </div>
 
-                <div className="row">
-                    <div className="col s12 m10 offset-m1 l10 offset-l1">
-                        <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#474949"}}>
-                            <div className="row">
-                                <pre id="Code" style={{fontSize: `${this.state.Size}rem`}} className="ContainerHidden col s12">
-                                    <code>
-                                        {this.state.Code}
-                                    </code>
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {
+                    this.state.AlgorithmData.VisibleParts.map(
+                        (Range, Index) => (
+                            <CodeHighlight 
+                                key    = {Index}
+                                Number = {Index} 
+                                Size   = {this.state.Size}
+                                Code   = {(this.state.TextArray == null)? "" : this.state.TextArray.slice(Range[0], Range[1]).join("\n")} 
+                            />
+                        )
+                    )
+                }
 
 
             </React.Fragment>
