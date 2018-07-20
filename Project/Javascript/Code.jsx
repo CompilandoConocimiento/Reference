@@ -31,7 +31,8 @@ export default class Code extends React.Component {
     }
     
     componentDidUpdate () {
-        hljs.initHighlighting()
+        let Code = document.getElementById("Code")
+        hljs.highlightBlock(Code)
         MathJax.Hub.Typeset()
     }
 
@@ -72,7 +73,7 @@ export default class Code extends React.Component {
                     <div className="col s12 m10 offset-m1 l10 offset-l1">
                         <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#474949"}}>
                             <div className="row">
-                                <pre style={{fontSize: `${this.state.Size}rem`}} className="ContainerHidden col s12">
+                                <pre id="Code" style={{fontSize: `${this.state.Size}rem`}} className="ContainerHidden col s12">
                                     <code>
                                         {this.state.Code}
                                     </code>

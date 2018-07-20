@@ -24,7 +24,7 @@ function TopicInfo (props) {
                                 (e) => (
                                     <div className="row" key={e[1]}>
                                         <Link 
-                                            className="waves-effect waves-light hoverable btn-large col s8 offset-s2"
+                                            className="waves-effect waves-light hoverable btn-large col s12"
                                             to={`/Topic/${props.Topic[1]}/${e[1]}`}
                                         >
                                             {e[0]}
