@@ -24,6 +24,7 @@ export default class Code extends React.Component {
 	componentDidMount() {
         const Elements = document.querySelectorAll('.fixed-action-btn')
         M.FloatingActionButton.init(Elements, {})
+        MathJax.Hub.Typeset()
 
         fetch(`https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master/Code/${this.props.Topic}/${this.state.AlgorithmData.File}`)
         .then( Data => { Data.text().then( (Text) => this.setState({Code: Text}) ) } )
@@ -31,7 +32,7 @@ export default class Code extends React.Component {
     
     componentDidUpdate () {
         hljs.initHighlighting()
-        console.log("hi")
+        MathJax.Hub.Typeset()
     }
 
 	render () {
