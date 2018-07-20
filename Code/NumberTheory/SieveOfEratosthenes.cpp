@@ -24,22 +24,22 @@ std::vector<bool> EratosthenesSieveIsPrime(ull n) {             //To check if i 
 
 // *******   ERATOSTHENES SIEVE / VECTOR OF PRIMES   *******
 std::vector<ull> EratosthenesSievePrimes(ull n) {               //Vector of primes
-    std::vector<bool> isPrime(n + 1, true);                     //Ok, first, allocate space
+    std::vector<bool> isPrime(n + 1, true);                     //Ok, the origianl Sieve
     std::vector<ull> Primes(1, 2);                              //2 is a prime, dahhhhh!
     
     isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) is not prime
 
     for (ull i = 4; i <= n; i += 2) isPrime[i] = false;         //Eliminate all the evens
 
-    for (ull i = 3, limit = std::sqrt(n); i <= n; i += 2) {     //Check for every # < √i (Math) 
+    for (ull i = 3, limit = std::sqrt(n); i <= n; i += 2) {     //Check for every odd number
         if (isPrime[i]) {                                       //If we still believe it's a prime
             Primes.push_back(i);                                //Add it!
             
             if (i <= limit)                                     //It make sense to delete multiples?
                 for (ull j = i * i; j <= n; j += 2 * i)         //Remove all his multiples- limit
-                    isPrime[j] = false;                         //For each multiple just remove it
+                    isPrime[j] = false;                         //Each multiple is not prime
         }
     }
 
-    return Primes;                                              //Return the info to know if n is prime
+    return Primes;                                              //Return the vector of primes
 }
