@@ -33,7 +33,6 @@ export default class Code extends React.Component {
     componentDidUpdate () {
         let Code = document.getElementById("Code")
         hljs.highlightBlock(Code)
-        MathJax.Hub.Typeset()
     }
 
 	render () {
