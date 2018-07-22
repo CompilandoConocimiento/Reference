@@ -41,7 +41,15 @@ export default class AppHeader extends React.Component {
     }
 
     render () {
-        const CloseSideMenu = () => setTimeout(() =>M.Sidenav.getInstance( document.getElementById("SideMenu") ).close(), 350)
+        const CloseSideMenu = () => {
+            setTimeout(
+                () => {
+                    M.Sidenav.getInstance( document.getElementById("SideMenu") ).close()
+                    scroll(0,0)
+                }
+                , 350
+            )
+        }
 
         return (
             <header>

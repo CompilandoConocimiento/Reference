@@ -112,7 +112,7 @@ export default function TopicVisualizer (props) {
                 render = { 
                     (props) => {
                         const AlgorithmData = Topic.SubTopics.find( SubTopic => SubTopic.Link ===  props.match.params.Algorithm)
-                        return <AlgorithmVisualizer {...props} Algorithm={AlgorithmData} Topic={Topic} />
+                        return <AlgorithmVisualizer {...props} Algorithm={AlgorithmData} Topic={Topic} key={Date.now()} />
                     }
 
                 }

@@ -53,7 +53,6 @@ export default class AlgorithmVisualizer extends React.Component {
         this.state = {
             TextArray: null, 
             Size: props.Algorithm.Size,
-            LaTeXRender: false,
         }
     }
 
@@ -70,8 +69,6 @@ export default class AlgorithmVisualizer extends React.Component {
     
     
     componentDidUpdate () {
-        MathJax.Hub.Typeset()
-
         this.props.Algorithm.VisibleParts.forEach(
             (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
         )

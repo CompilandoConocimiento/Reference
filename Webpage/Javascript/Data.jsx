@@ -153,7 +153,7 @@ const DynamicProgramming = [
                 <br />
 
                 The solution we present here is based in this function, suppose, X, Y are strings:
-                <div style={{overflow: "scroll"}}>
+                <div style={{overflow: "auto"}}>
                 $${`
                     f(X[0 : m], Y[0 : n]) = 
                     \\begin{cases}
