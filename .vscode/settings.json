@@ -11,6 +11,7 @@
         "utility": "cpp",
         "map": "cpp",
         "__locale": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "cstdlib": "cpp"
     }
 }

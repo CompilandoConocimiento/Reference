@@ -56,10 +56,10 @@ const NumberTheory = [
 	},
 	{
 		Name: "Prime Factorization",
-		Link: "Prime Factorization",
+		Link: "PrimeFactorization",
 		File: "PrimeFactorization.cpp",
 		VisibleParts: [ [17, 32], [36, 49] ],
-		Size: 0.9,
+		Size: 0.95,
 		Text: (
 			<div style={{fontSize: "1.1rem"}}>
 				
@@ -100,7 +100,24 @@ const NumberTheory = [
 
 			</div>
 		),
-	}
+	},
+	{
+		Name: "Factorization of a Factorial",
+		Link: "FactorizationOfFactorial",
+		File: "FactorizationOfFactorial.cpp",
+		VisibleParts: [ [10, 19], [21, 30] ],
+		Size: 0.9,
+		Text: (
+			<div style={{fontSize: "1.1rem"}}>
+				
+				I asume that you know how to work with primes, if not
+				check the Eratosthenes Sieve.
+
+				This algorithm is really simple, as long as you know the 
+				Legendre formula, just that, learn that.
+			</div>
+		),
+	},
 ]
 
 
