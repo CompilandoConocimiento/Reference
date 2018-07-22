@@ -22,31 +22,31 @@ import Footer from "./Footer"
 // =====================================================================
 class App extends React.Component {
 
-	constructor(props) {super(props)}
+    constructor(props) {super(props)}
 
-	render () {
+    render () {
 
-		return (
-			<React.Fragment>
-				
-				<AppHeader />
+        return (
+            <React.Fragment>
+                
+                <AppHeader />
 
-				<main>
-					<br />
-					<Switch>
-						<Route exact path='/' render={ (props) => <Home {...props} /> } />
-						<Route path='/Topic/:NameOfTopic' render={ (props) => <TopicVisualizer {...props} /> } />
-					</Switch>
-					<br />
-					<br />
-					<br />
+                <main>
+                    <br />
+                    <Switch>
+                        <Route exact path='/' render={ (props) => <Home {...props} /> } />
+                        <Route path='/Topic/:NameOfTopic' render={ (props) => <TopicVisualizer {...props} /> } />
+                    </Switch>
+                    <br />
+                    <br />
+                    <br />
                 </main>
 
-				<Footer />
+                <Footer />
 
-			</React.Fragment>
-		)
-	}
+            </React.Fragment>
+        )
+    }
 }
 
 ReactDOM.render((<HashRouter><App /></HashRouter>), document.getElementById('ReactApp'))

@@ -47,7 +47,7 @@ function CodeHighlight (props) {
 
 export default class AlgorithmVisualizer extends React.Component {
 
-	constructor(props) {
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -55,9 +55,9 @@ export default class AlgorithmVisualizer extends React.Component {
             Size: props.Algorithm.Size,
             LaTeXRender: false,
         }
-	}
+    }
 
-	componentDidMount() {
+    componentDidMount() {
         MathJax.Hub.Typeset()
 
         let AlgorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
@@ -77,7 +77,7 @@ export default class AlgorithmVisualizer extends React.Component {
         )
     }
 
-	render () {
+    render () {
 
         return (
             <React.Fragment>
