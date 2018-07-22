@@ -25,7 +25,7 @@ function CodeHighlight (props) {
         <div className="row">
             
             <div className="col s12 m10 offset-m1 l10 offset-l1">
-                <div className="card-panel hoverable ContainerHidden" style={{backgroundColor: "#2b2b2b"}}>
+                <div className="card-panel hoverable" style={{backgroundColor: "#2b2b2b"}}>
                     <div className="row">
                         <pre id={`Code${props.Number}`} 
                             style={{fontSize: `${props.Size}rem`}} 

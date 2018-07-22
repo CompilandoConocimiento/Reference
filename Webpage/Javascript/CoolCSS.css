@@ -1,4 +1,5 @@
 #ContainerHidden::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+    width: 0 !important;
+    display: none;
+    background: transparent; 
 }

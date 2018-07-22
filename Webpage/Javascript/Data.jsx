@@ -53,6 +53,46 @@ const NumberTheory = [
 				to check fewer numbers. 
 			</div>
 		),
+	},
+	{
+		Name: "Prime Factorization",
+		Link: "Prime Factorization",
+		File: "PrimeFactorization.cpp",
+		VisibleParts: [ [16, 31] ],
+		Size: 0.95,
+		Text: (
+			<div style={{fontSize: "1.1rem"}}>
+				
+				I asume that you know how to work with primes, if not
+				check the Eratosthenes Sieve.
+
+				The Prime Factorization algorithm presented here is just
+				a simple modification of the Eratosthenes Sieve, so if you
+				don't remember that Sieve, check it out.
+
+				<br />
+				<br />
+
+				<h6><b>How it Works?</b></h6>
+				<ol className="browser-default">
+					<li>
+						First, think of \( n \) into binary and check the number of \( 0's \),
+						that are at end of \( n \), lets call them \( x \) and eliminate from the number.
+						that means that the number can be divided by \( 2^x \) 
+
+						For Example \( 10100 \rightarrow 101 \)
+					</li>
+					<li>
+						After that \( n \) must be odd
+					</li>
+					<li>
+						Use a kind of sieve to find how many time does it divided for each odd number,
+						when you find a number that divide the new \( n \) divide the new \( n \) as many
+						times as it can.
+					</li>
+				</ol>
+			</div>
+		),
 	}
 ]
 

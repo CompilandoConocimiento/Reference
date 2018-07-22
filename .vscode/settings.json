@@ -8,6 +8,8 @@
         "list": "cpp",
         "string": "cpp",
         "memory": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "map": "cpp",
+        "__locale": "cpp"
     }
 }

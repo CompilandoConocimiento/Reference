@@ -29,7 +29,7 @@ export default function Footer(props) {
                         </a>
                     </div>
                     <div className="col l4 offset-l2 s12">
-                    <h6 className="white-text">Authors</h6>
+                        <h6 className="white-text">Authors</h6>
                         <ul className="browser-default" style={{fontSize: "1.1rem"}}>
                             <a href="https://SoyOscarRH.github.io" target="_blank">
                                 <li className="white-text">
@@ -46,6 +46,10 @@ export default function Footer(props) {
                         <br />
                         <a href="https://github.com/CompilandoConocimiento" target="_blank">
                             <h6 className="white-text">Github</h6>
+                        </a>
+
+                        <a href="https://CompilandoConocimiento.com" target="_blank">
+                            <h6 className="white-text">CompilandoConocimiento.com</h6>
                         </a>
 
                     </div>
