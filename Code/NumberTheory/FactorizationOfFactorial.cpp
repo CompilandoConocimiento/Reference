@@ -7,7 +7,7 @@ typedef unsigned long long ull;                                     //Just a so 
 typedef std::pair<ull, ull> pairOfUll;                              //Just a so long name, sorry
 using namespace std;                                                //Just for names
 
-ull NumberOfTimesPDivideN(ull n, ull prime) {                       //The name say it all
+ull NumberOfTimesPDivideN(ull n, ull prime) {                       //Rememember prime should be prime
     ull exponent = 0, divisor = prime;                              //Add exponent var and new name 
 
     while (divisor <= n) {                                          //Find the highest power (exponent) ..

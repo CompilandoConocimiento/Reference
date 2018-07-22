@@ -120,7 +120,7 @@ export default class Code extends React.Component {
                                 key    = {Index}
                                 Number = {Index} 
                                 Size   = {this.state.Size}
-                                Code   = {(this.state.TextArray == null)? "Loading" : this.state.TextArray.slice(Range[0], Range[1]).join("\n")} 
+                                Code   = {(this.state.TextArray == null)? "Loading" : this.state.TextArray.slice(Range[0]-1, Range[1]+1).join("\n")} 
                             />
                         )
                     )

@@ -9,7 +9,7 @@ const NumberTheory = [
 		Name: "Sieve of Eratosthenes",
 		Link: "SieveOfEratosthenes",
 		File: "SieveOfEratosthenes.cpp",
-		VisibleParts: [ [10, 23], [25, 45] ],
+		VisibleParts: [ [11, 23], [26, 45] ],
 		Size: 1,
 		Text: (
 			<div style={{fontSize: "1.1rem"}}>
@@ -106,7 +106,7 @@ const NumberTheory = [
 		Link: "FactorizationOfFactorial",
 		File: "FactorizationOfFactorial.cpp",
 		VisibleParts: [ [10, 19], [21, 30] ],
-		Size: 0.9,
+		Size: 1.0,
 		Text: (
 			<div style={{fontSize: "1.1rem"}}>
 				
