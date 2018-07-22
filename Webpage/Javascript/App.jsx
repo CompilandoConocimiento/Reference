@@ -12,10 +12,9 @@ import M from "materialize-css"
 import "materialize-css/dist/css/materialize.min.css"
 
 /* ========= THE COMPONENTS ==================*/
-import {Data} from "./Data"
 import AppHeader from "./AppHeader"
 import Home from "./Home"
-import Topic from "./Topic"
+import TopicVisualizer from "./TopicVisualizer"
 import Footer from "./Footer"
 
 // =====================================================================
@@ -23,49 +22,31 @@ import Footer from "./Footer"
 // =====================================================================
 class App extends React.Component {
 
-	constructor(props) {
-		super(props)
-
-	}
+	constructor(props) {super(props)}
 
 	render () {
 
 		return (
 			<React.Fragment>
 				
-				<header>
-					<AppHeader
-						Data = {Data.MiniData} 
-					/>
-				</header>
+				<AppHeader />
 
 				<main>
 					<br />
 					<Switch>
-						<Route 
-							exact path = '/' 
-							render     = { (props) => <Home {...props} /> }
-						/>
-						<Route 
-							path   = '/Topic/:Topic'
-							render = { (props) => <Topic {...props} Data={Data.MiniData} /> }
-						/>
+						<Route exact path='/' render={ (props) => <Home {...props} /> } />
+						<Route path='/Topic/:NameOfTopic' render={ (props) => <TopicVisualizer {...props} /> } />
 					</Switch>
+					<br />
+					<br />
+					<br />
                 </main>
 
-                <br /><br /><br />
-
-				<footer>
-					<Footer />
-				</footer>
+				<Footer />
 
 			</React.Fragment>
 		)
 	}
 }
 
-ReactDOM.render((
-	<HashRouter>
-	  <App />
-	</HashRouter>
-  ), document.getElementById('ReactApp'))
+ReactDOM.render((<HashRouter><App /></HashRouter>), document.getElementById('ReactApp'))

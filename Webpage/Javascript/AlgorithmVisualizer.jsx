@@ -45,55 +45,51 @@ function CodeHighlight (props) {
     )
 }
 
-export default class Code extends React.Component {
+export default class AlgorithmVisualizer extends React.Component {
 
 	constructor(props) {
         super(props)
 
-        const AlgorithmData = Data.Topics[props.TopicID].SubTopics.find( e => e.Link === this.props.match.params.Algorithm)
         this.state = {
-            AlgorithmData,
             TextArray: null, 
-            Size: AlgorithmData.Size,
+            Size: props.Algorithm.Size,
+            LaTeXRender: false,
         }
 	}
 
 	componentDidMount() {
-        const Elements = document.querySelectorAll('.fixed-action-btn')
-        M.FloatingActionButton.init(Elements, {})
         MathJax.Hub.Typeset()
 
-        fetch(`https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master/Code/${this.props.Topic}/${this.state.AlgorithmData.File}`)
-        .then( Data => { Data.text().then( (Text) => this.setState({TextArray: Text.split("\n")}) ) } )
+        let AlgorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
+        AlgorithmWebLink = `${AlgorithmWebLink}/Code/${this.props.Topic.Link}/${this.props.Algorithm.File}`
+
+        fetch(AlgorithmWebLink)
+            .then( Data => { Data.text().then( (Text) => this.setState({TextArray: Text.split("\n")}) ) } )
     }
 
     
     
     componentDidUpdate () {
+        MathJax.Hub.Typeset()
 
-        this.state.AlgorithmData.VisibleParts.forEach(
-            (Element, Index) => {
-                let Code = document.getElementById(`Code${Index}`)
-                hljs.highlightBlock(Code)
-            }
+        this.props.Algorithm.VisibleParts.forEach(
+            (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
         )
-
     }
 
 	render () {
-       
+
         return (
             <React.Fragment>
+                
                 <div className="row center blue-grey-text text-darken-3">
-                    <h4>{this.state.AlgorithmData.Name}</h4>
+                    <h4>{this.props.Algorithm.Name}</h4>
                 </div>
 
                 <div className="row">
                     <div className="col s10 offset-s1">
-                        {this.state.AlgorithmData.Text}
-                        <br />
-                        <br />
-                        <br />
+                        {this.props.Algorithm.Text}
+                        <br /><br /><br />
                     </div>
                 </div>
 
@@ -114,18 +110,21 @@ export default class Code extends React.Component {
                 </div>
 
                 {
-                    this.state.AlgorithmData.VisibleParts.map(
+                    this.props.Algorithm.VisibleParts.map(
                         (Range, Index) => (
                             <CodeHighlight 
                                 key    = {Index}
                                 Number = {Index} 
                                 Size   = {this.state.Size}
-                                Code   = {(this.state.TextArray == null)? "Loading" : this.state.TextArray.slice(Range[0]-1, Range[1]+1).join("\n")} 
+                                Code   = {
+                                    (this.state.TextArray == null)? 
+                                        "Loading" : 
+                                        this.state.TextArray.slice(Range[0]-1, Range[1]+1).join("\n")
+                                } 
                             />
                         )
                     )
                 }
-
 
             </React.Fragment>
         )

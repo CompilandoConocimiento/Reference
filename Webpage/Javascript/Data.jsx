@@ -121,21 +121,37 @@ const NumberTheory = [
 ]
 
 
-const Topics = [
+
+// =====================================================================
+// ============               STRING THEORY        =====================
+// =====================================================================
+const DynamicProgramming = [
+	{
+		Name: "Longest Common Subsequence",
+		Link: "LongestCommonSubsequence",
+		File: "LongestCommonSubsequence.cpp",
+		VisibleParts: [ [9, 23] ],
+		Size: 1,
+		Text: (
+			<div style={{fontSize: "1.1rem"}}>
+				Ahhh, I will just left this link over 
+				<a href="https://soyoscarrh.github.io/LCS/" target="_blank">here</a>
+			</div>
+		),
+	},
+]
+
+export const Topics = [
 	{
 		Name: "Number Theory",
 		Link: "NumberTheory",
 		SubTopics: NumberTheory,
 		BaseLink: "Code/NumberTheory/"
 	},
+	{
+		Name: "Dynamic Programming",
+		Link: "DynamicProgramming",
+		SubTopics: DynamicProgramming,
+		BaseLink: "Code/DynamicProgramming/"
+	},
 ]
-
-export const Data = {
-	Topics,
-	MiniData: Topics.map(
-		(Topic, ID) => [
-			[Topic.Name, Topic.Link, ID],
-			Topic.SubTopics.map ( (E, MiniID) => [E.Name, E.Link, MiniID]),
-		]
-	)
-}
