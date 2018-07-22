@@ -10,6 +10,7 @@
         "memory": "cpp",
         "utility": "cpp",
         "map": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "iterator": "cpp"
     }
 }

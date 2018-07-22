@@ -58,8 +58,8 @@ const NumberTheory = [
 		Name: "Prime Factorization",
 		Link: "Prime Factorization",
 		File: "PrimeFactorization.cpp",
-		VisibleParts: [ [16, 31] ],
-		Size: 0.95,
+		VisibleParts: [ [17, 32], [36, 49] ],
+		Size: 0.9,
 		Text: (
 			<div style={{fontSize: "1.1rem"}}>
 				
@@ -91,6 +91,13 @@ const NumberTheory = [
 						times as it can.
 					</li>
 				</ol>
+
+				<br />
+				<h6><b>Option B</b></h6>
+
+				But, I you already have the vector of primes, don't complicate the things and just use
+				the second code that I have give you.
+
 			</div>
 		),
 	}
