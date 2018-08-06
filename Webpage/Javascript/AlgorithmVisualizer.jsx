@@ -2,7 +2,7 @@
 // ============                 IMPORTS            =====================
 // =====================================================================
 import React from "react"
-import './CoolCSS.css'
+import './AlgorithmVisualizer.css'
 
 // =====================================================================
 // ============                 CODE               =====================
@@ -29,7 +29,7 @@ function CodeHighlight (props) {
                         <pre id={`Code${props.Number}`} 
                             style={{fontSize: `${props.Size}rem`}} 
                             className="ContainerHidden col s12">
-                            <code>
+                            <code className="FiraCode">
                                 {props.Code}
                             </code>
                         </pre>

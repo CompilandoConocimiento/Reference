@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'firacode';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.rawgit.com/tonsky/FiraCode/436ac320b39184d91ea9b0e246223663a5f6fbf2/distr/otf/FiraCode-Retina.otf');
+}
+    
+.FiraCode {
+    font-family: 'firacode' !important;
+}
+
+#ContainerHidden::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+    background: transparent; 
+}
