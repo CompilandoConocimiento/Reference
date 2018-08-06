@@ -2,8 +2,9 @@
 // ============                 IMPORTS            =====================
 // =====================================================================
 import React from "react"
-import { Topics } from './Data'
+import Topics from './Data'
 import { Link } from 'react-router-dom'
+
 
 
 // =====================================================================
@@ -51,6 +52,9 @@ export default class AppHeader extends React.Component {
             )
         }
 
+
+        console.log(Topics)
+
         return (
             <header>
                 
@@ -67,6 +71,9 @@ export default class AppHeader extends React.Component {
 
                     {Topics.map(
                         (Topic, IndexTopic) => {
+
+                            console.log(Topic)
+                            console.log(Topic.SubTopics)
                             return (
                                 <React.Fragment key={`Render ${IndexTopic}`}>
                                     <li key={`Divider ${IndexTopic}`}><div className="divider" /></li>
