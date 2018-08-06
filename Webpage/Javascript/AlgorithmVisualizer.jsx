@@ -61,6 +61,7 @@ export default class AlgorithmVisualizer extends React.Component {
         let AlgorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
         AlgorithmWebLink = `${AlgorithmWebLink}/Code/${this.props.Topic.Link}/${this.props.Algorithm.File}`
 
+        console.log(AlgorithmWebLink)
         fetch(AlgorithmWebLink)
             .then( Data => { Data.text().then( (Text) => this.setState({TextArray: Text.split("\n")}) ) } )
     }
