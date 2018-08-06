@@ -67,7 +67,6 @@ export default class AlgorithmVisualizer extends React.Component {
     }
 
     
-    
     componentDidUpdate () {
         this.props.Algorithm.VisibleParts.forEach(
             (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
