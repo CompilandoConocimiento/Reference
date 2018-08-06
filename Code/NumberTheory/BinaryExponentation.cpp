@@ -7,7 +7,7 @@ typedef unsigned long long ull;                                             //Ju
 typedef long long lli;                                                      //Just a so long name, sorry
 
 lli BinaryExponentation (lli base, ull exponent) {                          //FN: Modular Exponentation: a^b MOD n
-    lli solution = 1, auxiliar = base;                                      //auxiliar variables for code clarity                
+    lli solution = 1, auxiliar = base;                                      //auxiliar variables for code clarity
 
     while (exponent != 0) {                                                 //End were exponent is zero
         if (exponent & 1) solution = auxiliar * solution;                   //If exponent last digit = 1 (exp is odd)
@@ -31,13 +31,14 @@ lli RecursiveBinaryExp  (lli base, ull exponent) {                          //FN
 
 
 lli ModularExponentation(lli base, ull exponent, ull n) {                   //FN: Modular Exponentation: a^b MOD n
-    lli solution = 1, auxiliar = base;                                      //auxiliar variables for code clarity                
+    lli solution = 1, auxiliar = base;                                      //auxiliar variables for code clarity
 
     while (exponent != 0) {                                                 //End were exponent is zero
 
         if (exponent & 1) solution = (auxiliar * solution) % n;             //Update solution
-            auxiliar = (auxiliar * auxiliar) % n;                           //Always update by squaring the aux variable
-            exponent = exponent >> 1;                                       //Remove 1 digit from e to read the next one
+        
+        auxiliar = (auxiliar * auxiliar) % n;                               //Always update by squaring the aux variable
+        exponent = exponent >> 1;                                           //Remove 1 digit from e to read the next one
 
     }
 
