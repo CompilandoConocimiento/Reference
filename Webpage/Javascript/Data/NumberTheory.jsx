@@ -134,7 +134,7 @@ const SubTopics = [
         Link: "BinaryExponentation",
         File: "BinaryExponentation.cpp",
         VisibleParts: [ [9, 20], [22, 30], [33, 42], ],
-        Size: 0.9,
+        Size: 1.1,
         Text: (
             <div style={{fontSize: "1.1rem"}}>
                 This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
