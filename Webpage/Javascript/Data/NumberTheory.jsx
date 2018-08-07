@@ -133,7 +133,7 @@ const SubTopics = [
         Name: "Binary Exponentiation",
         Link: "BinaryExponentiation",
         File: "BinaryExponentiation.cpp",
-        VisibleParts: [ [9, 20], [22, 30], [33, 46], ],
+        VisibleParts: [ [9, 20], [22, 30], [33, 45], ],
         Size: 0.95,
         Text: (
             <div style={{fontSize: "1.1rem"}}>

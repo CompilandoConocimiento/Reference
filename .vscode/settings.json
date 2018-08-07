@@ -32,5 +32,6 @@
         "bitset": "cpp",
         "functional": "cpp",
         "tuple": "cpp"
-    }
+    },
+    "python.linting.enabled": false
 }
