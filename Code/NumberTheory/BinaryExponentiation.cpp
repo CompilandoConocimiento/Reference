@@ -30,7 +30,7 @@ lli RecursiveBinaryExponentation (lli x, ull n) {                   //FN: Recurs
 }
 
 
-lli ModularExponentation(lli base, ull exponent, ull n) {           //FN: Modular Exponentation: a^b MOD n
+lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modular Exponentation: a^b MOD n
     lli solution = 1;                                               //Auxiliar variables for code clarity
     base = base % n;                                                //Start with the correct base
 
