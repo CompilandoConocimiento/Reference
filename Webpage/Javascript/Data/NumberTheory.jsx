@@ -138,7 +138,7 @@ const SubTopics = [
         Text: (
             <div style={{fontSize: "1.1rem"}}>
                 This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
-                exponentation by squaring.
+                exponentiation by squaring.
 
                 <div style={{overflow: "auto"}}>
                 $${`
