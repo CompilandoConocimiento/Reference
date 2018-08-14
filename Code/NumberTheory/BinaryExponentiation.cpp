@@ -1,6 +1,8 @@
 /*=============================================================================================================
 ==============================     BINARY EXPONENTATION (AND MODULAR)        ==================================
 =============================================================================================================*/
+#include <iostream>
+
 using namespace std;                                                //Bad practice, dont do it kids!
 
 typedef unsigned long long ull;                                     //Just a so long name, sorry
@@ -12,7 +14,7 @@ lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modula
     while (exponent > 0) {                                          //End were exponent is zero
         if (exponent & 1) solution = base * solution;               //If exponent last digit = 1 (exp is odd)
 
-        solution = solution * solution;                             //Sol = Sol^2
+        base = base * base;                                         //Sol = Sol^2
         exponent = exponent >> 1;                                   //Remove 1 digit from e to read the next one
     }
 
@@ -37,10 +39,15 @@ lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modula
     while (exponent > 0) {                                          //End were exponent is zero
         if (exponent & 1) solution = (base * solution) % n;         //Update solution
         
-        solution = (solution * solution) % n;                       //Always update by squaring the aux variable
+        base = (base * base) % n;                                   //Always update by squaring the aux variable
         exponent = exponent >> 1;                                   //Remove 1 digit from e to read the next one
     }
 
     return solution;                                                //Return solution
 }
 
+int main () {
+
+        cout << ModularBinaryExponentation(5, 12, 23) << endl;
+
+}
