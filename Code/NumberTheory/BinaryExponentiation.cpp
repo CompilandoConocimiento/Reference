@@ -45,9 +45,3 @@ lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modula
 
     return solution;                                                //Return solution
 }
-
-int main () {
-
-        cout << ModularBinaryExponentation(5, 12, 23) << endl;
-
-}

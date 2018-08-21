@@ -2,8 +2,8 @@
 // ============                 IMPORTS            =====================
 // =====================================================================
 import React from "react"
-import AlgorithmVisualizer from "./AlgorithmVisualizer"
-import Topics from "./Data"
+import AlgorithmVisualizer from "../AlgorithmVisualizer"
+import Topics from "../Data"
 import { Link, Switch, Route } from 'react-router-dom'
 
 // =====================================================================

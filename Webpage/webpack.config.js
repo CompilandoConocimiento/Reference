@@ -1,5 +1,5 @@
 module.exports = {
-  entry:  __dirname + "/Javascript/App.jsx",
+  entry:  __dirname + "/Code/GeneralApp/App.jsx",
   output: {
       path: __dirname + '/Distribution',
       filename: 'bundle.js',
@@ -25,7 +25,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localIdentName: "[name]_[local]_[hash:base64]",
+              sourceMap: true,
+              minimize: true
+            }
+          },
+        ]
       },
     ]
   }

@@ -2,10 +2,10 @@
 // ============                 IMPORTS            =====================
 // =====================================================================
 import React from "react"
-import Topics from './Data'
+import Topics from '../Data/'
 import { Link } from 'react-router-dom'
 
-
+import M from "materialize-css"
 
 // =====================================================================
 // ============     HEADER COMPONENT       =============================
