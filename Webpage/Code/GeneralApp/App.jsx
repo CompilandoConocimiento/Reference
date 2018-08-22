@@ -20,8 +20,7 @@ function App (props) {
             <Header />
 
             <main>
-                <br />
-                <br />
+                <br /><br />
 
                 <Switch>
                     
@@ -38,9 +37,7 @@ function App (props) {
                 
                 </Switch>
 
-                <br />
-                <br />
-                <br />
+                <br /><br /><br />
             </main>
 
             <Footer />

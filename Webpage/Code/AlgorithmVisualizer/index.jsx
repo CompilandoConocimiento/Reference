@@ -1,12 +1,4 @@
-// =====================================================================
-// ============                 IMPORTS            =====================
-// =====================================================================
 import React from "react"
-import './AlgorithmVisualizer.css'
-
-// =====================================================================
-// ============                 CODE               =====================
-// =====================================================================
 
 function CodeHighlight (props) {
 
@@ -57,6 +49,9 @@ export default class AlgorithmVisualizer extends React.Component {
 
     componentDidMount() {
         MathJax.Hub.Typeset()
+
+        const elements = document.querySelectorAll("input[type=range]");
+        M.Range.init(elements)
 
         let AlgorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
         AlgorithmWebLink = `${AlgorithmWebLink}/Code/${this.props.Topic.Link}/${this.props.Algorithm.File}`

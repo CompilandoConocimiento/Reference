@@ -19,7 +19,7 @@ std::vector< std::pair<ull, ull> > PrimeFactorization(ull n) {      //Return the
     ull exponent;                                                   //This is exponent of a given prime
     
     for (exponent = 0; (n & 1) == 0 ; ++exponent)                   //Is their last digit a '0' in binary?
-        n >>= 1;                                                    //Remove last digit in bin, and save
+        n >> = 1;                                                   //Remove last digit in bin, and save
     if (exponent) Factors.emplace_back(2, exponent);                //Add the # of times that 2 divides n
 
     for (ull i = 3; i * i <= n; i += 2) {                           //For each possible divisor

@@ -1,24 +1,20 @@
-// =====================================================================
-// ============                 IMPORTS            =====================
-// =====================================================================
 import React from "react"
 import { Link } from 'react-router-dom'
 import Topics from "../Data"
-
-// =====================================================================
-// ============                 HOME               =====================
-// =====================================================================
+import Style from "./Home.css"
 
 function HelloCard (props) {
 
-    const ButtonToPDF = (props) => (
-        <a 
-            href      = "https://compilandoconocimiento.github.io/Reference/Book/Reference.pdf" 
-            target    = "_blank" 
-            className = "waves-effect waves-teal amber hoverable lighten-4 btn-flat">
-            GET THE PDF
-        </a>
-    )
+    function ButtonToPDF (props) {
+        return (
+            <a 
+                href      = "https://compilandoconocimiento.github.io/Reference/Book/Reference.pdf" 
+                target    = "_blank" 
+                className = "btn-flat waves-effect amber lighten-4">
+                GET THE PDF
+            </a>
+        )
+    }
 
     return (
         <div className="row">
@@ -26,8 +22,8 @@ function HelloCard (props) {
                 <div className="card" style={{backgroundColor: "#FFF8E1"}}>
                     <div className="card-content center blue-grey-text text-darken-3" style={{fontSize: "1.2rem"}}>
                         
-                        <span className="card-title">
-                            <b>Hi, Welcome to THE REFERENCE</b>
+                        <span className="card-title" style={{fontWeight: "300"}}>
+                            Hi, Welcome to THE REFERENCE
                         </span>
                         
                         <p>
@@ -49,9 +45,7 @@ function HelloCard (props) {
                         <br />
 
                     </div>
-
                 </div>
-                
             </div>
         </div>
     )
@@ -60,67 +54,59 @@ function HelloCard (props) {
 
 function CardToTopic (props) {
     return (
-        <div className="col s6">
-            <div className={`card hoverable ${props.Color}`}>
-                
-                <div className="card-content white-text">
-                    <span className="card-title">
-                        {props.Name}
-                    </span>
-                </div>
-
-                <div className="card-action">
-                    <Link to={`/Topic/${props.Link}/`} className="white-text">
-                        CHECK THE CODE
-                    </Link>
-                </div>
-
+        <div className={`card hoverable ${props.color}`}>
+            
+            <div className="card-content white-text">
+                <span className="card-title">
+                    {props.name}
+                </span>
             </div>
-        </div> 
+
+            <div className="card-action">
+                <Link to={`/Topic/${props.link}/`} className="white-text">
+                    Check it out!
+                </Link>
+            </div>
+
+        </div>
     )
 
 }
 
+
+
 export default function Home (props) {
 
-    const ColorsForCards = [
+    const colors = [
         "red lighten-2",
         "indigo lighten-2",
         "cyan lighten-1",
         "green lighten-2",
-        "orange lighten-2",
         "brown lighten-2",
     ].sort(() => Math.random() - 0.5)
 
-    let TopicsHTML = []
-    for (let i = 0; i < Topics.length; i += 2) {
-        let Topic1 = Topics[i], Topic2 = Topics[i+1]
-        TopicsHTML.push(
-            <div className="row" key={i}>
-                <CardToTopic Color={ColorsForCards[i % ColorsForCards.length]} Name={Topic1.Name} Link={Topic1.Link}/>
-                {
-                    i + 1 != Topics.length && 
-                    <CardToTopic Color={ColorsForCards[i+1 % ColorsForCards.length]} Name={Topic2.Name} Link={Topic2.Link}/>
-                }
-            </div>
+
+    const TopicsCards = Topics.map ((Topic, index) => {
+        const randomColor = colors[index % colors.length]
+        return (
+            <CardToTopic key={index} color={randomColor} name={Topic.Name} link={Topic.Link}/>
         )
-    }
+    })
 
     return (
 
         <div className="container">
             <HelloCard />
-            {TopicsHTML}
+            
+            <div className="row">
+                <div className="col s12">
+                    <div className={Style.Wrapper}>
+                        {TopicsCards}
+                    </div>
+                </div>
+            </div>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <br /><br /><br /><br /><br />
 
         </div>
     )

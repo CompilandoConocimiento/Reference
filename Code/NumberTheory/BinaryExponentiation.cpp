@@ -4,7 +4,6 @@
 #include <iostream>
 
 using namespace std;                                                //Bad practice, dont do it kids!
-
 typedef unsigned long long ull;                                     //Just a so long name, sorry
 typedef long long lli;                                              //Just a so long name, sorry
 

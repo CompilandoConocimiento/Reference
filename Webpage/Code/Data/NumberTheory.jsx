@@ -1,9 +1,4 @@
-/* ========= BASIC REACT THINGS ===============*/
 import React from "react"
-
-// =====================================================================
-// ============               NUMBER THEORY        =====================
-// =====================================================================
 
 const SubTopics = [
     {
@@ -11,7 +6,7 @@ const SubTopics = [
         Link: "SieveOfEratosthenes",
         File: "SieveOfEratosthenes.cpp",
         VisibleParts: [ [11, 23], [26, 45] ],
-        Size: 1,
+        Size: 1.15,
         Text: (
             <div style={{fontSize: "1.1rem"}}>
                 The Sieve of Eratosthenes is a simple algorithm
