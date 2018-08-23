@@ -6,7 +6,7 @@ const SubTopics = [
         Link: "SieveOfEratosthenes",
         File: "SieveOfEratosthenes.cpp",
         VisibleParts: [ [11, 23], [26, 45] ],
-        Size: 1.15,
+        Size: 1.05,
         Text: (
             <div>
                 The Sieve of Eratosthenes is a simple algorithm
@@ -57,7 +57,7 @@ const SubTopics = [
         VisibleParts: [ [17, 32], [36, 49] ],
         Size: 0.95,
         Text: (
-            <div style={{fontSize: "1.1rem"}}>
+            <div>
 
                 The Prime Factorization algorithm presented here is just
                 a simple modification of the Eratosthenes Sieve, so if you
@@ -109,29 +109,13 @@ const SubTopics = [
         ),
     },
     {
-        Name: "Factorization of a Factorial",
-        Link: "FactorizationOfFactorial",
-        File: "FactorizationOfFactorial.cpp",
-        VisibleParts: [ [10, 19], [21, 30] ],
-        Size: 1.0,
-        Text: (
-            <div style={{fontSize: "1.1rem"}}>
-                I asume that you know how to work with primes, if not
-                check the Eratosthenes Sieve.
-
-                This algorithm is really simple, as long as you know the 
-                Legendre formula, just that, learn that.
-            </div>
-        ),
-    },
-    {
         Name: "Binary Exponentiation",
         Link: "BinaryExponentiation",
         File: "BinaryExponentiation.cpp",
         VisibleParts: [ [9, 20], [22, 30], [33, 45], ],
         Size: 0.95,
         Text: (
-            <div style={{fontSize: "1.1rem"}}>
+            <div>
                 This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
                 exponentiation by squaring.
 

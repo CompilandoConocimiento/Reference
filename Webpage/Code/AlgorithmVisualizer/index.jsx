@@ -26,7 +26,10 @@ function CodeHighlight (props) {
       
     function copyText() {
 
-        copyTextToClipboard(props.text)
+        const realText = (document.querySelectorAll(".hljs-comment")[0].style.display == "none")?
+            props.text.split("\n").map( (e) => e.split("//")[0]).join("\n") : props.text
+        
+            copyTextToClipboard(realText)
         
         M.Toast.dismissAll()
         M.toast({html: 'Code copied ;)'})
@@ -45,7 +48,7 @@ function CodeHighlight (props) {
     return (
         <div className="row">
             <div className="col s12 m10 offset-m1 l10 offset-l1">
-                <div className="card-panel hoverable" style={{backgroundColor: "#2b2b2b"}} onClick={copyText}>
+                <div className="card-panel hoverable" style={{backgroundColor: "#2b2b2b"}} onDoubleClick={copyText}>
                     <div className="row">
                         <pre id       = {`Code${props.Number}`} 
                             style     = {{fontSize: `${props.fontSize}rem`}} 
@@ -58,7 +61,6 @@ function CodeHighlight (props) {
                     </div>
                 </div>
             </div>
-            <textarea readOnly style={{display: "none", margin: "-2rem", borderColor: "white", maxWidth: "0rem", maxHeight: "0rem", overflow: "hidden"}} id={`TextArea${props.Number}`} value={props.text} />
         </div>
     )
 }
@@ -70,6 +72,7 @@ export default class AlgorithmVisualizer extends React.Component {
 
         this.state = {
             TextArray: null, 
+            TextArrayComments: null,
             Size: props.Algorithm.Size,
         }
     }
@@ -80,21 +83,34 @@ export default class AlgorithmVisualizer extends React.Component {
         const elements = document.querySelectorAll("input[type=range]");
         M.Range.init(elements)
 
+        const fab = document.querySelectorAll('.fixed-action-btn');
+        M.FloatingActionButton.init(fab, {})
+
         let algorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
         algorithmWebLink = `${algorithmWebLink}/Code/${this.props.Topic.Link}/${this.props.Algorithm.File}`
 
         console.log(algorithmWebLink)
         fetch(algorithmWebLink)
-            .then( Data => { Data.text().then( (Text) => this.setState({TextArray: Text.split("\n")}) ) } )
+            .then( 
+                Data => { 
+                    Data.text().then( 
+                        (Text) => {
+                            this.setState({TextArray: Text.split("\n")}) 
+                        }
+                    )
+                }
+            )
     }
 
     componentDidUpdate () {
         this.props.Algorithm.VisibleParts.forEach(
             (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
         )
+
     }
 
     render () {
+
 
         return (
             <React.Fragment>
@@ -151,6 +167,40 @@ export default class AlgorithmVisualizer extends React.Component {
                         )
                     )
                 }
+                {/* ================ FAB ====================================*/}
+                <div className="fixed-action-btn">
+                    <a className="btn-floating btn-large red">
+                        <i className="large material-icons">mode_edit</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a 
+                                className="btn-floating blue"
+                                onClick={(e) => M.toast({html: 'Just click the code you want'})}>
+                                <i className="material-icons">content_copy</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a 
+                                className="btn-floating green darken-1"
+                                onClick={
+                                    (e) => {
+                                        M.Toast.dismissAll()
+                                        M.toast({html: 'Toggle comments'})
+                                        const removeElements = (elms) => [...elms].forEach(el => {
+                                            const actual = el.style.display
+                                            if (actual === "") el.style.display = "initial"
+                                            el.style.display = (el.style.display == "initial")? "none" : "initial"
+                                        })
+
+                                        removeElements( document.querySelectorAll(".hljs-comment") );
+                                    }
+                                }>
+                                <i className="material-icons">code</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
             </React.Fragment>
         )

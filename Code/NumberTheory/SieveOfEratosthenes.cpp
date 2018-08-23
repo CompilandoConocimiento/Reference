@@ -4,8 +4,8 @@
 #include <vector>                                               //Include Libraries
 #include <cmath>                                                //Include Libraries
 
-typedef unsigned long long ull;                                 //Just a so long name, sorry
-typedef long long int lli;                                      //Just a so long name, sorry
+using ull = unsigned long long;                                 //Just a so long name, sorry
+using lli =  long long int;                                     //Just a so long name, sorry
 
 // *******   ERATOSTHENES SIEVE / IS PRIME IN O(1)   *******
 std::vector<bool> EratosthenesSieveIsPrime(ull n) {             //To check if i is prime: Vector[i]
