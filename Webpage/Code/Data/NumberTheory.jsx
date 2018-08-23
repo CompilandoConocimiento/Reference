@@ -8,7 +8,7 @@ const SubTopics = [
         VisibleParts: [ [11, 23], [26, 45] ],
         Size: 1.15,
         Text: (
-            <div style={{fontSize: "1.1rem"}}>
+            <div>
                 The Sieve of Eratosthenes is a simple algorithm
                 to find all the primes equal of smaller than n.
                 

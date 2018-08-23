@@ -1,45 +1,30 @@
-/*================================================================================================
-====================     BINARY SEARCH FUNCTION FOR HUMANITY       ===============================
-================================================================================================*/
+#include <iostream>
+#include <vector>
 
-#include <iostream>                                                     //Include Libraries
-#include <vector>                                                       //Include Libraries
-using namespace std;                                                    //Bad practice, dont do it kids!
+using namespace std;
+using lli = long long int;
 
+/**
+ * Is just binary search  <3 ...
+ * 
+ * @param left      The initial index to start searching
+ * @param right     The final index to start searching; if -1 we end at Container.size() 
+ * @param toFind    The number to find
+ * @return          The index of the element; -1 if it was not found
+ */
 
-// ******************* BINARY SEARCH ************************
-int BinarySearch
-(int Initial, int Final, vector<int>& List, int ElementToFind) {        //FN: A classic BinarySearch
+template <typename container, typename item>
+lli BinarySearch(const container &Array, item toFind, lli left = 0, lli right = -1) {
+    if (right == -1) right = Array.size();
+    lli actualPosition;
 
-    if (Final < Initial) return -1;                                     //Ok, there is not elements
-    
-    int Middle = Initial + (Final - Initial) / 2;                       //Find a new SearchPosition
-    if (ElementToFind == List[Middle]) return Middle;                   //I find it daddy!
+    while (left <= right) {
+        actualPosition = left + (right - left) / 2;
+        if (Array[actualPosition] == toFind) return actualPosition;
+        
+        if (Array[actualPosition] < toFind) left = actualPosition + 1;
+        else right = actualPosition - 1;
+    }
 
-    if (ElementToFind < List[Middle])                                   //If it's in the right part
-        return BinarySearch(Initial, Middle - 1, List, ElementToFind);  //Go there
-    
-    if (ElementToFind > List[Middle])                                   //If it's in the right part
-        return BinarySearch(Middle + 1, Final, List, ElementToFind);    //Go there
-}
-
-
-int BinarySearch(vector<int>& List, int ElementToFind){                 //For comodity
-    return BinarySearch(0, List.size() - 1, List, ElementToFind);       //Initial Call
-}
-
-
-// ######################################################################
-// ##################          MAIN         #############################
-// ######################################################################
-int main() {
-
-    int ElementToFind, Size = 100;                                      //Create variables
-
-    vector<int> ListForSearch(Size);                                    //Create the vector and fill it 
-    for (int i = 0; i < Size; ++i) ListForSearch[i] = i;                //Create the vector and fill it
-
-    cout << BinarySearch(ListForSearch, 101);                           //Call it!
-
-    return 0;
+    return -1;
 }

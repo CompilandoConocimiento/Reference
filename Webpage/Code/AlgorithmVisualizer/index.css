@@ -1,0 +1,40 @@
+.Text {
+    font-size: 1.40rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .Text { 
+       font-size: 1.25em; 
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .Text { 
+       font-size: 1.1em; 
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Text { 
+       font-size: 1em; 
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .Text { 
+       font-size: 0.90em; 
+    }
+}
+
+.CodeWrapper {
+    font-family: 'firacode' !important;
+}
+
+.CodeWrapper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.Code {
+    font-family: 'firacode' !important;
+}
