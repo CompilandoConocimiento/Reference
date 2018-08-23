@@ -63,7 +63,7 @@ function ListOfSubTopics (props) {
                         {props.Topic.SubTopics.map(
                             (SubTopic, SubTopicsIndex) =>  {
 
-                                let ButtonStyle = "waves-effect hoverable btn-large col s12 m8 l6 offset-m2 offset-l3"
+                                let ButtonStyle = "hoverable btn-large col s12 m8 l6 offset-m2 offset-l3"
                                 ButtonStyle = `${ButtonStyle} ${colors[SubTopicsIndex % colors.length]}`
 
                                 return (

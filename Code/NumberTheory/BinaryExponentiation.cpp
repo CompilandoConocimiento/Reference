@@ -4,8 +4,8 @@
 #include <iostream>
 
 using namespace std;                                                //Bad practice, dont do it kids!
-typedef unsigned long long ull;                                     //Just a so long name, sorry
-typedef long long lli;                                              //Just a so long name, sorry
+using ull = unsigned long long;                                     //Just a so long name, sorry
+using lli = long long;                                              //Just a so long name, sorry
 
 lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modular Exponentation: a^b MOD n
     lli solution = 1;                                               //auxiliar variables for code clarity

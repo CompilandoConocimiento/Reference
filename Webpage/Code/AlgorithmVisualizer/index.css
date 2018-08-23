@@ -2,6 +2,13 @@
     font-size: 1.20em;
 }
 
+.UnSelectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 @media only screen and (max-width: 900px) {
     .Text { 
        font-size: 1.15em; 

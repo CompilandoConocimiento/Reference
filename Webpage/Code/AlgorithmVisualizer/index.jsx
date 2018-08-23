@@ -1,9 +1,8 @@
 import React from "react"
 import Style from "./index.css"
 
-function CodeHighlight (props) {
-
-    function fallbackCopyTextToClipboard(text) {
+function copyTextToClipboard(text) {
+    if (!navigator.clipboard) {
         const textArea = document.createElement("textarea")
         textArea.value = text
         document.body.appendChild(textArea)
@@ -11,26 +10,26 @@ function CodeHighlight (props) {
         textArea.select()
         
         const successful = document.execCommand('copy')
-        
         document.body.removeChild(textArea)
+        return
     }
+    navigator.clipboard.writeText(text)
+}
 
-    function copyTextToClipboard(text) {
-        if (!navigator.clipboard) {
-            fallbackCopyTextToClipboard(text)
-            return
-        }
-        navigator.clipboard.writeText(text)
-    }
+function areCommentsVisible() {
 
-      
+    const comment = document.querySelector(".hljs-comment")
+    if (comment == null) return false
+    else return comment.style.display === "none"
+}
+
+function CodeHighlight (props) {
+
     function copyText() {
-
-        const realText = (document.querySelectorAll(".hljs-comment")[0].style.display == "none")?
+        const realText = areCommentsVisible()?
             props.text.split("\n").map( (e) => e.split("//")[0]).join("\n") : props.text
         
-            copyTextToClipboard(realText)
-        
+        copyTextToClipboard(realText)
         M.Toast.dismissAll()
         M.toast({html: 'Code copied ;)'})
     }
@@ -65,6 +64,21 @@ function CodeHighlight (props) {
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default class AlgorithmVisualizer extends React.Component {
 
     constructor(props) {
@@ -72,7 +86,6 @@ export default class AlgorithmVisualizer extends React.Component {
 
         this.state = {
             TextArray: null, 
-            TextArrayComments: null,
             Size: props.Algorithm.Size,
         }
     }
@@ -110,7 +123,6 @@ export default class AlgorithmVisualizer extends React.Component {
     }
 
     render () {
-
 
         return (
             <React.Fragment>
@@ -172,7 +184,7 @@ export default class AlgorithmVisualizer extends React.Component {
                     <a className="btn-floating btn-large red">
                         <i className="large material-icons">mode_edit</i>
                     </a>
-                    <ul>
+                    <ul className={Style.UnSelectable}>
                         <li>
                             <a 
                                 className="btn-floating blue"
