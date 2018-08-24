@@ -14,15 +14,15 @@ using lli = long long int;
  */
 
 template <typename container, typename item>
-lli BinarySearch(const container &Array, item toFind, lli left = 0, lli right = -1) {
-    if (right == -1) right = Array.size();
+lli BinarySearch(const container &Data, item toFind, lli left = 0, lli right = -1) {
+    if (right == -1) right = Data.size();
     lli actualPosition;
 
     while (left <= right) {
         actualPosition = left + (right - left) / 2;
-        if (Array[actualPosition] == toFind) return actualPosition;
+        if (Data[actualPosition] == toFind) return actualPosition;
         
-        if (Array[actualPosition] < toFind) left = actualPosition + 1;
+        if (Data[actualPosition] < toFind) left = actualPosition + 1;
         else right = actualPosition - 1;
     }
 
