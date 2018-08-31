@@ -17,7 +17,7 @@ import { subscribeToResult } from '../util/subscribeToResult';
  * <span class="informal">It's like {@link auditTime}, but the silencing
  * duration is determined by a second Observable.</span>
  *
- * <img src="./img/audit.png" width="100%">
+ * ![](audit.png)
  *
  * `audit` is similar to `throttle`, but emits the last value from the silenced
  * time window, instead of the first value. `audit` emits the most recent value
@@ -35,7 +35,7 @@ import { subscribeToResult } from '../util/subscribeToResult';
  * Emit clicks at a rate of at most one click per second
  * ```javascript
  * const clicks = fromEvent(document, 'click');
- * const result = clicks.pipe(audit(ev => Rx.Observable.interval(1000)));
+ * const result = clicks.pipe(audit(ev => interval(1000)));
  * result.subscribe(x => console.log(x));
  * ```
  * @see {@link auditTime}

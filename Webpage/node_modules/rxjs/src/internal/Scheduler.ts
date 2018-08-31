@@ -7,7 +7,7 @@ import { SchedulerLike, SchedulerAction } from './types';
  * execution. Provides a notion of (potentially virtual) time, through the
  * `now()` getter method.
  *
- * Each unit of work in a Scheduler is called an {@link Action}.
+ * Each unit of work in a Scheduler is called an `Action`.
  *
  * ```ts
  * class Scheduler {
@@ -23,8 +23,12 @@ import { SchedulerLike, SchedulerAction } from './types';
  */
 export class Scheduler implements SchedulerLike {
 
-  /** @nocollapse */
-  public static now: () => number = Date.now ? Date.now : () => +new Date();
+  /**
+   * Note: the extra arrow function wrapper is to make testing by overriding
+   * Date.now easier.
+   * @nocollapse
+   */
+  public static now: () => number = () => Date.now();
 
   constructor(private SchedulerAction: typeof Action,
               now: () => number = Scheduler.now) {

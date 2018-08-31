@@ -7,7 +7,7 @@ import { MonoTypeOperatorFunction } from '../types';
  * <span class="informal">Lets values pass until a second Observable,
  * `notifier`, emits a value. Then, it completes.</span>
  *
- * <img src="./img/takeUntil.png" width="100%">
+ * ![](takeUntil.png)
  *
  * `takeUntil` subscribes and begins mirroring the source Observable. It also
  * monitors a second Observable, `notifier` that you provide. If the `notifier`

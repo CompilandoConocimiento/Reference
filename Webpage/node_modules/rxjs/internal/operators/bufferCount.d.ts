@@ -6,7 +6,7 @@ import { OperatorFunction } from '../types';
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when its size reaches `bufferSize`.</span>
  *
- * <img src="./img/bufferCount.png" width="100%">
+ * ![](bufferCount.png)
  *
  * Buffers a number of values from the source Observable by `bufferSize` then
  * emits the buffer and clears it, and starts a new buffer each

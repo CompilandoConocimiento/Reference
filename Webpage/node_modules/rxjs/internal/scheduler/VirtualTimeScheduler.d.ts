@@ -17,8 +17,7 @@ export declare class VirtualTimeScheduler extends AsyncScheduler {
 }
 /**
  * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
+ * @nodoc
  */
 export declare class VirtualAction<T> extends AsyncAction<T> {
     protected scheduler: VirtualTimeScheduler;

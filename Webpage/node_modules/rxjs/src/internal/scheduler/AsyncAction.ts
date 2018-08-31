@@ -24,7 +24,7 @@ export class AsyncAction<T> extends Action<T> {
 
     if (this.closed) {
       return this;
-     }
+    }
 
     // Always replace the current state with the new state.
     this.state = state;
@@ -79,7 +79,7 @@ export class AsyncAction<T> extends Action<T> {
     }
     // Otherwise, if the action's delay time is different from the current delay,
     // or the action has been rescheduled before it's executed, clear the interval id
-    return clearInterval(id) && undefined || undefined;
+    clearInterval(id);
   }
 
   /**

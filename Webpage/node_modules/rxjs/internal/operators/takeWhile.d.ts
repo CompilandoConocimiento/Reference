@@ -7,7 +7,7 @@ import { MonoTypeOperatorFunction } from '../types';
  * <span class="informal">Takes values from the source only while they pass the
  * condition given. When the first value does not satisfy, it completes.</span>
  *
- * <img src="./img/takeWhile.png" width="100%">
+ * ![](takeWhile.png)
  *
  * `takeWhile` subscribes and begins mirroring the source Observable. Each value
  * emitted on the source is given to the `predicate` function which returns a

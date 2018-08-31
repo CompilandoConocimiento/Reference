@@ -6,7 +6,7 @@ import { MonoTypeOperatorFunction } from '../types';
  * items, notify of an IllegalArgumentException or NoSuchElementException respectively. If the source Observable
  * emits items but none match the specified predicate then `undefined` is emiited.
  *
- * <img src="./img/single.png" width="100%">
+ * ![](single.png)
  *
  * @throws {EmptyError} Delivers an EmptyError to the Observer's `error`
  * callback if the Observable completes before any `next` notification was sent.

@@ -1,45 +1,46 @@
 module.exports = {
-  entry:  __dirname + "/Code/GeneralApp/App.jsx",
-  output: {
-      path: __dirname + '/Distribution',
-      filename: 'bundle.js',
-  },
-  resolve: {
-      extensions: ['.js', '.jsx', '.css']
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-      test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}  
-          }
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[name]_[local]_[hash:base64]",
-              sourceMap: true,
-              minimize: true
-            }
-          },
-        ]
-      },
-    ]
-  }
-}
+	entry: './Code/GeneralApp/App.tsx',
+	output: {
+		path: __dirname + '/Distribution',
+		publicPath: '/',
+		filename: 'bundle.js'
+	},
+	resolve: {
+		extensions: ['.tsx', '.ts', '.jsx', '.js', '.css', ]
+	},
+	module: {
+		rules: [
+		  {
+			test: /\.(js|jsx|tsx|ts)$/,
+			exclude: /node_modules/,
+			use: 'babel-loader'
+		  },
+		  {
+		  test: /\.(png|jpg|gif)$/,
+			use: [
+			  {
+				loader: 'file-loader',
+				options: {}  
+			  }
+			]
+		  },
+		  {
+			test: /\.css$/,
+			use: [
+			  'style-loader',
+			  {
+				loader: 'typings-for-css-modules-loader?&namedExport&camelCase',
+				options: {
+				  modules: true,
+				  camelCase: true,
+				  namedExport: true,
+				  localIdentName: "[name]_[local]_[hash:base64]",
+				  sourceMap: true,
+				  minimize: true
+				}
+			  }
+			]
+		  }
+		]
+	}
+};

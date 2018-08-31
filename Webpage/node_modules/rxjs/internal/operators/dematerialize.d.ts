@@ -7,7 +7,7 @@ import { OperatorFunction } from '../types';
  * <span class="informal">Unwraps {@link Notification} objects as actual `next`,
  * `error` and `complete` emissions. The opposite of {@link materialize}.</span>
  *
- * <img src="./img/dematerialize.png" width="100%">
+ * ![](dematerialize.png)
  *
  * `dematerialize` is assumed to operate an Observable that only emits
  * {@link Notification} objects as `next` emissions, and does not emit any
@@ -20,9 +20,9 @@ import { OperatorFunction } from '../types';
  * ## Example
  * Convert an Observable of Notifications to an actual Observable
  * ```javascript
- * const notifA = new Rx.Notification('N', 'A');
- * const notifB = new Rx.Notification('N', 'B');
- * const notifE = new Rx.Notification('E', void 0,
+ * const notifA = new Notification('N', 'A');
+ * const notifB = new Notification('N', 'B');
+ * const notifE = new Notification('E', undefined,
  *   new TypeError('x.toUpperCase is not a function')
  * );
  * const materialized = of(notifA, notifB, notifE);

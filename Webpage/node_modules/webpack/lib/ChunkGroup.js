@@ -11,7 +11,6 @@ const compareLocations = require("./compareLocations");
 /** @typedef {import("./Module")} Module */
 /** @typedef {import("./ModuleReason")} ModuleReason */
 
-/** @typedef {{id: number}} HasId */
 /** @typedef {{module: Module, loc: TODO, request: string}} OriginRecord */
 /** @typedef {string|{name: string}} ChunkGroupOptions */
 
@@ -26,8 +25,8 @@ const getArray = set => Array.from(set);
 
 /**
  * A convenience method used to sort chunks based on their id's
- * @param {HasId} a first sorting comparator
- * @param {HasId} b second sorting comparator
+ * @param {ChunkGroup} a first sorting comparator
+ * @param {ChunkGroup} b second sorting comparator
  * @returns {1|0|-1} a sorting index to determine order
  */
 const sortById = (a, b) => {
@@ -63,6 +62,7 @@ class ChunkGroup {
 		/** @type {number} */
 		this.groupDebugId = debugId++;
 		this.options = options;
+		/** @type {SortableSet<ChunkGroup>} */
 		this._children = new SortableSet(undefined, sortById);
 		this._parents = new SortableSet(undefined, sortById);
 		this._blocks = new SortableSet();
@@ -70,6 +70,12 @@ class ChunkGroup {
 		this.chunks = [];
 		/** @type {OriginRecord[]} */
 		this.origins = [];
+		/** Indicies in top-down order */
+		/** @private @type {Map<Module, number>} */
+		this._moduleIndicies = new Map();
+		/** Indicies in bottom-up order */
+		/** @private @type {Map<Module, number>} */
+		this._moduleIndicies2 = new Map();
 	}
 
 	/**
@@ -401,7 +407,7 @@ class ChunkGroup {
 		if (this.chunks.length < otherGroup.chunks.length) return 1;
 		const a = this.chunks[Symbol.iterator]();
 		const b = otherGroup.chunks[Symbol.iterator]();
-		// eslint-disable-next-line
+		// eslint-disable-next-line no-constant-condition
 		while (true) {
 			const aItem = a.next();
 			const bItem = b.next();
@@ -436,7 +442,7 @@ class ChunkGroup {
 			list.sort((a, b) => {
 				const cmp = b.order - a.order;
 				if (cmp !== 0) return cmp;
-				// TOOD webpack 5 remove this check of compareTo
+				// TODO webpack 5 remove this check of compareTo
 				if (a.group.compareTo) {
 					return a.group.compareTo(b.group);
 				}
@@ -445,6 +451,44 @@ class ChunkGroup {
 			result[name] = list.map(i => i.group);
 		}
 		return result;
+	}
+
+	/**
+	 * Sets the top-down index of a module in this ChunkGroup
+	 * @param {Module} module module for which the index should be set
+	 * @param {number} index the index of the module
+	 * @returns {void}
+	 */
+	setModuleIndex(module, index) {
+		this._moduleIndicies.set(module, index);
+	}
+
+	/**
+	 * Gets the top-down index of a module in this ChunkGroup
+	 * @param {Module} module the module
+	 * @returns {number} index
+	 */
+	getModuleIndex(module) {
+		return this._moduleIndicies.get(module);
+	}
+
+	/**
+	 * Sets the bottom-up index of a module in this ChunkGroup
+	 * @param {Module} module module for which the index should be set
+	 * @param {number} index the index of the module
+	 * @returns {void}
+	 */
+	setModuleIndex2(module, index) {
+		this._moduleIndicies2.set(module, index);
+	}
+
+	/**
+	 * Gets the bottom-up index of a module in this ChunkGroup
+	 * @param {Module} module the module
+	 * @returns {number} index
+	 */
+	getModuleIndex2(module) {
+		return this._moduleIndicies2.get(module);
 	}
 
 	checkConstraints() {

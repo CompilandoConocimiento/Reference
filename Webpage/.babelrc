@@ -1,14 +1,23 @@
 {
-    "presets":[
-        "env",
-        "react",
-        "stage-2"
-    ],
-    "plugins":[
+    "presets": [
         [
-            "transform-class-properties",
-            {
-                "spec":true
+            "@babel/preset-env", {
+                "modules": false
+            }
+        ],
+        "@babel/react",
+        [
+            "@babel/typescript", { 
+                "isTSX": true, 
+                "allExtensions": true 
+            }
+        ]
+    ],
+    "plugins": [
+        "@babel/proposal-class-properties",
+        [
+            "@babel/syntax-typescript", { 
+                "isTSX": true
             }
         ]
     ]

@@ -6,7 +6,7 @@ import { MonoTypeOperatorFunction, SchedulerLike } from '../types';
  * <span class="informal">Samples the source Observable at periodic time
  * intervals, emitting what it samples.</span>
  *
- * <img src="./img/sampleTime.png" width="100%">
+ * ![](sampleTime.png)
  *
  * `sampleTime` periodically looks at the source Observable and emits whichever
  * value it has most recently emitted since the previous sampling, unless the
@@ -31,7 +31,7 @@ import { MonoTypeOperatorFunction, SchedulerLike } from '../types';
  *
  * @param {number} period The sampling period expressed in milliseconds or the
  * time unit determined internally by the optional `scheduler`.
- * @param {Scheduler} [scheduler=async] The {@link IScheduler} to use for
+ * @param {SchedulerLike} [scheduler=async] The {@link SchedulerLike} to use for
  * managing the timers that handle the sampling.
  * @return {Observable<T>} An Observable that emits the results of sampling the
  * values emitted by the source Observable at the specified time interval.

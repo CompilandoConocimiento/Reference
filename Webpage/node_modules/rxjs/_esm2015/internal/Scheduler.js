@@ -7,5 +7,5 @@ export class Scheduler {
         return new this.SchedulerAction(this, work).schedule(state, delay);
     }
 }
-Scheduler.now = Date.now ? Date.now : () => +new Date();
+Scheduler.now = () => Date.now();
 //# sourceMappingURL=Scheduler.js.map

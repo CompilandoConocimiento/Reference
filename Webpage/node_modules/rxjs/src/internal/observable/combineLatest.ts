@@ -50,7 +50,7 @@ export function combineLatest<R>(...observables: Array<ObservableInput<any> | ((
  * computes a formula using the latest values from all the inputs, then emits
  * the output of that formula.</span>
  *
- * <img src="./img/combineLatest.png" width="100%">
+ * ![](combineLatest.png)
  *
  * `combineLatest` combines the values from all the Observables passed as
  * arguments. This is done by subscribing to each Observable in order and,
@@ -70,7 +70,7 @@ export function combineLatest<R>(...observables: Array<ObservableInput<any> | ((
  * actually wait for all input Observables to emit at least once,
  * before it starts emitting results. This means if some Observable emits
  * values before other Observables started emitting, all that values but last
- * will be lost. On the other hand, is some Observable does not emit value but
+ * will be lost. On the other hand, if some Observable does not emit value but
  * completes, resulting Observable will complete at the same moment without
  * emitting anything, since it will be now impossible to include value from
  * completed Observable in resulting array. Also, if some input Observable does
@@ -96,9 +96,9 @@ export function combineLatest<R>(...observables: Array<ObservableInput<any> | ((
  * ## Examples
  * ### Combine two timer Observables
  * ```javascript
- * const firstTimer = Rx.Observable.timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
- * const secondTimer = Rx.Observable.timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
- * const combinedTimers = Rx.Observable.combineLatest(firstTimer, secondTimer);
+ * const firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
+ * const secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
+ * const combinedTimers = combineLatest(firstTimer, secondTimer);
  * combinedTimers.subscribe(value => console.log(value));
  * // Logs
  * // [0, 0] after 0.5s
@@ -150,7 +150,7 @@ export function combineLatest<R>(...observables: Array<ObservableInput<any> | ((
  * or an array of Observables may be given as the first argument.
  * @param {function} [project] An optional function to project the values from
  * the combined latest values into a new value on the output Observable.
- * @param {Scheduler} [scheduler=null] The IScheduler to use for subscribing to
+ * @param {SchedulerLike} [scheduler=null] The {@link SchedulerLike} to use for subscribing to
  * each input Observable.
  * @return {Observable} An Observable of projected values from the most recent
  * values from each input Observable, or an array of the most recent values from

@@ -2,7 +2,7 @@ import { MonoTypeOperatorFunction } from '../types';
 /**
  * Skip the last `count` values emitted by the source Observable.
  *
- * <img src="./img/skipLast.png" width="100%">
+ * ![](skipLast.png)
  *
  * `skipLast` returns an Observable that accumulates a queue with a length
  * enough to store the first `count` values. As more values are received,

@@ -1,13 +1,13 @@
 {
-    "name": "refence",
-    "version": "0.0.1",
+    "name": "soyoscarrh_refence",
+    "version": "0.1.0",
     "description": "A page to my competitive programming refence",
     "main": "index.js",
     "scripts": {
-        "build": "webpack -p --progress --config webpack.config.js",
+        "build": "    webpack --progress -p --config webpack.config.js",
         "dev-build": "webpack --progress -d --config webpack.config.js",
-        "stats": "webpack --profile --config webpack.config.js --json > Stats.json",
-        "watch": "webpack --progress -d --config webpack.config.js --watch"
+        "watch": "    webpack --progress -d --config webpack.config.js --watch",
+        "stats": "    webpack --profile     --config webpack.config.js --json > Stats.json"
     },
     "repository": {
         "type": "git",
@@ -23,23 +23,34 @@
     "bugs": {
         "url": "https://github.com/SoyOscarRH/SoyOscarRH.github.io/issues"
     },
-    "homepage": "https://soyoscarrh.github.io/",
+    "homepage": "https://compilandoconocimiento.github.io/Reference/",
     "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.4",
-        "babel-plugin-transform-class-properties": "^6.24.1",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
-        "css-loader": "^0.28.11",
-        "style-loader": "^0.21.0",
-        "webpack": "^4.12.1",
-        "webpack-cli": "^3.0.8"
+        "@babel/core": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.0.0",
+        "@babel/plugin-syntax-typescript": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.0.0",
+        "@types/node": "^10.9.3",
+        "@types/react": "^16.4.13",
+        "@types/react-dom": "^16.0.7",
+        "@types/webpack": "^4.4.11",
+        "css-loader": "^1.0.0",
+        "source-map-loader": "^0.2.4",
+        "style-loader": "^0.23.0",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.0.3",
+        "typings-for-css-modules-loader": "^1.7.0",
+        "webpack": "^4.17.1",
+        "webpack-cli": "^3.1.0"
     },
     "dependencies": {
+        "@babel/preset-env": "^7.0.0",
+        "@types/materialize-css": "^1.0.4",
+        "@types/react-router-dom": "^4.3.0",
+        "babel-loader": "^8.0.0",
         "materialize-css": "^1.0.0-rc.2",
-        "react": "^16.4.1",
-        "react-dom": "^16.4.1",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2",
         "react-router-dom": "^4.3.1"
     }
 }
