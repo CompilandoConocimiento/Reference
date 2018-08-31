@@ -28,7 +28,7 @@ const App: React.StatelessComponent<{}> = () => {
 					
 					<Route 
 						path   = '/Topic/:NameOfTopic'
-						render = { (props) => <TopicVisualizer {...props} /> }
+						render = { (props) => <TopicVisualizer match={props.match} /> }
 					/>
 				
 				</Switch>

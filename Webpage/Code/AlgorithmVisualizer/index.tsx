@@ -1,33 +1,38 @@
 import React from "react"
 import Style from "./index.css"
+import M from "materialize-css"
+import { SubTopic, Topic } from "../Data/DataType"
 
-function copyTextToClipboard(text) {
-    if (!navigator.clipboard) {
-        const textArea = document.createElement("textarea")
-        textArea.value = text
-        document.body.appendChild(textArea)
-        textArea.focus()
-        textArea.select()
-        
-        const successful = document.execCommand('copy')
-        document.body.removeChild(textArea)
-        return
-    }
-    navigator.clipboard.writeText(text)
+function copyTextToClipboard(text: string): void {
+    const textArea = document.createElement("textarea")
+    textArea.value = text
+    document.body.appendChild(textArea)
+    textArea.focus()
+    textArea.select()
+    
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
 }
 
-function areCommentsVisible() {
-
-    const comment = document.querySelector(".hljs-comment")
+function areCommentsVisible(): boolean {
+    const comment: HTMLElement = document.querySelector(".hljs-comment")
     if (comment == null) return false
     else return comment.style.display === "none"
 }
 
-function CodeHighlight (props) {
 
-    function copyText() {
+type CodeHighlightType = {
+    number: number,
+    fontSize: number,
+    text: string
+}
+
+const CodeHighlight: React.StatelessComponent<CodeHighlightType> = (props: CodeHighlightType) => {
+
+    function copyText(): void {
         const realText = areCommentsVisible()?
-            props.text.split("\n").map( (e) => e.split("//")[0]).join("\n") : props.text
+            props.text.split("\n").map( (line) => line.split("//")[0]).join("\n"):
+            props.text
         
         copyTextToClipboard(realText)
         M.Toast.dismissAll()
@@ -49,7 +54,7 @@ function CodeHighlight (props) {
             <div className="col s12 m10 offset-m1 l10 offset-l1">
                 <div className="card-panel hoverable" style={{backgroundColor: "#2b2b2b"}} onDoubleClick={copyText}>
                     <div className="row">
-                        <pre id       = {`Code${props.Number}`} 
+                        <pre id       = {`Code${props.number}`} 
                             style     = {{fontSize: `${props.fontSize}rem`}} 
                             className = {Style.CodeWrapper}
                         >
@@ -65,28 +70,23 @@ function CodeHighlight (props) {
 }
 
 
+type AlgorithmVisualizerType = {
+    textArray: Array<string> | null,
+    size: string,
+}
+type AlgorithmVisualizerProps = {
+    Algorithm: SubTopic,
+    Topic: Topic
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-export default class AlgorithmVisualizer extends React.Component {
+export default class AlgorithmVisualizer extends React.Component<AlgorithmVisualizerProps, AlgorithmVisualizerType> {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            TextArray: null, 
-            Size: props.Algorithm.Size,
+            textArray: null, 
+            size: props.Algorithm.Size,
         }
     }
 
@@ -99,8 +99,8 @@ export default class AlgorithmVisualizer extends React.Component {
         const fab = document.querySelectorAll('.fixed-action-btn');
         M.FloatingActionButton.init(fab, {})
 
-        let algorithmWebLink = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
-        algorithmWebLink = `${algorithmWebLink}/Code/${this.props.Topic.Link}/${this.props.Algorithm.File}`
+        let algorithmWebLink: string = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
+        algorithmWebLink = `${algorithmWebLink}/Code/${this.props.Topic.link}/${this.props.Algorithm.file}`
 
         console.log(algorithmWebLink)
         fetch(algorithmWebLink)
@@ -108,7 +108,7 @@ export default class AlgorithmVisualizer extends React.Component {
                 Data => { 
                     Data.text().then( 
                         (Text) => {
-                            this.setState({TextArray: Text.split("\n")}) 
+                            this.setState({textArray: Text.split("\n")}) 
                         }
                     )
                 }
@@ -116,10 +116,22 @@ export default class AlgorithmVisualizer extends React.Component {
     }
 
     componentDidUpdate () {
-        this.props.Algorithm.VisibleParts.forEach(
+        this.props.Algorithm.visibleParts.forEach(
             (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
         )
 
+    }
+
+    toggleComments() {
+        M.Toast.dismissAll()
+        M.toast({html: 'Toggle comments'})
+
+        document.querySelectorAll(".hljs-comment").forEach( (Element: HTMLElement) => {
+            if (Element.style.display === "")
+                Element.style.display = "initial"
+
+            Element.style.display = (Element.style.display == "initial")? "none" : "initial"
+        })
     }
 
     render () {
@@ -129,14 +141,14 @@ export default class AlgorithmVisualizer extends React.Component {
                 
                 {/* ================ TITLE ================================*/}
                 <div className="row center blue-grey-text text-darken-3">
-                    <h4>{this.props.Algorithm.Name}</h4>
+                    <h4>{this.props.Algorithm.name}</h4>
                 </div>
 
                 {/* ================ TEXT =================================*/}
                 <div className="row">
                     <div className="col s10 offset-s1">
                         <div className={Style.Text}>
-                            {this.props.Algorithm.Text}
+                            {this.props.Algorithm.text}
                         </div>
                     </div>
                 </div>
@@ -154,9 +166,8 @@ export default class AlgorithmVisualizer extends React.Component {
                                 min      = "0.3"
                                 max      = "2.5"
                                 step     = "0.035"
-                                value    = {this.state.Size}
-                                onInput  = {e => this.setState({Size: e.target.value})}
-                                onChange = {e => this.setState({Size: e.target.value})}
+                                defaultValue = {this.state.size}
+                                onChange = {e => this.setState({size: e.target.value})}
                             />
                         </p>
                     </form>
@@ -164,16 +175,16 @@ export default class AlgorithmVisualizer extends React.Component {
 
                 {/* ================ CODE ===================================*/}
                 {
-                    this.props.Algorithm.VisibleParts.map(
+                    this.props.Algorithm.visibleParts.map(
                         (Range, Index) => (
                             <CodeHighlight 
                                 key      = {Index}
-                                Number   = {Index} 
-                                fontSize = {this.state.Size}
+                                number   = {Index} 
+                                fontSize = {Number(this.state.size)}
                                 text     = {
-                                    (this.state.TextArray == null)? 
+                                    (this.state.textArray == null)? 
                                         "Loading" : 
-                                        this.state.TextArray.slice(Range[0]-1, Range[1]+1).join("\n")
+                                        this.state.textArray.slice(Range[0]-1, Range[1]+1).join("\n")
                                 } 
                             />
                         )
@@ -187,28 +198,16 @@ export default class AlgorithmVisualizer extends React.Component {
                     <ul className={Style.UnSelectable}>
                         <li>
                             <a 
-                                className="btn-floating blue"
-                                onClick={(e) => M.toast({html: 'Just click the code you want'})}>
-                                <i className="material-icons">content_copy</i>
+                                className    = "btn-floating blue"
+                                onClick      = {(e) => M.toast({html: 'Just click the code you want'})}>
+                                <i className ="material-icons">content_copy</i>
                             </a>
                         </li>
                         <li>
                             <a 
-                                className="btn-floating green darken-1"
-                                onClick={
-                                    (e) => {
-                                        M.Toast.dismissAll()
-                                        M.toast({html: 'Toggle comments'})
-                                        const removeElements = (elms) => [...elms].forEach(el => {
-                                            const actual = el.style.display
-                                            if (actual === "") el.style.display = "initial"
-                                            el.style.display = (el.style.display == "initial")? "none" : "initial"
-                                        })
-
-                                        removeElements( document.querySelectorAll(".hljs-comment") );
-                                    }
-                                }>
-                                <i className="material-icons">code</i>
+                                className    = "btn-floating green darken-1"
+                                onClick      = {this.toggleComments}>
+                                <i className = "material-icons">code</i>
                             </a>
                         </li>
                     </ul>

@@ -36,7 +36,7 @@ const ErrorMessage: React.StatelessComponent<{}> = () => {
 }
 
 
-const cardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic: Topic}) => {
+const CardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic: Topic}) => {
 
 	const colors: Array<string> = [
 		"red lighten-2",
@@ -98,8 +98,8 @@ const cardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic
 	)
 }
 
-// TODO: Do this great
-const TopicVisualizer: React.StatelessComponent<{}> = () => {
+
+const TopicVisualizer: React.StatelessComponent<{match: any}> = (props: {match: any}) => {
 
 	const Topic = Topics.find( Topic => Topic.link === props.match.params.NameOfTopic)
 	if (Topic == undefined) return <ErrorMessage />
@@ -107,15 +107,15 @@ const TopicVisualizer: React.StatelessComponent<{}> = () => {
 	return (
 		<Switch>
 			<Route 
-				exact path = {`/Topic/${Topic.Link}/`}
-				render     = { (props) => <cardOfSubTopics {...props} Topic={Topic} /> }
+				exact path = {`/Topic/${Topic.link}/`}
+				render     = { (props) => <CardOfSubTopics {...props} Topic={Topic} /> }
 			/>
 			<Route 
-				path   = {`/Topic/${Topic.Link}/:Algorithm/`}
+				path   = {`/Topic/${Topic.link}/:Algorithm/`}
 				render = { 
 					(props) => {
-						const AlgorithmData = Topic.SubTopics.find( SubTopic => SubTopic.Link ===  props.match.params.Algorithm)
-						return <AlgorithmVisualizer {...props} Algorithm={AlgorithmData} Topic={Topic} key={Date.now()} />
+						const AlgorithmData = Topic.subTopics.find( SubTopic => SubTopic.link ===  props.match.params.Algorithm)
+						return <AlgorithmVisualizer Algorithm={AlgorithmData} Topic={Topic} key={Date.now()} />
 					}
 
 				}
