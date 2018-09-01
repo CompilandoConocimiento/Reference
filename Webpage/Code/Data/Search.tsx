@@ -66,10 +66,14 @@ const SubTopics: Array<SubTopic> = [
             <div>
 
                 This is just like the binary search, but, it does not just work in monotonus
-                function, this is a search algorithm that work on unimodal functions \({`f(x)`}\)
+                function, this is a search algorithm that work on unimodal functions \({`f(x)`}\).
+
+                <br />
 
                 This is used to find the minimum or maximum.
 
+                <br />
+                
                 A ternary search determines either that the minimum or maximum cannot
                 be in the first third of the domain or that it cannot be in the last
                 third of the domain, then repeats on the remaining third.
