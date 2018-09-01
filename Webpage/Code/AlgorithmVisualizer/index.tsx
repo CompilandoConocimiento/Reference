@@ -91,6 +91,7 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
     }
 
     componentDidMount() {
+        // @ts-ignore
         MathJax.Hub.Typeset()
 
         const elements = document.querySelectorAll("input[type=range]");
@@ -117,6 +118,7 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
 
     componentDidUpdate () {
         this.props.Algorithm.visibleParts.forEach(
+            // @ts-ignore
             (Element, Index) => hljs.highlightBlock( document.getElementById(`Code${Index}`) )
         )
 

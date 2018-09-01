@@ -32,7 +32,8 @@
         "bitset": "cpp",
         "functional": "cpp",
         "tuple": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "__functional_03": "cpp"
     },
     "python.linting.enabled": false
 }

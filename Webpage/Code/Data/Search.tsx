@@ -6,14 +6,20 @@ const SubTopics: Array<SubTopic> = [
         name: "Binary Search",
         link: "BinarySearch",
         file: "BinarySearch.cpp",
-        visibleParts: [ [16, 30] ],
+        visibleParts: [ [18, 32], [44, 58] ],
         size: 1.05,
         text: (
             <div>
-                This is a search algorithm that work on monotonus functions.
-                Not just to search in an ordered array, rememeber that.
+                This is a search algorithm that work on monotonus functions \({`f(x)`}\).
 
-                If will find an item in  \({` O( \\log_2(n) ) `}\)
+                <br />
+
+                You have a value \({`a`}\) and you want to find the \({`x`}\) such
+                that \({`f(x)=a`}\) or to make sure such \({`x`}\) does not exist. 
+
+                <br />
+
+                This algorithm will execute in \({` O( \\log_2(n) ) `}\)
 
                 <h6><b>How it Works?</b></h6>
                 <ol className="browser-default">
@@ -50,6 +56,27 @@ const SubTopics: Array<SubTopic> = [
             </div>
         ),
     },
+    {
+        name: "Ternary Search",
+        link: "TernarySearch",
+        file: "TernarySearch.cpp",
+        visibleParts: [ [14, 28] ],
+        size: 1.05,
+        text: (
+            <div>
+
+                This is just like the binary search, but, it does not just work in monotonus
+                function, this is a search algorithm that work on unimodal functions \({`f(x)`}\)
+
+                This is used to find the minimum or maximum.
+
+                A ternary search determines either that the minimum or maximum cannot
+                be in the first third of the domain or that it cannot be in the last
+                third of the domain, then repeats on the remaining third.
+
+            </div>
+        ),
+    }
 ]
 
 const Search: Topic = {

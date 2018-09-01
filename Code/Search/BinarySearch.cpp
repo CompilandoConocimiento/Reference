@@ -3,9 +3,11 @@
 
 using namespace std;
 using lli = long long int;
+using uint = unsigned int;
 
 /**
- * Is just binary search  <3 ...
+ * Give it a container of items that is sorted and an item to find
+ * and this will return you the index of such item in O(log_2(n))
  * 
  * @param left      The initial index to start searching
  * @param right     The final index to start searching; if -1 we end at Container.size() 
@@ -14,8 +16,8 @@ using lli = long long int;
  */
 
 template <typename container, typename item>
-lli BinarySearch(const container &Data, item toFind, lli left = 0, lli right = -1) {
-    if (right == -1) right = Data.size();
+ssize_t DiscreteBinarySearch(const container &Data, item toFind, size_t left, size_t right) {
+
     lli actualPosition;
 
     while (left <= right) {
@@ -27,4 +29,30 @@ lli BinarySearch(const container &Data, item toFind, lli left = 0, lli right = -
     }
 
     return -1;
+}
+
+/**
+ * Give it a function f: Domain -> Domain that is monotonus, and give me an 'a'
+ * and this will return you the 'x' such f(x) = a
+ * 
+ * @param left      The initial index to start searching
+ * @param right     The final index to start searching; if -1 we end at Container.size() 
+ * @param toFind    The number to find
+ * @return          The index of the element; -1 if it was not found
+ */
+
+template <typename domain>
+domain ContinuousBinarySearch(
+   const function<domain(domain)> &f, uint iterations, domain left, domain right, domain toFind) { 
+    
+    domain middle;
+
+    while (iterations--) {
+        middle = left + (right - left) / 2;
+
+        if (f(middle) < toFind) left = middle;
+        else right = middle;
+    }
+
+    return (left + right) / 2;
 }
