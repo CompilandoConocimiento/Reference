@@ -6,7 +6,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Sieve of Eratosthenes",
         link: "SieveOfEratosthenes",
         file: "SieveOfEratosthenes.cpp",
-        visibleParts: [ [11, 23], [26, 45] ],
+        visibleParts: [ [8, 21], [24, 40] ],
         size: 1.05,
         text: (
             <div>
@@ -48,6 +48,7 @@ const SubTopics: Array<SubTopic> = [
                 by the \( 2 \) and the \( 3 \), so we start the multiples of \( i \)
                 not in \( 2i \) but in \( i^2 \), because of this, we just need
                 to check fewer numbers. 
+                
             </div>
         ),
     },
