@@ -81,16 +81,17 @@ type AlgorithmVisualizerProps = {
 
 export default class AlgorithmVisualizer extends React.Component<AlgorithmVisualizerProps, AlgorithmVisualizerType> {
 
-    constructor(props) {
+    constructor(props: AlgorithmVisualizerProps) {
         super(props)
 
         this.state = {
             textArray: null, 
-            size: props.Algorithm.Size,
+            size: (this.props.Algorithm.size).toString(),
         }
     }
 
     componentDidMount() {
+
         // @ts-ignore
         MathJax.Hub.Typeset()
 
