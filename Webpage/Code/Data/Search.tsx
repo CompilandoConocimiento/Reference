@@ -80,6 +80,33 @@ const SubTopics: Array<SubTopic> = [
 
             </div>
         ),
+    },
+    {
+        name: "Lower and Upper Bound",
+        link: "LowerAndUpperBound",
+        file: "LowerAndUpperBound.cpp",
+        visibleParts: [ [10, 22], [29, 41] ],
+        size: 1.1,
+        text: (
+            <div>
+
+                These are functions that are like brothers:
+                <ul className="browser-default">
+                    <li>
+                        Lower bound return the index of the first item
+                        in an ordered array that is not less that target
+                    </li>
+                    <li>
+                        Upper bound return the index of the first item
+                        in an ordered array that is greater that target
+                    </li>
+                </ul>
+
+                Of course, both of them are almost identical in implementation
+                and both are implemented using binary search.
+
+            </div>
+        ),
     }
 ]
 
