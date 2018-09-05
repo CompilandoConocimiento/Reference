@@ -86,7 +86,7 @@ const SubTopics: Array<SubTopic> = [
         link: "LowerAndUpperBound",
         file: "LowerAndUpperBound.cpp",
         visibleParts: [ [10, 22], [29, 41] ],
-        size: 1.1,
+        size: 1.2,
         text: (
             <div>
 

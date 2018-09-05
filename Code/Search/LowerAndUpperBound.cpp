@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-ussing namespace std;
+using namespace std;
 
 /**
  * @param Data      The container to iterate
