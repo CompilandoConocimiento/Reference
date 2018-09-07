@@ -4,6 +4,7 @@ import M from "materialize-css"
 import { SubTopic, Topic } from "../Data/DataType"
 
 function copyTextToClipboard(text: string): void {
+    const actualScroll = document.documentElement.scrollTop || document.body.scrollTop
     const textArea = document.createElement("textarea")
     textArea.value = text
     document.body.appendChild(textArea)
@@ -12,6 +13,7 @@ function copyTextToClipboard(text: string): void {
     
     document.execCommand('copy')
     document.body.removeChild(textArea)
+    scroll(0, actualScroll)
 }
 
 function areCommentsVisible(): boolean {

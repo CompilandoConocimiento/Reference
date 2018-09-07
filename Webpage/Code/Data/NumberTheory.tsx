@@ -61,7 +61,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Prime Factorization",
         link: "PrimeFactorization",
         file: "PrimeFactorization.cpp",
-        visibleParts: [ [17, 32], [36, 49] ],
+        visibleParts: [ [18, 35], [39, 53] ],
         size: 0.95,
         text: (
             <div>
