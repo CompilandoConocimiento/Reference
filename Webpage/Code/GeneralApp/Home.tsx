@@ -62,7 +62,7 @@ const CardToTopic: React.StatelessComponent<CardProps> = (props: CardProps) => {
       </div>
 
       <div className="card-action">
-        <Link to={`/Topic/${props.link}/`} className="white-text">
+        <Link to={`/Topic/${props.link}/`} className="white-text" onClick={() => scroll(0, 0)}>
           Check it out!
         </Link>
       </div>

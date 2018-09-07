@@ -16,7 +16,7 @@ const NavBar: React.StatelessComponent<{}> = () => {
             <a href="" data-target="SideMenu" className="sidenav-trigger show-on-large">
               <i className="material-icons white-text">menu</i>
             </a>
-            <Link className="right" to="/">
+            <Link className="right" to="/" onClick={() => scroll(0, 0)}>
               <i className="material-icons white-text">home</i>
             </Link>
           </div>

@@ -72,8 +72,9 @@ const CardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic
 								return (
 									<div className="row" key={SubTopic.link}>
 										<Link 
-											className	= {buttonStyle}
-											to				= {`/Topic/${props.Topic.link}/${SubTopic.link}`}
+											className = {buttonStyle}
+											onClick	  = {() => scroll(0, 0)}
+											to		  = {`/Topic/${props.Topic.link}/${SubTopic.link}`}
 										>
 											{SubTopic.name}
 										</Link>
