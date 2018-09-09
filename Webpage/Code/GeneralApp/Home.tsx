@@ -53,21 +53,26 @@ type CardProps = {
 
 const CardToTopic: React.StatelessComponent<CardProps> = (props: CardProps) => {
   return (
-    <div className={`card hoverable ${props.materializeCSSColor}`}>
-      
-      <div className="card-content white-text">
-        <span className="card-title">
-          {props.name}
+    <Link to={`/Topic/${props.link}/`} onClick={() => scroll(0, 0)}>
+      <span 
+        className = {`card hoverable ${props.materializeCSSColor}`} 
+        style     = {{"display": "block"}}>
+        
+        <span className="card-content white-text" style={{"display": "block"}}>
+          <span className="card-title">
+            {props.name}
+          </span>
         </span>
-      </div>
 
-      <div className="card-action">
-        <Link to={`/Topic/${props.link}/`} className="white-text" onClick={() => scroll(0, 0)}>
-          Check it out!
-        </Link>
-      </div>
+        <span className="card-action" style={{"display": "block"}}>
+          <span className="white-text">
+            CHECK IT OUT!
+          </span>
+        </span>
 
-    </div>
+      </span>
+    </Link>
+
   )
 }
 
