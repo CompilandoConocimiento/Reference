@@ -51,3 +51,16 @@ vector< pair<T, T> > Factorize(T n, const vector<T> &Primes) {      //Get the pr
     
     return Factors;                                                 //Return the info               
 }
+
+// ***********     GER SMALLEST PRIME FACTOR     *************
+template <typename T>
+T getSmallestPrimeFactor(T number) {                                //Get the smallest prime factor
+    if (number == 1) return 1;                                      //Stupid
+    if (number % 2 == 0) return 2;                                  //Stupid
+    
+    T limit = sqrt(number) + 1;                                     //Get the correct limit
+    for (T i = 3; i < limit; i += 2)                                //Foreach odd number until √n
+        if (number % i == 0) return i;                              //If divisible, this is the first
+    
+    return number;                                                  //number is prime - . -
+}
