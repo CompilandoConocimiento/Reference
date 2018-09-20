@@ -12,8 +12,7 @@ std::vector<bool> EratosthenesSieveIsPrime(T n) {               //To check if i 
 
     for (T i = 4; i <= n; i += 2) isPrime[i] = false;           //Eliminate all the evens numbers
 
-    T limit = std::sqrt(n) + 1;                                 //Delete multiple until
-    for (T i = 3; i <= limit; i += 2)                           //For every odd number < √n  
+    for (T i = 3; i * i <= n; i += 2)                           //For every odd number < √n  
         if (isPrime[i])                                         //If we found a prime :0
             for (T j = i * i; j <= n; j += 2 * i)               //ForEach multiple we have'nt check
                 isPrime[j] = false;                             //Each multiple is not prime
@@ -27,12 +26,11 @@ std::vector<T> EratosthenesSievePrimes(T n) {                   //Return a vecto
     std::vector<bool> isPrime(n + 1, true);                     //Create the origianl Sieve
     std::vector<T> Primes(1, 2);                                //2 is a prime, dahhhhh!
 
-    T limit = std::sqrt(n) + 1;                                 //Delete multiple until
     for (T i = 3; i <= n; i += 2) {                             //For every odd number < √n
         if (isPrime[i]) {                                       //If we still believe it's a prime
             Primes.push_back(i);                                //Add it to the vector, it's a prime
             
-            if (i <= limit)                                     //It make sense to delete multiples?
+            if (i * i <= n)                                     //It make sense to delete multiples?
                 for (T j = i * i; j <= n; j += 2 * i)           //ForEach multiple we have'nt check
                     isPrime[j] = false;                         //Each multiple is not prime
         }

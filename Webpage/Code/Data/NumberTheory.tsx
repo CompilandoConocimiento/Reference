@@ -74,7 +74,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Sieve of Eratosthenes",
         link: "SieveOfEratosthenes",
         file: "SieveOfEratosthenes.cpp",
-        visibleParts: [ [8, 22], [25, 42] ],
+        visibleParts: [ [8, 21], [24, 40] ],
         size: 1.05,
         text: (
             <div>
@@ -129,7 +129,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Prime Factorization",
         link: "PrimeFactorization",
         file: "PrimeFactorization.cpp",
-        visibleParts: [ [18, 35], [39, 53], [56, 66] ],
+        visibleParts: [ [18, 35], [39, 53], [56, 65] ],
         size: 0.95,
         text: (
             <div>

@@ -58,8 +58,7 @@ T getSmallestPrimeFactor(T number) {                                //Get the sm
     if (number == 1) return 1;                                      //Stupid
     if (number % 2 == 0) return 2;                                  //Stupid
     
-    T limit = sqrt(number) + 1;                                     //Get the correct limit
-    for (T i = 3; i < limit; i += 2)                                //Foreach odd number until √n
+    for (T i = 3; i * i <= number; i += 2)                          //Foreach odd number until √n
         if (number % i == 0) return i;                              //If divisible, this is the first
     
     return number;                                                  //number is prime - . -
