@@ -121,7 +121,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Sieve of Eratosthenes",
         link: "SieveOfEratosthenes",
         file: "SieveOfEratosthenes.cpp",
-        visibleParts: [ [8, 21], [24, 40] ],
+        visibleParts: [ [8, 21], [24, 43] ],
         size: 1.05,
         text: (
             <div>

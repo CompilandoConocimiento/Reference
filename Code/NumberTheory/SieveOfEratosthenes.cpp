@@ -26,6 +26,9 @@ std::vector<T> EratosthenesSievePrimes(T n) {                   //Return a vecto
     std::vector<bool> isPrime(n + 1, true);                     //Create the origianl Sieve
     std::vector<T> Primes(1, 2);                                //2 is a prime, dahhhhh!
 
+    //isPrime[0] = isPrime[1] = false;                          //Uncomment if you want bool version
+    //for (T i = 4; i <= n; i += 2) isPrime[i] = false;         //Uncomment if you want bool version
+
     for (T i = 3; i <= n; i += 2) {                             //For every odd number < √n
         if (isPrime[i]) {                                       //If we still believe it's a prime
             Primes.push_back(i);                                //Add it to the vector, it's a prime
