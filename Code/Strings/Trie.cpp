@@ -3,16 +3,16 @@
 #include <unordered_map>
 using namespace std;
 
-struct Trie {
+struct TrieNode {
     bool isEndOfWord = false;
-    unordered_map<char, Trie*> next;
+    unordered_map<char, TrieNode*> next;
 
-	void addWord(string word) {
-		Trie* node = this;
+	void addWord(const string& word) {
+		TrieNode* node = this;
 
 		for (auto character : word) {
 			if (!node->next[character]) 
-				node->next[character] = new Trie;
+				node->next[character] = new TrieNode;
 			
 			node = node->next[character];
 		}
@@ -20,8 +20,8 @@ struct Trie {
 		node->isEndOfWord = true;
 	}
 
-	bool search(string word) {
-		Trie* node = this;
+	bool search(const string& word) {
+		TrieNode* node = this;
 		
 		for (size_t i = 0; i < word.size(); i++) {
 			if (node->next[word[i]] == nullptr) return false;

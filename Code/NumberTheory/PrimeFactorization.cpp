@@ -40,8 +40,7 @@ template<typename T>
 vector< pair<T, T> > Factorize(T n, const vector<T> &Primes) {      //Get the prime factors with primes
     std::vector< std::pair<T, T> > Factors;                         //This is where we save the factors
 
-    size_t limit = std::sqrt(n);                                    //Add a limit to factors
-    for (size_t i = 0; i < limit; i++) {                            //Until that limit
+    for (size_t i = 0; i * i < n; i++) {                            //Until that limit
         T prime = Primes[i], exponent;                              //exponent
         for (exponent = 0; n % prime == 0; ++exponent) n /= prime;  //Find the times that it divided it!
         if (exponent != 0) Factors.emplace_back(prime, exponent);   //Add to the exponent
