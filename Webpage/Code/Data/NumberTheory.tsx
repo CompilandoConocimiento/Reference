@@ -81,6 +81,7 @@ const SubTopics: Array<SubTopic> = [
                 Ok, so you got a integer, call it \( {"n"} \)
 
                 <br />
+                <br />
                 <h6><b>I just want the number of divisors</b></h6>
 
                 Then, use the idea of prime factorization, for example 
@@ -105,7 +106,7 @@ const SubTopics: Array<SubTopic> = [
                         because when you get there, you have counted all the divisors
                     </li>
                     <li>
-                        Now, when you find a divisor call it \( {"i"} \), remember to store also
+                        Now, when you find a divisor, call it \( {"i"} \), remember to store also
                         \( {String.raw`\dfrac{n}{i}`} \) because it is also a divisor.
                     </li>
                 </ul>
