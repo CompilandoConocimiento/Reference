@@ -9,7 +9,7 @@ struct Node {
     T value;
     Node* left; 
     Node* right; 
-    Node(T value) : value {value}, left {nullptr}, right {nullptr} {}
+    Node (T newValue) : value {newValue}, left {nullptr}, right {nullptr} {}
 };
 
 template <typename T>

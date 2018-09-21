@@ -6,7 +6,7 @@ const SubTopics: Array<SubTopic> = [
         name: "Trie",
         link: "Trie",
         file: "Trie.cpp",
-        visibleParts: [ [16, 32] ],
+        visibleParts: [ [6, 32] ],
         size: 1.10,
         text: (
             <div>
