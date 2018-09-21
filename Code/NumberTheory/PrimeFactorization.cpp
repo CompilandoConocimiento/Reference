@@ -20,7 +20,7 @@ std::vector< std::pair<T, T> > PrimeFactorization(T n) {            //Return the
     std::vector< std::pair<T, T> > Factors;                         //This is where we save the factors
     T exponent;                                                     //This is exponent of a given prime
     
-    for (exponent = 0; (n & 1) == 0 ; ++exponent)                   //Is last digit a '0' in binary?
+    for (exponent = 0; (n & 1) == 0; ++exponent)                    //Is last digit a '0' in binary?
         n = n >> 1;                                                 //Remove last digit in bin, and save
     if (exponent) Factors.emplace_back(2, exponent);                //Add the # of times that 2 divides n
 

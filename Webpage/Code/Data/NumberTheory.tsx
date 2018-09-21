@@ -71,6 +71,52 @@ const SubTopics: Array<SubTopic> = [
         ),
     },
     {
+        name: "Get Divisors",
+        link: "Divisors",
+        file: "Divisors.cpp",
+        visibleParts: [ [6, 22], [24, 40] ],
+        size: 1.05,
+        text: (
+            <div>
+                Ok, so you got a integer, call it \( {"n"} \)
+
+                <br />
+                <h6><b>I just want the number of divisors</b></h6>
+
+                Then, use the idea of prime factorization, for example 
+                \( {String.raw`600 = 2^3 \cdot 3^1 \cdot 5^2`} \)
+                <br />
+                So if you just want to get the number of divisor just do:
+                \( {String.raw`numberOfDivisors = (3+1) (1+1) (2+1)`} \)
+
+                <br />
+                <br />
+
+                <h6><b>I want to get them also</b></h6>
+
+                What I did to get them is simple:
+
+                <ul className="browser-default">
+                    <li>
+                        Count all integer that can be divisors
+                    </li>
+                    <li>
+                        Remember to count until \( {String.raw`\sqrt{n}`} \)
+                        because when you get there, you have counted all the divisors
+                    </li>
+                    <li>
+                        Now, when you find a divisor call it \( {"i"} \), remember to store also
+                        \( {String.raw`\dfrac{n}{i}`} \) because it is also a divisor.
+                    </li>
+                </ul>
+
+                <br />
+                <br />
+
+            </div>
+        ),
+    },
+    {
         name: "Sieve of Eratosthenes",
         link: "SieveOfEratosthenes",
         file: "SieveOfEratosthenes.cpp",
