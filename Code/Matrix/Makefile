@@ -1,13 +1,13 @@
-Compiler = g++-7
-Flags = -std=c++17 -Wall
-OutputName = MatrixTest
-
-Matrix: MatrixClass.cpp
-	$(Compiler) MatrixClass.cpp $(Flags) -o $(OutputName)
-	clear
-	sleep 3
-	./$(OutputName)
-
+compilers = g++-7
+flags = -std=c++17 -Wall
+outputName = MatrixTest
+fileName = index.cpp
 
 Compile:
-	$(Compiler) MatrixClass.cpp $(Flags) -o $(OutputName)
+	$(compilers) $(fileName) $(flags) -o $(outputName)
+
+CompileAndRun: 
+	$(compilers) $(fileName) $(flags) -o $(outputName)
+	clear
+	sleep 3
+	./$(outputName)
