@@ -2,6 +2,7 @@
 #include <vector>                           
 #include <stdexcept>                        
 #include <algorithm>                        
+#include <functional>                        
 
 using namespace std;       
 
@@ -28,7 +29,7 @@ class Matrix {
     Matrix (size_t initialRows, size_t initialColumns, function<T (size_t, size_t)> Function): 
         rows {initialRows}, 
         columns {initialColumns}, 
-        data (initialRows * initialColumns, element) 
+        data (initialRows * initialColumns) 
     {
         for (size_t i = 0; i < initialRows; ++i)                            
             for (size_t j = 0; j < initialColumns; ++j)       
@@ -44,7 +45,7 @@ class Matrix {
         throw std::length_error("Incompatible size of rows or columns");   
     }
 
-    Matrix (initializer_list< initializer_list<T> > initialData): 
+    Matrix (const initializer_list< initializer_list<T> > initialData): 
         rows {initialData.size()}, 
         columns {(*initialData.begin()).size()} 
     {
@@ -54,23 +55,28 @@ class Matrix {
             for (const auto& element : rows) data.push_back(element), j++;
 
             if (j == columns) throw std::length_error("Incompatible size of columns");
-
-            assert(columns == j);
         }
     }
 
     Matrix(Matrix&& toMoveMatrix): 
-        data {std::move(toMoveMatrix.data)};
-        rows {std::move(toMoveMatrix.rows)};
-        columns {std::move(toMoveMatrix.columns)};
+        data {std::move(toMoveMatrix.data)},
+        rows {toMoveMatrix.rows},
+        columns {toMoveMatrix.columns}
     {
 
     }
 
+    Matrix(const Matrix& toCopyMatrix): 
+        data {toCopyMatrix.data},
+        rows {toCopyMatrix.rows},
+        columns {toCopyMatrix.columns}
+    {
+
+    }
 
     // GENERAL FUNCTIONS
-    int rows() const { return rows; }                   
-    int columns() const { return columns; }           
+    int getRows() const { return rows; }                   
+    int getColumns() const { return columns; }           
 
     bool isSafeIndex(size_t i, size_t j) const {
         return ( 0 <= i and i < rows and 0 <= j and j < columns );
@@ -120,7 +126,7 @@ class Matrix {
         return newMatrix;   
     }
     Matrix& operator+= (const Matrix<T> &other) {           
-        if (this->rows != that.rows or this->columns != that.columns)  
+        if (this->rows != other.rows or this->columns != other.columns)  
             throw std::invalid_argument("Different size of inputs");  
 
         for (size_t i = 0; i < this->data.size(); i++)
@@ -135,13 +141,13 @@ class Matrix {
         return newMatrix;   
     }
     Matrix& operator-= (const Matrix<T> &other) {           
-        if (this->rows != that.rows or this->columns != that.columns)  
+        if (this->rows != other.rows or this->columns != other.columns)  
             throw std::invalid_argument("Different size of inputs");  
 
         for (size_t i = 0; i < this->data.size(); i++)
             this->data[i] -= other.data[i];  
 
-        return this;
+        return *this;
     }
 
     Matrix operator*(const T& element) const {
@@ -152,7 +158,7 @@ class Matrix {
     Matrix& operator*=(const T& element) const {
         for (auto& cell : this->data) cell *= element;
 
-        return result;
+        return *this;
     }
 
     Matrix operator*(const Matrix& other) const {
@@ -160,8 +166,8 @@ class Matrix {
         result *= other;
         return result;
     }
-    Matrix& operator*=(const Matrix& other) const {
-        if (this->columns != that.rows) 
+    Matrix& operator*=(const Matrix& other) {
+        if (this->columns != other.rows) 
             throw std::invalid_argument("Incompatible size of inputs");  
 
         Matrix result {rows, other.columns};
@@ -175,8 +181,8 @@ class Matrix {
                 result(i, j) = sum;
             }
         }
-
-        *this = result;
+        
+        *this = std::move(result);
         
         return *this;
     }
@@ -186,6 +192,12 @@ class Matrix {
 
 int main(void) {
 
+    Matrix<double> m1 {3, 3, [] (size_t i, size_t j){return i * j;}};
+    cout << m1 << endl;
+    Matrix<double> m2 {3, 4, [] (size_t i, size_t j){return 2 + i * j;}};
+    cout << m2 << endl;
+
+    cout << m1 * m2 << endl;
 
     return 0;
 }
