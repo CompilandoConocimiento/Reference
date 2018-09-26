@@ -4,32 +4,32 @@
 using namespace std; 
 
 template<typename T>
-T countDivisors(T n) { 
-    T exponent, count = 1; 
+T countDivisors(T number) { 
+    T exponent, count {1}; 
     
-    for (exponent = 0; (n & 1) == 0; ++exponent)  
-        n = n >> 1;     
+    for (exponent = 0; (number & 1) == 0; ++exponent)  
+        number = number >> 1;     
     if (exponent) count *= (exponent + 1);
 
-    for (T i = 3; i * i <= n; i += 2) {     
-        for (exponent = 0; (n % i) == 0; ++exponent) n /= i;  
+    for (T i = 3; i * i <= number; i += 2) {     
+        for (exponent = 0; (number % i) == 0; ++exponent) number /= i;  
         if (exponent) count *= (exponent + 1);
     }
     
-    if (n > 1) count *= (1 + 1);
+    if (number > 1) count *= (1 + 1);
 
     return count;
 }
 
 template<typename T>
-vector<T>  getDivisors(T n) { 
+vector<T>  countDivisors(T number) { 
     vector<T> divisors, otherDivisors;
 
-    for (T i = 1; i * i <= n; i++) { 
-        if (n % i == 0) { 
-            if (n / i != i) {
+    for (T i = 1; i * i <= number; i++) { 
+        if (number % i == 0) { 
+            if (number / i != i) {
                 divisors.push_back(i); 
-                otherDivisors.push_back(n / i);
+                otherDivisors.push_back(number / i);
             }
             else divisors.push_back(i); 
         } 

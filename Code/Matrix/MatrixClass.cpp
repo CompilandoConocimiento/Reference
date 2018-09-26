@@ -59,17 +59,17 @@ class Matrix {
     }
 
     Matrix(Matrix&& toMoveMatrix): 
-        data {std::move(toMoveMatrix.data)},
         rows {toMoveMatrix.rows},
-        columns {toMoveMatrix.columns}
+        columns {toMoveMatrix.columns},
+        data {std::move(toMoveMatrix.data)}
     {
 
     }
 
     Matrix(const Matrix& toCopyMatrix): 
-        data {toCopyMatrix.data},
         rows {toCopyMatrix.rows},
-        columns {toCopyMatrix.columns}
+        columns {toCopyMatrix.columns},
+        data {toCopyMatrix.data}
     {
 
     }
@@ -83,13 +83,19 @@ class Matrix {
     }
 
     // Operators
-    friend ostream& operator<<(ostream& os, const Matrix& matrix) {  
+    friend ostream& operator<<(ostream& os, const Matrix& matrix) { 
+        os << "{";
         for (size_t i = 0; i < matrix.rows; i++) {
+            os << "{";
             for (size_t j = 0; j < matrix.columns; j++) {
-                os << "[" << matrix(i, j) << "]";
+                os << matrix(i, j);
+                if (j + 1 != matrix.columns) os << ",";
             }
-            os << "\n";
+            os << "}";
+            if (i + 1 != matrix.rows) os << ",";
         }
+        os << "}";
+
         return os;
     }
 
@@ -103,11 +109,11 @@ class Matrix {
 
     T operator()(size_t i, size_t j) const {
         if (!isSafeIndex(i, j)) throw std::invalid_argument("Out of Bounderies");
-        return data[(rows * i) + j];
+        return data[(columns * i) + j];
     }
     T& operator()(size_t i, size_t j) {
         if (!isSafeIndex(i, j)) throw std::invalid_argument("Out of Bounderies");
-        return data[(rows * i) + j];
+        return data[(columns * i) + j];
     }
 
     bool operator==(const Matrix& other) const {
@@ -118,9 +124,9 @@ class Matrix {
         
         return true;
     }
-    bool operator!= (const Matrix<T> &other) { return !(this->operator==(other)); } 
+    bool operator!= (const Matrix<T> &other) const { return !(this->operator==(other)); } 
 
-    Matrix operator+ (const Matrix<T> &other) { 
+    Matrix operator+ (const Matrix<T> &other) const { 
         Matrix newMatrix {*this};   
         newMatrix += other;  
         return newMatrix;   
@@ -132,10 +138,10 @@ class Matrix {
         for (size_t i = 0; i < this->data.size(); i++)
             this->data[i] += other.data[i];  
 
-        return this;
+        return *this;
     }
 
-    Matrix operator- (const Matrix<T> &other) { 
+    Matrix operator- (const Matrix<T> &other) const { 
         Matrix newMatrix {*this};   
         newMatrix -= other;  
         return newMatrix;   
@@ -155,7 +161,7 @@ class Matrix {
         result *= element;
         return result;
     }
-    Matrix& operator*=(const T& element) const {
+    Matrix& operator*=(const T& element) {
         for (auto& cell : this->data) cell *= element;
 
         return *this;
@@ -170,14 +176,13 @@ class Matrix {
         if (this->columns != other.rows) 
             throw std::invalid_argument("Incompatible size of inputs");  
 
-        Matrix result {rows, other.columns};
+        Matrix result {rows, other.columns, -1};
 
-        for (size_t i = 0; i < rows; i++) {
+        for (size_t i = 0; i < this->rows; i++) {
             for (size_t j = 0; j < other.columns; j++) {
-                T sum = 0;
-                for (size_t k = 0; k < rows; k++) 
+                T sum  {0};
+                for (size_t k = 0; k < this->columns; k++) 
                     sum += operator()(i, k) * other(k, j);
-
                 result(i, j) = sum;
             }
         }
@@ -191,7 +196,6 @@ class Matrix {
 
 
 int main(void) {
-
     Matrix<double> m1 {3, 3, [] (size_t i, size_t j){return i * j;}};
     cout << m1 << endl;
     Matrix<double> m2 {3, 4, [] (size_t i, size_t j){return 2 + i * j;}};
