@@ -23,19 +23,19 @@ T countDivisors(T n) {
 
 template<typename T>
 vector<T>  getDivisors(T n) { 
-    vector<T> divisors, bigDivisors;
+    vector<T> divisors, otherDivisors;
 
     for (T i = 1; i * i <= n; i++) { 
         if (n % i == 0) { 
             if (n / i != i) {
                 divisors.push_back(i); 
-                bigDivisors.push_back(n / i);
+                otherDivisors.push_back(n / i);
             }
             else divisors.push_back(i); 
         } 
     } 
 
-    divisors.insert(end(divisors), rbegin(bigDivisors), rend(bigDivisors));
+    divisors.insert(end(divisors), rbegin(otherDivisors), rend(otherDivisors));
     return divisors;
 }
 
