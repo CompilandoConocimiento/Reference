@@ -6,13 +6,12 @@
 
 template <class T>                                                                 
 class Matrix {   
-  using namespace std;       
 
   private:                                                                         
     std::size_t rows;                                                                   
     std::size_t columns;                                                                
 
-    vector<T> data;                                                               
+    std::vector<T> data;                                                               
 
   public:                                                                         
     
@@ -25,7 +24,7 @@ class Matrix {
         if (rows < 1 or columns < 1)                                            
         throw std::length_error("Incompatible size of rows or columns");   
     }
-    Matrix (size_t initialRows, size_t initialColumns, function<T (size_t, size_t)> Function): 
+    Matrix (size_t initialRows, size_t initialColumns, std::function<T (size_t, size_t)> Function): 
         rows {initialRows}, 
         columns {initialColumns}, 
         data (initialRows * initialColumns) 
@@ -35,7 +34,7 @@ class Matrix {
                 (*this)(i, j) = Function(i, j);       
     }
 
-    Matrix (size_t initialRows, size_t initialColumns, const vector<T>& initialData): 
+    Matrix (size_t initialRows, size_t initialColumns, const std::vector<T>& initialData): 
         rows {initialRows}, 
         columns {initialColumns}, 
         data (initialData) 
@@ -44,16 +43,15 @@ class Matrix {
         throw std::length_error("Incompatible size of rows or columns");   
     }
 
-    Matrix (const initializer_list< initializer_list<T> > initialData): 
+    Matrix (const std::initializer_list< std::initializer_list<T> > initialData): 
         rows {initialData.size()}, 
         columns {(*initialData.begin()).size()} 
     {
-        assert(initialData.size() > 0);
         for (const auto& rows : initialData) {
             size_t j {0};
             for (const auto& element : rows) data.push_back(element), j++;
 
-            if (j == columns) throw std::length_error("Incompatible size of columns");
+            if (j != columns) throw std::length_error("Incompatible size of columns");
         }
     }
 
@@ -74,15 +72,15 @@ class Matrix {
     }
 
     // GENERAL FUNCTIONS
-    int getRows() const { return rows; }                   
-    int getColumns() const { return columns; }           
+    size_t getRows() const { return rows; }                   
+    size_t getColumns() const { return columns; }           
 
     bool isSafeIndex(size_t i, size_t j) const {
         return ( 0 <= i and i < rows and 0 <= j and j < columns );
     }
 
     // Operators
-    friend ostream& operator<<(ostream& os, const Matrix& matrix) { 
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) { 
         os << "{";
         for (size_t i = 0; i < matrix.rows; i++) {
             os << "{";
@@ -106,11 +104,11 @@ class Matrix {
     }
 
 
-    T operator()(size_t i, size_t j) const {
+    T operator()(size_t i, size_t j = T{0}) const {
         if (!isSafeIndex(i, j)) throw std::invalid_argument("Out of Bounderies");
         return data[(columns * i) + j];
     }
-    T& operator()(size_t i, size_t j) {
+    T& operator()(size_t i, size_t j = T{0}) {
         if (!isSafeIndex(i, j)) throw std::invalid_argument("Out of Bounderies");
         return data[(columns * i) + j];
     }

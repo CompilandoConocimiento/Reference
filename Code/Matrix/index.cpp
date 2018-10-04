@@ -5,15 +5,31 @@
 #include <functional>                        
 
 #include "./MatrixClass.cpp"
+#include "./Algorithms.cpp"
 using namespace std;
 
 int main(void) {
-    Matrix<double> m1 {3, 3, [] (size_t i, size_t j){return i * j;}};
-    cout << m1 << endl;
-    Matrix<double> m2 {3, 4, [] (size_t i, size_t j){return 2 + i * j;}};
-    cout << m2 << endl;
 
-    cout << m1 * m2 << endl;
+    Matrix<double> U({
+        {4 , -1, 2, 3 },
+        {0 , -2, 7, -4},
+        {0 ,  0 , 6, 5},
+        {0 ,  0 , 0, 3},
+    });
+
+    Matrix<double> b({
+        {20},
+        {-7},
+        {4},
+        {6}
+    });
+
+    auto x = SolveUpperTriangular(U, b);
+
+    cout << U << endl;
+    cout << b << endl;
+    cout << U * x << endl;
+    cout << x << endl;
 
     return 0;
 }
