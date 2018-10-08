@@ -80,7 +80,7 @@ class Matrix {
     }
 
     // Operators
-    friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) { 
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
         os << "{";
         for (size_t i = 0; i < matrix.rows; i++) {
             os << "{";

@@ -2,31 +2,31 @@
 #include <vector>                           
 #include <stdexcept>                        
 #include <algorithm>                        
-#include <functional>                        
+#include <functional> 
 
 using namespace std;
 
-// L x = b
+// L y = b
 template <typename T>
-Matrix<T> SolveLowerTriangular(Matrix<T> L, Matrix<T> b) {
-    Matrix<T> x(L.getRows(), 1);
+Matrix<T> SolveLowerTriangular(const Matrix<T>& L, Matrix<T> b) {
+    Matrix<T> y(L.getRows(), 1);
 
     for (size_t i = 0; i < L.getRows(); i++) {
         if (L(i, i) == T{0}) 
             throw std::invalid_argument("Singular matrix"); 
 
-        x(i) = b(i) / L(i, i) ;
+        y(i) = b(i) / L(i, i);
         
         for (size_t j = i + 1; j < L.getRows(); j++)
-            b(j) = b(j) - L(j, i) * x(i);
+            b(j) = b(j) - L(j, i) * y(i);
     }
 
     return x;
 }
 
-// U x = b
+// U y = b
 template <typename T>
-Matrix<T> SolveUpperTriangular(Matrix<T> U, Matrix<T> b) {
+Matrix<T> SolveUpperTriangular(const Matrix<T>& U, Matrix<T> b) {
     Matrix<T> x(U.getRows(), 1);
 
     for (ssize_t i = U.getRows() - 1; i >= 0; i--) {
