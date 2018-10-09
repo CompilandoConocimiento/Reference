@@ -19,7 +19,7 @@ function [L, U] = LUDecomposition(A)
             L(row, step) = U(row, step) / U(step, step);
 
             for column = (1 : n)
-                U(row, column) = U(row, column) - L(row, step) * U(step, column);
+                U(row, column) = U(row, column) - (L(row, step) * U(step, column));
             end
         end
     end
