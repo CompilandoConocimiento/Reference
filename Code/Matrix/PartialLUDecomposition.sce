@@ -1,14 +1,14 @@
-// Factor A as A = LU
+// Factor A as PA = LU
 // @param: A a not singular matrix
 // @return: L (not sure) lower triangule matrix
 // @return: U upper triangule matrix
 // @return: P permutation matrix 
 
-// To solve use A = LU
+// To solve use PA = LU
 // y = FS(PL, Pb)
 // x = BS(U, y)
 
-function[L, U, P] = PartialLUDecomposition2(A)
+function[L, U, P] = PartialLUDecomposition(A)
     [m, n] = size(A);
     P = eye(n, n); L = eye(n, n); U = A;
 
