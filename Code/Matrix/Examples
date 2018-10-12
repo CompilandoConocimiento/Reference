@@ -4,6 +4,8 @@
 * [8 2 9; 4 9 4; 6 7 9]
 
 
-exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/BackwardSubstitution.sce', -1)
-exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/FowardSubsititution.sce', -1)
-exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/LUDecomposition.sce', -1)
+exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/BackwardSubstitution.sci', -1)
+exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/Cholesky.sci', -1)
+exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/FowardSubsititution.sci', -1)
+exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/LUDecomposition.sci', -1)
+exec('/Users/mac/Documents/Projects/Reference/Code/Matrix/PartialLUDecomposition.sci', -1)
