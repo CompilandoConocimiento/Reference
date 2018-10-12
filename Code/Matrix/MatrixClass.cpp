@@ -4,6 +4,8 @@
 #include <algorithm>                        
 #include <functional>                        
 
+using namespace std;
+
 template <class T>                                                                 
 class Matrix {   
 
@@ -190,3 +192,111 @@ class Matrix {
     }
 
 };
+
+
+template <typename T>
+pair< Matrix<T>, Matrix<T> > BasicLUDecomposition(const Matrix<T>& A) {
+    if (A.getColumns() != A.getRows()) throw invalid_argument("Not square matrix"); 
+
+    const size_t n = A.getColumns();
+    Matrix<T> L(n, n, T{0}), U {A};
+
+    for (size_t row = 0; row < n; row++) L(row, row) = T{1};
+
+    for (size_t step = 0; step < n; step++) {
+        for (size_t row = step + 1; row < n; row++) {
+            if (U(step, step) == T{0}) throw invalid_argument("Singular matrix");  
+            L(row, step) =  U(row, step) / U(step, step);
+
+            for (size_t column = 0; column < n; column++)
+                U(row, column) += T{-1} * L(row, step) * U(step, column); 
+        }
+    }
+
+    return {L, U};
+}
+
+
+// L y = b
+template <typename T>
+Matrix<T> SolveLowerTriangular(const Matrix<T>& L, Matrix<T> b) {
+    Matrix<T> y(L.getRows(), 1);
+
+    for (size_t i = 0; i < L.getRows(); i++) {
+        if (L(i, i) == T{0}) 
+            throw std::invalid_argument("Singular matrix"); 
+
+        y(i) = b(i) / L(i, i);
+        
+        for (size_t j = i + 1; j < L.getRows(); j++)
+            b(j) = b(j) - L(j, i) * y(i);
+    }
+
+    return x;
+}
+
+// U y = b
+template <typename T>
+Matrix<T> SolveUpperTriangular(const Matrix<T>& U, Matrix<T> b) {
+    Matrix<T> x(U.getRows(), 1);
+
+    for (ssize_t i = U.getRows() - 1; i >= 0; i--) {
+        if (U(i, i) == T{0}) 
+            throw std::invalid_argument("Singular matrix"); 
+
+        x(i) = b(i) / U(i, i);
+        
+        for (ssize_t j = i - 1; j >= 0; j--)
+            b(j) = b(j) - U(j, i) * x(i);
+    }
+
+    return x;
+}
+
+
+int main(void) {
+
+    Matrix<double> A({
+        {1 ,  1,  1},
+        {4 ,  3, -1},
+        {4 ,  5 , 3},
+    });
+
+    Matrix<double> b({
+        {1},
+        {6},
+        {4},
+    });
+
+    auto [L, U] = BasicLUDecomposition(A);
+    cout << A << endl;
+    
+    cout << L << endl;
+    cout << U << endl;
+    cout << endl;
+
+    cout << L * U << endl;
+    cout << endl;
+
+    auto y = SolveLowerTriangular(L, b);
+
+    cout << "y" << y << endl;
+    cout << L * y << endl;
+    cout << b << endl;
+
+    cout << endl;
+
+    auto x = SolveUpperTriangular(U, y);
+    cout << U * x << endl;
+    cout << y << endl;
+
+    cout << endl;
+
+    cout << x << endl;
+
+    cout << A * x << endl;
+
+    return 0;
+}
+
+

@@ -75,8 +75,6 @@ NewDiference -= MatrixB;
 
 //Multiplicate 2 Matrices
 Matrix<T> NewMatrix = MatrixA * MatrixB;
-```
-
 
 * * *
 
