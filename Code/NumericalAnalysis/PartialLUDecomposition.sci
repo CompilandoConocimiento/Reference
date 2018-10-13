@@ -8,11 +8,11 @@
 // y = FS(PL, Pb)
 // x = BS(U, y)
 
-function[L, U, P] = PartialLUDecomposition(A)
+function [L, U, P] = PartialLUDecomposition(A)
     [m, n] = size(A);
     P = eye(n, n); L = eye(n, n); U = A;
 
-    for step = (1 : n)
+    for step = (1 : n - 1)
         
         maxPivotRow = step;
         for posibility = (step + 1 : n)
@@ -52,4 +52,5 @@ function[L, U, P] = PartialLUDecomposition(A)
             end
         end
     end
+
 endfunction

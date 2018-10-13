@@ -8,7 +8,7 @@ function [L, U] = LUDecomposition(A)
     L = eye(m, n);
     U = A; 
 
-    for step = (1 : n)
+    for step = (1 : n - 1)
 
         if (A(step, step) == 0)
             error('Error: Singular matrix');

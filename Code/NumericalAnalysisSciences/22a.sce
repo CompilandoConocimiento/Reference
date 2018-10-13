@@ -11,7 +11,7 @@ disp("A:")
 disp(A22)
 
 disp("b:")
-disp(c22)
+disp(b22)
 
 disp("Solving...")
 
