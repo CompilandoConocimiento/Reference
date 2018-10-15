@@ -1,3 +1,3 @@
 * Trie
 * CreateBTSfromSorted
-* Numerical Analysis
+* Numerical Analysis algorithms
