@@ -1,9 +1,9 @@
 // Factor A as A = L * L^T
-// using the famous algorithm called Cholesky
+// using the famous algorithm called Cholesky using a modification of Gaussian Elimination
 // @param: A a positive defined matrix (so A is symetric)
 // @return: L lower triangule matrix
 
-function[L] = Cholesky(A)
+function[L] = CholeskyGaussian(A)
     
     [m, n] = size(A);       
     L = zeros(m, n);        

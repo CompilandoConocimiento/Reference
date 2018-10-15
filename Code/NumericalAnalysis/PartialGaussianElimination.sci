@@ -2,7 +2,7 @@
 // @param: A a not singular matrix
 // @return: x such Ax = b
 
-function [x] = GaussianElimination(A, b)
+function [x] = PartialGaussianElimination(A, b)
     [m, n] = size(A);
     U = A, B = b, x = zeros(n, 1)
 
