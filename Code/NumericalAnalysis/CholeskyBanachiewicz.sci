@@ -21,11 +21,11 @@ function[L, D] = CholeskyBanachiewicz(A, option)
 
         for row = (step + 1 : n)
             L(row, step) = U(row, step) / U(step, step);
-            U(row, row) = U(row, row) - L(row, row) * U(step, row);
+            for column = (1 : n)
+                U(row, column) = U(row, column) - L(row, step) * U(step, column);
+            end
         end
     end
-
-    [L, U] = LUDecomposition(A);
 
     if option == 1
         for step = (1 : n) 
