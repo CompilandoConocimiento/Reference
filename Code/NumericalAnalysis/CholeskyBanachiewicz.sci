@@ -9,7 +9,21 @@
 
 function[L, D] = CholeskyBanachiewicz(A, option)
     [m, n] = size(A);       
-    D = eye(n, n);        
+    D = eye(n, n);     
+    L = eye(m, n);
+    U = A; 
+
+    for step = (1 : n - 1)
+        if (A(step, step) == 0)
+            error('Error: Singular matrix');
+            return;
+        end
+
+        for row = (step + 1 : n)
+            L(row, step) = U(row, step) / U(step, step);
+            U(row, row) = U(row, row) - L(row, row) * U(step, row);
+        end
+    end
 
     [L, U] = LUDecomposition(A);
 
@@ -24,5 +38,7 @@ function[L, D] = CholeskyBanachiewicz(A, option)
             D(step, step) = U(step, step);
         end
     end
+
+
 
 endfunction

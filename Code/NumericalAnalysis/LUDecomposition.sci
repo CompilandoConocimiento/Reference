@@ -23,4 +23,5 @@ function [L, U] = LUDecomposition(A)
             end
         end
     end
+    
 endfunction
