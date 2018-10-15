@@ -1,4 +1,4 @@
-// Factor A
+// Factor A as A = L * U
 // @param: A a not singular matrix
 // @return: L lower triangule matrix
 // @return: U upper triangule matrix

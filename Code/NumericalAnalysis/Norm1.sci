@@ -1,6 +1,6 @@
 // Get the norm 1 (max in columns)
 // @param: A a matriz
-// @return: r wich is r = |A|
+// @return: r which is r = |A|
 
 function [r] = Norm1(A)
     [m, n] = size(A);

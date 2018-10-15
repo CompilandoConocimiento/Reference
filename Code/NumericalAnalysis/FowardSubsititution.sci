@@ -1,4 +1,5 @@
 // Solve a system Ly = b where L is triangular inferior
+// using the famous algorithm foward substitution
 // @param: L triangular inferior matrix
 // @param: b the b in Ly = b
 // @return: x the solution vector

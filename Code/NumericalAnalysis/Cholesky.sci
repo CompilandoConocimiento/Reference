@@ -1,5 +1,6 @@
 // Factor A as A = L * L^T
-// @param: A a positive defined matrix
+// using the famous algorithm called Cholesky
+// @param: A a positive defined matrix (so A is symetric)
 // @return: L lower triangule matrix
 
 function[L] = Cholesky(A)

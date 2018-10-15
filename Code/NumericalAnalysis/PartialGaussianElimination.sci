@@ -7,8 +7,27 @@ function [x] = GaussianElimination(A, b)
     U = A, B = b, x = zeros(n, 1)
 
     for step = (1 : n - 1)
-        if (A(step, step) == 0) then
+        maxPivotRow = step;
+        for posibility = (step + 1 : n)
+            if abs(U(posibility, step)) > U(maxPivotRow, step)
+                maxPivotRow = posibility
+            end
+        end
+
+        if (A(maxPivotRow, step) == 0) then
             error('Error: Singular matrix'); 
+        end
+
+        if maxPivotRow ~= step then
+            for element = (1 : n)
+                temporal = U(step, element)
+                U(step, element) = U(maxPivotRow, element)
+                U(maxPivotRow, element) = temporal
+            end
+
+            temporal = B(maxPivotRow)
+            B(maxPivotRow) = B(step)
+            B(step) = temporal
         end
 
         pivot = U(step, step);

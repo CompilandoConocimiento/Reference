@@ -1,4 +1,5 @@
 // Solve a system Ux = y where U is an upper triangular 
+// using the famous algorithm backward substitution
 // @param: U triangular superior matrix
 // @param: b the b in Ux = b
 // @return: x the solution vector

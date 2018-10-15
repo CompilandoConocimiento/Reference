@@ -21,7 +21,7 @@ function [L, U, P] = PartialLUDecomposition(A)
             end
         end
 
-        if (A(step, step) == 0)
+        if (A(maxPivotRow, step) == 0)
             error('Error: Singular matrix'); 
         end
 

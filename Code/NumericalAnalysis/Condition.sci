@@ -1,3 +1,6 @@
+// Estimates the condition of a Matrix: (|A||A^{-1}|)
+// @param: A a not singular matrix
+// @return: result the estimation
 
 function [result] = Condition(A, numberOfTimes)
     [m, n] = size(A);
