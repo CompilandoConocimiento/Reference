@@ -24,7 +24,7 @@ std::vector<bool> EratosthenesSieveIsPrime(T n) {               //To check if i 
 template<typename T>
 std::vector<T> EratosthenesSievePrimes(T n) {                   //Return a vector of only primes
     std::vector<bool> isPrime(n + 1, true);                     //Create the origianl Sieve
-    std::vector<T> Primes(1, 2);                                //2 is a prime, dahhhhh!
+    std::vector<T> Primes{2};                                   //2 is a prime, dahhhhh!
 
     //isPrime[0] = isPrime[1] = false;                          //Uncomment if you want bool version
     //for (T i = 4; i <= n; i += 2) isPrime[i] = false;         //Uncomment if you want bool version
