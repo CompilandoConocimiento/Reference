@@ -3,6 +3,11 @@
 // @param: A a positive defined matrix (so A is symetric)
 // @return: L lower triangule matrix
 
+// @Author: Rosas Hernandez Oscar Andres
+// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
+// @Author: Laurrabaquio Rodríguez Miguel Salvador
+// @Author: Pahua Castro Jesús Miguel Ángel
+
 function[L] = CholeskyGaussian(A)
     
     [m, n] = size(A);       

@@ -4,6 +4,11 @@
 // @param: b the b in Ux = b
 // @return: x the solution vector
 
+// @Author: Rosas Hernandez Oscar Andres
+// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
+// @Author: Laurrabaquio Rodríguez Miguel Salvador
+// @Author: Pahua Castro Jesús Miguel Ángel
+
 function [x] = BackwardSubstitution(U, b)
     [m, n] = size(U);
     x = zeros(n, 1);

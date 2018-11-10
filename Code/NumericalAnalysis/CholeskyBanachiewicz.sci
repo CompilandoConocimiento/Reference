@@ -7,6 +7,11 @@
 // @param: option if 1 then A = L * L else A = L * D * L
 // @return: L lower triangule matrix
 
+// @Author: Rosas Hernandez Oscar Andres
+// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
+// @Author: Laurrabaquio Rodríguez Miguel Salvador
+// @Author: Pahua Castro Jesús Miguel Ángel
+
 function[L, D] = CholeskyBanachiewicz(A, option)
     [m, n] = size(A);       
     D = eye(n, n);     
