@@ -4,7 +4,7 @@
 // @param: someFunction a string that represent the g(x)
 // @param: tolerance a number to set how exact you want a root
 // @param: MaximumIterations a number of maximum iterations
-// @return: L lower triangule matrix
+// @return: estimation a number such someFunction(estimation) - estimation = 0
 
 // @Author: Rosas Hernandez Oscar Andres
 // @Author: Alarcón Alvarez Aylin Yadira Guadalupe
