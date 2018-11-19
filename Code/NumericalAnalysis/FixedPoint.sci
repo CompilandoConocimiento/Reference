@@ -16,7 +16,7 @@ function [estimation] = FixedPoint(initialPoint, someFunction, tolerance, Maximu
     iterations = 0;
     estimation = f(initialPoint);
     
-    while ((abs(f(estimation)) > tolerance) && (iterations < MaximumIterations))
+    while ((abs(norm(f(estimation))) > tolerance) && (iterations < MaximumIterations))
         oldEstimation = estimation;
         estimation = f(estimation);
 

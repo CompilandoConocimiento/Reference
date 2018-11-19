@@ -13,7 +13,7 @@
 //  * @author: Laurrabaquio Rodríguez Miguel Salvador
 //  * @author: Pahua Castro Jesús Miguel Ángel
 //  */
-function [estimation, iterations] = Secant(a, b, someFunction, tolerance, MaximumIterations)
+function [estimation, iterations] = RegulaFalsi(a, b, someFunction, tolerance, MaximumIterations)
     deff('y = f(x)', ['y = evstr(someFunction)']);
     iterations = 0;
     estimation = a + (b - a) / 2;
@@ -40,9 +40,4 @@ function [estimation, iterations] = Secant(a, b, someFunction, tolerance, Maximu
         iterations = iterations + 1;
     end
 
-endfunction
-
-function [newStep] = SecantStep(step, oldStep, f)
-    derivative = (f(step) - f(oldStep)) / (step - oldStep);
-    newStep = step - f(step) / derivative;
 endfunction

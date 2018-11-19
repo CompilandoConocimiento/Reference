@@ -16,10 +16,10 @@ function [estimation] = NRootNewtonRaphson(x0, n, A, tolerance, MaximumIteration
     
     while ((abs(estimation**n - A) > tolerance) && (iterations < MaximumIterations))
         oldEstimation = estimation;
-        estimation =((n-1) * estimation**n + A) / (n * estimation**(n-1))
+        estimation = ((n-1) * estimation**n + A) / (n * estimation**(n-1));
 
         if (RelativeDifference(oldEstimation, estimation) < tolerance) 
-            break 
+            break;
         end
 
         iterations = iterations + 1;
