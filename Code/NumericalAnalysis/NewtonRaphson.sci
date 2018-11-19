@@ -2,7 +2,7 @@
 //  * Function to aproximate a root of f(x) using the Newton Raphson method
 //  *
 //  * @param: estimation a initial guess to the root
-//  * @param someFunction - a string that represent the expression to get x 
+//  * @param f - a function :v
 //  * @param tolerance - a number to set how exact you want a root
 //  * @param MaxIterations - a number of maximum iterations
 //  * @return estimation - a number such someFunction(estimation) = 0
@@ -13,15 +13,17 @@
 //  * @author: Pahua Castro Jesús Miguel Ángel
 //  */
 
-function [estimation, iterations] = NewtonRaphson(estimation, someFunction, tolerance, MaxIterations)
-    deff('y = f(x)', ['y = evstr(someFunction)']);
+function [estimation, iterations] = NewtonRaphson(estimation, f, tolerance, MaxIterations)
     iterations = 0;
 
     while ((abs(f(estimation)) > tolerance) && (iterations < MaxIterations))
         oldEstimation = estimation;
         estimation = NewtonRaphsonStep(estimation, f);
 
-        if (RelativeDifference(oldEstimation, estimation) < tolerance) 
+        if (isnan(estimation)) then
+            disp("Wrong initial point")
+            break;
+        elseif (RelativeDifference(oldEstimation, estimation) < tolerance) 
             break 
         end
 

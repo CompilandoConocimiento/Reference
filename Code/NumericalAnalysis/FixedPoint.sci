@@ -1,18 +1,21 @@
-// Function to aproximate a root of f(x) using the fixed point method , so f(x) can be written as 
-// f(x) = g(x) - x = 0
-// @param: initialPoint a number
-// @param: someFunction a string that represent the g(x)
-// @param: tolerance a number to set how exact you want a root
-// @param: MaximumIterations a number of maximum iterations
-// @return: estimation a number such someFunction(estimation) - estimation = 0
+//  /**
+//  * Function to aproximate a root of f(x) using the fixed point method , so f(x) can be written as 
+//  * f(x) = g(x) - x = 0
+//  *
+//  * @param a - a number such f(a)f(b) < 0
+//  * @param b - a number such f(a)f(b) < 0
+//  * @param f - a function :v
+//  * @param tolerance - a number to set how exact you want a root
+//  * @param MaxIterations - a number of maximum iterations
+//  * @return estimation - a number such someFunction(estimation) = 0
+//  *
+//  * @author: Rosas Hernandez Oscar Andres
+//  * @author: Alarcón Alvarez Aylin Yadira Guadalupe
+//  * @author: Laurrabaquio Rodríguez Miguel Salvador
+//  * @author: Pahua Castro Jesús Miguel Ángel
+//  */
 
-// @Author: Rosas Hernandez Oscar Andres
-// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
-// @Author: Laurrabaquio Rodríguez Miguel Salvador
-// @Author: Pahua Castro Jesús Miguel Ángel
-
-function [estimation] = FixedPoint(initialPoint, someFunction, tolerance, MaximumIterations)
-    deff('y = f(x)', ['y = evstr(someFunction)']);
+function [estimation] = FixedPoint(initialPoint, f, tolerance, MaximumIterations)
     iterations = 0;
     estimation = f(initialPoint);
     

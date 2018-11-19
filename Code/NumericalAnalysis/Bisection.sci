@@ -3,7 +3,7 @@
 //  *
 //  * @param a - a number such f(a)f(b) < 0
 //  * @param b - a number such f(a)f(b) < 0
-//  * @param someFunction - a string that represent the expression to get x 
+//  * @param f - a function :v
 //  * @param tolerance - a number to set how exact you want a root
 //  * @param MaxIterations - a number of maximum iterations
 //  * @return estimation - a number such someFunction(estimation) = 0
@@ -13,8 +13,7 @@
 //  * @author: Laurrabaquio Rodríguez Miguel Salvador
 //  * @author: Pahua Castro Jesús Miguel Ángel
 //  */
-function [estimation, iterations] = Bisection(a, b, someFunction, tolerance, MaxIterations)
-    deff('y = f(x)', ['y = evstr(someFunction)']);
+function [estimation, iterations] = Bisection(a, b, f, tolerance, MaxIterations)
     iterations = 0;
     estimation = a + (b - a) / 2;
 

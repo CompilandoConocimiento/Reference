@@ -3,7 +3,7 @@
 //  *
 //  * @param a - a number 
 //  * @param b - a number 
-//  * @param someFunction - a string that represent the expression to get x 
+//  * @param f - a function :v
 //  * @param tolerance - a number to set how exact you want a root
 //  * @param MaxIterations - a number of maximum iterations
 //  * @return estimation - a number such someFunction(estimation) = 0
@@ -13,8 +13,7 @@
 //  * @author: Laurrabaquio Rodríguez Miguel Salvador
 //  * @author: Pahua Castro Jesús Miguel Ángel
 //  */
-function [estimation, iterations] = RegulaFalsi(a, b, someFunction, tolerance, MaximumIterations)
-    deff('y = f(x)', ['y = evstr(someFunction)']);
+function [estimation, iterations] = RegulaFalsi(a, b, f, tolerance, MaximumIterations)
     iterations = 0;
     estimation = a + (b - a) / 2;
 
