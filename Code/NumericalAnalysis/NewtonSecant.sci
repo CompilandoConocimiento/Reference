@@ -1,38 +1,38 @@
-// Function to aproximate a root of f(x) using the secant method
-// @param: x_0 a initial guess to the root
-// @param: x_1 a initial guess to the root
-// @param: someFunction a string that represent the expression to get x 
-// @param: tolerance a number to set how exact you want a root
-// @param: MaximumIterations a number of maximum iterations
-// @return: estimation a number such someFunction(estimation) = 0
-
-// @Author: Rosas Hernandez Oscar Andres
-// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
-// @Author: Laurrabaquio Rodríguez Miguel Salvador
-// @Author: Pahua Castro Jesús Miguel Ángel
-
-function [estimation] = Secant(x0, x1, someFunction, tolerance, MaximumIterations)
+// /**
+//  * Function to aproximate a root of f(x) using the secant method
+//  *
+//  * @param a - a number 
+//  * @param b - a number 
+//  * @param someFunction - a string that represent the expression to get x 
+//  * @param tolerance - a number to set how exact you want a root
+//  * @param MaxIterations - a number of maximum iterations
+//  * @return estimation - a number such someFunction(estimation) = 0
+//  *
+//  * @author: Rosas Hernandez Oscar Andres
+//  * @author: Alarcón Alvarez Aylin Yadira Guadalupe
+//  * @author: Laurrabaquio Rodríguez Miguel Salvador
+//  * @author: Pahua Castro Jesús Miguel Ángel
+//  */
+function [estimation, iterations] = Secant(a, b, someFunction, tolerance, MaximumIterations)
     deff('y = f(x)', ['y = evstr(someFunction)']);
     iterations = 0;
-    oldEstimation = x0;
-    estimation = x1;
-    
-    while ((abs(f(estimation)) > tolerance) && (iterations < MaximumIterations))
-        fk = f(estimation);
-        fk1 = (f(estimation) - f(oldEstimation)) / (estimation - oldEstimation)
-        
-        oldEstimation = estimation;
-        estimation = estimation - (fk / fk1);
+    estimation = a, oldEstimation = b;
 
-        if (RelativeDifference(oldEstimation, estimation) < tolerance) 
-            break 
+    while (iterations < MaximumIterations)
+        newEstimation = SecantStep(estimation, oldEstimation, f);
+        oldEstimation = estimation, estimation = newEstimation;
+
+        if (f(estimation) < tolerance)
+            break;
+        elseif (RelativeDifference(oldEstimation, estimation) < tolerance) 
+            break;
         end
 
         iterations = iterations + 1;
     end
 endfunction
 
-function [evaluation] = EvaluateDerivate(f, point)
-    dx = 10^-8;
-    evaluation = (f(point + dx) - f(point)) / dx; 
+function [newStep] = SecantStep(step, oldStep, f)
+    derivative = (f(step) - f(oldStep)) / (step - oldStep);
+    newStep = step - f(step) / derivative;
 endfunction

@@ -9,4 +9,3 @@ endfunction
 function [result] = RelativeDifference(old, new)
     result = abs(abs(new) - abs(old)) / abs(new)
 endfunction
-

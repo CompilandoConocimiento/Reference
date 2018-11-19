@@ -1,8 +1,8 @@
 // /**
-//  * Function to aproximate a root of f(x) using the bisection method
+//  * Function to aproximate a root of f(x) using the Regular Falsi method
 //  *
-//  * @param a - a number such f(a)f(b) < 0
-//  * @param b - a number such f(a)f(b) < 0
+//  * @param a - a number 
+//  * @param b - a number 
 //  * @param someFunction - a string that represent the expression to get x 
 //  * @param tolerance - a number to set how exact you want a root
 //  * @param MaxIterations - a number of maximum iterations
@@ -13,17 +13,17 @@
 //  * @author: Laurrabaquio Rodríguez Miguel Salvador
 //  * @author: Pahua Castro Jesús Miguel Ángel
 //  */
-function [estimation, iterations] = Bisection(a, b, someFunction, tolerance, MaxIterations)
+function [estimation, iterations] = Secant(a, b, someFunction, tolerance, MaximumIterations)
     deff('y = f(x)', ['y = evstr(someFunction)']);
     iterations = 0;
     estimation = a + (b - a) / 2;
 
-    while (iterations < MaxIterations)
-        [a, b] = BisectionStep(a, b, f);
-
-        if (RelativeDifference(a, b) < tolerance)
-            estimation = a + (b - a) / 2;
-            break;
+    while (iterations < MaximumIterations)
+        c = SecantStep(a, b, f);
+        if (SameSign(f(c), f(a)))
+            a = c;
+        else 
+            b = c;
         end
 
         if (abs(f(a)) < tolerance) 
@@ -32,18 +32,17 @@ function [estimation, iterations] = Bisection(a, b, someFunction, tolerance, Max
         elseif (abs(f(b)) < tolerance) 
             estimation = b;
             break;
+        elseif (RelativeDifference(a, b) < tolerance) 
+            estimation = a + (b - a) / 2;
+            break;
         end
 
         iterations = iterations + 1;
     end
+
 endfunction
 
-function [begin, finish] = BisectionStep(begin, finish, f)
-    middle = begin + (finish - begin) / 2;
-
-    if (SameSign(f(begin), f(middle)))
-        begin = middle;
-    else 
-        finish = middle;
-    end
+function [newStep] = SecantStep(step, oldStep, f)
+    derivative = (f(step) - f(oldStep)) / (step - oldStep);
+    newStep = step - f(step) / derivative;
 endfunction

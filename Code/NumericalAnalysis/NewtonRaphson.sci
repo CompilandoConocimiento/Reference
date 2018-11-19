@@ -1,25 +1,25 @@
-// Function to aproximate a root of f(x) using the Newton Raphson method
-// @param: x_0 a initial guess to the root
-// @param: someFunction a string that represent the expression to get x 
-// @param: tolerance a number to set how exact you want a root
-// @param: MaximumIterations a number of maximum iterations
-// @return: estimation a number such someFunction(estimation) = 0
+// /**
+//  * Function to aproximate a root of f(x) using the Newton Raphson method
+//  *
+//  * @param: estimation a initial guess to the root
+//  * @param someFunction - a string that represent the expression to get x 
+//  * @param tolerance - a number to set how exact you want a root
+//  * @param MaxIterations - a number of maximum iterations
+//  * @return estimation - a number such someFunction(estimation) = 0
+//  *
+//  * @author: Rosas Hernandez Oscar Andres
+//  * @author: Alarcón Alvarez Aylin Yadira Guadalupe
+//  * @author: Laurrabaquio Rodríguez Miguel Salvador
+//  * @author: Pahua Castro Jesús Miguel Ángel
+//  */
 
-// @Author: Rosas Hernandez Oscar Andres
-// @Author: Alarcón Alvarez Aylin Yadira Guadalupe
-// @Author: Laurrabaquio Rodríguez Miguel Salvador
-// @Author: Pahua Castro Jesús Miguel Ángel
-
-function [estimation] = NewtonRaphson(x0, someFunction, tolerance, MaximumIterations)
+function [estimation, iterations] = NewtonRaphson(estimation, someFunction, tolerance, MaxIterations)
     deff('y = f(x)', ['y = evstr(someFunction)']);
     iterations = 0;
-    estimation = x0;
-    
-    while ((abs(f(estimation)) > tolerance) && (iterations < MaximumIterations))
+
+    while ((abs(f(estimation)) > tolerance) && (iterations < MaxIterations))
         oldEstimation = estimation;
-        fk = f(estimation);
-        fk1 = EvaluateDerivate(f, estimation);
-        estimation = estimation - (fk / fk1);
+        estimation = NewtonRaphsonStep(estimation, f);
 
         if (RelativeDifference(oldEstimation, estimation) < tolerance) 
             break 
@@ -29,7 +29,8 @@ function [estimation] = NewtonRaphson(x0, someFunction, tolerance, MaximumIterat
     end
 endfunction
 
-function [evaluation] = EvaluateDerivate(f, point)
-    dx = 10^-8;
-    evaluation = (f(point + dx) - f(point)) / dx; 
+function [estimation] = NewtonRaphsonStep(estimation, f)
+    dx = 10^-7;
+    derivative = (f(estimation + dx) - f(estimation)) / dx; 
+    estimation = estimation - f(estimation) / derivative;
 endfunction
