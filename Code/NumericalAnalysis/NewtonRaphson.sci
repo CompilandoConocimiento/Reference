@@ -36,3 +36,28 @@ function [estimation] = NewtonRaphsonStep(estimation, f)
     derivative = (f(estimation + dx) - f(estimation)) / dx; 
     estimation = estimation - f(estimation) / derivative;
 endfunction
+
+
+function [estimation, iterations] = NewtonRaphsonGeneralized(estimation, f, tolerance, MaxIterations)
+    iterations = 0;
+
+    while ((abs(f(estimation)) > tolerance) && (iterations < MaxIterations))
+        oldEstimation = estimation;
+        estimation = NewtonRaphsonStep(estimation, f);
+
+        if (isnan(estimation)) then
+            disp("Wrong initial point")
+            break;
+        elseif (RelativeDifference(oldEstimation, estimation) < tolerance) 
+            break 
+        end
+
+        iterations = iterations + 1;
+    end
+endfunction
+
+function [estimation] = NewtonRaphsonStep(estimation, f)
+    dx = 10^-7;
+    derivative = (f(estimation + dx) - f(estimation)) / dx; 
+    estimation = estimation - f(estimation) / derivative;
+endfunction

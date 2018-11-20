@@ -21,9 +21,6 @@ function [estimation, iterations] = Secant(a, b, f, tolerance, MaximumIterations
         newEstimation = SecantStep(estimation, oldEstimation, f);
         oldEstimation = estimation, estimation = newEstimation;
 
-        disp(estimation)
-        disp(oldEstimation)
-
         if (abs(f(estimation)) < tolerance)
             break;
         elseif (RelativeDifference(oldEstimation, estimation) < tolerance) 
