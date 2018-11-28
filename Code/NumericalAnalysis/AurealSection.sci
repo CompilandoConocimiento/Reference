@@ -21,26 +21,11 @@ function [a, b] = AurealSection(a, b, f, tolerance, MaxIterations)
     x2 = a + (tau) * (b - a)
 
     while (iterations < MaxIterations)
-
-        disp("\item $a = " + string(a)+ "$")
-        disp("\item $b = " + string(b)+ "$")
-        disp("\item $x_1 = " + string(x1)+ "$")
-        disp("\item $x_2 = " + string(x2)+ "$")
-        disp("")
-        
         if (f(x1) < f(x2))
-            disp("Como $f(" + string(x1) + ") < f(" + string(x2) + ")$")
-            disp("\item $b = " + string(x2) + "$")
-            disp("\item $x_2 = " + string(x1) + "$")
-            disp("\item $x_1 = " + string(a) + "+ (1 -tau) * (" + string(b) + " - " + string(a) + ")$")
             b = x2
             x2 = x1
             x1 = a + (1 - tau) * (b - a)
         else 
-            disp("Como f(" + string(x1) + ") > f(" + string(x2) + ")$")
-            disp("\item $a = " + string(x1) + "$")
-            disp("\item $x_1 = " + string(x2) + "$")
-            disp("\item $x_2 = " + string(a) + "+ (tau) * (" + string(b) + " - " + string(a) + ")$")
             a = x1
             x1 = x2
             x2 = a + (tau) * (b - a)
