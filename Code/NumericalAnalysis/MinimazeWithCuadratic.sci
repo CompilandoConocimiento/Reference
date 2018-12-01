@@ -7,9 +7,9 @@ function [a, b, c] = MinimazeWithCuadratic(a, b, c, f, MaxIterations, tolerance)
         oldEstimation = b;
 
         if (a < minX && minX < b) 
-            a = a
-            b = minX
             c = b
+            b = minX
+            a = a
         else
             a = b
             b = minX
