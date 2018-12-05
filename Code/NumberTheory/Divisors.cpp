@@ -22,7 +22,7 @@ T countDivisors(T number) {
 }
 
 template<typename T>
-vector<T>  countDivisors(T number) { 
+vector<T>  getDivisors(T number) { 
     vector<T> divisors, otherDivisors;
 
     for (T i = 1; i * i <= number; i++) { 
