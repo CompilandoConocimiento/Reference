@@ -1,17 +1,17 @@
 {
-    "name": "soyoscarrh_refence",
-    "version": "0.1.0",
-    "description": "A page to my competitive programming refence",
-    "main": "index.js",
+    "name": "reference",
+    "version": "0.2.0",
+    "description": "A page to a competitive programming refence",
+    "main": "Code/App/App.tsx",
     "scripts": {
         "build": "    webpack --progress -p --config webpack.config.js",
         "dev-build": "webpack --progress -d --config webpack.config.js",
         "watch": "    webpack --progress -d --config webpack.config.js --watch",
-        "stats": "    webpack --profile     --config webpack.config.js --json > Stats.json"
+        "stats": "    webpack --profile     --config webpack.config.js --json > stats.json"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/SoyOscarRH/SoyOscarRH.github.io"
+        "url": "https://github.com/CompilandoConocimiento/Reference"
     },
     "keywords": [
         "react",
@@ -21,36 +21,35 @@
     "author": "SoyOscarRH",
     "license": "GPL-2.0",
     "bugs": {
-        "url": "https://github.com/SoyOscarRH/SoyOscarRH.github.io/issues"
+        "url": "https://github.com/CompilandoConocimiento/Reference/issues"
     },
     "homepage": "https://compilandoconocimiento.github.io/Reference/",
     "devDependencies": {
-        "@babel/core": "^7.0.0",
-        "@babel/plugin-proposal-class-properties": "^7.0.0",
-        "@babel/plugin-syntax-typescript": "^7.0.0",
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.2.3",
+        "@babel/plugin-syntax-typescript": "^7.2.0",
+        "@babel/preset-env": "^7.2.3",
         "@babel/preset-react": "^7.0.0",
-        "@babel/preset-typescript": "^7.0.0",
-        "@types/node": "^10.9.3",
-        "@types/react": "^16.4.13",
-        "@types/react-dom": "^16.0.7",
-        "@types/webpack": "^4.4.11",
-        "css-loader": "^1.0.0",
+        "@babel/preset-typescript": "^7.1.0",
+        "@types/materialize-css": "^1.0.6",
+        "@types/node": "^10.12.18",
+        "@types/react": "^16.7.18",
+        "@types/react-dom": "^16.0.11",
+        "@types/react-router-dom": "^4.3.1",
+        "babel-loader": "^8.0.4",
+        "css-loader": "^1.0.1",
         "source-map-loader": "^0.2.4",
-        "style-loader": "^0.23.0",
-        "ts-node": "^7.0.1",
-        "typescript": "^3.0.3",
+        "style-loader": "^0.23.1",
+        "typescript": "^3.2.2",
         "typings-for-css-modules-loader": "^1.7.0",
-        "webpack": "^4.17.1",
-        "webpack-cli": "^3.1.0"
+        "webpack": "^4.28.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.14"
     },
     "dependencies": {
-        "@babel/preset-env": "^7.0.0",
-        "@types/materialize-css": "^1.0.4",
-        "@types/react-router-dom": "^4.3.0",
-        "babel-loader": "^8.0.0",
-        "materialize-css": "^1.0.0-rc.2",
-        "react": "^16.4.2",
-        "react-dom": "^16.4.2",
+        "materialize-css": "^1.0.0",
+        "react": "^16.7.0",
+        "react-dom": "^16.7.0",
         "react-router-dom": "^4.3.1"
     }
 }

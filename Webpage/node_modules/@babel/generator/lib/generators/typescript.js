@@ -17,6 +17,7 @@ exports.tsPrintPropertyOrMethodName = tsPrintPropertyOrMethodName;
 exports.TSMethodSignature = TSMethodSignature;
 exports.TSIndexSignature = TSIndexSignature;
 exports.TSAnyKeyword = TSAnyKeyword;
+exports.TSUnknownKeyword = TSUnknownKeyword;
 exports.TSNumberKeyword = TSNumberKeyword;
 exports.TSObjectKeyword = TSObjectKeyword;
 exports.TSBooleanKeyword = TSBooleanKeyword;
@@ -38,6 +39,8 @@ exports.tsPrintTypeLiteralOrInterfaceBody = tsPrintTypeLiteralOrInterfaceBody;
 exports.tsPrintBraced = tsPrintBraced;
 exports.TSArrayType = TSArrayType;
 exports.TSTupleType = TSTupleType;
+exports.TSOptionalType = TSOptionalType;
+exports.TSRestType = TSRestType;
 exports.TSUnionType = TSUnionType;
 exports.TSIntersectionType = TSIntersectionType;
 exports.tsPrintUnionOrIntersectionType = tsPrintUnionOrIntersectionType;
@@ -212,6 +215,10 @@ function TSAnyKeyword() {
   this.word("any");
 }
 
+function TSUnknownKeyword() {
+  this.word("unknown");
+}
+
 function TSNumberKeyword() {
   this.word("number");
 }
@@ -334,6 +341,16 @@ function TSTupleType(node) {
   this.token("[");
   this.printList(node.elementTypes, node);
   this.token("]");
+}
+
+function TSOptionalType(node) {
+  this.print(node.typeAnnotation, node);
+  this.token("?");
+}
+
+function TSRestType(node) {
+  this.token("...");
+  this.print(node.typeAnnotation, node);
 }
 
 function TSUnionType(node) {

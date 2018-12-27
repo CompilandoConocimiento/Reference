@@ -19,6 +19,7 @@ exports.UnaryLike = UnaryLike;
 exports.FunctionExpression = FunctionExpression;
 exports.ArrowFunctionExpression = ArrowFunctionExpression;
 exports.ConditionalExpression = ConditionalExpression;
+exports.OptionalMemberExpression = OptionalMemberExpression;
 exports.AssignmentExpression = AssignmentExpression;
 exports.NewExpression = NewExpression;
 
@@ -141,7 +142,7 @@ function SequenceExpression(node, parent) {
 }
 
 function YieldExpression(node, parent) {
-  return t().isBinary(parent) || t().isUnaryLike(parent) || t().isCallExpression(parent) || t().isMemberExpression(parent) || t().isNewExpression(parent) || t().isConditionalExpression(parent) && node === parent.test || isClassExtendsClause(node, parent);
+  return t().isBinary(parent) || t().isUnaryLike(parent) || t().isCallExpression(parent) || t().isMemberExpression(parent) || t().isNewExpression(parent) || t().isAwaitExpression(parent) && t().isYieldExpression(node) || t().isConditionalExpression(parent) && node === parent.test || isClassExtendsClause(node, parent);
 }
 
 function ClassExpression(node, parent, printStack) {
@@ -176,11 +177,15 @@ function ArrowFunctionExpression(node, parent) {
 function ConditionalExpression(node, parent) {
   if (t().isUnaryLike(parent) || t().isBinary(parent) || t().isConditionalExpression(parent, {
     test: node
-  }) || t().isAwaitExpression(parent) || t().isTaggedTemplateExpression(parent) || t().isTSTypeAssertion(parent) || t().isTSAsExpression(parent)) {
+  }) || t().isAwaitExpression(parent) || t().isOptionalMemberExpression(parent) || t().isTaggedTemplateExpression(parent) || t().isTSTypeAssertion(parent) || t().isTSAsExpression(parent)) {
     return true;
   }
 
   return UnaryLike(node, parent);
+}
+
+function OptionalMemberExpression(node, parent) {
+  return t().isCallExpression(parent) || t().isMemberExpression(parent);
 }
 
 function AssignmentExpression(node) {
