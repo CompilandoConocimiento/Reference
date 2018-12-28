@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Number Theory",
+    "subTopics": [
+      "Binary Exponentiation",
+      "Get Divisors",
+      "Sieve of Eratosthenes",
+      "Prime Factorization"
+    ]
+  },
+  {
+    "name": "Dynamic Programming",
+    "subTopics": [
+      "Longest Common Subsequence"
+    ]
+  },
+  {
+    "name": "Search",
+    "subTopics": [
+      "Binary Search",
+      "Ternary Search",
+      "Lower and Upper Bound"
+    ]
+  },
+  {
+    "name": "Strings",
+    "subTopics": [
+      "Trie"
+    ]
+  }
+]
