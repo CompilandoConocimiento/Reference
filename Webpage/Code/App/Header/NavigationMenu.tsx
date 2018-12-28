@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-const NavigationMenu: React.FunctionComponent<{}> = () => (
+const NavigationMenu: React.FunctionComponent = () => (
     <div className="navbar-fixed">
 		<nav className="blue-grey darken-3">
 			<div className="nav-wrapper z-depth-1">
@@ -11,7 +11,10 @@ const NavigationMenu: React.FunctionComponent<{}> = () => (
 						<b>Competitive</b> Reference
 					</div>
 
-					<a href="" data-target="SideBarID" className="sidenav-trigger show-on-large" style={{cursor: "pointer"}}>
+					<a 
+						data-target = "SideBarID"
+						className   = "sidenav-trigger show-on-large"
+						style       = {{cursor: "pointer"}}>
 						<i className="material-icons white-text">menu</i>
 					</a>
 

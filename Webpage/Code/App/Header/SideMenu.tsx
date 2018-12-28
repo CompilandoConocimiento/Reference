@@ -1,59 +1,67 @@
 import React from "react"
-import { DirectoryData } from '../../Data'
 import { Link } from 'react-router-dom'
 
-interface SideMenuProps {
-	CloseSideMenu: () => void
-}
+import { DirectoryData } from '../../Data'
+
+const LinkToTopic: React.FunctionComponent<{link: string, size: string, onClick: () => void}> = props => (
+    <Link className="waves-effect" onClick={props.onClick} to={props.link}>
+        <span style={{fontSize: props.size}}>
+            {props.children}
+        </span>
+    </Link>
+)
+
+interface SideMenuProps { CloseSideMenu: () => void }
 const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
 
-	const TopicsLink: Array<JSX.Element> = DirectoryData.map( (Topic, indexTopic) =>
-      <React.Fragment key={`Render ${indexTopic}`}>
-
-        <li key={`Divider ${indexTopic}`}>
-          <div className="divider" />
-        </li>
-
-        <li key={Topic.link}>
-          <Link className="waves-effect" onClick={props.CloseSideMenu} to={`/Topic/${Topic.link}/`}>
-            <span style={{fontSize: "1.1rem"}}>{Topic.name}</span>
-          </Link>
-        </li>
-
-        {
-          Topic.subTopics.map( (SubTopic, indexSubTopic) =>
-            <li key={`${Topic.link} ${indexTopic} ${indexSubTopic}`}>
-              <Link className="waves-effect" onClick={props.CloseSideMenu} to={`/Topic/${Topic.link}/${SubTopic.link}`}>
-                &nbsp;{SubTopic.name}
-              </Link>
+    const TopicsLink = DirectoryData.map( (Topic, indexTopic) =>
+        <React.Fragment key={indexTopic}>
+            <li>
+                <div className="divider" />
             </li>
-          )
-        }
 
-      </React.Fragment>
-	)
-	
-	return (
-		<ul id="SideBarID" className="sidenav">
+            <li>
+                <LinkToTopic link={`/Topic/${Topic.link}/`} size="1.1rem" onClick={props.CloseSideMenu}>
+                    {Topic.name}
+                </LinkToTopic>
+            </li>
 
-          <li>
+            {
+                Topic.subTopics.map( (SubTopic, indexSubTopic) =>
+                    <li key={indexSubTopic}>
+                        <LinkToTopic 
+                            link    = {`/Topic/${Topic.link}/${SubTopic.link}`}
+                            onClick = {props.CloseSideMenu}
+                            size    = "0.95rem">
+                            &nbsp;&nbsp;{SubTopic.name}
+                        </LinkToTopic>
+                    </li>
+                )
+            }
+        </React.Fragment>
+    )
+  
+    return (
+        <ul id="SideBarID" className="sidenav">
+
+            <li>
+                <br />
+                <h5 className="blue-grey-text text-darken-3">
+                    <span style={{fontWeight: 500, fontSize: "2.1rem"}}>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <b>Topics</b>
+                    </span>
+                </h5>
+            </li>
+
             <br />
-            <h5 className="blue-grey-text text-darken-3">
-              <span style={{fontWeight: 500, fontSize: "2.1rem"}}>
-                &nbsp;&nbsp;&nbsp;&nbsp; <b>Topics</b>
-              </span>
-            </h5>
-          </li>
 
-          <br />
+            {TopicsLink}
 
-          {TopicsLink}
-
-          <br /><br />
-          <br /><br />
+            <br /><br />
+            <br /><br />
 
         </ul>
-	)
+    )
 }
 
 export default SideMenu

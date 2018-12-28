@@ -10,6 +10,7 @@ import Loading from "./Loading"
 
 const TopicVisualizer = React.lazy(() => import('./TopicVisualizer'))
 
+
 const App: React.FunctionComponent = () => (
 	<React.Fragment>
 		<header>
@@ -19,23 +20,15 @@ const App: React.FunctionComponent = () => (
 
 		<main>
 			<Switch>
-				<Route 
-					exact  = {true}
-					path   = '/'
-					render = { () => <Home /> }
-				/>
-				<Route
-					path   = '/Topic/:NameOfTopic'
+				<Route exact path='/' component={Home}/>
+				<Route path='/Topic/:NameOfTopic'
 					render = { (props) => 
 						<React.Suspense fallback={<Loading />}>
 							<TopicVisualizer match={props.match} /> 
 						</React.Suspense>
 					}
 				/>
-				<Route 
-					path   = '/:SomethingElse'
-					render = { () => <Home /> }
-				/>
+				<Route path='/:SomethingElse' component={Home}/>
 			</Switch>
 			<br />
 			<br />
