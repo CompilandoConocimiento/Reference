@@ -4,10 +4,10 @@
     "description": "A page to a competitive programming refence",
     "main": "Code/App/App.tsx",
     "scripts": {
-        "build": "    webpack --progress -p --config webpack.config.js",
-        "dev-build": "webpack --progress -d --config webpack.config.js",
-        "watch": "    webpack --progress -d --config webpack.config.js --watch",
-        "stats": "    webpack --profile     --config webpack.config.js --json > stats.json"
+        "build": "    webpack --progress -p --config webpack.config.ts",
+        "dev-build": "webpack --progress -d --config webpack.config.ts",
+        "watch": "    webpack --progress -d --config webpack.config.ts --watch",
+        "stats": "    webpack --profile     --config webpack.config.ts --json > stats.json"
     },
     "repository": {
         "type": "git",
@@ -27,6 +27,7 @@
     "devDependencies": {
         "@babel/core": "^7.2.2",
         "@babel/plugin-proposal-class-properties": "^7.2.3",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/plugin-syntax-typescript": "^7.2.0",
         "@babel/preset-env": "^7.2.3",
         "@babel/preset-react": "^7.0.0",
@@ -40,6 +41,7 @@
         "css-loader": "^1.0.1",
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.23.1",
+        "ts-node": "^7.0.1",
         "typescript": "^3.2.2",
         "typings-for-css-modules-loader": "^1.7.0",
         "webpack": "^4.28.2",

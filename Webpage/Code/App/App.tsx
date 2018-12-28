@@ -6,7 +6,8 @@ import Header from "./Header"
 import Footer from "./Footer"
 
 import Home from "./Home"
-import TopicVisualizer from "./TopicVisualizer"
+
+const TopicVisualizer = React.lazy(() => import('./TopicVisualizer'))
 
 const App: React.StatelessComponent<{}> = () => (
 	<React.Fragment>
@@ -22,9 +23,17 @@ const App: React.StatelessComponent<{}> = () => (
 					path   = '/'
 					render = { () => <Home /> }
 				/>
-				<Route 
+				<Route
 					path   = '/Topic/:NameOfTopic'
-					render = { (props) => <TopicVisualizer match={props.match} /> }
+					render = { (props) => {
+						console.log("Lo logre :)")
+						return (
+							<React.Suspense fallback={<div>Loading...</div>}>
+								<TopicVisualizer match={props.match} /> 
+							</React.Suspense>
+						)
+					}
+					}
 				/>
 			</Switch>
 			<br />
