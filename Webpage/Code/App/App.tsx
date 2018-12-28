@@ -26,7 +26,7 @@ const App: React.StatelessComponent<{}> = () => (
 				<Route
 					path   = '/Topic/:NameOfTopic'
 					render = { (props) => {
-						console.log("Lo logre :)")
+						console.log("Lo lograaaaa :)")
 						return (
 							<React.Suspense fallback={<div>Loading...</div>}>
 								<TopicVisualizer match={props.match} /> 

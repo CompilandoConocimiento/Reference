@@ -1,8 +1,10 @@
-module.exports = {
+import {Configuration} from 'webpack'
+
+const Configuration: Configuration = {
 	entry: './Code/App/App.tsx',
 	output: {
 		path: __dirname + '/Distribution/',
-		publicPath: __dirname + '/Distribution/',
+		publicPath: "Webpage/Distribution/",
 		filename: 'bundle.js'
 	},
 	resolve: {
@@ -10,12 +12,12 @@ module.exports = {
 	},
 	module: {
 		rules: [
-		  {
+			{
 				test: /\.(js|jsx|tsx|ts)$/,
 				exclude: /node_modules/,
 				use: 'babel-loader'
-		  },
-		  {
+			},
+			{
 				test: /\.(png|jpg|gif)$/,
 				use: [
 					{
@@ -23,8 +25,8 @@ module.exports = {
 						options: {}  
 					}
 				]
-		  },
-		  {
+			},
+			{
 				test: /\.css$/,
 				use: [
 					'style-loader',
@@ -40,7 +42,9 @@ module.exports = {
 						}
 					}
 				]
-		  }
+			}
 		]
 	}
-};
+}
+
+module.exports = Configuration
