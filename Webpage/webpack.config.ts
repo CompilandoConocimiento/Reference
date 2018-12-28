@@ -5,7 +5,7 @@ const Configuration: Configuration = {
     output: {
         path: __dirname + '/Distribution/',
         publicPath: "Webpage/Distribution/",
-        filename: 'bundle.js'
+        filename: '[name].[contenthash:8].bundle.js'
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.css', ]
