@@ -19,7 +19,7 @@ const SaveData = (Topics: Array<Topic>, fileName: string) => {
         })
     )
 
-    const data = JSON.stringify(Directory, null, 2),
+    const data = JSON.stringify(Directory, null, 4),
     blob = new Blob([data], {type: "octet/stream"}),
     url = window.URL.createObjectURL(blob)
     a.href = url

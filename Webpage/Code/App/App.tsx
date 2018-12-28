@@ -32,6 +32,10 @@ const App: React.FunctionComponent = () => (
 						</React.Suspense>
 					}
 				/>
+				<Route 
+					path   = '/:SomethingElse'
+					render = { () => <Home /> }
+				/>
 			</Switch>
 			<br />
 			<br />
