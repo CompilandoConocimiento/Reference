@@ -3,7 +3,7 @@ import { Link, Switch, Route } from 'react-router-dom'
 
 import AlgorithmVisualizer from "../AlgorithmVisualizer"
 import Topics from "../Data"
-import { Topic } from "../Data/DataType";
+import { TopicInterface as Topic  } from "../Data";
 
 const ErrorMessage: React.StatelessComponent<{}> = () => {
 

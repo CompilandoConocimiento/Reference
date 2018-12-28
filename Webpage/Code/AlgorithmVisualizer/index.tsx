@@ -1,7 +1,7 @@
 import React from "react"
 import Style from "./index.css"
 import M from "materialize-css"
-import { SubTopic, Topic } from "../Data/DataType"
+import { SubTopicInterface as SubTopic, TopicInterface as Topic } from "../Data"
 
 function copyTextToClipboard(text: string): void {
     const actualScroll = document.documentElement.scrollTop || document.body.scrollTop
@@ -17,7 +17,7 @@ function copyTextToClipboard(text: string): void {
 }
 
 function areCommentsVisible(): boolean {
-    const comment: HTMLElement = document.querySelector(".hljs-comment")
+    const comment: HTMLElement = document.querySelector(".hljs-comment") as HTMLElement
     if (comment == null) return false
     else return comment.style.display === "none"
 }
@@ -131,7 +131,7 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
         M.Toast.dismissAll()
         M.toast({html: 'Toggle comments'})
 
-        document.querySelectorAll(".hljs-comment").forEach( (Element: HTMLElement) => {
+        document.querySelectorAll(".hljs-comment").forEach( (Element: any) => {
             if (Element.style.display === "")
                 Element.style.display = "initial"
 
@@ -204,7 +204,7 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
                         <li>
                             <a 
                                 className    = "btn-floating blue"
-                                onClick      = {(e) => M.toast({html: 'Just click the code you want'})}>
+                                onClick      = {() => M.toast({html: 'Just click the code you want'})}>
                                 <i className ="material-icons">content_copy</i>
                             </a>
                         </li>

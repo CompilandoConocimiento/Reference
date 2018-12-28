@@ -1,5 +1,5 @@
 import React from "react"
-import {SubTopic, Topic} from "./DataType"
+import {SubTopic, Topic} from "./types"
 
 const SubTopics: Array<SubTopic> = [
     {

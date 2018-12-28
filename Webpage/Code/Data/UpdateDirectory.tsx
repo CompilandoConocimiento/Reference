@@ -1,4 +1,4 @@
-import { Topic } from "./DataType";
+import { Topic } from "./types";
 
 const SaveData = (Topics: Array<Topic>, fileName: string) => {
 
