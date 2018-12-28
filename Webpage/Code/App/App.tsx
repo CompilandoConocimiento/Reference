@@ -10,7 +10,7 @@ import Loading from "./Loading"
 
 const TopicVisualizer = React.lazy(() => import('./TopicVisualizer'))
 
-const App: React.StatelessComponent<{}> = () => (
+const App: React.FunctionComponent = () => (
 	<React.Fragment>
 		<header>
 			<Header />

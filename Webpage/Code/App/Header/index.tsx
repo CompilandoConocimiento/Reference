@@ -1,5 +1,5 @@
 import React from "react"
-import M from "materialize-css"
+import { Sidenav } from "materialize-css/"
 
 import NavigationMenu from "./NavigationMenu"
 import SideMenu from "./SideMenu"
@@ -8,9 +8,8 @@ interface AppHeaderState {
 }
 
 interface AppHeaderProps {
-	Sidenav: M.Sidenav | null
 }
-export default class AppHeader extends React.Component<{}, AppHeaderState> {
+export default class AppHeader extends React.Component<AppHeaderProps, AppHeaderState> {
 
 	constructor(props: AppHeaderProps) {
 		super(props)
@@ -19,7 +18,7 @@ export default class AppHeader extends React.Component<{}, AppHeaderState> {
 
   	componentDidMount() {
         const elementNode = document.getElementById('SideBarID')!
-        this.setState({Sidenav: M.Sidenav.init(elementNode, {draggable: true, edge: "left"})})
+        this.setState({Sidenav: Sidenav.init(elementNode, {draggable: true, edge: "left"})})
 	}
 
 	closeSideMenu () {

@@ -3,10 +3,11 @@ import Search from './Search'
 import DynamicProgramming from './DynamicProgramming'
 import Strings from './Strings'
 import {Topic, SubTopic} from "./types"
+import Directory from "./Directory"
 
 //import SaveData from "./UpdateDirectory"
 
-const Topics: Array<Topic> = [
+export const Topics: Array<Topic> = [
     NumberTheory,
     DynamicProgramming,
     Search,
@@ -17,5 +18,4 @@ const Topics: Array<Topic> = [
 
 export type TopicInterface = Topic
 export type SubTopicInterface = SubTopic
-
-export default Topics
+export const DirectoryData = Directory

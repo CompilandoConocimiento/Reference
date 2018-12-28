@@ -29,7 +29,7 @@ type CodeHighlightType = {
     text: string
 }
 
-const CodeHighlight: React.StatelessComponent<CodeHighlightType> = (props: CodeHighlightType) => {
+const CodeHighlight: React.FunctionComponent<CodeHighlightType> = (props: CodeHighlightType) => {
 
     function copyText(): void {
         const realText = areCommentsVisible()?

@@ -2,10 +2,10 @@ import React from "react"
 import { Link, Switch, Route } from 'react-router-dom'
 
 import AlgorithmVisualizer from "../AlgorithmVisualizer"
-import Topics from "../Data"
+import {Topics} from "../Data"
 import { TopicInterface as Topic  } from "../Data";
 
-const ErrorMessage: React.StatelessComponent<{}> = () => {
+const ErrorMessage: React.FunctionComponent<{}> = () => {
 
 	return (
 		<div className="container">
@@ -36,7 +36,7 @@ const ErrorMessage: React.StatelessComponent<{}> = () => {
 }
 
 
-const CardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic: Topic}) => {
+const CardOfSubTopics: React.FunctionComponent<{Topic: Topic}> = (props: {Topic: Topic}) => {
 
 	const colors: Array<string> = [
 		"red lighten-2",
@@ -100,7 +100,7 @@ const CardOfSubTopics: React.StatelessComponent<{Topic: Topic}> = (props: {Topic
 }
 
 
-const TopicVisualizer: React.StatelessComponent<{match: any}> = (props: {match: any}) => {
+const TopicVisualizer: React.FunctionComponent<{match: any}> = (props: {match: any}) => {
 
 	const Topic = Topics.find( Topic => Topic.link === props.match.params.NameOfTopic)
 	if (Topic == undefined) return <ErrorMessage />

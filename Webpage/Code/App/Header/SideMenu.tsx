@@ -1,5 +1,5 @@
 import React from "react"
-import Topics from '../../Data'
+import { DirectoryData } from '../../Data'
 import { Link } from 'react-router-dom'
 
 interface SideMenuProps {
@@ -7,7 +7,7 @@ interface SideMenuProps {
 }
 const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
 
-	const TopicsLink: Array<JSX.Element> = Topics.map( (Topic, indexTopic) =>
+	const TopicsLink: Array<JSX.Element> = DirectoryData.map( (Topic, indexTopic) =>
       <React.Fragment key={`Render ${indexTopic}`}>
 
         <li key={`Divider ${indexTopic}`}>

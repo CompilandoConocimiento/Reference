@@ -1,13 +1,21 @@
 import React from "react"
 import { Link } from 'react-router-dom'
-import Topics from "../../Data"
+import { DirectoryData } from "../../Data"
 import * as Style from "./Styles.css"
 
 
 const radius = "1.15rem"
-const cardActionStyle = {borderTop: "2px solid rgba(255, 255, 255, 0.3)", borderRadius: `0rem 0rem ${radius} ${radius}`}
-const cardStyle       = {height: "100%", display: "grid", borderRadius: `${radius} ${radius} ${radius} ${radius}`}
 
+const cardActionStyle = {
+    borderTop: "2px solid rgba(255, 255, 255, 0.3)",
+    borderRadius: `0rem 0rem ${radius} ${radius}`
+}
+
+const cardStyle = {
+    height: "100%", 
+    display: "grid", 
+    borderRadius: `${radius} ${radius} ${radius} ${radius}`
+}
 
 const HelloCard: React.FunctionComponent<{}> = () => (
     <div 
@@ -76,13 +84,13 @@ const colors = [
     "brown lighten-2",
 ].sort(() => Math.random() - 0.5)
 
-const Home: React.StatelessComponent<{}> = () => (
+const Home: React.FunctionComponent<{}> = () => (
     <div className="container">
         <HelloCard />
       
         <div className={Style.Wrapper}>
         {
-            Topics.map ( (Topic, index) =>
+            DirectoryData.map ( (Topic, index) =>
                 <CardToTopic 
                     key		= {index} 
                     name	= {Topic.name} 

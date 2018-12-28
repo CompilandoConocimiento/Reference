@@ -11,7 +11,11 @@ const SaveData = (Topics: Array<Topic>, fileName: string) => {
     const Directory = Topics.map (
         Topic => ({
             name: Topic.name,
-            subTopics: Topic.subTopics.map( subTopic => subTopic.name)
+            link: Topic.link,
+            subTopics: Topic.subTopics.map( subTopic => ({
+                name: subTopic.name,
+                link: subTopic.link
+            }))
         })
     )
 
