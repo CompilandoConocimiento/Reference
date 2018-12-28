@@ -1,4 +1,6 @@
-const Directory = [
+import {DirectoryTopic} from "./types"
+
+const Directory: DirectoryTopic[] = [
     {
         "name": "Number Theory",
         "link": "NumberTheory",

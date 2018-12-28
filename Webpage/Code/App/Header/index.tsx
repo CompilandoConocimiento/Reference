@@ -2,7 +2,7 @@ import React from "react"
 import { Sidenav } from "materialize-css/"
 
 import NavigationMenu from "./NavigationMenu"
-import SideMenu from "./SideMenu"
+import SideMenu       from "./SideMenu"
 
 interface AppHeaderState { Sidenav: M.Sidenav | null }
 interface AppHeaderProps { }

@@ -15,3 +15,12 @@ export interface Topic {
     subTopics: Array<SubTopic>,
     baseLink: string
 }
+
+export interface NameLink {
+    "name": string;
+    "link": string;
+}
+
+interface DirectoryTopic extends NameLink {
+    "subTopics": NameLink[];
+}
