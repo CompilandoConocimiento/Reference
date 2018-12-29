@@ -1,5 +1,8 @@
 import React from "react"
 
+/**
+   * A component to call when loading something
+   */
 export const Loading: React.FunctionComponent = () => (
     <div className="preloader-wrapper big active" style={{width: "100%"}}>
         <br />
@@ -27,6 +30,9 @@ export const Loading: React.FunctionComponent = () => (
 )
 
 
+/**
+   * A component to call when something went wrong
+   */
 export const ErrorMessage: React.FunctionComponent = () => (
     <div className="container">
         <div className="row">

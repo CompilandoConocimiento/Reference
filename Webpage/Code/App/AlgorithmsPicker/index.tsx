@@ -6,7 +6,13 @@ import { ErrorMessage }    from "../Helpers"
 import CardToSubTopics     from "./CardToAlgorithms"
 import { TopicsData }      from "../../Data"
 
-const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
+/**
+   * Find if the topic link is valid, and then choose if we should call the 
+   * CardToSubTopics of the AlgorithmVisualizer.
+   * 
+   * @param TopicData The Topic
+   */
+const AlgorithmPicker: React.FunctionComponent<{TopicLink: string}> = props => {
 	const TopicData = TopicsData.find(Topic => Topic.link === props.TopicLink)
 	if (!TopicData) return <ErrorMessage />
 
@@ -19,7 +25,10 @@ const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
 			<Route 
 				path       = {`/Topic/${TopicData.link}/:Algorithm/`}
 				render     = { props => {
-					const AlgorithmData = TopicData.Algorithms.find( Algorithm => Algorithm.link ===  props.match.params.Algorithm)
+					const AlgorithmData = TopicData.Algorithms.find( 
+						Algorithm => Algorithm.link ===  props.match.params.Algorithm
+					)
+					
 					if (!AlgorithmData) return <ErrorMessage />
 					return <AlgorithmVisualizer AlgorithmData={AlgorithmData} TopicLink={TopicData.link} />
 				}}
@@ -29,4 +38,4 @@ const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
   
 }
 
-export default SubTopicsPicker
+export default AlgorithmPicker

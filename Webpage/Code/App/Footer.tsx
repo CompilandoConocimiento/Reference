@@ -1,5 +1,8 @@
 import React from "react"
 
+/**
+   * Just a footer :v
+   */
 const Footer: React.FunctionComponent = () => (
     <React.Fragment>
             <br />

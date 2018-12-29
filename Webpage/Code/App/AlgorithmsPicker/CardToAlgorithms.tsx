@@ -14,14 +14,11 @@ const colors = [
 
 
 const buttonClassname = "hoverable btn-large col s12 m8 l6 offset-m2 offset-l3 "
-const SubTopicButton: React.FunctionComponent<{link: string, classname: string}> = props => (
-    <div className="row">
-        <Link className={props.classname} to={props.link} onClick={() => scroll(0, 0)} >
-            {props.children}
-        </Link>
-    </div>
-)
 
+/**
+   * Render a list of buttons of a given topic.
+   * @param TopicData The Topic
+   */
 const CardOfSubTopics: React.FunctionComponent<{TopicData: TopicData}> = props => (
     <div className="container">
         <div className="card-panel center">
@@ -34,12 +31,14 @@ const CardOfSubTopics: React.FunctionComponent<{TopicData: TopicData}> = props =
 
             {
                 props.TopicData.Algorithms.map( (Algorithm, index) => (
-                    <SubTopicButton 
-                        classname = {buttonClassname + colors[index % colors.length]}
-                        link      = {`/Topic/${props.TopicData.link}/${Algorithm.link}`}
-                        key       = {Algorithm.link}>
+                    <div className="row" key={Algorithm.link}>
+                        <Link
+                            className = {buttonClassname + colors[index % colors.length]}
+                            to        = {`/Topic/${props.TopicData.link}/${Algorithm.link}`}
+                            onClick   = {() => scroll(0, 0)} >
                             {Algorithm.name}
-                    </SubTopicButton>
+                        </Link>
+                    </div>
                 ))
             }
 

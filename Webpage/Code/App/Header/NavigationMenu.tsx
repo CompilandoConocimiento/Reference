@@ -1,6 +1,9 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
+/**
+   * The top bar.
+   */
 const NavigationMenu: React.FunctionComponent = () => (
     <div className="navbar-fixed">
 		<nav className="blue-grey darken-3">

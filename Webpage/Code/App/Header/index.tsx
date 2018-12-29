@@ -4,14 +4,18 @@ import { Sidenav } from "materialize-css/"
 import NavigationMenu from "./NavigationMenu"
 import SideMenu       from "./SideMenu"
 
-interface AppHeaderState { Sidenav: M.Sidenav | null }
+interface AppHeaderState { Sidenav?: M.Sidenav }
 interface AppHeaderProps { }
 
+/**
+   * The AppHeader return the merge of NavigationMenu and SideMenu, just that,
+   * and initialization the sidenav of MaterializeCSS.
+   */
 export default class AppHeader extends React.Component<AppHeaderProps, AppHeaderState> {
 
     constructor(props: AppHeaderProps) {
         super(props)
-        this.state = { Sidenav: null }
+        this.state = {}
     }
 
     componentDidMount() {
