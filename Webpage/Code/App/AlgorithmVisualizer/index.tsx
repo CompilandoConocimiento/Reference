@@ -1,17 +1,16 @@
 import React from "react"
 import M from "materialize-css"
 
-import * as Styles from "./Styles.css"
-
-import {  AlgorithmData, AlgorithmPageConfig, FilesDataResult } from "../../Data"
+import {  AlgorithmData, AlgorithmPageConfig, AlgorithmPageProps, FilesDataResult } from "../../Data"
 import { Loading } from "../Helpers"
 import getCodeText from "./GetCodeText"
-import FAB from "./FAB"
+import FAB, {FABElement} from "./FAB"
 
+import * as Styles from "./Styles.css"
 
-interface AlgorithmVisualizerProps { AlgorithmData: AlgorithmData, TopicLink: string }
-interface AlgorithmVisualizerState {
-    Component?: React.FunctionComponent,
+interface VisualizerProps { AlgorithmData: AlgorithmData, TopicLink: string }
+interface VisualizerState {
+    Component?: React.FunctionComponent<AlgorithmPageProps>,
     Config?: AlgorithmPageConfig,
     FilesDataResult?: FilesDataResult,
 }
@@ -22,16 +21,15 @@ interface AlgorithmVisualizerState {
    * @param AlgorithmData The data of the algorithm data
    * @param TopicLink The Topic.Link :v
    */
-export default class AlgorithmVisualizer extends React.Component<AlgorithmVisualizerProps, AlgorithmVisualizerState> {
+export default class AlgorithmVisualizer extends React.Component<VisualizerProps, VisualizerState> {
 
-    constructor(props: AlgorithmVisualizerProps) {
+    constructor(props: VisualizerProps) {
         super(props)
         this.state = {}
     }
 
     componentDidMount() {
-        const FABNode = document.getElementById('FAB')!, MathJax = () => window["MathJax"].Hub.Typeset()
-        M.FloatingActionButton.init(FABNode, {})
+        const MathJax = () => window["MathJax"].Hub.Typeset()
 
         this.props.AlgorithmData.module()
             .then( Module => Module.default )
@@ -51,6 +49,31 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
     //}
     
     render () {
+
+        const FABToDo: FABElement[] = [
+            {
+                color: "green darken-1",
+                closeOnClick: false,
+                icon: "code",
+                onClick: () => {
+                    M.Toast.dismissAll()
+                    M.toast({html: 'Toggle comments'})
+                
+                    document.querySelectorAll(".hljs-comment").forEach( (Element: any) => {
+                        if (Element.style.display === "")
+                            Element.style.display = "initial"
+                        Element.style.display = (Element.style.display == "initial")? "none" : "initial"
+                    })
+                },
+            },
+            {
+                color: "blue",
+                closeOnClick: true,
+                icon: "content_copy",
+                onClick: () => M.toast({html: 'Just click the code you want'})
+            }
+        ]
+
         return (
             <React.Fragment>
                 <div className="center blue-grey-text text-darken-3">
@@ -59,28 +82,20 @@ export default class AlgorithmVisualizer extends React.Component<AlgorithmVisual
                 <br />
 
                 <div className={"container " + Styles.Text}>
-                    { this.state.Component?  <this.state.Component /> : <Loading /> }
+                    {
+                        this.state.Component? 
+                            <this.state.Component 
+                                codeProps = {this.state.Config!.codeProps} 
+                                filesData = {this.state.FilesDataResult}
+                            />
+                        :
+                            <Loading />
+                    }
                 </div>
                 <br /><br /><br />
 
-                <FAB />
+                <FAB FABElements={FABToDo} />
             </React.Fragment>
         )
     }
 }
-
-
-
-const FABToDo = [
-    () => {
-        M.Toast.dismissAll()
-        M.toast({html: 'Toggle comments'})
-    
-        document.querySelectorAll(".hljs-comment").forEach( (Element: any) => {
-            if (Element.style.display === "")
-                Element.style.display = "initial"
-            Element.style.display = (Element.style.display == "initial")? "none" : "initial"
-        })
-    }
-]
-

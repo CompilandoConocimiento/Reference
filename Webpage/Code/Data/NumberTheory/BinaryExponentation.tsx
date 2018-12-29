@@ -1,20 +1,20 @@
 import React from "react"
 import { AlgorithmPageProps, AlgorithmPageConfig } from "../types"
+import ShowCode from "../../App/AlgorithmVisualizer/ShowCode"
 
 const PageConfig: AlgorithmPageConfig = {
     filesData: {
         "BinaryExponentiation.cpp": [
-            [1, 10]
+            [3, 10]
         ]
     },
     codeProps: {
-        codeStyles: { size: "1.1rem" },
+        codeStyles: { fontSize: 1.1 },
         codeActions: {}
     }
 }
 
 const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props => {
-
     return (
         <div>
             This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
@@ -51,7 +51,8 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props =
             <h6><b>How to optimize \( {"e = \\frac{e-1}{2} "} \) and \( {"e = \\frac{e}{2} "}\) </b></h6>
 
             This optimizations are using the bitwise operations.
-            I claim that \( {"e = \\frac{e-1}{2} "} \) and \( {"e = \\frac{e}{2} "}\) are equal to
+            I claim that 
+            \( {"e = \\frac{e-1}{2} "} \) and \( {"e = \\frac{e}{2} "}\) are equal to
             \( {"e = e >> 1"}\).
 
             <br />
@@ -73,6 +74,14 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props =
             For example the number \(000101101010\) if the exponent 
             was odd then the last digit will be 1, so exponent & 1
             give true only if the last digit was 1.
+
+            <ShowCode 
+                ID={"bebe"}
+                Data = {props.filesData}
+                fileName={"BinaryExponentiation.cpp"}
+                partOfFile={0}
+                {...props.codeProps}
+            />
 
         </div>
     )

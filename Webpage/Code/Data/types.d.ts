@@ -12,7 +12,7 @@ export interface TopicData extends NameLink {
 }
 
 export interface CodeStyles {
-    size: string,
+    fontSize: number,
 }
 
 export interface CodeActions {
@@ -24,7 +24,7 @@ export interface FilesDataResult { [index: string]: Text[] }
 export interface FilesData       { [index: string]: [number, number][] }
 
 export interface AlgorithmPageProps {
-    filesData: FilesDataResult,
+    filesData?: FilesDataResult,
     codeProps: {
         codeStyles: CodeStyles,
         codeActions: CodeActions

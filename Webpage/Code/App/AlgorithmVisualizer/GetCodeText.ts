@@ -19,11 +19,8 @@ const getCodeText = (TopicLink: string, filesData: FilesData, setState: (x: any)
                 fileParts.forEach( ([start, end]) => 
                     FilesDataResult[fileName].push(Text.slice(start, end + 1))
                 )
-
                 setState({FilesDataResult})
-                console.log(FilesDataResult)
             })
-
     })
 }
 
