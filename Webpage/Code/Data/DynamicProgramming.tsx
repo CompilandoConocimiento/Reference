@@ -1,7 +1,6 @@
 import React from "react"
-import {SubTopic, Topic} from "./types"
 
-const SubTopics: Array<SubTopic> = [
+const SubTopics = [
     {
         name: "Longest Common Subsequence",
         link: "LongestCommonSubsequence",
@@ -49,7 +48,7 @@ const SubTopics: Array<SubTopic> = [
     },
 ]
 
-const DynamicProgramming: Topic = {
+const DynamicProgramming = {
     name: "Dynamic Programming",
     link: "DynamicProgramming",
     subTopics: SubTopics,

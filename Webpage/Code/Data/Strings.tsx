@@ -1,7 +1,6 @@
 import React from "react"
-import {SubTopic, Topic} from "./types"
 
-const SubTopics: Array<SubTopic> = [
+const SubTopics = [
     {
         name: "Trie",
         link: "Trie",
@@ -19,7 +18,7 @@ const SubTopics: Array<SubTopic> = [
     },
 ]
 
-const Strings: Topic = {
+const Strings = {
     name: "Strings",
     link: "Strings",
     subTopics: SubTopics,

@@ -1,7 +1,8 @@
 import React from "react"
 import Style from "./index.css"
+
 import M from "materialize-css"
-import { SubTopicInterface as SubTopic, TopicInterface as Topic } from "../Data"
+import { SubTopic, Topic } from "../../Data"
 
 function copyTextToClipboard(text: string): void {
     const actualScroll = document.documentElement.scrollTop || document.body.scrollTop

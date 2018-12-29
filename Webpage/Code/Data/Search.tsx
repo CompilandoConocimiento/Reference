@@ -1,7 +1,6 @@
 import React from "react"
-import {SubTopic, Topic} from "./types"
 
-const SubTopics: Array<SubTopic> = [
+const SubTopics = [
     {
         name: "Binary Search",
         link: "BinarySearch",
@@ -110,7 +109,7 @@ const SubTopics: Array<SubTopic> = [
     }
 ]
 
-const Search: Topic = {
+const Search = {
     name: "Search",
     link: "Search",
     subTopics: SubTopics,

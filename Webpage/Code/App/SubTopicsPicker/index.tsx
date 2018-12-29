@@ -1,13 +1,13 @@
 import React from "react"
 import { Switch, Route } from 'react-router-dom'
 
-import AlgorithmVisualizer from "../../AlgorithmVisualizer"
 import { ErrorMessage }    from "../Helpers"
+import AlgorithmVisualizer from "../AlgorithmVisualizer"
 import CardToSubTopics     from "./CardToSubTopics"
-import { DirectoryData }   from "../../Data"
+import { Directory }   from "../../Data"
 
 const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
-	const DirectoryTopic = DirectoryData.find( Topic => Topic.link === props.TopicLink)
+	const DirectoryTopic = Directory.find(Topic => Topic.link === props.TopicLink)
 	if (!DirectoryTopic) return <ErrorMessage />
 
 	return (
@@ -20,7 +20,7 @@ const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
 				path       = {`/Topic/${DirectoryTopic.link}/:Algorithm/`}
 				render     = { props => {
 					const AlgorithmData = DirectoryTopic.subTopics.find( SubTopic => SubTopic.link ===  props.match.params.Algorithm)
-					return <AlgorithmVisualizer Algorithm={AlgorithmData!} Topic={DirectoryTopic} key={Date.now()} />
+					return <AlgorithmVisualizer Algorithm={AlgorithmData!} Topic={Topics}/>
 				}}
 			/>
 		</Switch>

@@ -1,7 +1,6 @@
 import React from "react"
-import {SubTopic, Topic} from "./types"
 
-const SubTopics: Array<SubTopic> = [
+const SubTopics = [
     {
         name: "Binary Exponentiation",
         link: "BinaryExponentiation",
@@ -232,7 +231,7 @@ const SubTopics: Array<SubTopic> = [
     },
 ]
 
-const NumberTheory: Topic = {
+const NumberTheory = {
     name: "Number Theory",
     link: "NumberTheory",
     subTopics: SubTopics,

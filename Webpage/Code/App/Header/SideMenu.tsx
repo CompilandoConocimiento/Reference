@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import { DirectoryData } from '../../Data'
+import { Directory } from '../../Data'
 
 const LinkToTopic: React.FunctionComponent<{link: string, size: string, onClick: () => void}> = props => (
     <Link className="waves-effect" onClick={props.onClick} to={props.link}>
@@ -14,7 +14,7 @@ const LinkToTopic: React.FunctionComponent<{link: string, size: string, onClick:
 interface SideMenuProps { CloseSideMenu: () => void }
 const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
 
-    const TopicsLink = DirectoryData.map( (Topic, indexTopic) =>
+    const TopicsLink = Directory.map( (Topic, indexTopic) =>
         <React.Fragment key={indexTopic}>
             <li>
                 <div className="divider" />
