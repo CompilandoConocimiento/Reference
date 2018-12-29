@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Directory } from "../../Data"
+import { TopicsData } from "../../Data"
 import HelloCard     from "./HelloCard"
 import CardToTopic   from "./CardToTopic"
 import * as Style    from "./Styles.css"
@@ -21,7 +21,7 @@ const Home: React.FunctionComponent = () => (
       
         <div className={Style.Wrapper}>
         {
-            Directory.map ( (Topic, index) =>
+            TopicsData.map ( (Topic, index) =>
                 <CardToTopic 
                     key		= {index}
                     radius  = {radius}

@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import { Directory } from '../../Data'
+import { TopicsData } from '../../Data'
 
 const LinkToTopic: React.FunctionComponent<{link: string, size: string, onClick: () => void}> = props => (
     <Link className="waves-effect" onClick={props.onClick} to={props.link}>
@@ -14,7 +14,7 @@ const LinkToTopic: React.FunctionComponent<{link: string, size: string, onClick:
 interface SideMenuProps { CloseSideMenu: () => void }
 const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
 
-    const TopicsLink = Directory.map( (Topic, indexTopic) =>
+    const TopicsLink = TopicsData.map( (Topic, indexTopic) =>
         <React.Fragment key={indexTopic}>
             <li>
                 <div className="divider" />
@@ -27,13 +27,13 @@ const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
             </li>
 
             {
-                Topic.subTopics.map( (SubTopic, indexSubTopic) =>
+                Topic.Algorithms.map( (Algorithm, indexSubTopic) =>
                     <li key={indexSubTopic}>
                         <LinkToTopic 
-                            link    = {`/Topic/${Topic.link}/${SubTopic.link}`}
+                            link    = {`/Topic/${Topic.link}/${Algorithm.link}`}
                             onClick = {props.CloseSideMenu}
                             size    = "0.95rem">
-                            &nbsp;&nbsp;{SubTopic.name}
+                            &nbsp;&nbsp;{Algorithm.name}
                         </LinkToTopic>
                     </li>
                 )

@@ -7,7 +7,7 @@ import Footer from "./Footer"
 
 import Home from "./Home"
 import { Loading } from "./Helpers"
-const SubTopicsPicker = React.lazy(() => import('./SubTopicsPicker'))
+const AlgorithmsPicker = React.lazy(() => import('./AlgorithmsPicker'))
 
 const App: React.FunctionComponent = () => (
 	<React.Fragment>
@@ -22,7 +22,7 @@ const App: React.FunctionComponent = () => (
 				<Route path='/Topic/:TopicLink'
 					render = { props => 
 						<React.Suspense fallback={<Loading />}>
-							<SubTopicsPicker TopicLink={props.match.params.TopicLink as string} /> 
+							<AlgorithmsPicker TopicLink={props.match.params.TopicLink as string} /> 
 						</React.Suspense>
 					}
 				/>

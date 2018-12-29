@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import { DirectoryTopic } from "../../Data/"
+import { TopicData } from "../../Data/"
 
 const colors = [
     "red lighten-2",
@@ -22,23 +22,23 @@ const SubTopicButton: React.FunctionComponent<{link: string, classname: string}>
     </div>
 )
 
-const CardOfSubTopics: React.FunctionComponent<{DirectoryTopic: DirectoryTopic}> = props => (
+const CardOfSubTopics: React.FunctionComponent<{TopicData: TopicData}> = props => (
     <div className="container">
         <div className="card-panel center">
 
             <h4 className="blue-grey-text text-darken-3">
-                {props.DirectoryTopic.name}
+                {props.TopicData.name}
             </h4>
             <br />
             <br />
 
             {
-                props.DirectoryTopic.subTopics.map( (SubTopic, subTopicsIndex) => (
+                props.TopicData.Algorithms.map( (Algorithm, index) => (
                     <SubTopicButton 
-                        classname = {buttonClassname + colors[subTopicsIndex % colors.length]}
-                        link      = {`/Topic/${props.DirectoryTopic.link}/${SubTopic.link}`}
-                        key       = {SubTopic.link}>
-                            {SubTopic.name}
+                        classname = {buttonClassname + colors[index % colors.length]}
+                        link      = {`/Topic/${props.TopicData.link}/${Algorithm.link}`}
+                        key       = {Algorithm.link}>
+                            {Algorithm.name}
                     </SubTopicButton>
                 ))
             }

@@ -4,7 +4,7 @@ const SubTopics = [
     {
         name: "Binary Exponentiation",
         link: "BinaryExponentiation",
-        file: "BinaryExponentiation.cpp",
+        fileName: "BinaryExponentiation",
         visibleParts: [ [9, 20], [22, 30], [33, 45], ],
         size: 0.95,
         text: (

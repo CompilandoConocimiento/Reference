@@ -1,22 +1,28 @@
 import React from "react"
 
-export interface NameLink {
-    name: string;
-    link: string;
+export interface NameLink { name: string, link: string }
+
+export type AlgorithmData = NameLink 
+
+export interface TopicData extends NameLink {
+    Algorithms: AlgorithmData[],
+    linkToDirectoryCode: string,
 }
 
-export interface DirectoryTopic extends NameLink {
-    subTopics: NameLink[];
+export interface CodeStyles {
+    size: string,
 }
 
-export interface SubTopic extends NameLink {
-    visibleParts: Array<[number, number]>,
-    fileName: string,
-    text: JSX.Element,
+export interface CodeActions {
+
 }
 
-export interface Topic extends NameLink {
-    subTopics: Array<SubTopic>,
-    linkToDirectory: string
-}
+export interface FilesData { [index: string]: string[] }
 
+export interface AlgorithmPageProps {
+    filesData: FilesData
+    codeProps: {
+        codeStyles: CodeStyles
+        codeActions: CodeActions
+    }
+}
