@@ -1,5 +1,5 @@
 /*=============================================================================================================
-==============================     BINARY EXPONENTATION (AND MODULAR)        ==================================
+==============================     BINARY EXPONENTIATION (AND MODULAR)       ==================================
 =============================================================================================================*/
 #include <iostream>
 
@@ -7,7 +7,7 @@ using namespace std;                                                //Bad practi
 using ull = unsigned long long;                                     //Just a so long name, sorry
 using lli = long long;                                              //Just a so long name, sorry
 
-lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modular Exponentation: a^b MOD n
+lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modular Exponentiation: a^b MOD n
     lli solution = 1;                                               //auxiliar variables for code clarity
 
     while (exponent > 0) {                                          //End were exponent is zero
@@ -20,7 +20,7 @@ lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modula
     return solution;                                                //Return solution
 }
 
-lli RecursiveBinaryExponentation (lli x, ull n) {                   //FN: Recursive Binary Exponentation
+lli RecursiveBinaryExponentation (lli x, ull n) {                   //FN: Recursive Binary Exponentiation
     if (n == 0) return 1;                                           //Remember base^0 = 1
     if (n == 1) return x;                                           //Remember base^1 = base
 
@@ -31,7 +31,7 @@ lli RecursiveBinaryExponentation (lli x, ull n) {                   //FN: Recurs
 }
 
 
-lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modular Exponentation: a^b MOD n
+lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modular Exponentiation: a^b MOD n
     lli solution = 1;                                               //Auxiliar variables for code clarity
     base = base % n;                                                //Start with the correct base
 

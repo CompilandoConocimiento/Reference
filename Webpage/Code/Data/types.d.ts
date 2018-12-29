@@ -2,7 +2,9 @@ import React from "react"
 
 export interface NameLink { name: string, link: string }
 
-export type AlgorithmData = NameLink 
+export interface AlgorithmData extends NameLink {
+    module: () => Promise<any>,
+} 
 
 export interface TopicData extends NameLink {
     Algorithms: AlgorithmData[],
@@ -14,15 +16,25 @@ export interface CodeStyles {
 }
 
 export interface CodeActions {
-
 }
 
-export interface FilesData { [index: string]: string[] }
+type Text = string[]
+
+export interface FilesDataResult { [index: string]: Text[] }
+export interface FilesData       { [index: string]: [number, number][] }
 
 export interface AlgorithmPageProps {
-    filesData: FilesData
+    filesData: FilesDataResult,
     codeProps: {
-        codeStyles: CodeStyles
+        codeStyles: CodeStyles,
+        codeActions: CodeActions
+    }
+}
+
+export interface AlgorithmPageConfig {
+    filesData: FilesData,
+    codeProps: {
+        codeStyles: CodeStyles,
         codeActions: CodeActions
     }
 }

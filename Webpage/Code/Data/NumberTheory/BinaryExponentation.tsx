@@ -1,11 +1,16 @@
 import React from "react"
+import { AlgorithmPageProps, AlgorithmPageConfig } from "../types"
 
-import {AlgorithmPageProps, AlgorithmData} from "../types"
-
-export const Data: AlgorithmData = {
-    name: "Binary Exponentiation",
-    link: "BinaryExponentiation",
-    fileNames: ["BinaryExponentiation.cpp"],
+const PageConfig: AlgorithmPageConfig = {
+    filesData: {
+        "BinaryExponentiation.cpp": [
+            [1, 10]
+        ]
+    },
+    codeProps: {
+        codeStyles: { size: "1.1rem" },
+        codeActions: {}
+    }
 }
 
 const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props => {
@@ -73,5 +78,4 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props =
     )
 } 
 
-
-export default BinaryExponentation
+export default { Config: PageConfig, Component: BinaryExponentation }

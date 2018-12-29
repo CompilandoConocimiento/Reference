@@ -19,7 +19,7 @@ const SubTopicsPicker: React.FunctionComponent<{TopicLink: string}> = props => {
 			<Route 
 				path       = {`/Topic/${TopicData.link}/:Algorithm/`}
 				render     = { props => {
-					const AlgorithmData = TopicsData.find( Algorithm => Algorithm.link ===  props.match.params.Algorithm)
+					const AlgorithmData = TopicData.Algorithms.find( Algorithm => Algorithm.link ===  props.match.params.Algorithm)
 					if (!AlgorithmData) return <ErrorMessage />
 					return <AlgorithmVisualizer AlgorithmData={AlgorithmData} TopicLink={TopicData.link} />
 				}}
