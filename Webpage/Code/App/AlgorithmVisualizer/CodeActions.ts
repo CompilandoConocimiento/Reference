@@ -1,5 +1,8 @@
 
-
+/**
+   * Copy code fragment to clipboard
+   * @param Text The code fragment
+   */
 export function copyText(Text: string[]) {
 
     function areCommentsVisible() {
@@ -7,7 +10,7 @@ export function copyText(Text: string[]) {
         return (comment)? comment.style.display === "none" : false
     }
 
-    function copyTextToClipboard(text: string): void {
+    function copyTextToClipboard(text: string) {
         const actualScroll = document.documentElement.scrollTop || document.body.scrollTop
         const textArea = document.createElement("textarea")
         textArea.value = text
@@ -19,7 +22,6 @@ export function copyText(Text: string[]) {
         document.body.removeChild(textArea)
         scroll(0, actualScroll)
     }
-
 
     const realText = areCommentsVisible()? Text.map(line => line.split("//")[0]) : Text
     copyTextToClipboard(realText.join("\n"))

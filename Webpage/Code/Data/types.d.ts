@@ -18,6 +18,15 @@ export interface CodeStyles {
 export interface CodeActions {
 }
 
+export interface PageConfig {
+}
+
+interface AlgorithmPageConfig {
+    CodeStyles: CodeStyles,
+    CodeActions: CodeActions
+    PageConfig: PageConfig
+}
+
 type Text = string[]
 
 export interface FilesDataResult { [index: string]: Text[] }
@@ -25,16 +34,9 @@ export interface FilesData       { [index: string]: [number, number][] }
 
 export interface AlgorithmPageProps {
     filesData?: FilesDataResult,
-    codeProps: {
-        codeStyles: CodeStyles,
-        codeActions: CodeActions
-    }
 }
 
-export interface AlgorithmPageConfig {
+export interface AlgorithmPageInformation {
     filesData: FilesData,
-    codeProps: {
-        codeStyles: CodeStyles,
-        codeActions: CodeActions
-    }
+    Config: AlgorithmPageConfig
 }

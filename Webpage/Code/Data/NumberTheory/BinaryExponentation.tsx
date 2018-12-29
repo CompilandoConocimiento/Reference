@@ -1,20 +1,19 @@
 import React from "react"
-import { AlgorithmPageProps, AlgorithmPageConfig } from "../types"
+import { AlgorithmPageProps, AlgorithmPageInformation } from "../types"
 import ShowCode from "../../App/AlgorithmVisualizer/ShowCode"
 
-const PageConfig: AlgorithmPageConfig = {
+const PageConfig: AlgorithmPageInformation = {
     filesData: {
-        "BinaryExponentiation.cpp": [
-            [3, 10]
-        ]
+        "BinaryExponentiation.cpp": [  [9, 20], [22, 30], [33, 45] ]
     },
-    codeProps: {
-        codeStyles: { fontSize: 1.1 },
-        codeActions: {}
+    Config: {
+        CodeStyles: { fontSize: 0.6 },
+        CodeActions: {},
+        PageConfig: {}
     }
 }
 
-const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props => {
+const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({filesData}) => {
     return (
         <div>
             This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
@@ -77,10 +76,23 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = props =
 
             <ShowCode 
                 ID={"bebe"}
-                Data = {props.filesData}
+                Data = {filesData}
                 fileName={"BinaryExponentiation.cpp"}
                 partOfFile={0}
-                {...props.codeProps}
+            />
+
+            <ShowCode 
+                ID={"bebe2"}
+                Data = {filesData}
+                fileName={"BinaryExponentiation.cpp"}
+                partOfFile={1}
+            />
+
+            <ShowCode 
+                ID={"bebe3"}
+                Data = {filesData}
+                fileName={"BinaryExponentiation.cpp"}
+                partOfFile={2}
             />
 
         </div>

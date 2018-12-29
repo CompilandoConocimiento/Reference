@@ -13,6 +13,7 @@ import {FilesData as FilesDataInterface, FilesDataResult as FilesDataResultInter
 import {CodeStyles as CodeStylesInterfaces, CodeActions as CodeActionsInterfaces }      from "./types"
 import {AlgorithmPageConfig as AlgorithmPageConfigInterface}                            from "./types"
 import {AlgorithmPageProps as AlgorithmPagePropsInterface }                             from "./types"
+import {AlgorithmPageInformation as AlgorithmPageInformationInterface }                 from "./types"
 
 export type NameLink = NameLinkInterface
 export type Text = TextInterface
@@ -27,3 +28,4 @@ export type CodeActions = CodeActionsInterfaces
 
 export type AlgorithmPageConfig = AlgorithmPageConfigInterface
 export type AlgorithmPageProps = AlgorithmPagePropsInterface
+export type AlgorithmPageInformation = AlgorithmPageInformationInterface

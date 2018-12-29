@@ -2,6 +2,12 @@ import { FilesDataResult, FilesData } from "../../Data"
 
 const linkToBaseDirectoryToCode = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
 
+/**
+   * Fetch to get the code file, then when you have it, transform it and call set state over it
+   * @param TopicLink The link to the topic
+   * @param filesData Information on how to transform the file
+   * @param setState  The callback to send the result
+   */
 const getCodeText = (TopicLink: string, filesData: FilesData, setState: (x: any) => void) => {
     const baseLink = `${linkToBaseDirectoryToCode}/Code/${TopicLink}`
     const FilesDataResult: FilesDataResult = {}

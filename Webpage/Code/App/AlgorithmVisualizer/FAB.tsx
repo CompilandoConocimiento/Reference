@@ -7,6 +7,9 @@ export interface FABElement {
     closeOnClick: boolean,
     onClick: () => void,
 }
+/**
+   * A MaterializeCSS  Button
+   */
 const FABButton: React.FunctionComponent<FABElement & {closeFAB: any}> = props => (
     <li>
         <a

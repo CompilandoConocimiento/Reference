@@ -1,8 +1,9 @@
 import React from "react"
-import { FilesDataResult, CodeStyles, CodeActions } from "../../Data"
+import { FilesDataResult } from "../../Data"
 
-import { copyText } from "./CodeActions"
-import * as Styles from "./Styles.css"
+import { copyText }  from "./CodeActions"
+import ConfigContext from "./ConfigContext"
+import * as Styles   from "./Styles.css"
 
 enum CodeStatus { Loading, WaitingBlockUpdate, Ready }
 interface CodeState {codeMonted: CodeStatus}
@@ -11,8 +12,6 @@ interface CodeProps {
     Data: FilesDataResult | undefined,
     fileName: string,
     partOfFile: number,
-    codeActions: CodeActions,
-    codeStyles: CodeStyles
 }
 
 class ShowCode extends React.Component<CodeProps, CodeState> {
@@ -53,17 +52,22 @@ class ShowCode extends React.Component<CodeProps, CodeState> {
         const Text = this.props.Data![this.props.fileName][this.props.partOfFile]
 
         return (
-            <div className="row card-panel hoverable" style={{backgroundColor: "#2b2b2b"}} onDoubleClick={() => copyText(Text)}>
-                <div className="row">
-                    <pre id       = {this.props.ID} 
-                        style     = {{fontSize: `${this.props.codeStyles.fontSize}rem`}} 
-                        className = {Styles.CodeWrapper}
-                    >
-                        <code className={Styles.Code}>
-                            {Text.join("\n")}
-                        </code>
-                    </pre>
-                </div>
+            <div className="card-panel hoverable" 
+                style={{backgroundColor: "#2b2b2b", padding: "8px"}}
+                onDoubleClick={() => copyText(Text)}>
+                <ConfigContext.Consumer>
+                    {
+                        Config => (
+                            <pre id       = {this.props.ID} 
+                                style     = {{fontSize: `${Config.CodeStyles.fontSize}rem`}} 
+                                className = {Styles.CodeWrapper}>
+                                <code className={Styles.Code}>
+                                    {Text.join("\n")}
+                                </code>
+                            </pre>
+                        )
+                    }
+                </ConfigContext.Consumer>
             </div>
         )
     }
