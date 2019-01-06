@@ -57,17 +57,16 @@ const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
   
     return (
         <ul id="SideBarID" className="sidenav">
-
             <li>
-                <br />
-                <h5 className="blue-grey-text text-darken-3">
+                <h5 className="blue-grey-text text-darken-3" style={{margin: "32px"}}>
                     <span style={{fontWeight: 500, fontSize: "2.1rem"}}>
-                        &nbsp;&nbsp;&nbsp;&nbsp; <b>Topics</b>
+                        &nbsp;&nbsp;<b>Topics</b>
                     </span>
+                    <a className="modal-trigger" href="#modalConfig">
+                        <i className="material-icons right blue-grey-text text-darken-3">edit</i>
+                    </a> 
                 </h5>
             </li>
-
-            <br />
 
             {TopicsLink}
 

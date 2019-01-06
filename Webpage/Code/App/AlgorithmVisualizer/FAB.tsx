@@ -7,6 +7,7 @@ export interface FABElement {
     closeOnClick: boolean,
     onClick: () => void,
 }
+
 /**
    * A MaterializeCSS  Button
    */

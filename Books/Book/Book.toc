@@ -1,0 +1,5 @@
+\select@language {english}
+\contentsline {part}{I\hspace {1em}Number Theory}{2}{part.1}
+\contentsline {chapter}{\numberline {1}Primes}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Sieve of Eratosthenes}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Get the Boolean Version}{3}{subsection.1.1.1}

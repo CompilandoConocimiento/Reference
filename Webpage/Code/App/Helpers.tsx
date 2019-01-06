@@ -4,28 +4,10 @@ import React from "react"
    * A component to call when loading something
    */
 export const Loading: React.FunctionComponent = () => (
-    <div className="preloader-wrapper big active" style={{width: "100%"}}>
-        <br />
-        <br />
-        
-        <div className="spinner-layer spinner-blue">
-            
-            <div className="circle-clipper left">
-                <div className="circle" />
-            </div>
-
-            <div className="gap-patch">
-                <div className="circle" />
-            </div>
-            
-            <div className="circle-clipper right">
-                <div className="circle" />
-            </div>
-
+    <div style={{width: "100%", padding: "4% 10% 4% 10%"}}>
+        <div className="progress" style={{height: "16px", borderRadius: "8px"}}>
+            <div className="indeterminate green lighten-1"></div>
         </div>
-
-        <br />
-        <br />
     </div>
 )
 
@@ -51,7 +33,6 @@ export const ErrorMessage: React.FunctionComponent = () => (
             </div>
         </div>
 
-        <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />

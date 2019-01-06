@@ -1,15 +1,15 @@
 import React from "react"
 import { AlgorithmPageProps, AlgorithmPageInformation } from "../types"
 import ShowCode from "../../App/AlgorithmVisualizer/ShowCode"
+import { LaTeX } from "../../App/AlgorithmVisualizer/LaTeX"
 
 const PageConfig: AlgorithmPageInformation = {
     filesData: {
         "BinaryExponentiation.cpp": [  [9, 20], [22, 30], [33, 45] ]
     },
-    Config: {
-        CodeStyles: { fontSize: 0.6 },
+    CodeConfig: {
+        CodeStyles: { fontSize: 0.6, backgroundColor: "#2b2b2b" },
         CodeActions: {},
-        PageConfig: {}
     }
 }
 
@@ -18,27 +18,27 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
         <div>
             This function will performe \( {"base^{exponent}"} \) but a little bit more fast using
             exponentiation by squaring.
-
-            <div style={{overflow: "auto"}}>
-            $${`
-                base ^ {exponent} = 
-                \\begin{cases}
-                    base \\; (base^2)^{\\; \\frac{exponent-1}{2}}   & \\text{if exponent is odd}   \\\\
-                    (base^2)^{\\; \\frac{exponent}{2}}          & \\text{if exponent is even}  \\\\
-                \\end{cases}
-            `}$$
-            </div>
+            The idea is to see this way of expressing exponentiation:
+            <LaTeX>
+                {String.raw`
+                    base ^ {exponent} = 
+                    \begin{cases}
+                    (base^2)^{\; \frac{exponent}{2}}             & \text{if exponent is even}  \\
+                    base \; (base^2)^{\; \frac{exponent-1}{2}}   & \text{if exponent is odd}   \\
+                    \end{cases}
+                `}  
+            </LaTeX>
 
             Or if you like small variable names we can say that \( base = x \) y \( exponent = n \):
-            <div style={{overflow: "auto"}}>
-            $${`
-                x^n = 
-                \\begin{cases}
-                    x \\; (x^2)^{\\; \\frac{n-1}{2}}    & \\text{if n is odd}   \\\\
-                    (x^2)^{\\; \\frac{n}{2}}            & \\text{if n is even}  \\\\
-                \\end{cases}
-            `}$$
-            </div>
+            <LaTeX>
+                {String.raw`
+                    x^n = 
+                    \begin{cases}
+                    (x^2)^{\; \frac{n}{2}}           & \text{if n is even}  \\
+                    x \; (x^2)^{\; \frac{n-1}{2}}    & \text{if n is odd}   \\
+                    \end{cases}
+                `}  
+            </LaTeX>
 
             Remember the bitwise operations equalities:
             <ul className="browser-default">
@@ -60,7 +60,7 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
             This is easy to proof, because \( {"e = e >> 1"}\) delete the least significant bit,
             so the last bit does not really matter. 
             So you find that at the end it does not matter if it is odd or even
-            this will always give you the correct answer
+            this will always give you the correct answer.
 
             <br />
             <br />
@@ -75,21 +75,21 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
             give true only if the last digit was 1.
 
             <ShowCode 
-                ID={"bebe"}
+                ID={"Show1"}
                 Data = {filesData}
                 fileName={"BinaryExponentiation.cpp"}
                 partOfFile={0}
             />
 
             <ShowCode 
-                ID={"bebe2"}
+                ID={"Show2"}
                 Data = {filesData}
                 fileName={"BinaryExponentiation.cpp"}
                 partOfFile={1}
             />
 
             <ShowCode 
-                ID={"bebe3"}
+                ID={"Show"}
                 Data = {filesData}
                 fileName={"BinaryExponentiation.cpp"}
                 partOfFile={2}

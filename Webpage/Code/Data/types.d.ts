@@ -13,18 +13,15 @@ export interface TopicData extends NameLink {
 
 export interface CodeStyles {
     fontSize: number,
+    backgroundColor: string,
 }
 
 export interface CodeActions {
 }
 
-export interface PageConfig {
-}
-
-interface AlgorithmPageConfig {
+interface CodeConfig {
     CodeStyles: CodeStyles,
     CodeActions: CodeActions
-    PageConfig: PageConfig
 }
 
 type Text = string[]
@@ -38,5 +35,5 @@ export interface AlgorithmPageProps {
 
 export interface AlgorithmPageInformation {
     filesData: FilesData,
-    Config: AlgorithmPageConfig
+    CodeConfig: CodeConfig
 }

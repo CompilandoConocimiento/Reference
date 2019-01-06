@@ -11,7 +11,7 @@ import {NameLink as NameLinkInterface, Text as TextInterface}                   
 import {AlgorithmData as AlgorithmDataInterface, TopicData as TopicDataInterface}       from "./types"
 import {FilesData as FilesDataInterface, FilesDataResult as FilesDataResultInterface }  from "./types"
 import {CodeStyles as CodeStylesInterfaces, CodeActions as CodeActionsInterfaces }      from "./types"
-import {AlgorithmPageConfig as AlgorithmPageConfigInterface}                            from "./types"
+import {CodeConfig as CodeConfigInterface}                                              from "./types"
 import {AlgorithmPageProps as AlgorithmPagePropsInterface }                             from "./types"
 import {AlgorithmPageInformation as AlgorithmPageInformationInterface }                 from "./types"
 
@@ -26,6 +26,6 @@ export type FilesDataResult = FilesDataResultInterface
 export type CodeStyles = CodeStylesInterfaces
 export type CodeActions = CodeActionsInterfaces
 
-export type AlgorithmPageConfig = AlgorithmPageConfigInterface
+export type CodeConfig = CodeConfigInterface
 export type AlgorithmPageProps = AlgorithmPagePropsInterface
 export type AlgorithmPageInformation = AlgorithmPageInformationInterface

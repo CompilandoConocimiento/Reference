@@ -1,12 +1,14 @@
 import React from "react"
-import { FilesDataResult } from "../../Data"
 
+import { FilesDataResult, CodeConfig } from "../../Data"
+import { Loading }   from "../Helpers"
 import { copyText }  from "./CodeActions"
 import ConfigContext from "./ConfigContext"
+
 import * as Styles   from "./Styles.css"
 
 enum CodeStatus { Loading, WaitingBlockUpdate, Ready }
-interface CodeState {codeMonted: CodeStatus}
+interface CodeState { codeMonted: CodeStatus }
 interface CodeProps {
     ID: string,
     Data: FilesDataResult | undefined,
@@ -14,16 +16,16 @@ interface CodeProps {
     partOfFile: number,
 }
 
-class ShowCode extends React.Component<CodeProps, CodeState> {
+class CodeWrapper extends React.Component<CodeProps, CodeState> {
 
     constructor(props: CodeProps) { 
         super(props)
-        this.state = {codeMonted: CodeStatus.Loading}
+        this.state = { codeMonted: CodeStatus.Loading }
     }
 
     componentDidUpdate() {
         if (this.state.codeMonted == CodeStatus.WaitingBlockUpdate) {
-            window["hljs"].highlightBlock( document.getElementById(this.props.ID) )
+            window["hljs"].highlightBlock(document.getElementById(this.props.ID))
             this.setState({codeMonted: CodeStatus.Ready})
         }
     }
@@ -37,40 +39,43 @@ class ShowCode extends React.Component<CodeProps, CodeState> {
     }
 
     render() {
-
-        if (this.state.codeMonted == CodeStatus.Loading) 
-            return (
-                <div className="row">
-                    <div className="col s8 offset-s2">
-                        <div className="progress">
-                            <div className="indeterminate"></div>
-                        </div>
-                    </div>
-                </div>
-            )
-        
+        if (this.state.codeMonted == CodeStatus.Loading) return <Loading />
         const Text = this.props.Data![this.props.fileName][this.props.partOfFile]
 
         return (
-            <div className="card-panel hoverable" 
-                style={{backgroundColor: "#2b2b2b", padding: "8px"}}
-                onDoubleClick={() => copyText(Text)}>
-                <ConfigContext.Consumer>
-                    {
-                        Config => (
-                            <pre id       = {this.props.ID} 
-                                style     = {{fontSize: `${Config.CodeStyles.fontSize}rem`}} 
-                                className = {Styles.CodeWrapper}>
-                                <code className={Styles.Code}>
-                                    {Text.join("\n")}
-                                </code>
-                            </pre>
-                        )
-                    }
-                </ConfigContext.Consumer>
-            </div>
+            <ConfigContext.Consumer>
+                { Config => <ShowCode ID={this.props.ID} Text={Text} Config={Config} /> }
+            </ConfigContext.Consumer>
         )
     }
 }
 
-export default ShowCode
+interface ShowCodeProps {
+    Text: string[],
+    ID: string,
+    Config: CodeConfig,
+}
+
+const ShowCode: React.FunctionComponent<ShowCodeProps> = props => {
+    const {backgroundColor, fontSize} = props.Config.CodeStyles
+    const CardStyle = {backgroundColor: backgroundColor, padding: "16px"}
+    const PreStyle  = {fontSize: `${fontSize}rem`, margin: "0px", backgroundColor: "transparent"}
+    const CodeStyle = {fontFamily: "firacode"}
+
+    const CardActions = {
+        onDoubleClick: () => copyText(props.Text),
+        style: CardStyle,
+    }
+
+    return (
+        <div className="card-panel hoverable" {...CardActions}>
+            <pre id={props.ID} style={PreStyle} className={Styles.HideScrollbars}>
+                <code style={CodeStyle}>
+                    {props.Text.join("\n")}
+                </code>
+            </pre>
+        </div>
+    )
+} 
+
+export default CodeWrapper

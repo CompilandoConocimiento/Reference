@@ -5,20 +5,22 @@ import { AlgorithmPageProps }                      from "../../Data"
 import { AlgorithmData, AlgorithmPageInformation } from "../../Data"
 import { FilesDataResult }                         from "../../Data"
 import { Loading }                                 from "../Helpers"
+import ConfigurationMenu                           from "./ConfigurationMenu"
 import getCodeText                                 from "./GetCodeText"
 import FAB, {FABElement}                           from "./FAB"
 import ConfigContext                               from "./ConfigContext"
 
 import * as Styles from "./Styles.css"
 
-
-
+const linkToServer = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
 
 interface VisualizerProps { AlgorithmData: AlgorithmData, TopicLink: string }
 interface VisualizerState {
     Component?: React.FunctionComponent<AlgorithmPageProps>,
     Config?: AlgorithmPageInformation,
     FilesDataResult?: FilesDataResult,
+    Modal?: M.Modal,
+    isLatexReady: boolean,
 }
 
 /**
@@ -31,38 +33,50 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
 
     constructor(props: VisualizerProps) {
         super(props)
-        this.state = {}
+        this.state = { isLatexReady: false, }
     }
 
     componentDidMount() {
-        const MathJax = () => window["MathJax"].Hub.Typeset()
-
         this.props.AlgorithmData.module()
-            .then( Module => Module.default )
-            .then( ({Config, Component}) => this.setState({Component, Config}, MathJax) )
+            .then( module => module.default )
+            .then( moduleData => this.setState(moduleData) )
     }
 
     componentDidUpdate() {
-        if (!this.state.FilesDataResult && this.state.Config) 
-            getCodeText(this.props.TopicLink, this.state.Config!.filesData, code => this.setState(code))
+
+        if (!this.state.isLatexReady) {
+            this.setState({isLatexReady: true}, () => window["MathJax"].Hub.Typeset())
+        }
+        else if (!this.state.FilesDataResult && this.state.Config) {
+            const baseLink = `${linkToServer}/Code/${this.props.TopicLink}`
+            const filesData = this.state.Config!.filesData
+            getCodeText(baseLink, filesData, code => this.setState(code))
+        }
+        else if (!this.state.Modal) {
+            const modalNode = document.querySelector('.modal')
+            this.setState({Modal: M.Modal.init(modalNode!, {})})
+        }
     }
     
     render () {
-
-
         const FABToDo: FABElement[] = [
             {
-                color: "green darken-1",
+                color: "teal",
+                closeOnClick: true,
+                icon: "edit",
+                onClick: () => this.state.Modal!.open(),
+            },
+            {
+                color: "indigo",
                 closeOnClick: false,
                 icon: "code",
                 onClick: () => {
                     M.Toast.dismissAll()
                     M.toast({html: 'Toggle comments'})
                 
-                    document.querySelectorAll(".hljs-comment").forEach( (Element: any) => {
-                        if (Element.style.display === "")
-                            Element.style.display = "initial"
-                        Element.style.display = (Element.style.display == "initial")? "none" : "initial"
+                    document.querySelectorAll(".hljs-comment").forEach( (comment: any) => {
+                        if (comment.style.display === "") comment.style.display = "initial"
+                        comment.style.display = (comment.style.display == "initial")? "none" : "initial"
                     })
                 },
             },
@@ -70,7 +84,7 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
                 color: "blue",
                 closeOnClick: true,
                 icon: "content_copy",
-                onClick: () => M.toast({html: 'Just click the code you want'})
+                onClick: () => M.toast({html: 'Just double click the code you want'})
             },
             {
                 color: "green",
@@ -80,7 +94,7 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
                     const newConfig = preState.Config
                     if (!newConfig) return null
 
-                    newConfig.Config.CodeStyles.fontSize = newConfig.Config.CodeStyles.fontSize + 0.10
+                    newConfig.CodeConfig.CodeStyles.fontSize = newConfig.CodeConfig.CodeStyles.fontSize + 0.10
                     return {Config: newConfig}
                 })
             },
@@ -92,32 +106,38 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
                     const newConfig = preState.Config
                     if (!newConfig) return null
 
-                    newConfig.Config.CodeStyles.fontSize = newConfig.Config.CodeStyles.fontSize - 0.10
+                    newConfig.CodeConfig.CodeStyles.fontSize = newConfig.CodeConfig.CodeStyles.fontSize - 0.10
                     return {Config: newConfig}
                 })
             },
         ]
 
+        if (!this.state.Component || !this.state.Config) return <Loading />
+
+        this.state.Config.CodeConfig.CodeStyles.fontSize
+
         return (
             <React.Fragment>
+                
                 <div className="center blue-grey-text text-darken-3">
                     <h4>{this.props.AlgorithmData.name}</h4>
                 </div>
                 <br />
 
                 <div className={"container " + Styles.Text}>
-                    {
-                        this.state.Component? 
-                            <ConfigContext.Provider value={this.state.Config!.Config}>
-                                <this.state.Component filesData = {this.state.FilesDataResult} />
-                            </ConfigContext.Provider>
-                        :
-                            <Loading />
-                    }
+                    <ConfigContext.Provider value={this.state.Config!.CodeConfig}>
+                        <this.state.Component filesData = {this.state.FilesDataResult} />
+                    </ConfigContext.Provider>
                 </div>
                 <br /><br /><br />
 
+                <ConfigurationMenu 
+                    setState = {(newState: any) => this.setState(newState)}
+                    Config   = {this.state.Config!}
+                />
+
                 <FAB FABElements={FABToDo} />
+
             </React.Fragment>
         )
     }
