@@ -1,5 +1,5 @@
 import React from "react"
-import { AlgorithmPageProps, AlgorithmPageInformation } from "../types"
+import { AlgorithmPageProps, AlgorithmPageInformation } from "../index"
 import ShowCode from "../../App/AlgorithmVisualizer/ShowCode"
 import { LaTeX } from "../../App/AlgorithmVisualizer/LaTeX"
 
@@ -93,7 +93,7 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
 
             <h6><b>Modular Exponentation</b></h6>
 
-            This is to do \( {"base^{exponent} \\mod n"}\)
+            This is to do \( {"base^{exponent}\\mod n"}\)
 
             <ShowCode 
                 Data       = {filesData}

@@ -36,12 +36,21 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
         this.state = { isLatexReady: false, }
     }
 
+    /**
+     * Load the module
+     */
     componentDidMount() {
         this.props.AlgorithmData.module()
             .then( module => module.default )
             .then( moduleData => this.setState(moduleData) )
     }
 
+    /**
+     * This:
+     * - Typeset LaTeX
+     * - call getCodeText
+     * - init the modal
+     */
     componentDidUpdate() {
 
         if (!this.state.isLatexReady) {
@@ -58,7 +67,9 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
         }
     }
     
+
     render () {
+        
         const FABToDo: FABElement[] = [
             {
                 color: "teal",

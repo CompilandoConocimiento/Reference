@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import AlgorithmVisualizer from "../AlgorithmVisualizer"
 import { ErrorMessage }    from "../Helpers"
 import CardToSubTopics     from "./CardToAlgorithms"
-import { TopicsData }      from "../../Data"
+import TopicsData          from "../../Data/TopicsData"
 
 /**
    * Find if the topic link is valid, and then choose if we should call the 

@@ -15,6 +15,10 @@ interface CodeProps {
     partOfFile: string,
 }
 
+/**
+   * A wrapper to each code block that controls when to show loading or
+   * when to show the code and to call hljs highlightBlock
+   */
 class CodeWrapper extends React.Component<CodeProps, CodeState> {
 
     constructor(props: CodeProps) { 
@@ -22,6 +26,7 @@ class CodeWrapper extends React.Component<CodeProps, CodeState> {
         this.state = { codeMonted: CodeStatus.Loading }
     }
 
+    /** call highlightBlock? */
     componentDidUpdate() {
         if (this.state.codeMonted == CodeStatus.WaitingBlockUpdate) {
             const ID = this.props.fileName + this.props.partOfFile
@@ -30,6 +35,7 @@ class CodeWrapper extends React.Component<CodeProps, CodeState> {
         }
     }
 
+    /** Is code mounted? */
     static getDerivedStateFromProps(props: CodeProps, state: CodeState) {
         if (state.codeMonted != CodeStatus.Loading) return null
         if (!props.Data || !props.Data[props.fileName]) return null
@@ -51,6 +57,7 @@ class CodeWrapper extends React.Component<CodeProps, CodeState> {
 }
 
 
+/** A function that decided if the code theme is loaded if not we downloaded */
 export function loadTheme(theme: string) {
     if (window["theme"] && window["theme"] === theme) return 
     if (theme === "") return 
@@ -67,6 +74,7 @@ interface ShowCodeProps {
     Config: CodeConfig,
 }
 
+/** A component to show code */
 const ShowCode: React.FunctionComponent<ShowCodeProps> = props => {
     const {theme, fontSize} = props.Config.CodeStyles
     loadTheme(theme)

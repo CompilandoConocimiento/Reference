@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import { TopicsData } from '../../Data'
+import TopicsData from '../../Data/TopicsData'
 
 /**
    * A react router link that send you to a topic.

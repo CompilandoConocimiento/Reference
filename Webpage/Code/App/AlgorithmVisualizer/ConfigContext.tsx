@@ -2,6 +2,7 @@ import React from "react"
 
 import { CodeConfig } from "../../Data"
 
+//Default values
 const PageConfig: CodeConfig = {
     CodeActions: {
     },

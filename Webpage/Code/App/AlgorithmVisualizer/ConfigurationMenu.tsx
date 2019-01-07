@@ -12,7 +12,9 @@ interface ConfigurationMenuState {
     Config: AlgorithmPageInformation
 }
 
-
+/**
+   * A Modal that shows how to edit the Algorithms Page Information
+   */
 class ConfigurationMenu extends React.Component<ConfigurationMenuProps, ConfigurationMenuState> {
     
     constructor(props: ConfigurationMenuProps) {
@@ -20,11 +22,14 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
         this.state = { Config: this.props.Config }
     }
 
+    /**
+     * Update all the fields that are necesary
+     */
     componentDidMount() {
-        M.updateTextFields()
-
         const selects = document.querySelectorAll('select');
         M.FormSelect.init(selects, {});
+
+        M.updateTextFields()
     }
 
     render () {
