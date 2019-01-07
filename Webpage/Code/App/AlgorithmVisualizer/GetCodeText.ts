@@ -23,7 +23,7 @@ const getCodeText = (baseLink: string, filesData: FilesData, setState: (x: any) 
                 fileParts.forEach( filePart => {
                     const name = filePart.name
                     const [start, end] = filePart.parts
-                    FilesDataResult[fileName][name] = Text.slice(start, end + 1)
+                    FilesDataResult[fileName][name] = Text.slice(start - 1, end)
                 })
 
                 setState({FilesDataResult})

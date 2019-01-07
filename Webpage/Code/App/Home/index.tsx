@@ -1,9 +1,9 @@
 import React from "react"
 
-import { TopicsData } from "../../Data"
-import HelloCard     from "./HelloCard"
-import CardToTopic   from "./CardToTopic"
-import * as Style    from "./Styles.css"
+import TopicsData  from "../../Data/TopicsData"
+import HelloCard   from "./HelloCard"
+import CardToTopic from "./CardToTopic"
+import * as Style  from "./Styles.css"
 
 const radius = "1.15rem"
 

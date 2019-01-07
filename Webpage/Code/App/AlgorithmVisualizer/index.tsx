@@ -143,7 +143,7 @@ export default class AlgorithmVisualizer extends React.Component<VisualizerProps
                 <br /><br /><br />
 
                 <ConfigurationMenu 
-                    setState = {(newState: any) => this.setState(newState)}
+                    setState = {(newState, fn) => this.setState(newState, fn)}
                     Config   = {this.state.Config!}
                 />
 

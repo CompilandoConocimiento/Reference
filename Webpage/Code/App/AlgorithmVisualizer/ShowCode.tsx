@@ -82,12 +82,16 @@ const ShowCode: React.FunctionComponent<ShowCodeProps> = props => {
     const PreStyle  = {fontSize: `${fontSize}rem`, margin: "16px 0px", padding: "20px", borderRadius: "4px"}
     const CodeStyle = {fontFamily: "firacode"}
 
-    const CardActions = {
+    let elevation: any = props.Config.CodeStyles.elevation
+    elevation = (!(!elevation))? "z-depth-1 hoverable " : ""
+
+    const CardProps = {
         onDoubleClick: () => copyText(props.Text),
+        className: elevation + Styles.HideScrollbars
     }
 
     return (
-        <pre id={props.ID} style={PreStyle} {...CardActions} className={"z-depth-1 hoverable " + Styles.HideScrollbars}>
+        <pre id={props.ID} style={PreStyle} {...CardProps}>
             <code style={CodeStyle}>
                 {props.Text.join("\n")}
             </code>

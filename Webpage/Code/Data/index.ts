@@ -30,6 +30,9 @@ export interface CodeStyles {
 
     /** A name of a Highlightjs theme, @see https://highlightjs.org */
     theme: string,
+
+    /** Elevation */
+    elevation?: boolean,
 }
 
 /** All the differents actiond you can have on the code shown  */

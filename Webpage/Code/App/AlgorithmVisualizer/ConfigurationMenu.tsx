@@ -4,7 +4,7 @@ import { AlgorithmPageInformation } from "../../Data"
 import {loadTheme} from "./ShowCode"
 
 interface ConfigurationMenuProps {
-    setState: (newState: any) => void, 
+    setState: (newState: any, fn: any) => void, 
     Config: AlgorithmPageInformation
 }
 
@@ -33,12 +33,35 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
     }
 
     render () {
+
         return (
             <div id="modalConfig" className="modal">
                 
                 <div className="modal-content">
                     <h5>Configuration Menu</h5>
                     <ul style={{fontSize: "1.2rem", lineHeight: "3.5rem"}}>
+                        <li>
+                            Elevation: 
+                            <div className="switch">
+                                <label>
+                                    Off
+                                    <input 
+                                        type     = "checkbox"
+                                        checked  = {!(!this.state.Config.CodeConfig.CodeStyles.elevation)}
+                                        onChange = { event => {
+                                            let newValue = event.target.checked
+                                            this.setState(preState => {
+                                                const Config = preState.Config
+                                                Config.CodeConfig.CodeStyles.elevation = newValue
+                                                return {Config}
+                                            })
+                                        }}
+                                    />
+                                    <span className="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </li>
                         <li>
                             FontSize: 
                             <div className="input-field">
@@ -93,7 +116,9 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
                         className = "btn-flat"
                         onClick   = { () => {
                             loadTheme(this.state.Config.CodeConfig.CodeStyles.theme)
-                            this.props.setState({Config: this.state.Config})
+                            const codes = document.querySelectorAll("pre")
+                            const updateCode = () => codes.forEach(code => window["hljs"].highlightBlock(code))
+                            this.props.setState({Config: this.state.Config}, () => updateCode())
                         }}
                     >
                         Change
