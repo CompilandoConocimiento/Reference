@@ -6,9 +6,9 @@ import { LaTeX } from "../../App/AlgorithmVisualizer/LaTeX"
 const PageConfig: AlgorithmPageInformation = {
     filesData: {
         "BinaryExponentiation.cpp": [
-            {name: "RecursiveBinExpo", parts: [9, 20] }, 
-            {name: "BinExpo", parts: [22, 30] }, 
-            {name: "ModularBinExpo", parts: [33, 45] }, 
+            {name: "RecursiveBinExpo", parts: [1, 8] }, 
+            {name: "BinExpo", parts: [10, 22] }, 
+            {name: "ModularBinExpo", parts: [24, 37] }, 
         ]
     },
     CodeConfig: {

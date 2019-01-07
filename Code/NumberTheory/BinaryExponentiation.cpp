@@ -1,46 +1,37 @@
-/*=============================================================================================================
-==============================     BINARY EXPONENTIATION (AND MODULAR)       ==================================
-=============================================================================================================*/
-#include <iostream>
+template <typename integer, typename unsignedInterger>
+integer SimpleBinaryExponentation (integer x, unsignedInterger n) {
+    if (n == 0) return 1;                                         
+    if (n == 1) return x;                                           
 
-using namespace std;                                                //Bad practice, dont do it kids!
-using ull = unsigned long long;                                     //Just a so long name, sorry
-using lli = long long;                                              //Just a so long name, sorry
+    if (n % 2 == 0) return SimpleBinaryExponentation(x * x,  n / 2);           
+    else return (x * SimpleBinaryExponentation(x * x, (n-1) / 2));  
+}
 
-lli BinaryExponentation (lli base, ull exponent) {                  //FN: Modular Exponentiation: a^b MOD n
-    lli solution = 1;                                               //auxiliar variables for code clarity
+template <typename integer, typename unsignedInterger>
+integer BinaryExponentation (integer base, unsignedInterger exponent) {                  
+    integer solution {1};                                               
 
-    while (exponent > 0) {                                          //End were exponent is zero
-        if (exponent & 1) solution = base * solution;               //If exponent last digit = 1 (exp is odd)
+    while (exponent > 0) {                                
+        if (exponent & 1) solution = base * solution; 
 
-        base = base * base;                                         //Sol = Sol^2
-        exponent = exponent >> 1;                                   //Remove 1 digit from e to read the next one
+        base = base * base;                            
+        exponent = exponent >> 1;                    
     }
 
-    return solution;                                                //Return solution
+    return solution;                              
 }
 
-lli RecursiveBinaryExponentation (lli x, ull n) {                   //FN: Recursive Binary Exponentiation
-    if (n == 0) return 1;                                           //Remember base^0 = 1
-    if (n == 1) return x;                                           //Remember base^1 = base
+template <typename integer, typename uinteger>
+integer ModularBinaryExponentation(integer base, uinteger exponent, uinteger n) {     
+    integer solution {1};                                               
+    base = base % n;                                            
 
-    if (n % 2 == 0)                                                 //If the exponent exponent is odd
-        return RecursiveBinaryExponentation(x*x,  n / 2);           //Use the definition    
-    else                                                            //If the exponent is even
-        return (x * RecursiveBinaryExponentation(x*x, (n-1) / 2));  //Use the definition
-}
-
-
-lli ModularBinaryExponentation(lli base, ull exponent, ull n) {     //FN: Modular Exponentiation: a^b MOD n
-    lli solution = 1;                                               //Auxiliar variables for code clarity
-    base = base % n;                                                //Start with the correct base
-
-    while (exponent > 0) {                                          //End were exponent is zero
-        if (exponent & 1) solution = (base * solution) % n;         //Update solution
+    while (exponent > 0) {                                          
+        if (exponent & 1) solution = (base * solution) % n;         
         
-        base = (base * base) % n;                                   //Always update by squaring the aux variable
-        exponent = exponent >> 1;                                   //Remove 1 digit from e to read the next one
+        base = (base * base) % n;                                   
+        exponent = exponent >> 1;                                   
     }
 
-    return solution;                                                //Return solution
+    return solution;                                                
 }
