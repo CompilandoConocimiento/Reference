@@ -1,5 +1,5 @@
-template <typename integer, typename unsignedInterger>
-integer RecursiveBinaryExp (integer x, unsignedInterger n) {
+template <typename integer, typename unsignedInteger>
+integer RecursiveBinaryExp (integer x, unsignedInteger n) {
     if (n == 0) return 1;                                         
     if (n == 1) return x;                                           
 
@@ -7,8 +7,8 @@ integer RecursiveBinaryExp (integer x, unsignedInterger n) {
     else return (x * RecursiveBinaryExp(x * x, (n-1) / 2));  
 }
 
-template <typename integer, typename unsignedInterger>
-integer SimpleBinaryExponentation (integer base, unsignedInterger exponent) {                  
+template <typename integer, typename unsignedInteger>
+integer SimpleBinaryExponentation (integer base, unsignedInteger exponent) {                  
     integer solution {1};                                               
 
     while (exponent > 0) {
@@ -24,8 +24,8 @@ integer SimpleBinaryExponentation (integer base, unsignedInterger exponent) {
     return solution;                              
 }
 
-template <typename integer, typename unsignedInterger>
-integer BinaryExponentation (integer base, unsignedInterger exponent) {                  
+template <typename integer, typename unsignedInteger>
+integer BinaryExponentation (integer base, unsignedInteger exponent) {                  
     integer solution {1};                                               
 
     while (exponent > 0) {                                
