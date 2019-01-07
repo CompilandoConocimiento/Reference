@@ -6,7 +6,7 @@ const PageConfig: CodeConfig = {
     CodeActions: {
     },
     CodeStyles: { 
-        backgroundColor: "", 
+        theme: "atom-one-dark", 
         fontSize: 0.8,
     },
 }

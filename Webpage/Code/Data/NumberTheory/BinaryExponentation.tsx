@@ -5,10 +5,14 @@ import { LaTeX } from "../../App/AlgorithmVisualizer/LaTeX"
 
 const PageConfig: AlgorithmPageInformation = {
     filesData: {
-        "BinaryExponentiation.cpp": [  [9, 20], [22, 30], [33, 45] ]
+        "BinaryExponentiation.cpp": [
+            {name: "RecursiveBinExpo", parts: [9, 20] }, 
+            {name: "BinExpo", parts: [22, 30] }, 
+            {name: "ModularBinExpo", parts: [33, 45] }, 
+        ]
     },
     CodeConfig: {
-        CodeStyles: { fontSize: 0.6, backgroundColor: "#2b2b2b" },
+        CodeStyles: { fontSize: 0.9, theme: "" },
         CodeActions: {},
     }
 }
@@ -40,14 +44,20 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
                 `}  
             </LaTeX>
 
+            <ShowCode 
+                Data       = {filesData}
+                fileName   = {"BinaryExponentiation.cpp"}
+                partOfFile = {"RecursiveBinExpo"}
+            />
+            <br />
+
+            <h6><b>How to optimize \( {"e = \\frac{e-1}{2} "} \) and \( {"e = \\frac{e}{2} "}\) </b></h6>
+
             Remember the bitwise operations equalities:
             <ul className="browser-default">
                 <li> { "\\( x << y = x * 2^y \\)" } </li>
                 <li> { "\\( x >> y = \\left \\lfloor \\dfrac{x}{2^y} \\right \\rfloor \\)" } </li>
             </ul>
-
-            <br />
-            <h6><b>How to optimize \( {"e = \\frac{e-1}{2} "} \) and \( {"e = \\frac{e}{2} "}\) </b></h6>
 
             This optimizations are using the bitwise operations.
             I claim that 
@@ -75,24 +85,20 @@ const BinaryExponentation: React.FunctionComponent<AlgorithmPageProps> = ({files
             give true only if the last digit was 1.
 
             <ShowCode 
-                ID={"Show1"}
-                Data = {filesData}
-                fileName={"BinaryExponentiation.cpp"}
-                partOfFile={0}
+                Data       = {filesData}
+                fileName   = {"BinaryExponentiation.cpp"}
+                partOfFile = {"BinExpo"}
             />
+            <br />
+
+            <h6><b>Modular Exponentation</b></h6>
+
+            This is to do \( {"base^{exponent} \\mod n"}\)
 
             <ShowCode 
-                ID={"Show2"}
-                Data = {filesData}
-                fileName={"BinaryExponentiation.cpp"}
-                partOfFile={1}
-            />
-
-            <ShowCode 
-                ID={"Show"}
-                Data = {filesData}
-                fileName={"BinaryExponentiation.cpp"}
-                partOfFile={2}
+                Data       = {filesData}
+                fileName   = {"BinaryExponentiation.cpp"}
+                partOfFile = {"ModularBinExpo"}
             />
 
         </div>

@@ -13,7 +13,7 @@ export interface TopicData extends NameLink {
 
 export interface CodeStyles {
     fontSize: number,
-    backgroundColor: string,
+    theme: string,
 }
 
 export interface CodeActions {
@@ -26,8 +26,9 @@ interface CodeConfig {
 
 type Text = string[]
 
-export interface FilesDataResult { [index: string]: Text[] }
-export interface FilesData       { [index: string]: [number, number][] }
+export interface FilePart        { name: string, parts: [number, number] }
+export interface FilesDataResult { [index: string]: {[index: string]: Text} }
+export interface FilesData       { [index: string]: FilePart[] }
 
 export interface AlgorithmPageProps {
     filesData?: FilesDataResult,

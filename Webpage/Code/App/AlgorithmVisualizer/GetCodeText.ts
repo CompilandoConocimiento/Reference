@@ -12,7 +12,7 @@ const getCodeText = (baseLink: string, filesData: FilesData, setState: (x: any) 
 
     Object.entries(filesData).forEach( ([fileName, fileParts]) => {
 
-        FilesDataResult[fileName] = []
+        FilesDataResult[fileName] = {}
         const codeLink = baseLink + "/" + fileName
         console.log(codeLink)
         
@@ -20,12 +20,17 @@ const getCodeText = (baseLink: string, filesData: FilesData, setState: (x: any) 
             .then ( Data => Data.text()      )
             .then ( Text  => Text.split("\n") )
             .then ( Text  => {
-                fileParts.forEach( ([start, end]) => 
-                    FilesDataResult[fileName].push(Text.slice(start, end + 1))
-                )
+                fileParts.forEach( filePart => {
+                    const name = filePart.name
+                    const [start, end] = filePart.parts
+                    FilesDataResult[fileName][name] = Text.slice(start, end + 1)
+                })
+
                 setState({FilesDataResult})
             })
     })
+
+
 }
 
 export default getCodeText

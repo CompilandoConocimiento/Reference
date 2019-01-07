@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AlgorithmPageInformation } from "../../Data"
+import {loadTheme} from "./ShowCode"
 
 interface ConfigurationMenuProps {
     setState: (newState: any) => void, 
@@ -21,6 +22,9 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
 
     componentDidMount() {
         M.updateTextFields()
+
+        const selects = document.querySelectorAll('select');
+        M.FormSelect.init(selects, {});
     }
 
     render () {
@@ -46,11 +50,35 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
                                         })
                                     }}
                                 /> 
-                                <label htmlFor="first_name">Font Size</label>
                             </div>
                         </li>
                         <li>
-                            Background: 
+                            Theme: 
+                            <div className="input-field col s12">
+                                <select
+                                    value     = {this.state.Config.CodeConfig.CodeStyles.theme} 
+                                    style     = {{width: "fit-content"}}
+                                    className = "browser-default"
+                                    onChange  = { event => {
+                                        const theme = event.target.value
+                                        this.setState(preState => {
+                                            const Config = preState.Config
+                                            Config.CodeConfig.CodeStyles.theme = theme
+                                            return {Config}
+                                        })
+                                    }}
+                                >
+                                    <option value="atom-one-dark">   Atom One Dark    </option>
+                                    <option value="railscasts">      Railscasts       </option>
+                                    <option value="agate">           Agate            </option>
+                                    <option value="darcula">         Darcula          </option>
+                                    <option value="zenburn">         Zenburn          </option>
+                                    <option value="tomorrow">        Tomorrow         </option>
+                                    <option value="gruvbox-dark">    Gruvbox Dark     </option>
+                                    <option value="solarized-light"> Solarized Light  </option>
+                                    <option value="hybrid">          Hybrid           </option>
+                                </select>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -58,7 +86,10 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
                 <div className="modal-footer">
                     <a 
                         className = "btn-flat"
-                        onClick   = { () => this.props.setState({Config: this.state.Config})}
+                        onClick   = { () => {
+                            loadTheme(this.state.Config.CodeConfig.CodeStyles.theme)
+                            this.props.setState({Config: this.state.Config})
+                        }}
                     >
                         Change
                     </a>
