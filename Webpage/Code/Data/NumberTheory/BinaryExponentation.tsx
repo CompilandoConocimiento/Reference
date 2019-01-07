@@ -7,8 +7,9 @@ const PageConfig: AlgorithmPageInformation = {
     filesData: {
         "BinaryExponentiation.cpp": [
             {name: "RecursiveBinExpo", parts: [1, 8] }, 
-            {name: "BinExpo", parts: [10, 22] }, 
-            {name: "ModularBinExpo", parts: [24, 37] }, 
+            {name: "SimpleBinExpo", parts: [10, 25] }, 
+            {name: "BinExpo", parts: [27, 39] }, 
+            {name: "ModularBinExpo", parts: [41, 54] }, 
         ]
     },
     CodeConfig: {
