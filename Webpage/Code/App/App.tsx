@@ -2,9 +2,9 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { HashRouter, Switch, Route } from 'react-router-dom'
 
-import Header from "./Header"
-import Footer from "./Footer"
-import Home from "./Home"
+import Header           from "./Header"
+import Footer           from "./Footer"
+import Home             from "./Home"
 import AlgorithmsPicker from "./AlgorithmsPicker"
 
 /**
