@@ -2,44 +2,43 @@
 % ************************          REFERENCE                 ****************************
 % ****************************************************************************************
 
-% ****************************************************************************************
-% ***************          COPY AND PASTE THE OTHER HEADER CARFULLY      *****************
-% ****************************************************************************************
-
-
+% *****************************************************************************************************
+% ****************************              SIMPLE EXAMPLE             ********************************
+% *****************************************************************************************************
 
 % =======================================================
 % =======         HEADER FOR DOCUMENT        ============
 % =======================================================
     
-    % *********   HEADERS AND FOOTERS ********
-    \def\ProjectAuthorLink{https://github.com/SoyOscarRH}           %Just to keep it in line
-    \def\ProjectNameLink{\ProjectAuthorLink/Proyect}                %Link to Proyect
-
+    % *********  SPECIFIC FOR THIS BOOK  ********
+    \def\ProjectAuthorLink{https://github.com/CompilandoConocimiento}
+    \def\ProjectNameLink{\ProjectAuthorLink/Reference}    
+    
 
     % *********   DOCUMENT ITSELF   **************
-    \documentclass[11pt, fleqn]{report}                             %Type of docuemtn and size of font and left eq
-    \usepackage[english]{babel}                                     %Please use spanish
-    \usepackage[utf8]{inputenc}                                     %Please use spanish - UFT
-    \usepackage[margin = 1.2in]{geometry}                           %Margins and Geometry pacakge
-    \usepackage{ifthen}                                             %Allow simple programming
-    \usepackage{hyperref}                                           %Create MetaData for a PDF and LINKS!
-    \usepackage{pdfpages}                                           %Create MetaData for a PDF and LINKS!
-    \hypersetup{pageanchor = false}                                 %Solve 'double page 1' warnings in build
+    \documentclass[12pt, fleqn]{report}                             %Type of doc and size of font and left equations
+    \usepackage[margin=1.2in]{geometry}                             %Margins and Geometry pacakge
+    \usepackage{ifthen}                                             %Allow simple programming using if - then
+    \usepackage[hidelinks]{hyperref}                                %Allow to create hiperlinks and Fuck Firefox
+    \usepackage{pdfpages}                                           %Allow us 'import' PDF's
+    \hypersetup{pageanchor=false}                                   %Solve 'double page 1' warnings in build :v
     \setlength{\parindent}{0pt}                                     %Eliminate ugly indentation
     \author{Oscar Andrés Rosas}                                     %Who I am
 
     % *********   LANGUAJE    *****************
-    \usepackage[T1]{fontenc}                                        %Please use spanish
+    \usepackage[spanish]{babel}                                     %Please allow me to type in spanish
+    \usepackage[utf8]{inputenc}                                     %Lets use UFT-8
+    \usepackage[T1]{fontenc}                                        %Allow for better font support
     \usepackage{textcmds}                                           %Allow us to use quoutes
     \usepackage{changepage}                                         %Allow us to use identate paragraphs
-    \usepackage{anyfontsize}                                        %All the sizes
+    \usepackage{anyfontsize}                                        %All the sizes for fonts wiiiii!
 
     % *********   MATH AND HIS STYLE  *********
     \usepackage{ntheorem, amsmath, amssymb, amsfonts}               %All fucking math, I want all!
     \usepackage{mathrsfs, mathtools, empheq}                        %All fucking math, I want all!
     \usepackage{cancel}                                             %Negate symbol
     \usepackage{centernot}                                          %Allow me to negate a symbol
+    \decimalpoint                                                   %Use decimal point
 
     % *********   GRAPHICS AND IMAGES *********
     \usepackage{graphicx}                                           %Allow to create graphics
@@ -78,7 +77,7 @@
             {\footnotesize{\textsc{\nouppercase{\rightmark}}}}      %And fot it put the name
     }
 
-    \rfoot{\textsc{\small{\hyperref[sec:Index]{Go to Index}}}}      %This will always be a footer  
+    \rfoot{\textsc{\small{\hyperref[sec:Index]{Ve al Índice}}}}     %This will always be a footer  
 
     \fancyfoot[L]{                                                  %Algoritm for a changing footer
         \ifthenelse{\isodd{\value{page}}}                           %IF ODD PAGE:
@@ -91,7 +90,6 @@
     }
     
     
-    
 % =======================================================
 % ===================   COMMANDS    =====================
 % =======================================================
@@ -102,50 +100,59 @@
     \newenvironment{Indentation}[1][0.75em]                         %Use: \begin{Inde...}[Num]...\end{Inde...}
         {\begin{adjustwidth}{#1}{}}                                 %If you dont put nothing i will use 0.75 em
         {\end{adjustwidth}}                                         %This indentate a paragraph
+    
     \newenvironment{SmallIndentation}[1][0.75em]                    %Use: The same that we upper one, just 
         {\begin{adjustwidth}{#1}{}\begin{footnotesize}}             %footnotesize size of letter by default
         {\end{footnotesize}\end{adjustwidth}}                       %that's it
-
-    \newenvironment{MultiLineEquation}[1]                           %Use: To create MultiLine equations
-        {\begin{equation}\begin{alignedat}{#1}}                     %Use: \begin{Multi..}{Num. de Columnas}
-        {\end{alignedat}\end{equation}}                             %And.. that's it!
-    \newenvironment{MultiLineEquation*}[1]                          %Use: To create MultiLine equations
-        {\begin{equation*}\begin{alignedat}{#1}}                    %Use: \begin{Multi..}{Num. de Columnas}
-        {\end{alignedat}\end{equation*}}                            %And.. that's it!
     
+    \def \Eq {equation}                                             %Stupid Visual studio error
+    \newenvironment{MultiLineEquation}[1]                           %Use: To create MultiLine equations
+        {\begin{\Eq}\begin{alignedat}{#1}}                          %Use: \begin{Multi..}{Num. de Columnas}
+        {\end{alignedat}\end{\Eq}}                                  %And.. that's it!
+    
+    \newenvironment{MultiLineEquation*}[1]                          %Use: To create MultiLine equations
+        {\begin{\Eq*}\begin{alignedat}{#1}}                         %Use: \begin{Multi..}{Num. de Columnas}
+        {\end{alignedat}\end{\Eq*}}                                 %And.. that's it!
+
+    \newenvironment{largeEq} {\begingroup \large}{\endgroup}        %Make eq bigger
+    \newenvironment{LargeEq} {\begingroup \Large}{\endgroup}        %Make eq bigger
+    \newenvironment{HugeEq} {\begingroup \Huge}{\endgroup}          %Make eq bigger!
 
     % =========================================
     % == GENERAL TEXT & SYMBOLS ENVIRONMENTS ==
     % =========================================
     
     % =====  TEXT  ======================
-    \newcommand \Quote {\qq}                                        %Use: \Quote to use quotes
-    \newcommand \Over {\overline}                                   %Use: \Bar to use just for short
-    \newcommand \ForceNewLine {$\Space$\\}                          %Use it in theorems for example
-    \newcommand \ForceColumnBreak {\vfill\null\columnbreak}         %Use only in multicols
+    \newcommand \Quote              {\qq}                           %Use: \Quote to use quotes
+    \newcommand \Over               {\overline}                     %Use: \Bar to use just for short
+    \newcommand \ForceNewLine       {$\Space$\\}                    %Use it in theorems for example
+    \newcommand \ForceColumnBreak   {\vfill\null\columnbreak}       %Use only in multicols
 
     % =====  SPACES  ====================
-    \DeclareMathOperator \Space {\quad}                             %Use: \Space for a cool mega space
+    \DeclareMathOperator \Space     {\quad}                         %Use: \Space for a cool mega space
     \DeclareMathOperator \MegaSpace {\quad \quad}                   %Use: \MegaSpace for a cool mega mega space
     \DeclareMathOperator \MiniSpace {\;}                            %Use: \Space for a cool mini space
     
     % =====  MATH TEXT  =================
-    \newcommand \Such {\MiniSpace | \MiniSpace}                     %Use: \Such like in sets
-    \newcommand \Also {\MiniSpace \text{y} \MiniSpace}              %Use: \Also so it's look cool
-    \newcommand \Remember[1]{\Space\text{\scriptsize{#1}}}          %Use: \Remember so it's look cool
+    \newcommand \Such           {\MiniSpace | \MiniSpace}           %Use: \Such like in sets
+    \newcommand \Also           {\MiniSpace \text{y} \MiniSpace}    %Use: \Also so it's look cool
+    \newcommand \Remember[1]    {\Space\text{\scriptsize{#1}}}      %Use: \Remember so it's look cool
     
-    % =====  THEOREMS  ==================
-    \newtheorem{Theorem}{Teorema}[section]                          %Use: \begin{Theorem}[Name]\label{Nombre}...
-    \newtheorem{Corollary}{Colorario}[Theorem]                      %Use: \begin{Corollary}[Name]\label{Nombre}...
-    \newtheorem{Lemma}[Theorem]{Lemma}                              %Use: \begin{Lemma}[Name]\label{Nombre}...
-    \newtheorem{Definition}{Definición}[section]                    %Use: \begin{Definition}[Name]\label{Nombre}...
-    \theoremstyle{break}                                            %THEOREMS START 1 SPACE AFTER
+    % =====  THEOREMS: IN SPANISH :0  ===
+    \newtheorem{Theorem}        {Teorema}[section]                  %Use: \begin{Theorem}[Name]\label{Nombre}...
+    \newtheorem{Corollary}      {Colorario}[Theorem]                %Use: \begin{Corollary}[Name]\label{Nombre}...
+    \newtheorem{Lemma}[Theorem] {Lemma}                             %Use: \begin{Lemma}[Name]\label{Nombre}...
+    \newtheorem{Definition}     {Definición}[section]               %Use: \begin{Definition}[Name]\label{Nombre}...
+    \theoremstyle{break}                                            %THEOREMS START 1 SPACE AFTER Fuck!
 
     % =====  LOGIC  =====================
     \newcommand \lIff    {\leftrightarrow}                          %Use: \lIff for logic iff
     \newcommand \lEqual  {\MiniSpace \Leftrightarrow \MiniSpace}    %Use: \lEqual for a logic double arrow
     \newcommand \lInfire {\MiniSpace \Rightarrow \MiniSpace}        %Use: \lInfire for a logic infire
     \newcommand \lLongTo {\longrightarrow}                          %Use: \lLongTo for a long arrow
+    \newcommand \lAnd    {\land}                                    %Use: \lAnd ^
+    \newcommand \lOr     {\lor}                                     %Use: \lOr or symbol
+    \newcommand \lNot    {\neg}                                     %Use: \lNot for negation
 
     % =====  FAMOUS SETS  ===============
     \DeclareMathOperator \Naturals     {\mathbb{N}}                 %Use: \Naturals por Notation
@@ -160,57 +167,60 @@
     \DeclareMathOperator \Polynomials  {\mathbb{P}}                 %Use: \Polynomials por Notation
     \DeclareMathOperator \VectorSpace  {\VectorSet_{\GenericField}} %Use: \VectorSpace por Notation
     \DeclareMathOperator \LinealTransformation {\mathcal{T}}        %Use: \LinealTransformation for a cool T
-    \DeclareMathOperator \LinTrans {\mathcal{T}}                    %Use: \LinTrans for a cool T
-    \DeclareMathOperator \Laplace {\mathcal{L}}                     %Use: \LinTrans for a cool T
+    \DeclareMathOperator \LinTrans      {\mathcal{T}}               %Use: \LinTrans for a cool T
+    \DeclareMathOperator \Laplace       {\mathcal{L}}               %Use: \LinTrans for a cool T
 
     % =====  CONTAINERS   ===============
-    \newcommand{\Set}[1]    {\left\{ \; #1 \; \right\}}             %Use: \Set {Info} for INTELLIGENT space 
-    \newcommand{\bigSet}[1] {\big\{  \; #1 \; \big\}}               %Use: \bigSet  {Info} for space 
-    \newcommand{\BigSet}[1] {\Big\{  \; #1 \; \Big\}}               %Use: \BigSet  {Info} for space 
-    \newcommand{\biggSet}[1]{\bigg\{ \; #1 \; \bigg\}}              %Use: \biggSet {Info} for space 
-    \newcommand{\BiggSet}[1]{\Bigg\{ \; #1 \; \Bigg\}}              %Use: \BiggSet {Info} for space 
-    
-    \newcommand{\Brackets}[1]    {\left[ #1 \right]}                %Use: \Brackets {Info} for INTELLIGENT space
-    \newcommand{\bigBrackets}[1] {\big[ \; #1 \; \big]}             %Use: \bigBrackets  {Info} for space 
-    \newcommand{\BigBrackets}[1] {\Big[ \; #1 \; \Big]}             %Use: \BigBrackets  {Info} for space 
-    \newcommand{\biggBrackets}[1]{\bigg[ \; #1 \; \bigg]}           %Use: \biggBrackets {Info} for space 
-    \newcommand{\BiggBrackets}[1]{\Bigg[ \; #1 \; \Bigg]}           %Use: \BiggBrackets {Info} for space 
-    
-    \newcommand{\Wrap}[1]    {\left( #1 \right)}                    %Use: \Wrap {Info} for INTELLIGENT space
-    \newcommand{\bigWrap}[1] {\big( \; #1 \; \big)}                 %Use: \bigBrackets  {Info} for space 
-    \newcommand{\BigWrap}[1] {\Big( \; #1 \; \Big)}                 %Use: \BigBrackets  {Info} for space 
-    \newcommand{\biggWrap}[1]{\bigg( \; #1 \; \bigg)}               %Use: \biggBrackets {Info} for space 
-    \newcommand{\BiggWrap}[1]{\Bigg( \; #1 \; \Bigg)}               %Use: \BiggBrackets {Info} for space 
-    
-    \newcommand{\Generate}[1]{\left\langle #1 \right\rangle}        %Use: \Generate {Info} <>
-    \newcommand{\Floor}[1]{\left \lfloor #1 \right \rfloor}         %Use: \Floor {Info} for floor 
-    \newcommand{\Ceil}[1]{\left \lceil #1 \right \rceil }           %Use: \Ceil {Info} for ceil
+    \newcommand{\Set}[1]            {\left\{ \; #1 \; \right\}}     %Use: \Set {Info} for INTELLIGENT space 
+    \newcommand{\bigSet}[1]         {\big\{  \; #1 \; \big\}}       %Use: \bigSet  {Info} for space 
+    \newcommand{\BigSet}[1]         {\Big\{  \; #1 \; \Big\}}       %Use: \BigSet  {Info} for space 
+    \newcommand{\biggSet}[1]        {\bigg\{ \; #1 \; \bigg\}}      %Use: \biggSet {Info} for space 
+    \newcommand{\BiggSet}[1]        {\Bigg\{ \; #1 \; \Bigg\}}      %Use: \BiggSet {Info} for space 
+        
+    \newcommand{\Wrap}[1]           {\left( #1 \right)}             %Use: \Wrap {Info} for INTELLIGENT space
+    \newcommand{\bigWrap}[1]        {\big( \; #1 \; \big)}          %Use: \bigBrackets  {Info} for space 
+    \newcommand{\BigWrap}[1]        {\Big( \; #1 \; \Big)}          %Use: \BigBrackets  {Info} for space 
+    \newcommand{\biggWrap}[1]       {\bigg( \; #1 \; \bigg)}        %Use: \biggBrackets {Info} for space 
+    \newcommand{\BiggWrap}[1]       {\Bigg( \; #1 \; \Bigg)}        %Use: \BiggBrackets {Info} for space 
+
+    \newcommand{\Brackets}[1]       {\left[ #1 \right]}             %Use: \Brackets {Info} for INTELLIGENT space
+    \newcommand{\bigBrackets}[1]    {\big[ \; #1 \; \big]}          %Use: \bigBrackets  {Info} for space 
+    \newcommand{\BigBrackets}[1]    {\Big[ \; #1 \; \Big]}          %Use: \BigBrackets  {Info} for space 
+    \newcommand{\biggBrackets}[1]   {\bigg[ \; #1 \; \bigg]}        %Use: \biggBrackets {Info} for space 
+    \newcommand{\BiggBrackets}[1]   {\Bigg[ \; #1 \; \Bigg]}        %Use: \BiggBrackets {Info} for space 
+
+    \newcommand{\Generate}[1]   {\left\langle #1 \right\rangle}     %Use: \Generate {Info} <>
+    \newcommand{\Floor}[1]      {\left \lfloor #1 \right \rfloor}   %Use: \Floor {Info} for floor 
+    \newcommand{\Ceil}[1]       {\left \lceil #1 \right \rceil }    %Use: \Ceil {Info} for ceil
     
     % =====  BETTERS MATH COMMANDS   =====
-    \newcommand{\pfrac}[2]{\Wrap{\dfrac{#1}{#2}}}                   %Use: Put fractions in parentesis
+    \newcommand{\pfrac}[2]      {\Wrap{\dfrac{#1}{#2}}}             %Use: Put fractions in parentesis
+    \newcommand{\Sum}           {\displaystyle \sum}                %Use: Sum to big sum
+    \newcommand{\Int}           {\displaystyle \int}                %Use: Sum to big integral
+
 
     % =========================================
     % ====   LINEAL ALGEBRA & VECTORS    ======
     % =========================================
 
     % ===== UNIT VECTORS  ================
-    \newcommand{\hati} {\hat{\imath}}                               %Use: \hati for unit vector    
-    \newcommand{\hatj} {\hat{\jmath}}                               %Use: \hatj for unit vector    
-    \newcommand{\hatk} {\hat{k}}                                    %Use: \hatk for unit vector
+    \newcommand{\hati}      {\hat{\imath}}                           %Use: \hati for unit vector    
+    \newcommand{\hatj}      {\hat{\jmath}}                           %Use: \hatj for unit vector    
+    \newcommand{\hatk}      {\hat{k}}                                %Use: \hatk for unit vector
+
+    % ===== MAGNITUDE  ===================
+    \newcommand{\abs}[1]    {\left\lvert #1 \right\lvert}           %Use: \abs{expression} for |x|
+    \newcommand{\Abs}[1]    {\left\lVert #1 \right\lVert}           %Use: \Abs{expression} for ||x||
+    \newcommand{\Mag}[1]    {\left| #1 \right|}                     %Use: \Mag {Info} 
+    
+    \newcommand{\bVec}[1]   {\mathbf{#1}}                           %Use for bold type of vector
+    \newcommand{\lVec}[1]   {\overrightarrow{#1}}                   %Use for a long arrow over a vector
+    \newcommand{\uVec}[1]   {\mathbf{\hat{#1}}}                     %Use: Unitary Vector Example: $\uVec{i}
 
     % ===== FN LINEAL TRANSFORMATION  ====
     \newcommand{\FnLinTrans}[1]{\mathcal{T}\Wrap{#1}}               %Use: \FnLinTrans for a cool T
     \newcommand{\VecLinTrans}[1]{\mathcal{T}\pVector{#1}}           %Use: \LinTrans for a cool T
     \newcommand{\FnLinealTransformation}[1]{\mathcal{T}\Wrap{#1}}   %Use: \FnLinealTransformation
-
-    % ===== MAGNITUDE  ===================
-    \newcommand{\abs}[1]{\left\lvert #1 \right\lvert}               %Use: \abs{expression} for |x|
-    \newcommand{\Abs}[1]{\left\lVert #1 \right\lVert}               %Use: \Abs{expression} for ||x||
-    \newcommand{\Mag}[1]{\left| #1 \right|}                         %Use: \Mag {Info} 
-    
-    \newcommand{\bVec}[1]{\mathbf{#1}}                              %Use for bold type of vector
-    \newcommand{\lVec}[1]{\overrightarrow{#1}}                      %Use for a long arrow over a vector
-    \newcommand{\uVec}[1]{\mathbf{\hat{#1}}}                        %Use: Unitary Vector Example: $\uVec{i}
 
     % ===== ALL FOR DOT PRODUCT  =========
     \makeatletter                                                   %WTF! IS THIS
@@ -238,6 +248,11 @@
         \array{#1}                                                  %WTF! IS THIS
     }                                                               %WTF! IS THIS
     \makeatother                                                    %WTF! IS THIS
+    
+    \newcommand{\adotP}[2] {\left< #1, #2 \right> }                 %Use for <x, y>
+    \newcommand{\wdotP}[2] {\Wrap{ #1, #2 } }                       %Use for (x, y)
+    \newcommand{\cdotP}[2] {\Wrap{ #1 \dotP #2 } }                  %Use for (x * y)
+
 
     % =========================================
     % =======   FAMOUS FUNCTIONS   ============
@@ -263,12 +278,12 @@
     % =========================================
 
     % ====== TRANSFORMS =============
-    \newcommand{\FourierT}[1]{\mathscr{F} \left\{ #1 \right\} }     %Use: \FourierT {Funtion}
+    \newcommand{\FourierT}[1]   {\mathscr{F} \left\{ #1 \right\} }  %Use: \FourierT {Funtion}
     \newcommand{\InvFourierT}[1]{\mathscr{F}^{-1}\left\{#1\right\}} %Use: \InvFourierT {Funtion}
 
     % ====== DERIVATIVES ============
-    \newcommand \MiniDerivate[1][x] {\dfrac{d}{d #1}}               %Use: \MiniDerivate[var] for simple use [var]
-    \newcommand \Derivate[2] {\dfrac{d \; #1}{d #2}}                %Use: \Derivate [f(x)][x]
+    \newcommand \MiniDerivate[1][x]   {\dfrac{d}{d #1}}             %Use: \MiniDerivate[var] for simple use [var]
+    \newcommand \Derivate[2]          {\dfrac{d \; #1}{d #2}}       %Use: \Derivate [f(x)][x]
     \newcommand \MiniUpperDerivate[2] {\dfrac{d^{#2}}{d#1^{#2}}}    %Mini Derivate High Orden Derivate -- [x][pow]
     \newcommand \UpperDerivate[3] {\dfrac{d^{#3} \; #1}{d#2^{#3}}}  %Complete High Orden Derivate -- [f(x)][x][pow]
     
@@ -284,11 +299,11 @@
     % ====== INTEGRALS ============
     \newcommand{\inftyInt} {\int_{-\infty}^{\infty}}                %Use: \inftyInt for simple integrants
     
-    
-    % =========================================
-    % ========    GENERAL STYLE     ===========
-    % =========================================
-    
+        
+% =======================================================
+% ===========      COLOR: MATERIAL DESIGN     ===========
+% =======================================================
+
     % =====  COLORS ==================
     \definecolor{RedMD}{HTML}{F44336}                               %Use: Color :D        
     \definecolor{Red100MD}{HTML}{FFCDD2}                            %Use: Color :D        
@@ -343,6 +358,13 @@
     \definecolor{Amber700MD}{HTML}{FFA000}                          %Use: Color :D        
     \definecolor{Amber900MD}{HTML}{FF6F00}                          %Use: Color :D
 
+    \definecolor{OrangeMD}{HTML}{ff9800}                            %Use: Color :D        
+    \definecolor{Orange100MD}{HTML}{ffe0b2}                         %Use: Color :D        
+    \definecolor{Orange200MD}{HTML}{ffcc80}                         %Use: Color :D        
+    \definecolor{Orange300MD}{HTML}{ffb74d}                         %Use: Color :D        
+    \definecolor{Orange700MD}{HTML}{fb8c00}                         %Use: Color :D        
+    \definecolor{Orange900MD}{HTML}{ef6c00}                         %Use: Color :D
+
     \definecolor{BlueGreyMD}{HTML}{607D8B}                          %Use: Color :D        
     \definecolor{BlueGrey100MD}{HTML}{CFD8DC}                       %Use: Color :D        
     \definecolor{BlueGrey200MD}{HTML}{B0BEC5}                       %Use: Color :D        
@@ -352,9 +374,15 @@
 
     \definecolor{DeepPurpleMD}{HTML}{673AB7}                        %Use: Color :D
 
+    % =====  ENVIRONMENT ==============
     \newcommand{\Color}[2]{\textcolor{#1}{#2}}                      %Simple color environment
     \newenvironment{ColorText}[1]                                   %Use: \begin{ColorText}
         { \leavevmode\color{#1}\ignorespaces }                      %That's is!
+
+
+% =======================================================
+% ===========           CODE EDITING          ===========
+% =======================================================
 
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStyle} {                              %This is Code Style
@@ -377,11 +405,10 @@
         inputencoding       = utf8/latin1                           %Allow me to use special chars
     }
 
-    
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStylePurity} {                        %This is Code Style
         backgroundcolor     = \color{white},                        %Background Color  
-        basicstyle          = \fontsize{9}{6}\selectfont\color{BlueGrey900MD},     %Style of text
+        basicstyle          = \tiny\color{BlueGrey900MD},           %Style of text
         commentstyle        = \color{Green300MD},                   %Comment style
         stringstyle         = \color{Teal700MD},                    %String style
         keywordstyle        = \color{Blue700MD},                    %keywords style
@@ -399,9 +426,7 @@
         inputencoding       = utf8/latin1                           %Allow me to use special chars
     }
  
-    \lstset{style = CompilandoStylePurity}                                %Use this style
-
-
+    \lstset{style = CompilandoStyle}                                %Use this style
 
 % =====================================================
 % ============        COVER PAGE       ================
@@ -471,9 +496,9 @@
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
-% ////////////////////////////////         NUMBER THEORY                   /////////////////////////////////
+% ////////////////////////////////         INTRODUCCION                    /////////////////////////////////
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
-\part{Introducción}
+\part{Introducción a la Programación Competitiva}
 
 
     % ===============================================================================
@@ -492,47 +517,82 @@
             % ============================================
             \subsection{¿Qué hace diferente a un programa de competitiva de uno normal?}
 
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ////////////////////////////////           UN TOUR DE  C++               /////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Un tour de C++ y lo que deberías saber}
+
+
+    % =========================================================
+    % ==========            PORQUE C++           ==============
+    % =========================================================
+    \chapter{¿Porqué C++?}
+
+        % =========================================================
+        % ==========          VENTAJAS DE C++        ==============
+        % =========================================================
+        \section{Ventajas de C++}
+
+        % =========================================================
+        % ==========             VS C                ==============
+        % =========================================================
+        \section{vs C}
+
+        % =========================================================
+        % ==========             VS PYTHON           ==============
+        % =========================================================
+        \section{vs Python}
+
+
+        % =========================================================
+        % ==========             VS JAVA             ==============
+        % =========================================================
+        \section{vs Java}
     
-            
-    % ===============================================================================
-    % ===================          UN TOUR DE C++             =======================
-    % ===============================================================================
-    \chapter{Un tour de C++}
+
+    % =========================================================
+    % ==========      TIPOS DE DATOS NUMERICOS       ==========
+    % =========================================================
+    \chapter{Tipos de datos númericos}
 
         % =========================================================
-        % ==========            PORQUE C++           ==============
+        % ==========             ENTEROS              =============
         % =========================================================
-        \section{¿Porqué C++?}
+        \section{Enteros}
 
-
-            % ============================================
-            % =========================================================
-            % ==========             VS C                ==============
-            % =========================================================
-            \subsection{vs C}
-
-            % =========================================================
-            % ==========             VS PYTHON           ==============
-            % =========================================================
-            \subsection{vs Python}
-
-
-            % =========================================================
-            % ==========             VS JAVA             ==============
-            % =========================================================
-            \subsection{vs Java}
-
-    
-
-        % =========================================================
-        % ==========      TIPOS DE DATOS NUMERICOS       ==========
-        % =========================================================
-        \section{Tipos de datos númericos}
-
-            % =========================================================
-            % ==========             INT                  ==============
-            % =========================================================
+            % ==============================================
+            % ==========        INT            =============
+            % ==============================================
             \subsection{int}
+
+            % ==============================================
+            % ==========        LONG           =============
+            % ==============================================
+            \subsection{long}
+
+            % ==============================================
+            % ==========        LONG           =============
+            % ==============================================
+            \subsection{size\_t}
+
+
+        % =========================================================
+        % ==========       PUNTOS FLOTANTES           =============
+        % =========================================================
+        \section{Puntos Flotantes}
+
+        % =========================================================
+        % ==========       NUMEROS COMPLEJOS          =============
+        % =========================================================
+        \section{Números Complejos}
+
+
+
+    % =========================================================
+    % ==========      BASES DEL LENGUAJE             ==========
+    % =========================================================
+    \chapter{Bases del Lenguaje}
 
         % =========================================================
         % ==========             CONDICIONALES           ==========
@@ -544,20 +604,459 @@
         % =========================================================
         \section{Ciclos}
 
-
         % =========================================================
         % ==========             FUNCIONES               ==========
         % =========================================================
         \section{Funciones}
 
 
+            % =========================================================
+            % ==========             RECURSIVIDAD            ==========
+            % =========================================================
+            \subsection{Recursividad}
+
+
+        % =========================================================
+        % ==========             APUNTADORES             ==========
+        % =========================================================
+        \section{Referencias o Valores}
+
+
+            % =========================================================
+            % ==========             RECURSIVIDAD            ==========
+            % =========================================================
+            \subsection{Variables de Valor}
+
+
+            % =========================================================
+            % ==========             RECURSIVIDAD            ==========
+            % =========================================================
+            \subsection{Apuntadores}
+
+
+            % =========================================================
+            % ==========             REFERENCIAS             ==========
+            % =========================================================
+            \subsection{Referencias}
+
+            % =========================================================
+            % ==========             REFERENCIAS             ==========
+            % =========================================================
+            \subsection{Move}
+
+
+
+    % =========================================================
+    % ==========                LA STD               ==========
+    % =========================================================
+    \chapter{Contenedores de la STD}
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \section{std::vector}
+
+            % =========================================================
+            % ==========             ARRAY                   ==========
+            % =========================================================
+            \subsection{std::array}
+
+        
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \section{std::string}
+
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \section{std::map}
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \section{std::set}
+
+
+    % =========================================================
+    % ==========                LA STD               ==========
+    % =========================================================
+    \chapter{Cosas cool la Sintaxis}
+
+        % =========================================================
+        % ==========             AUTO                    ==========
+        % =========================================================
+        \section{auto}
+
+        
+        % =========================================================
+        % ==========             AUTO                    ==========
+        % =========================================================
+        \section{for (auto x : container)}
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////          TERMINOS DE CIENCIAS DE LA COMPUTACION              /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Ideas de Ciencias de la Computación}
+    
+
+    % =========================================================
+    % ==========         COMPLEJIDAD            ===============
+    % =========================================================
+    \chapter{La Complejidad}
+
+        % =========================================================
+        % ==========       COTAS Y NOTACIONES       ===============
+        % =========================================================
+        \section{Cotas y Notaciones}
+
+    % =========================================================
+    % ==========         OPTIMIZACION           ===============
+    % =========================================================
+    \chapter{Optimización}
+
+        % =========================================================
+        % ==========         OPTIMIZACION           ===============
+        % =========================================================
+        \section{Límites de Tiempo de Ejecucción}
+
+        % =========================================================
+        % ==========         OPTIMIZACION           ===============
+        % =========================================================
+        \section{Límites de Memoria}
+
+    % =========================================================
+    % ==========         PROBLEMAS NP           ===============
+    % =========================================================
+    \chapter{Problemas NP}
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   ESTRUCTURAS DE DATOS                       /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Estructuras de Datos}
+
+    % =========================================================
+    % ==========              ARRAYS            ===============
+    % =========================================================
+    \chapter{Arrays}
+
+    % =========================================================
+    % ==========              PILAS             ===============
+    % =========================================================
+    \chapter{Pilas}
+
+    % =========================================================
+    % ==========              COLAS             ===============
+    % =========================================================
+    \chapter{Colas}
+
+    % =========================================================
+    % ==========         LISTAS ENLAZADAS       ===============
+    % =========================================================
+    \chapter{Listas Enlazadas}
+
+    % =========================================================
+    % ==========             ARBOLES            ===============
+    % =========================================================
+    \chapter{Arboles Binarios}
+
+        % =========================================================
+        % =========      ARBOLES DE BUSQUEDA        ===============
+        % =========================================================
+        \section{Arboles de Búsqueda}
+
+        % =========================================================
+        % =========      ARBOLES AUTOBALANCEABLES       ===========
+        % =========================================================
+        \section{Arboles Autobalanceables}
+
+        % =========================================================
+        % =========                 TRIE                ===========
+        % =========================================================
+        \section{Trie}
+
+    % =========================================================
+    % ==========                HEAP            ===============
+    % =========================================================
+    \chapter{Heap}
+
+        % =========================================================
+        % =======        COLAS DE PRIORIDAD         ===============
+        % =========================================================
+        \section{Colas de Prioridad}
+
+    % =========================================================
+    % ==========            HASH TABLES         ===============
+    % =========================================================
+    \chapter{Hash Tables}
 
 
 
 
-
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   ALGORITMOS GENERALES                       /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Algoritmos Generales}
 
     
+    % =========================================================
+    % ==========            BUSQUEDAS           ===============
+    % =========================================================
+    \chapter{Búsquedas}
+
+        % =========================================================
+        % =======        BUSQUEDA LINEAL            ===============
+        % =========================================================
+        \section{Búsqueda Lineal}
+
+        % =========================================================
+        % =======        BUSQUEDA BINARIA           ===============
+        % =========================================================
+        \section{Búsqueda Binaria}
+
+        % =========================================================
+        % =======        BUSQUEDA TERNARIA          ===============
+        % =========================================================
+        \section{Búsqueda Ternaria}
+
+        % =========================================================
+        % =======        BUSQUEDA TERNARIA          ===============
+        % =========================================================
+        \section{Upper Bound}
+
+        % =========================================================
+        % =======        BUSQUEDA TERNARIA          ===============
+        % =========================================================
+        \section{Lower Bound}
+
+    % =========================================================
+    % ==========            ORDENAMIENTO        ===============
+    % =========================================================
+    \chapter{Ordenamiento por Comparaciones}
+
+        % =========================================================
+        % ==========            BUBBLE SORT         ===============
+        % =========================================================
+        \section{Bubble Sort}
+
+        % =========================================================
+        % ==========            SELECTION SORT      ===============
+        % =========================================================
+        \section{Selection Sort}
+
+        % =========================================================
+        % ==========            MERGE SORT         ===============
+        % =========================================================
+        \section{Merge Sort}
+
+        % =========================================================
+        % ==========            QUICK SORT          ===============
+        % =========================================================
+        \section{Quick Sort}
+
+
+    % =========================================================
+    % ==========            ORDENAMIENTO        ===============
+    % =========================================================
+    \chapter{Ordenamiento NO por Comparaciones}
+        
+        % =========================================================
+        % ==========            BUCKET SORT         ===============
+        % =========================================================
+        \section{Bucket Sort}
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   MATEMATICAS                                /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Programación es solo matemáticas aplicadas}
+
+    % =========================================================
+    % ==========            BINARIO             ===============
+    % =========================================================
+    \chapter{Explotando el Binario}
+
+        % =========================================================
+        % =======                  BITS             ===============
+        % =========================================================
+        \section{Bits}
+
+            % =========================================================
+            % =======        MANEJO DE BITS             ===============
+            % =========================================================
+            \subsection{Manejo de Bits}
+
+            % =========================================================
+            % =======        MANEJO DE BITS             ===============
+            % =========================================================
+            \subsection{Operaciones con Bits}
+
+        % =========================================================
+        % =======        MANEJO DE BITS             ===============
+        % =========================================================
+        \section{Conversiones entre Sistemas}
+
+        % =========================================================
+        % =======        MANEJO DE BITS             ===============
+        % =========================================================
+        \section{Exponenciacion Binaria}
+
+        % =========================================================
+        % =======        MANEJO DE BITS             ===============
+        % =========================================================
+        \section{Multiplicacion Binaria}
+
+
+
+    % =========================================================
+    % ==========            RAÍCES              ===============
+    % =========================================================
+    \chapter{Encontrar Raíces}
+
+        % =========================================================
+        % =======        NEWTON RANPHSON            ===============
+        % =========================================================
+        \section{Newton - Ranphson}
+
+
+    % =========================================================
+    % ==========    TEORIA DE NUMEROS           ===============
+    % =========================================================
+    \chapter{Teoría de Números}
+
+        % =========================================================
+        % =======        DIVISIBILIDAD              ===============
+        % =========================================================
+        \section{Divisibilidad}
+
+            % =========================================================
+            % =======             EUCLIDES              ===============
+            % =========================================================
+            \subsection{Euclides}
+
+        % =========================================================
+        % =======        MODULOS                    ===============
+        % =========================================================
+        \section{Modulos}
+
+        % =========================================================
+        % =======        FIBONACCI                  ===============
+        % =========================================================
+        \section{Fibonacci}
+
+        % =========================================================
+        % =======               PRIMOS              ===============
+        % =========================================================
+        \section{Primos y Factores}
+
+            % =========================================================
+            % =======             CRIB                  ===============
+            % =========================================================
+            \subsection{Criba}
+
+            % =========================================================
+            % =======          FACTORIZACION            ===============
+            % =========================================================
+            \subsection{Factorización}
+
+
+            % =========================================================
+            % =======            DIVISORES              ===============
+            % =========================================================
+            \subsection{Divisores}
+
+            % =========================================================
+            % =======            PHI DE EULER           ===============
+            % =========================================================
+            \subsection{La Phi de Euler}
+
+
+    % =========================================================
+    % ==========           PROBABILIDAD         ===============
+    % =========================================================
+    \chapter{Probabilidad}
+
+        % =========================================================
+        % =======        DIVISIBILIDAD              ===============
+        % =========================================================
+        \section{Inclusion Exclusión}
+
+  
+    % =========================================================
+    % ==========         GEOMETRIA              ===============
+    % =========================================================
+    \chapter{Geometria}
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   TECNICAS DE SOLUCION                       /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Técnicas de Solución}
+
+    % =========================================================
+    % ==========               AD-HOC           ===============
+    % =========================================================
+    \chapter{Ad-Hoc}
+
+    
+    % =========================================================
+    % ======       RECURSIVIDAD Y BACKTRAKING       ===========
+    % =========================================================
+    \chapter{Recursividad y BackTracking}
+
+    % =========================================================
+    % ==========            DIVIDE Y VENCERAS   ===============
+    % =========================================================
+    \chapter{Divide y Venceras}
+
+
+    % =========================================================
+    % ==========            DIVIDE Y VENCERAS   ===============
+    % =========================================================
+    \chapter{Greedy}
+
+
+    % =========================================================
+    % ==========            DP                  ===============
+    % =========================================================
+    \chapter{DP}
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   GRAFOS Y FLUJOS                            /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Grafos y Flujos}
+
+    % =========================================================
+    % ==========            GRAFOS              ===============
+    % =========================================================
+    \chapter{Grafos}
+
+        % =========================================================
+        % ==========        REPRESENTACIONES        ===============
+        % =========================================================
+        \section{Representaciones}
+
+        % =========================================================
+        % ==========        REPRESENTACIONES        ===============
+        % =========================================================
+        \section{BFS}
+
+        % =========================================================
+        % ==========        REPRESENTACIONES        ===============
+        % =========================================================
+        \section{DFS}
+    
+        % =========================================================
+        % ==========        REPRESENTACIONES        ===============
+        % =========================================================
+        \section{Dijsktra}
+
 
 
 \end{document}
