@@ -123,6 +123,7 @@
     \newcommand \Over               {\overline}                     %Use: \Bar to use just for short
     \newcommand \ForceNewLine       {$\Space$\\}                    %Use it in theorems for example
     \newcommand \ForceColumnBreak   {\vfill\null\columnbreak}       %Use only in multicols
+    \newcommand \Link[2] {\underline{\texttt{\href{#1}{#2}}}}       %Use a link
 
     % =====  SPACES  ====================
     \DeclareMathOperator \Space     {\quad}                         %Use: \Space for a cool mega space
@@ -424,6 +425,14 @@
  
     \lstset{style = CompilandoStyle}                                %Use this style
 
+
+% =====================================================
+% ============       VARIABLES         ================
+% =====================================================
+    \newcommand \Cpp  {\texttt{C++} }                               %Use: \C++
+
+
+
 % =====================================================
 % ============        COVER PAGE       ================
 % =====================================================
@@ -517,33 +526,138 @@
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
 % ////////////////////////////////           UN TOUR DE  C++               /////////////////////////////////
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
-\part{Un tour de C++ y lo que deberías saber de el}
+\part{Un tour de \Cpp y lo que deberías saber de el}
 
     % ===============================================================================
     % ==========                      PORQUE C++                       ==============
     % ===============================================================================
     \clearpage
-    \chapter{¿Porqué C++?}
+    \chapter{¿Porqué \Cpp?}
 
         % =========================================================
         % ==========          VENTAJAS DE C++        ==============
         % =========================================================
-        \section{Ventajas de C++}
+        \clearpage
+        \section{Ventajas de \Cpp}
+
+            Hay muchas razones por las cuales \Cpp es uno de los lenguajes más usados en
+            la modernidad en la programación competitiva (si no es que el más).
+
+            Puedes escuchar un video muy bonito para mi sobre porque elegir este lenguaje:
+
+            \Link{https://www.youtube.com/watch?v=JBjjnqG0BP8}{Bjarne Stroustrup: Why I Created \Cpp}
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.45\textwidth]{BjarneBebe}
+                \caption{Este es el creador del lenguaje y persona a la cual nunca sabras como pronunciar su nombre: Bjarne Stroustrup}
+            \end{figure}
+
+
+            Las principales razones por \Cpp si un orden en particular son:
+            \begin{itemize}
+                \item \textbf{Te da abstracciones sin costo extra.}
+                
+                    O como lo diría su creador te da el poder de usar abstracciones de alto nivel pero estando muy cerca del hardware.
+                
+                    Personalmente creo que esa es mayor ventaja que tiene sobre todos los demás, creo que
+                    esa frase resume perfectamente todo el objetivo de \Cpp.
+
+                    Lo que nos dice esto es que podremos representar grafos, matrices, operaciones, 
+                    clases en general, algoritmos, etc... en nuestros programas con gran facilidad,
+                    cosa que no podemos hacer fácilmente por ejemplo en lenguajes como C o la familia
+                    de los ensambladores. 
+
+                    \textit{
+                    Y podrías decir, pero en Java o en Python podemos representar de una manera igual de fácil (siendo muy
+                    exactos no creo que sea el caso, pero esa es otra historia amigos) así que ... ¿porqué usar \Cpp?
+                    }
+
+                    Pues porque en todos los demás lenguajes estas pagando un costo (a veces muy grande de varios cientos 
+                    o miles de veces) por poder representar ideas o conceptos abstractos en un programa, en \Cpp
+                    esta prácticamente garantizado que usar una clase por ejemplo o que usar un arreglo que se auto
+                    dimensiona solo no será más costoso que si lo hubieras hecho tu desde ensamblador.
+
+                \clearpage
+                
+                \item \textbf{Tienes a la STD a tu lado}
+
+                    Esta es otra gran ventaja, ya que siguiendo con la mentalidad de abstracciones sin costo extra tenemos
+                    gracias a la gran libreria estándar un montón de cosas que no tenemos que hacer desde cero, desde
+                    arreglos que cambian de tamaño, arreglos asociativos, pilas, colas, algoritmos de ordenamiento, 
+                    de búsqueda, etc...
+
+                    Así podemos dejar los algoritmos básicos al lenguaje y enfocarnos en las cosas de verdad interesantes.
+
+
+                \item \textbf{Es compilador, el compilador es tu amigo}
+
+                    Otra ventaja más, podemos siempre confiar en el compilador, en que si nuestro programa compila muy probablemente
+                    está haciendo lo que debe hacer (cosa que no podemos esperar con python por ejemplo), el compilador es tu amigo,
+                    te dira en donde te equivocaste, en donde puede que hallas querido decir otra cosa y muchas veces te dará
+                    consejos, además, tras bambalinas está transformando tu código en algo que la computadora puede de verdad
+                    entender y además usará toda la información que le diste para muchas veces incluso mejorar tu código en vez
+                    de solo \Quote{traducirlo} y optimizarlo de maneras que me sorprenden personalmente.
+
+
+                \item \textbf{Es prácticamente un \Quote{super set} de C}
+                
+                    Es decir, que
+                    cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
+                    C es uno de los lenguajes más conocidos por lo que puede que la sintaxis sea
+                    más sencilla de aprender que otros como Haskell. Otra ventaja es que al estar basados
+                    en C conserva muchas de las ventajas de C como su portabilidad, su velocidad de ejecución
+                    y la capacidad de tener un gran control de todos los recursos del sistema (memoria y tiempo
+                    de vida de un objecto, cough cough Java y su recolector de basura)
+
+                \item \textbf{Tienes un gran control de todos los recursos del sistema}
+                
+                    Esto es también es muy importante, pues nos dice que en \Cpp podemos controlar con gran lujo de detalle
+                    cuando un pedazo de memoria ya no es usado y deberíamos liberarlo ayudando con esto a aumentar la velocidad
+                    de nuestro programa o cuando queremos usar una variable local y cuando queremos usar memoria del heap,
+                    tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
+                    un objecto o si una referencia no podrá ser modificada.
+
+
+            \end{itemize}
 
         % =========================================================
         % ==========             VS C                ==============
         % =========================================================
+        \clearpage
         \section{vs C}
+
+            El gran problema con C es que es un lenguaje muy pequeño en el sentido en que todo lo tienes que hacer tu,
+            si quieres hacer un problema que involucra cosas medio complejas todas las estructuras las tienes que codear
+            al momento, y en un deporte de tiempo, cada segundo cuenta, así que en resumén, lo que \Quote{mata} a C es la falta
+            de algo parecido a la std de \Cpp.
+
+            Aunque para problemas sencillos C también puede ser una opción, medio rara porque podrías entonces también hacerlo
+            en C++ pero esta bien :)
+
+        % =========================================================
+        % ==========             VS JAVA             ==============
+        % =========================================================
+        \section{vs Java}
+
+            Con toda honestidad hay un porcentaje de la comunidad de programación competitiva que usan Java, así que
+            si que es una opción biable, sobretodo por su gran libreria estandar y también porque en C++ no hay algo parecido
+            a \texttt{BigInteger} y \texttt{BigDecimal} y suelen ser muchos los problemas que lo requieran, así que si bien \Cpp
+            podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si eres de los niños cool)
 
         % =========================================================
         % ==========             VS PYTHON           ==============
         % =========================================================
         \section{vs Python}
 
-        % =========================================================
-        % ==========             VS JAVA             ==============
-        % =========================================================
-        \section{vs Java}
+            Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
+            a ser interpretado y sin tipos sus programas acaban siendo muy lentos incluso usando el 
+            algoritmo correcto, eso si, hay varias aplicaciones útiles de python, como que todos los
+            enteros tienen infinita presición por defecto (aka \texttt{BigInteger} como en Java).
+
+            Así que tampoco es una mala idea aprenderlo por si se necesita un día, pero definitivamente
+            no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
+
     
 
     % ===============================================================================
@@ -730,7 +844,7 @@
         % =========================================================
         % ==========         OPTIMIZACION           ===============
         % =========================================================
-        \section{Límites de Tiempo de Ejecucción}
+        \section{Límites de Tiempo de Ejecución}
 
         % =========================================================
         % ==========         OPTIMIZACION           ===============
