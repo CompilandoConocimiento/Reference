@@ -22,7 +22,7 @@ const Footer: React.FunctionComponent = () => (
 
                             <br />
                             <a 
-                                href      = "https://compilandoconocimiento.github.io/Reference/Book/Reference.pdf" 
+                                href      = "https://compilandoconocimiento.github.io/Reference/Books/Reference/" 
                                 target    = "_blank" 
                                 style     = {{padding: "0px 16px 0px 16px"}}
                                 className = "btn-large btn-flat teal white-text">
