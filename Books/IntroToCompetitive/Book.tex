@@ -65,12 +65,12 @@
 
     \lhead {                                                        %Left Header
         \hyperlink{chapter.\arabic{chapter}}                        %Make a link to the current chapter
-        {\normalsize{\textsc{\nouppercase{\leftmark}}}}             %And fot it put the name
+        {\footnotesize{\textsc{\nouppercase{\leftmark}}}}           %And fot it put the name
     }
 
     \rhead {                                                        %Right Header
         \hyperlink{section.\arabic{chapter}.\arabic{section}}       %Make a link to the current chapter
-            {\footnotesize{\textsc{\nouppercase{\rightmark}}}}      %And fot it put the name
+            {\scriptsize{\textsc{\nouppercase{\rightmark}}}}        %And fot it put the name
     }
 
     \rfoot{\textsc{\small{\hyperref[sec:Index]{Ve al Índice}}}}     %This will always be a footer  
@@ -371,6 +371,9 @@
 
     \definecolor{DeepPurpleMD}{HTML}{673AB7}                        %Use: Color :D
 
+    \definecolor{SolarizedBase}{HTML}{fdf6e3}                       %Use: Color :D
+    \definecolor{SolarizedFont}{HTML}{073642}                       %Use: Color :D
+
     % =====  ENVIRONMENT ==============
     \newcommand{\Color}[2]{\textcolor{#1}{#2}}                      %Simple color environment
     \newenvironment{ColorText}[1]                                   %Use: \begin{ColorText}
@@ -422,8 +425,27 @@
         tabsize             = 4,                                    %Style
         inputencoding       = utf8/latin1                           %Allow me to use special chars
     }
+
+    % =====  CODE EDITOR =============
+    \lstdefinestyle{CompilandoStyleSolarized} {                     %This is Code Style
+        backgroundcolor     = \color{SolarizedBase},                %Background Color  
+        basicstyle          = \footnotesize\color{SolarizedFont},   %Style of text
+        commentstyle        = \color{Green300MD},                   %Comment style
+        stringstyle         = \color{Teal700MD},                    %String style
+        keywordstyle        = \color{Blue700MD},                    %keywords style
+        numberstyle         = \tiny\color{TealMD},                  %Size of a number
+        frame               = none,                                 %Adds a frame around the code
+        breakatwhitespace   = true,                                 %Style   
+        breaklines          = true,                                 %Style   
+        showstringspaces    = false,                                %Hate those spaces                  
+        breaklines          = true,                                 %Style                   
+        keepspaces          = true,                                 %Style                   
+        numbers             = none,                                 %Style                   
+        tabsize             = 4,                                    %Style
+        inputencoding       = utf8/latin1                           %Allow me to use special chars
+    }
  
-    \lstset{style = CompilandoStyle}                                %Use this style
+    \lstset{style = CompilandoStyleSolarized}                          %Use this style
 
 
 % =====================================================
@@ -510,17 +532,116 @@
     % ===============================================================================
     \clearpage
     \chapter{¿Qué es la Programación Competitiva?}
+
+        \begin{figure}[h]
+            \includegraphics[width=0.95\textwidth]{CpIntro}
+            \caption{Imágen por Sharaft Siddiqui Reheb}
+        \end{figure}
     
         % =========================================================
         % ==========            INTRODUCCION         ==============
         % =========================================================
+        \clearpage
         \section{Introducción}
 
-            % ============================================
-            % ======     DIFERENCIAS CON NORMAL     ======
-            % ============================================
-            \subsection{¿Qué hace diferente a un programa de competitiva de uno normal?}
+            \begin{flushright}
+                \large{\texttt{
+                    \Quote{
+                        Given well-known CS (computer science) problems, \\solve them as quickly as possible!
+                    }
+                    \\[2em]
+                    \Quote{
+                        Dados problemas famosos de ciencias de la computación, \\¡resuelvelos tan rápido como
+                        puedas!
+                    }
+                    \\[0.8em]
+                    - Competitive Programming 3 \cite{CP3}
+                }}
+            \end{flushright}
 
+            La programación competitiva es la actividad de resolver 
+            \textit{problemas bastante conocidos de ciencias
+            de la computación} mediante la creación de \textit{programas} que obtengan la respuesta
+            dentro de un cierto \textit{límite}.
+
+            \begin{itemize}
+                \item \textbf{¿Problemas conocidos de ciencias de la computación?}
+                
+                    Los problemas que vamos a resolver están bien definidos, en los que para cualquier
+                    entrada tu tendrías que ser capaz de resolverlo por tu cuenta.
+
+                    Además estarás informado de todas las restricciones del problema y todas las 
+                    supociones que puedes tomar.
+
+                \item \textbf{Tendrás que programar.}
+                
+                    Si, pero no como en tú día a día, no harás una aplicación web o con una interfaz
+                    super bonita, sino que son programas que toman sus datos de la entrada estándar
+                    y nos regresan la respuesta por la salida estándar, es decir, un programa 
+                    de terminal.
+
+                \item \textbf{Tendrás límites.}
+                
+                    Tu programa tendrá que resolver el problema con unas restricciones
+                    en tiempo y memoria, es decir, por ejemplo, tu programa tendrá que dar la
+                    solución en menos de 300ms y ocupando menos de 300MB de memoria.
+
+            \end{itemize}
+
+            % ============================================
+            % ======          EJEMPLOS              ======
+            % ============================================
+            \subsection{Ejemplos}
+
+                \begin{itemize}
+                    \item 
+                        \Link{https://omegaup.com/arena/problem/On-ta-el-pinche-facil-pa-irme}
+                        {On ta el pinche fácil pa irme? -  OmegaUp}
+                    \item 
+                        \Link{https://omegaup.com/arena/problem/factorescomunes}
+                        {Factores comunes - OmegaUp}
+                    \item 
+                        \Link{https://omegaup.com/arena/problem/Reactores}
+                        {Reactores - OmegaUp}
+                \end{itemize}
+
+        % =========================================================
+        % =======       PROPIEDADES DE UN PROBLEMA        =========
+        % =========================================================
+        \clearpage
+        \section{Propiedades de un problema}
+
+            \begin{itemize}
+                \item Son calificados por una máquina
+
+                    Generalmente usamos onlines judges (jueces en línea) para poder saber si hemos
+                    resuelto un problema, es decir, al final del día nuestro problema lo califica 
+                    un programa. 
+
+                    Así que no hay puntos medios o tu programa funciona siempre y como debe o el juez
+                    te dirá que está mal.
+
+                \item Tienen historia.
+                
+                    Muchas veces (casi siempre) los problemas están metidos dentro de una historia,
+                    está ayuda a que sea mucho más interesante y que te cueste más entender de que
+                    trata de verdad el problema.
+
+                    Además personalmente ayuda mucho a la hora de aprender, pues es mucho más fácil
+                    que recuerdes una técnica por un problema en especial que te gusto mucho a 
+                    que solo así por así como robot.
+
+                \item Te dan ejemplos.
+                
+                    Incluso aunque el problema te dice que es exactamente lo que te está pidiendo
+                    es mucho más fácil para los humanos entender si nos dan ejemplos.
+
+                    Esto también ayuda a que no malinterpretemos el problema y estemos resolviendo
+                    algo que no.
+
+                \item El corazón del problema está relacionado siempre con matemáticas, lógica o
+                ciencias de la computación.
+            \end{itemize}
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -533,6 +654,11 @@
     % ===============================================================================
     \clearpage
     \chapter{¿Porqué \Cpp?}
+
+        \begin{figure}[h]
+            \includegraphics[width=0.80\textwidth]{CppIntro}
+        \end{figure}
+
 
         % =========================================================
         % ==========          VENTAJAS DE C++        ==============
@@ -548,9 +674,8 @@
             \Link{https://www.youtube.com/watch?v=JBjjnqG0BP8}{Bjarne Stroustrup: Why I Created \Cpp}
 
             \begin{figure}[h]
-                \centering
-                \includegraphics[width=0.45\textwidth]{BjarneBebe}
-                \caption{Este es el creador del lenguaje y persona a la cual nunca sabras como pronunciar su nombre: Bjarne Stroustrup}
+                \includegraphics[width=0.35\textwidth]{BjarneBebe}
+                \caption{\footnotesize{Este es el creador del lenguaje (reto: decir su nombre en voz alta) Bjarne Stroustrup}}
             \end{figure}
 
 
@@ -558,7 +683,20 @@
             \begin{itemize}
                 \item \textbf{Te da abstracciones sin costo extra.}
                 
-                    O como lo diría su creador te da el poder de usar abstracciones de alto nivel pero estando muy cerca del hardware.
+                    O como lo diría su creador te da el poder de usar abstracciones de alto nivel pero estando muy cerca del hardware,
+                    o como lo diría en inglés: 
+
+                    \begin{Indentation}[1.2em]
+                    \Quote{
+                        C++ has the zero-overhead principle: \texttt{what you don’t use, you don’t pay for}, that is,
+                        with every new feature added to the language, you get at least as good performance as
+                        if that feature will not be included.
+                        
+                        Also there are the principle:
+                        \texttt{What you do use cost either only as much as what you’d implement yourself, or it cost less}, 
+                        meaning that a new feature can either mantain or improve the performance.
+                    }
+                    \end{Indentation}
                 
                     Personalmente creo que esa es mayor ventaja que tiene sobre todos los demás, creo que
                     esa frase resume perfectamente todo el objetivo de \Cpp.
@@ -576,25 +714,23 @@
                     Pues porque en todos los demás lenguajes estas pagando un costo (a veces muy grande de varios cientos 
                     o miles de veces) por poder representar ideas o conceptos abstractos en un programa, en \Cpp
                     esta prácticamente garantizado que usar una clase por ejemplo o que usar un arreglo que se auto
-                    dimensiona solo no será más costoso que si lo hubieras hecho tu desde ensamblador.
+                    dimensiona no será más costoso que si lo hubieras hecho tu desde ensamblador.
 
-                \clearpage
-                
                 \item \textbf{Tienes a la STD a tu lado}
 
                     Esta es otra gran ventaja, ya que siguiendo con la mentalidad de abstracciones sin costo extra tenemos
                     gracias a la gran libreria estándar un montón de cosas que no tenemos que hacer desde cero, desde
                     arreglos que cambian de tamaño, arreglos asociativos, pilas, colas, algoritmos de ordenamiento, 
-                    de búsqueda, etc...
+                    de búsqueda, algoritmos para acumular, para hacer particiones o permutaciones, etc...
 
-                    Así podemos dejar los algoritmos básicos al lenguaje y enfocarnos en las cosas de verdad interesantes.
+                    Así podemos dejar los algoritmos básicos al lenguaje y enfocarnos en las cosas que son de verdad interesantes.
 
 
-                \item \textbf{Es compilador, el compilador es tu amigo}
+                \item \textbf{Es compilado, el compilador es tu amigo}
 
                     Otra ventaja más, podemos siempre confiar en el compilador, en que si nuestro programa compila muy probablemente
                     está haciendo lo que debe hacer (cosa que no podemos esperar con python por ejemplo), el compilador es tu amigo,
-                    te dira en donde te equivocaste, en donde puede que hallas querido decir otra cosa y muchas veces te dará
+                    te dira en donde te equivocaste, en donde puede que hayas querido decir otra cosa y muchas veces te dará
                     consejos, además, tras bambalinas está transformando tu código en algo que la computadora puede de verdad
                     entender y además usará toda la información que le diste para muchas veces incluso mejorar tu código en vez
                     de solo \Quote{traducirlo} y optimizarlo de maneras que me sorprenden personalmente.
@@ -604,8 +740,10 @@
                 
                     Es decir, que
                     cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
-                    C es uno de los lenguajes más conocidos por lo que puede que la sintaxis sea
-                    más sencilla de aprender que otros como Haskell. Otra ventaja es que al estar basados
+                    C es uno de los lenguajes más conocidos por lo que puede que la sintaxis de \Cpp sea
+                    más fácil que entender la sintaxis de Haskell, por ejemplo. 
+                    
+                    Otra ventaja es que al estar basados
                     en C conserva muchas de las ventajas de C como su portabilidad, su velocidad de ejecución
                     y la capacidad de tener un gran control de todos los recursos del sistema (memoria y tiempo
                     de vida de un objecto, cough cough Java y su recolector de basura)
@@ -632,8 +770,8 @@
             al momento, y en un deporte de tiempo, cada segundo cuenta, así que en resumén, lo que \Quote{mata} a C es la falta
             de algo parecido a la std de \Cpp.
 
-            Aunque para problemas sencillos C también puede ser una opción, medio rara porque podrías entonces también hacerlo
-            en C++ pero esta bien :)
+            Aunque para problemas sencillos C también puede ser una opción, (pero ya que $\Cpp$ es casi casi
+            un superset de C podrías entonces igualde fácil hacerlo en $\Cpp$).
 
         % =========================================================
         % ==========             VS JAVA             ==============
@@ -641,9 +779,9 @@
         \section{vs Java}
 
             Con toda honestidad hay un porcentaje de la comunidad de programación competitiva que usan Java, así que
-            si que es una opción biable, sobretodo por su gran libreria estandar y también porque en C++ no hay algo parecido
+            si que es una opción viable, sobretodo por su gran libreria estándar y también porque en C++ no hay algo parecido
             a \texttt{BigInteger} y \texttt{BigDecimal} y suelen ser muchos los problemas que lo requieran, así que si bien \Cpp
-            podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si eres de los niños cool)
+            podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si quieres ser feliz).
 
         % =========================================================
         % ==========             VS PYTHON           ==============
@@ -651,14 +789,13 @@
         \section{vs Python}
 
             Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
-            a ser interpretado y sin tipos sus programas acaban siendo muy lentos incluso usando el 
-            algoritmo correcto, eso si, hay varias aplicaciones útiles de python, como que todos los
-            enteros tienen infinita presición por defecto (aka \texttt{BigInteger} como en Java).
+            a ser interpretado y debilmente tipado, sus programas acaban siendo muy lentos incluso usando el 
+            algoritmo correcto, eso si, hay varias aplicaciones útiles de Python, como que todos los
+            enteros tienen infinita precisión por defecto (aka \texttt{BigInteger} como en Java).
 
             Así que tampoco es una mala idea aprenderlo por si se necesita un día, pero definitivamente
             no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
 
-    
 
     % ===============================================================================
     % ============               TIPOS DE DATOS NUMERICOS             ===============
@@ -669,31 +806,156 @@
         % =========================================================
         % ========         INTEGERS: ENTEROS          =============
         % =========================================================
+        \clearpage
         \section{Integers: Enteros}
+
+            Recuerda que esta sección del texto no es una introducción a la programación para
+            alguien que nunca ha programado nada en su vida, sino solo para alguien que
+            no sabe \Cpp.
+
+            \Cpp (y C) maneja varios tamaños estándares de enteros, el más clásico
+            es \texttt{int}, pero no es el único, los demás solo cambian en tamaño
+            (y por los tanto los números que podemos almacenar)
+            y estos son, de menor a mayor: \texttt{char, short, int, long, long long}.
+
+            Ahora podemos aplicarles a estos tipos un modificador, \texttt{unsigned}, que nos permite que no
+            puedan representar los negativos, a cambio nos da el doble de espacio, por lo
+            que podemos representar un entero hasta el doble de grande.
+
+            Así que con esto conocido, veamos las características más detalladamente de cada tipo:
+            Pero si quieres un resumen, \Cpp garantiza que:
+            \begin{lstlisting}[language=C++, gobble=20]
+                1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long);
+            \end{lstlisting}
+
+
+            % ============================================
+            % ==========        CHAR            ===========
+            % ============================================
+            \subsection{char}
+
+                A ver, técnicamente este tipo de dato como su nombre lo dice esta diseñado para almacenar
+                un carácter, lo que pasa es que en computación (no nos compliquemos la vida con UFT ahora)
+                un carácter como \texttt{'a'} ó \texttt{'p'} se representa internamente usando el código
+                ASCII (deberías buscar más de esto cuando tengas tiempo).
+                
+                Total, que en resumen este tipo de dato nació para almacenar un carácter de ASCII, 
+                por lo tanto es un tipo de datos numérico que va de 0 a 255.
+
+                No te preocupes si no entiendes las primeras líneas, pero si lo haces, muy bien por ti.
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto character {'a'};                       // character is a char!
+                    char number {23};                           // number is a char!
+                    ('a' == 97) and ('z' == 122);               // true: ASCII is numbers
+                    ('A' == 65) and ('Z' == 90);                // true: ASCII is numbers
+                    ('A' + 1 == 'B') and ('Z' - 1 == 'Y');      // You can do arithmetic
+
+                    auto size {"char is 1 byte"};
+                    char minValue {-128};
+                    char maxValue {127};
+                \end{lstlisting}
+
 
             % ============================================
             % ==========        INT            ===========
             % ============================================
+            \clearpage
             \subsection{int}
+
+                Es el tipo de dato numérico estándar en \Cpp, así que si declaras un número
+                con \texttt{auto} entonces lo más probable es que sea \texttt{int}.
+
+                Ahora, pasa algo raro con este tipo de dato, que dependiendo de la máquina
+                en la que compiles entonces puede tener 2 o 4 bytes de tamaño (usa el que
+                sea más eficiente para el sistema), aun así, casi nunca compilaras en 
+                algún sistema que te diga que un \texttt{int} es de 2 bytes, así que para
+                este texto usaremos que \texttt{int} es de 4 bytes.
+                
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto number {23};                           // number is an int!
+
+                    auto size {"int is 4 bytes"};
+                    int minValue {-2,147,483,648};
+                    int maxValue {2,147,483,647};
+                \end{lstlisting}
 
             % ============================================
             % ==========        LONG           ===========
             % ============================================
-            \subsection{long}
+            \subsection{long long}
 
-            % ============================================
-            % ==========        SIZE_T         ===========
-            % ============================================
-            \subsection{size\_t}
+                Este no es un tipo de dato, per se, sino que es un modificador que le puedes aplicar
+                a \texttt{int} y con esto lo que logras es duplicar el tamaño de un int (suponiendo
+                que int tenga 4 bytes de tamaño, y creeme, seguramente es así).
+                
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int normalVariable {};                      // It takes 4 bytes     
+                    long long int normalVariable {};            // It takes 8 bytes 
+                    auto number {1,000,000,000,000,000,000}     // number is long long  
+
+                    auto size {"long long int is 8 bytes"};
+                    int minValue {-9,223,372,036,854,775,808};
+                    int maxValue {9,223,372,036,854,775,807};
+                \end{lstlisting}
+
 
             % ============================================
             % ==========        UNSIGNED       ===========
             % ============================================
             \subsection{unsigned}
 
+                Lo que hace este modificador (exacto, esto tampoco es un tipo de dato)
+                es eliminar el signo de los tipos númericos, es decir el entero mas bajo que vas
+                a poder guardar va a ser el 0, pero con ello vas a lograr duplicar
+                el máximo entero que puedes almacenar y no aumentas para nada el espacio necesario :o
+                \begin{lstlisting}[language=C++, gobble=20]
+                    char maxValueChar {127};                    
+                    unsigned char maxValueIntUnsigned {255};
+                    
+                    int maxValueInt {2,147,483,647};                    
+                    unsigned int maxValueIntUnsigned {4,294,967,295};
+                    
+                    long long maxValueLL {9,223,372,036,854,775,807};                    
+                    unsigned long long maxValueLLUnsigned {18,446,744,073,709,551,615};
+                \end{lstlisting}
+
+
+            % ============================================
+            % ==========        UNSIGNED       ===========
+            % ============================================
+            \subsection{short}
+
+                Hace lo inverso que \texttt{long}, en vez que duplicar el tamaño lo parte a la mitad,
+                y ya, solo eso :v
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto size {"short is 2 bytes"};
+                    short int minValue {-32,768};
+                    short int maxValue {32,767};
+                \end{lstlisting}
+            
+            % ============================================
+            % ==========        SIZE_T         ===========
+            % ============================================
+            \subsection{size\_t}
+
+                Este es especial y muchas veces lo usaré como estandar de tipo numérico
+                y es que usamos muchas veces los enteros como índice de un contenedor.
+
+                Bien pues \texttt{size\_t} es un tipo de dato especial que nos da \Cpp
+                que nos asegura que será tan grande como necesitemos para usarlo como índice
+                de cualquier contenedor.
+
+                Nota que como lo usamos para índice, este tipo de dato no tiene signo.
+
+                Por ejemplo, \texttt{std::vector, std::string, std::array} y más lo usan
+                como índice.
+                
+
         % =========================================================
         % =====      FLOATING POINTS: PUNTO FLOTANTES       =======
         % =========================================================
+        \clearpage
         \section{Floating Points: Puntos Flotantes}
 
         % =========================================================
@@ -1087,6 +1349,11 @@
         \section{Fibonacci}
 
         % =========================================================
+        % =======        FIBONACCI                  ===============
+        % =========================================================
+        \section{Números de Catalán}
+
+        % =========================================================
         % =======               PRIMOS              ===============
         % =========================================================
         \section{Primos y Factores}
@@ -1199,6 +1466,19 @@
         % ==========        REPRESENTACIONES        ===============
         % =========================================================
         \section{Dijsktra: Camino más cercano}
+
+
+
+% ===============================================
+% ========        BIBLIO      ===================
+% ===============================================
+\begin{thebibliography}{10}
+
+    \bibitem{CP3} 
+        Competitive Programming 3,
+        \textit{Halim and Halim, 2013}. 
+
+\end{thebibliography}
 
 
 \end{document}
