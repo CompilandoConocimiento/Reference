@@ -387,12 +387,12 @@
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStyle} {                              %This is Code Style
         backgroundcolor     = \color{BlueGrey900MD},                %Background Color  
-        basicstyle          = \tiny\color{white},                   %Style of text
+        basicstyle          = \ttfamily\tiny\color{white},          %Style of text
         commentstyle        = \color{BlueGrey200MD},                %Comment style
         stringstyle         = \color{Green300MD},                   %String style
         keywordstyle        = \color{Blue300MD},                    %keywords style
         numberstyle         = \tiny\color{TealMD},                  %Size of a number
-        frame               = shadowbox,                            %Adds a frame around the code
+        frame               = none,                                 %Adds a frame around the code
         breakatwhitespace   = true,                                 %Style   
         breaklines          = true,                                 %Style   
         showstringspaces    = false,                                %Hate those spaces                  
@@ -408,7 +408,7 @@
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStylePurity} {                        %This is Code Style
         backgroundcolor     = \color{white},                        %Background Color  
-        basicstyle          = \tiny\color{BlueGrey900MD},           %Style of text
+        basicstyle          = \ttfamily\tiny\color{BlueGrey900MD},  %Style of text
         commentstyle        = \color{Green300MD},                   %Comment style
         stringstyle         = \color{Teal700MD},                    %String style
         keywordstyle        = \color{Blue700MD},                    %keywords style
@@ -429,7 +429,7 @@
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStyleSolarized} {                     %This is Code Style
         backgroundcolor     = \color{SolarizedBase},                %Background Color  
-        basicstyle          = \footnotesize\color{SolarizedFont},   %Style of text
+        basicstyle          = \footnotesize\ttfamily\color{SolarizedFont},   %Style of text
         commentstyle        = \color{Green300MD},                   %Comment style
         stringstyle         = \color{Teal700MD},                    %String style
         keywordstyle        = \color{Blue700MD},                    %keywords style
@@ -447,6 +447,16 @@
  
     \lstset{style = CompilandoStyleSolarized}                          %Use this style
 
+
+
+
+
+
+
+
+
+
+    
 
 % =====================================================
 % ============       VARIABLES         ================
@@ -801,7 +811,7 @@
     % ============               TIPOS DE DATOS NUMERICOS             ===============
     % ===============================================================================
     \clearpage
-    \chapter{Tipos de datos númericos}
+    \chapter{Tipos de datos numéricos}
 
         % =========================================================
         % ========         INTEGERS: ENTEROS          =============
@@ -905,7 +915,7 @@
             \subsection{unsigned}
 
                 Lo que hace este modificador (exacto, esto tampoco es un tipo de dato)
-                es eliminar el signo de los tipos númericos, es decir el entero mas bajo que vas
+                es eliminar el signo de los tipos numéricos, es decir el entero más bajo que vas
                 a poder guardar va a ser el 0, pero con ello vas a lograr duplicar
                 el máximo entero que puedes almacenar y no aumentas para nada el espacio necesario :o
                 \begin{lstlisting}[language=C++, gobble=20]
@@ -939,7 +949,7 @@
             % ============================================
             \subsection{size\_t}
 
-                Este es especial y muchas veces lo usaré como estandar de tipo numérico
+                Este es especial y muchas veces lo usaré como estándar de tipo numérico
                 y es que usamos muchas veces los enteros como índice de un contenedor.
 
                 Bien pues \texttt{size\_t} es un tipo de dato especial que nos da \Cpp
@@ -958,10 +968,38 @@
         \clearpage
         \section{Floating Points: Puntos Flotantes}
 
+            A primera vista, los números de punto flotante parecen simples.
+            Son solo enteros con puntos decimales, ¿verdad? 
+            ¿Por qué no los usamos todo el tiempo, ya que pueden almacenar una mayor variedad de números?
+
+            La respuesta es sencilla, no son precisos.
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.9\textwidth]{IEEEFP}
+                \caption{\footnotesize{Representación del \texttt{float} en \Cpp}}
+            \end{figure}
+
+            Y ya, solo por eso, intenta poner en Python o en \Cpp si quieres esto 
+            \texttt{(0.1 + 0.2) == 0.3} y verás que es falso, la razón es que los números de punto
+            flotante tienen una cantidad límitada de dígitos de presición.
+
+            Así que esta bien usarlos y todo, pero porfavor, hazlo con cuidado.
+
+            Además así como \texttt{long long} era el doble que \texttt{int}, así
+            \texttt{double} tiene el doble de presición (de ahí el nombre :v) que el clásico
+            tipo de dato de punto flotante el \texttt{float}.
+
         % =========================================================
         % =======        COMPLEX: NUMEROS COMPLEJOS       =========
         % =========================================================
         \section{Complex: Números Complejos}
+
+            Esta sección igual será corta, lo único que quiero decirte por si un día lo ocupas
+            es que \Cpp tiene una clase que nos permite representar a los complejos.
+
+            Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
+            de C++, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
 
 
     % ===============================================================================
