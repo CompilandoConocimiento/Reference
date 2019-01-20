@@ -1,11 +1,14 @@
 #include <iostream>
-#include <limits>
+#include <vector>
 
 using namespace std;
 
 int main() {
 
-    cout << "hola" << endl;
+    std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
+    std::size_t numberOfElements = {someIntegers.size()};
+
+    cout << numberOfElements << endl;
 
     return 0;
 }

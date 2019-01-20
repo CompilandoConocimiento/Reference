@@ -456,7 +456,7 @@
 
 
 
-    
+
 
 % =====================================================
 % ============       VARIABLES         ================
@@ -492,7 +492,9 @@
     % ============ NAME OF THE BOOK  ===============
     \href{\Github/LibroAnalisisVectorial}                           %Link to Author
     {\fontsize{35}{46}\selectfont                                   %Set size
-        \textbf{Introducción a la\\[0.6cm] Programación Competitiva}}\\[0.5cm]  %Name of the book
+        \textbf{Introducción a TODO lo\\[0.6cm] 
+        que tienes que saber sobre \\[0.4cm]
+        Programación Competitiva}}\\[0.5cm]  %Name of the book
     \textcolor{ColorSubtext}{\textsc{\Huge Club de Algoritmia ESCOM}}%Name of the general theme
     
     \vfill                                                          %Fill the space
@@ -588,9 +590,9 @@
                     Si, pero no como en tú día a día, no harás una aplicación web o con una interfaz
                     super bonita, sino que son programas que toman sus datos de la entrada estándar
                     y nos regresan la respuesta por la salida estándar, es decir, un programa 
-                    de terminal.
+                    de terminal. Esto por lo más importante aqui es el algoritmo.
 
-                \item \textbf{Tendrás límites.}
+                \item \textbf{Tendrás que cumplir límites.}
                 
                     Tu programa tendrá que resolver el problema con unas restricciones
                     en tiempo y memoria, es decir, por ejemplo, tu programa tendrá que dar la
@@ -622,7 +624,7 @@
         \section{Propiedades de un problema}
 
             \begin{itemize}
-                \item Son calificados por una máquina
+                \item \textbf{Son calificados por una máquina.}
 
                     Generalmente usamos onlines judges (jueces en línea) para poder saber si hemos
                     resuelto un problema, es decir, al final del día nuestro problema lo califica 
@@ -631,7 +633,7 @@
                     Así que no hay puntos medios o tu programa funciona siempre y como debe o el juez
                     te dirá que está mal.
 
-                \item Tienen historia.
+                \item \textbf{Tienen historia.}
                 
                     Muchas veces (casi siempre) los problemas están metidos dentro de una historia,
                     está ayuda a que sea mucho más interesante y que te cueste más entender de que
@@ -641,7 +643,7 @@
                     que recuerdes una técnica por un problema en especial que te gusto mucho a 
                     que solo así por así como robot.
 
-                \item Te dan ejemplos.
+                \item \textbf{Te dan ejemplos.}
                 
                     Incluso aunque el problema te dice que es exactamente lo que te está pidiendo
                     es mucho más fácil para los humanos entender si nos dan ejemplos.
@@ -649,8 +651,9 @@
                     Esto también ayuda a que no malinterpretemos el problema y estemos resolviendo
                     algo que no.
 
-                \item El corazón del problema está relacionado siempre con matemáticas, lógica o
-                ciencias de la computación.
+                \item \textbf{El corazón del problema está relacionado siempre con matemáticas, lógica o
+                ciencias de la computación.}
+
             \end{itemize}
 
 
@@ -663,10 +666,10 @@
     % ==========                      PORQUE C++                       ==============
     % ===============================================================================
     \clearpage
-    \chapter{¿Porqué \Cpp?}
+    \chapter{¿Porqué usar \Cpp?}
 
         \begin{figure}[h]
-            \includegraphics[width=0.80\textwidth]{CppIntro}
+            \includegraphics[width=1.0\textwidth]{CppIntro}
         \end{figure}
 
 
@@ -726,7 +729,7 @@
                     esta prácticamente garantizado que usar una clase por ejemplo o que usar un arreglo que se auto
                     dimensiona no será más costoso que si lo hubieras hecho tu desde ensamblador.
 
-                \item \textbf{Tienes a la STD a tu lado}
+                \item \textbf{Tienes a la biblioteca estandar, la gran std::* a tu lado}
 
                     Esta es otra gran ventaja, ya que siguiendo con la mentalidad de abstracciones sin costo extra tenemos
                     gracias a la gran libreria estándar un montón de cosas que no tenemos que hacer desde cero, desde
@@ -769,42 +772,48 @@
 
             \end{itemize}
 
+
         % =========================================================
-        % ==========             VS C                ==============
+        % ==========             VS OTROS            ==============
         % =========================================================
         \clearpage
-        \section{vs C}
+        \section{\Cpp vs otros lenguajes}
 
-            El gran problema con C es que es un lenguaje muy pequeño en el sentido en que todo lo tienes que hacer tu,
-            si quieres hacer un problema que involucra cosas medio complejas todas las estructuras las tienes que codear
-            al momento, y en un deporte de tiempo, cada segundo cuenta, así que en resumén, lo que \Quote{mata} a C es la falta
-            de algo parecido a la std de \Cpp.
+            % ============================================
+            % ========          VS C        ==============
+            % ============================================
+            \subsection{vs C}
 
-            Aunque para problemas sencillos C también puede ser una opción, (pero ya que $\Cpp$ es casi casi
-            un superset de C podrías entonces igualde fácil hacerlo en $\Cpp$).
+                El gran problema con C es que es un lenguaje muy pequeño en el sentido en que todo lo tienes que hacer tu,
+                si quieres hacer un problema que involucra cosas medio complejas todas las estructuras las tienes que codear
+                al momento, y en un deporte de tiempo, cada segundo cuenta, así que en resumén, lo que \Quote{mata} a C es la falta
+                de algo parecido a la std de \Cpp.
 
-        % =========================================================
-        % ==========             VS JAVA             ==============
-        % =========================================================
-        \section{vs Java}
+                Aunque para problemas sencillos C también puede ser una opción, (pero ya que $\Cpp$ es casi casi
+                un superset de C podrías entonces igualde fácil hacerlo en $\Cpp$).
 
-            Con toda honestidad hay un porcentaje de la comunidad de programación competitiva que usan Java, así que
-            si que es una opción viable, sobretodo por su gran libreria estándar y también porque en C++ no hay algo parecido
-            a \texttt{BigInteger} y \texttt{BigDecimal} y suelen ser muchos los problemas que lo requieran, así que si bien \Cpp
-            podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si quieres ser feliz).
+            % ============================================
+            % ==========       VS JAVA          ==========
+            % ============================================
+            \subsection{vs Java}
 
-        % =========================================================
-        % ==========             VS PYTHON           ==============
-        % =========================================================
-        \section{vs Python}
+                Con toda honestidad hay un porcentaje de la comunidad de programación competitiva que usan Java, así que
+                si que es una opción viable, sobretodo por su gran libreria estándar y también porque en C++ no hay algo parecido
+                a \texttt{BigInteger} y \texttt{BigDecimal} y suelen ser muchos los problemas que lo requieran, así que si bien \Cpp
+                podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si quieres ser feliz).
 
-            Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
-            a ser interpretado y debilmente tipado, sus programas acaban siendo muy lentos incluso usando el 
-            algoritmo correcto, eso si, hay varias aplicaciones útiles de Python, como que todos los
-            enteros tienen infinita precisión por defecto (aka \texttt{BigInteger} como en Java).
+            % ============================================
+            % ==========        VS PYTHON        =========
+            % ============================================
+            \subsection{vs Python}
 
-            Así que tampoco es una mala idea aprenderlo por si se necesita un día, pero definitivamente
-            no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
+                Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
+                a ser interpretado y debilmente tipado, sus programas acaban siendo muy lentos incluso usando el 
+                algoritmo correcto, eso si, hay varias aplicaciones útiles de Python, como que todos los
+                enteros tienen infinita precisión por defecto (aka \texttt{BigInteger} como en Java).
+
+                Así que tampoco es una mala idea aprenderlo por si se necesita un día, pero definitivamente
+                no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
 
 
     % ===============================================================================
@@ -819,18 +828,10 @@
         \clearpage
         \section{Integers: Enteros}
 
-            Recuerda que esta sección del texto no es una introducción a la programación para
-            alguien que nunca ha programado nada en su vida, sino solo para alguien que
-            no sabe \Cpp.
-
             \Cpp (y C) maneja varios tamaños estándares de enteros, el más clásico
             es \texttt{int}, pero no es el único, los demás solo cambian en tamaño
             (y por los tanto los números que podemos almacenar)
             y estos son, de menor a mayor: \texttt{char, short, int, long, long long}.
-
-            Ahora podemos aplicarles a estos tipos un modificador, \texttt{unsigned}, que nos permite que no
-            puedan representar los negativos, a cambio nos da el doble de espacio, por lo
-            que podemos representar un entero hasta el doble de grande.
 
             Así que con esto conocido, veamos las características más detalladamente de cada tipo:
             Pero si quieres un resumen, \Cpp garantiza que:
@@ -840,7 +841,7 @@
 
 
             % ============================================
-            % ==========        CHAR            ===========
+            % ==========        CHAR            ==========
             % ============================================
             \subsection{char}
 
@@ -947,7 +948,7 @@
             % ============================================
             % ==========        SIZE_T         ===========
             % ============================================
-            \subsection{size\_t}
+            \subsection{std::size\_t}
 
                 Este es especial y muchas veces lo usaré como estándar de tipo numérico
                 y es que usamos muchas veces los enteros como índice de un contenedor.
@@ -960,6 +961,11 @@
 
                 Por ejemplo, \texttt{std::vector, std::string, std::array} y más lo usan
                 como índice.
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
+                    std::size_t numberOfElements = {someIntegers.size()}; 
+                \end{lstlisting}
                 
 
         % =========================================================
@@ -988,7 +994,7 @@
 
             Además así como \texttt{long long} era el doble que \texttt{int}, así
             \texttt{double} tiene el doble de presición (de ahí el nombre :v) que el clásico
-            tipo de dato de punto flotante el \texttt{float}.
+            tipo de dato de punto flotante,\Cpp \texttt{float}.
 
         % =========================================================
         % =======        COMPLEX: NUMEROS COMPLEJOS       =========
@@ -999,7 +1005,7 @@
             es que \Cpp tiene una clase que nos permite representar a los complejos.
 
             Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
-            de C++, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
+            de \Cpp, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
 
 
     % ===============================================================================
@@ -1009,9 +1015,84 @@
     \chapter{Bases del Lenguaje}
 
         % =========================================================
-        % ==========             CONDICIONALES           ==========
+        % ==========        SENTENCIAS DE CONTROL        ==========
         % =========================================================
-        \section{Condicionales}
+        \clearpage
+        \section{Sentencias de Control}
+
+            \begin{wrapfigure}{r}{0.15\textwidth}
+                \centering
+                \includegraphics[width=0.15\textwidth]{Warning}
+            \end{wrapfigure}
+
+            \textbf{
+                Recuerda que esta sección del texto NO es una introducción a la programación para
+                alguien que nunca ha programado nada en su vida, sino solo para alguien que
+                no sabe \Cpp. 
+            }
+
+            \textbf{
+                Si este es tu caso entonces recomiendo que busques un documento, tutorial, libro, etc...
+                diseñado para empezar a programar, porque en este texto voy a dar varias cosas por sentado
+                que deberían ser muy obvias para alguien que ya haya aprendido a programar, en cualquier
+                lenguaje.
+            }
+
+            \textbf{
+                No te preocupes, te espero \texttt{<3}.
+            }
+
+            % ============================================
+            % =======        CONDICIONALES         =======
+            % ============================================
+            \subsection{Condicionales}
+
+                Sin una declaración de un condicional como la instrucción \texttt{if}, los programas
+                se ejecutarán casi de la misma manera cada vez.
+                
+                Los condicionales permiten que se cambie el flujo del programa y con ello códigos
+                más interesantes.
+
+                \begin{lstlisting}[language=C++, gobble=10]
+                    //Simpler form
+                    if (condition) {
+                        ...
+                    }
+
+                    //Simple form
+                    if (condition) {
+                        ...
+                    }
+                    else {
+                        ...
+                    }
+                    
+                    //Complete form
+                    if (condition1) {
+                        ...
+                    }
+                    else if (condition2) {
+                        ...
+                    }
+                    else if (condition3) {
+                        ...
+                    }
+                    else {
+                        ...
+                    }
+                \end{lstlisting}
+
+
+                % ============================================
+                % =======        CONDICIONES           =======
+                % ============================================
+                \subsubsection{Condiciones}
+
+                En \Cpp cuando tenemos algo que  
+
+
+
+
 
         % =========================================================
         % ==========               CICLOS                ==========
