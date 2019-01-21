@@ -492,9 +492,9 @@
     % ============ NAME OF THE BOOK  ===============
     \href{\Github/LibroAnalisisVectorial}                           %Link to Author
     {\fontsize{35}{46}\selectfont                                   %Set size
-        \textbf{Introducción a TODO lo\\[0.6cm] 
+        \textbf{Introducción a lo\\[0.6cm] 
         que tienes que saber sobre \\[0.4cm]
-        Programación Competitiva}}\\[0.5cm]  %Name of the book
+        Programación Competitiva y C++}}\\[0.5cm]  %Name of the book
     \textcolor{ColorSubtext}{\textsc{\Huge Club de Algoritmia ESCOM}}%Name of the general theme
     
     \vfill                                                          %Fill the space
@@ -677,7 +677,7 @@
         % ==========          VENTAJAS DE C++        ==============
         % =========================================================
         \clearpage
-        \section{Ventajas de \Cpp}
+        \section{Grandes ventajas de \Cpp}
 
             Hay muchas razones por las cuales \Cpp es uno de los lenguajes más usados en
             la modernidad en la programación competitiva (si no es que el más).
@@ -720,8 +720,8 @@
                     de los ensambladores. 
 
                     \textit{
-                    Y podrías decir, pero en Java o en Python podemos representar de una manera igual de fácil (siendo muy
-                    exactos no creo que sea el caso, pero esa es otra historia amigos) así que ... ¿porqué usar \Cpp?
+                    Y podrías decir, pero en Java o en Python podemos representar de una manera igual de fácil 
+                    así que ... ¿porqué usar \Cpp?
                     }
 
                     Pues porque en todos los demás lenguajes estas pagando un costo (a veces muy grande de varios cientos 
@@ -761,14 +761,35 @@
                     y la capacidad de tener un gran control de todos los recursos del sistema (memoria y tiempo
                     de vida de un objecto, cough cough Java y su recolector de basura)
 
+                \clearpage
+
                 \item \textbf{Tienes un gran control de todos los recursos del sistema}
                 
                     Esto es también es muy importante, pues nos dice que en \Cpp podemos controlar con gran lujo de detalle
-                    cuando un pedazo de memoria ya no es usado y deberíamos liberarlo ayudando con esto a aumentar la velocidad
-                    de nuestro programa o cuando queremos usar una variable local y cuando queremos usar memoria del heap,
-                    tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
+                    los recursos del sistema, como por ejemplo la memoria.
+
+                    \Cpp nos da el control de decidir por ejempo a que lugar va cada variable (heap o al stack), 
+                    lo cual es esencial para un programa de alto rendimiento (y creeme que lo necesitaras).
+
+                    \textbf{Es determinista.}
+
+                    Es decir la limpieza de los objectos una vez que ya se acabaron de usar es solicitada cuanto tu quieres,
+                    y no \textit{a ver cuando el recolector de basura decide hacerlo}.
+
+                    Tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
                     un objecto o si una referencia no podrá ser modificada.
 
+                \item {Tienes \textit{value types} por defecto}.
+                
+                    Esta quiza sea algo rara de explicar si es que no sabes ningún lenguaje orientado a objectos, y si
+                    no la entiendes no te preocupes. 
+
+                    Lo que nos dice es que las variables en \Cpp son de tipo valor por defecto, es decir que
+                    las podemos copiar, que nuestra variable de verdad almacenan la información que queremos \textbf{
+                        y no una referencia (que apunta a quien sabe donde) de donde esta nuestra información
+                    }.
+                    Claro que aún puedes expresar la idea de las referencias, pero por defecto hablamos de variables
+                    que almacenan valores.
 
             \end{itemize}
 
@@ -816,196 +837,78 @@
                 no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
 
 
-    % ===============================================================================
-    % ============               TIPOS DE DATOS NUMERICOS             ===============
-    % ===============================================================================
-    \clearpage
-    \chapter{Tipos de datos numéricos}
-
         % =========================================================
-        % ========         INTEGERS: ENTEROS          =============
+        % ==========          CPP MODERNO            ==============
         % =========================================================
         \clearpage
-        \section{Integers: Enteros}
+        \section{ Una pincelada de \Cpp moderno}
 
-            \Cpp (y C) maneja varios tamaños estándares de enteros, el más clásico
-            es \texttt{int}, pero no es el único, los demás solo cambian en tamaño
-            (y por los tanto los números que podemos almacenar)
-            y estos son, de menor a mayor: \texttt{char, short, int, long, long long}.
+            Incluso en términos solo de sintaxis te perdonaría si pensaras que \Cpp es un
+            lenguaje terminado, algo que se hizo en los 90's y que seguimos escribiendo
+            igual al día de hoy.
 
-            Así que con esto conocido, veamos las características más detalladamente de cada tipo:
-            Pero si quieres un resumen, \Cpp garantiza que:
-            \begin{lstlisting}[language=C++, gobble=20]
-                1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long);
+            Y no es así, \Cpp 11 / 14 / 17 / 20 son cosas muy diferentes, igual de flexibles
+            y de rápidas que el clásico \Cpp 98 pero mucho mas seguro y limpio de escribir.
+
+            Mira un ejemplo.
+
+            \begin{lstlisting}[language=C++, gobble=16]
+                //Old C++
+                circle* p = new circle(42);
+                vector<shape*> v = load_shapes();
+
+                for (vector<shape*>:::iterator i = v.begin(): i != v.end(); ++i) {
+                    if (*i && **i == *p)
+                        cout << **i << "is a match" << endl;
+                }
+
+                // ...later, possible elsewhere
+
+                for (vector<shape*>:::iterator i = v.begin(): i != v.end(); ++i) {
+                    delete *i;
+                }
+
+                delete p;
             \end{lstlisting}
 
+            Mientras que ahora podrías hacer algo como:
+            \begin{lstlisting}[language=C++, gobble=16]
+                //New badass C++
+                auto p = make_shared<circle> (42);
+                auto v = load_shapes();
 
-            % ============================================
-            % ==========        CHAR            ==========
-            % ============================================
-            \subsection{char}
+                for (auto& s : v) {
+                    if (s && *s == *p)
+                        cout << *s << "is a match" << endl;
+                }
+            \end{lstlisting}
 
-                A ver, técnicamente este tipo de dato como su nombre lo dice esta diseñado para almacenar
-                un carácter, lo que pasa es que en computación (no nos compliquemos la vida con UFT ahora)
-                un carácter como \texttt{'a'} ó \texttt{'p'} se representa internamente usando el código
-                ASCII (deberías buscar más de esto cuando tengas tiempo).
-                
-                Total, que en resumen este tipo de dato nació para almacenar un carácter de ASCII, 
-                por lo tanto es un tipo de datos numérico que va de 0 a 255.
-
-                No te preocupes si no entiendes las primeras líneas, pero si lo haces, muy bien por ti.
-                \begin{lstlisting}[language=C++, gobble=20]
-                    auto character {'a'};                       // character is a char!
-                    char number {23};                           // number is a char!
-                    ('a' == 97) and ('z' == 122);               // true: ASCII is numbers
-                    ('A' == 65) and ('Z' == 90);                // true: ASCII is numbers
-                    ('A' + 1 == 'B') and ('Z' - 1 == 'Y');      // You can do arithmetic
-
-                    auto size {"char is 1 byte"};
-                    char minValue {-128};
-                    char maxValue {127};
-                \end{lstlisting}
-
-
-            % ============================================
-            % ==========        INT            ===========
-            % ============================================
             \clearpage
-            \subsection{int}
 
-                Es el tipo de dato numérico estándar en \Cpp, así que si declaras un número
-                con \texttt{auto} entonces lo más probable es que sea \texttt{int}.
+            Veamos otro ejemplo, imagina que alguien te da una secuencia de 
+            puntos (flotantes por ejemplo) y te pide calcular su media.
 
-                Ahora, pasa algo raro con este tipo de dato, que dependiendo de la máquina
-                en la que compiles entonces puede tener 2 o 4 bytes de tamaño (usa el que
-                sea más eficiente para el sistema), aun así, casi nunca compilaras en 
-                algún sistema que te diga que un \texttt{int} es de 2 bytes, así que para
-                este texto usaremos que \texttt{int} es de 4 bytes.
-                
-                \begin{lstlisting}[language=C++, gobble=20]
-                    auto number {23};                           // number is an int!
+            Veamos como sería hacerlo en Python así de volada:
+            \begin{lstlisting}[language=python, gobble=16]
+                def mean(seq):
+                    n = 0.0
+                    for x in seq:
+                        n += x
+                    return n / len(seq)
+            \end{lstlisting}
 
-                    auto size {"int is 4 bytes"};
-                    int minValue {-2,147,483,648};
-                    int maxValue {2,147,483,647};
-                \end{lstlisting}
+            Y en \Cpp mira como sería:
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto mean(const Sequence& seq) {
+                    auto n {0.0};
+                    for (auto x : seq)
+                        n += x;
+                    return n / seq.size();
+                }
+            \end{lstlisting}
 
-            % ============================================
-            % ==========        LONG           ===========
-            % ============================================
-            \subsection{long long}
-
-                Este no es un tipo de dato, per se, sino que es un modificador que le puedes aplicar
-                a \texttt{int} y con esto lo que logras es duplicar el tamaño de un int (suponiendo
-                que int tenga 4 bytes de tamaño, y creeme, seguramente es así).
-                
-                \begin{lstlisting}[language=C++, gobble=20]
-                    int normalVariable {};                      // It takes 4 bytes     
-                    long long int normalVariable {};            // It takes 8 bytes 
-                    auto number {1,000,000,000,000,000,000}     // number is long long  
-
-                    auto size {"long long int is 8 bytes"};
-                    int minValue {-9,223,372,036,854,775,808};
-                    int maxValue {9,223,372,036,854,775,807};
-                \end{lstlisting}
-
-
-            % ============================================
-            % ==========        UNSIGNED       ===========
-            % ============================================
-            \subsection{unsigned}
-
-                Lo que hace este modificador (exacto, esto tampoco es un tipo de dato)
-                es eliminar el signo de los tipos numéricos, es decir el entero más bajo que vas
-                a poder guardar va a ser el 0, pero con ello vas a lograr duplicar
-                el máximo entero que puedes almacenar y no aumentas para nada el espacio necesario :o
-                \begin{lstlisting}[language=C++, gobble=20]
-                    char maxValueChar {127};                    
-                    unsigned char maxValueIntUnsigned {255};
-                    
-                    int maxValueInt {2,147,483,647};                    
-                    unsigned int maxValueIntUnsigned {4,294,967,295};
-                    
-                    long long maxValueLL {9,223,372,036,854,775,807};                    
-                    unsigned long long maxValueLLUnsigned {18,446,744,073,709,551,615};
-                \end{lstlisting}
-
-
-            % ============================================
-            % ==========        UNSIGNED       ===========
-            % ============================================
-            \subsection{short}
-
-                Hace lo inverso que \texttt{long}, en vez que duplicar el tamaño lo parte a la mitad,
-                y ya, solo eso :v
-
-                \begin{lstlisting}[language=C++, gobble=20]
-                    auto size {"short is 2 bytes"};
-                    short int minValue {-32,768};
-                    short int maxValue {32,767};
-                \end{lstlisting}
-            
-            % ============================================
-            % ==========        SIZE_T         ===========
-            % ============================================
-            \subsection{std::size\_t}
-
-                Este es especial y muchas veces lo usaré como estándar de tipo numérico
-                y es que usamos muchas veces los enteros como índice de un contenedor.
-
-                Bien pues \texttt{size\_t} es un tipo de dato especial que nos da \Cpp
-                que nos asegura que será tan grande como necesitemos para usarlo como índice
-                de cualquier contenedor.
-
-                Nota que como lo usamos para índice, este tipo de dato no tiene signo.
-
-                Por ejemplo, \texttt{std::vector, std::string, std::array} y más lo usan
-                como índice.
-
-                \begin{lstlisting}[language=C++, gobble=20]
-                    std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
-                    std::size_t numberOfElements = {someIntegers.size()}; 
-                \end{lstlisting}
-                
-
-        % =========================================================
-        % =====      FLOATING POINTS: PUNTO FLOTANTES       =======
-        % =========================================================
-        \clearpage
-        \section{Floating Points: Puntos Flotantes}
-
-            A primera vista, los números de punto flotante parecen simples.
-            Son solo enteros con puntos decimales, ¿verdad? 
-            ¿Por qué no los usamos todo el tiempo, ya que pueden almacenar una mayor variedad de números?
-
-            La respuesta es sencilla, no son precisos.
-
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=0.9\textwidth]{IEEEFP}
-                \caption{\footnotesize{Representación del \texttt{float} en \Cpp}}
-            \end{figure}
-
-            Y ya, solo por eso, intenta poner en Python o en \Cpp si quieres esto 
-            \texttt{(0.1 + 0.2) == 0.3} y verás que es falso, la razón es que los números de punto
-            flotante tienen una cantidad límitada de dígitos de presición.
-
-            Así que esta bien usarlos y todo, pero porfavor, hazlo con cuidado.
-
-            Además así como \texttt{long long} era el doble que \texttt{int}, así
-            \texttt{double} tiene el doble de presición (de ahí el nombre :v) que el clásico
-            tipo de dato de punto flotante,\Cpp \texttt{float}.
-
-        % =========================================================
-        % =======        COMPLEX: NUMEROS COMPLEJOS       =========
-        % =========================================================
-        \section{Complex: Números Complejos}
-
-            Esta sección igual será corta, lo único que quiero decirte por si un día lo ocupas
-            es que \Cpp tiene una clase que nos permite representar a los complejos.
-
-            Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
-            de \Cpp, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
+            Que bonito, ¿no?
+            \cite{ModernCppWhatYouNeedToKnow}
 
 
     % ===============================================================================
@@ -1014,33 +917,330 @@
     \clearpage
     \chapter{Bases del Lenguaje}
 
+        \begin{wrapfigure}{r}{0.15\textwidth}
+            \centering
+            \includegraphics[width=0.15\textwidth]{Warning}
+        \end{wrapfigure}
+
+        \textbf{
+            Recuerda que esta sección del texto NO es una introducción a la programación para
+            alguien que nunca ha programado nada en su vida, sino solo para alguien que
+            no sabe \Cpp. 
+        }
+
+        \textbf{
+            Si este es tu caso entonces recomiendo que busques un documento, tutorial, libro, etc...
+            diseñado para empezar a programar, porque en este texto voy a dar varias cosas por sentado
+            que deberían ser muy obvias para alguien que ya haya aprendido a programar, en cualquier
+            lenguaje.
+        }
+
+        \textbf{
+            No te preocupes, te espero \texttt{<3}.
+        }
+
+        % =========================================================
+        % ========        VARIABLES SIMPLES          ==============
+        % =========================================================
+        \clearpage
+        \section{Variables simples}
+
+            En \Cpp (como en casi cualquier otro lenguaje) la idea obvia con la que podemos empezar
+            es las variables.
+
+            En \Cpp una variable es un fragmento de memoria (RAM) que almacena algun valor, 
+            podemos tener variables que almacen lo que nosotros entenderemos como números enteros
+            o que almacenen cadenas o que almacenen una secuencia de racionales etc...
+
+            Bueno, \Cpp es un lenguaje de tipado estatico, es decir que todo momento el compilador
+            (para poder transformar tu programa a algo que una computadora pueda entender) tiene
+            que saber que tipo de dato almacena esa variable.
+
+            Es decir, si yo quiero declarar una variable que almacene los días que llevo sin comer
+            papas entonces podemos declararla de dos maneras en \Cpp.
+
+
+            % ============================================
+            % ====   DECLARACIONES E INICIALIZACION   ====
+            % ============================================
+            \subsection{Declaraciones e Inicialización}
+
+                El primer paso para poder usar una variable será el de declararla, es decir
+                aqui entre nos es decirle al compilador que te de un fragmento de RAM, que lo usaras
+                para guardar un tipo de dato (numeros, matrices, texto, etc...) y que a este fragmento
+                de RAM le pondras un nombre para poder referirte a el.
+
+                Muy unido a esto decimos que estamos inicializando una variable cuando le damos
+                un valor por primera vez a este espacio de RAM.
+
+                Puedes declara variables en C++ de dos maneras:
+
+                % ============================================
+                % ======            SE DIRECTO          ======
+                % ============================================
+                \subsubsection{Se directo}
+
+                    Algo como:
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        int someNumber = 20;
+                        string someText {"Hi baby"};
+                        double myLoveForYou;
+                    \end{lstlisting}
+
+                    Es decir, la sintaxis es:
+                    \begin{itemize}
+                        \item Primero el tipo de dato, despues un espacio.
+                        \item Despues el nombre que le quieres dar a la variable
+                        \item Si quieres un valor inicial.
+                    \end{itemize} 
+
+                % ============================================
+                % ======            SE SUTIL            ======
+                % ============================================
+                \subsubsection{auto: Se sútil}
+
+                    Si es que es obvio que tipo de dato debería ser entonces puedes usar \texttt{auto}
+                    que lo que nos dice es, compilador, yo se que eres un inteligente, anda, 
+                    tu solito sabes de que tipo de dato es esta variable para que te lo repito yo.
+                    
+                    Y se hace hastante similar:
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        auto someNumber = 20;   
+                        auto someText {"Hi baby"};
+                        auto myLoveForYou;          //This will fail
+                    \end{lstlisting}
+
+                    Nota que para que puedas usar auto el compilador tiene que saber que tipo
+                    de dato va a guardar esa variable así que si no inicializas la variable 
+                    el compilador se va a enojar contigo.
+
+                De igual manera creo que te habras dado cuenta que podemos inicializar de dos maneras
+                generalmente la primera es muy obvia y en casi todos los lenguajes existe, se llama
+                una asignación, es decir, darle un valor a esa variable y se usa casi siempre en
+                todos los Lenguaje el símbolo \texttt{=} o a veces incluso \texttt{<-}.
+
+                Total, lo que pasa en \Cpp es que además de esa forma de inicializar weas tenemos
+                una forma que si tiene un nombre especial.
+
+                % ============================================
+                % ======            SE SUTIL            ======
+                % ============================================
+                \subsubsection{Uniform Inizialization: Inicialización uniforme}
+
+                    Y lo que nos da esto es una misma sintaxis, quiza esto sea un tema algo complejo
+                    para unos y no te preocupes si no entiendes esto por completo por ahora.
+
+                    Total, lo que pasa es que en \Cpp moderno existe la sintaxis 
+                    \texttt{type wea {something}} donde lo que hacemos es poner entre estas cosas
+                    \texttt{ { } } el valor con el que queremos inicializar nuestra variable y dependiendo
+                    de que sea nuestra variable puede simplemente asignarla o llamar al constructor con estos
+                    parámetro.
+
+                    Total, es solo una forma mas bonita de hacer las cosas.
+
+
+        % =========================================================
+        % ======         TIPOS DE DATOS NUMERICOS          ========
+        % =========================================================
+        \clearpage
+        \section{Tipos de datos numéricos}
+
+            % ============================================
+            % ======     INTEGERS: ENTEROS          ======
+            % ============================================
+            \subsection{Integers: Enteros}
+
+                \Cpp (y C) maneja varios tamaños estándares de enteros, el más clásico
+                es \texttt{int}, pero no es el único, los demás solo cambian en tamaño
+                (y por los tanto los números que podemos almacenar)
+                y estos son, de menor a mayor: \texttt{char, short, int, long y long long}.
+
+                Así que con esto conocido, veamos las características más detalladamente de cada tipo:
+                Pero si quieres un resumen, \Cpp garantiza que:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long);
+                \end{lstlisting}
+
+
+                % ============================================
+                % ==========        CHAR            ==========
+                % ============================================
+                \subsubsection{char}
+
+                    A ver, técnicamente este tipo de dato como su nombre lo dice esta diseñado para almacenar
+                    un carácter, lo que pasa es que en computación (no nos compliquemos la vida con UFT ahora)
+                    un carácter como \texttt{'a'} ó \texttt{'p'} se representa internamente usando el código
+                    ASCII (deberías buscar más de esto cuando tengas tiempo).
+                    
+                    Total, que en resumen este tipo de dato nació para almacenar un carácter de ASCII, 
+                    por lo tanto es un tipo de datos numérico que va de 0 a 255.
+
+                    No te preocupes si no entiendes las primeras líneas, pero si lo haces, muy bien por ti.
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        auto character {'a'};                   // character is a char!
+                        char number {23};                       // number is a char!
+                        ('a' == 97) and ('z' == 122);           // true: ASCII is numbers
+                        ('A' == 65) and ('Z' == 90);            // true: ASCII is numbers
+                        ('A' + 1 == 'B') and ('Z' - 1 == 'Y');  // You can do arithmetic
+
+                        auto size {"char is 1 byte"};
+                        char minValue {-128};
+                        char maxValue {127};
+                    \end{lstlisting}
+
+
+                % ============================================
+                % ==========        INT            ===========
+                % ============================================
+                \clearpage
+                \subsubsection{int}
+
+                    Es el tipo de dato numérico estándar en \Cpp, así que si declaras un número
+                    con \texttt{auto} entonces lo más probable es que sea \texttt{int}.
+
+                    Ahora, pasa algo raro con este tipo de dato, que dependiendo de la máquina
+                    en la que compiles entonces puede tener 2 o 4 bytes de tamaño (usa el que
+                    sea más eficiente para el sistema), aun así, casi nunca compilaras en 
+                    algún sistema que te diga que un \texttt{int} es de 2 bytes, así que para
+                    este texto usaremos que \texttt{int} es de 4 bytes.
+                    
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        auto number {23};                           // number is an int!
+
+                        auto size {"int is 4 bytes"};
+                        int minValue {-2,147,483,648};
+                        int maxValue {2,147,483,647};
+                    \end{lstlisting}
+
+                % ============================================
+                % ==========        LONG           ===========
+                % ============================================
+                \subsubsection{long long}
+
+                    Este no es un tipo de dato, per se, sino que es un modificador que le puedes aplicar
+                    a \texttt{int} y con esto lo que logras es duplicar el tamaño de un int (suponiendo
+                    que int tenga 4 bytes de tamaño, y creeme, seguramente es así).
+                    
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        int normalVariable {};                      // It takes 4 bytes     
+                        long long int normalVariable {};            // It takes 8 bytes 
+                        auto number {1,000,000,000,000,000,000}     // number is long long  
+
+                        auto size {"long long int is 8 bytes"};
+                        int minValue {-9,223,372,036,854,775,808};
+                        int maxValue {9,223,372,036,854,775,807};
+                    \end{lstlisting}
+
+
+                % ============================================
+                % ==========        UNSIGNED       ===========
+                % ============================================
+                \subsubsection{unsigned}
+
+                    Lo que hace este modificador (exacto, esto tampoco es un tipo de dato)
+                    es eliminar el signo de los tipos numéricos, es decir el entero más bajo que vas
+                    a poder guardar va a ser el 0, pero con ello vas a lograr duplicar
+                    el máximo entero que puedes almacenar y no aumentas para nada el espacio necesario :o
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        char maxValueChar {127};                    
+                        unsigned char maxValueIntUnsigned {255};
+                        
+                        int maxValueInt {2,147,483,647};                    
+                        unsigned int maxValueIntUnsigned {4,294,967,295};
+                        
+                        long long maxValueLL {9,223,372,036,854,775,807};                    
+                        unsigned long long maxValueLLUnsigned {18,446,744,073,709,551,615};
+                    \end{lstlisting}
+
+
+                % ============================================
+                % ==========        UNSIGNED       ===========
+                % ============================================
+                \subsubsection{short}
+
+                    Hace lo inverso que \texttt{long}, en vez que duplicar el tamaño lo parte a la mitad,
+                    y ya, solo eso :v
+
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        auto size {"short is 2 bytes"};
+                        short int minValue {-32,768};
+                        short int maxValue {32,767};
+                    \end{lstlisting}
+                
+                % ============================================
+                % ==========        SIZE_T         ===========
+                % ============================================
+                \subsubsection{std::size\_t}
+
+                    Este es especial y muchas veces lo usaré como estándar de tipo numérico
+                    y es que usamos muchas veces los enteros como índice de un contenedor.
+
+                    Bien pues \texttt{size\_t} es un tipo de dato especial que nos da \Cpp
+                    que nos asegura que será tan grande como necesitemos para usarlo como índice
+                    de cualquier contenedor.
+
+                    Nota que como lo usamos para índice, este tipo de dato no tiene signo.
+
+                    Por ejemplo, \texttt{std::vector, std::string, std::array} y más lo usan
+                    como índice.
+
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
+                        std::size_t numberOfElements = {someIntegers.size()}; 
+                    \end{lstlisting}
+                    
+
+            % ============================================
+            % ====  FLOATING POINTS: PUNTO FLOTANTES  ====
+            % ============================================
+            \clearpage
+            \subsection{Floating Points: Puntos Flotantes}
+
+                A primera vista, los números de punto flotante parecen simples.
+                Son solo enteros con puntos decimales, ¿verdad? 
+                ¿Por qué no los usamos todo el tiempo, ya que pueden almacenar una mayor variedad de números?
+
+                La respuesta es sencilla, no son precisos.
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{IEEEFP}
+                    \caption{\footnotesize{Representación del \texttt{float} en \Cpp}}
+                \end{figure}
+
+                Y ya, solo por eso, intenta poner en Python o en \Cpp si quieres esto 
+                \texttt{(0.1 + 0.2) == 0.3} y verás que es falso, la razón es que los números de punto
+                flotante tienen una cantidad límitada de dígitos de presición.
+
+                Así que esta bien usarlos y todo, pero porfavor, hazlo con cuidado.
+
+                Además así como \texttt{long long} era el doble que \texttt{int}, así
+                \texttt{double} tiene el doble de presición (de ahí el nombre :v) que el clásico
+                tipo de dato de punto flotante en \Cpp, \texttt{float}.
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    float almostPI {3.1};
+                    double almostAlmostPI {3.14156};
+                \end{lstlisting}
+                
+
+            % ============================================
+            % =====  COMPLEX: NUMEROS COMPLEJOS     ======
+            % ============================================
+            \subsection{Complex: Números Complejos}
+
+                Esta sección igual será corta, lo único que quiero decirte por si un día lo ocupas
+                es que \Cpp tiene una clase que nos permite representar a los complejos.
+
+                Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
+                de \Cpp, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
+
+
         % =========================================================
         % ==========        SENTENCIAS DE CONTROL        ==========
         % =========================================================
         \clearpage
         \section{Sentencias de Control}
-
-            \begin{wrapfigure}{r}{0.15\textwidth}
-                \centering
-                \includegraphics[width=0.15\textwidth]{Warning}
-            \end{wrapfigure}
-
-            \textbf{
-                Recuerda que esta sección del texto NO es una introducción a la programación para
-                alguien que nunca ha programado nada en su vida, sino solo para alguien que
-                no sabe \Cpp. 
-            }
-
-            \textbf{
-                Si este es tu caso entonces recomiendo que busques un documento, tutorial, libro, etc...
-                diseñado para empezar a programar, porque en este texto voy a dar varias cosas por sentado
-                que deberían ser muy obvias para alguien que ya haya aprendido a programar, en cualquier
-                lenguaje.
-            }
-
-            \textbf{
-                No te preocupes, te espero \texttt{<3}.
-            }
 
             % ============================================
             % =======        CONDICIONALES         =======
@@ -1091,9 +1291,6 @@
                 En \Cpp cuando tenemos algo que  
 
 
-
-
-
         % =========================================================
         % ==========               CICLOS                ==========
         % =========================================================
@@ -1115,12 +1312,10 @@
         % =========================================================
         \section{References and value types: Referencias o Valores}
 
-
             % ============================================
             % ====  VALUE TYPES: VARIABLES DE VALOR  =====
             % ============================================
             \subsection{Value types: Variables de valor}
-
 
             % ============================================
             % =====    POINTERS: APUNTADORES     =========
@@ -1131,12 +1326,6 @@
             % =====    REFERENCIAS: REFERENCIAS     ======
             % ============================================
             \subsection{References: Referencias}
-
-            % ============================================
-            % ====         REFERENCIAS          ==========
-            % ============================================
-            \subsection{Move: Semánticas de Movimiento}
-
 
 
     % ===============================================================================
@@ -1173,23 +1362,100 @@
         \section{std::set}
 
 
+    % ===============================================================================
+    % ===================               CLASES          =============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Clases: OPP / POO}
+
 
     % ===============================================================================
     % ===================               SINTAXIS        =============================
     % ===============================================================================
     \clearpage
-    \chapter{Cosas cool la sintaxis}
+    \chapter{Cosas Avanzadas de \Cpp}
 
         % =========================================================
-        % ==========             AUTO                    ==========
+        % ==========         E SEMANTICS                 ==========
         % =========================================================
-        \section{auto}
-
+        \section{La mejor característica de \Cpp: \texttt{ \} } }     
         
+            Se le pregunto a varios grandes programadores de \Cpp cual era su
+            característica más importante y casi por unanimidad dijeron:
+
+            \texttt{ \} }
+
+            Y no, no estoy bromeando, este símbolo no es solo para decirle al compilador
+            que se acaba de terminar el \texttt{scope} actual (es decir, que se acabo 
+            la función o el bucle o la condicional o la clase, etc...) sino que es justo
+            en este momento y solo en este momento cuando \Cpp limpia toda la basura.
+
+            Por ejemplo dados estos códigos:
+            \begin{lstlisting}[language=C++, gobble=10]
+                int do_work() {
+                    auto x = ...;
+                }
+
+                ...
+
+                class shape {
+                    container points;
+                }
+            \end{lstlisting}
+
+            Es justo cuando el compilador ve \texttt{ \} } que se da la orden de limpiar,
+            en ese momento es cuando se destruye la variable x o cuando destruyes a un objecto
+            de tipo shape automaticamente se destruye el contenedor de puntos.
+            
+            En otras palabras porque las reglas de \Cpp sobre el \texttt{scope} de las variables
+            y objectos te da una manera determinista y segura de finalizar weas.
+
+            Es una forma automática y segura de liberar recursos cuando ya no los estoy usando.
+
+            En otras palabras, la vida o \texttt{lifetime} de un objecto esta atada a su \texttt{scope}.
+            Y como me gusta decirlo:
+            \textbf{
+                Todo el \Cpp es la responsabilidad de alguien
+            }
+
+            O en inglés:
+            \textbf{
+                Everything is owned by someone
+            }
+
+            \cite{ModernCppWhatYouNeedToKnow}
+
         % =========================================================
-        % ==========             AUTO                    ==========
+        % ==========         E SEMANTICS                 ==========
         % =========================================================
-        \section{for (auto x : container)}
+        \clearpage
+        \section{Move Semantics: Semanticas de Movimiento}     
+        
+            En los viejos tiempo de \Cpp (y una de las razones por las que mucha gente cree que 
+            el lenguaje es muy complejo) es porque la gente se preguntaba lo siguiente:
+
+            \textit{Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
+            entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
+                que a veces pueden ser enorme como una colección por ejemplo
+            ) temporales y luego copiando toda su información, eso suena a algo muy costoso}
+
+            Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics
+            y esto es la idea de que si tienes una cosa muy compleja o muy enorme y tu la mueves
+            (como por ejemplo los valores que te regresa una función) entonces \Cpp no simplemente 
+            la copia toda completa sino que toma ownership o responsabilidad de sus entrañas
+            (generalmente asignando un par de punteros) y deja ir al otro (ahora vacío) objecto listo para
+            desaparecer.
+
+            \cite{ModernCppWhatYouNeedToKnow}
+
+        % =========================================================
+        % ==========         VERDADEROS ARRAYS           ==========
+        % =========================================================
+        \clearpage
+        \section{Si quieres un programa rápido: Verdaderos arrays}   
+            
+
+
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1596,6 +1862,11 @@
     \bibitem{CP3} 
         Competitive Programming 3,
         \textit{Halim and Halim, 2013}. 
+
+
+        \bibitem{ModernCppWhatYouNeedToKnow} 
+        Build Conference: Modern C++ what you need to know
+        \textit{Este men, 2015}. 
 
 \end{thebibliography}
 
