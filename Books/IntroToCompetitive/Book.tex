@@ -875,7 +875,7 @@
             \begin{lstlisting}[language=C++, gobble=16]
                 //New badass C++
                 auto p = make_shared<circle> (42);
-                auto v = load_shapes();
+                vector<shape*> v = load_shapes();
 
                 for (auto& s : v) {
                     if (s && *s == *p)
@@ -1032,11 +1032,18 @@
 
                     Total, lo que pasa es que en \Cpp moderno existe la sintaxis 
                     \texttt{type wea {something}} donde lo que hacemos es poner entre estas cosas
-                    \texttt{ { } } el valor con el que queremos inicializar nuestra variable y dependiendo
+                    \texttt{ \{ \} } el valor con el que queremos inicializar nuestra variable y dependiendo
                     de que sea nuestra variable puede simplemente asignarla o llamar al constructor con estos
                     parámetro.
 
                     Total, es solo una forma mas bonita de hacer las cosas.
+
+                    \begin{lstlisting}[language=C++, gobble=20]
+                        auto someNumber {20};   
+                        auto someText {"Hi baby"};
+                        // this call someClass constructor
+                        someClass object {"some parameter", someNumber};
+                    \end{lstlisting}
 
 
         % =========================================================
@@ -1234,6 +1241,34 @@
 
                 Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
                 de \Cpp, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
+
+            
+        % =========================================================
+        % ==========             OPERADORES              ==========
+        % =========================================================
+        \clearpage
+        \section{Operadores}
+
+            % ============================================
+            % =====      OPERADORES ARITMETICOS     ======
+            % ============================================
+            \subsection{Operadores Aritméticos}
+
+                Sección corta, si sabes programar los has usado:
+
+                \begin{itemize}
+                    \item \texttt{+}: Suma
+                    \item \texttt{-}: Resta
+                    \item \texttt{*}: Multiplicación
+                \end{itemize}
+
+                Ahora los interesantes son los siguientes:
+
+            % ============================================
+            % =====      OPERADORES ARITMETICOS     ======
+            % ============================================
+            \subsection{Operadores Aritméticos}
+
 
 
         % =========================================================
@@ -1866,7 +1901,7 @@
 
         \bibitem{ModernCppWhatYouNeedToKnow} 
         Build Conference: Modern C++ what you need to know
-        \textit{Este men, 2015}. 
+        \textit{Herb Sutter, 2014}. 
 
 \end{thebibliography}
 
