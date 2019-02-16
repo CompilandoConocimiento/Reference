@@ -1265,10 +1265,18 @@
                 Ahora los interesantes son los siguientes:
 
             % ============================================
-            % =====      OPERADORES ARITMETICOS     ======
+            % =====         DIVISION ENTERA         ======
             % ============================================
-            \subsection{Operadores Aritméticos}
+            \subsection{División entera}
 
+                Una cosa que a mucha gente le cuesta es la división y no porque
+                sea una operación difícil sino porque en \Cpp dependiendo de los
+                valores a los que se la apliquemos se comportara de manera correcta,
+                si es que ambos valores son punto flotante entonces hara lo que esperas
+                por ejemplo \texttt{1.0 / 2.0 = 0.5}, pero \texttt{1 / 2 != 0.5} porque
+                si aplicas la división a dos enteros entonces hara la división y luego piso.
+
+                Hay que tener cuidado con eso.
 
 
         % =========================================================
