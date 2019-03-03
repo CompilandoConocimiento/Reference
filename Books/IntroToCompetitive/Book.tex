@@ -1281,11 +1281,49 @@
             % ============================================
             % =====              MODULO             ======
             % ============================================
-            \subsection{Módulo: \texttt{\%}}
+            \subsection{Lo que hay que saber del módulo: \texttt{\%}}
             
                 El módulo es pocas palabras es el residuo de la división.
 
+                Es decir \texttt{a \% b} regresa el residuo de la división $\dfrac{a}{b}$
+                si la has visto entonces verás que es la misma que en todos os lenguajes
+                sino entonces mas vale que practiques con unos ejemplos, es todo cuestión
+                de practica.
+
+                % ============================================
+                % =====              MODULO             ======
+                % ============================================
+                \subsubsection{La respuesta para los puristas}
+
+                    Si eres matemático y quieres la definición formal podríamos pensar en:
+
+                    \begin{MultiLineEquation*}{3}
+                        a \% b = a - floor(a / b) * b
+                    \end{MultiLineEquation*}
+
+                    Otra forma de verlos es que nos regresa un número \texttt{k}
+                    tal que $k \equiv a (\mod b)$
+
+                % ============================================
+                % =====              EJEMPLOS           ======
+                % ============================================
+                \subsubsection{Ejemplos}
                 
+                    \begin{itemize}
+                        \item $7 \% 5 = 2$
+                        \item $5 \% 7 = 5$
+                        \item $3 \% 7 = 3$
+                        \item $2 \% 7 = 2$
+                        \item $1 \% 7 = 1$
+                    \end{itemize}
+
+                    Además, en general para lo único que lo usamos en general
+                    es para saber si un número es par o impar, donde
+                    si $n$ es par entonces \texttt{n \% 2 == 0} y si es impar
+                    entonces \texttt{n \% 2 == 1}.
+
+                    En general, si quieres saber si un número $n$ es multiplo de 
+                    otro $k$ entonces hay que checar que $n \% k == 0$.
 
 
         % =========================================================
@@ -1340,9 +1378,27 @@
                 % ============================================
                 \subsubsection{Condiciones}
 
-                En \Cpp cuando tenemos algo que  
+                En \Cpp lo que puede ir dentro del \texttt{if (condition)} pueden ser dos cosas:
+                \begin{itemize}
+                    \item Se puede hacer \texttt{if (a = b)} en cuyo caso lo que comparará el 
+                        \texttt{if} es el resultado de la asignación.
+                    \item Una expresión que se pueda transformar a un \texttt{bool} y eso es la cosa
+                        mas común.
+                \end{itemize}
 
+                % ============================================
+                % =======        OPERADOR TERNARIO     =======
+                % ============================================
+                \subsubsection{Operador Ternario}
 
+                En \Cpp tenemos el operador ternario, es bastante común porque nos deja expresar la misma
+                idea que un \texttt{if} pero mucho mas corto.
+                
+                y en si nos regresa un valor, la sintaxis es:
+                \begin{lstlisting}[language=C++, gobble=10]
+                    expression ? expression : expression
+                \end{lstlisting}
+                
         % =========================================================
         % ==========               CICLOS                ==========
         % =========================================================
