@@ -938,6 +938,12 @@
         \textbf{
             No te preocupes, te espero \texttt{<3}.
         }
+        
+        \textbf{
+            Además si ya sabes \Cpp o no te interesa aprender toda la sintaxis e ir directo a cosas
+            algo más relacionadas con la programación competitiva entonces puedes saltar hasta el
+            siguiente capítulo.
+        }
 
         % =========================================================
         % ========        VARIABLES SIMPLES          ==============
@@ -981,7 +987,7 @@
                 \subsubsection{Se directo}
 
                     Algo como:
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         int someNumber = 20;
                         string someText {"Hi baby"};
                         double myLoveForYou;
@@ -1004,7 +1010,7 @@
                     tu solito sabes de que tipo de dato es esta variable para que te lo repito yo.
                     
                     Y se hace hastante similar:
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber = 20;   
                         auto someText {"Hi baby"};
                         auto myLoveForYou;          //This will fail
@@ -1031,17 +1037,17 @@
                     para unos y no te preocupes si no entiendes esto por completo por ahora.
 
                     Total, lo que pasa es que en \Cpp moderno existe la sintaxis 
-                    \texttt{type wea {something}} donde lo que hacemos es poner entre estas cosas
+                    \texttt{type wea \{something\}} donde lo que hacemos es poner entre estas cosas
                     \texttt{ \{ \} } el valor con el que queremos inicializar nuestra variable y dependiendo
-                    de que sea nuestra variable puede simplemente asignarla o llamar al constructor con estos
+                    de que sea nuestra variable puedes simplemente asignarla o llamar al constructor con estos
                     parámetro.
 
                     Total, es solo una forma mas bonita de hacer las cosas.
 
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber {20};   
                         auto someText {"Hi baby"};
-                        // this call someClass constructor
+                        // this call a someClass constructor
                         someClass object {"some parameter", someNumber};
                     \end{lstlisting}
 
@@ -1083,7 +1089,7 @@
                     por lo tanto es un tipo de datos numérico que va de 0 a 255.
 
                     No te preocupes si no entiendes las primeras líneas, pero si lo haces, muy bien por ti.
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         auto character {'a'};                   // character is a char!
                         char number {23};                       // number is a char!
                         ('a' == 97) and ('z' == 122);           // true: ASCII is numbers
@@ -1111,7 +1117,7 @@
                     algún sistema que te diga que un \texttt{int} es de 2 bytes, así que para
                     este texto usaremos que \texttt{int} es de 4 bytes.
                     
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         auto number {23};                           // number is an int!
 
                         auto size {"int is 4 bytes"};
@@ -1128,7 +1134,7 @@
                     a \texttt{int} y con esto lo que logras es duplicar el tamaño de un int (suponiendo
                     que int tenga 4 bytes de tamaño, y creeme, seguramente es así).
                     
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         int normalVariable {};                      // It takes 4 bytes     
                         long long int normalVariable {};            // It takes 8 bytes 
                         auto number {1,000,000,000,000,000,000}     // number is long long  
@@ -1148,7 +1154,7 @@
                     es eliminar el signo de los tipos numéricos, es decir el entero más bajo que vas
                     a poder guardar va a ser el 0, pero con ello vas a lograr duplicar
                     el máximo entero que puedes almacenar y no aumentas para nada el espacio necesario :o
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         char maxValueChar {127};                    
                         unsigned char maxValueIntUnsigned {255};
                         
@@ -1168,7 +1174,7 @@
                     Hace lo inverso que \texttt{long}, en vez que duplicar el tamaño lo parte a la mitad,
                     y ya, solo eso :v
 
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         auto size {"short is 2 bytes"};
                         short int minValue {-32,768};
                         short int maxValue {32,767};
@@ -1191,7 +1197,7 @@
                     Por ejemplo, \texttt{std::vector, std::string, std::array} y más lo usan
                     como índice.
 
-                    \begin{lstlisting}[language=C++, gobble=20]
+                    \begin{lstlisting}[language=C++, gobble=24]
                         std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
                         std::size_t numberOfElements = {someIntegers.size()}; 
                     \end{lstlisting}
@@ -1343,7 +1349,7 @@
                 Los condicionales permiten que se cambie el flujo del programa y con ello códigos
                 más interesantes.
 
-                \begin{lstlisting}[language=C++, gobble=10]
+                \begin{lstlisting}[language=C++, gobble=20]
                     //Simpler form
                     if (condition) {
                         ...
@@ -1392,28 +1398,118 @@
                 \subsubsection{Operador Ternario}
 
                 En \Cpp tenemos el operador ternario, es bastante común porque nos deja expresar la misma
-                idea que un \texttt{if} pero mucho mas corto.
-                
-                y en si nos regresa un valor, la sintaxis es:
-                \begin{lstlisting}[language=C++, gobble=10]
-                    expression ? expression : expression
+                idea que un \texttt{if} pero mucho mas corto, además es una expresión, es decir
+                regresa un valor, esa es la más grande referencia.
+
+                Y por lo tanto es muy útil cuando lo único que hacemos es darle un valor a una variable
+                o algo relativamente sencillo.
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // Using if else
+                    if (language == "php") {
+                        programmerFeelings = ":(";
+                    }
+                    else {
+                        programmerFeelings = ":)";
+                    }
+
+                    // The same thing using ternary operator
+                    happyProgrammer = language == "php" ? ":(" : ":)";
                 \end{lstlisting}
                 
         % =========================================================
         % ==========               CICLOS                ==========
         % =========================================================
+        \clearpage
         \section{Ciclos}
+            
+            En \Cpp tenemos distintos tipos de ciclos, y si funcionan exactamente igual que
+            en todos los demás lenguajes, tenemos:
 
-        % =========================================================
-        % ==========             FUNCIONES               ==========
-        % =========================================================
-        \section{Funciones}
+            
+            % ============================================
+            % =======           WHILE              =======
+            % ============================================
+            \subsection{While}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    while (condition) {
+                        // statements
+                    }
+                \end{lstlisting}
+
+                Donde condition es exactamente igual que lo que estaría dentro
+                del if.
+
+                % ============================================
+                % =======          DO WHILE            =======
+                % ============================================
+                \subsubsection{Do while}
+
+                    Existe también una variante que se llamada \texttt{do while} y que 
+                    es bastante menos conocido que el clásico \texttt{while}, así que creo
+                    que vale la pena hablar un poco de el.
+
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        do {
+                            // statements
+                        }
+                        while (condition);
+                    \end{lstlisting}
+
+                    En este ciclo primero ejecutamos las instrucciones que esten dentro del bloque
+                    y luego es que checamos la condición y si es verdadera entonces volvemos 
+                    ejecutar las instrucciones.
 
             % ============================================
-            % ====     RECURSION: RECURSIVIDAD     =======
+            % =======           FOR                =======
             % ============================================
-            \subsection{Recursion: Recursividad}
+            \subsection{For}
 
+                Igual que en cualquier otro lenguaje:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    for (init expr; condition expr; step expr) {
+                        // statements
+                    }
+                \end{lstlisting}
+
+                Que como sabes si sabes programar es exactamente igual que:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    init expr;
+                    while (condition expr) {
+                        // statements
+                        step expr;
+                    }
+                \end{lstlisting}
+
+                Ahora, hablemos del nuevo pequeño ciclo en el lenguaje:
+
+            % ============================================
+            % =======           FOR                =======
+            % ============================================
+            \subsection{\texttt{for (auto x : v)}}
+
+                En \Cpp tenemos otra forma más moderna y muchos diran que mucho mas
+                fácil de evitar bugs raros si lo único que haremos será movernos un 
+                elemento a la vez a lo largo de un contenedor, y vamos a visitar cada
+                elemento desde el inicio hasta el final del contendedor (no te preocupes, pronto
+                hablaremos sobre contenedores) entonces puedes hacer un clásico:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    for (type element : container) {
+                        // statements
+                    }
+                \end{lstlisting}
+
+                Por ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    vector<int> someNumbers {1, 2, 3, 4};
+
+                    for (int i : someNumbers) {
+                        cout << i << endl;
+                    }
+                \end{lstlisting}
+
+                Y si, hablaremos sobre referencias y \texttt{auto\&\&} más a detalle pronto.
 
         % =========================================================
         % ====  REFERENCES AND VALUES:  APUNTADORES Y VALORES  ====
@@ -1434,6 +1530,23 @@
             % =====    REFERENCIAS: REFERENCIAS     ======
             % ============================================
             \subsection{References: Referencias}
+            
+
+        % =========================================================
+        % ==========             FUNCIONES               ==========
+        % =========================================================
+        \section{Funciones}
+
+            Una función en \Cpp son practicamente iguales que en los demás lenguajes, pero
+            en 
+
+
+
+            % ============================================
+            % ====            RECURSION         ==========
+            % ============================================
+            \subsection{Recursion}
+
 
 
     % ===============================================================================
@@ -1484,9 +1597,9 @@
     \chapter{Cosas Avanzadas de \Cpp}
 
         % =========================================================
-        % ==========         E SEMANTICS                 ==========
+        % ==========            LIFETIME                 ==========
         % =========================================================
-        \section{La mejor característica de \Cpp: \texttt{ \} } }     
+        \section{Lifetime: La mejor característica de \Cpp: \texttt{ \} } }     
         
             Se le pregunto a varios grandes programadores de \Cpp cual era su
             característica más importante y casi por unanimidad dijeron:
@@ -1499,7 +1612,7 @@
             en este momento y solo en este momento cuando \Cpp limpia toda la basura.
 
             Por ejemplo dados estos códigos:
-            \begin{lstlisting}[language=C++, gobble=10]
+            \begin{lstlisting}[language=C++, gobble=16]
                 int do_work() {
                     auto x = ...;
                 }
@@ -1560,7 +1673,13 @@
         % ==========         VERDADEROS ARRAYS           ==========
         % =========================================================
         \clearpage
-        \section{Si quieres un programa rápido: Verdaderos arrays}   
+        \section{Si quieres un programa rápido: Verdaderos arrays}  
+        
+        % =========================================================
+        % ==========         RANGE FOR STRANGE           ==========
+        % =========================================================
+        \clearpage
+        \section{ \texttt{for (auto x : v)} vs \texttt{for (auto\& x : v)} vs \texttt{for (auto\&\& x : v)} }  
             
 
 
