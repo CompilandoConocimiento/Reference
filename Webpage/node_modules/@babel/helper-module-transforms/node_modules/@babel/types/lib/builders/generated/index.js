@@ -42,6 +42,7 @@ exports.objectProperty = exports.ObjectProperty = ObjectProperty;
 exports.restElement = exports.RestElement = RestElement;
 exports.returnStatement = exports.ReturnStatement = ReturnStatement;
 exports.sequenceExpression = exports.SequenceExpression = SequenceExpression;
+exports.parenthesizedExpression = exports.ParenthesizedExpression = ParenthesizedExpression;
 exports.switchCase = exports.SwitchCase = SwitchCase;
 exports.switchStatement = exports.SwitchStatement = SwitchStatement;
 exports.thisExpression = exports.ThisExpression = ThisExpression;
@@ -146,7 +147,8 @@ exports.jSXFragment = exports.jsxFragment = exports.JSXFragment = JSXFragment;
 exports.jSXOpeningFragment = exports.jsxOpeningFragment = exports.JSXOpeningFragment = JSXOpeningFragment;
 exports.jSXClosingFragment = exports.jsxClosingFragment = exports.JSXClosingFragment = JSXClosingFragment;
 exports.noop = exports.Noop = Noop;
-exports.parenthesizedExpression = exports.ParenthesizedExpression = ParenthesizedExpression;
+exports.placeholder = exports.Placeholder = Placeholder;
+exports.argumentPlaceholder = exports.ArgumentPlaceholder = ArgumentPlaceholder;
 exports.awaitExpression = exports.AwaitExpression = AwaitExpression;
 exports.bindExpression = exports.BindExpression = BindExpression;
 exports.classProperty = exports.ClassProperty = ClassProperty;
@@ -214,6 +216,7 @@ exports.tSEnumDeclaration = exports.tsEnumDeclaration = exports.TSEnumDeclaratio
 exports.tSEnumMember = exports.tsEnumMember = exports.TSEnumMember = TSEnumMember;
 exports.tSModuleDeclaration = exports.tsModuleDeclaration = exports.TSModuleDeclaration = TSModuleDeclaration;
 exports.tSModuleBlock = exports.tsModuleBlock = exports.TSModuleBlock = TSModuleBlock;
+exports.tSImportType = exports.tsImportType = exports.TSImportType = TSImportType;
 exports.tSImportEqualsDeclaration = exports.tsImportEqualsDeclaration = exports.TSImportEqualsDeclaration = TSImportEqualsDeclaration;
 exports.tSExternalModuleReference = exports.tsExternalModuleReference = exports.TSExternalModuleReference = TSExternalModuleReference;
 exports.tSNonNullExpression = exports.tsNonNullExpression = exports.TSNonNullExpression = TSNonNullExpression;
@@ -386,6 +389,10 @@ function ReturnStatement(...args) {
 
 function SequenceExpression(...args) {
   return (0, _builder.default)("SequenceExpression", ...args);
+}
+
+function ParenthesizedExpression(...args) {
+  return (0, _builder.default)("ParenthesizedExpression", ...args);
 }
 
 function SwitchCase(...args) {
@@ -804,8 +811,12 @@ function Noop(...args) {
   return (0, _builder.default)("Noop", ...args);
 }
 
-function ParenthesizedExpression(...args) {
-  return (0, _builder.default)("ParenthesizedExpression", ...args);
+function Placeholder(...args) {
+  return (0, _builder.default)("Placeholder", ...args);
+}
+
+function ArgumentPlaceholder(...args) {
+  return (0, _builder.default)("ArgumentPlaceholder", ...args);
 }
 
 function AwaitExpression(...args) {
@@ -1074,6 +1085,10 @@ function TSModuleDeclaration(...args) {
 
 function TSModuleBlock(...args) {
   return (0, _builder.default)("TSModuleBlock", ...args);
+}
+
+function TSImportType(...args) {
+  return (0, _builder.default)("TSImportType", ...args);
 }
 
 function TSImportEqualsDeclaration(...args) {

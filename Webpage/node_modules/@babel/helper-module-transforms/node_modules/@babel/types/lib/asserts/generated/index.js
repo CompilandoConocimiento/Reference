@@ -42,6 +42,7 @@ exports.assertObjectProperty = assertObjectProperty;
 exports.assertRestElement = assertRestElement;
 exports.assertReturnStatement = assertReturnStatement;
 exports.assertSequenceExpression = assertSequenceExpression;
+exports.assertParenthesizedExpression = assertParenthesizedExpression;
 exports.assertSwitchCase = assertSwitchCase;
 exports.assertSwitchStatement = assertSwitchStatement;
 exports.assertThisExpression = assertThisExpression;
@@ -146,7 +147,8 @@ exports.assertJSXFragment = assertJSXFragment;
 exports.assertJSXOpeningFragment = assertJSXOpeningFragment;
 exports.assertJSXClosingFragment = assertJSXClosingFragment;
 exports.assertNoop = assertNoop;
-exports.assertParenthesizedExpression = assertParenthesizedExpression;
+exports.assertPlaceholder = assertPlaceholder;
+exports.assertArgumentPlaceholder = assertArgumentPlaceholder;
 exports.assertAwaitExpression = assertAwaitExpression;
 exports.assertBindExpression = assertBindExpression;
 exports.assertClassProperty = assertClassProperty;
@@ -214,6 +216,7 @@ exports.assertTSEnumDeclaration = assertTSEnumDeclaration;
 exports.assertTSEnumMember = assertTSEnumMember;
 exports.assertTSModuleDeclaration = assertTSModuleDeclaration;
 exports.assertTSModuleBlock = assertTSModuleBlock;
+exports.assertTSImportType = assertTSImportType;
 exports.assertTSImportEqualsDeclaration = assertTSImportEqualsDeclaration;
 exports.assertTSExternalModuleReference = assertTSExternalModuleReference;
 exports.assertTSNonNullExpression = assertTSNonNullExpression;
@@ -434,6 +437,10 @@ function assertReturnStatement(node, opts = {}) {
 
 function assertSequenceExpression(node, opts = {}) {
   assert("SequenceExpression", node, opts);
+}
+
+function assertParenthesizedExpression(node, opts = {}) {
+  assert("ParenthesizedExpression", node, opts);
 }
 
 function assertSwitchCase(node, opts = {}) {
@@ -852,8 +859,12 @@ function assertNoop(node, opts = {}) {
   assert("Noop", node, opts);
 }
 
-function assertParenthesizedExpression(node, opts = {}) {
-  assert("ParenthesizedExpression", node, opts);
+function assertPlaceholder(node, opts = {}) {
+  assert("Placeholder", node, opts);
+}
+
+function assertArgumentPlaceholder(node, opts = {}) {
+  assert("ArgumentPlaceholder", node, opts);
 }
 
 function assertAwaitExpression(node, opts = {}) {
@@ -1122,6 +1133,10 @@ function assertTSModuleDeclaration(node, opts = {}) {
 
 function assertTSModuleBlock(node, opts = {}) {
   assert("TSModuleBlock", node, opts);
+}
+
+function assertTSImportType(node, opts = {}) {
+  assert("TSImportType", node, opts);
 }
 
 function assertTSImportEqualsDeclaration(node, opts = {}) {

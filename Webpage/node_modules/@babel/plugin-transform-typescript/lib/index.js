@@ -58,6 +58,7 @@ var _default = (0, _helperPluginUtils().declare)((api, {
   jsxPragma = "React"
 }) => {
   api.assertVersion(7);
+  const JSX_ANNOTATION_REGEX = /\*?\s*@jsx\s+([^\s]+)/;
   return {
     name: "transform-typescript",
     inherits: _pluginSyntaxTypescript().default,
@@ -68,6 +69,19 @@ var _default = (0, _helperPluginUtils().declare)((api, {
 
       Program(path, state) {
         state.programPath = path;
+        const {
+          file
+        } = state;
+
+        if (file.ast.comments) {
+          for (const comment of file.ast.comments) {
+            const jsxMatches = JSX_ANNOTATION_REGEX.exec(comment.value);
+
+            if (jsxMatches) {
+              jsxPragma = jsxMatches[1];
+            }
+          }
+        }
 
         for (const stmt of path.get("body")) {
           if (_core().types.isImportDeclaration(stmt)) {
@@ -151,8 +165,6 @@ var _default = (0, _helperPluginUtils().declare)((api, {
           path.remove();
           return;
         }
-
-        if (node.abstract) node.abstract = null;
       },
 
       Class(path) {
@@ -162,6 +174,7 @@ var _default = (0, _helperPluginUtils().declare)((api, {
         if (node.typeParameters) node.typeParameters = null;
         if (node.superTypeParameters) node.superTypeParameters = null;
         if (node.implements) node.implements = null;
+        if (node.abstract) node.abstract = null;
         path.get("body.body").forEach(child => {
           const childNode = child.node;
 

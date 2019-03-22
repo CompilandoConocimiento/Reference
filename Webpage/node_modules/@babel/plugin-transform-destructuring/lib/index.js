@@ -338,7 +338,7 @@ var _default = (0, _helperPluginUtils().declare)((api, options) => {
         if (!variableDeclarationHasPattern(declaration.node)) return;
         const specifiers = [];
 
-        for (const name in path.getOuterBindingIdentifiers(path)) {
+        for (const name of Object.keys(path.getOuterBindingIdentifiers(path))) {
           specifiers.push(_core().types.exportSpecifier(_core().types.identifier(name), _core().types.identifier(name)));
         }
 
@@ -357,7 +357,12 @@ var _default = (0, _helperPluginUtils().declare)((api, options) => {
           const temp = scope.generateUidIdentifier("ref");
           node.left = _core().types.variableDeclaration("var", [_core().types.variableDeclarator(temp)]);
           path.ensureBlock();
-          node.body.body.unshift(_core().types.variableDeclaration("var", [_core().types.variableDeclarator(left, temp)]));
+
+          if (node.body.body.length === 0 && path.isCompletionRecord()) {
+            node.body.body.unshift(_core().types.expressionStatement(scope.buildUndefinedNode()));
+          }
+
+          node.body.body.unshift(_core().types.expressionStatement(_core().types.assignmentExpression("=", left, temp)));
           return;
         }
 

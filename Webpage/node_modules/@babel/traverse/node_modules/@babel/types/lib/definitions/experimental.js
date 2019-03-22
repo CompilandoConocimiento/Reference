@@ -6,6 +6,7 @@ var _es = require("./es2015");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+(0, _utils.default)("ArgumentPlaceholder", {});
 (0, _utils.default)("AwaitExpression", {
   builder: ["argument"],
   visitor: ["argument"],
@@ -136,7 +137,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 (0, _utils.default)("ClassPrivateMethod", {
   builder: ["kind", "key", "params", "body", "static"],
   visitor: ["key", "params", "body", "decorators", "returnType", "typeParameters"],
-  aliases: ["Method", "Private", "Function"],
+  aliases: ["Function", "Scopable", "BlockParent", "FunctionParent", "Method", "Private"],
   fields: Object.assign({}, _es.classMethodOrDeclareMethodCommon, {
     key: {
       validate: (0, _utils.assertNodeType)("PrivateName")

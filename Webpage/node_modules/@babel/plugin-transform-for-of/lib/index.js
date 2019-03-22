@@ -131,14 +131,10 @@ var _default = (0, _helperPluginUtils().declare)((api, options) => {
       node,
       scope
     } = path;
-    const nodes = [];
-    let right = node.right;
+    const uid = scope.generateUid("arr");
+    const nodes = [_core().types.variableDeclaration("var", [_core().types.variableDeclarator(_core().types.identifier(uid), node.right)])];
 
-    if (!_core().types.isIdentifier(right) || !scope.hasBinding(right.name)) {
-      const uid = scope.generateUid("arr");
-      nodes.push(_core().types.variableDeclaration("var", [_core().types.variableDeclarator(_core().types.identifier(uid), right)]));
-      right = _core().types.identifier(uid);
-    }
+    const right = _core().types.identifier(uid);
 
     const iterationKey = scope.generateUidIdentifier("i");
     let loop = buildForOfArray({

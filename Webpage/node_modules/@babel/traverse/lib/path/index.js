@@ -208,7 +208,7 @@ for (const type of t().TYPES) {
   };
 }
 
-for (const type in virtualTypes) {
+for (const type of Object.keys(virtualTypes)) {
   if (type[0] === "_") continue;
   if (t().TYPES.indexOf(type) < 0) t().TYPES.push(type);
   const virtualType = virtualTypes[type];
