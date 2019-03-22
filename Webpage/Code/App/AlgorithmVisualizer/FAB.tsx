@@ -15,12 +15,10 @@ const FABButton: React.FunctionComponent<FABElement & { closeFAB: any }> = props
   <li>
     <a
       className={"btn-floating " + props.color}
-      onClick={
-        () => {
-          props.onClick()
-          props.closeOnClick && props.closeFAB()
-        }
-      }
+      onClick={() => {
+        props.onClick()
+        props.closeOnClick && props.closeFAB()
+      }}
     >
       <i className="material-icons">{props.icon}</i>
     </a>

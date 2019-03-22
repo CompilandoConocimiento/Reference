@@ -64,6 +64,8 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
               <div className="input-field">
                 <input
                   type="number"
+                  min={0.1}
+                  step={0.1}
                   style={{ width: "fit-content" }}
                   value={this.state.Config.CodeConfig.CodeStyles.fontSize.toString()}
                   onChange={event => {
@@ -118,7 +120,7 @@ class ConfigurationMenu extends React.Component<ConfigurationMenuProps, Configur
               this.props.setState({ Config: this.state.Config }, () => updateCode())
             }}
           >
-            Change
+            See with new config
           </a>
           <a className="modal-close btn-flat">Close</a>
         </div>
