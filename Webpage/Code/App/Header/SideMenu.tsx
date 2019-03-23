@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "react-router-dom"
 
 import TopicsData from "../../Data/TopicsData"
@@ -20,17 +20,13 @@ const LinkToTopic: React.FunctionComponent<{
   </Link>
 )
 
-interface SideMenuProps {
-  CloseSideMenu: () => void
-}
-
 /**
  * We use the TopicsData to generate a side menu index, it renders an array of <li>
  * that that have the topic name, divider and links to algorithms.
  *
  * @param CloseSideMenu  A callback to call when user clicks (that should close the side menu)
  */
-const SideMenu: React.FunctionComponent<SideMenuProps> = props => {
+const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
   const TopicsLink = TopicsData.map((Topic, indexTopic) => (
     <React.Fragment key={indexTopic}>
       <li>
