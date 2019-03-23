@@ -4,7 +4,7 @@ import { AlgorithmPageInformation } from "../../Data"
 import { loadTheme } from "./ShowCode"
 
 interface ConfigurationMenuProps {
-  setState: (newState: any, fn: any) => void
+  setState: (preState: any, fn: any) => void
   Config: AlgorithmPageInformation
 }
 
