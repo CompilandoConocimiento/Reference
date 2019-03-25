@@ -4,29 +4,13 @@ import { Link } from "react-router-dom"
 import TopicsData from "../../Data/TopicsData"
 
 /**
- * A react router link that send you to a topic.
- *
- * @param link The link to the topic
- * @param size The size of the link using CSS fontSize, (ei "1.15rem")
- * @param onClick A callback to call when user clicks
- */
-const LinkToTopic: React.FunctionComponent<{
-  link: string
-  size: string
-  onClick: () => void
-}> = props => (
-  <Link className="waves-effect" onClick={props.onClick} to={props.link}>
-    <span style={{ fontSize: props.size }}>{props.children}</span>
-  </Link>
-)
-
-/**
  * We use the TopicsData to generate a side menu index, it renders an array of <li>
  * that that have the topic name, divider and links to algorithms.
  *
- * @param CloseSideMenu  A callback to call when user clicks (that should close the side menu)
+ * @param onClose  A callback to call when user clicks (that should close the side menu)
+ * @param sideMenuID ID dom node of the sideMenu
  */
-const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
+const SideMenu: FunctionComponent<{ sideMenuID: string; onClose: () => void }> = props => {
   const TopicsLink = TopicsData.map((Topic, indexTopic) => (
     <React.Fragment key={indexTopic}>
       <li>
@@ -34,7 +18,7 @@ const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
       </li>
 
       <li>
-        <LinkToTopic link={`/Topic/${Topic.link}/`} size="1.1rem" onClick={props.CloseSideMenu}>
+        <LinkToTopic link={`/Topic/${Topic.link}/`} size="1.1rem" onClick={props.onClose}>
           {Topic.name}
         </LinkToTopic>
       </li>
@@ -43,7 +27,7 @@ const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
         <li key={indexSubTopic}>
           <LinkToTopic
             link={`/Topic/${Topic.link}/${Algorithm.link}`}
-            onClick={props.CloseSideMenu}
+            onClick={props.onClose}
             size="0.95rem"
           >
             &nbsp;&nbsp;{Algorithm.name}
@@ -54,7 +38,7 @@ const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
   ))
 
   return (
-    <ul id="SideBarID" className="sidenav">
+    <ul id={props.sideMenuID} className="sidenav">
       <li>
         <h5 className="blue-grey-text text-darken-3" style={{ margin: "32px" }}>
           <span style={{ fontWeight: 500, fontSize: "2.1rem" }}>
@@ -72,5 +56,22 @@ const SideMenu: FunctionComponent<{ CloseSideMenu: () => void }> = props => {
     </ul>
   )
 }
+
+/**
+ * A react router link that send you to a topic.
+ *
+ * @param link The link to the topic
+ * @param size The size of the link using CSS fontSize, (ei "1.15rem")
+ * @param onClick A callback to call when user clicks
+ */
+const LinkToTopic: React.FunctionComponent<{
+  link: string
+  size: string
+  onClick: () => void
+}> = props => (
+  <Link className="waves-effect" onClick={props.onClick} to={props.link}>
+    <span style={{ fontSize: props.size }}>{props.children}</span>
+  </Link>
+)
 
 export default SideMenu

@@ -1,22 +1,22 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import ReactDOM from "react-dom"
 import { HashRouter, Switch, Route } from "react-router-dom"
+
+import TopicsData from "../Data/TopicsData"
 
 import Header from "./Header"
 import Footer from "./Footer"
 import Home from "./Home"
 import AlgorithmsPicker from "./AlgorithmsPicker"
 
+export const IndexDataContext = React.createContext(TopicsData)
 /**
  * This is a wrapper of all the app, the header, the footer and
  * the content.
  */
-const App: React.FunctionComponent = () => (
-  <React.Fragment>
-    <header>
-      <Header />
-      <br />
-    </header>
+const App: FunctionComponent = () => (
+  <IndexDataContext.Provider value={TopicsData}>
+    <Header />
 
     <main>
       <Switch>
@@ -30,12 +30,14 @@ const App: React.FunctionComponent = () => (
     </main>
 
     <Footer />
-  </React.Fragment>
+  </IndexDataContext.Provider>
 )
 
 ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <React.StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </React.StrictMode>,
   document.getElementById("ReactApp")
 )

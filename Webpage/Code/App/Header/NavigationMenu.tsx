@@ -1,10 +1,12 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "react-router-dom"
+
+const toTop = () => window.scroll({ top: 0, behavior: "smooth" })
 
 /**
  * The top bar.
  */
-const NavigationMenu: React.FunctionComponent = () => (
+const NavigationMenu: FunctionComponent<{ sideMenuID: string }> = props => (
   <div className="navbar-fixed">
     <nav className="blue-grey darken-3">
       <div className="nav-wrapper z-depth-1">
@@ -14,14 +16,14 @@ const NavigationMenu: React.FunctionComponent = () => (
           </div>
 
           <a
-            data-target="SideBarID"
+            data-target={props.sideMenuID}
             className="sidenav-trigger show-on-large"
             style={{ cursor: "pointer" }}
           >
             <i className="material-icons white-text">menu</i>
           </a>
 
-          <Link className="right" to="/" onClick={() => scroll(0, 0)}>
+          <Link className="right" to="/" onClick={toTop}>
             <i className="material-icons white-text">home</i>
           </Link>
         </div>

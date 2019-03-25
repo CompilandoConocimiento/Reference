@@ -1,15 +1,16 @@
-import React from "react"
+import React, {FunctionComponent} from "react"
 
 /**
  * Just a footer :v
  */
-const Footer: React.FunctionComponent = () => (
-  <React.Fragment>
+const Footer: FunctionComponent = () => (
+  <footer>
     <br />
     <br />
     <br />
     <br />
-    <footer className="page-footer blue-grey darken-3">
+
+    <div className="page-footer blue-grey darken-3">
       <div className="container white-text">
         <div className="row">
           <div className="col s6 m5 l4">
@@ -73,8 +74,8 @@ const Footer: React.FunctionComponent = () => (
           Made by CompilandoConocimiento. Making the world a happier place
         </div>
       </div>
-    </footer>
-  </React.Fragment>
+    </div>
+  </footer>
 )
 
 export default Footer
