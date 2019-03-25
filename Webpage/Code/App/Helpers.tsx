@@ -1,6 +1,11 @@
 import React from "react"
 
 /**
+ * Just to to top smoothly
+ */
+export const toTop = () => window.scroll({ top: 0, behavior: "smooth" })
+
+/**
  * A component to call when loading something
  */
 export const Loading: React.FunctionComponent = () => (

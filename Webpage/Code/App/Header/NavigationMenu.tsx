@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from "react"
 import { Link } from "react-router-dom"
-
-const toTop = () => window.scroll({ top: 0, behavior: "smooth" })
-
+import { toTop } from "../Helpers"
 /**
  * The top bar.
  */

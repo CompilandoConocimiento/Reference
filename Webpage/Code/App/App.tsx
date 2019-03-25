@@ -8,6 +8,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import Home from "./Home"
 import AlgorithmsPicker from "./AlgorithmsPicker"
+import { ErrorMessage } from "./Helpers";
 
 export const IndexDataContext = React.createContext(TopicsData)
 /**
@@ -22,8 +23,13 @@ const App: FunctionComponent = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route
-          path="/Topic/:TopicLink"
-          render={props => <AlgorithmsPicker TopicLink={props.match.params.TopicLink} />}
+          path="/Topic/:topicLink"
+          render={props => {
+            const topicLink = props.match.params.topicLink
+            const topic = TopicsData.find(Topic => Topic.link === topicLink)
+            if (!topic) return <ErrorMessage />
+            else return <AlgorithmsPicker TopicData={topic} />
+          }}
         />
         <Route path="/:SomethingElse" component={Home} />
       </Switch>

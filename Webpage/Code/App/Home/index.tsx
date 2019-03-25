@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 
-import TopicsData from "../../Data/TopicsData"
 import HelloCard from "./HelloCard"
 import CardToTopic from "./CardToTopic"
 import * as Style from "./Styles.css"
+
+import { IndexDataContext } from "../App"
 
 const radius = "1.15rem"
 
@@ -15,22 +16,26 @@ const colors = [
   "brown lighten-2",
 ].sort(() => Math.random() - 0.5)
 
-const Home: React.FunctionComponent = () => (
-  <div className="container">
-    <HelloCard radius={radius} />
+const Home: React.FunctionComponent = () => {
+  const IndexData = useContext(IndexDataContext)
 
-    <div className={Style.Wrapper}>
-      {TopicsData.map((Topic, index) => (
-        <CardToTopic
-          key={index}
-          radius={radius}
-          name={Topic.name}
-          link={Topic.link}
-          materializeCSSColor={colors[index % colors.length]}
-        />
-      ))}
+  return (
+    <div className="container">
+      <HelloCard radius={radius} />
+
+      <div className={Style.Wrapper}>
+        {IndexData.map((Topic, index) => (
+          <CardToTopic
+            key={index}
+            radius={radius}
+            name={Topic.name}
+            link={Topic.link}
+            materializeCSSColor={colors[index % colors.length]}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Home

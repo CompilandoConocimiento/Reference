@@ -1,10 +1,10 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Switch, Route } from "react-router-dom"
 
 import AlgorithmVisualizer from "../AlgorithmVisualizer"
 import { ErrorMessage } from "../Helpers"
 import CardToSubTopics from "./CardToAlgorithms"
-import TopicsData from "../../Data/TopicsData"
+import { TopicData } from "../../Data"
 
 /**
  * Find if the topic link is valid, and then choose if we should call the
@@ -12,22 +12,17 @@ import TopicsData from "../../Data/TopicsData"
  *
  * @param TopicData The Topic
  */
-const AlgorithmPicker: React.FunctionComponent<{ TopicLink: string }> = props => {
-  const TopicData = TopicsData.find(Topic => Topic.link === props.TopicLink)
-  if (!TopicData) return <ErrorMessage />
-
+const AlgorithmsPicker: FunctionComponent<{ TopicData: TopicData }> = ({TopicData}) => {
+  const baseLink = `/Topic/${TopicData.link}/`
+  const CardToSubTopic = () => <CardToSubTopics {...{baseLink, TopicData}} />
   return (
     <Switch>
+      <Route exact path={baseLink} render={CardToSubTopic} />
       <Route
-        exact
-        path={`/Topic/${TopicData.link}/`}
-        render={() => <CardToSubTopics TopicData={TopicData} />}
-      />
-      <Route
-        path={`/Topic/${TopicData.link}/:Algorithm/`}
+        path={baseLink + `:algorithm/`}
         render={props => {
           const AlgorithmData = TopicData.Algorithms.find(
-            Algorithm => Algorithm.link === props.match.params.Algorithm
+            algorithm => algorithm.link === props.match.params.algorithm
           )
 
           if (!AlgorithmData) return <ErrorMessage />
@@ -38,4 +33,4 @@ const AlgorithmPicker: React.FunctionComponent<{ TopicLink: string }> = props =>
   )
 }
 
-export default AlgorithmPicker
+export default AlgorithmsPicker
