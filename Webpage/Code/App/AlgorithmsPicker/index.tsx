@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from "react"
 import { Switch, Route } from "react-router-dom"
 
-import AlgorithmVisualizer from "../AlgorithmVisualizer"
-import { ErrorMessage } from "../Helpers"
 import CardToSubTopics from "./CardToAlgorithms"
+import AlgorithmVisualizer from "../AlgorithmVisualizer"
+
+import { ErrorMessage } from "../Helpers"
 import { TopicData } from "../../Data"
 
 /**

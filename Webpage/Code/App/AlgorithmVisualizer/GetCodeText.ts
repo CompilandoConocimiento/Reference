@@ -24,7 +24,7 @@ const getCodeText = (baseLink: string, filesData: FilesData, setState: (x: any) 
           FilesDataResult[fileName][name] = Text.slice(start - 1, end)
         })
 
-        setState({ FilesDataResult })
+        setState(FilesDataResult)
       })
   })
 }

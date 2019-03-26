@@ -1,5 +1,6 @@
 import { TopicData } from "../index"
 
+
 const NumberTheoryData: TopicData = {
     name: "Number Theory",
     link: "NumberTheory",

@@ -46,6 +46,7 @@ export default class FAB extends React.Component<FABProps, FABState> {
     this.setState({ FAB: M.FloatingActionButton.init(FABNode, {}) })
   }
 
+  // Just delete closeFAB
   render() {
     return (
       <div id="FAB" className="fixed-action-btn">
@@ -54,7 +55,7 @@ export default class FAB extends React.Component<FABProps, FABState> {
         </a>
         <ul className={Styles.UnSelectable}>
           {this.props.FABElements.map((element, index) => (
-            <FABButton key={index} {...element} closeFAB={() => this.state.FAB!.close()} />
+            <FABButton key={index} {...element} closeFAB={() => {}} />
           ))}
         </ul>
       </div>
