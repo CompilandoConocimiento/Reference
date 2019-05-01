@@ -697,8 +697,8 @@
             \begin{itemize}
                 \item \textbf{Te da abstracciones sin costo extra.}
                 
-                    O como lo diría su creador te da el poder de usar abstracciones de alto nivel pero estando muy cerca del hardware,
-                    o como lo diría en inglés: 
+                    O como lo diría su creador te da el poder de usar abstracciones de alto nivel pero sin que las mismas hagan tu programa
+                    mas innecesariamente mas lento, o como lo dice la comunidad en inglés:
 
                     \begin{Indentation}[1.2em]
                     \Quote{
@@ -712,13 +712,13 @@
                     }
                     \end{Indentation}
                 
-                    Personalmente creo que esa es mayor ventaja que tiene sobre todos los demás, creo que
-                    esa frase resume perfectamente todo el objetivo de \Cpp.
+                    Personalmente creo que esa es mayor ventaja que tiene sobre todos los demás y que
+                    resume perfectamente todo el objetivo de \Cpp.
 
                     Lo que nos dice esto es que podremos representar grafos, matrices, operaciones, 
                     clases en general, algoritmos, etc... en nuestros programas con gran facilidad,
                     cosa que no podemos hacer fácilmente por ejemplo en lenguajes como C o la familia
-                    de los ensambladores. 
+                    de los ensambladores.
 
                     \textit{
                     Y podrías decir, pero en Java o en Python podemos representar de una manera igual de fácil 
@@ -728,19 +728,20 @@
                     Pues porque en todos los demás lenguajes estas pagando un costo (a veces muy grande de varios cientos 
                     o miles de veces) por poder representar ideas o conceptos abstractos en un programa, en \Cpp
                     esta prácticamente garantizado que usar una clase por ejemplo o que usar un arreglo que se auto
-                    dimensiona no será más costoso que si lo hubieras hecho tu desde ensamblador.
+                    dimensiona (vector) no será más costoso que si lo hubieras hecho tu desde ensamblador.
+
 
                 \item \textbf{Tienes a la biblioteca estandar, la gran std::* a tu lado}
 
                     Esta es otra gran ventaja, ya que siguiendo con la mentalidad de abstracciones sin costo extra tenemos
                     gracias a la gran libreria estándar un montón de cosas que no tenemos que hacer desde cero, desde
                     arreglos que cambian de tamaño, arreglos asociativos, pilas, colas, algoritmos de ordenamiento, 
-                    de búsqueda, algoritmos para acumular, para hacer particiones o permutaciones, etc...
+                    de búsqueda, algoritmos para filtrar información, para hacer particiones o permutaciones, etc...
 
                     Así podemos dejar los algoritmos básicos al lenguaje y enfocarnos en las cosas que son de verdad interesantes.
 
 
-                \item \textbf{Es compilado, el compilador es tu amigo}
+                \item \textbf{Es \Quote{statically typed and compiled}, el compilador es tu amigo}
 
                     Otra ventaja más, podemos siempre confiar en el compilador, en que si nuestro programa compila muy probablemente
                     está haciendo lo que debe hacer (cosa que no podemos esperar con python por ejemplo), el compilador es tu amigo,
@@ -752,15 +753,13 @@
 
                 \item \textbf{Es prácticamente un \Quote{super set} de C}
                 
-                    Es decir, que
-                    cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
+                    Es decir, que cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
                     C es uno de los lenguajes más conocidos por lo que puede que la sintaxis de \Cpp sea
-                    más fácil que entender la sintaxis de Haskell, por ejemplo. 
+                    más fácil que entender la sintaxis de Haskell o de Kotlin o Prolog, por ejemplo. 
                     
-                    Otra ventaja es que al estar basados
-                    en C conserva muchas de las ventajas de C como su portabilidad, su velocidad de ejecución
-                    y la capacidad de tener un gran control de todos los recursos del sistema (memoria y tiempo
-                    de vida de un objecto, cough cough Java y su recolector de basura)
+                    Otra ventaja es que al estar basados en C conserva muchas de las ventajas de C como su portabilidad, 
+                    su velocidad de ejecución  y la capacidad de tener un gran control de todos los recursos del sistema 
+                    (memoria y tiempo de vida de un objecto, cough cough Java y su recolector de basura)
 
                 \clearpage
 
@@ -769,13 +768,13 @@
                     Esto es también es muy importante, pues nos dice que en \Cpp podemos controlar con gran lujo de detalle
                     los recursos del sistema, como por ejemplo la memoria.
 
-                    \Cpp nos da el control de decidir por ejempo a que lugar va cada variable (heap o al stack), 
-                    lo cual es esencial para un programa de alto rendimiento (y creeme que lo necesitaras).
+                    \Cpp nos da el control de decidir por ejemplo a que lugar va cada variable (heap o al stack), 
+                    lo cual es esencial para hacer un programa de alto rendimiento (y creeme que lo necesitaras).
 
                     \textbf{Es determinista.}
 
                     Es decir la limpieza de los objectos una vez que ya se acabaron de usar es solicitada cuanto tu quieres,
-                    y no \textit{a ver cuando el recolector de basura decide hacerlo}.
+                    y no \textit{cuando el recolector de basura decide hacerlo}.
 
                     Tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
                     un objecto o si una referencia no podrá ser modificada.
@@ -789,8 +788,15 @@
                     las podemos copiar, que nuestra variable de verdad almacenan la información que queremos \textbf{
                         y no una referencia (que apunta a quien sabe donde) de donde esta nuestra información
                     }.
-                    Claro que aún puedes expresar la idea de las referencias, pero por defecto hablamos de variables
-                    que almacenan valores.
+
+                    Es decir con ejemplos en JavaScript tenemos algo como: 
+                    \begin{verbatim} const person = { name: "Oscar", "age": 21 } \end{verbatim}
+
+                    Resulta que \texttt{person} almacena una referencia a ese objecto y no a ese objecto en si, cosa que no pasa en \Cpp:
+
+                    \begin{verbatim} const map<string, string> person { {"name", "Oscar"}, {"age", "21"} }; \end{verbatim}
+
+                    Claro que aún puedes expresar la idea de las referencias, pero por defecto hablamos de variables que almacenan valores.
 
             \end{itemize}
 
@@ -812,7 +818,7 @@
                 de algo parecido a la std de \Cpp.
 
                 Aunque para problemas sencillos C también puede ser una opción, (pero ya que $\Cpp$ es casi casi
-                un superset de C podrías entonces igualde fácil hacerlo en $\Cpp$).
+                un superset de C podrías entonces igual de fácil hacerlo en $\Cpp$).
 
             % ============================================
             % ==========       VS JAVA          ==========
@@ -835,7 +841,7 @@
                 enteros tienen infinita precisión por defecto (aka \texttt{BigInteger} como en Java).
 
                 Así que tampoco es una mala idea aprenderlo por si se necesita un día, pero definitivamente
-                no es la mejor idea para ser tu lenguaje por defecto en programción competitiva.
+                no es la mejor idea para ser tu lenguaje por defecto en programación competitiva.
 
 
         % =========================================================
@@ -963,22 +969,17 @@
             (para poder transformar tu programa a algo que una computadora pueda entender) tiene
             que saber que tipo de dato almacena esa variable.
 
-            Es decir, si yo quiero declarar una variable que almacene los días que llevo sin comer
-            papas entonces podemos declararla de dos maneras en \Cpp.
-
-
             % ============================================
             % ====   DECLARACIONES E INICIALIZACION   ====
             % ============================================
             \subsection{Declaraciones e Inicialización}
 
                 El primer paso para poder usar una variable será el de declararla, es decir
-                aqui entre nos es decirle al compilador que te de un fragmento de RAM, que lo usaras
-                para guardar un tipo de dato (numeros, matrices, texto, etc...) y que a este fragmento
-                de RAM le pondras un nombre para poder referirte a el.
+                aqui entre nos es decirle al compilador que le de a un fragmento de RAM un nombre y que usaremos
+                ese nombre (o identificador) para referirnos.
 
                 Muy unido a esto decimos que estamos inicializando una variable cuando le damos
-                un valor por primera vez a este espacio de RAM.
+                un valor por primera vez a este fragmento de la memoria.
 
                 Puedes declara variables en C++ de dos maneras:
 
@@ -1093,8 +1094,10 @@
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto character {'a'};                   // character is a char!
                         char number {23};                       // number is a char!
-                        ('a' == 97) and ('z' == 122);           // true: ASCII is numbers
-                        ('A' == 65) and ('Z' == 90);            // true: ASCII is numbers
+
+                        // Things that are true
+                        ('a' == 97) and ('z' == 122);           // ASCII is just numbers
+                        ('A' == 65) and ('Z' == 90);            // ASCII is just numbers
                         ('A' + 1 == 'B') and ('Z' - 1 == 'Y');  // You can do arithmetic
 
                         auto size {"char is 1 byte"};
@@ -1202,6 +1205,32 @@
                         std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
                         std::size_t numberOfElements = {someIntegers.size()}; 
                     \end{lstlisting}
+
+
+                % ============================================
+                % ==========        FIXED WIDTH     ==========
+                % ============================================
+                \clearpage
+                \subsubsection{Fixed width (int32\_t, uint64\_t, ...)}
+
+                Si necesitas tener presición y saber por seguro el tamaño de una variable puedes usar 
+                \texttt{\#include <cstdint>} que no incluye otros tipos de datos diferentes sino solo
+                nombre mas pequeños para los tipos de datos que ya conoces:
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <cstdint>
+                    
+                    int8_t likeChar {};
+                    int16_t likeShort {};
+                    int32_t likeInt {};
+                    int64_t likeLong {};
+
+                    // And the unsigned versions:
+                    uint8_t likeChar {};
+                    uint16_t likeShort {};
+                    uint32_t likeInt {};
+                    uint64_t likeLong {};
+                \end{lstlisting}
                     
 
             % ============================================
@@ -1309,7 +1338,7 @@
                     \end{MultiLineEquation*}
 
                     Otra forma de verlos es que nos regresa un número \texttt{k}
-                    tal que $k \equiv a (\mod b)$
+                    tal que $k \equiv a \; \mod b$
 
                 % ============================================
                 % =====              EJEMPLOS           ======
@@ -1324,7 +1353,7 @@
                         \item $1 \% 7 = 1$
                     \end{itemize}
 
-                    Además, en general para lo único que lo usamos en general
+                    La forma mas común para lo que lo usamos
                     es para saber si un número es par o impar, donde
                     si $n$ es par entonces \texttt{n \% 2 == 0} y si es impar
                     entonces \texttt{n \% 2 == 1}.
@@ -1492,7 +1521,7 @@
 
                 En \Cpp tenemos otra forma más moderna y muchos diran que mucho mas
                 fácil de evitar bugs raros si lo único que haremos será movernos un 
-                elemento a la vez a lo largo de un contenedor, y vamos a visitar cada
+                elemento a la vez a lo largo de un contenedor, y si en efecto vamos a visitar cada
                 elemento desde el inicio hasta el final del contendedor (no te preocupes, pronto
                 hablaremos sobre contenedores) entonces puedes hacer un clásico:
                 \begin{lstlisting}[language=C++, gobble=20]
