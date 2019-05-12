@@ -191,7 +191,7 @@
     \newcommand{\Ceil}[1]       {\left \lceil #1 \right \rceil }    %Use: \Ceil {Info} for ceil
     
     % =====  BETTERS MATH COMMANDS   =====
-    \newcommand{\pfrac}[2]      {\Wrap{\dfrac{#1}{#2}}}             %Use: Put fractions in parentesis
+    \newcommand{\pfrac}[2]      {\Wrap{\dfrac{#1}{#2}}}             %Use: Put fractions in paréntesis una lista de parámetros que 
     \newcommand{\Sum}           {\displaystyle \sum}                %Use: Sum to big sum
     \newcommand{\Int}           {\displaystyle \int}                %Use: Sum to big integral
 
@@ -228,13 +228,13 @@
     \makeatother                                                    %WTF! IS THIS
 
     % === WRAPPERS FOR COLUMN VECTOR ===
-    \newcommand{\pVector}[1]                                        %Use: \pVector {Matrix Notation} use parentesis
+    \newcommand{\pVector}[1]                                        %Use: \pVector {Matrix Notation} use paréntesis una lista de parameto ros que 
         { \ensuremath{\begin{pmatrix}#1\end{pmatrix}} }             %Example: \pVector{a\\b\\c} or \pVector{a&b&c} 
     \newcommand{\lVector}[1]                                        %Use: \lVector {Matrix Notation} use a abs 
         { \ensuremath{\begin{vmatrix}#1\end{vmatrix}} }             %Example: \lVector{a\\b\\c} or \lVector{a&b&c} 
     \newcommand{\bVector}[1]                                        %Use: \bVector {Matrix Notation} use a brackets 
         { \ensuremath{\begin{bmatrix}#1\end{bmatrix}} }             %Example: \bVector{a\\b\\c} or \bVector{a&b&c} 
-    \newcommand{\Vector}[1]                                         %Use: \Vector {Matrix Notation} no parentesis
+    \newcommand{\Vector}[1]                                         %Use: \Vector {Matrix Notation} no paréntesis una lista de parámetros que 
         { \ensuremath{\begin{matrix}#1\end{matrix}} }               %Example: \Vector{a\\b\\c} or \Vector{a&b&c}
 
     % === MAKE MATRIX BETTER  =========
@@ -494,7 +494,7 @@
     {\fontsize{35}{46}\selectfont                                   %Set size
         \textbf{Introducción a lo\\[0.6cm] 
         que tienes que saber sobre \\[0.4cm]
-        Programación Competitiva y C++}}\\[0.5cm]  %Name of the book
+        Programación Competitiva usando C++}}\\[0.5cm]  %Name of the book
     \textcolor{ColorSubtext}{\textsc{\Huge Club de Algoritmia ESCOM}}%Name of the general theme
     
     \vfill                                                          %Fill the space
@@ -580,7 +580,8 @@
                 \item \textbf{¿Problemas conocidos de ciencias de la computación?}
                 
                     Los problemas que vamos a resolver están bien definidos, es decir son problemas
-                    en los que para cualquier entrada tu tendrías que ser capaz de calcular la salida.
+                    en los que para cualquier entrada tu tendrías que ser capaz de calcular la salida
+                    a la mano.
 
                     Además estarás informado de todas las restricciones del problema y todas las 
                     suposiciones que puedes tomar para facilitarte la vida.
@@ -588,7 +589,7 @@
                 \item \textbf{Tendrás que programar.}
                 
                     Si (pero no como en tú día a día, no harás una aplicación web o con una interfaz
-                    super bonita), sino que son programas que toman datos por la entrada estándar
+                    super bonita), sino que haras programas que toman datos por la entrada estándar
                     y nos regresan una respuesta por la salida estándar, es decir, un programa 
                     de terminal. Esto porque lo más importante aquí es el algoritmo.
 
@@ -753,9 +754,9 @@
 
                 \item \textbf{Es prácticamente un \Quote{super set} de C}
                 
-                    Es decir, que cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
+                    Es decir, que (casi) cualquier código válido de C es válido en \Cpp, esto es de gran ayuda pues
                     C es uno de los lenguajes más conocidos por lo que puede que la sintaxis de \Cpp sea
-                    más fácil que entender la sintaxis de Haskell o de Kotlin o Prolog, por ejemplo. 
+                    más fácil que entender la sintaxis de Haskell, de Kotlin o Prolog, por ejemplo. 
                     
                     Otra ventaja es que al estar basados en C conserva muchas de las ventajas de C como su portabilidad, 
                     su velocidad de ejecución  y la capacidad de tener un gran control de todos los recursos del sistema 
@@ -779,25 +780,27 @@
                     Tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
                     un objecto o si una referencia no podrá ser modificada.
 
-                \item {Tienes \textit{value types} por defecto}.
+                \item {Tienes \textit{value types} por defecto (pero también referencias)}.
                 
-                    Esta quiza sea algo rara de explicar si es que no sabes ningún lenguaje orientado a objectos, y si
+                    Esta quiza sea algo rara de explicar si es que no conoces muchos sobre lenguajes de computación, y si
                     no la entiendes no te preocupes. 
 
-                    Lo que nos dice es que las variables en \Cpp son de tipo valor por defecto, es decir que
-                    las podemos copiar, que nuestra variable de verdad almacenan la información que queremos \textbf{
-                        y no una referencia (que apunta a quien sabe donde) de donde esta nuestra información
+                    Lo que nos dice es que las variables en \Cpp son variables de valor por defecto, es decir
+                    cuando decimos \texttt{auto x = 10} nuestra variable \texttt{x} de verdad es el fragmento
+                    de memoria que tiene ese 10.
+                    
+                    En otras palabras que nuestras variable de verdad almacenan la información que queremos \textbf{
+                        y no una referencia que apunta a donde esta nuestra información
                     }.
 
-                    Es decir con ejemplos en JavaScript tenemos algo como: 
-                    \begin{verbatim} const person = { name: "Oscar", "age": 21 } \end{verbatim}
+                    Es decir, con ejemplos en JavaScript tenemos algo como: 
+                    \begin{verbatim} const person = { month: 3, day: 21 } \end{verbatim}
 
                     Resulta que \texttt{person} almacena una referencia a ese objecto y no a ese objecto en si, cosa que no pasa en \Cpp:
 
-                    \begin{verbatim} const map<string, string> person { {"name", "Oscar"}, {"age", "21"} }; \end{verbatim}
+                    \begin{verbatim} const map<string, int> person { {"month", 3}, {"day", 21} }; \end{verbatim}
 
                     Claro que aún puedes expresar la idea de las referencias, pero por defecto hablamos de variables que almacenan valores.
-
             \end{itemize}
 
 
@@ -936,10 +939,22 @@
         }
 
         \textbf{
-            Si este es tu caso entonces recomiendo que busques un documento, tutorial, libro, etc...
+            Si tu aún no sabes nada sobre como programar entonces recomiendo que busques un documento, tutorial, libro, etc...
             diseñado para empezar a programar, porque en este texto voy a dar varias cosas por sentado
             que deberían ser muy obvias para alguien que ya haya aprendido a programar, en cualquier
             lenguaje.
+        }
+
+        \textbf{
+            Unas recomendaciones serían: 
+            \begin{itemize}
+                \item 
+                    \underline{\href{https://platzi.com/cursos/programacion-basica/}
+                    {Curso de programación básico de Platzi}}
+                \item 
+                    \underline{\href{https://youtu.be/duhDovqHbEs?list=WL}
+                    {Every Programming Language in 15 Minutes - Brian Will}}
+            \end{itemize}
         }
 
         \textbf{
@@ -949,24 +964,26 @@
         \textbf{
             Además si ya sabes \Cpp o no te interesa aprender toda la sintaxis e ir directo a cosas
             algo más relacionadas con la programación competitiva entonces puedes saltar hasta el
-            siguiente capítulo.
+            siguiente capítulo dando click \underline{\hyperref[part:IdeasDeCienciasDeLaComputacion]{aquí}}
         }
 
+
         % =========================================================
-        % ========        VARIABLES SIMPLES          ==============
+        % ========               VARIABLES           ==============
         % =========================================================
         \clearpage
-        \section{Variables simples}
+        \section{Variables}
 
             En \Cpp (como en casi cualquier otro lenguaje) la idea obvia con la que podemos empezar
-            es las variables.
+            es las variables, después de todo la programación siempre se trata sobre información (data) 
+            y podemos ver a una variable como una unidad de información.
 
-            En \Cpp una variable es un fragmento de memoria (RAM) que almacena algun valor, 
-            podemos tener variables que almacen lo que nosotros entenderemos como números enteros
+            En \Cpp una variable es un fragmento de memoria que almacena algun valor, 
+            podemos tener variables que almacen lo que nosotros entenderemos, como números enteros
             o que almacenen cadenas o que almacenen una secuencia de racionales etc...
 
-            Bueno, \Cpp es un lenguaje de tipado estatico, es decir que todo momento el compilador
-            (para poder transformar tu programa a algo que una computadora pueda entender) tiene
+            Bueno, \Cpp es un lenguaje de tipado estatico (static typing), es decir que todo momento el compilador,
+            para poder transformar tu programa a algo que una computadora pueda entender, tiene
             que saber que tipo de dato almacena esa variable.
 
             % ============================================
@@ -975,13 +992,37 @@
             \subsection{Declaraciones e Inicialización}
 
                 El primer paso para poder usar una variable será el de declararla, es decir
-                aqui entre nos es decirle al compilador que le de a un fragmento de RAM un nombre y que usaremos
-                ese nombre (o identificador) para referirnos.
+                aqui entre nos es decirle al compilador que le de a un fragmento de memoria 
+                un nombre y que usaremos ese nombre (o identificador) para referirnos a ella después.
+
+                La sintaxis es sencilla:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    datatype variableName;
+
+                    //Examples
+                    int numberOfDays;
+                    float pi;
+                    bool IWantHelp;
+                \end{lstlisting}
+
+                Ahora, algo importante en \Cpp es que declarar una variable no la inicializa, 
+                es decir, que al decir \texttt{int numberOfDays} nunca le estoy dando un valor a
+                esa variable, por lo que ahora mismo la información que este guardada ahi es un misterio,
+                es como si comprarás una bodega, solo por decir que es tuya no quiere decir que ahora este
+                vacía.
+
+                Por eso es tan poco común ver en la programación competitiva declaraciones SIN inicializaciones,
+                pues generan una gran cantida de bugs que son difíciles de encontrar pues muchas veces
+                por simple suerte la variable si se inicializa a un valor que tenga sentido, pero
+                al ser este proceso aleatorio no es una gran idea depender de el.
+
+                Además es una buena costumbre, no declarar variables hasta que tenga un valor coherente para
+                las mismas.
 
                 Muy unido a esto decimos que estamos inicializando una variable cuando le damos
                 un valor por primera vez a este fragmento de la memoria.
 
-                Puedes declara variables en C++ de dos maneras:
+                Puedes declarar variables en C++ de dos maneras:
 
                 % ============================================
                 % ======            SE DIRECTO          ======
@@ -997,8 +1038,8 @@
 
                     Es decir, la sintaxis es:
                     \begin{itemize}
-                        \item Primero el tipo de dato, despues un espacio.
-                        \item Despues el nombre que le quieres dar a la variable
+                        \item Primero el tipo de dato, después un espacio.
+                        \item Después el nombre que le quieres dar a la variable.
                         \item Si quieres un valor inicial.
                     \end{itemize} 
 
@@ -1014,7 +1055,7 @@
                     Y se hace hastante similar:
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber = 20;   
-                        auto someText {"Hi baby"};
+                        auto someText = "Hi baby";
                         auto myLoveForYou;          //This will fail
                     \end{lstlisting}
 
@@ -1027,7 +1068,7 @@
                 una asignación, es decir, darle un valor a esa variable y se usa casi siempre en
                 todos los Lenguaje el símbolo \texttt{=} o a veces incluso \texttt{<-}.
 
-                Total, lo que pasa en \Cpp es que además de esa forma de inicializar weas tenemos
+                Total, lo que pasa en \Cpp es que además de esa forma de inicializar variables tenemos
                 una forma que si tiene un nombre especial.
 
                 % ============================================
@@ -1203,7 +1244,7 @@
 
                     \begin{lstlisting}[language=C++, gobble=24]
                         std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
-                        std::size_t numberOfElements = {someIntegers.size()}; 
+                        std::size_t numberOfElements {someIntegers.size()}; 
                     \end{lstlisting}
 
 
@@ -1215,7 +1256,8 @@
 
                 Si necesitas tener presición y saber por seguro el tamaño de una variable puedes usar 
                 \texttt{\#include <cstdint>} que no incluye otros tipos de datos diferentes sino solo
-                nombre mas pequeños para los tipos de datos que ya conoces:
+                nos da alias (typedef / using) o en otras palabras otros nombres 
+                para los tipos de datos que ya conoces:
 
                 \begin{lstlisting}[language=C++, gobble=20]
                     #include <cstdint>
@@ -1280,6 +1322,33 @@
 
             
         % =========================================================
+        % ======           OTROS TIPOS DE DATOS            ========
+        % =========================================================
+        \clearpage
+        \section{Los otros tipos de datos fundamentales}
+
+            % ============================================
+            % ======             VOID               ======
+            % ============================================
+            \subsection{void}
+
+                Este es bastante sencillo, (si no cuentas *void), y simplemente indica
+                un tipo de dato vacio, es usado para mostrar que una función no regresa nada.
+
+            % ============================================
+            % ======             VOID               ======
+            % ============================================
+            \subsection{bool}
+
+                Solo puede tener dos posibles valores, verdadero o falso, se llama así por el álgebra
+                booleana, que justamente solo contaba con dos valores.
+                \begin{lstlisting}[language=C++, gobble=16]
+                    bool isSunny {true};
+                    bool iAmHappy {false};
+                \end{lstlisting}
+
+
+        % =========================================================
         % ==========             OPERADORES              ==========
         % =========================================================
         \clearpage
@@ -1307,10 +1376,11 @@
 
                 Una cosa que a mucha gente le cuesta es la división y no porque
                 sea una operación difícil sino porque en \Cpp dependiendo de los
-                valores a los que se la apliquemos se comportara de manera correcta,
+                valores a los que se la apliquemos se comportara de manera o de otra,
                 si es que ambos valores son punto flotante entonces hara lo que esperas
                 por ejemplo \texttt{1.0 / 2.0 = 0.5}, pero \texttt{1 / 2 != 0.5} porque
-                si aplicas la división a dos enteros entonces hara la división y luego piso.
+                si aplicas la división a dos enteros entonces hara la división entera, es decir
+                va a redondeo al entero proximo mas pequeño.
 
                 Hay que tener cuidado con eso.
 
@@ -1322,7 +1392,7 @@
                 El módulo es pocas palabras es el residuo de la división.
 
                 Es decir \texttt{a \% b} regresa el residuo de la división $\dfrac{a}{b}$
-                si la has visto entonces verás que es la misma que en todos os lenguajes
+                si la has visto entonces verás que es la misma que en todos los lenguajes
                 sino entonces mas vale que practiques con unos ejemplos, es todo cuestión
                 de practica.
 
@@ -1334,7 +1404,7 @@
                     Si eres matemático y quieres la definición formal podríamos pensar en:
 
                     \begin{MultiLineEquation*}{3}
-                        a \% b = a - floor(a / b) * b
+                        a \% b = a - floor(a / b) \; * \; b
                     \end{MultiLineEquation*}
 
                     Otra forma de verlos es que nos regresa un número \texttt{k}
@@ -1361,6 +1431,10 @@
                     En general, si quieres saber si un número $n$ es multiplo de 
                     otro $k$ entonces hay que checar que $n \% k == 0$.
 
+            % ============================================
+            % =====       OPERADORES LOGICOS        ======
+            % ============================================
+            \subsection{Operadores Lógicos}
 
         % =========================================================
         % ==========        SENTENCIAS DE CONTROL        ==========
@@ -1371,10 +1445,10 @@
             % ============================================
             % =======        CONDICIONALES         =======
             % ============================================
-            \subsection{Condicionales}
+            \subsection{Branching: Condicionales}
 
                 Sin una declaración de un condicional como la instrucción \texttt{if}, los programas
-                se ejecutarán casi de la misma manera cada vez.
+                se ejecutarian siempre de la misma manera.
                 
                 Los condicionales permiten que se cambie el flujo del programa y con ello códigos
                 más interesantes.
@@ -1412,19 +1486,52 @@
                 % ============================================
                 % =======        CONDICIONES           =======
                 % ============================================
+                \clearpage
                 \subsubsection{Condiciones}
 
                 En \Cpp lo que puede ir dentro del \texttt{if (condition)} pueden ser dos cosas:
                 \begin{itemize}
-                    \item Se puede hacer \texttt{if (a = b)} en cuyo caso lo que comparará el 
-                        \texttt{if} es el resultado de la asignación.
                     \item Una expresión que se pueda transformar a un \texttt{bool} y eso es la cosa
                         mas común.
+
+                        Por ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=24]
+                            bool isSunny {true};
+                            if (isSunny === true) {
+                                cout << "Hey, time to go to outside" << endl;
+                            }
+
+                            double pi {3.1416}, e {2.71828};
+                            if (pi > e) {
+                                cout << "Math still make sense" << endl;
+                            }
+                        \end{lstlisting}
+
+                        Tambien podemos poner dentro del if una variable lo que hara
+                        que \Cpp transforme el valor de dicha variable en un booleano,
+                        las reglas que sigue son bastante sencillas:
+                        \begin{lstlisting}[language=C++, gobble=24]
+                            if (n) {
+                                ...
+                            }
+                        \end{lstlisting}
+                        \begin{itemize}
+                            \item Para números: Si n es cero entonces el if evaluara a falso, para
+                                cualquier otro valor será verdadero. 
+                            \item Para strings: Si n esa vacío entonces sera falso, cualquier otra
+                                otro valor será verdadero. 
+                            \item Para punteros: Si n es NULL / nullptr entonces sera falso, cualquier otra
+                                otro valor será verdadero. 
+                        \end{itemize}
+
+                    \item Se puede hacer \texttt{if (a = b)} en cuyo caso lo que comparará el 
+                        \texttt{if} es el resultado de la asignación.
                 \end{itemize}
 
                 % ============================================
                 % =======        OPERADOR TERNARIO     =======
                 % ============================================
+                \clearpage
                 \subsubsection{Operador Ternario}
 
                 En \Cpp tenemos el operador ternario, es bastante común porque nos deja expresar la misma
@@ -1437,14 +1544,14 @@
                 \begin{lstlisting}[language=C++, gobble=20]
                     // Using if else
                     if (language == "php") {
-                        programmerFeelings = ":(";
+                        programmerFeelings = "sad";
                     }
                     else {
-                        programmerFeelings = ":)";
+                        programmerFeelings = "happy";
                     }
 
                     // The same thing using ternary operator
-                    happyProgrammer = language == "php" ? ":(" : ":)";
+                    happyProgrammer = language == "php" ? "sad" : "happy";
                 \end{lstlisting}
                 
         % =========================================================
@@ -1470,6 +1577,10 @@
 
                 Donde condition es exactamente igual que lo que estaría dentro
                 del if.
+
+                Y de hecho funciona basicamente igual que un if, la única diferencia
+                es que una vez que se haya ejecutado el cuerpo entonces volveremos a ver la 
+                condición, de ser verdadera el cuerpo se volverá a ejecutar.
 
                 % ============================================
                 % =======          DO WHILE            =======
@@ -1541,9 +1652,11 @@
 
                 Y si, hablaremos sobre referencias y \texttt{auto\&\&} más a detalle pronto.
 
+        
         % =========================================================
         % ====  REFERENCES AND VALUES:  APUNTADORES Y VALORES  ====
         % =========================================================
+        \clearpage
         \section{References and value types: Referencias o Valores}
 
             % ============================================
@@ -1551,24 +1664,55 @@
             % ============================================
             \subsection{Value types: Variables de valor}
 
-            % ============================================
-            % =====    POINTERS: APUNTADORES     =========
-            % ============================================
-            \subsection{Pointers: Apuntadores}
+                En \Cpp como llevamos diciendo todo el libro las variables por defecto son de tipo
+                valor, es decir que cada variable almanena de verdad sus valores.
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int someNumber {3};
+                \end{lstlisting}
+
+                Pero no solo podemos expresar esa idea, sino que también podemos expresar la idea
+                de una "referencia a una variable". 
 
             % ============================================
             % =====    REFERENCIAS: REFERENCIAS     ======
             % ============================================
             \subsection{References: Referencias}
+
+                Una referencia 
+
+            % ============================================
+            % =====    POINTERS: APUNTADORES     =========
+            % ============================================
+            \subsection{Pointers: Apuntadores}
+
+
             
+
+ 
+
 
         % =========================================================
         % ==========             FUNCIONES               ==========
         % =========================================================
         \section{Funciones}
 
-            Una función en \Cpp son practicamente iguales que en los demás lenguajes, pero
-            en 
+            Una función es un conjunto de instrucciones (statements) que podemos llamar desde cualquier
+            parte de nuestro programa y que opcionalmente puede tener algunos parámetros y de igual
+            manera podemos regresar un valor desde nuestras funciones. 
+
+            Una función en \Cpp son practicamente iguales que en los demás lenguajes, veamos su sintaxis.
+            \begin{lstlisting}[language=C++, gobble=12]
+                int doubleIt(int number) {
+                    return number * 2;
+                }
+            \end{lstlisting}
+
+            Es decir, primero va el tipo de dato que regresará nuestra función, después el nombre que le
+            daremos y finalmente entre paréntesis una lista de parámetros con el nombre que le daremos y el
+            tipo de dato de dichos parámetros.
+
+            Si te das cuenta no es muy diferente de como 
 
             % ============================================
             % ====            RECURSION         ==========
@@ -1581,11 +1725,18 @@
             \subsection{Lamdas}
 
             % ============================================
-            % ====             LAMDAS           ==========
+            % ====             TEMPLATES        ==========
             % ============================================
-            \subsection{Lamdas}
+            \subsection{Templates}
 
 
+        % =========================================================
+        % ==========      ENTRADA / SALIDA EN C++        ==========
+        % =========================================================
+        \clearpage
+        \section{La entrada / salida en \Cpp}
+
+     
 
     % ===============================================================================
     % ===============         CONTENEDORES STD              =========================
@@ -1619,6 +1770,12 @@
         % ==========             SET                     ==========
         % =========================================================
         \section{std::set}
+
+    % ===============================================================================
+    % ===============         STD ALGORITHMS                =========================
+    % ===============================================================================
+    \clearpage
+    \chapter{No lo hagas tu todo desde cero: std::algorithms}
 
 
     % ===============================================================================
@@ -1712,7 +1869,7 @@
         % =========================================================
         \clearpage
         \section{Si quieres un programa rápido: Verdaderos arrays}  
-        
+
         % =========================================================
         % ==========         RANGE FOR STRANGE           ==========
         % =========================================================
@@ -1727,6 +1884,7 @@
 % ///////////////////          TERMINOS DE CIENCIAS DE LA COMPUTACION              /////////////////////////
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
 \part{Ideas de las Ciencias de la Computación}
+\label{part:IdeasDeCienciasDeLaComputacion}
     
 
     % ===============================================================================
@@ -1800,6 +1958,8 @@
     % ===============================================================================
     \clearpage
     \chapter{Linked Lists: Listas Enlazadas}
+
+        Una implementación mas o 
 
 
     % ===============================================================================
