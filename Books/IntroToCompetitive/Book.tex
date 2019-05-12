@@ -380,80 +380,78 @@
         { \leavevmode\color{#1}\ignorespaces }                      %That's is!
 
 
+
 % =======================================================
 % ===========           CODE EDITING          ===========
 % =======================================================
 
-    % =====  CODE EDITOR =============
-    \lstdefinestyle{CompilandoStyle} {                              %This is Code Style
-        backgroundcolor     = \color{BlueGrey900MD},                %Background Color  
-        basicstyle          = \ttfamily\tiny\color{white},          %Style of text
-        commentstyle        = \color{BlueGrey200MD},                %Comment style
-        stringstyle         = \color{Green300MD},                   %String style
-        keywordstyle        = \color{Blue300MD},                    %keywords style
-        numberstyle         = \tiny\color{TealMD},                  %Size of a number
-        frame               = none,                                 %Adds a frame around the code
-        breakatwhitespace   = true,                                 %Style   
-        breaklines          = true,                                 %Style   
-        showstringspaces    = false,                                %Hate those spaces                  
-        breaklines          = true,                                 %Style                   
-        keepspaces          = true,                                 %Style                   
-        numbers             = left,                                 %Style                   
-        numbersep           = 10pt,                                 %Style 
-        xleftmargin         = \parindent,                           %Style 
-        tabsize             = 4,                                    %Style
-        inputencoding       = utf8/latin1                           %Allow me to use special chars
-    }
-
-    % =====  CODE EDITOR =============
-    \lstdefinestyle{CompilandoStylePurity} {                        %This is Code Style
-        backgroundcolor     = \color{white},                        %Background Color  
-        basicstyle          = \ttfamily\tiny\color{BlueGrey900MD},  %Style of text
-        commentstyle        = \color{Green300MD},                   %Comment style
-        stringstyle         = \color{Teal700MD},                    %String style
-        keywordstyle        = \color{Blue700MD},                    %keywords style
-        numberstyle         = \tiny\color{TealMD},                  %Size of a number
-        frame               = none,                                 %Adds a frame around the code
-        breakatwhitespace   = true,                                 %Style   
-        breaklines          = true,                                 %Style   
-        showstringspaces    = false,                                %Hate those spaces                  
-        breaklines          = true,                                 %Style                   
-        keepspaces          = true,                                 %Style                   
-        numbers             = left,                                 %Style                   
-        numbersep           = 11pt,                                 %Style 
-        xleftmargin         = \parindent,                           %Style 
-        tabsize             = 4,                                    %Style
-        inputencoding       = utf8/latin1                           %Allow me to use special chars
-    }
-
-    % =====  CODE EDITOR =============
-    \lstdefinestyle{CompilandoStyleSolarized} {                     %This is Code Style
-        backgroundcolor     = \color{SolarizedBase},                %Background Color  
-        basicstyle          = \footnotesize\ttfamily\color{SolarizedFont},   %Style of text
-        commentstyle        = \color{Green300MD},                   %Comment style
-        stringstyle         = \color{Teal700MD},                    %String style
-        keywordstyle        = \color{Blue700MD},                    %keywords style
-        numberstyle         = \tiny\color{TealMD},                  %Size of a number
-        frame               = none,                                 %Adds a frame around the code
-        breakatwhitespace   = true,                                 %Style   
-        breaklines          = true,                                 %Style   
-        showstringspaces    = false,                                %Hate those spaces                  
-        breaklines          = true,                                 %Style                   
-        keepspaces          = true,                                 %Style                   
-        numbers             = none,                                 %Style                   
-        tabsize             = 4,                                    %Style
-        inputencoding       = utf8/latin1                           %Allow me to use special chars
-    }
- 
-    \lstset{style = CompilandoStyleSolarized}                          %Use this style
+\newcommand{\fontCode}     { \ttfamily\bfseries }               %Use: \fontCode for font
+\newcommand{\fontCodeTiny} { \fontCode\tiny }                   %Sizes
+\newcommand{\fontCodeFoot} { \fontCode\footnotesize }           %Sizes
 
 
+% =====  CODE EDITOR =============
+\lstdefinestyle{CompilandoStyle} {                              %This is Code Style
+    backgroundcolor     = \color{BlueGrey900MD},                %Background Color  
+    basicstyle          = \fontCodeTiny\color{white},           %Style of text
+    commentstyle        = \color{BlueGrey200MD},                %Comment style
+    stringstyle         = \color{Green300MD},                   %String style
+    keywordstyle        = \color{Blue300MD},                    %keywords style
+    numberstyle         = \tiny\color{TealMD},                  %Size of a number
+    frame               = none,                                 %Adds a frame around the code
+    breakatwhitespace   = true,                                 %Style   
+    breaklines          = true,                                 %Style   
+    showstringspaces    = false,                                %Hate those spaces                  
+    breaklines          = true,                                 %Style                   
+    keepspaces          = true,                                 %Style                   
+    numbers             = left,                                 %Style                   
+    numbersep           = 10pt,                                 %Style 
+    xleftmargin         = \parindent,                           %Style 
+    tabsize             = 4,                                    %Style
+    inputencoding       = utf8/latin1                           %Allow me to use special chars
+}
 
+% =====  CODE EDITOR =============
+\lstdefinestyle{CompilandoStylePurity} {                        %This is Code Style
+    backgroundcolor     = \color{white},                        %Background Color  
+    basicstyle          = \fontCodeTiny\color{BlueGrey900MD},   %Style of text
+    commentstyle        = \color{Green300MD},                   %Comment style
+    stringstyle         = \color{Teal700MD},                    %String style
+    keywordstyle        = \color{Blue700MD},                    %keywords style
+    numberstyle         = \tiny\color{TealMD},                  %Size of a number
+    frame               = none,                                 %Adds a frame around the code
+    breakatwhitespace   = true,                                 %Style   
+    breaklines          = true,                                 %Style   
+    showstringspaces    = false,                                %Hate those spaces                  
+    breaklines          = true,                                 %Style                   
+    keepspaces          = true,                                 %Style                   
+    numbers             = left,                                 %Style                   
+    numbersep           = 11pt,                                 %Style 
+    xleftmargin         = \parindent,                           %Style 
+    tabsize             = 4,                                    %Style
+    inputencoding       = utf8/latin1                           %Allow me to use special chars
+}
 
+% =====  CODE EDITOR =============
+\lstdefinestyle{CompilandoStyleSolarized} {                     %This is Code Style
+    backgroundcolor     = \color{SolarizedBase},                %Background Color  
+    basicstyle          = \fontCodeFoot\color{SolarizedFont},   %Style of text
+    commentstyle        = \color{Green300MD},                   %Comment style
+    stringstyle         = \color{Teal700MD},                    %String style
+    keywordstyle        = \color{Blue700MD},                    %keywords style
+    numberstyle         = \tiny\color{TealMD},                  %Size of a number
+    frame               = none,                                 %Adds a frame around the code
+    breakatwhitespace   = true,                                 %Style   
+    breaklines          = true,                                 %Style   
+    showstringspaces    = false,                                %Hate those spaces                  
+    breaklines          = true,                                 %Style                   
+    keepspaces          = true,                                 %Style                   
+    numbers             = none,                                 %Style                   
+    tabsize             = 4,                                    %Style
+    inputencoding       = utf8/latin1                           %Allow me to use special chars
+}
 
-
-
-
+\lstset{style = CompilandoStyleSolarized}                          %Use this style
 
 
 
@@ -780,7 +778,7 @@
                     Tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
                     un objecto o si una referencia no podrá ser modificada.
 
-                \item {Tienes \textit{value types} por defecto (pero también referencias)}.
+                \item {Tienes \textit{value types} por defecto (pero también tiene referencias si las necesitas)}.
                 
                     Esta quiza sea algo rara de explicar si es que no conoces muchos sobre lenguajes de computación, y si
                     no la entiendes no te preocupes. 
@@ -992,7 +990,7 @@
             \subsection{Declaraciones e Inicialización}
 
                 El primer paso para poder usar una variable será el de declararla, es decir
-                aqui entre nos es decirle al compilador que le de a un fragmento de memoria 
+                aquí entre nos es decirle al compilador que le de a un fragmento de memoria 
                 un nombre y que usaremos ese nombre (o identificador) para referirnos a ella después.
 
                 La sintaxis es sencilla:
@@ -1011,29 +1009,32 @@
                 es como si comprarás una bodega, solo por decir que es tuya no quiere decir que ahora este
                 vacía.
 
-                Por eso es tan poco común ver en la programación competitiva declaraciones SIN inicializaciones,
-                pues generan una gran cantida de bugs que son difíciles de encontrar pues muchas veces
+                Por eso es tan poco común ver en la programación competitiva (y en la programación en general)
+                declaraciones SIN inicializaciones,
+                pues generan una gran cantidad de bugs que son difíciles de encontrar pues muchas veces
                 por simple suerte la variable si se inicializa a un valor que tenga sentido, pero
-                al ser este proceso aleatorio no es una gran idea depender de el.
+                al ser este proceso aleatorio no es una gran idea depender de eso.
 
-                Además es una buena costumbre, no declarar variables hasta que tenga un valor coherente para
-                las mismas.
+                \textbf{Además es una buena costumbre, no declarar variables hasta que tenga un valor coherente para
+                las mismas}.
+
+                \clearpage
 
                 Muy unido a esto decimos que estamos inicializando una variable cuando le damos
                 un valor por primera vez a este fragmento de la memoria.
-
+                
                 Puedes declarar variables en C++ de dos maneras:
 
                 % ============================================
                 % ======            SE DIRECTO          ======
                 % ============================================
-                \subsubsection{Se directo}
+                \subsubsection{Se directo con el tipo de dato}
 
                     Algo como:
                     \begin{lstlisting}[language=C++, gobble=24]
-                        int someNumber = 20;
-                        string someText {"Hi baby"};
-                        double myLoveForYou;
+                        int someNumber = 20;          //Good: declaration + initialization
+                        string someText = "Hi baby";  //Good: declaration + initialization
+                        double myLoveForYou;          //Bad: just declaration
                     \end{lstlisting}
 
                     Es decir, la sintaxis es:
@@ -1054,22 +1055,22 @@
                     
                     Y se hace hastante similar:
                     \begin{lstlisting}[language=C++, gobble=24]
-                        auto someNumber = 20;   
-                        auto someText = "Hi baby";
-                        auto myLoveForYou;          //This will fail
+                        auto someNumber = 20;        //someNumber is int
+                        auto someText = "Hi baby";   //someText is const char* (this is sad)
+                        auto myLoveForYou;           //This will fail
                     \end{lstlisting}
 
-                    Nota que para que puedas usar auto el compilador tiene que saber que tipo
+                    Nota que para que puedas usar \texttt{auto} el compilador tiene que saber que tipo
                     de dato va a guardar esa variable así que si no inicializas la variable 
                     el compilador se va a enojar contigo.
 
-                De igual manera creo que te habras dado cuenta que podemos inicializar de dos maneras
-                generalmente la primera es muy obvia y en casi todos los lenguajes existe, se llama
-                una asignación, es decir, darle un valor a esa variable y se usa casi siempre en
-                todos los Lenguaje el símbolo \texttt{=} o a veces incluso \texttt{<-}.
+                    De igual manera creo que te habras dado cuenta que podemos inicializar de dos maneras
+                    generalmente la primera es muy obvia y en casi todos los lenguajes existe, se llama
+                    \textbf{una asignación}, es decir, darle un valor a esa variable y se usa casi siempre en
+                    todos los Lenguaje el símbolo \texttt{=} o a veces incluso \texttt{<-}.
 
-                Total, lo que pasa en \Cpp es que además de esa forma de inicializar variables tenemos
-                una forma que si tiene un nombre especial.
+                    Total, lo que pasa en \Cpp es que además de esa forma de inicializar variables tenemos
+                    una forma que si tiene un nombre especial.
 
                 % ============================================
                 % ======            SE SUTIL            ======
@@ -1104,7 +1105,7 @@
             % ============================================
             % ======     INTEGERS: ENTEROS          ======
             % ============================================
-            \subsection{Integers: Enteros}
+            \subsection{Integers / Integrals: Enteros}
 
                 \Cpp (y C) maneja varios tamaños estándares de enteros, el más clásico
                 es \texttt{int}, pero no es el único, los demás solo cambian en tamaño
@@ -1251,14 +1252,11 @@
                 % ============================================
                 % ==========        FIXED WIDTH     ==========
                 % ============================================
-                \clearpage
                 \subsubsection{Fixed width (int32\_t, uint64\_t, ...)}
 
-                Si necesitas tener presición y saber por seguro el tamaño de una variable puedes usar 
+                Si prefieres estar seguro del tamaño de tus enteros entonces puedes usar 
                 \texttt{\#include <cstdint>} que no incluye otros tipos de datos diferentes sino solo
-                nos da alias (typedef / using) o en otras palabras otros nombres 
-                para los tipos de datos que ya conoces:
-
+                nos da alias (typedef / using), es decir otros nombres para los tipos de datos que ya conoces:
                 \begin{lstlisting}[language=C++, gobble=20]
                     #include <cstdint>
                     
