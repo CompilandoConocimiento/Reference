@@ -2033,6 +2033,8 @@
                 \begin{lstlisting}[language=C++, gobble=20]
                     std::sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
                 \end{lstlisting}
+                
+                \clearpage
 
                 Veamos otro ejemplo:
                 \begin{lstlisting}[language=C++, gobble=20]
@@ -2173,7 +2175,7 @@
     % ===================               CLASES          =============================
     % ===============================================================================
     \clearpage
-    \chapter{Clases: OPP / POO}
+    \chapter{Tipos de datos definidos por nosotros}
 
 
     % ===============================================================================
@@ -2190,6 +2192,7 @@
         % ============================================
         % =====    POINTERS: APUNTADORES     =========
         % ============================================
+        \clearpage
         \section{Pointers: Apuntadores}
 
             No me pondre ahora a explicar en gran medida el concepto de punteros, 
@@ -2201,7 +2204,7 @@
             una dirección donde dicha variable esta guardada en memoria.
 
             Si quieres obtener la dirección de memoria de una variable basta con hacer algo como:
-            \begin{lstlisting}[language=C++, gobble=20]
+            \begin{lstlisting}[language=C++, gobble=16]
                 int someNumber {3};
 
                 // Give us the direction of someNumber
@@ -2211,7 +2214,7 @@
             Los punteros son variables capaces y diseñadas para guardar y manipular dichas direcciones.
             Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el mismo espacio en memoria
             por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
-            \begin{lstlisting}[language=C++, gobble=20]
+            \begin{lstlisting}[language=C++, gobble=16]
                 int someNumber {3};
                 int* somePointerToAnInt = &someNumber;
 
@@ -2225,14 +2228,14 @@
             Ahora, ¿Porqué deberia importarme esto?
 
             Veamos esta función:
-            \begin{lstlisting}[language=C++, gobble=20]
+            \begin{lstlisting}[language=C++, gobble=16]
                 void doubleIt(int number) {
                     number = 2 * number;
                 }
             \end{lstlisting}
 
             Ahora si hago algo como esto:
-            \begin{lstlisting}[language=C++, gobble=20]
+            \begin{lstlisting}[language=C++, gobble=16]
                 int number = 1;
                 cout << number << endl;       // prints 0
                 doubleIt(number);
@@ -2251,6 +2254,7 @@
         % =========================================================
         % ==========            LIFETIME                 ==========
         % =========================================================
+        \clearpage
         \section{Lifetime: La mejor característica de \Cpp: \textCode{ \} } }     
         
             Se le pregunto a varios grandes programadores de \Cpp cual era su
@@ -2288,12 +2292,12 @@
             En otras palabras, la vida o \textCode{lifetime} de un objecto esta atada a su \textCode{scope}.
             Y como me gusta decirlo:
             \textbf{
-                Todo el \Cpp es la responsabilidad de alguien
+                Todo el \Cpp es la responsabilidad de alguien.
             }
 
             O en inglés:
             \textbf{
-                Everything is owned by someone
+                Everything is owned by someone.
             }
 
             \cite{ModernCppWhatYouNeedToKnow}
