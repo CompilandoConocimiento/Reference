@@ -917,7 +917,7 @@
     % ===============             BASES DEL LENGUAJE          =======================
     % ===============================================================================
     \clearpage
-    \chapter{Bases del Lenguaje Moderno}
+    \chapter{Bases del Lenguaje}
 
         \begin{wrapfigure}{r}{0.15\textwidth}
             \centering
@@ -958,7 +958,6 @@
             algo más relacionadas con la programación competitiva entonces puedes saltar hasta el
             siguiente capítulo dando click \underline{\hyperref[part:IdeasDeCienciasDeLaComputacion]{aquí}}
         }
-
 
 
         % =========================================================
@@ -1328,14 +1327,7 @@
             \subsection{void}
 
                 Este es bastante sencillo, (si no cuentas \textCode{*void}), y simplemente indica
-                un tipo de dato vacío, es usado para mostrar que una función no regresa nada.
-               
-                Decimos que \textCode{void} tiene un conjunto vacío de elementos, es decir no puedes hacer
-                variables (o instanciar) cosas de tipo  \textCode{void} por lo que muchas veces
-                se le llama un tipo de dato incompleto.
-                \begin{lstlisting}[language=C++, gobble=20]
-                    void someVariable;  // Illegal
-                \end{lstlisting}
+                un tipo de dato vacio, es usado para mostrar que una función no regresa nada.
 
             % ============================================
             % ======             VOID               ======
@@ -1367,27 +1359,6 @@
                     \item \textCode{+}: Suma
                     \item \textCode{-}: Resta
                     \item \textCode{*}: Multiplicación
-                \end{itemize}
-
-                Además en C++ tenemos algunas ayudas para escribir menos:
-                \begin{itemize}
-                    \item \textCode{a++} es lo mismo que \textCode{a = a + 1}, ademas 
-                        decimos que es una expresión regresa a \textCode{a} antes de hacer la suma.
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            int a {1};
-                            int b {a++};    // b is 1
-                        \end{lstlisting}
-                    \item \textCode{a--} es lo mismo que \textCode{a = a - 1} y con las mismas reglas que \textCode{a++}
-                    \item \textCode{++a} es lo mismo que \textCode{a = a + 1}, ademas 
-                        decimos que es una expresión regresa a \textCode{a} después de hacer la suma.
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            int a {1};
-                            int b {++a};    // b is 2
-                        \end{lstlisting}
-                    \item \textCode{a += b} es lo mismo que \textCode{a = a + b}
-                    \item \textCode{a -= b} es lo mismo que \textCode{a = a - b}
-                    \item \textCode{a *= b} es lo mismo que \textCode{a = a * b}
-                    \item \dots
                 \end{itemize}
 
                 Ahora los interesantes son los siguientes:
@@ -1688,7 +1659,7 @@
             % ============================================
             % =======           FOR                =======
             % ============================================
-            \subsection{Range for: \textCode{for (auto x : v)}}
+            \subsection{\textCode{for (auto x : v)}}
 
                 En \Cpp tenemos otra forma más moderna y muchos diran que mucho mas
                 fácil de evitar bugs raros si lo único que haremos será movernos un 
@@ -1727,7 +1698,7 @@
         % ====  REFERENCES AND VALUES:  APUNTADORES Y VALORES  ====
         % =========================================================
         \clearpage
-        \section{References and value types}
+        \section{References and value types: Referencias o Valores}
 
             % ============================================
             % ====  VALUE TYPES: VARIABLES DE VALOR  =====
@@ -1801,7 +1772,7 @@
                         estas de verdad creando una copia y es a esa copia a la que estas añadiendole 3.
 
                         Si quieres crear una función que de verdad tome a un entero y le sume 3 a ESE entero,
-                        entonces podemos hacer que reciba el parámetro por referencia:
+                        entonces podemos hacer que reciba el parametro por referencia:
                         \begin{lstlisting}[language=C++, gobble=28]
                             void add_3_to_this_number(int& number) {
                                 number += 3;
@@ -1956,14 +1927,7 @@
             manera podemos regresar un valor desde nuestras funciones. 
 
             Una función en \Cpp son practicamente iguales que en los demás lenguajes, veamos su sintaxis.
-            \begin{lstlisting}[language=C++, gobble=16]
-                returnType nameOfFunction(argType1 name1, argType1 name2, ...) {
-                   body
-                }
-            \end{lstlisting}
-
-            Por ejemplo:
-            \begin{lstlisting}[language=C++, gobble=16]
+            \begin{lstlisting}[language=C++, gobble=12]
                 int doubleIt(int number) {
                     return number * 2;
                 }
@@ -1973,145 +1937,17 @@
             daremos y finalmente entre paréntesis una lista de parámetros con el nombre que le daremos y el
             tipo de dato de dichos parámetros.
 
-            Además desde \Cpp 11 hay otra forma de declarar funciones:
-            \begin{lstlisting}[language=C++, gobble=16]
-                auto nameOfFunction(argType1 name1, ...) -> returnType {
-                   body
-                }
-            \end{lstlisting}
-
-            Ambas son exactamente igual.
-            \begin{lstlisting}[language=C++, gobble=16]
-                auto doubleIt(int number) -> int {
-                    return number * 2;
-                }
-            \end{lstlisting}
-
-            
-            % ============================================
-            % ====             LAMBDAS          ==========
-            % ============================================
-            \clearpage
-            \subsection{Lambdas}
-
-                Una lambda es un concepto bastante conocido en otros lenguajes, podemos definirlo como 
-                la una función que puede ser tratada como cualquier otro objecto en el lenguaje.
-
-                Las Lambdas son un nombre bonito para funciones anónimas, en esencia son una forma fácil
-                de escribir funciones en el lugar lógico que deberían estar.
-
-                Esta diseñadas para ser usadas como callbacks o para poder pasar una función como parámetro
-                a otra función.
-
-                Su sintaxis es algo como:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    [capture list] (parameter list) -> returnType { body };
-                \end{lstlisting} 
-
-                Donde:
-                \begin{itemize}
-                    \item \textCode{capture list} es una lista de valores que deben ser visibles dentro
-                        de la lambda y si deberían tomarlos por valor o por referencia.
-
-                        Estos seran copiados o se creara una refencia a ellos en el momento en que se
-                        declara.
-
-                        Puedes decirle al compilador que capture lo que sea necesario por:
-                        \begin{itemize}
-                            \item valor con: \textCode{ [=](...) \{ body \}}
-                            \item referencia con: \textCode{ [\&](...) \{ body \}}
-                            \item mezcla  por ejemplo: \textCode{ [\&, i](...) \{ body \}}i que es por valor. 
-                                para decir todo por referencia, excepto 
-                        \end{itemize}
-
-                        
-                    \item \textCode{parameter list} funciona igual que una lista de parametros 
-                        de una función.
-                \end{itemize}
-
-                Por ejemplo para ordenar de reversa un vector podemos hacer algo como:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    std::sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
-                \end{lstlisting}
-                
-                \clearpage
-
-                Veamos otro ejemplo:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    int var = 1;
-                    auto someFunction = [var] () { 
-                        cout << "Hello from lambda, value is " << var << endl;
-                    };
-
-                    someFunction(); // output: 1
-                    var = 4;
-
-                    someFunction(); // output: 1
-                \end{lstlisting}
-
-                Y un último:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    int var = 1;
-                    auto someFunction = [&var] () { 
-                        cout << "Hello from lambda, value is " << var << endl;
-                    };
-
-                    someFunction(); // output: 1
-                    var = 4;
-
-                    someFunction(); // output: 4
-                \end{lstlisting}
-
-                También es importante saber que las lambdas no son de tipo \textCode{std::function}
-                sino que pueden ser asignadas a una, pero en el fondo son syntactic sugar para objectos,
-                functors.
-
-                Además su rendimiento es muy bueno, porque al se objecto el compilador puede optimizar
-                muchas veces mas el código que si hubieramos usado una función de toda la vida.
-
-
-                % ============================================
-                % ====    LAMBDAS COMO FUNCTORS     ==========
-                % ============================================
-                \clearpage
-                \subsubsection{Lambdas como functors / classes}
-                
-                    Puedes pensar en las lambdas como en clases, y no te preocupes si no entiendes
-                    esta sección ahora, puedes saltarla si quieres.
-
-                    La lista de valores capturados son como los elementos de una clase
-                    es decir si tenemos algo como esto:
-
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        [&total, offset](int element) { 
-                            total += element + offset;
-                        };
-                    \end{lstlisting}
-
-                    Podriamos verlo como si estuvieramos haciendo algo como:
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        class lambda {
-                            private:
-                                int& total;
-                                int offset;
-                            public: 
-                                lambda(int& _total, int _offset) : 
-                                    total{_total}, offset{_offset} {}
-
-                                void operator() (int element) const { 
-                                    total += element + offset;
-                                }
-                        };
-                    \end{lstlisting}
-
-                    \cite{shaharmikeLambdas}
-
+            Si te das cuenta no es muy diferente de como 
 
             % ============================================
             % ====            RECURSION         ==========
             % ============================================
             \subsection{Recursion}
 
+            % ============================================
+            % ====             LAMDAS           ==========
+            % ============================================
+            \subsection{Lamdas}
 
             % ============================================
             % ====             TEMPLATES        ==========
@@ -2167,40 +2003,22 @@
     \chapter{No lo hagas tu todo desde cero: std::algorithms}
 
 
+    % ===============================================================================
+    % ===================               CLASES          =============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Clases: OPP / POO}
+
 
     % ===============================================================================
     % ===================               SINTAXIS        =============================
     % ===============================================================================
     \clearpage
     \chapter{Cosas Avanzadas de \Cpp}
-
-        % =========================================================
-        % =====                       ENUMS               =========
-        % =========================================================
-        \section{Enums}
-
-
-        % =========================================================
-        % ===================       CLASES      ===================
-        % =========================================================
-
-        \clearpage
-        \section{Tipos de datos definidos por nosotros}
-
-        % =========================================================
-        % =====                     CONST                 =========
-        % =========================================================
-        \section{const}
-
-        % =========================================================
-        % =====                  CONSTEXPR                =========
-        % =========================================================
-        \section{constexpr}
         
-        % =========================================================
-        % =====            POINTERS: APUNTADORES          =========
-        % =========================================================
-        \clearpage
+        % ============================================
+        % =====    POINTERS: APUNTADORES     =========
+        % ============================================
         \section{Pointers: Apuntadores}
 
             No me pondre ahora a explicar en gran medida el concepto de punteros, 
@@ -2212,7 +2030,7 @@
             una dirección donde dicha variable esta guardada en memoria.
 
             Si quieres obtener la dirección de memoria de una variable basta con hacer algo como:
-            \begin{lstlisting}[language=C++, gobble=16]
+            \begin{lstlisting}[language=C++, gobble=20]
                 int someNumber {3};
 
                 // Give us the direction of someNumber
@@ -2222,7 +2040,7 @@
             Los punteros son variables capaces y diseñadas para guardar y manipular dichas direcciones.
             Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el mismo espacio en memoria
             por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
-            \begin{lstlisting}[language=C++, gobble=16]
+            \begin{lstlisting}[language=C++, gobble=20]
                 int someNumber {3};
                 int* somePointerToAnInt = &someNumber;
 
@@ -2236,14 +2054,14 @@
             Ahora, ¿Porqué deberia importarme esto?
 
             Veamos esta función:
-            \begin{lstlisting}[language=C++, gobble=16]
+            \begin{lstlisting}[language=C++, gobble=20]
                 void doubleIt(int number) {
                     number = 2 * number;
                 }
             \end{lstlisting}
 
             Ahora si hago algo como esto:
-            \begin{lstlisting}[language=C++, gobble=16]
+            \begin{lstlisting}[language=C++, gobble=20]
                 int number = 1;
                 cout << number << endl;       // prints 0
                 doubleIt(number);
@@ -2262,7 +2080,6 @@
         % =========================================================
         % ==========            LIFETIME                 ==========
         % =========================================================
-        \clearpage
         \section{Lifetime: La mejor característica de \Cpp: \textCode{ \} } }     
         
             Se le pregunto a varios grandes programadores de \Cpp cual era su
@@ -2300,21 +2117,15 @@
             En otras palabras, la vida o \textCode{lifetime} de un objecto esta atada a su \textCode{scope}.
             Y como me gusta decirlo:
             \textbf{
-                Todo el \Cpp es la responsabilidad de alguien.
+                Todo el \Cpp es la responsabilidad de alguien
             }
 
             O en inglés:
             \textbf{
-                Everything is owned by someone.
+                Everything is owned by someone
             }
 
             \cite{ModernCppWhatYouNeedToKnow}
-
-        % =========================================================
-        % ==========                    &&               ==========
-        % =========================================================
-        \clearpage
-        \section{\&\&}   
 
         % =========================================================
         % ==========           MOVE SEMANTICS            ==========
@@ -2351,6 +2162,8 @@
         \clearpage
         \section{ \textCode{for (auto x : v)} vs \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
             
+
+
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2769,15 +2582,6 @@
     \bibitem{RandomReference_Refeence1} 
         https://www.quora.com/What-is-your-best-description-of-pointers-in-C-C++-programming
         \textit{Graham Cox, 2017}. 
-
-    \bibitem{CppFromBeginningToIntermidiate} 
-        https://www.quora.com/What-is-your-best-description-of-pointers-in-C-C++-programming
-        \textit{Graham Cox, 2017}. 
-
-    \bibitem{shaharmikeLambdas} 
-        https://shaharmike.com/cpp/lambdas-and-functions/
-
-        
 
 
 \end{thebibliography}
