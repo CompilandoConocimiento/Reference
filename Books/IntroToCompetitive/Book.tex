@@ -1556,8 +1556,12 @@
                         Por ejemplo:
                         \begin{lstlisting}[language=C++, gobble=28]
                             bool isSunny {true};
-                            if (isSunny === true) {
+                            if (isSunny == true) {
                                 cout << "Hey, time to go to outside" << endl;
+                            }
+
+                            if (isSunny) {
+                                cout << "Hey, it is the same but shorter syntax" << endl;
                             }
 
                             double pi {3.1416}, e {2.71828};
