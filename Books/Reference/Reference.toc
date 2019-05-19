@@ -1,0 +1,9 @@
+\babel@toc {english}{}
+\contentsline {part}{I\hspace {1em}Things to Learn / To Do}{2}{part.1}% 
+\contentsline {chapter}{\numberline {1}C++}{3}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Sieve of Eratosthenes}{3}{section.1.1}% 
+\contentsline {part}{II\hspace {1em}Number Theory}{4}{part.2}% 
+\contentsline {chapter}{\numberline {2}Primes}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Sieve of Eratosthenes}{5}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Get the Boolean Version}{5}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Get the Vector of Primes}{5}{subsection.2.1.2}% 

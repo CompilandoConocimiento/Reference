@@ -1,43 +1,46 @@
-/*====================================================================================================
-============================            SIEVE OF ERATOSTHENES            =============================
-====================================================================================================*/
-#include <vector>                                               //Include Libraries
-#include <cmath>                                                //Include Libraries
+#include <vector> 
 
 // *******   ERATOSTHENES SIEVE / IS PRIME IN O(1)   *******
 template<typename T>
-std::vector<bool> EratosthenesSieveIsPrime(T n) {               //To check if i is prime: Vector[i]
-    std::vector<bool> isPrime(n + 1, true);                     //Ok, first, allocate space 
-    isPrime[0] = isPrime[1] = false;                            //Now, 0 & 1(maybe) are not prime
+auto getIsPrime(T maxValue) -> std::vector<bool> {       
+    std::vector<bool> isPrime (maxValue + 1, true);         
+    isPrime[0] = isPrime[1] = false; 
 
-    for (T i = 4; i <= n; i += 2) isPrime[i] = false;           //Eliminate all the evens numbers
+    for (T i {4}; i <= maxValue; i += 2) isPrime[i] = false;
 
-    for (T i = 3; i * i <= n; i += 2)                           //For every odd number < √n  
-        if (isPrime[i])                                         //If we found a prime :0
-            for (T j = i * i; j <= n; j += 2 * i)               //ForEach multiple we have'nt check
-                isPrime[j] = false;                             //Each multiple is not prime
+    for (T i {3}; i * i <= maxValue; i += 2) {
+        if (not isPrime[i]) continue;    
 
-    return isPrime;                                             //Return the complete sieve
+        T multiple {i * i}, step {2 * i};
+        while (multiple <= maxValue) {
+            isPrime[multiple] = false; 
+            multiple += step;
+        }
+    }
+
+    return isPrime;                                
 }
 
 // *******   ERATOSTHENES SIEVE / VECTOR OF PRIMES   *******
 template<typename T>
-std::vector<T> EratosthenesSievePrimes(T n) {                   //Return a vector of only primes
-    std::vector<bool> isPrime(n + 1, true);                     //Create the origianl Sieve
-    std::vector<T> Primes{2};                                   //2 is a prime, dahhhhh!
+auto getPrimes(T maxValue) -> std::vector<T> {          
+    std::vector<bool> isPrime (maxValue + 1, true);                     
+    std::vector<T> primes {2};                                  
 
-    //isPrime[0] = isPrime[1] = false;                          //Uncomment if you want bool version
-    //for (T i = 4; i <= n; i += 2) isPrime[i] = false;         //Uncomment if you want bool version
+    // Just to do it if you need the bools too.                       
+    // isPrime[0] = isPrime[1] = false;                          
+    // for (T i = 4; i <= n; i += 2) isPrime[i] = false;         
 
-    for (T i = 3; i <= n; i += 2) {                             //For every odd number < √n
-        if (isPrime[i]) {                                       //If we still believe it's a prime
-            Primes.push_back(i);                                //Add it to the vector, it's a prime
-            
-            if (i * i <= n)                                     //It make sense to delete multiples?
-                for (T j = i * i; j <= n; j += 2 * i)           //ForEach multiple we have'nt check
-                    isPrime[j] = false;                         //Each multiple is not prime
-        }
+    for (T i {3}; i <= maxValue; i += 2) {   
+        if (not isPrime[i]) continue;    
+        primes.push_back(i);     
+
+        T multiple {i * i}, step {2 * i};
+        while (multiple <= maxValue) {
+            isPrime[multiple] = false; 
+            multiple += step;
+        }    
     }
 
-    return Primes;                                              //Return the vector of only primes
+    return primes;               
 }

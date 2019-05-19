@@ -452,7 +452,7 @@
         inputencoding       = utf8/latin1                           %Allow me to use special chars
     }
 
-    \lstset{style = CompilandoStyleSolarized}                          %Use this style
+    \lstset{style = CompilandoStyleSolarized}                       %Use this style
 
 
 
@@ -977,7 +977,7 @@
 
             Como sabes en programación, tu eres el que elige el nombre de las variables y aunque puede
             ser lo que quieras, como \textCode{x, y, someNumber, patata} intenta elegir nombres que expresen
-            lo que esta variable guardara.
+            lo que esta variable guardará.
 
             Bueno, \Cpp es un lenguaje de tipado estatico (static typing), es decir que todo momento el compilador,
             para poder transformar tu programa a algo que una computadora pueda entender, tiene
@@ -1488,6 +1488,30 @@
                         \begin{lstlisting}[language=C++, gobble=28]
                             bool IAmHappy = !IAmSad
                             bool IAmHappy = not IAmSad
+                        \end{lstlisting}
+
+                    \item Igualdad Lógica: 
+                    
+                        Se escribe así y solo el valor de verdad de ambos valores es igual.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            bool IAmHappy = IHaveLove == true
+                        \end{lstlisting}
+                    
+                    \item Desigualdad Lógica: 
+                    
+                        Se escribe así y solo el valor de verdad de ambos valores es diferente.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            bool IAmHappy = IHaveLove != true
+                            bool IAmHappy = IHaveLove not_eq true
+                        \end{lstlisting}
+
+                    \item XOR Lógico: 
+                    
+                        Se escribe así sigue las leyes clasicas del XOR: Es verdad si uno y solo uno de los operandos
+                        es verdad.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            int number = 0 ^ 111
+                            int number = 0 xor 121
                         \end{lstlisting}
                 \end{itemize}
 
