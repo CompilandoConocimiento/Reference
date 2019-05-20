@@ -1,7 +1,7 @@
 import { Configuration } from "webpack"
 
 const Configuration: Configuration = {
-  entry: "./Code/App/App.tsx",
+  entry: "./Code/App/App",
   output: {
     path: __dirname + "/Distribution/",
     publicPath: "Webpage/Distribution/",
@@ -18,27 +18,22 @@ const Configuration: Configuration = {
         use: "babel-loader",
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {},
-          },
-        ],
-      },
-      {
         test: /\.css$/,
         use: [
-          "style-loader",
+          { loader: 'style-loader' },
           {
-            loader: "typings-for-css-modules-loader?&namedExport&camelCase",
+            loader: "dts-css-modules-loader",
             options: {
-              modules: true,
-              camelCase: true,
               namedExport: true,
+            },
+          },
+          {
+            loader: "css-loader",
+            options: {
+              camelCase: true,
               localIdentName: "[name]_[local]_[hash:base64]",
               sourceMap: true,
-              minimize: true,
+              modules: true,
             },
           },
         ],

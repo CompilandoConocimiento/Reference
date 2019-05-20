@@ -9,7 +9,7 @@ import getCodeText from "./GetCodeText"
 import FAB, { FABElement } from "./FAB"
 import ConfigContext from "./ConfigContext"
 
-import * as Styles from "./Styles.module.css"
+import * as Styles from "./Styles.css"
 
 const linkToServer = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
 
