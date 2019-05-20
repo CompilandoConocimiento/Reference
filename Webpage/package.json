@@ -1,60 +1,63 @@
 {
-    "name": "reference",
-    "version": "0.2.0",
-    "description": "A page to a competitive programming refence",
-    "main": "Code/App/App.tsx",
-    "scripts": {
-        "build": "    webpack --progress -p --config webpack.config.ts",
-        "dev-build": "webpack --progress -d --config webpack.config.ts",
-        "watch": "    webpack --progress -d --config webpack.config.ts --watch",
-        "stats": "    webpack --profile     --config webpack.config.ts --json > stats.json"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/CompilandoConocimiento/Reference.git"
-    },
-    "keywords": [
-        "react",
-        "materializecss",
-        "personal"
-    ],
-    "author": "SoyOscarRH",
-    "license": "GPL-2.0-only",
-    "bugs": {
-        "url": "https://github.com/CompilandoConocimiento/Reference/issues"
-    },
-    "homepage": "https://compilandoconocimiento.github.io/Reference/",
-    "devDependencies": {
-        "@babel/core": "^7.4.4",
-        "@babel/plugin-proposal-class-properties": "^7.4.4",
-        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-        "@babel/plugin-syntax-typescript": "^7.3.3",
-        "@babel/preset-env": "^7.4.4",
-        "@babel/preset-react": "^7.0.0",
-        "@babel/preset-typescript": "^7.3.3",
-        "@types/materialize-css": "^1.0.6",
-        "@types/node": "^11.13.11",
-        "@types/react": "^16.8.17",
-        "@types/react-dom": "^16.8.4",
-        "@types/react-router-dom": "^4.3.3",
-        "@types/webpack": "^4.4.31",
-        "babel-loader": "^8.0.6",
-        "css-loader": "^1.0.1",
-        "eslint": "^5.16.0",
-        "eslint-config-prettier": "^4.3.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-react": "^7.13.0",
-        "prettier": "^1.17.1",
-        "style-loader": "^0.23.1",
-        "typescript": "^3.4.5",
-        "typings-for-css-modules-loader": "^1.7.0",
-        "webpack": "^4.31.0",
-        "webpack-cli": "^3.3.2"
-    },
-    "dependencies": {
-        "materialize-css": "^1.0.0",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-router-dom": "^5.0.0"
-    }
+  "name": "reference",
+  "version": "0.2.0",
+  "description": "A page to a competitive programming refence",
+  "main": "Code/App/App",
+  "scripts": {
+    "build": "webpack --progress -p --config webpack.config.ts",
+    "watch": "webpack --progress -d --config webpack.config.ts --watch",
+    "stats": "webpack --profile     --config webpack.config.ts --json > stats.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CompilandoConocimiento/Reference.git"
+  },
+  "keywords": [
+    "react",
+    "materializecss",
+    "personal",
+    "competitive programming"
+  ],
+  "author": "SoyOscarRH",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/CompilandoConocimiento/Reference/issues"
+  },
+  "homepage": "https://compilandoconocimiento.github.io/Reference/",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/materialize-css": "^1.0.6",
+    "@types/node": "^12.0.2",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/webpack": "^4.4.31",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "dts-css-modules-loader": "^1.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "prettier": "^1.17.1",
+    "style-loader": "^0.23.1",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import * as Styles from "./Styles.css"
+import * as Styles from "./Styles.module.css"
 
 export interface FABElement {
   color: string

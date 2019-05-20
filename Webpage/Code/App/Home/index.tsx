@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 
 import HelloCard from "./HelloCard"
 import CardToTopic from "./CardToTopic"
-import * as Style from "./Styles.css"
+import * as Style from "./Styles.module.css"
 
 import { IndexDataContext } from "../App"
 
