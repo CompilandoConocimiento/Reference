@@ -2220,71 +2220,129 @@
     \chapter{Cosas Avanzadas de \Cpp}
 
         % =========================================================
-        % =====          lvalues vs rvalues               =========
+        % ==========         VERDADEROS ARRAYS           ==========
         % =========================================================
-        \section{lvalues vs rvalues}
+        \clearpage
+        \section{Si quieres un programa rápido: Verdaderos arrays}  
 
-            En \Cpp todas las cosas pueden clasificarse de dos manera como:
-            \begin{itemize}
-                \item \textCode{lvalues}: 
-                
-                    Son cosas que hacen referencia, en el sentido mas general de la palabra,
-                    a una localización en memoria.
-
-                    Otra forma de verlo es que algo que es un \textCode{lvalue} si y solo si 
-                    puedes sacarle la dirección de memoria con (el operador \textCode{\&}).
-
-                    En nombre venia originalmente de que podiamos ver los \textCode{lvalues} como cualquier cosa
-                    que podriamos poner a a izquierda de una asignación.
-
-                    Por ejemplo:
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        int days = 10;                  // days is an lvalue
-                        int& referenceToDays = days;    // referenceToDays is an lvalue
-                        widget x {};                    // x is an lvalue
-                    \end{lstlisting}
-
-
-                \item rvalues:
-                
-                    Son todas las cosas que no tienen una dirección en memoria, generalmente visto como temporales o 
-                    constantes.
-
-                    Por ejemplo:
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        int days = 10;                  // 10 is an rvalue
-                        int& referenceToDays = days;    // here days is an rvalue
-                        widget x = widget {};           // widget {} is an rvalue
-                    \end{lstlisting}
-
-                
-
-
-            \end{itemize}
 
         % =========================================================
-        % =====                       ENUMS               =========
+        % ============    &, && y move semantics     ==============
         % =========================================================
-        \section{Enums}
+        \clearpage
+        \section{\&, \&\& y move semantics}
 
+            % ============================================
+            % =====    lvalues vs rvalues          =======
+            % ============================================
+            \subsection{lvalues vs rvalues}
+
+                En \Cpp todas las cosas pueden clasificarse de dos manera como:
+                \begin{itemize}
+                    \item \textCode{lvalues}: 
+                    
+                        Son cosas que hacen referencia, en el sentido mas general de la palabra,
+                        a una localización en memoria.
+
+                        Otra forma de verlo es que algo que es un \textCode{lvalue} si y solo si 
+                        puedes sacarle la dirección de memoria con (el operador \textCode{\&}).
+
+                        En nombre venia originalmente de que podiamos ver los \textCode{lvalues} 
+                        como cualquier cosa que podriamos poner a a izquierda de una asignación.
+
+                        Por ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=24]
+                            int days = 10;                  // days is an lvalue
+                            int& referenceToDays = days;    // referenceToDays is an lvalue
+                            widget x {};                    // x is an lvalue
+                        \end{lstlisting}
+
+                    \item rvalues:
+                    
+                        Son todas las cosas que no tienen una dirección en memoria, generalmente visto 
+                        como temporales o constantes.
+
+                        Por ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=24]
+                            int days = 10;                  // 10 is an rvalue
+                            int& referenceToDays = days;    // here days is an rvalue
+                            widget x = widget {};           // widget {} is an rvalue
+                        \end{lstlisting}
+
+                \end{itemize}
+        
+            % ============================================
+            % ==========           &&           ==========
+            % ============================================
+            \clearpage
+            \subsection{\&\&}   
+
+            % ============================================
+            % ==========    MOVE SEMANTICS       =========
+            % ============================================
+            \clearpage
+            \subsection{Move Semantics: Semanticas de Movimiento}     
+            
+                En los viejos tiempo de \Cpp (y una de las razones por las que mucha gente cree que 
+                el lenguaje es muy complejo) es porque la gente se preguntaba lo siguiente:
+
+                \textit{Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
+                entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
+                    que a veces pueden ser enorme como una colección por ejemplo
+                ) temporales y luego copiando toda su información, eso suena a algo muy costoso}
+
+                Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics
+                y esto es la idea de que si tienes una cosa muy compleja o muy enorme y tu la mueves
+                (como por ejemplo los valores que te regresa una función) entonces \Cpp no simplemente 
+                la copia toda completa sino que toma ownership o responsabilidad de sus entrañas
+                (generalmente asignando un par de punteros) y deja ir al otro (ahora vacío) objecto listo para
+                desaparecer.
+
+                \cite{ModernCppWhatYouNeedToKnow}
+
+
+            % ============================================
+            % ==========          &&            ==========
+            % ============================================
+            \clearpage
+            \subsection{auto vs auto\& vs auto\&\&} 
+
+            % ============================================
+            % ========   RANGE FOR STRANGE      ==========
+            % ============================================
+            \clearpage
+            \subsection{ \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
+                
 
         % =========================================================
         % ===================       CLASES      ===================
         % =========================================================
-
         \clearpage
         \section{Tipos de datos definidos por nosotros}
+
+
+            % ============================================
+            % =====            ENUMS             =========
+            % ============================================
+            \subsection{Enums}
+
 
         % =========================================================
         % =====                     CONST                 =========
         % =========================================================
-        \section{const}
+        \section{const \& constexpr}
 
-        % =========================================================
-        % =====                  CONSTEXPR                =========
-        % =========================================================
-        \section{constexpr}
-        
+            % ============================================
+            % =====            CONST             =========
+            % ============================================
+            \subsection{const}
+
+            % ============================================
+            % =====            CONSTEXPR         =========
+            % ============================================
+            \subsection{constexpr}
+
+
         % =========================================================
         % =====            POINTERS: APUNTADORES          =========
         % =========================================================
@@ -2308,8 +2366,8 @@
             \end{lstlisting}
 
             Los punteros son variables capaces y diseñadas para guardar y manipular dichas direcciones.
-            Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el mismo espacio en memoria
-            por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
+            Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el 
+            mismo espacio en memoria por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
             \begin{lstlisting}[language=C++, gobble=16]
                 int someNumber {3};
                 int* somePointerToAnInt = &someNumber;
@@ -2320,31 +2378,6 @@
                 double someDecimal {2.123};
                 double* somePointerToAnDouble = &someDecimal;
             \end{lstlisting}
-
-            Ahora, ¿Porqué deberia importarme esto?
-
-            Veamos esta función:
-            \begin{lstlisting}[language=C++, gobble=16]
-                void doubleIt(int number) {
-                    number = 2 * number;
-                }
-            \end{lstlisting}
-
-            Ahora si hago algo como esto:
-            \begin{lstlisting}[language=C++, gobble=16]
-                int number = 1;
-                cout << number << endl;       // prints 0
-                doubleIt(number);
-                cout << number << endl;       // prints 0 :c
-            \end{lstlisting}
-
-            ¿Como puedo expresar la idea de que quiero crear uan función que no copie mi variable sino
-            que trabaje sobre la misma variable, que quiero editar la verdadera variable, esto se
-            hace por dos cosas:
-            \begin{itemize}
-                \item Para poder hacer una 
-            \end{itemize}
-
 
 
         % =========================================================
@@ -2398,53 +2431,6 @@
 
             \cite{ModernCppWhatYouNeedToKnow}
 
-        % =========================================================
-        % ==========                    &&               ==========
-        % =========================================================
-        \clearpage
-        \section{\&\&}   
-
-        % =========================================================
-        % ==========                    &&               ==========
-        % =========================================================
-        \clearpage
-        \section{auot vs auto\& vs auto\&\&} 
-
-        % =========================================================
-        % ==========           MOVE SEMANTICS            ==========
-        % =========================================================
-        \clearpage
-        \section{Move Semantics: Semanticas de Movimiento}     
-        
-            En los viejos tiempo de \Cpp (y una de las razones por las que mucha gente cree que 
-            el lenguaje es muy complejo) es porque la gente se preguntaba lo siguiente:
-
-            \textit{Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
-            entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
-                que a veces pueden ser enorme como una colección por ejemplo
-            ) temporales y luego copiando toda su información, eso suena a algo muy costoso}
-
-            Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics
-            y esto es la idea de que si tienes una cosa muy compleja o muy enorme y tu la mueves
-            (como por ejemplo los valores que te regresa una función) entonces \Cpp no simplemente 
-            la copia toda completa sino que toma ownership o responsabilidad de sus entrañas
-            (generalmente asignando un par de punteros) y deja ir al otro (ahora vacío) objecto listo para
-            desaparecer.
-
-            \cite{ModernCppWhatYouNeedToKnow}
-
-        % =========================================================
-        % ==========         VERDADEROS ARRAYS           ==========
-        % =========================================================
-        \clearpage
-        \section{Si quieres un programa rápido: Verdaderos arrays}  
-
-        % =========================================================
-        % ==========         RANGE FOR STRANGE           ==========
-        % =========================================================
-        \clearpage
-        \section{ \textCode{for (auto x : v)} vs \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
-            
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
