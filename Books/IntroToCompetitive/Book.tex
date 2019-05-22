@@ -2070,7 +2070,8 @@
                         \end{itemize}
 
                         
-                    \item \textCode{parameter list} funciona igual que una lista de parametros 
+                    \item \textCode{parameter list} funciona igual que una lista de parámetro por una referencia normal
+                    lo que estamos haciendo es una promesa, prometemos que quien haya llamado a  
                         de una función.
                 \end{itemize}
 
@@ -2079,8 +2080,6 @@
                     std::sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
                 \end{lstlisting}
                 
-                \clearpage
-
                 Veamos otro ejemplo:
                 \begin{lstlisting}[language=C++, gobble=20]
                     int var = 1;
@@ -2118,7 +2117,6 @@
                 % ============================================
                 % ====    LAMBDAS COMO FUNCTORS     ==========
                 % ============================================
-                \clearpage
                 \subsubsection{Lambdas como functors / classes}
                 
                     Puedes pensar en las lambdas como en clases, y no te preocupes si no entiendes
@@ -2227,6 +2225,87 @@
 
 
         % =========================================================
+        % =====                     CONST                 =========
+        % =========================================================
+        \clearpage
+        \section{const \& constexpr}
+
+            % ============================================
+            % =====            CONST             =========
+            % ============================================
+            \subsection{const}
+
+                Que algo sea \textCode{const} es una forma de expresar en nuestro código que
+                algo no se puede cambiar.
+                
+                Dependiendo de donde se ponga significará una cosa u otra:
+                \begin{itemize}
+                    \item const variable
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            const int days {10};
+                            days = 20;              // Illegal: days cannot change
+                        \end{lstlisting}
+
+                    \item const reference
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            struct point {int x, y};
+        
+                            point p1 {1, 2};
+                            const point& p2 {p1};
+                            p1.x = 20;                    // Illegal: point cannot change
+                        \end{lstlisting}
+
+                    \item const pointer
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            struct point {int x, y};
+
+                            point p1 {1, 2}, p2 {2, 3};
+                            point* const p3 {&p1};
+
+                            p3 = &p2;                   // Illegal: p3 cannot change
+                        \end{lstlisting}
+
+                    \item pointer to const
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            struct point {int x, y};
+
+                            const point p1 {1, 2}, p2 {2, 3};
+                            const point* p3 {&p1};
+                            
+                            p3 = &p2;                   // Ok
+                            p3.x = 30;                  //Illegal: p3 cannot change
+                        \end{lstlisting}
+
+                    \clearpage
+                    \item const method
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            struct point {
+                                int x, y;
+
+                                // Ok print do not change anything
+                                auto print() const {                   
+                                    cout << x << ", " << y << endl;
+                                }
+
+                                // Illegal: print change something, so no const
+                                auto print2() const { 
+                                    x = 20;                  
+                                    cout << x << ", " << y << endl;
+                                }
+                            };
+                        \end{lstlisting}
+
+                \end{itemize}
+               
+               
+
+            % ============================================
+            % =====            CONSTEXPR         =========
+            % ============================================
+            \subsection{constexpr}
+
+
+        % =========================================================
         % ============    &, && y move semantics     ==============
         % =========================================================
         \clearpage
@@ -2251,31 +2330,167 @@
                         como cualquier cosa que podriamos poner a a izquierda de una asignación.
 
                         Por ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=24]
-                            int days = 10;                  // days is an lvalue
-                            int& referenceToDays = days;    // referenceToDays is an lvalue
-                            widget x {};                    // x is an lvalue
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            int days = 10;                  // days: lvalue
+                            int& referenceToDays = days;    // referenceToDays: lvalue
+                            const Widget x {};              // x: lvalue
+                            Widget* button = new Widget{};  // button: lvalue
                         \end{lstlisting}
 
-                    \item rvalues:
+                    \item \textCode{rvalues}:
                     
                         Son todas las cosas que no tienen una dirección en memoria, generalmente visto 
                         como temporales o constantes.
 
                         Por ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=24]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             int days = 10;                  // 10 is an rvalue
                             int& referenceToDays = days;    // here days is an rvalue
                             widget x = widget {};           // widget {} is an rvalue
                         \end{lstlisting}
 
                 \end{itemize}
-        
+
+                \cite{CppFromBeginningToIntermidiate}
+
+                Con esto encima podemos ver como es que podemos pasar parámetro por una referencia normal
+                lo que estamos haciendo es una promesa, prometemos que quien haya llamado a  a una función
+                y las diferencias entre estos:
+
+                La primera forma sería pasar con valor.
+
+                Por ejemplo, dada la función
+                \begin{lstlisting}[language=C++, gobble=20]
+                    void func(Widget pb);
+                    Widget x;
+
+                    func(x);                //call with an lvalue: valid :)
+                    func(Widget {});        //call with an rvalue: valid :)
+                \end{lstlisting}
+
+
             % ============================================
-            % ==========           &&           ==========
+            % =======     LVALUE REFERENCE        ========
+            % ============================================
+            \subsection{lvalue references} 
+
+                Las que habiamos son formalmente conocidas como lvalue references y 
+                podemos ver un ejemplo de ellas aquí:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    void func(Widget& pb);
+                    Widget x;
+
+                    func(x);                //call with an lvalue: valid :)
+                    func(Widget {});        //call with an rvalue: ERROR :(
+                \end{lstlisting}
+
+                Esto no es válido porque cuando aceptamos un parámetro por una referencia normal
+                lo que estamos haciendo es una promesa, prometemos que quien haya llamado a 
+                \textCode{func}
+                podrá ver los cambios que realiza la función.
+
+                Pero al llamarla con un temporal es imposible ver los cambios que realiza, 
+                por eso no es válido.
+
+                Este tipo de referencias estan diciendonos que podemos modificar la información
+                que entre a la función y que la persona que llamó a la función podrá ver los cambios.
+            
+            % ============================================
+            % =======    CONST RVALUE REFERENCE   ========
+            % ============================================
+            \subsection{const lvalue references}  
+            
+                Podemos también usar este tipo de referencias y ve como soluciona el problema:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    void func(const Widget& pb);
+                    Widget x;
+
+                    func(x);                //call with an lvalue: valid :)
+                    func(Widget {});        //call with an rvalue: valid :)
+                \end{lstlisting}
+
+                Esto no es válido porque cuando aceptamos un parámetro por una referencia constante
+                estamos haciendo una promesa, pero una diferente, decimos que necesitamos la información
+                del objeto real, que no necesitamos una copia, pero que no vamos a realizar cambios, por
+                lo tanto como no estamos prometiendo que la persona que llame a \textCode{func}
+                pueda ver cambios (porque no habrá) entonces no hay problema con los temporales.
+
+                Este tipo de referencias estan diciendonos que NO podemos modificar la información
+                que entre a la función y que por lo tanto da lo mismo si la persona que 
+                llamó a la función puede o no ver los cambios.
+            
+            % ============================================
+            % =======     RVALUE REFERENCE        ========
+            % ============================================
+            \subsection{rvalue references}   
+
+                Podemos también ver que existe este otro tipo de referencias, estas
+                no se unen a variables, es decir a \textCode{lvalues}, sino a  \textCode{rvalues}
+                es decir se une a temporales. 
+
+                Este tipo de referencias son especiales porque solo se pueden hacer a temporales.
+                Veamos como sigue el ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    void func(Widget&& pb);
+                    Widget x;
+
+                    func(x);                //call with an lvalue: ERROR :(
+                    func(Widget {});        //call with an rvalue: valid :)
+                \end{lstlisting}
+
+                La promesa con este tipo de refencias es que tendremos el objecto real, no copias
+                pero que quien llame a la función no podrá ver los cambios que hemos hecho.
+
+                Este tipo de referencias estan diciendonos que podemos modificar la información
+                que entre a la función, pero que la persona que llamó a la función no podrá.
+
+                \cite{CppFromBeginningToIntermidiate}
+
+                Otro ejemplo de estas referencias podría ser esto:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int add( int a, int b) { return a + b; }
+ 
+                    int result   = add(4, 5);        //Ok :)
+                    int& result2 = add(4, 5);        //No Ok :(
+                \end{lstlisting}
+                
+                El error con el siguiente código es que \textCode{result2} es una
+                referencia y no tiene a que unirse porque el resultado de \textCode{add(4, 5)}
+                es un temporal, por lo tanto da un error; para eso estan estas nuevas referencias.
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int add( int a, int b) { return a + b; }
+ 
+                    int result    = add(4, 5);        //Ok :)
+                    int&& result2 = add(4, 5);        //Ok :)
+                \end{lstlisting}
+                
+                Algo interesante es que estas referencias no son constantes, 
+                es decir podemos hacer algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int add( int a, int b) { return a + b; }
+ 
+                    int&& result = add(4, 5);                //Ok :)
+                    // address of result: 0x7ffe79121f8c
+                    
+                    result = add(5, 7);                      //Ok :)
+                    // address of result: 0x7ffe79121f8c
+                \end{lstlisting}
+
+                \cite{rvalue2}
+                
+            % ============================================
+            % ==========          &&            ==========
             % ============================================
             \clearpage
-            \subsection{\&\&}   
+            \subsection{auto vs auto\& vs auto\&\&} 
+
+            % ============================================
+            % ========   RANGE FOR STRANGE      ==========
+            % ============================================
+            \clearpage
+            \subsection{ \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
+
 
             % ============================================
             % ==========    MOVE SEMANTICS       =========
@@ -2301,17 +2516,7 @@
                 \cite{ModernCppWhatYouNeedToKnow}
 
 
-            % ============================================
-            % ==========          &&            ==========
-            % ============================================
-            \clearpage
-            \subsection{auto vs auto\& vs auto\&\&} 
-
-            % ============================================
-            % ========   RANGE FOR STRANGE      ==========
-            % ============================================
-            \clearpage
-            \subsection{ \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
+           
                 
 
         % =========================================================
@@ -2326,22 +2531,13 @@
             % ============================================
             \subsection{Enums}
 
-
-        % =========================================================
-        % =====                     CONST                 =========
-        % =========================================================
-        \section{const \& constexpr}
-
             % ============================================
-            % =====            CONST             =========
+            % =====       CLASS & STRUCTS        =========
             % ============================================
-            \subsection{const}
+            \subsection{class \& structs}
 
-            % ============================================
-            % =====            CONSTEXPR         =========
-            % ============================================
-            \subsection{constexpr}
 
+        
 
         % =========================================================
         % =====            POINTERS: APUNTADORES          =========
@@ -2843,16 +3039,23 @@
 
 
     \bibitem{ModernCppWhatYouNeedToKnow} 
-        Build Conference: Modern C++ what you need to know
+        Build Conference: Modern C++ what you need to know,
         \textit{Herb Sutter, 2014}. 
 
     \bibitem{RandomReference_Refeence1} 
         https://www.quora.com/What-is-your-best-description-of-pointers-in-C-C++-programming
+
         \textit{Graham Cox, 2017}. 
 
     \bibitem{CppFromBeginningToIntermidiate} 
-        https://www.quora.com/What-is-your-best-description-of-pointers-in-C-C++-programming
-        \textit{Graham Cox, 2017}. 
+        https://www.youtube.com/channel/UC-lNlWEq0kpMcThO-I81ZdQ
+
+        \textit{CopperSpice, 2019}. 
+
+    \bibitem{rvalue2} 
+        https://www.quora.com/What-are-some-practical-use-cases-of-rvalue-references-in-C++
+
+        \textit{Chris Reid, 2010}. 
 
     \bibitem{shaharmikeLambdas} 
         https://shaharmike.com/cpp/lambdas-and-functions/
