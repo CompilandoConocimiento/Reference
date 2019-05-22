@@ -2,9 +2,12 @@
 #include <vector>
 using namespace std;
 
+auto print = [](const int& x) { cout << x << endl; };
 int main() {
-    vector<int> v {1, 2, 3, 4, 12, 121212, 23, 2, -3};
-    std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
-    for_each(v.begin(), v.end(), [](int a) { cout << a << endl; });
+    vector <int > numbers {1 , 2 , 3 , 4};
+    for ( int & number : numbers ) {
+        number *= 3;
+    }
+    for_each(numbers.begin(), numbers.end(), print);
     return 0;
 }

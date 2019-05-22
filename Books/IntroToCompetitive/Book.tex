@@ -973,11 +973,11 @@
 
             En \Cpp una variable es un fragmento de memoria que almacena algun valor, 
             podemos tener variables que almacen lo que nosotros entenderemos, como números enteros
-            o que almacenen cadenas o que almacenen una secuencia de racionales etc...
+            o que almacenen cadenas o que almacenen una secuencia de racionales, etc...
 
             Como sabes en programación, tu eres el que elige el nombre de las variables y aunque puede
             ser lo que quieras, como \textCode{x, y, someNumber, patata} intenta elegir nombres que expresen
-            lo que esta variable guardará.
+            lo que esta variable guardará como por ejemplo \textCode{numberOfDays, sizeOfSquare, words}. 
 
             Bueno, \Cpp es un lenguaje de tipado estatico (static typing), es decir que todo momento el compilador,
             para poder transformar tu programa a algo que una computadora pueda entender, tiene
@@ -999,13 +999,13 @@
                     //Examples
                     int numberOfDays;
                     float pi;
-                    bool IWantHelp;
+                    bool isClosed;
                 \end{lstlisting}
 
                 Ahora, algo importante en \Cpp es que declarar una variable no la inicializa, 
                 es decir, que al decir \textCode{int numberOfDays} nunca le estoy dando un valor a
                 esa variable, por lo que ahora mismo la información que este guardada ahi es un misterio,
-                es como si comprarás una bodega, solo por decir que es tuya no quiere decir que ahora este
+                es como si comprarás una bodega; solo por decir que es tuya no quiere decir que ahora este
                 vacía.
 
                 Por eso es tan poco común ver en la programación competitiva (y en la programación en general)
@@ -1056,7 +1056,7 @@
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber = 20;        //someNumber is int
                         auto someText = "Hi baby";   //someText is const char* (this is sad)
-                        auto myLoveForYou;           //This will fail
+                        auto myLoveForYou;           //This will not compile :v
                     \end{lstlisting}
 
                     Nota que para que puedas usar \textCode{auto} el compilador tiene que saber que tipo
@@ -1089,9 +1089,10 @@
 
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber {20};   
-                        auto someText {"Hi baby"};
+                        string someText {"Hi baby"};
                         // this call a someClass constructor
                         someClass object {"some parameter", someNumber};
+                        vector<int> numbers {1, 2, 3, 4, 5, 6};
                     \end{lstlisting}
 
 
@@ -1377,7 +1378,7 @@
                             int a {1};
                             int b {a++};    // b is 1
                         \end{lstlisting}
-                    \item \textCode{a--} es lo mismo que \textCode{a = a - 1} y con las mismas reglas que \textCode{a++}
+                    \item \textCode{a---} es lo mismo que \textCode{a = a - 1} y con las mismas reglas que \textCode{a++}
                     \item \textCode{++a} es lo mismo que \textCode{a = a + 1}, ademas 
                         decimos que es una expresión regresa a \textCode{a} después de hacer la suma.
                         \begin{lstlisting}[language=C++, gobble=28]
@@ -1457,6 +1458,7 @@
             % ============================================
             % =====       OPERADORES LOGICOS        ======
             % ============================================
+            \clearpage
             \subsection{Operadores Lógicos}
 
                 En \Cpp tenemos varios operadores lógicos que tomaran como argumentos dos 
@@ -1518,6 +1520,11 @@
             También existen los operadores lógicos que se aplican bit a bit, estos no son tan comunes
             pero los veremos en otro capítulo.
 
+            % ============================================
+            % =====       OPERADORES LOGICOS        ======
+            % ============================================
+            \clearpage
+            \subsection{Bitwise and Bitmasks: Operaciones bit a bit y máscaras de bits}
 
         % =========================================================
         % ==========        SENTENCIAS DE CONTROL        ==========
@@ -1748,6 +1755,17 @@
                     }
                 \end{lstlisting}
 
+                Tambien sirve si es que quieres alterar los elementos del contenedor:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    vector<int> numbers {1, 2, 3, 4};
+
+                    for (int& number : numbers) {
+                        number *= 3;
+                    }
+
+                    // Now numbers is [3, 6, 9, 12]
+                \end{lstlisting}
+
                 Y si, hablaremos sobre referencias y \textCode{auto\&\&} más a detalle pronto.
 
         
@@ -1776,7 +1794,6 @@
             % ============================================
             % =====    REFERENCIAS: REFERENCIAS     ======
             % ============================================
-            clearpage
             \subsection{References: Referencias}
 
                 Las referencias solo son otro nombre para una variable, es como un alias.
@@ -1797,10 +1814,10 @@
                     int& referenceToNumber {number};
                 \end{lstlisting}
 
-                Ahora, una variable de tipo referencia esta unida desde el momento en el que se crea a otra.
+                \textbf{Ahora, una variable de tipo referencia esta unida desde el momento en el que se crea a otra.
                 No puedes hacer que una variable de tipo referencia ahora haga referencia a otra variable después
                 de ser creada, además una referencia siempre tiene que referir a una variable, no puede referir a
-                la nada.
+                la nada.}
 
                 \clearpage
 
@@ -1843,16 +1860,15 @@
                             cout << the_number << endl;       // prints 3 :)
                         \end{lstlisting}
 
-                    \clearpage
-                    \item Evitar generar copias a lo estupido:
+                    \item Evitar generar copias a lo estúpido:
                     
                         Encontre este texto en internet y no pude evitar compartirlo:
 
                         \Quote{
-                            \emph{You live in a house on a street in a town somewhere. 
+                            \textCode{You live in a house on a street in a town somewhere. 
                             I want to visit you to give you something.}
 
-                            \emph{I have two choices - you can tell me your address, 
+                            \textCode{I have two choices - you can tell me your address, 
                             and I’ll come to you, or you can bring your house on
                             the back of a huge truck to me. One of these is obviously ridiculous.}
                         }
@@ -1860,10 +1876,10 @@
                         O en español:
 
                         \Quote{
-                            \emph{Tu vives es una casa, en una calle cualquiera en algún pueblo.
+                            \textCode{Tu vives es una casa, en una calle cualquiera en algún pueblo.
                             Supón que te quiero visitar para darte algo.}
 
-                            \emph{Tienes dos opciones - me puedes decir tu dirección y yo ire contigo o
+                            \textCode{Tienes dos opciones - me puedes decir tu dirección y yo ire contigo o
                             puedes traer tu casa en un camión enorme hasta mi.
                             Una de ellas es obviamente ridícula.}
                         }
@@ -1932,8 +1948,8 @@
 
                         Entonces el compilador se va a enojar con nosotros si es que escribimos algo como:
                         \begin{lstlisting}[language=C++, gobble=28]
-                            int result = foo2(NULL, NULL);       // Compile Error
-                            int result {foo2(nullptr, nullptr)}; // Compile Error
+                            int result = foo2(NULL, NULL);         // Compile Error
+                            int result {foo2(nullptr, nullptr)};   // Compile Error
                         \end{lstlisting}
                     
                     \item El código con referencias es mucho mas sencillo que con los punteros:
@@ -1977,6 +1993,7 @@
         % =========================================================
         % ==========             FUNCIONES               ==========
         % =========================================================
+        \clearpage
         \section{Funciones}
 
             Una función es un conjunto de instrucciones (statements) que podemos llamar desde cualquier
@@ -2048,8 +2065,8 @@
                         \begin{itemize}
                             \item valor con: \textCode{ [=](...) \{ body \}}
                             \item referencia con: \textCode{ [\&](...) \{ body \}}
-                            \item mezcla  por ejemplo: \textCode{ [\&, i](...) \{ body \}}i que es por valor. 
-                                para decir todo por referencia, excepto 
+                            \item mezcla  por ejemplo: \textCode{ [\&, i](...) \{ body \}} 
+                            \; para decir todo por referencia, excepto i que es por valor. 
                         \end{itemize}
 
                         
@@ -2094,7 +2111,7 @@
                 sino que pueden ser asignadas a una, pero en el fondo son syntactic sugar para objectos,
                 functors.
 
-                Además su rendimiento es muy bueno, porque al se objecto el compilador puede optimizar
+                Además su rendimiento es muy bueno, porque al ser objectos el compilador puede optimizar
                 muchas veces mas el código que si hubieramos usado una función de toda la vida.
 
 
@@ -2201,6 +2218,49 @@
     % ===============================================================================
     \clearpage
     \chapter{Cosas Avanzadas de \Cpp}
+
+        % =========================================================
+        % =====          lvalues vs rvalues               =========
+        % =========================================================
+        \section{lvalues vs rvalues}
+
+            En \Cpp todas las cosas pueden clasificarse de dos manera como:
+            \begin{itemize}
+                \item \textCode{lvalues}: 
+                
+                    Son cosas que hacen referencia, en el sentido mas general de la palabra,
+                    a una localización en memoria.
+
+                    Otra forma de verlo es que algo que es un \textCode{lvalue} si y solo si 
+                    puedes sacarle la dirección de memoria con (el operador \textCode{\&}).
+
+                    En nombre venia originalmente de que podiamos ver los \textCode{lvalues} como cualquier cosa
+                    que podriamos poner a a izquierda de una asignación.
+
+                    Por ejemplo:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        int days = 10;                  // days is an lvalue
+                        int& referenceToDays = days;    // referenceToDays is an lvalue
+                        widget x {};                    // x is an lvalue
+                    \end{lstlisting}
+
+
+                \item rvalues:
+                
+                    Son todas las cosas que no tienen una dirección en memoria, generalmente visto como temporales o 
+                    constantes.
+
+                    Por ejemplo:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        int days = 10;                  // 10 is an rvalue
+                        int& referenceToDays = days;    // here days is an rvalue
+                        widget x = widget {};           // widget {} is an rvalue
+                    \end{lstlisting}
+
+                
+
+
+            \end{itemize}
 
         % =========================================================
         % =====                       ENUMS               =========
@@ -2343,6 +2403,12 @@
         % =========================================================
         \clearpage
         \section{\&\&}   
+
+        % =========================================================
+        % ==========                    &&               ==========
+        % =========================================================
+        \clearpage
+        \section{auot vs auto\& vs auto\&\&} 
 
         % =========================================================
         % ==========           MOVE SEMANTICS            ==========
