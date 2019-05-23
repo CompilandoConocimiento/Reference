@@ -75,10 +75,11 @@
 \contentsline {subsection}{\numberline {6.3.1}lvalues vs rvalues}{53}{subsection.6.3.1}% 
 \contentsline {subsection}{\numberline {6.3.2}lvalue references}{54}{subsection.6.3.2}% 
 \contentsline {subsection}{\numberline {6.3.3}const lvalue references}{54}{subsection.6.3.3}% 
-\contentsline {subsection}{\numberline {6.3.4}rvalue references}{54}{subsection.6.3.4}% 
-\contentsline {subsection}{\numberline {6.3.5}auto vs auto\& vs auto\&\&}{56}{subsection.6.3.5}% 
-\contentsline {subsection}{\numberline {6.3.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{57}{subsection.6.3.6}% 
-\contentsline {subsection}{\numberline {6.3.7}Move Semantics: Semanticas de Movimiento}{58}{subsection.6.3.7}% 
+\contentsline {subsection}{\numberline {6.3.4}rvalue references}{55}{subsection.6.3.4}% 
+\contentsline {subsection}{\numberline {6.3.5}Universal References / Fowarding References}{56}{subsection.6.3.5}% 
+\contentsline {subsection}{\numberline {6.3.6}auto vs auto\& vs auto\&\&}{56}{subsection.6.3.6}% 
+\contentsline {subsection}{\numberline {6.3.7} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{57}{subsection.6.3.7}% 
+\contentsline {subsection}{\numberline {6.3.8}Move Semantics: Semanticas de Movimiento}{58}{subsection.6.3.8}% 
 \contentsline {section}{\numberline {6.4}Tipos de datos definidos por nosotros}{59}{section.6.4}% 
 \contentsline {subsection}{\numberline {6.4.1}Enums}{59}{subsection.6.4.1}% 
 \contentsline {subsection}{\numberline {6.4.2}class \& structs}{59}{subsection.6.4.2}% 

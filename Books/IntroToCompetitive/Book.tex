@@ -2422,6 +2422,7 @@
             % ============================================
             % =======     RVALUE REFERENCE        ========
             % ============================================
+            \clearpage
             \subsection{rvalue references}   
 
                 Podemos también ver que existe este otro tipo de referencias, estas
@@ -2459,7 +2460,7 @@
                 es un temporal, por lo tanto da un error; para eso estan estas nuevas referencias.
 
                 \begin{lstlisting}[language=C++, gobble=20]
-                    int add( int a, int b) { return a + b; }
+                    int add(int a, int b) { return a + b; }
  
                     int result    = add(4, 5);        //Ok :)
                     int&& result2 = add(4, 5);        //Ok :)
@@ -2478,18 +2479,104 @@
                 \end{lstlisting}
 
                 \cite{rvalue2}
+
+            % ============================================
+            % =========    UNIVERSAL REFERENCES    =======
+            % ============================================
+            \subsection{Universal References / Fowarding References} 
+                
+                Estas dos funciones parecen hacer casi lo mismo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    void foo(int&& i);
+ 
+                    template <typename T>
+                    void bar(T&& i);
+                \end{lstlisting}
+
+                Pero estan haciendo cosas algo diferentes, porque pasa esto:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int number {};
+
+                    foo(3);                 //Ok called with an rvalue
+                    foo(number);            //Error: called with an lvalue
+
+                    bar(3);                 //Ok called with an rvalue
+                    bar(number);            //Ok ... wait WTF
+                \end{lstlisting}
+
+                La cosa esta en que \textCode{T\&\&} es un tipo especial de referencia que se puede
+                unir tanto a \textCode{rvalues} como a \textCode{lvalues}.
+                
+                Este tipo de refencias solo existen dentro de \textCode{templates} o usando
+                \textCode{auto\&\&}.
                 
             % ============================================
             % ==========          &&            ==========
             % ============================================
-            \clearpage
             \subsection{auto vs auto\& vs auto\&\&} 
 
+                A pesar de que las referencias son solo otro tipo de dato usar \textCode{auto}
+                puede traer sorpresas si no recuedas bien como funciona:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int numberOfDays {10};
+                    auto& ref1 {numberOfDays};   // ref is an int&
+                    auto&& ref2 {5};             // ref is an int&&
+                    auto&& ref3 {numberOfDays};  // ref is an int&
+                \end{lstlisting}
+
+     
             % ============================================
             % ========   RANGE FOR STRANGE      ==========
             % ============================================
             \clearpage
-            \subsection{ \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} }  
+            \subsection{ \textCode{for (auto\& x : v)} vs \textCode{for (auto\&\& x : v)} } 
+            
+                Supongamos que tenemos algunos contenedores como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    vector<int> numbers {1, 2, 3, 4, 5};
+                    vector<bool> flags {true, true, false, true, true, false};
+                    vector<int> words {"hello", "world", ":D"};
+                \end{lstlisting}
+
+                Entonces hacer algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    for (auto num : numbers) {
+                        cout << num << endl;        // Will work [1, 2, 3, 4, 5]
+                    }
+                \end{lstlisting}
+
+                Ahora, esto es bastante ineficiente porque en cada paso estamos haciendo copias
+                por lo que si solo queremos mirar a la información que esta dentro entonces podemos hacer
+                algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    for (const auto& word : words) {
+                        cout << word << endl;    // Will work ["hello", "world", ":D"]
+                    }
+                \end{lstlisting}
+
+                Si queremos editar estos entonces podemos simplemente quitar el \textCode{const}:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    for (auto& num : numbers) {
+                        num += 1;      
+                    }
+                    // Will work [2, 3, 4, 5, 6]
+                \end{lstlisting}
+
+                El único problema son algo llamado los \textCode{proxy-iterators} 
+                (como por ejemplo en un \textCode{vector<bool>}), por lo tanto
+                si quiere evitar problemas podemos simplificar las cosas y decir:
+                \begin{itemize}
+                    \item Para ver los objectos
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            for (const auto& num : numbers)
+                        \end{lstlisting}
+                    \item Para editar los objectos
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            for (auto&& flag : flags)
+                        \end{lstlisting}
+                \end{itemize}
+
+                \cite{forauto}
 
 
             % ============================================
@@ -2498,22 +2585,55 @@
             \clearpage
             \subsection{Move Semantics: Semanticas de Movimiento}     
             
-                En los viejos tiempo de \Cpp (y una de las razones por las que mucha gente cree que 
-                el lenguaje es muy complejo) es porque la gente se preguntaba lo siguiente:
+                Quiza una pregunta que tengas es:
 
-                \textit{Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
-                entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
-                    que a veces pueden ser enorme como una colección por ejemplo
-                ) temporales y luego copiando toda su información, eso suena a algo muy costoso}
+                \textit{
+                    Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
+                    entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
+                        que a veces pueden ser enorme como una colección por ejemplo
+                    ) temporales y luego copiando toda su información, eso suena a algo muy costoso.
+                }
 
-                Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics
-                y esto es la idea de que si tienes una cosa muy compleja o muy enorme y tu la mueves
-                (como por ejemplo los valores que te regresa una función) entonces \Cpp no simplemente 
-                la copia toda completa sino que toma ownership o responsabilidad de sus entrañas
-                (generalmente asignando un par de punteros) y deja ir al otro (ahora vacío) objecto listo para
-                desaparecer.
+                Por ejemplo, cuando tenemos algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto getMeNumbers() -> vector<int> {
+                        vector<int> numbers {1, 2, 3, 4, 5, 6};
+                        return numbers;
+                    }
+
+                    auto result = getMeNumbers();
+                \end{lstlisting}
+
+                Tu podrías preguntarte algo como:
+                \textit{
+                    ¿No es muy costoso andar copiando estos vectores? 
+                }
+
+                Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics.
+
+                Y se basa en la idea de que si tienes una cosa muy compleja o enorme
+                que esta apunto de ser destruida (como por ejemplo \textCode{numbers})
+                en vez de copiar elemento a elemento la información a un nuevo vector (para crear
+                el valor que vamos a retornar de la función) 
+                para luego destruir el vector original; ¿Porqué no mejor tomar \emph{responsabilidad}
+                del objecto inicial, como dice mucha gente, tomar sus entrañas  
+                (generalmente asignando un par de punteros) pues al fin y al cabo es un objecto que esta a punto
+                de ser destruido. 
+
+                A esta operación le llamamos mover un objecto.
 
                 \cite{ModernCppWhatYouNeedToKnow}
+
+                Y es lo que hace por defecto \Cpp cuando regresas de una función una cosa que implementa
+                \textCode{move semantics}, por ejemplo \textCode{std::vector} la implementa, por lo tanto
+                tu no tienes que preocuparte de eso, asi que si, es bastante barato regresar por valor
+                incluso cosas que soy muy complejas y tardadas de copiar, porque nunca las estas copiando, 
+                las estas moviendo.
+
+                Algo importante es que al objecto del que movemos la información estará después del
+                \textCode{move} en un estado \emph{zombie}, en el que ya no podemos confiar en su contenido, 
+                por eso es que se baja en los \textCode{rvalues references}.
+                
 
 
            
@@ -3060,6 +3180,8 @@
     \bibitem{shaharmikeLambdas} 
         https://shaharmike.com/cpp/lambdas-and-functions/
 
+    \bibitem{forauto} 
+        https://stackoverflow.com/questions/15927033/what-is-the-correct-way-of-using-c11s-range-based-for
         
 
 
