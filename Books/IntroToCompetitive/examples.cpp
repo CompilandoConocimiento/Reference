@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <valarray>
+
 using namespace std;
 
 int main() {
-    const int a {10};
-    auto& b {a};
-    auto&& b =  10;
-    
-    return 0;
+    vector<const int> numbers {1, 2, 3};
+    for (int i {}; i < numbers.size(); ++i) {              // num is const int
+        cout << numbers[i] << endl;
+    }
 }
 

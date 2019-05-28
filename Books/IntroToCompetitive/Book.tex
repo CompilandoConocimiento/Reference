@@ -1339,7 +1339,7 @@
                 \end{lstlisting}
 
             % ============================================
-            % ======             VOID               ======
+            % ======             BOOL               ======
             % ============================================
             \subsection{bool}
 
@@ -1349,6 +1349,27 @@
                     bool isSunny {true};
                     bool iAmHappy {false};
                 \end{lstlisting}
+
+                % ============================================
+                % ======             BOOL               ======
+                % ============================================
+                \subsubsection{Cambiar el valor de un bool}
+
+                    Como un \textCode{bool} solo puede tener un valor muchas veces queremos andar volteando
+                    los valores de un valor booleano, es decir, primero eres \textCode{true}, luego
+                    \textCode{false}, luego \textCode{true}, luego \textCode{false}, luego \textCode{true}, 
+                    etc...
+
+                    Para hacerlo lo que hacemos sera negar el antiguo valor que tenian y guardar ese nuevo valor,
+                    esto se hara con algo como:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        bool isEven {true};
+                        int n {};
+                        while (true) {
+                            cout << n << endl;
+                            isEven = not isEven;        // The important line
+                        }
+                    \end{lstlisting}
 
 
         % =========================================================
@@ -1700,6 +1721,7 @@
             % ============================================
             % =======           FOR                =======
             % ============================================
+            \clearpage
             \subsection{For}
 
                 Igual que en cualquier otro lenguaje:
@@ -1746,7 +1768,8 @@
                 \end{lstlisting}
 
                 Y si lo que quieres es iterar sobre elementos que pueden ser caros de copiar entonces
-                podemos también usar una variante de este y tener algo como:
+                podemos también usar una referencia (si no sabes que son, no te preocupes, pronto hablaremos de eso)
+                de este y tener algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
                     vector<string> countryCodes {"USA", "MEX", "JAN", "UK", "CHL", "SA"};
 
@@ -2032,6 +2055,11 @@
                 }
             \end{lstlisting}
 
+            Además con esta nueva sintaxis incluso podemos ignorar tipo de dato de regreso si es que el
+            compilador puede inferirlo.
+
+            Ademas hace que todo vaya mas en sintonía con las lambdas.
+
             
             % ============================================
             % ====             LAMBDAS          ==========
@@ -2042,10 +2070,10 @@
                 Una lambda es un concepto bastante conocido en otros lenguajes, podemos definirlo como 
                 la una función que puede ser tratada como cualquier otro objecto en el lenguaje.
 
-                Las Lambdas son un nombre bonito para funciones anónimas, en esencia son una forma fácil
+                Las lambdas son un nombre bonito para funciones anónimas, en esencia son una forma fácil
                 de escribir funciones en el lugar lógico que deberían estar.
 
-                Esta diseñadas para ser usadas como callbacks o para poder pasar una función como parámetro
+                Estan diseñadas para ser usadas como callbacks o para poder pasar una función como parámetro
                 a otra función.
 
                 Su sintaxis es algo como:
@@ -2305,77 +2333,76 @@
             \subsection{constexpr}
 
 
+
+        % ============================================
+        % =====    lvalues vs rvalues          =======
+        % ============================================
+        \clearpage
+        \section{lvalues vs rvalues}
+
+            En \Cpp todas las \Quote{cosas} pueden clasificarse de dos manera:
+            \begin{itemize}
+                \item \textCode{lvalues}: 
+                
+                    Son cosas que hacen referencia (en el sentido mas general de la palabra)
+                    a \Quote{algo} que tiene una localización en memoria.
+
+                    Otra forma de decirlo es que los \textCode{lvalues} son las cosas a las que 
+                    puedes sacarle la dirección de memoria con el operador \textCode{\&}.
+
+                    En nombre venia originalmente de que podiamos ver los \textCode{lvalues} 
+                    como las cosas que podriamos poner a a izquierda de una asignación.
+
+                    Por ejemplo:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        int days = 10;                  // days: lvalue
+                        int& referenceToDays = days;    // referenceToDays: lvalue
+                        const Widget x {};              // x: lvalue
+                        Widget* button = new Widget{};  // button: lvalue
+                    \end{lstlisting}
+
+                \item \textCode{rvalues}:
+                
+                    Son todas las cosas que no tienen una localización (y por lo tanto tampoco una
+                    dirección) en memoria, generalmente son cosas como temporales o constantes.
+
+                    Por ejemplo:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        int days = 10;                  // 10 is an rvalue
+                        int& referenceToDays = days;    // here days is an rvalue
+                        widget x = widget {};           // widget {} is an rvalue
+                    \end{lstlisting}
+
+                    \cite{CppFromBeginningToIntermidiate}
+
+            \end{itemize}
+
+                
         % =========================================================
-        % ============    &, && y move semantics     ==============
+        % ============    TIPOS DE REFERENCIAS       ==============
         % =========================================================
         \clearpage
-        \section{\&, \&\& y move semantics}
+        \section{References types: Tipos de referencias}
 
-            % ============================================
-            % =====    lvalues vs rvalues          =======
-            % ============================================
-            \subsection{lvalues vs rvalues}
+            Veamos todas las posibles referencias con un ejemplo sencillo, a través de una función:
+            La primera forma y sin involucrar referencias sería pasar un parámetro por valor.
 
-                En \Cpp todas las cosas pueden clasificarse de dos manera como:
-                \begin{itemize}
-                    \item \textCode{lvalues}: 
-                    
-                        Son cosas que hacen referencia, en el sentido mas general de la palabra,
-                        a una localización en memoria.
+            Por ejemplo, dada la función
+            \begin{lstlisting}[language=C++, gobble=16]
+                void func(Widget pb);
+                Widget x;
 
-                        Otra forma de verlo es que algo que es un \textCode{lvalue} si y solo si 
-                        puedes sacarle la dirección de memoria con (el operador \textCode{\&}).
-
-                        En nombre venia originalmente de que podiamos ver los \textCode{lvalues} 
-                        como cualquier cosa que podriamos poner a a izquierda de una asignación.
-
-                        Por ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            int days = 10;                  // days: lvalue
-                            int& referenceToDays = days;    // referenceToDays: lvalue
-                            const Widget x {};              // x: lvalue
-                            Widget* button = new Widget{};  // button: lvalue
-                        \end{lstlisting}
-
-                    \item \textCode{rvalues}:
-                    
-                        Son todas las cosas que no tienen una dirección en memoria, generalmente visto 
-                        como temporales o constantes.
-
-                        Por ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            int days = 10;                  // 10 is an rvalue
-                            int& referenceToDays = days;    // here days is an rvalue
-                            widget x = widget {};           // widget {} is an rvalue
-                        \end{lstlisting}
-
-                \end{itemize}
-
-                \cite{CppFromBeginningToIntermidiate}
-
-                Con esto encima podemos ver como es que podemos pasar parámetro por una referencia normal
-                lo que estamos haciendo es una promesa, prometemos que quien haya llamado a  a una función
-                y las diferencias entre estos:
-
-                La primera forma sería pasar con valor.
-
-                Por ejemplo, dada la función
-                \begin{lstlisting}[language=C++, gobble=20]
-                    void func(Widget pb);
-                    Widget x;
-
-                    func(x);                //call with an lvalue: valid :)
-                    func(Widget {});        //call with an rvalue: valid :)
-                \end{lstlisting}
-
+                func(x);                //call with an lvalue: valid :)
+                func(Widget {});        //call with an rvalue: valid :)
+            \end{lstlisting}
 
             % ============================================
             % =======     LVALUE REFERENCE        ========
             % ============================================
             \subsection{lvalue references} 
 
-                Las que habiamos son formalmente conocidas como lvalue references y 
-                podemos ver un ejemplo de ellas aquí:
+                Son de las que habíamos hablado antes, son formalmente conocidas como 
+                \textCode{lvalue references} y podemos ver un ejemplo de ellas aquí:
                 \begin{lstlisting}[language=C++, gobble=20]
                     void func(Widget& pb);
                     Widget x;
@@ -2384,12 +2411,11 @@
                     func(Widget {});        //call with an rvalue: ERROR :(
                 \end{lstlisting}
 
-                Esto no es válido porque cuando aceptamos un parámetro por una referencia normal
-                lo que estamos haciendo es una promesa, prometemos que quien haya llamado a 
-                \textCode{func}
-                podrá ver los cambios que realiza la función.
+                Esto último no es válido porque cuando aceptamos un parámetro por una referencia normal
+                lo que estamos haciendo es una promesa: prometemos que quien haya llamado a 
+                \textCode{func} podrá ver los cambios que realiza la función.
 
-                Pero al llamarla con un temporal es imposible ver los cambios que realiza, 
+                Pero al llamarla con un temporal es imposible ver los cambios que realizaría, 
                 por eso no es válido.
 
                 Este tipo de referencias estan diciendonos que podemos modificar la información
@@ -2409,7 +2435,7 @@
                     func(Widget {});        //call with an rvalue: valid :)
                 \end{lstlisting}
 
-                Esto no es válido porque cuando aceptamos un parámetro por una referencia constante
+                Esto último es válido porque cuando aceptamos un parámetro por una referencia constante
                 estamos haciendo una promesa, pero una diferente, decimos que necesitamos la información
                 del objeto real, que no necesitamos una copia, pero que no vamos a realizar cambios, por
                 lo tanto como no estamos prometiendo que la persona que llame a \textCode{func}
@@ -2422,11 +2448,10 @@
             % ============================================
             % =======     RVALUE REFERENCE        ========
             % ============================================
-            \clearpage
             \subsection{rvalue references}   
 
                 Podemos también ver que existe este otro tipo de referencias, estas
-                no se unen a variables, es decir a \textCode{lvalues}, sino a  \textCode{rvalues}
+                no se unen a variables, es decir a \textCode{lvalues}, sino a \textCode{rvalues}
                 es decir se une a temporales. 
 
                 Este tipo de referencias son especiales porque solo se pueden hacer a temporales.
@@ -2443,13 +2468,14 @@
                 pero que quien llame a la función no podrá ver los cambios que hemos hecho.
 
                 Este tipo de referencias estan diciendonos que podemos modificar la información
-                que entre a la función, pero que la persona que llamó a la función no podrá.
+                que entre a la función, pero que la persona que llamó a la función no podrá, por lo tanto
+                solo acepta temporales.
 
                 \cite{CppFromBeginningToIntermidiate}
 
                 Otro ejemplo de estas referencias podría ser esto:
                 \begin{lstlisting}[language=C++, gobble=20]
-                    int add( int a, int b) { return a + b; }
+                    int add(int a, int b) { return a + b; }
  
                     int result   = add(4, 5);        //Ok :)
                     int& result2 = add(4, 5);        //No Ok :(
@@ -2501,28 +2527,91 @@
                     foo(number);            //Error: called with an lvalue
 
                     bar(3);                 //Ok called with an rvalue
-                    bar(number);            //Ok ... wait WTF
+                    bar(number);            //Ok ... wait WTF!!!!!!
                 \end{lstlisting}
 
                 La cosa esta en que \textCode{T\&\&} es un tipo especial de referencia que se puede
                 unir tanto a \textCode{rvalues} como a \textCode{lvalues}.
+
+                Y por así decirlo van a transformarse en referencias a \textCode{lvalues} o a 
+                \textCode{rvalues} dependiendo de que le pasemos, si una variable o un temporal respectivamente.
                 
                 Este tipo de refencias solo existen dentro de \textCode{templates} o usando
-                \textCode{auto\&\&}.
+                \textCode{auto\&\&}, y por muy poco usadas, sobretodo en programación competitiva, excepto
+                por los \textCode{for range}, y hablaremos pronto de porque este tipo de referencias son muy útiles
+                para esos casos.
                 
             % ============================================
             % ==========          &&            ==========
             % ============================================
-            \subsection{auto vs auto\& vs auto\&\&} 
+            \clearpage
+            \subsection{auto vs auto\& vs const auto\& vs auto\&\&} 
 
-                A pesar de que las referencias son solo otro tipo de dato usar \textCode{auto}
-                puede traer sorpresas si no recuedas bien como funciona:
+                \textCode{auto}, el clásico \textCode{auto}. Hay que tener algo de cuidado con lo que hacemos
+                con el, hay que entender que pasa en ciertos casos especiales con el \textCode{auto}.
+
+                Usar algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
-                    int numberOfDays {10};
-                    auto& ref1 {numberOfDays};   // ref is an int&
-                    auto&& ref2 {5};             // ref is an int&&
-                    auto&& ref3 {numberOfDays};  // ref is an int&
+                    auto someValue {bla bla bla};
                 \end{lstlisting}
+
+                Solo nos dice, compilador, pon el tipo de dato que creas correcto aquí, pero poner 
+                \textCode{auto} no hace nada relacionado con \textCode{const} o sobre la creación de 
+                las referencias.
+
+                Asií que veamos que hace cada una de las \Quote{modificaciones} que podemos hacerle al \textCode{auto}:
+
+                \begin{itemize}
+                    \item \textCode{const auto}
+
+                        Lo que nos dice esto es que vamos a crear una variable del tipo que el compilador crea
+                        que sea correcta, pero que ademas esta variable será \textCode{const}, por ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            auto coins {10};            //Equals: int coins {10};
+                            const auto coins {10};      //Equals: const int coins {10};
+                        \end{lstlisting}
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<const int> numbers {1, 2, 3};
+                            for (const auto num : numbers) {        // num is const int
+                                cout << num << endl;
+                            }
+                        \end{lstlisting}
+
+                    \item \textCode{auto\&}
+                    
+                        Lo que nos dice esto es que vamos a crear una referencia al tipo de dato
+                        que el compilador sabe que es el correcto, por ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<const int> numbers {1, 2, 3};
+                            for (auto& num : numbers) {        // num is int&
+                                cout << num << endl;
+                            }
+                        \end{lstlisting}
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            auto coins {10};            //Equals: int coins {10};
+                            auto& coins2 {coins};       //Equals: int& coins2 {coins};
+                        \end{lstlisting}
+
+                    \item \textCode{const auto\&}
+                    
+                        Hace lo que esperas, una referencia constante al tipo de dato correcto.
+
+                    \item \textCode{auto\&\&}
+                    
+                        Esta es interesante, lo que nos genera es un \textCode{fowarding / universal reference}
+                        al tipo de dato correcto, hablamos de ella hace poco, es lo que nos da es una 
+                        forma de tener referencias a \textCode{lvalues} o \textCode{rvalues}, pero creo 
+                        que queda claro con un ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            int numberOfDays {10};
+                            auto&  ref1 {numberOfDays};  // ref1 is an int&
+                            auto&& ref2 {5};             // ref2 is an int&&
+                            auto&& ref3 {numberOfDays};  // ref3 is an int&
+                        \end{lstlisting}
+
+                \end{itemize}
 
      
             % ============================================
@@ -2538,7 +2627,7 @@
                     vector<int> words {"hello", "world", ":D"};
                 \end{lstlisting}
 
-                Entonces hacer algo como:
+                Entonces podemos hacer algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
                     for (auto num : numbers) {
                         cout << num << endl;        // Will work [1, 2, 3, 4, 5]
@@ -2579,61 +2668,61 @@
                 \cite{forauto}
 
 
-            % ============================================
-            % ==========    MOVE SEMANTICS       =========
-            % ============================================
-            \clearpage
-            \subsection{Move Semantics: Semanticas de Movimiento}     
+        % ============================================
+        % ==========    MOVE SEMANTICS       =========
+        % ============================================
+        \clearpage
+        \section{Move Semantics: Semanticas de Movimiento}     
+        
+            Quiza una pregunta que tengas es:
+
+            \textit{
+                Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
+                entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
+                    que a veces pueden ser enorme como una colección por ejemplo
+                ) temporales y luego copiando toda su información, eso suena a algo muy costoso.
+            }
+
+            Por ejemplo, cuando tenemos algo como:
+            \begin{lstlisting}[language=C++, gobble=20]
+                auto getMeNumbers() -> vector<int> {
+                    vector<int> numbers {1, 2, 3, 4, 5, 6};
+                    return numbers;
+                }
+
+                auto result = getMeNumbers();
+            \end{lstlisting}
+
+            Tu podrías preguntarte algo como:
+            \textit{
+                ¿No es muy costoso andar copiando estos vectores? 
+            }
+
+            Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics.
+
+            Y se basa en la idea de que si tienes una cosa muy compleja o enorme
+            que esta apunto de ser destruida (como por ejemplo \textCode{numbers})
+            en vez de copiar elemento a elemento la información a un nuevo vector (para crear
+            el valor que vamos a retornar de la función) 
+            para luego destruir el vector original; ¿Porqué no mejor tomar \emph{responsabilidad}
+            del objecto inicial, como dice mucha gente, tomar sus entrañas  
+            (generalmente asignando un par de punteros) pues al fin y al cabo es un objecto que esta a punto
+            de ser destruido. 
+
+            A esta operación le llamamos mover un objecto.
+
+            \cite{ModernCppWhatYouNeedToKnow}
+
+            Y es lo que hace por defecto \Cpp cuando regresas de una función una cosa que implementa
+            \textCode{move semantics}, por ejemplo \textCode{std::vector} la implementa, por lo tanto
+            tu no tienes que preocuparte de eso, asi que si, es bastante barato regresar por valor
+            incluso cosas que soy muy complejas y tardadas de copiar, porque nunca las estas copiando, 
+            las estas moviendo.
+
+            Algo importante es que al objecto del que movemos la información estará después del
+            \textCode{move} en un estado \emph{zombie}, en el que ya no podemos confiar en su contenido, 
+            por eso es que se baja en los \textCode{rvalues references}.
             
-                Quiza una pregunta que tengas es:
-
-                \textit{
-                    Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
-                    entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
-                        que a veces pueden ser enorme como una colección por ejemplo
-                    ) temporales y luego copiando toda su información, eso suena a algo muy costoso.
-                }
-
-                Por ejemplo, cuando tenemos algo como:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    auto getMeNumbers() -> vector<int> {
-                        vector<int> numbers {1, 2, 3, 4, 5, 6};
-                        return numbers;
-                    }
-
-                    auto result = getMeNumbers();
-                \end{lstlisting}
-
-                Tu podrías preguntarte algo como:
-                \textit{
-                    ¿No es muy costoso andar copiando estos vectores? 
-                }
-
-                Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics.
-
-                Y se basa en la idea de que si tienes una cosa muy compleja o enorme
-                que esta apunto de ser destruida (como por ejemplo \textCode{numbers})
-                en vez de copiar elemento a elemento la información a un nuevo vector (para crear
-                el valor que vamos a retornar de la función) 
-                para luego destruir el vector original; ¿Porqué no mejor tomar \emph{responsabilidad}
-                del objecto inicial, como dice mucha gente, tomar sus entrañas  
-                (generalmente asignando un par de punteros) pues al fin y al cabo es un objecto que esta a punto
-                de ser destruido. 
-
-                A esta operación le llamamos mover un objecto.
-
-                \cite{ModernCppWhatYouNeedToKnow}
-
-                Y es lo que hace por defecto \Cpp cuando regresas de una función una cosa que implementa
-                \textCode{move semantics}, por ejemplo \textCode{std::vector} la implementa, por lo tanto
-                tu no tienes que preocuparte de eso, asi que si, es bastante barato regresar por valor
-                incluso cosas que soy muy complejas y tardadas de copiar, porque nunca las estas copiando, 
-                las estas moviendo.
-
-                Algo importante es que al objecto del que movemos la información estará después del
-                \textCode{move} en un estado \emph{zombie}, en el que ya no podemos confiar en su contenido, 
-                por eso es que se baja en los \textCode{rvalues references}.
-                
 
 
            
