@@ -2226,6 +2226,39 @@
         % =========================================================
         \section{std::map}
 
+            % ============================================
+            % ====               TIPS           ==========
+            % ============================================
+            \subsection{Tips}
+
+            \begin{itemize}
+                \item 
+                    Prefiere usar \textCode{auto} en vez de decir el tipo al iterar sobre un map.
+                    Me explico:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        map<int, string> someMap {
+                            {0, "null"},
+                            {8, "eight"},
+                            {15, "fifteen"},
+                        };
+                        
+                        // Good: No element copy
+                        for (const auto& element : someMap) { ... } 
+                        
+                        // Bad: Copies element
+                        for (const pair<int, string>& element : someMap) {...}   
+
+                        // Ok, but impossible to remember: No element copy
+                        for (const pair<const int, string>& element : someMap) {...}  
+                    \end{lstlisting}
+
+                    Y si no me creen vayan a \underline{\href{https://wandbox.org/permlink/4IFbZr72RfUUWyCz}{aquí}}
+                    o \underline{\href{https://releases.llvm.org/7.0.0/tools/clang/tools/extra/docs/clang-tidy/checks/performance-implicit-conversion-in-loop.html}{aquí}}.
+
+                    \cite{NicoJosuttis}
+
+            \end{itemize}
+
         % =========================================================
         % ==========             SET                     ==========
         % =========================================================
@@ -2540,6 +2573,9 @@
                 \textCode{auto\&\&}, y por muy poco usadas, sobretodo en programación competitiva, excepto
                 por los \textCode{for range}, y hablaremos pronto de porque este tipo de referencias son muy útiles
                 para esos casos.
+
+                Una frase que me gusta es esta: \textCode{Using auto\&\& or universal references 
+                has the advantage that you captures what you get}.
                 
             % ============================================
             % ==========          &&            ==========
@@ -3271,7 +3307,9 @@
 
     \bibitem{forauto} 
         https://stackoverflow.com/questions/15927033/what-is-the-correct-way-of-using-c11s-range-based-for
-        
+
+    \bibitem{NicoJosuttis} 
+        Nicolai Josuttis, https://twitter.com/NicoJosuttis
 
 
 \end{thebibliography}
