@@ -4,14 +4,14 @@
 \contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n}{9}{section.1.1}% 
 \contentsline {subsection}{\numberline {1.1.1}Ejemplos}{9}{subsection.1.1.1}% 
 \contentsline {section}{\numberline {1.2}Propiedades de un problema}{10}{section.1.2}% 
-\contentsline {part}{II\hspace {1em}Un tour de \texttt {C++} y lo que deber\IeC {\'\i }as saber de el}{11}{part.2}% 
-\contentsline {chapter}{\numberline {2}\IeC {\textquestiondown }Porqu\IeC {\'e} usar \texttt {C++} ?}{12}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Grandes ventajas de \texttt {C++} }{13}{section.2.1}% 
-\contentsline {section}{\numberline {2.2} \texttt {C++} vs otros lenguajes}{16}{section.2.2}% 
+\contentsline {part}{II\hspace {1em}Un tour de \ignorespaces \texttt {C++} y lo que deber\IeC {\'\i }as saber de el}{11}{part.2}% 
+\contentsline {chapter}{\numberline {2}\IeC {\textquestiondown }Porqu\IeC {\'e} usar \ignorespaces \texttt {C++} ?}{12}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Grandes ventajas de \ignorespaces \texttt {C++} }{13}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}\ignorespaces \texttt {C++} vs otros lenguajes}{16}{section.2.2}% 
 \contentsline {subsection}{\numberline {2.2.1}vs C}{16}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}vs Java}{16}{subsection.2.2.2}% 
 \contentsline {subsection}{\numberline {2.2.3}vs Python}{16}{subsection.2.2.3}% 
-\contentsline {section}{\numberline {2.3} Una pincelada de \texttt {C++} moderno}{17}{section.2.3}% 
+\contentsline {section}{\numberline {2.3} Una pincelada de \ignorespaces \texttt {C++} moderno}{17}{section.2.3}% 
 \contentsline {chapter}{\numberline {3}Bases del Lenguaje Moderno}{19}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}Variables}{20}{section.3.1}% 
 \contentsline {subsection}{\numberline {3.1.1}Declaraciones e Inicializaci\IeC {\'o}n}{20}{subsection.3.1.1}% 
@@ -59,7 +59,7 @@
 \contentsline {subsubsection}{Lambdas como functors / classes}{45}{section*.19}% 
 \contentsline {subsection}{\numberline {3.8.2}Recursion}{46}{subsection.3.8.2}% 
 \contentsline {subsection}{\numberline {3.8.3}Templates}{46}{subsection.3.8.3}% 
-\contentsline {section}{\numberline {3.9}La entrada / salida en \texttt {C++} }{47}{section.3.9}% 
+\contentsline {section}{\numberline {3.9}La entrada / salida en \ignorespaces \texttt {C++} }{47}{section.3.9}% 
 \contentsline {chapter}{\numberline {4}Containers: Contenedores de la STD}{48}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Los contendedores en si}{48}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}std::vector}{48}{section.4.2}% 
@@ -69,9 +69,9 @@
 \contentsline {subsection}{\numberline {4.4.1}Tips}{48}{subsection.4.4.1}% 
 \contentsline {section}{\numberline {4.5}std::set}{49}{section.4.5}% 
 \contentsline {chapter}{\numberline {5}No lo hagas tu todo desde cero: std::algorithms}{50}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Cosas Avanzadas de \texttt {C++} }{51}{chapter.6}% 
+\contentsline {chapter}{\numberline {6}Cosas Avanzadas de \ignorespaces \texttt {C++} }{51}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Si quieres un programa r\IeC {\'a}pido: Verdaderos arrays}{52}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Lifetime: La mejor caracter\IeC {\'\i }stica de \texttt {C++} : \texttt { \} } }{53}{section.6.2}% 
+\contentsline {section}{\numberline {6.2}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{53}{section.6.2}% 
 \contentsline {section}{\numberline {6.3}const \& constexpr}{54}{section.6.3}% 
 \contentsline {subsection}{\numberline {6.3.1}const}{54}{subsection.6.3.1}% 
 \contentsline {subsection}{\numberline {6.3.2}constexpr}{55}{subsection.6.3.2}% 

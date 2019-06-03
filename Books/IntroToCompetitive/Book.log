@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  28 MAY 2019 20:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  3 JUN 2019 17:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -952,6 +952,12 @@ LaTeX Info: Redefining \% on input line 470.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \GPT@outputbox=\box95
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 496.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <35> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 496.
 LaTeX Font Info:    Try loading font information for T1+cmss on input line 503.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -972,10 +978,6 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 4.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 7.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 7.
@@ -1017,7 +1019,7 @@ LaTeX Info: Redefining \% on input line 532.
 
 ]
 Cap\'{\i }tulo 1.
-<Graphics/CpIntro.png, id=787, 963.6pt x 722.7pt>
+<Graphics/CpIntro.png, id=788, 963.6pt x 722.7pt>
 File: Graphics/CpIntro.png Graphic file (type png)
 <use Graphics/CpIntro.png>
 Package pdftex.def Info: Graphics/CpIntro.png  used on input line 548.
@@ -1051,7 +1053,7 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <24.88> not available
 
 ]
 Cap\'{\i }tulo 2.
-<Graphics/CppIntro.png, id=819, 947.54pt x 560.0925pt>
+<Graphics/CppIntro.png, id=820, 947.54pt x 560.0925pt>
 File: Graphics/CppIntro.png Graphic file (type png)
 <use Graphics/CppIntro.png>
 Package pdftex.def Info: Graphics/CppIntro.png  used on input line 673.
@@ -1062,7 +1064,7 @@ Package pdftex.def Info: Graphics/CppIntro.png  used on input line 673.
  </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/CppIntro.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 681.
-<Graphics/BjarneBebe.png, id=827, 390.45876pt x 393.47pt>
+<Graphics/BjarneBebe.png, id=828, 390.45876pt x 393.47pt>
 File: Graphics/BjarneBebe.png Graphic file (type png)
 <use Graphics/BjarneBebe.png>
 Package pdftex.def Info: Graphics/BjarneBebe.png  used on input line 691.
@@ -1132,7 +1134,7 @@ LaTeX Info: Redefining \% on input line 919.
 
 ]
 Cap\'{\i }tulo 3.
-<Graphics/Warning.png, id=920, 256.96pt x 256.96pt>
+<Graphics/Warning.png, id=921, 256.96pt x 256.96pt>
 File: Graphics/Warning.png Graphic file (type png)
 <use Graphics/Warning.png>
 Package pdftex.def Info: Graphics/Warning.png  used on input line 924.
@@ -1203,7 +1205,7 @@ LaTeX Info: Redefining \% on input line 1277.
 LaTeX Info: Redefining \. on input line 1277.
 LaTeX Info: Redefining \% on input line 1277.
  [25]
-<Graphics/IEEEFP.png, id=1061, 1003.75pt x 83.31125pt>
+<Graphics/IEEEFP.png, id=1062, 1003.75pt x 83.31125pt>
 File: Graphics/IEEEFP.png Graphic file (type png)
 <use Graphics/IEEEFP.png>
 Package pdftex.def Info: Graphics/IEEEFP.png  used on input line 1288.
@@ -1787,26 +1789,26 @@ LaTeX Info: Redefining \% on input line 23.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3357.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3357.
 Package rerunfilecheck Info: File `Book.out' has not changed.
-(rerunfilecheck)             Checksum: 36AB6DCD6247D9FDFEE1EC5981D46B25;10177.
+(rerunfilecheck)             Checksum: CEA013F78D4CEE7F878A73C5A4B44E64;10116.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3357.
  ) 
 Here is how much of TeX's memory you used:
- 25598 strings out of 492616
- 441037 string characters out of 6128982
- 746520 words of memory out of 5000000
- 28224 multiletter control sequences out of 15000+600000
- 561471 words of font info for 93 fonts, out of 8000000 for 9000
+ 25601 strings out of 492616
+ 441077 string characters out of 6128982
+ 746504 words of memory out of 5000000
+ 28226 multiletter control sequences out of 15000+600000
+ 561786 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,13n,63p,1102b,2546s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section.0.0} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{chapter.0} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (98 pages, 1721109 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
+Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (98 pages, 1722831 bytes).
 PDF statistics:
- 2187 PDF objects out of 2487 (max. 8388607)
- 2030 compressed objects within 21 object streams
+ 2191 PDF objects out of 2487 (max. 8388607)
+ 2033 compressed objects within 21 object streams
  755 named destinations out of 1000 (max. 500000)
  1162 words of extra memory for PDF output out of 10000 (max. 10000000)
 
