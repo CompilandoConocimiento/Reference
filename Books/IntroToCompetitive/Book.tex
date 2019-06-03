@@ -1074,7 +1074,7 @@
                 % ============================================
                 % ======            SE SUTIL            ======
                 % ============================================
-                \subsubsection{Uniform Inizialization: Inicialización uniforme}
+                \subsubsection{Uniform (brace) Inizialization: Inicialización uniforme}
 
                     Y lo que nos da esto es una misma sintaxis, quiza esto sea un tema algo complejo
                     para unos y no te preocupes si no entiendes esto por completo por ahora.
@@ -2205,9 +2205,18 @@
     \chapter{Containers: Contenedores de la STD}
 
         % =========================================================
+        % ==========         LOS CONTENEDORES            ==========
+        % =========================================================
+        \section{Los contendedores en si}
+
+
+
+        % =========================================================
         % ==========             VECTOR                  ==========
         % =========================================================
         \section{std::vector}
+
+            
 
             % ============================================
             % ===========       ARRAY      ===============
@@ -2283,6 +2292,59 @@
         % =========================================================
         \clearpage
         \section{Si quieres un programa rápido: Verdaderos arrays}  
+
+            
+        % =========================================================
+        % ==========            LIFETIME                 ==========
+        % =========================================================
+        \clearpage
+        \section{Lifetime: La mejor característica de \Cpp: \textCode{ \} } }     
+        
+            Se le pregunto a varios grandes programadores de \Cpp cual era su
+            característica más importante y casi por unanimidad dijeron:
+
+            \textCode{ \} }
+
+            Y no, no estoy bromeando, este símbolo no es solo para decirle al compilador
+            que se acaba de terminar el \textCode{scope} actual (es decir, que se acabo 
+            la función o el bucle o la condicional o la clase, etc...) sino que es justo
+            en este momento y solo en este momento cuando \Cpp limpia toda la basura.
+
+            Por ejemplo dados estos códigos:
+            \begin{lstlisting}[language=C++, gobble=16]
+                int do_work() {
+                    auto x = ...;
+                }
+
+                ...
+
+                class shape {
+                    container points;
+                }
+            \end{lstlisting}
+
+            Es justo cuando el compilador ve \textCode{ \} } que se da la orden de limpiar,
+            en ese momento es cuando se destruye la variable x o cuando destruyes a un objecto
+            de tipo shape automaticamente se destruye el contenedor de puntos.
+            
+            En otras palabras porque las reglas de \Cpp sobre el \textCode{scope} de las variables
+            y objectos te da una manera determinista y segura de finalizar weas.
+
+            Es una forma automática y segura de liberar recursos cuando ya no los estoy usando.
+
+            En otras palabras, la vida o \textCode{lifetime} de un objecto esta atada a su \textCode{scope}.
+            Y como me gusta decirlo:
+            \textbf{
+                Todo el \Cpp es la responsabilidad de alguien.
+            }
+
+            O en inglés:
+            \textbf{
+                Everything is owned by someone.
+            }
+
+            \cite{ModernCppWhatYouNeedToKnow}
+
 
 
         % =========================================================
@@ -2371,7 +2433,7 @@
         % =====    lvalues vs rvalues          =======
         % ============================================
         \clearpage
-        \section{lvalues vs rvalues}
+        \section{lvalues vs rvalues categories}
 
             En \Cpp todas las \Quote{cosas} pueden clasificarse de dos manera:
             \begin{itemize}
@@ -2682,9 +2744,8 @@
                 Si queremos editar estos entonces podemos simplemente quitar el \textCode{const}:
                 \begin{lstlisting}[language=C++, gobble=20]
                     for (auto& num : numbers) {
-                        num += 1;      
+                        num += 1;               // Will work [2, 3, 4, 5, 6]
                     }
-                    // Will work [2, 3, 4, 5, 6]
                 \end{lstlisting}
 
                 El único problema son algo llamado los \textCode{proxy-iterators} 
@@ -2702,87 +2763,6 @@
                 \end{itemize}
 
                 \cite{forauto}
-
-
-        % ============================================
-        % ==========    MOVE SEMANTICS       =========
-        % ============================================
-        \clearpage
-        \section{Move Semantics: Semanticas de Movimiento}     
-        
-            Quiza una pregunta que tengas es:
-
-            \textit{
-                Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
-                entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
-                    que a veces pueden ser enorme como una colección por ejemplo
-                ) temporales y luego copiando toda su información, eso suena a algo muy costoso.
-            }
-
-            Por ejemplo, cuando tenemos algo como:
-            \begin{lstlisting}[language=C++, gobble=20]
-                auto getMeNumbers() -> vector<int> {
-                    vector<int> numbers {1, 2, 3, 4, 5, 6};
-                    return numbers;
-                }
-
-                auto result = getMeNumbers();
-            \end{lstlisting}
-
-            Tu podrías preguntarte algo como:
-            \textit{
-                ¿No es muy costoso andar copiando estos vectores? 
-            }
-
-            Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics.
-
-            Y se basa en la idea de que si tienes una cosa muy compleja o enorme
-            que esta apunto de ser destruida (como por ejemplo \textCode{numbers})
-            en vez de copiar elemento a elemento la información a un nuevo vector (para crear
-            el valor que vamos a retornar de la función) 
-            para luego destruir el vector original; ¿Porqué no mejor tomar \emph{responsabilidad}
-            del objecto inicial, como dice mucha gente, tomar sus entrañas  
-            (generalmente asignando un par de punteros) pues al fin y al cabo es un objecto que esta a punto
-            de ser destruido. 
-
-            A esta operación le llamamos mover un objecto.
-
-            \cite{ModernCppWhatYouNeedToKnow}
-
-            Y es lo que hace por defecto \Cpp cuando regresas de una función una cosa que implementa
-            \textCode{move semantics}, por ejemplo \textCode{std::vector} la implementa, por lo tanto
-            tu no tienes que preocuparte de eso, asi que si, es bastante barato regresar por valor
-            incluso cosas que soy muy complejas y tardadas de copiar, porque nunca las estas copiando, 
-            las estas moviendo.
-
-            Algo importante es que al objecto del que movemos la información estará después del
-            \textCode{move} en un estado \emph{zombie}, en el que ya no podemos confiar en su contenido, 
-            por eso es que se baja en los \textCode{rvalues references}.
-            
-
-
-           
-                
-
-        % =========================================================
-        % ===================       CLASES      ===================
-        % =========================================================
-        \clearpage
-        \section{Tipos de datos definidos por nosotros}
-
-
-            % ============================================
-            % =====            ENUMS             =========
-            % ============================================
-            \subsection{Enums}
-
-            % ============================================
-            % =====       CLASS & STRUCTS        =========
-            % ============================================
-            \subsection{class \& structs}
-
-
-        
 
         % =========================================================
         % =====            POINTERS: APUNTADORES          =========
@@ -2821,56 +2801,115 @@
             \end{lstlisting}
 
 
+
         % =========================================================
-        % ==========            LIFETIME                 ==========
+        % ===================       CLASES      ===================
         % =========================================================
         \clearpage
-        \section{Lifetime: La mejor característica de \Cpp: \textCode{ \} } }     
-        
-            Se le pregunto a varios grandes programadores de \Cpp cual era su
-            característica más importante y casi por unanimidad dijeron:
+        \section{Tipos de datos definidos por nosotros}
 
-            \textCode{ \} }
 
-            Y no, no estoy bromeando, este símbolo no es solo para decirle al compilador
-            que se acaba de terminar el \textCode{scope} actual (es decir, que se acabo 
-            la función o el bucle o la condicional o la clase, etc...) sino que es justo
-            en este momento y solo en este momento cuando \Cpp limpia toda la basura.
+            % ============================================
+            % =====            ENUMS             =========
+            % ============================================
+            \subsection{Enums}
 
-            Por ejemplo dados estos códigos:
-            \begin{lstlisting}[language=C++, gobble=16]
-                int do_work() {
-                    auto x = ...;
-                }
+            % ============================================
+            % =====       CLASS & STRUCTS        =========
+            % ============================================
+            \subsection{class \& structs}
 
-                ...
+        % =========================================================
+        % ==========               SEMANTICS              =========
+        % =========================================================
+        \clearpage
+        \section{Semantics}   
 
-                class shape {
-                    container points;
-                }
-            \end{lstlisting}
-
-            Es justo cuando el compilador ve \textCode{ \} } que se da la orden de limpiar,
-            en ese momento es cuando se destruye la variable x o cuando destruyes a un objecto
-            de tipo shape automaticamente se destruye el contenedor de puntos.
+            Una semantica es una forma programar, es algo parecido a un paradigma.
             
-            En otras palabras porque las reglas de \Cpp sobre el \textCode{scope} de las variables
-            y objectos te da una manera determinista y segura de finalizar weas.
+            Siendo mas formales una semantica en este contexto es hablar como
+            como es que un tipo de dato (predefinido o creado por el programador) será usado.
 
-            Es una forma automática y segura de liberar recursos cuando ya no los estoy usando.
+            % ============================================
+            % ==========    VALUE SEMANTICS      =========
+            % ============================================
+            \subsection{Value Semantics}  
+            
+                Son aquellas que estan pensadas para ser copiadas, es decir son aquellas en la que usas
+                el operador \textCode{=} para cambiar le valor de la variable, generalmente son lo que llamamos
+                inmutables, es decir que contienen información (o en otras palabras un estado) que no puede
+                cambiar una vez han sido creadas.
 
-            En otras palabras, la vida o \textCode{lifetime} de un objecto esta atada a su \textCode{scope}.
-            Y como me gusta decirlo:
-            \textbf{
-                Todo el \Cpp es la responsabilidad de alguien.
-            }
+                Por ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int someNumber {3};
 
-            O en inglés:
-            \textbf{
-                Everything is owned by someone.
-            }
+                    // If I want to change the value I only have the option to use =
+                    someNumber = 4;
 
-            \cite{ModernCppWhatYouNeedToKnow}
+                    // The next is possible, not super OK, but compiles
+                    string welcomeText {"Hello"};
+                    welcomeText = "Hello :D";
+                \end{lstlisting}
+            
+
+            % ============================================
+            % ==========    MOVE SEMANTICS       =========
+            % ============================================
+            \subsection{Move Semantics}     
+            
+                Quiza una pregunta que tengas es:
+
+                \textit{
+                    Si tu me dijiste que \Cpp por defecto manera que sus variables son valores
+                    entonces tendrás que hacer un monton de cosas para evitar andar creando objectos (
+                        que a veces pueden ser enorme como una colección por ejemplo
+                    ) temporales y luego copiando toda su información, eso suena a algo muy costoso.
+                }
+
+                Por ejemplo, cuando tenemos algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto getMeNumbers() -> vector<int> {
+                        vector<int> numbers {1, 2, 3, 4, 5, 6};
+                        return numbers;
+                    }
+
+                    auto result = getMeNumbers();
+                \end{lstlisting}
+
+                Tu podrías preguntarte algo como:
+                \textit{
+                    ¿No es muy costoso andar copiando estos vectores? 
+                }
+
+                Y debido a eso \Cpp 11 introdujo algo que se conoce como move semantics.
+
+                Y se basa en la idea de que si tienes una cosa muy compleja o enorme
+                que esta apunto de ser destruida (como por ejemplo \textCode{numbers})
+                en vez de copiar elemento a elemento la información a un nuevo vector (para crear
+                el valor que vamos a retornar de la función) 
+                para luego destruir el vector original; ¿Porqué no mejor tomar \emph{responsabilidad}
+                del objecto inicial, como dice mucha gente, tomar sus entrañas  
+                (generalmente asignando un par de punteros) pues al fin y al cabo es un objecto que esta a punto
+                de ser destruido. 
+
+                A esta operación le llamamos mover un objecto.
+
+                \cite{ModernCppWhatYouNeedToKnow}
+
+                Y es lo que hace por defecto \Cpp cuando regresas de una función una cosa que implementa
+                \textCode{move semantics}, por ejemplo \textCode{std::vector} la implementa, por lo tanto
+                tu no tienes que preocuparte de eso, asi que si, es bastante barato regresar por valor
+                incluso cosas que soy muy complejas y tardadas de copiar, porque nunca las estas copiando, 
+                las estas moviendo.
+
+                Algo importante es que al objecto del que movemos la información estará después del
+                \textCode{move} en un estado \emph{zombie}, en el que ya no podemos confiar en su contenido, 
+                por eso es que se basa en los \textCode{rvalues references}.
+
+                Una \textCode{rvalues reference} es una variable que hace referencia a un objecto que esta siendo usado
+                como un temporal, es decir, es un objecto que esta a punto de ser destruido.
+                
 
 
 
