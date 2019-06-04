@@ -1074,7 +1074,7 @@
                 % ============================================
                 % ======            SE SUTIL            ======
                 % ============================================
-                \subsubsection{Uniform (brace) Inizialization: Inicialización uniforme}
+                \subsubsection{Uniform (brace) Inicialization: Inicialización uniforme}
 
                     Y lo que nos da esto es una misma sintaxis, quiza esto sea un tema algo complejo
                     para unos y no te preocupes si no entiendes esto por completo por ahora.
@@ -1095,6 +1095,27 @@
                         vector<int> numbers {1, 2, 3, 4, 5, 6};
                     \end{lstlisting}
 
+                    Además ayuda en varias cosas:
+                    \begin{itemize}
+                        \item Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days ();   
+                        \end{lstlisting}
+
+                        Expecto que esto es la declaración de una función llamada \textCode{days} que no 
+                        recibe nada y regresa un vector.
+
+                        En la antigüedad podríamos hacer algo como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days = vector<int>();   
+                        \end{lstlisting}
+
+                        Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days {};   
+                        \end{lstlisting}
+                    \end{itemize}
 
         % =========================================================
         % ======         TIPOS DE DATOS NUMERICOS          ========
@@ -2209,6 +2230,7 @@
         % =========================================================
         \section{Los contendedores en si}
 
+        
 
 
         % =========================================================
@@ -2216,13 +2238,54 @@
         % =========================================================
         \section{std::vector}
 
-            
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Inicialización}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    vector<int> days (7, 0);    // vector with 7 ints, all start with 0
+                \end{lstlisting}
+
+        % =========================================================
+        % ==========             ARRAY                   ==========
+        % =========================================================
+        \clearpage
+        \section{std::array}
 
             % ============================================
-            % ===========       ARRAY      ===============
+            % ====           INICIALIZAR        ==========
             % ============================================
-            \subsection{std::array}
+            \subsection{Tips}
 
+                \begin{itemize}
+                    \item 
+                        
+                        Nota que \textCode{array}, se comporta de una manera un poco peculiar:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            array<int, 4> a1;            // Ok, 4 elements, all are undefined
+                            array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
+                            array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
+                        \end{lstlisting}
+
+                        Además pasa algo raro:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            using complex = std::complex<int>
+                            vector<complex> v1 {{1, 2}, {3, 4}};      
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                            
+                            array<complex, 2> a2  {{1, 2}, {3, 4}};
+                            // Syntax error
+                            
+                            array<complex, 2> a2  {{{1, 2}, {3, 4}}};
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                        \end{lstlisting}
+
+                        Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
+                        cuando y solo cuando estar inicializando cosas anidadamente.
+                \end{itemize}
+
+               
         
         % =========================================================
         % ==========             STRINGS                 ==========
@@ -2233,40 +2296,64 @@
         % =========================================================
         % ==========             MAP                     ==========
         % =========================================================
+        \clearpage
         \section{std::map}
+
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Inicialización}
+
+                Puedes inicializar usando una \textCode{ininitializer\_list}, se ve mucho mas claro:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // Before :c
+                    map<int, string> translate {};
+
+                    translate.insert(make_pair(0, "null"));
+                    translate.insert(make_pair(8, "eight"));
+                    translate.insert(make_pair(15, "fifteen"));
+                  
+                    // After :D
+                    map<int, string> someMap {
+                        {0, "null"},
+                        {8, "eight"},
+                        {15, "fifteen"},
+                    };
+
+                \end{lstlisting}
 
             % ============================================
             % ====               TIPS           ==========
             % ============================================
             \subsection{Tips}
 
-            \begin{itemize}
-                \item 
-                    Prefiere usar \textCode{auto} en vez de decir el tipo al iterar sobre un map.
-                    Me explico:
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        map<int, string> someMap {
-                            {0, "null"},
-                            {8, "eight"},
-                            {15, "fifteen"},
-                        };
-                        
-                        // Good: No element copy
-                        for (const auto& element : someMap) { ... } 
-                        
-                        // Bad: Copies element
-                        for (const pair<int, string>& element : someMap) {...}   
+                \begin{itemize}
+                    \item 
+                        Prefiere usar \textCode{auto} en vez de decir el tipo al iterar sobre un map.
+                        Me explico:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            map<int, string> someMap {
+                                {0, "null"},
+                                {8, "eight"},
+                                {15, "fifteen"},
+                            };
+                            
+                            // Good: No element copy
+                            for (const auto& element : someMap) { ... } 
+                            
+                            // Bad: Copies element
+                            for (const pair<int, string>& element : someMap) {...}   
 
-                        // Ok, but impossible to remember: No element copy
-                        for (const pair<const int, string>& element : someMap) {...}  
-                    \end{lstlisting}
+                            // Ok, but impossible to remember: No element copy
+                            for (const pair<const int, string>& element : someMap) {...}  
+                        \end{lstlisting}
 
-                    Y si no me creen vayan a \underline{\href{https://wandbox.org/permlink/4IFbZr72RfUUWyCz}{aquí}}
-                    o \underline{\href{https://releases.llvm.org/7.0.0/tools/clang/tools/extra/docs/clang-tidy/checks/performance-implicit-conversion-in-loop.html}{aquí}}.
+                        Y si no me creen vayan a \underline{\href{https://wandbox.org/permlink/4IFbZr72RfUUWyCz}{aquí}}
+                        o \underline{\href{https://releases.llvm.org/7.0.0/tools/clang/tools/extra/docs/clang-tidy/checks/performance-implicit-conversion-in-loop.html}{aquí}}.
 
-                    \cite{NicoJosuttis}
+                        \cite{NicoJosuttis}
 
-            \end{itemize}
+                \end{itemize}
 
         % =========================================================
         % ==========             SET                     ==========
@@ -2286,6 +2373,45 @@
     % ===============================================================================
     \clearpage
     \chapter{Cosas Avanzadas de \Cpp}
+
+
+        % =========================================================
+        % ==========         SOBRE INICIALIZAR           ==========
+        % =========================================================
+        \clearpage
+        \section{Sobre inicializar}  
+
+            % ============================================
+            % ======               AAA              ======
+            % ============================================
+            \subsubsection{(AAA) Almost always auto}
+
+                Desde hace unos años se esta dando una forma estandar de inicializar cosas en \Cpp.
+                Que se basa en seguir este patrón:
+
+                \begin{lstlisting}[language=C++, gobble=24]
+                    // For declaring types
+                    using T = ...;
+
+                    // For declaring variables
+                    auto x = ...;
+                    auto y = type{...};
+                \end{lstlisting}
+
+                Por ejemplo:
+                \begin{lstlisting}[language=C++, gobble=24]
+                    int i = 42;                           ->   auto i = 42
+                    long v = 42;                          ->   auto v = long {42};
+                    Costumer c {"Jim"};                   ->   auto c = Costumer {"Jim"};
+                    vector<int>::iterator p = v.cbegin(); ->   auto p = v.cbegin();
+                \end{lstlisting}
+
+                Un gran problema con esta idea son cosas que son caras de copiar o que no se pueden mover
+                (como por ejemplo), \textCode{vector, map, array, unique\_ptr}. Por lo que usalo con cuidado
+                y en general recomiendo solo usarlo cuando lo estamos declarando variables sencillas y no 
+                contenedores. 
+
+
 
         % =========================================================
         % ==========         VERDADEROS ARRAYS           ==========
@@ -2650,14 +2776,54 @@
 
                 Usar algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
-                    auto someValue {bla bla bla};
+                    auto someValue {...};
                 \end{lstlisting}
 
-                Solo nos dice, compilador, pon el tipo de dato que creas correcto aquí, pero poner 
-                \textCode{auto} no hace nada relacionado con \textCode{const} o sobre la creación de 
-                las referencias.
+                Solo nos dice, compilador, pon el tipo de dato que creas correcto aquí.
+                
+                Además hay algo importante que tienes que recordar:
 
-                Asií que veamos que hace cada una de las \Quote{modificaciones} que podemos hacerle al \textCode{auto}:
+                % ============================================
+                % ==========          &&            ==========
+                % ============================================
+                \subsubsection{auto decay} 
+
+                    Supongamos que haces algo como:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        auto var1 = var2;
+                    \end{lstlisting}
+
+                    Uno pensaría que \textCode{var1} y \textCode{var2}, tendrían el mismo tipo, y esto es casi siempre
+                    así, pero \textCode{auto} sigue además otras reglas:
+                    
+                    \begin{itemize}
+                        \item Los arreglos estilo C (\textCode{int []}) se vuelven punteros (\textCode{int*})
+                        \item Las funciones se convierten en punteros a funciones
+                        \item Se eliminan las referencias top-level
+                        \item Se eliminan los top-level \textCode{const} y  \textCode{volatile}
+                    \end{itemize}
+
+                    Así por ejemplo queda claro porque pasa esto:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        int var1 {3};
+                        const int& var2 = var1;     // var2 is an const int&
+                        auto var3 = var2;           // var3 is just an int
+
+                        auto s = "hi"               // s has type const char*
+                                                    // but "hi" has type const char[3]
+                    \end{lstlisting}
+
+                    Este último ejemplo explica que es un \textCode{top-level}, osea si tenemos una variable
+                    que es \textCode{const} entonces por ejemplo una referencia constante, esta será eliminada, 
+                    pero si tenemos por ejemplo un arreglo de carácteres constantes entonces seguiremos teniendo
+                    el \textCode{const}, tendremos un puntero a carácteres constantes.
+                
+                \clearpage
+
+                Entonces, en resumen poner \textCode{auto} no hace nada relacionado con \textCode{const} o 
+                sobre la creación de las referencias.
+
+                Así que veamos que hace cada una de las \Quote{modificaciones} que podemos hacerle al \textCode{auto}:
 
                 \begin{itemize}
                     \item \textCode{const auto}
