@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  17 MAY 2019 00:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  4 JUN 2019 18:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -996,18 +996,23 @@ File: lstlang1.sty 2018/09/02 1.7 listings language file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 513.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 515.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 513.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 515.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 513.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 515.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) [3
-
 
 
 ] [4
@@ -1015,7 +1020,7 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 
 ]
 Chapter 2.
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 551.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 604.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-utf8.def
@@ -1028,32 +1033,32 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 \tf@thm=\write5
 \openout5 = `Reference.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 562.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 615.
  [5
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 562.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 615.
  (/Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 562.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 562.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 615.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 615.
 Package rerunfilecheck Info: File `Reference.out' has not changed.
-(rerunfilecheck)             Checksum: BE197386660A096D5D6B4542262E9C00;485.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 562.
+(rerunfilecheck)             Checksum: EC62C007601F926FD0E47176F139B399;712.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 615.
  ) 
 Here is how much of TeX's memory you used:
- 23844 strings out of 492616
- 410904 string characters out of 6128982
- 895677 words of memory out of 5000000
- 27358 multiletter control sequences out of 15000+600000
+ 23931 strings out of 492616
+ 412404 string characters out of 6128982
+ 895819 words of memory out of 5000000
+ 27398 multiletter control sequences out of 15000+600000
  552422 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,6n,63p,1098b,1961s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.pdf (6 pages, 166007 bytes).
+Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.pdf (6 pages, 177288 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 169 compressed objects within 2 object streams
- 65 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

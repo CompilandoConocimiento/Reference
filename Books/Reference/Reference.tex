@@ -506,23 +506,76 @@
     \chapter{C++}
 
         % =========================================================
-        % ==========      DEFINICION DE ESCALAR      ==============
+        % ==========            INTEGRALS            ==============
         % =========================================================
-        \section{Sieve of Eratosthenes}
+        \section{Integrals}
+        
+            \subsection{int vs long vs long long}
 
-        \begin{lstlisting}[language=C++, gobble=12]
-            #include <cstdint>
-            int8_t likeChar {};
-            int16_t likeShort {};
-            int32_t likeInt {};
-            int64_t likeLong {};
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int minValue {-2,147,483,648};
+                    int maxValue {2,147,483,647};
 
-            // And the unsigned versions :
-            uint8_t likeChar {};
-            uint16_t likeShort {};
-            uint32_t likeInt {};
-            uint64_t likeLong {};
-        \end{lstlisting}
+                    long long minValue {-9,223,372,036,854,775,808};
+                    long long maxValue {9,223,372,036,854,775,807};
+
+                    unsigned int maxValueIntUnsigned {4,294,967,295};
+                    unsigned long long maxValueLLUnsigned {18,446,744,073,709,551,615};
+                \end{lstlisting}
+
+            \subsection{Fixed width (int32\_t, uint64\_t, ...)}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <cstdint>
+                    
+                    int8_t likeChar {};
+                    int16_t likeShort {};
+                    int32_t likeInt {};
+                    int64_t likeLong {};
+
+                    // And the unsigned versions:
+                    uint8_t likeChar {};
+                    uint16_t likeShort {};
+                    uint32_t likeInt {};
+                    uint64_t likeLong {};
+                \end{lstlisting}
+
+            \subsection{Fast I / O}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // No merge cin & cout with scanf & printf
+                    ios::sync_with_stdio(false);
+                    
+                    // No merge cin / cout
+                    cin.tie(nullptr);
+                \end{lstlisting}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    template <class T>  
+                    inline void getNumberFast(T &result) {                   
+                        T number {};                                                      
+                        T sign {1};
+
+                        char currentDigit {getchar_unlocked()};
+                        
+                        while(currentDigit < '0' or currentDigit > '9') {
+                            currentDigit = getchar_unlocked(); 
+                            if (currentDigit == '-')  sign = -1;                     
+                        }
+
+                        while ('0' <= currentDigit and currentDigit <= '9') {          
+                            number = (number << 3) + (number << 1);
+                            number += currentDigit - '0';  
+                            currentDigit = getchar_unlocked();                             
+                        }
+
+                        if (sign) result = -number;
+                        else result = number;
+                    }
+                \end{lstlisting}
+
+                            
+        
     
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////

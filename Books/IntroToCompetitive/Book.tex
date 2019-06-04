@@ -1205,8 +1205,8 @@
                         auto number {1,000,000,000,000,000,000}     // number is long long  
 
                         auto size {"long long int is 8 bytes"};
-                        int minValue {-9,223,372,036,854,775,808};
-                        int maxValue {9,223,372,036,854,775,807};
+                        long long minValue {-9,223,372,036,854,775,808};
+                        long long maxValue {9,223,372,036,854,775,807};
                     \end{lstlisting}
 
 
@@ -1812,6 +1812,22 @@
 
                 Y si, hablaremos sobre referencias y \textCode{auto\&\&} más a detalle pronto.
 
+
+                Además puedes usar \textCode{break, continue} como en cualquier \textCode{for} normal
+                \begin{lstlisting}[language=C++, gobble=20]
+                    vector<int> numbers {1, 2, 3, 4};
+
+                    for (int& number : numbers) {
+                        if (number == 3) break;
+                    }
+
+                    for (int& number : numbers) {
+                        if (number != 3) continue;
+                        else {
+                            ...
+                        }
+                    }
+                \end{lstlisting}
         
         % =========================================================
         % ====  REFERENCES AND VALUES:  APUNTADORES Y VALORES  ====
@@ -2217,7 +2233,117 @@
         \clearpage
         \section{La entrada / salida en \Cpp}
 
-     
+            % ============================================
+            % ====             TEMPLATES        ==========
+            % ============================================
+            \subsection{Hacerla lo más rápido posible}
+
+                Hay dos grandes cosas que puedes hacer para hacer acelerar el entrada y la salida
+                de datos:
+                \begin{itemize}
+                    \item Puedes separar la sincronización que esta por defecto:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // No merge cin/cout with scanf/printf
+                            ios::sync_with_stdio(false);   
+                        \end{lstlisting}
+
+                        Lo que hace esto es eliminar la sincronización que existe por defecto entre 
+                        \textCode{std::cout / std::cin} y \textCode{printf / scanf}. 
+                        
+                        Si en tu código no estas usando \textCode{std::cout / std::cin} y \textCode{printf / scanf}
+                        entonces no tendrás ningun problema. Y con esto lograrás una gran ventaja de tiempo.
+
+                        Veamos un ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            cout << "Hello";
+                            printf("World");
+                            cout << "Ciao";  
+
+                            // Will always print "HelloWorldCiao"
+                        \end{lstlisting}
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            ios::sync_with_stdio(false);   
+
+                            cout << "Hello";
+                            printf("World");
+                            cout << "Ciao";  
+
+                            // Will maybe print:
+                            //    -  "HelloCiaoWorld"
+                            //    -  "HelloWorldCiao"
+                            //    -  "CiaoHelloWorld"
+                        \end{lstlisting}
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            ios::sync_with_stdio(false);   
+
+                            cout << "Hello";
+                            cout << "World";
+                            cout << "Ciao";  
+
+                            // Will always print "HelloWorldCiao"
+                        \end{lstlisting}
+                       
+
+                    \item Puedes separar la sincronización entre la entrada y la salida:
+                    
+                        Si tu programa solo leera al principio y después hará cálculos y al final dará un resultado
+                        entonces puedes hacer algo como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            cin.tie(nullptr);
+                        \end{lstlisting}
+
+                        Esto hará algo parecido a lo de arriba pero entre  \textCode{std::cout} y \textCode{std::cin}.
+
+                        Más tecnicamente lo que hace es es eliminar esta propiedad que \Cpp hace por defecto
+                        \Quote{flushing of std::cout before std::cin accepts an input}. 
+
+                    \item Puedes leer enteros de manera aún mas rápida:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            template <class T>  
+                            inline void getNumberFast(T &result) {                   
+                                T number {};                                                      
+                                T sign {1};
+
+                                char currentDigit {getchar_unlocked()};
+                                
+                                while(currentDigit < '0' or currentDigit > '9') {
+                                    currentDigit = getchar_unlocked(); 
+                                    if (currentDigit == '-')  sign = -1;                     
+                                }
+
+                                while ('0' <= currentDigit and currentDigit <= '9') {          
+                                    number = (number << 3) + (number << 1);
+                                    number += currentDigit - '0';  
+                                    currentDigit = getchar_unlocked();                             
+                                }
+
+                                if (sign) result = -number;
+                                else result = number;
+                            }
+                        \end{lstlisting}
+
+                        Puedes usarla de esta manera:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            #include <vector>
+
+                            int numberOfElements;
+                            getNumberFast(numberOfElements);
+
+                            std::vector<int> elements {};
+                            elements.resize(numberOfElements);
+
+                            for (size_t i {}; i < numberOfElements; ++i) 
+                            getNumberFast(elements[i]);
+                        \end{lstlisting}
+
+                    \item Puedes usar \textCode{\\n} en vez de \textCode{std::endl} si no necesitas hacer 
+                        \textCode{flush}, y recuerda que hacer \textCode{flush} es tomar la información que 
+                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir.
+                    
+                \end{itemize}
+                
 
     % ===============================================================================
     % ===============         CONTENEDORES STD              =========================
@@ -2228,14 +2354,13 @@
         % =========================================================
         % ==========         LOS CONTENEDORES            ==========
         % =========================================================
+        \clearpage
         \section{Los contendedores en si}
-
-        
-
 
         % =========================================================
         % ==========             VECTOR                  ==========
         % =========================================================
+        \clearpage
         \section{std::vector}
 
             % ============================================
@@ -2243,9 +2368,69 @@
             % ============================================
             \subsection{Inicialización}
 
-                \begin{lstlisting}[language=C++, gobble=20]
-                    vector<int> days (7, 0);    // vector with 7 ints, all start with 0
-                \end{lstlisting}
+                Hay dos formas de inicializar un vector:
+                \begin{itemize}
+                    \item Iniciar un vector con un tamaño dado y un valor por defecto a cada elemento
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // vector with 7 ints, all start with 0
+                            vector<int> days (7, 0);        
+
+                            // vector with 13 strings, all are "" for now
+                            vector<string> names (13, "");  
+                        \end{lstlisting}
+
+                    \item Iniciar un vector con unos elementos:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // vector with 5 ints: [2, 3, 5, 7, 11]
+                            vector<int> primes {2, 3, 5, 7, 11}     
+
+                            // vector with 2 strings: ["Oscar", "Rosas"]
+                            vector<string> names {"Oscar", "Rosas"} 
+                        \end{lstlisting}
+                \end{itemize}
+
+            % ===============================================================================
+            % == COMO ES QUE LOGRA AUTO DIMENSIONARSE TAN RAPIDO QUE PUEDES HACER     =======
+            % ===============================================================================
+            \subsection{Como es que logra autodimensionarse}
+
+
+
+            % ============================================
+            % ====      COSAS QUE PUEDES HACER     =======
+            % ============================================
+            \subsection{Cosas que puedes hacer}
+
+                \begin{itemize}
+                    \item 
+                \end{itemize}
+               
+
+            % ============================================
+            % ====                TIPS          ==========
+            % ============================================
+            \subsection{Tips}
+
+                \begin{itemize}
+                    \item Si quieres hacer que sea mas rápido y conoces cual será su tamaño máximo,
+                        entonces puedes prereservar el espacio máximo, esto evitará que entre aumentos de tamaños
+                        se tengan que mover los elementos, haciendo el código un poco más rápido.
+
+                        Se ve así:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            #include <vector>
+
+                            int numberOfElements;
+                            cin >> numberOfElements;
+
+                            std::vector<int> elements {};
+                            elements.resize(numberOfElements);
+
+                            for (size_t i {}; i < numberOfElements; ++i) cin >> elements[i];
+                        \end{lstlisting}
+                
+
+                \end{itemize}
 
         % =========================================================
         % ==========             ARRAY                   ==========
@@ -2261,7 +2446,7 @@
                 \begin{itemize}
                     \item 
                         
-                        Nota que \textCode{array}, se comporta de una manera un poco peculiar:
+                        Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
                         \begin{lstlisting}[language=C++, gobble=28]
                             array<int, 4> a1;            // Ok, 4 elements, all are undefined
                             array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
@@ -2282,7 +2467,7 @@
                         \end{lstlisting}
 
                         Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
-                        cuando y solo cuando estar inicializando cosas anidadamente.
+                        cuando y solo cuando estas inicializando cosas anidadamente.
                 \end{itemize}
 
                
@@ -2353,6 +2538,45 @@
 
                         \cite{NicoJosuttis}
 
+                    \item 
+                        Ten cuidado al usar \textCode{map operator[]} ve este ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            map<int, string> someMap {
+                                {0, "null"},
+                                {8, "eight"},
+                                {15, "fifteen"},
+                            };
+                            
+                            if (someMap[9] == "nine") {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        Lo que acaba de pasar es que si existia el elemento con llave 9 existia pues hacer
+                        \textCode{someMap[9]} nos lo regresa, pero si no existia acaba de crearlo con un valor
+                        por defecto, lo cual esta muy pero muy raro.
+
+                        Si quieres buscar en un contenedor así puedes usar:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.find(9) == "nine") {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        O si solo quieres saber si existe puedes hacer algo como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.find(9) != someMap.end()) {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        O usar esto:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.count(9)) {   
+                                ...
+                            }
+                        \end{lstlisting}
+
                 \end{itemize}
 
         % =========================================================
@@ -2389,7 +2613,7 @@
                 Desde hace unos años se esta dando una forma estandar de inicializar cosas en \Cpp.
                 Que se basa en seguir este patrón:
 
-                \begin{lstlisting}[language=C++, gobble=24]
+                \begin{lstlisting}[language=C++, gobble=20]
                     // For declaring types
                     using T = ...;
 
@@ -2399,8 +2623,8 @@
                 \end{lstlisting}
 
                 Por ejemplo:
-                \begin{lstlisting}[language=C++, gobble=24]
-                    int i = 42;                           ->   auto i = 42
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int i = 42;                           ->   auto i = 42;
                     long v = 42;                          ->   auto v = long {42};
                     Costumer c {"Jim"};                   ->   auto c = Costumer {"Jim"};
                     vector<int>::iterator p = v.cbegin(); ->   auto p = v.cbegin();
@@ -2973,6 +3197,19 @@
         % =========================================================
         \clearpage
         \section{Tipos de datos definidos por nosotros}
+
+            \Quote{
+                Cuando llego Simula (lenguaje de programación) y la programación orientada a objectos,
+                empezamos a cambiar la forma de pensar:
+                
+                En vez de enfocarnos en meter todo lo que una persona  podría desear dentro del lenguaje,
+                podemos darle la capacidad de crear sus propias abstracciones.
+                
+                Por lo que si necesitas un vector, creas un vector, si necesitas matrices de 3 dimensiones,
+                puedes crearla, si necesitas hacer registros de empleados puedes hacerlo.
+
+                De ahi nació la idea de clases.
+            }
 
 
             % ============================================
