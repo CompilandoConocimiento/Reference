@@ -3,48 +3,12 @@
 
 using namespace std;
 
-template <class T>  
-inline void getNumberFast(T &result) {                   
-  T number {};                                                      
-  bool sign {};
-
-  char currentDigit {static_cast<char>(getchar_unlocked())};
-  
-  while(currentDigit < '0' or currentDigit > '9') {
-    currentDigit = getchar_unlocked(); 
-    if (currentDigit == '-') sign = true;                     
-  }
-
-  while ('0' <= currentDigit and currentDigit <= '9') {          
-    number = (number << 3) + (number << 1) + (currentDigit - '0');  
-    currentDigit = getchar_unlocked();                             
-  }
-
-  if (sign) result = -number;
-  else result = number;
-}
-
 int main() {
-  int numberOfElements;
-  getNumberFast(numberOfElements);
-
-  cout << numberOfElements << endl;
-
-  std::vector<int> elements {};
-  elements.resize(numberOfElements);
-  cout << elements.size() << endl;
-
-  for (size_t i {}; i < numberOfElements; ++i) {
-    getNumberFast(elements[i]);
-    cout << elements[i] << endl;
-  }
-
-  cout << elements.size() << endl;
-
-  for (auto x : elements) {
-    cout << 2 * x << endl;
-  }
+  int number { 0b00000110 };
+  int number1 = number >> 1; // 0b00001100
+  int number2 = number >> 3; // 0b00110000
+  if (number1 == 0b00000011) cout << "Aaa" << endl;
+  if (number2 == 0b00000000) cout << "Aaa2" << endl;
 
   return 0;
 }
-

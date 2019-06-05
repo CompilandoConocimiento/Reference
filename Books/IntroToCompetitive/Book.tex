@@ -519,16 +519,11 @@
 \nopagecolor                                                        %Use to restore the color to white
 
 
-
-
-
-
 % =====================================================
 % ========                INDICE              =========
 % =====================================================
 \tableofcontents{}
 \label{sec:Index}
-
 \clearpage
 
 
@@ -580,7 +575,7 @@
                 
                     Los problemas que vamos a resolver están bien definidos, es decir son problemas
                     en los que para cualquier entrada tu tendrías que ser capaz de calcular la salida
-                    a la mano.
+                    a mano.
 
                     Además estarás informado de todas las restricciones del problema y todas las 
                     suposiciones que puedes tomar para facilitarte la vida.
@@ -613,8 +608,8 @@
                         \Link{https://omegaup.com/arena/problem/factorescomunes}
                         {Factores comunes - OmegaUp}
                     \item 
-                        \Link{https://omegaup.com/arena/problem/Reactores}
-                        {Reactores - OmegaUp}
+                        \Link{https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/}
+                        {Two Sum II: Input array is sorted - Leetcode}
                 \end{itemize}
 
         % =========================================================
@@ -656,6 +651,7 @@
                 ciencias de la computación.}
 
             \end{itemize}
+
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -861,7 +857,7 @@
 
                 for (vector<shape*>:::iterator i = v.begin(): i != v.end(); ++i) {
                     if (*i && **i == *p)
-                        cout << **i << "is a match" << endl;
+                        cout << **i << "is a match" << '\n';
                 }
 
                 // ...later, possible elsewhere
@@ -881,7 +877,7 @@
 
                 for (auto& s : v) {
                     if (s && *s == *p)
-                        cout << *s << "is a match" << endl;
+                        cout << *s << "is a match" << '\n';
                 }
             \end{lstlisting}
 
@@ -956,7 +952,7 @@
         \textbf{
             Además si ya sabes \Cpp o no te interesa aprender toda la sintaxis e ir directo a cosas
             algo más relacionadas con la programación competitiva entonces puedes saltar hasta el
-            siguiente capítulo dando click \underline{\hyperref[part:IdeasDeCienciasDeLaComputacion]{aquí}}
+            siguiente capítulo dando click \underline{\hyperref[part:EstructurasDeDatos]{aquí}}.
         }
 
 
@@ -1097,24 +1093,25 @@
 
                     Además ayuda en varias cosas:
                     \begin{itemize}
-                        \item Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
+                        \item 
+                            Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
+                            \begin{lstlisting}[language=C++, gobble=28]
+                                vector<int> days ();   
+                            \end{lstlisting}
 
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            vector<int> days ();   
-                        \end{lstlisting}
+                            Expecto que esto es la declaración de una función llamada \textCode{days} que no 
+                            recibe nada y regresa un vector.
 
-                        Expecto que esto es la declaración de una función llamada \textCode{days} que no 
-                        recibe nada y regresa un vector.
+                            En la antigüedad podríamos hacer algo como:
+                            \begin{lstlisting}[language=C++, gobble=28]
+                                vector<int> days = vector<int>();   
+                            \end{lstlisting}
 
-                        En la antigüedad podríamos hacer algo como:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            vector<int> days = vector<int>();   
-                        \end{lstlisting}
+                            Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
+                            \begin{lstlisting}[language=C++, gobble=28]
+                                vector<int> days {};   
+                            \end{lstlisting}
 
-                        Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            vector<int> days {};   
-                        \end{lstlisting}
                     \end{itemize}
 
         % =========================================================
@@ -1197,8 +1194,11 @@
                 \subsubsection{long long}
 
                     Este no es un tipo de dato, per se, sino que es un modificador que le puedes aplicar
-                    a \textCode{int} y con esto lo que logras es duplicar el tamaño de un int (suponiendo
-                    que int tenga 4 bytes de tamaño, y creeme, seguramente es así).
+                    a \textCode{int} y con esto lo que logras es crear un tipo de dato que tiene al menos 8 bytes.
+
+                    Por eso es que ignore a \textCode{long int / long} pues solo nos garantiza que tendra al menos 4 bytes
+                    por lo que es mas o menos inútil, lo mas seguro es declarar algo como \textCode{long long}
+                    si te interesa que tenga el máximo tamaño posible.
                     \begin{lstlisting}[language=C++, gobble=24]
                         int normalVariable {};                      // It takes 4 bytes     
                         long long int normalVariable {};            // It takes 8 bytes 
@@ -1257,11 +1257,14 @@
                     que nos asegura que será tan grande como necesitemos para usarlo como índice
                     de cualquier contenedor.
 
-                    Nota que como lo usamos para índice, este tipo de dato no tiene signo.
+                    Nota que como lo usamos para índice, este tipo de dato no tiene signo y generalmente tiene
+                    el mismo tamaño de que un \textCode{long long}.
+
+                    Además si te gusta los detalles visita esto:
+                    \underline{\href{https://stackoverflow.com/questions/4849678/c-for-loop-size-type-vs-size-t}{aquí}}.
 
                     Por ejemplo, \textCode{std::vector, std::string, std::array} y más lo usan
                     como índice.
-
                     \begin{lstlisting}[language=C++, gobble=24]
                         std::vector<int> someIntegers {1, 2, 3, 4, 20, 5};
                         std::size_t numberOfElements {someIntegers.size()}; 
@@ -1387,7 +1390,7 @@
                         bool isEven {true};
                         int n {};
                         while (true) {
-                            cout << n << endl;
+                            cout << n << " " << isEven << '\n';
                             isEven = not isEven;        // The important line
                         }
                     \end{lstlisting}
@@ -1498,42 +1501,14 @@
                     otro $k$ entonces hay que checar que \textCode{n \% k == 0}.
 
             % ============================================
-            % =====       OPERADORES LOGICOS        ======
+            % =====   OPERADORES RELACIONALES       ======
             % ============================================
             \clearpage
-            \subsection{Operadores Lógicos}
+            \subsection{Operadores Relacionales}
 
-                En \Cpp tenemos varios operadores lógicos que tomaran como argumentos dos 
-                \textCode{bool} o cosas que se puedan convertir a bool y con ellas nos darán otro
-                valor booleano.
-
+                Estos sirven para comparar los elementos, también son practicamente iguales a como son en todos los
+                lenguajes:
                 \begin{itemize}
-                    \item And Lógico: 
-                    
-                        Se escribe así y solo será verdad si es que ambos parámetros son \textCode{true}.
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            bool IAmHappy = IHaveAJob && IHaveAFreeTime 
-                            bool IAmHappy = IHaveAJob and IHaveAFreeTime
-                        \end{lstlisting}
-
-                        También algo bonito es que en \Cpp tenemos tenemos dos sintaxis para esta operación.
-
-                    \item Or Lógico: 
-                    
-                        Se escribe así y solo será verdad si es que al menos uno de los parámetros son \textCode{true}.
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            bool IAmOk = IHaveAJob || IHaveAFreeTime 
-                            bool IAmOk = IHaveAJob or IHaveAFreeTime
-                        \end{lstlisting}
-
-                    \item Not Lógico: 
-                    
-                        Se escribe así y solo invierte el valor de verdad de lo que le enviemos.
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            bool IAmHappy = !IAmSad
-                            bool IAmHappy = not IAmSad
-                        \end{lstlisting}
-
                     \item Igualdad Lógica: 
                     
                         Se escribe así y solo el valor de verdad de ambos valores es igual.
@@ -1549,24 +1524,202 @@
                             bool IAmHappy = IHaveLove not_eq true
                         \end{lstlisting}
 
-                    \item XOR Lógico: 
-                    
-                        Se escribe así sigue las leyes clasicas del XOR: Es verdad si uno y solo uno de los operandos
-                        es verdad.
+                    \item Mayor y menor: 
                         \begin{lstlisting}[language=C++, gobble=28]
-                            int number = 0 ^ 111
-                            int number = 0 xor 121
+                            int debt{20}, money{50};
+                            bool IAmHappy = debt < money;
+                            bool IAmHappy = money > debt;
+                        \end{lstlisting}
+
+                    \item Mayor / menor o igual: 
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            int debt{20}, money{50};
+                            bool IAmHappy = debt <= money;
+                            bool IAmHappy = money >= debt;
                         \end{lstlisting}
                 \end{itemize}
 
-            También existen los operadores lógicos que se aplican bit a bit, estos no son tan comunes
-            pero los veremos en otro capítulo.
+
+            % ============================================
+            % =====       OPERADORES LOGICOS        ======
+            % ============================================
+            \clearpage
+            \subsection{Operadores Lógicos}
+
+                En \Cpp tenemos varios operadores lógicos que tomaran como argumentos dos 
+                \textCode{bool} o cosas que se puedan convertir a bool y con ellas nos darán otro
+                valor booleano.
+
+                \begin{itemize}
+                    \item AND Lógico: 
+                    
+                        Se escribe así y solo será verdad si es que ambos parámetros son \textCode{true}.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            bool IAmHappy = IHaveAJob && IHaveAFreeTime 
+                            bool IAmHappy = IHaveAJob and IHaveAFreeTime
+                        \end{lstlisting}
+
+                    \item OR Lógico: 
+                    
+                        Se escribe así y solo será verdad si es que al menos uno de los parámetros son \textCode{true}.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            bool IAmOk = IHaveAJob || IHaveAFreeTime 
+                            bool IAmOk = IHaveAJob or IHaveAFreeTime
+                        \end{lstlisting}
+
+                    \item NOT Lógico: 
+                    
+                        Se escribe así y solo invierte el valor de verdad de lo que le enviemos.
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            bool IAmHappy = !IAmSad
+                            bool IAmHappy = not IAmSad
+                        \end{lstlisting}
+
+                \end{itemize}
 
             % ============================================
             % =====       OPERADORES LOGICOS        ======
             % ============================================
             \clearpage
             \subsection{Bitwise and Bitmasks: Operaciones bit a bit y máscaras de bits}
+
+                % ============================================
+                % =====       OPERADORES LOGICOS        ======
+                % ============================================
+                \subsubsection{Operadores Lógicos bit a bit}
+
+                    En \Cpp tenemos varios operadores lógicos bit a bit que tomaran como argumentos dos cosas, digamos números 
+                    (porque generalmente son para lo que lo ocupamos) y nos regresan otro numero.
+
+                    Ahora, los demás operadores son tan obvios que practicamente no tengo nada que decir, pero para estos si que tengo
+                    mucho que decir, veamoslo con cuidado y veamos que hacen:
+
+                    \begin{itemize}
+                        \item AND Lógico bit a bit: 
+                        
+                            Se escribe así, y lo que hace es aplicar AND bit a bit de nuestros números, es decir
+                            un bit es 1 si y solo si es que ambos son 1.
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                int number1 {0b11100011};   // C++14
+                                int number2 {0b01010101};   // C++14
+
+                                int numberAND = number1 & number2;
+                                int numberAND = number1 bitand number2;
+                            \end{lstlisting}
+
+                            Donde tendremos que \textCode{numberAND = 0b01000001}. Mira porque:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                  11100011    -> number1
+                                & 01010101    -> number2
+                                  ---------
+                                  01000001
+                            \end{lstlisting}
+
+                            Con esto también se explica una forma que hacemos para saber si un número es 
+                            par o impar:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                if (number & 1) {
+                                    // odd
+                                }
+                                else {
+                                    // even
+                                }
+                            \end{lstlisting}
+
+                            Esto es fácil de enteder porque \textCode{number \& 1} lo que hace es comparar el último bit
+                            que si recuerdas la representación binaria nos dice si un número necesita un +1 al final 
+                            o no y recuerda que solo necesita el +1 si es que es impar.
+                            
+                        \clearpage
+                        \item OR Lógico bit a bit: 
+                        
+                            Explicado el AND logico, este es basicamente el mismo, pero que ahora siguiendo el OR, es
+                            decir, solo si alguno de los dos es uno entonces el valor de ese bit será uno.
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                int number1 {0b11100011};   // C++14
+                                int number2 {0b01010101};   // C++14
+
+                                int numberOR = number1 | number2;
+                                int numberOR = number1 bitor number2;
+                            \end{lstlisting}
+
+                            Donde tendremos que \textCode{numberOR = 0b11110111}. Mira porque:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                  11100011    -> number1
+                                & 01010101    -> number2
+                                  ---------
+                                  11110111
+                            \end{lstlisting}
+                        
+                        \item XOR Lógico bit a bit: 
+                        
+                            Lo mismo pero siguiendo ahora el XOR bit a bit:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                int number1 {0b11100011};   // C++14
+                                int number2 {0b01010101};   // C++14
+
+                                int numberXOR = number1 ^ number2;
+                                int numberXOR = number1 xor number2;
+                            \end{lstlisting}
+
+                            Donde tendremos que \textCode{numberXOR = 0b10110110}. Mira porque:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                  11100011    -> number1
+                                & 01010101    -> number2
+                                  ---------
+                                  10110110
+                            \end{lstlisting}
+
+                        \item Negación Lógica bit a bit: 
+                        
+                            Lo que hace es negar cada bit:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                int number {0b11100011};   // C++14
+                                int numberNeg = ~number;
+                                int numberNeg = compl number;
+                            \end{lstlisting}
+
+                            Donde tendremos que \textCode{numberNeg = 0b00011100}. Mira porque:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                  11100011    -> number
+                                  ---------
+                                  00011100
+                            \end{lstlisting}
+                        
+                        \clearpage
+                        \item Shifts bit a bit:
+                        
+                            Toma dos números y lo que hace es desplazar el primer número la cantidad que dice el 
+                            segundo número de veces y lleva lo que va moviendo con 0's, 
+                            veamos las dos versiones que tenemos: 
+                            \begin{itemize}
+                                \item Left shift
+                                    \begin{lstlisting}[language=C++, gobble=40]
+                                        int number {0b00000110};
+                                        int number1 = number << 1;      // 0b00001100
+                                        int number2 = number << 3;      // 0b00110000
+                                    \end{lstlisting}
+
+                                \item right shift
+                                    \begin{lstlisting}[language=C++, gobble=40]
+                                        int number {0b00000110};
+                                        int number1 = number >> 1;      // 0b00000011
+                                        int number2 = number >> 2;      // 0b00000001
+                                        int number3 = number >> 3;      // 0b00000000
+                                    \end{lstlisting}
+
+                            \end{itemize}
+
+                            Tienen algo muy interesante y es que:
+                            \begin{largeEq}
+                                \begin{MultiLineEquation*}{3}
+                                    x << y &= x * 2^y                                           \\
+                                    x >> y &= \left \lfloor \dfrac{x}{2^y} \right \rfloor 
+                                \end{MultiLineEquation*}
+                            \end{largeEq}
+
+                        
+                    \end{itemize}
 
         % =========================================================
         % ==========        SENTENCIAS DE CONTROL        ==========
@@ -1630,16 +1783,16 @@
                         \begin{lstlisting}[language=C++, gobble=28]
                             bool isSunny {true};
                             if (isSunny == true) {
-                                cout << "Hey, time to go to outside" << endl;
+                                cout << "Hey, time to go to outside" << '\n';
                             }
 
                             if (isSunny) {
-                                cout << "Hey, it is the same but shorter syntax" << endl;
+                                cout << "Hey, it is the same but shorter syntax" << '\n';
                             }
 
                             double pi {3.1416}, e {2.71828};
                             if (pi > e) {
-                                cout << "Math still make sense" << endl;
+                                cout << "Math still make sense" << '\n';
                             }
                         \end{lstlisting}
 
@@ -1784,7 +1937,7 @@
                     vector<int> someNumbers {1, 2, 3, 4};
 
                     for (int i : someNumbers) {
-                        cout << i << endl;
+                        cout << i << '\n';
                     }
                 \end{lstlisting}
 
@@ -1795,7 +1948,7 @@
                     vector<string> countryCodes {"USA", "MEX", "JAN", "UK", "CHL", "SA"};
 
                     for (string& countryCode : countryCodes) {
-                        cout << countryCode << endl;
+                        cout << countryCode << '\n';
                     }
                 \end{lstlisting}
 
@@ -1896,9 +2049,9 @@
                         Entonces si hacemos algo como esto, ¿Qué esperas que pase?
                         \begin{lstlisting}[language=C++, gobble=28]
                             int the_number {0};
-                            cout << the_number << endl;       // prints 0
+                            cout << the_number << '\n';       // prints 0
                             add_3_to_this_number(the_number);
-                            cout << the_number << endl;       // prints 0 :c
+                            cout << the_number << '\n';       // prints 0 :c
                         \end{lstlisting}
 
                         Si conoces como funcionan las funciones en \Cpp entonces es claro que
@@ -1915,9 +2068,9 @@
                             // later ...
                             
                             int the_number {0};
-                            cout << the_number << endl;       // prints 0
+                            cout << the_number << '\n';       // prints 0
                             add_3_to_this_number(the_number);
-                            cout << the_number << endl;       // prints 3 :)
+                            cout << the_number << '\n';       // prints 3 :)
                         \end{lstlisting}
 
                     \item Evitar generar copias a lo estúpido:
@@ -2149,7 +2302,7 @@
                 \begin{lstlisting}[language=C++, gobble=20]
                     int var = 1;
                     auto someFunction = [var] () { 
-                        cout << "Hello from lambda, value is " << var << endl;
+                        cout << "Hello from lambda, value is " << var << '\n';
                     };
 
                     someFunction(); // output: 1
@@ -2162,7 +2315,7 @@
                 \begin{lstlisting}[language=C++, gobble=20]
                     int var = 1;
                     auto someFunction = [&var] () { 
-                        cout << "Hello from lambda, value is " << var << endl;
+                        cout << "Hello from lambda, value is " << var << '\n';
                     };
 
                     someFunction(); // output: 1
@@ -2338,258 +2491,11 @@
                             getNumberFast(elements[i]);
                         \end{lstlisting}
 
-                    \item Puedes usar \textCode{\\n} en vez de \textCode{std::endl} si no necesitas hacer 
+                    \item Puedes usar \textCode{\textbackslash n} en vez de \textCode{std::cin} si no necesitas hacer 
                         \textCode{flush}, y recuerda que hacer \textCode{flush} es tomar la información que 
-                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir.
-                    
+                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir y no solo guardarlo
+                        en un buffet temporal y guardarlo después.
                 \end{itemize}
-                
-
-    % ===============================================================================
-    % ===============         CONTENEDORES STD              =========================
-    % ===============================================================================
-    \clearpage
-    \chapter{Containers: Contenedores de la STD}
-
-        % =========================================================
-        % ==========         LOS CONTENEDORES            ==========
-        % =========================================================
-        \clearpage
-        \section{Los contendedores en si}
-
-        % =========================================================
-        % ==========             VECTOR                  ==========
-        % =========================================================
-        \clearpage
-        \section{std::vector}
-
-            % ============================================
-            % ====           INICIALIZAR        ==========
-            % ============================================
-            \subsection{Inicialización}
-
-                Hay dos formas de inicializar un vector:
-                \begin{itemize}
-                    \item Iniciar un vector con un tamaño dado y un valor por defecto a cada elemento
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            // vector with 7 ints, all start with 0
-                            vector<int> days (7, 0);        
-
-                            // vector with 13 strings, all are "" for now
-                            vector<string> names (13, "");  
-                        \end{lstlisting}
-
-                    \item Iniciar un vector con unos elementos:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            // vector with 5 ints: [2, 3, 5, 7, 11]
-                            vector<int> primes {2, 3, 5, 7, 11}     
-
-                            // vector with 2 strings: ["Oscar", "Rosas"]
-                            vector<string> names {"Oscar", "Rosas"} 
-                        \end{lstlisting}
-                \end{itemize}
-
-            % ===============================================================================
-            % == COMO ES QUE LOGRA AUTO DIMENSIONARSE TAN RAPIDO QUE PUEDES HACER     =======
-            % ===============================================================================
-            \subsection{Como es que logra autodimensionarse}
-
-
-
-            % ============================================
-            % ====      COSAS QUE PUEDES HACER     =======
-            % ============================================
-            \subsection{Cosas que puedes hacer}
-
-                \begin{itemize}
-                    \item 
-                \end{itemize}
-               
-
-            % ============================================
-            % ====                TIPS          ==========
-            % ============================================
-            \subsection{Tips}
-
-                \begin{itemize}
-                    \item Si quieres hacer que sea mas rápido y conoces cual será su tamaño máximo,
-                        entonces puedes prereservar el espacio máximo, esto evitará que entre aumentos de tamaños
-                        se tengan que mover los elementos, haciendo el código un poco más rápido.
-
-                        Se ve así:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            #include <vector>
-
-                            int numberOfElements;
-                            cin >> numberOfElements;
-
-                            std::vector<int> elements {};
-                            elements.resize(numberOfElements);
-
-                            for (size_t i {}; i < numberOfElements; ++i) cin >> elements[i];
-                        \end{lstlisting}
-                
-
-                \end{itemize}
-
-        % =========================================================
-        % ==========             ARRAY                   ==========
-        % =========================================================
-        \clearpage
-        \section{std::array}
-
-            % ============================================
-            % ====           INICIALIZAR        ==========
-            % ============================================
-            \subsection{Tips}
-
-                \begin{itemize}
-                    \item 
-                        
-                        Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            array<int, 4> a1;            // Ok, 4 elements, all are undefined
-                            array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
-                            array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
-                        \end{lstlisting}
-
-                        Además pasa algo raro:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            using complex = std::complex<int>
-                            vector<complex> v1 {{1, 2}, {3, 4}};      
-                            // Ok, 2 elements: [1+2i, 3+4i]
-                            
-                            array<complex, 2> a2  {{1, 2}, {3, 4}};
-                            // Syntax error
-                            
-                            array<complex, 2> a2  {{{1, 2}, {3, 4}}};
-                            // Ok, 2 elements: [1+2i, 3+4i]
-                        \end{lstlisting}
-
-                        Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
-                        cuando y solo cuando estas inicializando cosas anidadamente.
-                \end{itemize}
-
-               
-        
-        % =========================================================
-        % ==========             STRINGS                 ==========
-        % =========================================================
-        \section{std::string}
-
-
-        % =========================================================
-        % ==========             MAP                     ==========
-        % =========================================================
-        \clearpage
-        \section{std::map}
-
-            % ============================================
-            % ====           INICIALIZAR        ==========
-            % ============================================
-            \subsection{Inicialización}
-
-                Puedes inicializar usando una \textCode{ininitializer\_list}, se ve mucho mas claro:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    // Before :c
-                    map<int, string> translate {};
-
-                    translate.insert(make_pair(0, "null"));
-                    translate.insert(make_pair(8, "eight"));
-                    translate.insert(make_pair(15, "fifteen"));
-                  
-                    // After :D
-                    map<int, string> someMap {
-                        {0, "null"},
-                        {8, "eight"},
-                        {15, "fifteen"},
-                    };
-
-                \end{lstlisting}
-
-            % ============================================
-            % ====               TIPS           ==========
-            % ============================================
-            \subsection{Tips}
-
-                \begin{itemize}
-                    \item 
-                        Prefiere usar \textCode{auto} en vez de decir el tipo al iterar sobre un map.
-                        Me explico:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            map<int, string> someMap {
-                                {0, "null"},
-                                {8, "eight"},
-                                {15, "fifteen"},
-                            };
-                            
-                            // Good: No element copy
-                            for (const auto& element : someMap) { ... } 
-                            
-                            // Bad: Copies element
-                            for (const pair<int, string>& element : someMap) {...}   
-
-                            // Ok, but impossible to remember: No element copy
-                            for (const pair<const int, string>& element : someMap) {...}  
-                        \end{lstlisting}
-
-                        Y si no me creen vayan a \underline{\href{https://wandbox.org/permlink/4IFbZr72RfUUWyCz}{aquí}}
-                        o \underline{\href{https://releases.llvm.org/7.0.0/tools/clang/tools/extra/docs/clang-tidy/checks/performance-implicit-conversion-in-loop.html}{aquí}}.
-
-                        \cite{NicoJosuttis}
-
-                    \item 
-                        Ten cuidado al usar \textCode{map operator[]} ve este ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            map<int, string> someMap {
-                                {0, "null"},
-                                {8, "eight"},
-                                {15, "fifteen"},
-                            };
-                            
-                            if (someMap[9] == "nine") {   
-                                ...
-                            }
-                        \end{lstlisting}
-
-                        Lo que acaba de pasar es que si existia el elemento con llave 9 existia pues hacer
-                        \textCode{someMap[9]} nos lo regresa, pero si no existia acaba de crearlo con un valor
-                        por defecto, lo cual esta muy pero muy raro.
-
-                        Si quieres buscar en un contenedor así puedes usar:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            if (someMap.find(9) == "nine") {   
-                                ...
-                            }
-                        \end{lstlisting}
-
-                        O si solo quieres saber si existe puedes hacer algo como:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            if (someMap.find(9) != someMap.end()) {   
-                                ...
-                            }
-                        \end{lstlisting}
-
-                        O usar esto:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            if (someMap.count(9)) {   
-                                ...
-                            }
-                        \end{lstlisting}
-
-                \end{itemize}
-
-        % =========================================================
-        % ==========             SET                     ==========
-        % =========================================================
-        \section{std::set}
-
-    % ===============================================================================
-    % ===============         STD ALGORITHMS                =========================
-    % ===============================================================================
-    \clearpage
-    \chapter{No lo hagas tu todo desde cero: std::algorithms}
-
 
 
     % ===============================================================================
@@ -2610,9 +2516,8 @@
             % ============================================
             \subsubsection{(AAA) Almost always auto}
 
-                Desde hace unos años se esta dando una forma estandar de inicializar cosas en \Cpp.
-                Que se basa en seguir este patrón:
-
+                Desde hace unos años se esta dando una forma estandar de inicializar cosas en \Cpp
+                que se basa en seguir este patrón:
                 \begin{lstlisting}[language=C++, gobble=20]
                     // For declaring types
                     using T = ...;
@@ -2631,9 +2536,9 @@
                 \end{lstlisting}
 
                 Un gran problema con esta idea son cosas que son caras de copiar o que no se pueden mover
-                (como por ejemplo), \textCode{vector, map, array, unique\_ptr}. Por lo que usalo con cuidado
+                (como por ejemplo), \textCode{atomic, array, unique\_ptr}. Por lo que usalo con cuidado
                 y en general recomiendo solo usarlo cuando lo estamos declarando variables sencillas y no 
-                contenedores. 
+                contenedores, pero no puedo negar que se ve hermoso y tiene un par de ventajas importantes.
 
 
 
@@ -2701,83 +2606,72 @@
         % =====                     CONST                 =========
         % =========================================================
         \clearpage
-        \section{const \& constexpr}
-
-            % ============================================
-            % =====            CONST             =========
-            % ============================================
-            \subsection{const}
-
-                Que algo sea \textCode{const} es una forma de expresar en nuestro código que
-                algo no se puede cambiar.
-                
-                Dependiendo de donde se ponga significará una cosa u otra:
-                \begin{itemize}
-                    \item const variable
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            const int days {10};
-                            days = 20;              // Illegal: days cannot change
-                        \end{lstlisting}
-
-                    \item const reference
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            struct point {int x, y};
-        
-                            point p1 {1, 2};
-                            const point& p2 {p1};
-                            p1.x = 20;                    // Illegal: point cannot change
-                        \end{lstlisting}
-
-                    \item const pointer
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            struct point {int x, y};
-
-                            point p1 {1, 2}, p2 {2, 3};
-                            point* const p3 {&p1};
-
-                            p3 = &p2;                   // Illegal: p3 cannot change
-                        \end{lstlisting}
-
-                    \item pointer to const
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            struct point {int x, y};
-
-                            const point p1 {1, 2}, p2 {2, 3};
-                            const point* p3 {&p1};
-                            
-                            p3 = &p2;                   // Ok
-                            p3.x = 30;                  //Illegal: p3 cannot change
-                        \end{lstlisting}
-
-                    \clearpage
-                    \item const method
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            struct point {
-                                int x, y;
-
-                                // Ok print do not change anything
-                                auto print() const {                   
-                                    cout << x << ", " << y << endl;
-                                }
-
-                                // Illegal: print change something, so no const
-                                auto print2() const { 
-                                    x = 20;                  
-                                    cout << x << ", " << y << endl;
-                                }
-                            };
-                        \end{lstlisting}
-
-                \end{itemize}
-               
-               
-
-            % ============================================
-            % =====            CONSTEXPR         =========
-            % ============================================
-            \subsection{constexpr}
+        \section{const}
 
 
+            Que algo sea \textCode{const} es una forma de expresar en nuestro código que
+            algo no se puede cambiar.
+            
+            Dependiendo de donde se ponga significará una cosa u otra:
+            \begin{itemize}
+                \item const variable
+                    \begin{lstlisting}[language=C++, gobble=28]
+                        const int days {10};
+                        days = 20;              // Illegal: days cannot change
+                    \end{lstlisting}
+
+                \item const reference
+                    \begin{lstlisting}[language=C++, gobble=28]
+                        struct point {int x, y};
+
+                        point p1 {1, 2};
+                        const point& p2 {p1};
+                        p1.x = 20;                    // Illegal: point cannot change
+                    \end{lstlisting}
+
+                \item const pointer
+                    \begin{lstlisting}[language=C++, gobble=28]
+                        struct point {int x, y};
+
+                        point p1 {1, 2}, p2 {2, 3};
+                        point* const p3 {&p1};
+
+                        p3 = &p2;                   // Illegal: p3 cannot change
+                    \end{lstlisting}
+
+                \item pointer to const
+                    \begin{lstlisting}[language=C++, gobble=28]
+                        struct point {int x, y};
+
+                        const point p1 {1, 2}, p2 {2, 3};
+                        const point* p3 {&p1};
+                        
+                        p3 = &p2;                   // Ok
+                        p3.x = 30;                  //Illegal: p3 cannot change
+                    \end{lstlisting}
+
+                \clearpage
+                \item const method
+                    \begin{lstlisting}[language=C++, gobble=28]
+                        struct point {
+                            int x, y;
+
+                            // Ok print do not change anything
+                            auto print() const {                   
+                                cout << x << ", " << y << '\n';
+                            }
+
+                            // Illegal: print change something, so no const
+                            auto print2() const { 
+                                x = 20;                  
+                                cout << x << ", " << y << '\n';
+                            }
+                        };
+                    \end{lstlisting}
+
+            \end{itemize}
+            
+            
 
         % ============================================
         % =====    lvalues vs rvalues          =======
@@ -3062,7 +2956,7 @@
                         \begin{lstlisting}[language=C++, gobble=28]
                             vector<const int> numbers {1, 2, 3};
                             for (const auto num : numbers) {        // num is const int
-                                cout << num << endl;
+                                cout << num << '\n';
                             }
                         \end{lstlisting}
 
@@ -3073,7 +2967,7 @@
                         \begin{lstlisting}[language=C++, gobble=28]
                             vector<const int> numbers {1, 2, 3};
                             for (auto& num : numbers) {        // num is int&
-                                cout << num << endl;
+                                cout << num << '\n';
                             }
                         \end{lstlisting}
 
@@ -3118,7 +3012,7 @@
                 Entonces podemos hacer algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
                     for (auto num : numbers) {
-                        cout << num << endl;        // Will work [1, 2, 3, 4, 5]
+                        cout << num << '\n';        // Will work [1, 2, 3, 4, 5]
                     }
                 \end{lstlisting}
 
@@ -3127,7 +3021,7 @@
                 algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
                     for (const auto& word : words) {
-                        cout << word << endl;    // Will work ["hello", "world", ":D"]
+                        cout << word << '\n';    // Will work ["hello", "world", ":D"]
                     }
                 \end{lstlisting}
 
@@ -3183,7 +3077,7 @@
                 int someNumber {3};
                 int* somePointerToAnInt = &someNumber;
 
-                string someText {"Hi};
+                string someText {"Hi"};
                 string* somePointerToAnString = &someText;
 
                 double someDecimal {2.123};
@@ -3230,7 +3124,7 @@
 
             Una semantica es una forma programar, es algo parecido a un paradigma.
             
-            Siendo mas formales una semantica en este contexto es hablar como
+            Siendo mas formales una semantica en este contexto es hablar
             como es que un tipo de dato (predefinido o creado por el programador) será usado.
 
             % ============================================
@@ -3314,6 +3208,325 @@
                 como un temporal, es decir, es un objecto que esta a punto de ser destruido.
                 
 
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////                   ESTRUCTURAS DE DATOS                       /////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Estructuras de Datos y los Containers  en \Cpp}
+\label{part:EstructurasDeDatos}
+
+    % ===============================================================================
+    % ===============         CONTENEDORES STD              =========================
+    % ===============================================================================
+    \clearpage
+    \chapter{Introducción}
+
+        % =========================================================
+        % ==========         LOS CONTENEDORES            ==========
+        % =========================================================
+        \clearpage
+        \section{Los contendedores en si}
+
+    % ===============================================================================
+    % ================              ARRAYS            ===============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Arrays}
+
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \clearpage
+        \section{std::vector}
+
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Inicialización}
+
+                Hay dos formas de inicializar un vector:
+                \begin{itemize}
+                    \item Iniciar un vector con un tamaño dado y un valor por defecto a cada elemento
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // vector with 7 ints, all start with 0
+                            vector<int> days (7, 0);        
+
+                            // vector with 13 strings, all are "" for now
+                            vector<string> names (13, "");  
+                        \end{lstlisting}
+
+                    \item Iniciar un vector con unos elementos:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // vector with 5 ints: [2, 3, 5, 7, 11]
+                            vector<int> primes {2, 3, 5, 7, 11}     
+
+                            // vector with 2 strings: ["Oscar", "Rosas"]
+                            vector<string> names {"Oscar", "Rosas"} 
+                        \end{lstlisting}
+                \end{itemize}
+
+            % ===============================================================================
+            % == COMO ES QUE LOGRA AUTO DIMENSIONARSE TAN RAPIDO QUE PUEDES HACER     =======
+            % ===============================================================================
+            \subsection{Como es que logra autodimensionarse}
+
+
+
+            % ============================================
+            % ====      COSAS QUE PUEDES HACER     =======
+            % ============================================
+            \subsection{Cosas que puedes hacer}
+
+                \begin{itemize}
+                    \item 
+                \end{itemize}
+               
+
+            % ============================================
+            % ====                TIPS          ==========
+            % ============================================
+            \subsection{Tips}
+
+                \begin{itemize}
+                    \item Si quieres hacer que sea mas rápido y conoces cual será su tamaño máximo,
+                        entonces puedes prereservar el espacio máximo, esto evitará que entre aumentos de tamaños
+                        se tengan que mover los elementos, haciendo el código un poco más rápido.
+
+                        Se ve así:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            #include <vector>
+
+                            int numberOfElements;
+                            cin >> numberOfElements;
+
+                            std::vector<int> elements {};
+                            elements.resize(numberOfElements);
+
+                            for (size_t i {}; i < numberOfElements; ++i) cin >> elements[i];
+                        \end{lstlisting}
+                
+
+                \end{itemize}
+
+        % =========================================================
+        % ==========             ARRAY                   ==========
+        % =========================================================
+        \clearpage
+        \section{std::array}
+
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Tips}
+
+                \begin{itemize}
+                    \item 
+                        
+                        Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            array<int, 4> a1;            // Ok, 4 elements, all are undefined
+                            array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
+                            array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
+                        \end{lstlisting}
+
+                        Además pasa algo raro:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            using complex = std::complex<int>
+                            vector<complex> v1 {{1, 2}, {3, 4}};      
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                            
+                            array<complex, 2> a2  {{1, 2}, {3, 4}};
+                            // Syntax error
+                            
+                            array<complex, 2> a2  {{{1, 2}, {3, 4}}};
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                        \end{lstlisting}
+
+                        Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
+                        cuando y solo cuando estas inicializando cosas anidadamente.
+                \end{itemize}
+
+               
+        % =========================================================
+        % ==========             STRINGS                 ==========
+        % =========================================================
+        \section{std::string}
+
+        % =========================================================
+        % ==========             STRINGS                 ==========
+        % =========================================================
+        \section{std::bitset}
+
+
+
+    % ===============================================================================
+    % =============           STACKS LIFO: PILAS                      ===============
+    % ===============================================================================
+    \clearpage
+    \chapter{Stacks LIFO: Pilas}
+
+    % ===============================================================================
+    % =============           QUEUE FIFO: COLAS                       ===============
+    % ===============================================================================
+    \clearpage
+    \chapter{Queue FIFO: Colas}
+
+    % ===============================================================================
+    % ===========         LINKED LIST: LISTAS ENLAZADAS               ===============
+    % ===============================================================================
+    \clearpage
+    \chapter{Linked Lists: Listas Enlazadas}
+
+
+    % ===============================================================================
+    % ==========             BINARY TREES: ARBOLES BINARIOS           ===============
+    % ===============================================================================
+    \clearpage
+    \chapter{Binary Trees: Arboles Binarios}
+
+        % =========================================================
+        % =========      ARBOLES DE BUSQUEDA        ===============
+        % =========================================================
+        \section{BTS: Arboles de Búsqueda}
+
+        % =========================================================
+        % =========      ARBOLES AUTOBALANCEABLES       ===========
+        % =========================================================
+        \section{AVL - RedBlackTree: Arboles Autobalanceables}
+
+        % =========================================================
+        % =========                 TRIE                ===========
+        % =========================================================
+        \section{Trie}
+
+
+        % =========================================================
+        % ==========             MAP                     ==========
+        % =========================================================
+        \clearpage
+        \section{std::map}
+
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Inicialización}
+
+                Puedes inicializar usando una \textCode{ininitializer\_list}, se ve mucho mas claro:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // Before :c
+                    map<int, string> translate {};
+
+                    translate.insert(make_pair(0, "null"));
+                    translate.insert(make_pair(8, "eight"));
+                    translate.insert(make_pair(15, "fifteen"));
+                  
+                    // After :D
+                    map<int, string> someMap {
+                        {0, "null"},
+                        {8, "eight"},
+                        {15, "fifteen"},
+                    };
+
+                \end{lstlisting}
+
+            % ============================================
+            % ====               TIPS           ==========
+            % ============================================
+            \subsection{Tips}
+
+                \begin{itemize}
+                    \item 
+                        Prefiere usar \textCode{auto} en vez de decir el tipo al iterar sobre un map.
+                        Me explico:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            map<int, string> someMap {
+                                {0, "null"},
+                                {8, "eight"},
+                                {15, "fifteen"},
+                            };
+                            
+                            // Good: No element copy
+                            for (const auto& element : someMap) { ... } 
+                            
+                            // Bad: Copies element
+                            for (const pair<int, string>& element : someMap) {...}   
+
+                            // Ok, but impossible to remember: No element copy
+                            for (const pair<const int, string>& element : someMap) {...}  
+                        \end{lstlisting}
+
+                        Y si no me creen vayan a \underline{\href{https://wandbox.org/permlink/4IFbZr72RfUUWyCz}{aquí}}
+                        o \underline{\href{https://releases.llvm.org/7.0.0/tools/clang/tools/extra/docs/clang-tidy/checks/performance-implicit-conversion-in-loop.html}{aquí}}.
+
+                        \cite{NicoJosuttis}
+
+                    \item 
+                        Ten cuidado al usar \textCode{map operator[]} ve este ejemplo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            map<int, string> someMap {
+                                {0, "null"},
+                                {8, "eight"},
+                                {15, "fifteen"},
+                            };
+                            
+                            if (someMap[9] == "nine") {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        Lo que acaba de pasar es que si existia el elemento con llave 9 existia pues hacer
+                        \textCode{someMap[9]} nos lo regresa, pero si no existia acaba de crearlo con un valor
+                        por defecto, lo cual esta muy pero muy raro.
+
+                        Si quieres buscar en un contenedor así puedes usar:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.find(9) == "nine") {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        O si solo quieres saber si existe puedes hacer algo como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.find(9) != someMap.end()) {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                        O usar esto:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            if (someMap.count(9)) {   
+                                ...
+                            }
+                        \end{lstlisting}
+
+                \end{itemize}
+
+        % =========================================================
+        % ==========             SET                     ==========
+        % =========================================================
+        \section{std::set}
+
+
+
+    % ===============================================================================
+    % =======================             HEAP         ==============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Heaps}
+
+
+    % ===============================================================================
+    % ==================           HASH TABLES         ==============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Hash Tables}
+                
+
+    % ===============================================================================
+    % ===============         STD ALGORITHMS                =========================
+    % ===============================================================================
+    \clearpage
+    \chapter{No lo hagas tu todo desde cero: std::algorithms}
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3364,73 +3577,6 @@
     % ===============================================================================
     \clearpage
     \chapter{Problemas NP}
-
-
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
-% ///////////////////                   ESTRUCTURAS DE DATOS                       /////////////////////////
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
-\part{Estructuras de Datos}
-
-    % ===============================================================================
-    % ================              ARRAYS            ===============================
-    % ===============================================================================
-    \clearpage
-    \chapter{Arrays}
-
-    % ===============================================================================
-    % =============           STACKS LIFO: PILAS                      ===============
-    % ===============================================================================
-    \clearpage
-    \chapter{Stacks LIFO: Pilas}
-
-    % ===============================================================================
-    % =============           QUEUE FIFO: COLAS                       ===============
-    % ===============================================================================
-    \clearpage
-    \chapter{Queue FIFO: Colas}
-
-    % ===============================================================================
-    % ===========         LINKED LIST: LISTAS ENLAZADAS               ===============
-    % ===============================================================================
-    \clearpage
-    \chapter{Linked Lists: Listas Enlazadas}
-
-        Una implementación mas o 
-
-
-    % ===============================================================================
-    % ==========             BINARY TREES: ARBOLES BINARIOS           ===============
-    % ===============================================================================
-    \clearpage
-    \chapter{Binary Trees: Arboles Binarios}
-
-        % =========================================================
-        % =========      ARBOLES DE BUSQUEDA        ===============
-        % =========================================================
-        \section{BTS: Arboles de Búsqueda}
-
-        % =========================================================
-        % =========      ARBOLES AUTOBALANCEABLES       ===========
-        % =========================================================
-        \section{AVL - RedBlackTree: Arboles Autobalanceables}
-
-        % =========================================================
-        % =========                 TRIE                ===========
-        % =========================================================
-        \section{Trie}
-
-    % ===============================================================================
-    % =======================             HEAP         ==============================
-    % ===============================================================================
-    \clearpage
-    \chapter{Heaps}
-
-
-    % ===============================================================================
-    % ==================           HASH TABLES         ==============================
-    % ===============================================================================
-    \clearpage
-    \chapter{Hash Tables}
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3510,6 +3656,12 @@
         % =========================================================
         \section{Bucket Sort}
 
+
+    % ===============================================================================
+    % ================           COSAS UTILES          ==============================
+    % ===============================================================================
+    \clearpage
+    \chapter{Cosas útiles}
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
