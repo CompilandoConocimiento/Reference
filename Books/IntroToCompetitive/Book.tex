@@ -908,6 +908,12 @@
             Que bonito, ¿no?
             \cite{ModernCppWhatYouNeedToKnow}
 
+    % ===============================================================================
+    % ==========       Instalando y corriendo programas de C++          =============
+    % ===============================================================================
+    \clearpage
+    \chapter{Instalando y corriendo programas de C++ y usar jueces}
+
 
     % ===============================================================================
     % ===============             BASES DEL LENGUAJE          =======================
@@ -1543,7 +1549,6 @@
             % ============================================
             % =====       OPERADORES LOGICOS        ======
             % ============================================
-            \clearpage
             \subsection{Operadores Lógicos}
 
                 En \Cpp tenemos varios operadores lógicos que tomaran como argumentos dos 
@@ -1577,149 +1582,122 @@
 
                 \end{itemize}
 
+
             % ============================================
             % =====       OPERADORES LOGICOS        ======
             % ============================================
-            \clearpage
-            \subsection{Bitwise and Bitmasks: Operaciones bit a bit y máscaras de bits}
+            \subsection{Operadores Lógicos bit a bit}
 
-                % ============================================
-                % =====       OPERADORES LOGICOS        ======
-                % ============================================
-                \subsubsection{Operadores Lógicos bit a bit}
+                En \Cpp tenemos varios operadores lógicos bit a bit que tomaran como argumentos dos números 
+                y nos regresan otro numero.
 
-                    En \Cpp tenemos varios operadores lógicos bit a bit que tomaran como argumentos dos cosas, digamos números 
-                    (porque generalmente son para lo que lo ocupamos) y nos regresan otro numero.
+                Ahora, los demás operadores son tan obvios que practicamente no tengo nada que decir, pero para estos si que tengo
+                mucho que decir, y antes de que diga mas hay que recordar el binario, y como funciona, 
+                asi que si algo te suena raro recuerda checar si estas entendiendo bien el binario, ahora si, 
+                veamoslos con cuidado:
 
-                    Ahora, los demás operadores son tan obvios que practicamente no tengo nada que decir, pero para estos si que tengo
-                    mucho que decir, veamoslo con cuidado y veamos que hacen:
+                \begin{itemize}
+                    \item AND Lógico bit a bit: 
+                    
+                        Se escribe así, y lo que hace es aplicar AND bit a bit de nuestros números, es decir
+                        un bit es 1 si y solo si es que ambos son 1.
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            int number1 {0b11100011};   // C++14
+                            int number2 {0b01010101};   // C++14
 
-                    \begin{itemize}
-                        \item AND Lógico bit a bit: 
+                            int numberAND = number1 & number2;
+                            int numberAND = number1 bitand number2;
+                        \end{lstlisting}
+
+                        Donde tendremos que \textCode{numberAND = 0b01000001}. Mira porque:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            11100011    -> number1
+                            & 01010101    -> number2
+                            ---------
+                            01000001
+                        \end{lstlisting}
                         
-                            Se escribe así, y lo que hace es aplicar AND bit a bit de nuestros números, es decir
-                            un bit es 1 si y solo si es que ambos son 1.
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                int number1 {0b11100011};   // C++14
-                                int number2 {0b01010101};   // C++14
+                    \item OR Lógico bit a bit: 
+                    
+                        Explicado el AND logico, este es basicamente el mismo, pero que ahora siguiendo el OR, es
+                        decir, solo si alguno de los dos es uno entonces el valor de ese bit será uno.
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            int number1 {0b11100011};   // C++14
+                            int number2 {0b01010101};   // C++14
 
-                                int numberAND = number1 & number2;
-                                int numberAND = number1 bitand number2;
-                            \end{lstlisting}
+                            int numberOR = number1 | number2;
+                            int numberOR = number1 bitor number2;
+                        \end{lstlisting}
 
-                            Donde tendremos que \textCode{numberAND = 0b01000001}. Mira porque:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                  11100011    -> number1
-                                & 01010101    -> number2
-                                  ---------
-                                  01000001
-                            \end{lstlisting}
+                        Donde tendremos que \textCode{numberOR = 0b11110111}. Mira porque:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            11100011    -> number1
+                            & 01010101    -> number2
+                            ---------
+                            11110111
+                        \end{lstlisting}
+                    
+                    \item XOR Lógico bit a bit: 
+                    
+                        Lo mismo pero siguiendo ahora el XOR bit a bit:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            int number1 {0b11100011};   // C++14
+                            int number2 {0b01010101};   // C++14
 
-                            Con esto también se explica una forma que hacemos para saber si un número es 
-                            par o impar:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                if (number & 1) {
-                                    // odd
-                                }
-                                else {
-                                    // even
-                                }
-                            \end{lstlisting}
+                            int numberXOR = number1 ^ number2;
+                            int numberXOR = number1 xor number2;
+                        \end{lstlisting}
 
-                            Esto es fácil de enteder porque \textCode{number \& 1} lo que hace es comparar el último bit
-                            que si recuerdas la representación binaria nos dice si un número necesita un +1 al final 
-                            o no y recuerda que solo necesita el +1 si es que es impar.
-                            
-                        \clearpage
-                        \item OR Lógico bit a bit: 
-                        
-                            Explicado el AND logico, este es basicamente el mismo, pero que ahora siguiendo el OR, es
-                            decir, solo si alguno de los dos es uno entonces el valor de ese bit será uno.
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                int number1 {0b11100011};   // C++14
-                                int number2 {0b01010101};   // C++14
+                        Donde tendremos que \textCode{numberXOR = 0b10110110}. Mira porque:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            11100011    -> number1
+                            & 01010101    -> number2
+                            ---------
+                            10110110
+                        \end{lstlisting}
 
-                                int numberOR = number1 | number2;
-                                int numberOR = number1 bitor number2;
-                            \end{lstlisting}
+                    \item Negación Lógica bit a bit: 
+                    
+                        Lo que hace es negar cada bit:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            int number {0b11100011};   // C++14
+                            int numberNeg = ~number;
+                            int numberNeg = compl number;
+                        \end{lstlisting}
 
-                            Donde tendremos que \textCode{numberOR = 0b11110111}. Mira porque:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                  11100011    -> number1
-                                & 01010101    -> number2
-                                  ---------
-                                  11110111
-                            \end{lstlisting}
-                        
-                        \item XOR Lógico bit a bit: 
-                        
-                            Lo mismo pero siguiendo ahora el XOR bit a bit:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                int number1 {0b11100011};   // C++14
-                                int number2 {0b01010101};   // C++14
+                        Donde tendremos que \textCode{numberNeg = 0b00011100}. Mira porque:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            11100011    -> number
+                            ---------
+                            00011100
+                        \end{lstlisting}
+                    
+                    \item Shifts bit a bit:
+                    
+                        Toma dos números y lo que hace es desplazar el primer número la cantidad que dice el 
+                        segundo número de veces y llena lo que va moviendo con 0's, 
+                        veamos las dos versiones que tenemos: 
+                        \begin{itemize}
+                            \item Left shift
+                                \begin{lstlisting}[language=C++, gobble=40]
+                                    int number {0b00000110};
+                                    int number1 = number << 1;      // 0b00001100
+                                    int number2 = number << 3;      // 0b00110000
+                                \end{lstlisting}
 
-                                int numberXOR = number1 ^ number2;
-                                int numberXOR = number1 xor number2;
-                            \end{lstlisting}
+                            \item right shift
+                                \begin{lstlisting}[language=C++, gobble=40]
+                                    int number {0b00000110};
+                                    int number1 = number >> 1;      // 0b00000011
+                                    int number2 = number >> 2;      // 0b00000001
+                                    int number3 = number >> 3;      // 0b00000000
+                                \end{lstlisting}
 
-                            Donde tendremos que \textCode{numberXOR = 0b10110110}. Mira porque:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                  11100011    -> number1
-                                & 01010101    -> number2
-                                  ---------
-                                  10110110
-                            \end{lstlisting}
+                        \end{itemize}
+                    
+                \end{itemize}
 
-                        \item Negación Lógica bit a bit: 
-                        
-                            Lo que hace es negar cada bit:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                int number {0b11100011};   // C++14
-                                int numberNeg = ~number;
-                                int numberNeg = compl number;
-                            \end{lstlisting}
 
-                            Donde tendremos que \textCode{numberNeg = 0b00011100}. Mira porque:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                  11100011    -> number
-                                  ---------
-                                  00011100
-                            \end{lstlisting}
-                        
-                        \clearpage
-                        \item Shifts bit a bit:
-                        
-                            Toma dos números y lo que hace es desplazar el primer número la cantidad que dice el 
-                            segundo número de veces y lleva lo que va moviendo con 0's, 
-                            veamos las dos versiones que tenemos: 
-                            \begin{itemize}
-                                \item Left shift
-                                    \begin{lstlisting}[language=C++, gobble=40]
-                                        int number {0b00000110};
-                                        int number1 = number << 1;      // 0b00001100
-                                        int number2 = number << 3;      // 0b00110000
-                                    \end{lstlisting}
-
-                                \item right shift
-                                    \begin{lstlisting}[language=C++, gobble=40]
-                                        int number {0b00000110};
-                                        int number1 = number >> 1;      // 0b00000011
-                                        int number2 = number >> 2;      // 0b00000001
-                                        int number3 = number >> 3;      // 0b00000000
-                                    \end{lstlisting}
-
-                            \end{itemize}
-
-                            Tienen algo muy interesante y es que:
-                            \begin{largeEq}
-                                \begin{MultiLineEquation*}{3}
-                                    x << y &= x * 2^y                                           \\
-                                    x >> y &= \left \lfloor \dfrac{x}{2^y} \right \rfloor 
-                                \end{MultiLineEquation*}
-                            \end{largeEq}
-
-                        
-                    \end{itemize}
 
         % =========================================================
         % ==========        SENTENCIAS DE CONTROL        ==========
@@ -3399,6 +3377,11 @@
         % =========================================================
         \section{Trie}
 
+        % =========================================================
+        % =========                 LCA                 ===========
+        % =========================================================
+        \section{LCA: Last common ancestor}
+
 
         % =========================================================
         % ==========             MAP                     ==========
@@ -3678,22 +3661,60 @@
         % =========================================================
         % =======                  BITS             ===============
         % =========================================================
+        \clearpage
         \section{Bits}
 
+            %=============================================
+            % ========      INTRODUCCION         =========
             % ============================================
-            % =======        MANEJO DE BITS      =========
+            \subsection{Introducción}
+
+
+            %=============================================
+            % ==  UTILIDADES QUE PODEMOS HACER LOGICOS  ==
             % ============================================
-            \subsection{Manejo de Bits}
+            \subsection{Manejo de Bits: Utilidades que podemos hacer con ellos}
+
+                \begin{itemize}
+                    \item Par e impar:
+                    
+                        Con esto también se explica una forma que hacemos para saber si un número es 
+                        par o impar:
+                        \begin{lstlisting}[language=C++, gobble=32]
+                            if (number & 1) {
+                                // odd
+                            }
+                            else {
+                                // even
+                            }
+                        \end{lstlisting}
+
+                        Esto es fácil de enteder porque \textCode{number \& 1} lo que hace es comparar el último bit
+                        que si recuerdas la representación binaria nos dice si un número necesita un +1 al final 
+                        o no y recuerda que solo necesita el +1 si es que es impar.
+
+                    \item Dividir (con piso) o multiplicar por potencias de dos muy muy rápido:
+                    
+                        Recuerda la siguiente idea, que es bastante fácil de ver porque funciona
+                        si recordamos el binario:
+                        \begin{largeEq}
+                            \begin{MultiLineEquation*}{3}
+                                x << y &= x * 2^y                                           \\
+                                x >> y &= \left \lfloor \dfrac{x}{2^y} \right \rfloor 
+                            \end{MultiLineEquation*}
+                        \end{largeEq}
+                \end{itemize}
 
             % ============================================
-            % =======        MANEJO DE BITS       ========
+            % =======      MASCARA DE BITS         =======
             % ============================================
-            \subsection{Operaciones con Bits}
+            \subsubsection{Mascara de bits}
+
 
         % =========================================================
         % ======      CONVERSIONES ENTRE SISTEMAS         =========
         % =========================================================
-        \section{Conversiones entre Sistemas}
+        \section{Conversiones entre Sistemas (HEX, OCT)}
 
         % =========================================================
         % =======        EXPONENCIACION BINARIA        ============
@@ -3705,6 +3726,12 @@
         % =========================================================
         \section{Binary Multiplication: Multiplicación Binaria}
 
+
+    % ===============================================================================
+    % ==========                    HASH Y MANEJO DE STRINGS            =============
+    % ===============================================================================
+    \clearpage
+    \chapter{Hash y manejo de strings}
 
 
     % ===============================================================================
@@ -3735,6 +3762,11 @@
             % =====       EUCLIDES               =========
             % ============================================
             \subsection{Euclides}
+
+            % ============================================
+            % ====    CRITERIOS DE DIVISBILIDAD      =====
+            % ============================================
+            \subsection{Criterios de Divisibilidad}
 
         % =========================================================
         % =======        MODULOS                    ===============
@@ -3776,6 +3808,14 @@
             % ============================================
             \subsection{Euler Totient: La Phi de Euler}
 
+        % =========================================================
+        % =======               FACTORIALES         ===============
+        % =========================================================
+        \section{Factoriales}
+
+
+
+
 
     % ===============================================================================
     % ==========                    PROBABILIDAD                      ===============
@@ -3788,7 +3828,23 @@
         % =========================================================
         \section{Inclusión Exclusión}
 
+        % =========================================================
+        % =======     PERMUTACIONES Y COMBINACIONES        ========
+        % =========================================================
+        \section{Permutaciones y combinaciones}
+
   
+    % ===============================================================================
+    % ==========                    CALCULO                           ===============
+    % ===============================================================================
+    \clearpage
+    \chapter{"Cálculo"}
+
+        % =========================================================
+        % =========     SERIES Y COMBINACIONES         ============
+        % =========================================================
+        \section{Series aritmética y geométricas}
+
     % ===============================================================================
     % ==================                  GEOMETRIA                ==================
     % ===============================================================================
