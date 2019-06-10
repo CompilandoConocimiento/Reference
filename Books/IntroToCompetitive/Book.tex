@@ -1865,7 +1865,6 @@
             % =======           WHILE              =======
             % ============================================
             \subsection{While}
-
                 \begin{lstlisting}[language=C++, gobble=20]
                     while (condition) {
                         // statements
@@ -1887,7 +1886,6 @@
                     Existe también una variante que se llamada \textCode{do while} y que 
                     es bastante menos conocido que el clásico \textCode{while}, así que creo
                     que vale la pena hablar un poco de el.
-
                     \begin{lstlisting}[language=C++, gobble=24]
                         do {
                             // statements
@@ -2002,7 +2000,6 @@
 
                 En \Cpp como llevamos diciendo todo el libro las variables por defecto son de tipo
                 valor, es decir que cada variable almanena de verdad sus valores.
-
                 \begin{lstlisting}[language=C++, gobble=20]
                     int someNumber {3};
                 \end{lstlisting}
@@ -2041,10 +2038,15 @@
 
                 \clearpage
 
+                % ============================================
+                % =====    PROBLEMAS QUE SOLUCIONA      ======
+                % ============================================
+                \subsubsection{Problemas que solucionan}
+
                 Las referencias vienen a solucionar dos problemas bastante clasicos en programación, 
                 sobretodo en \Cpp:
                 \begin{itemize}
-                    \item Hacer que las funciones afecten los argumentos que les pasas y no a copias
+                    \item \textbf{Hacer que las funciones afecten los argumentos que les pasas y no a copias}
                         
                         Veamos un ejemplo, supongamos esta función:
                         \begin{lstlisting}[language=C++, gobble=28]
@@ -2080,7 +2082,8 @@
                             cout << the_number << '\n';       // prints 3 :)
                         \end{lstlisting}
 
-                    \item Evitar generar copias a lo estúpido:
+                    \clearpage
+                    \item \textbf{Evitar generar copias a lo estúpido}:
                     
                         Encontre este texto en internet y no pude evitar compartirlo:
 
@@ -2143,7 +2146,7 @@
                 \subsubsection{References vs Pointer: Referencias vs Punteros}
 
                 \begin{itemize}
-                    \item Te evita problemas con \textCode{nullptr} / \textCode{NULL}:
+                    \item \textbf{Te evita problemas con \textCode{nullptr} / \textCode{NULL}}:
 
                         Ve la siguiente función:
                         \begin{lstlisting}[language=C++, gobble=28]
@@ -2154,8 +2157,8 @@
 
                         Ahora, nada evita que pueda llamar a la función con algo como:
                         \begin{lstlisting}[language=C++, gobble=28]
-                            int result = foo(NULL, NULL);       // If you like C
-                            int result {foo(nullptr, nullptr)}; // If you like C++
+                            int result = foo(NULL, NULL);           // If you like C
+                            int result {foo(nullptr, nullptr)};     // If you like C++
                         \end{lstlisting}
 
                         Y el compilador no te dira nada, pero si hago algo como lo siguiente puedo solucionar el
@@ -2172,7 +2175,7 @@
                             int result {foo2(nullptr, nullptr)};   // Compile Error
                         \end{lstlisting}
                     
-                    \item El código con referencias es mucho mas sencillo que con los punteros:
+                    \item \textbf{El código con referencias es mucho mas sencillo que con los punteros}:
 
                         Por ejemplo, estos dos códigos son mas o menos equivalentes, pero a que no adivinas
                         cual es mas claro:
@@ -2191,17 +2194,17 @@
 
                         \end{lstlisting}
 
-                    \item No puedes hacer aritmetica de punteros con las referencias:
+                    \item \textbf{No puedes hacer aritmetica de punteros con las referencias}:
 
                         Es decir, no puedes hacer cosas como \textCode{*(a+1)}
 
-                    \item No puedes re-asignar una referencia.
+                    \item \textbf{No puedes re-asignar una referencia}.
 
                         Una gran diferencia es que una referencia no se puede re asignar, por eso
                         es que los punteros son una idea perfecta para implementar estructuras de datos
                         como listas enlazadas, árboles, etc \dots
 
-                    \item No puedes tener referencias a referencias
+                    \item \textbf{No puedes tener referencias a referencias}.
                     
                         Puedes tener punteros a punteros pero las referencias solo tienen un nivel de indirección,
                         por lo tanto es un error crear una referencia de referencias.
@@ -2401,7 +2404,7 @@
                 Hay dos grandes cosas que puedes hacer para hacer acelerar el entrada y la salida
                 de datos:
                 \begin{itemize}
-                    \item Puedes separar la sincronización que esta por defecto:
+                    \item \textbf{Puedes separar la sincronización que esta por defecto}:
                         \begin{lstlisting}[language=C++, gobble=28]
                             // No merge cin/cout with scanf/printf
                             ios::sync_with_stdio(false);   
@@ -2414,27 +2417,33 @@
                         entonces no tendrás ningun problema. Y con esto lograrás una gran ventaja de tiempo.
 
                         Veamos un ejemplo:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            cout << "Hello";
-                            printf("World");
-                            cout << "Ciao";  
 
-                            // Will always print "HelloWorldCiao"
-                        \end{lstlisting}
+                        \begin{Indentation}[2em] 
+                            Antes:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                cout << "Hello";
+                                printf("World");
+                                cout << "Ciao";  
 
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            ios::sync_with_stdio(false);   
+                                // Will always print "HelloWorldCiao"
+                            \end{lstlisting}
 
-                            cout << "Hello";
-                            printf("World");
-                            cout << "Ciao";  
+                            Después:
+                            \begin{lstlisting}[language=C++, gobble=32]
+                                ios::sync_with_stdio(false);   
 
-                            // Will maybe print:
-                            //    -  "HelloCiaoWorld"
-                            //    -  "HelloWorldCiao"
-                            //    -  "CiaoHelloWorld"
-                        \end{lstlisting}
+                                cout << "Hello";
+                                printf("World");
+                                cout << "Ciao";  
 
+                                // Will maybe print:
+                                //    -  "HelloCiaoWorld"
+                                //    -  "HelloWorldCiao"
+                                //    -  "CiaoHelloWorld"
+                            \end{lstlisting}
+                        \end{Indentation}
+
+                        Pero recuerda que si siempre usas la entrada y salida de \Cpp no hay problema:
                         \begin{lstlisting}[language=C++, gobble=28]
                             ios::sync_with_stdio(false);   
 
@@ -2446,7 +2455,7 @@
                         \end{lstlisting}
                        
 
-                    \item Puedes separar la sincronización entre la entrada y la salida:
+                    \item \textbf{Puedes separar la sincronización entre la entrada y la salida}:
                     
                         Si tu programa solo leera al principio y después hará cálculos y al final dará un resultado
                         entonces puedes hacer algo como:
@@ -2459,7 +2468,7 @@
                         Más tecnicamente lo que hace es es eliminar esta propiedad que \Cpp hace por defecto
                         \Quote{flushing of std::cout before std::cin accepts an input}. 
 
-                    \item Puedes leer enteros de manera aún mas rápida:
+                    \item \textbf{Puedes leer enteros de manera aún mas rápida}:
                         \begin{lstlisting}[language=C++, gobble=28]
                             template <class T>  
                             inline void getNumberFast(T &result) {                   
@@ -2498,10 +2507,12 @@
                             getNumberFast(elements[i]);
                         \end{lstlisting}
 
-                    \item Puedes usar \textCode{\textbackslash n} en vez de \textCode{std::cin} si no necesitas hacer 
+                    \item \textbf{Quizá debas usar \textCode{\textbackslash n} en vez de \textCode{std::cin}}
+                        
+                        Si no necesitas hacer 
                         \textCode{flush}, y recuerda que hacer \textCode{flush} es tomar la información que 
-                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir y no solo guardarlo
-                        en un buffet temporal y guardarlo después.
+                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir 
+                        y no solo guardarlo en un buffet temporal y guardarlo después.
                 \end{itemize}
 
 
@@ -2510,6 +2521,12 @@
     % ===============================================================================
     \clearpage
     \chapter{Cosas Avanzadas de \Cpp}
+
+        % =========================================================
+        % ==========         USING VS TYPEDEF            ==========
+        % =========================================================
+        \clearpage
+        \section{using vs typedef}  
 
 
         % =========================================================
@@ -2621,14 +2638,14 @@
             
             Dependiendo de donde se ponga significará una cosa u otra:
             \begin{itemize}
-                \item const variable
-                    \begin{lstlisting}[language=C++, gobble=28]
+                \item \textbf{const variable}
+                    \begin{lstlisting}[language=C++, gobble=24]
                         const int days {10};
                         days = 20;              // Illegal: days cannot change
                     \end{lstlisting}
 
-                \item const reference
-                    \begin{lstlisting}[language=C++, gobble=28]
+                \item \textbf{const reference}
+                    \begin{lstlisting}[language=C++, gobble=24]
                         struct point {int x, y};
 
                         point p1 {1, 2};
@@ -2636,8 +2653,8 @@
                         p1.x = 20;                    // Illegal: point cannot change
                     \end{lstlisting}
 
-                \item const pointer
-                    \begin{lstlisting}[language=C++, gobble=28]
+                \item \textbf{const pointer}
+                    \begin{lstlisting}[language=C++, gobble=24]
                         struct point {int x, y};
 
                         point p1 {1, 2}, p2 {2, 3};
@@ -2646,8 +2663,8 @@
                         p3 = &p2;                   // Illegal: p3 cannot change
                     \end{lstlisting}
 
-                \item pointer to const
-                    \begin{lstlisting}[language=C++, gobble=28]
+                \item \textbf{pointer to const}
+                    \begin{lstlisting}[language=C++, gobble=24]
                         struct point {int x, y};
 
                         const point p1 {1, 2}, p2 {2, 3};
@@ -2658,8 +2675,8 @@
                     \end{lstlisting}
 
                 \clearpage
-                \item const method
-                    \begin{lstlisting}[language=C++, gobble=28]
+                \item \textbf{const method}
+                    \begin{lstlisting}[language=C++, gobble=24]
                         struct point {
                             int x, y;
 
@@ -2683,12 +2700,11 @@
         % ============================================
         % =====    lvalues vs rvalues          =======
         % ============================================
-        \clearpage
         \section{lvalues vs rvalues categories}
 
             En \Cpp todas las \Quote{cosas} pueden clasificarse de dos manera:
             \begin{itemize}
-                \item \textCode{lvalues}: 
+                \item \textbf{lvalues}: 
                 
                     Son cosas que hacen referencia (en el sentido mas general de la palabra)
                     a \Quote{algo} que tiene una localización en memoria.
@@ -2707,7 +2723,7 @@
                         Widget* button = new Widget{};  // button: lvalue
                     \end{lstlisting}
 
-                \item \textCode{rvalues}:
+                \item \textbf{rvalues}:
                 
                     Son todas las cosas que no tienen una localización (y por lo tanto tampoco una
                     dirección) en memoria, generalmente son cosas como temporales o constantes.
@@ -2948,7 +2964,10 @@
                 Entonces, en resumen poner \textCode{auto} no hace nada relacionado con \textCode{const} o 
                 sobre la creación de las referencias.
 
-                Así que veamos que hace cada una de las \Quote{modificaciones} que podemos hacerle al \textCode{auto}:
+                % ============================================
+                % ==========          &&            ==========
+                % ============================================
+                \subsubsection{Modificadores del \textCode{auto}} 
 
                 \begin{itemize}
                     \item \textCode{const auto}

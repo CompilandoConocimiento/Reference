@@ -55,36 +55,39 @@
 \contentsline {section}{\numberline {4.7}References and value types}{42}{section.4.7}% 
 \contentsline {subsection}{\numberline {4.7.1}Value types: Variables de valor}{42}{subsection.4.7.1}% 
 \contentsline {subsection}{\numberline {4.7.2}References: Referencias}{42}{subsection.4.7.2}% 
-\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{45}{section*.18}% 
+\contentsline {subsubsection}{Problemas que solucionan}{43}{section*.18}% 
+\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{45}{section*.19}% 
 \contentsline {section}{\numberline {4.8}Funciones}{47}{section.4.8}% 
 \contentsline {subsection}{\numberline {4.8.1}Lambdas}{48}{subsection.4.8.1}% 
-\contentsline {subsubsection}{Lambdas como functors / classes}{49}{section*.19}% 
+\contentsline {subsubsection}{Lambdas como functors / classes}{49}{section*.20}% 
 \contentsline {subsection}{\numberline {4.8.2}Recursion}{50}{subsection.4.8.2}% 
 \contentsline {subsection}{\numberline {4.8.3}Templates}{50}{subsection.4.8.3}% 
 \contentsline {section}{\numberline {4.9}La entrada / salida en \ignorespaces \texttt {C++} }{51}{section.4.9}% 
 \contentsline {subsection}{\numberline {4.9.1}Hacerla lo m\IeC {\'a}s r\IeC {\'a}pido posible}{51}{subsection.4.9.1}% 
 \contentsline {chapter}{\numberline {5}Cosas Avanzadas de \ignorespaces \texttt {C++} }{53}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Sobre inicializar}{54}{section.5.1}% 
-\contentsline {subsubsection}{(AAA) Almost always auto}{54}{section*.20}% 
-\contentsline {section}{\numberline {5.2}Si quieres un programa r\IeC {\'a}pido: Verdaderos arrays}{55}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{56}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}const}{57}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}lvalues vs rvalues categories}{59}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}References types: Tipos de referencias}{60}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}lvalue references}{60}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}const lvalue references}{60}{subsection.5.6.2}% 
-\contentsline {subsection}{\numberline {5.6.3}rvalue references}{61}{subsection.5.6.3}% 
-\contentsline {subsection}{\numberline {5.6.4}Universal References / Fowarding References}{62}{subsection.5.6.4}% 
-\contentsline {subsection}{\numberline {5.6.5}auto vs auto\& vs const auto\& vs auto\&\&}{63}{subsection.5.6.5}% 
-\contentsline {subsubsection}{auto decay}{63}{section*.21}% 
-\contentsline {subsection}{\numberline {5.6.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{65}{subsection.5.6.6}% 
-\contentsline {section}{\numberline {5.7}Pointers: Apuntadores}{66}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Tipos de datos definidos por nosotros}{67}{section.5.8}% 
-\contentsline {subsection}{\numberline {5.8.1}Enums}{67}{subsection.5.8.1}% 
-\contentsline {subsection}{\numberline {5.8.2}class \& structs}{67}{subsection.5.8.2}% 
-\contentsline {section}{\numberline {5.9}Semantics}{68}{section.5.9}% 
-\contentsline {subsection}{\numberline {5.9.1}Value Semantics}{68}{subsection.5.9.1}% 
-\contentsline {subsection}{\numberline {5.9.2}Move Semantics}{68}{subsection.5.9.2}% 
+\contentsline {section}{\numberline {5.1}using vs typedef}{54}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Sobre inicializar}{55}{section.5.2}% 
+\contentsline {subsubsection}{(AAA) Almost always auto}{55}{section*.21}% 
+\contentsline {section}{\numberline {5.3}Si quieres un programa r\IeC {\'a}pido: Verdaderos arrays}{56}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{57}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}const}{58}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}lvalues vs rvalues categories}{59}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}References types: Tipos de referencias}{60}{section.5.7}% 
+\contentsline {subsection}{\numberline {5.7.1}lvalue references}{60}{subsection.5.7.1}% 
+\contentsline {subsection}{\numberline {5.7.2}const lvalue references}{60}{subsection.5.7.2}% 
+\contentsline {subsection}{\numberline {5.7.3}rvalue references}{61}{subsection.5.7.3}% 
+\contentsline {subsection}{\numberline {5.7.4}Universal References / Fowarding References}{62}{subsection.5.7.4}% 
+\contentsline {subsection}{\numberline {5.7.5}auto vs auto\& vs const auto\& vs auto\&\&}{63}{subsection.5.7.5}% 
+\contentsline {subsubsection}{auto decay}{63}{section*.22}% 
+\contentsline {subsubsection}{Modificadores del \texttt {auto} }{64}{section*.23}% 
+\contentsline {subsection}{\numberline {5.7.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{65}{subsection.5.7.6}% 
+\contentsline {section}{\numberline {5.8}Pointers: Apuntadores}{66}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Tipos de datos definidos por nosotros}{67}{section.5.9}% 
+\contentsline {subsection}{\numberline {5.9.1}Enums}{67}{subsection.5.9.1}% 
+\contentsline {subsection}{\numberline {5.9.2}class \& structs}{67}{subsection.5.9.2}% 
+\contentsline {section}{\numberline {5.10}Semantics}{68}{section.5.10}% 
+\contentsline {subsection}{\numberline {5.10.1}Value Semantics}{68}{subsection.5.10.1}% 
+\contentsline {subsection}{\numberline {5.10.2}Move Semantics}{68}{subsection.5.10.2}% 
 \contentsline {part}{III\hspace {1em}Estructuras de Datos y los Containers en \ignorespaces \texttt {C++} }{70}{part.3}% 
 \contentsline {chapter}{\numberline {6}Introducci\IeC {\'o}n}{71}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Los contendedores en si}{72}{section.6.1}% 
@@ -141,7 +144,7 @@
 \contentsline {section}{\numberline {22.1}Bits}{96}{section.22.1}% 
 \contentsline {subsection}{\numberline {22.1.1}Introducci\IeC {\'o}n}{96}{subsection.22.1.1}% 
 \contentsline {subsection}{\numberline {22.1.2}Manejo de Bits: Utilidades que podemos hacer con ellos}{96}{subsection.22.1.2}% 
-\contentsline {subsubsection}{Mascara de bits}{96}{section*.22}% 
+\contentsline {subsubsection}{Mascara de bits}{96}{section*.24}% 
 \contentsline {section}{\numberline {22.2}Conversiones entre Sistemas (HEX, OCT)}{96}{section.22.2}% 
 \contentsline {section}{\numberline {22.3}Binary Exponentiation: Exponenciacion Binaria}{96}{section.22.3}% 
 \contentsline {section}{\numberline {22.4}Binary Multiplication: Multiplicaci\IeC {\'o}n Binaria}{96}{section.22.4}% 
