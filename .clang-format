@@ -1,0 +1,15 @@
+# GOOGLE
+Language: Cpp
+BasedOnStyle: Google
+
+# Basic style
+ColumnLimit: 80
+IndentWidth: 2
+
+# My style
+SpaceBeforeCpp11BracedList: true
+Cpp11BracedListStyle: true
+
+# Pointer style
+DerivePointerAlignment: false
+PointerAlignment: Left
