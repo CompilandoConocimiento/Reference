@@ -628,6 +628,8 @@
                     Así que no hay puntos medios o tu programa funciona siempre y como debe o el juez
                     te dirá que está mal.
 
+                    \includegraphics[width=0.4\textwidth]{Example1}
+
                 \item \textbf{Tienen historia.}
                 
                     Muchas veces (casi siempre) los problemas están metidos dentro de una historia,
@@ -639,6 +641,9 @@
                     el problema de la mochila) que te gusto mucho en vez de que recuerdes temas matemáticos o
                     de computación puros y duros.
 
+                    \includegraphics[width=0.7\textwidth]{Example4}
+
+
                 \item \textbf{Te dan ejemplos.}
                 
                     Incluso aunque el problema te dice que es exactamente lo que te está pidiendo que resuelvas
@@ -646,6 +651,12 @@
 
                     Esto también ayuda a que no malinterpretemos el problema y empezemos a resolver
                     algo que no era lo que teníamos que hacer.
+
+                    \includegraphics[width=0.7\textwidth]{Example2}
+
+
+                    \includegraphics[width=0.7\textwidth]{Example3}
+
 
                 \item \textbf{El corazón del problema está relacionado siempre con matemáticas, lógica o
                 ciencias de la computación.}
@@ -775,7 +786,7 @@
                     Tenemos el control de decidir si queremos pasar las cosas por referencia o por valor, si deseamos mover
                     un objecto o si una referencia no podrá ser modificada.
 
-                \item {Tienes \textit{value types} por defecto (pero también tiene referencias si las necesitas)}.
+                \item \textbf{Tienes \textit{value types} por defecto (pero también tiene referencias si las necesitas)}.
                 
                     Esta quiza sea algo rara de explicar si es que no conoces muchos sobre lenguajes de computación, y si
                     no la entiendes no te preocupes. 
@@ -783,6 +794,9 @@
                     Lo que nos dice es que las variables en \Cpp son variables de valor por defecto, es decir
                     cuando decimos \textCode{auto x = 10} nuestra variable \textCode{x} de verdad es el fragmento
                     de memoria que tiene ese 10.
+
+                    O cuando decimos \textCode{vector<int>} \textCode{vec} nuestra variable \textCode{vec} de verdad tiene sus elementos adyacentes
+                    en memoria, y no como en otros lenguajes que lo que es adyacente es un montón de punteros.
                     
                     En otras palabras que nuestras variable de verdad almacenan la información que queremos \textbf{
                         y no una referencia que apunta a donde esta nuestra información
@@ -803,6 +817,11 @@
             % ============================================
             \subsection{vs C}
 
+                \begin{wrapfigure}{l}{0.20\textwidth}
+                    \centering
+                    \includegraphics[width=0.20\textwidth]{C}
+                \end{wrapfigure}
+
                 El gran problema con C es que es un lenguaje muy pequeño en el sentido en que todo lo tienes que hacer tu,
                 si quieres hacer un problema que involucra cosas medio complejas todas las estructuras las tienes que codear
                 al momento, y en un deporte de tiempo, cada segundo cuenta, así que en resumén, lo que \Quote{mata} a C es la falta
@@ -816,8 +835,13 @@
             % ============================================
             \subsection{vs Java}
 
+                \begin{wrapfigure}{l}{0.20\textwidth}
+                    \centering
+                    \includegraphics[width=0.08\textwidth]{Java}
+                \end{wrapfigure}
+
                 Con toda honestidad hay un porcentaje de la comunidad de programación competitiva que usan Java, así que
-                si que es una opción viable, sobretodo por su gran libreria estándar y también porque en C++ no hay algo parecido
+                si que es una opción viable, sobretodo por su gran libreria estándar y también porque en \Cpp no hay algo parecido
                 a \textCode{BigInteger} y \textCode{BigDecimal} y suelen ser muchos los problemas que lo requieran, así que si bien \Cpp
                 podría ser tu lenguaje por defecto es importante que también conozcas lo básico de Java (O Kotlin si quieres ser feliz).
 
@@ -825,6 +849,11 @@
             % ==========        VS PYTHON        =========
             % ============================================
             \subsection{vs Python}
+
+                \begin{wrapfigure}{l}{0.20\textwidth}
+                    \centering
+                    \includegraphics[width=0.12\textwidth]{Python}
+                \end{wrapfigure}
 
                 Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
                 a ser interpretado y debilmente tipado, sus programas acaban siendo muy lentos incluso usando el 
@@ -876,7 +905,7 @@
                 vector<shape*> v = load_shapes();
 
                 for (auto& s : v) {
-                    if (s && *s == *p)
+                    if (s and *s == *p)
                         cout << *s << "is a match" << '\n';
                 }
             \end{lstlisting}
@@ -929,7 +958,7 @@
         \textbf{
             Recuerda que esta sección del texto NO es una introducción a la programación para
             alguien que nunca ha programado nada en su vida, sino solo para alguien que
-            no sabe \Cpp. 
+            no sabe \Cpp o que no sabe todo de \Cpp.
         }
 
         \textbf{
@@ -1088,7 +1117,6 @@
                     parámetro.
 
                     Total, es solo una forma mas bonita de hacer las cosas.
-
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber {20};   
                         string someText {"Hi baby"};
@@ -1101,7 +1129,7 @@
                     \begin{itemize}
                         \item 
                             Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
-                            \begin{lstlisting}[language=C++, gobble=28]
+                            \begin{lstlisting}[language=C++, gobble=32]
                                 vector<int> days ();   
                             \end{lstlisting}
 
@@ -1109,12 +1137,12 @@
                             recibe nada y regresa un vector.
 
                             En la antigüedad podríamos hacer algo como:
-                            \begin{lstlisting}[language=C++, gobble=28]
+                            \begin{lstlisting}[language=C++, gobble=32]
                                 vector<int> days = vector<int>();   
                             \end{lstlisting}
 
                             Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
-                            \begin{lstlisting}[language=C++, gobble=28]
+                            \begin{lstlisting}[language=C++, gobble=32]
                                 vector<int> days {};   
                             \end{lstlisting}
 
@@ -1397,7 +1425,9 @@
                         int n {};
                         while (true) {
                             cout << n << " " << isEven << '\n';
+
                             isEven = not isEven;        // The important line
+                            ++n;
                         }
                     \end{lstlisting}
 
@@ -1601,7 +1631,7 @@
                     
                         Se escribe así, y lo que hace es aplicar AND bit a bit de nuestros números, es decir
                         un bit es 1 si y solo si es que ambos son 1.
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             int number1 {0b11100011};   // C++14
                             int number2 {0b01010101};   // C++14
 
@@ -1610,18 +1640,18 @@
                         \end{lstlisting}
 
                         Donde tendremos que \textCode{numberAND = 0b01000001}. Mira porque:
-                        \begin{lstlisting}[language=C++, gobble=32]
-                            11100011    -> number1
+                        \begin{lstlisting}[language=C++, gobble=28]
+                              11100011    -> number1
                             & 01010101    -> number2
                             ---------
-                            01000001
+                              01000001
                         \end{lstlisting}
                         
                     \item OR Lógico bit a bit: 
                     
                         Explicado el AND logico, este es basicamente el mismo, pero que ahora siguiendo el OR, es
                         decir, solo si alguno de los dos es uno entonces el valor de ese bit será uno.
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             int number1 {0b11100011};   // C++14
                             int number2 {0b01010101};   // C++14
 
@@ -1630,17 +1660,17 @@
                         \end{lstlisting}
 
                         Donde tendremos que \textCode{numberOR = 0b11110111}. Mira porque:
-                        \begin{lstlisting}[language=C++, gobble=32]
-                            11100011    -> number1
+                        \begin{lstlisting}[language=C++, gobble=28]
+                              11100011    -> number1
                             & 01010101    -> number2
                             ---------
-                            11110111
+                              11110111
                         \end{lstlisting}
                     
                     \item XOR Lógico bit a bit: 
                     
                         Lo mismo pero siguiendo ahora el XOR bit a bit:
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             int number1 {0b11100011};   // C++14
                             int number2 {0b01010101};   // C++14
 
@@ -1649,24 +1679,24 @@
                         \end{lstlisting}
 
                         Donde tendremos que \textCode{numberXOR = 0b10110110}. Mira porque:
-                        \begin{lstlisting}[language=C++, gobble=32]
-                            11100011    -> number1
+                        \begin{lstlisting}[language=C++, gobble=28]
+                              11100011    -> number1
                             & 01010101    -> number2
                             ---------
-                            10110110
+                              10110110
                         \end{lstlisting}
 
                     \item Negación Lógica bit a bit: 
                     
                         Lo que hace es negar cada bit:
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             int number {0b11100011};   // C++14
                             int numberNeg = ~number;
                             int numberNeg = compl number;
                         \end{lstlisting}
 
                         Donde tendremos que \textCode{numberNeg = 0b00011100}. Mira porque:
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             11100011    -> number
                             ---------
                             00011100
@@ -1679,14 +1709,14 @@
                         veamos las dos versiones que tenemos: 
                         \begin{itemize}
                             \item Left shift
-                                \begin{lstlisting}[language=C++, gobble=40]
+                                \begin{lstlisting}[language=C++, gobble=36]
                                     int number {0b00000110};
                                     int number1 = number << 1;      // 0b00001100
                                     int number2 = number << 3;      // 0b00110000
                                 \end{lstlisting}
 
-                            \item right shift
-                                \begin{lstlisting}[language=C++, gobble=40]
+                            \item Right shift
+                                \begin{lstlisting}[language=C++, gobble=36]
                                     int number {0b00000110};
                                     int number1 = number >> 1;      // 0b00000011
                                     int number2 = number >> 2;      // 0b00000001
@@ -1715,7 +1745,6 @@
                 
                 Los condicionales permiten que se cambie el flujo del programa y con ello códigos
                 más interesantes.
-
                 \begin{lstlisting}[language=C++, gobble=20]
                     //Simpler form
                     if (condition) {
