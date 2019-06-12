@@ -3079,53 +3079,10 @@
 
                 \cite{forauto}
 
-        % ============================================
-        % =====            ENUMS             =========
-        % ============================================
-        \subsection{Enums}
-
-
-
-
-
-
-
-
         % =========================================================
-        % =====            POINTERS: APUNTADORES          =========
+        % =============            ENUMS             ==============
         % =========================================================
-        \clearpage
-        \section{Pointers: Apuntadores}
-
-            No me pondre ahora a explicar en gran medida el concepto de punteros, 
-            primero que nada porque es un concepto de gran importancia, así que si algo de lo que
-            digo no te queda completamente claro, no te preocupes. No es fácil entenderlos la primera vez.
-
-            Los punteros son como su nombre lo indica variables que \Quote{apuntan} a un espacio en memoria.
-            Además recordemos que toda variable en \Cpp es un fragmento de la memoria, y por lo tanto tiene
-            una dirección donde dicha variable esta guardada en memoria.
-
-            Si quieres obtener la dirección de memoria de una variable basta con hacer algo como:
-            \begin{lstlisting}[language=C++, gobble=16]
-                int someNumber {3};
-
-                // Give us the direction of someNumber
-                &someNumber;
-            \end{lstlisting}
-
-            Los punteros son variables capaces y diseñadas para guardar y manipular dichas direcciones.
-            Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el 
-            mismo espacio en memoria por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
-            \begin{lstlisting}[language=C++, gobble=16]
-                int someNumber {3};
-                int* somePointerToAnInt = &someNumber;
-
-                string someText {"Hi"};
-                string* somePointerToAnString = &someText;
-
-                double someDecimal {2.123};
-                double* somePointerToAnDouble = &someDecimal;
-            \end{lstlisting}
+        \section{Enums}
 
 
         % =========================================================
@@ -3371,6 +3328,18 @@
         % ==========             STRINGS                 ==========
         % =========================================================
         \section{std::bitset}
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \clearpage
+        \section{std::pair}
+
+        % =========================================================
+        % ==========             VECTOR                  ==========
+        % =========================================================
+        \clearpage
+        \section{std::tuple}
 
 
     % ===============================================================================
@@ -3901,6 +3870,55 @@
 \part{Estructuras de Datos Avanzadas}
 \label{part:EstructurasDeDatosAvanzadas}
 
+    % =========================================================
+    % =====            POINTERS: APUNTADORES          =========
+    % =========================================================
+    \clearpage
+    \chapter{Pointers: Apuntadores}
+
+
+        % =========================================================
+        % =====            POINTERS: APUNTADORES          =========
+        % =========================================================
+        \clearpage
+        \section{Pointers (C Style)}
+
+            No me pondre ahora a explicar en gran medida el concepto de punteros, 
+            primero que nada porque es un concepto de gran importancia, así que si algo de lo que
+            digo no te queda completamente claro, no te preocupes. No es fácil entenderlos la primera vez.
+
+            Los punteros son como su nombre lo indica variables que \Quote{apuntan} a un espacio en memoria.
+            Además recordemos que toda variable en \Cpp es un fragmento de la memoria, y por lo tanto tiene
+            una dirección donde dicha variable esta guardada en memoria.
+
+            Si quieres obtener la dirección de memoria de una variable basta con hacer algo como:
+            \begin{lstlisting}[language=C++, gobble=16]
+                int someNumber {3};
+
+                // Give us the direction of someNumber
+                &someNumber;
+            \end{lstlisting}
+
+            Los punteros son variables capaces y diseñadas para guardar y manipular dichas direcciones.
+            Ahora, como sabes, un \textCode{int} y un \textCode{long long} no ocupan el 
+            mismo espacio en memoria por lo tanto para cada tipo de dato en \Cpp tenemos un tipo de puntero.
+            \begin{lstlisting}[language=C++, gobble=16]
+                int someNumber {3};
+                int* somePointerToAnInt = &someNumber;
+
+                string someText {"Hi"};
+                string* somePointerToAnString = &someText;
+
+                double someDecimal {2.123};
+                double* somePointerToAnDouble = &someDecimal;
+            \end{lstlisting}
+
+        % =========================================================
+        % =====            SMART POINTERS                 =========
+        % =========================================================
+        \clearpage
+        \section{Smart pointers}
+
     % ===============================================================================
     % ===========                  TIPOS DE DATOS                     ===============
     % ===============================================================================
@@ -3920,10 +3938,10 @@
                 De ahi nació la idea de clases.
             }
             
-            % ============================================
-            % =====       CLASS & STRUCTS        =========
-            % ============================================
-            \subsection{class \& structs}
+        % =========================================================
+        % ==========       CLASS & STRUCTS               ==========
+        % =========================================================
+        \section{class \& structs}
             
     % ===============================================================================
     % ===========         LINKED LIST: LISTAS ENLAZADAS               ===============
