@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"
 
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core"
 import { Home, Menu } from "@material-ui/icons"
+import { useTheme, responsiveFontSizes } from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/styles"
+
 import clsx from "clsx"
 
 import { isDrawerOpenDesktopContext } from "../App/Wrapper"
@@ -22,6 +25,9 @@ const DrawerIcon = ({ onClick, className }) => (
 )
 
 const Header = () => {
+  let theme = useTheme()
+  theme = responsiveFontSizes(theme)
+
   const Styles = useHeaderStyles()
 
   const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
@@ -31,17 +37,18 @@ const Header = () => {
   const handleMobileDrawerToggle = () => setMobileOpen(!mobileOpen)
 
   const AppBarStyle = clsx(Styles.AppBar, desktopOpen && Styles.AppBarShift)
-  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, desktopOpen && Styles.hide)
-  const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.hide)
+  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, desktopOpen && Styles.Hide)
+  const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.Hide)
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <AppBar position="fixed" className={AppBarStyle}>
         <Toolbar>
           <DrawerIcon onClick={handleDesktopDrawerToggle} className={toggleDesktopButtonStyle} />
           <DrawerIcon onClick={handleMobileDrawerToggle} className={toggleMobileButtonStyle} />
-          <Typography variant="h6" noWrap className={Styles.AppBarTitle}>
-            Compilando Conocimiento
+          <Typography variant="h5" noWrap className={Styles.AppBarTitle}>
+            <span style={{ fontWeight: 500 }}>Competitive</span>{" "}
+            <span style={{ fontWeight: 300 }}>Reference</span>
           </Typography>
           <IconButton color="inherit" component={Link} to={""}>
             <Home />
@@ -50,7 +57,7 @@ const Header = () => {
       </AppBar>
 
       <DrawerSideMenu mobileOpen={mobileOpen} handleMobileDrawerToggle={handleMobileDrawerToggle} />
-    </React.Fragment>
+    </ThemeProvider>
   )
 }
 

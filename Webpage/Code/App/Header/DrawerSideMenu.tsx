@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction } from "react"
 import { Drawer, Hidden, Divider, IconButton } from "@material-ui/core"
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core"
 import { useTheme } from "@material-ui/core/styles"
+import { Typography, Box } from "@material-ui/core"
 
 import { ChevronLeft, ChevronRight } from "@material-ui/icons"
 
@@ -27,6 +28,11 @@ const DrawerSideMenu = (props: DrawerSideMenuProps) => {
   const theList = (
     <React.Fragment>
       <List>
+        <Typography variant="h5" className={Styles.DrawerTitle}>
+          <Box fontWeight={"fontWeightBold"}>Topics</Box>
+        </Typography>
+      </List>
+      <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -47,7 +53,7 @@ const DrawerSideMenu = (props: DrawerSideMenuProps) => {
   )
 
   const anchor = theme.direction === "rtl" ? "right" : "left"
-  const paperClasses = { paper: Styles.DrawerPaper }
+  const classes = { paper: Styles.DrawerPaper }
 
   return (
     <nav className={Styles.Drawer}>
@@ -55,9 +61,9 @@ const DrawerSideMenu = (props: DrawerSideMenuProps) => {
         <Drawer
           variant="temporary"
           anchor={anchor}
+          classes={classes}
           open={props.mobileOpen}
           onClose={props.handleMobileDrawerToggle}
-          classes={paperClasses}
           ModalProps={{ keepMounted: true }}
         >
           {theList}
@@ -65,7 +71,7 @@ const DrawerSideMenu = (props: DrawerSideMenuProps) => {
       </Hidden>
 
       <Hidden xsDown implementation="css">
-        <Drawer variant="persistent" anchor={anchor} open={desktopOpen} classes={paperClasses}>
+        <Drawer variant="persistent" anchor={anchor} classes={classes} open={desktopOpen}>
           <div className={Styles.DrawerHeader}>
             <IconButton onClick={handleDesktopDrawerToggle}>
               {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}

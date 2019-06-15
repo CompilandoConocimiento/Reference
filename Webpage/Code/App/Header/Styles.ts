@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) => {
   }
 
   const AppBar = {
+    AppBarTitle: { flexGrow: 1 },
     AppBar: {
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
@@ -39,12 +40,9 @@ const useStyles = makeStyles((theme: Theme) => {
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    AppBarTitle: {
-      flexGrow: 1,
-    },
     MenuButtonDesktop: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         display: "none",
       },
     },
@@ -57,13 +55,9 @@ const useStyles = makeStyles((theme: Theme) => {
   }
 
   const Drawer = {
-    Drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    DrawerPaper: {
-      width: drawerWidth,
-    },
+    DrawerPaper: { width: drawerWidth },
+    Drawer: { width: drawerWidth, flexShrink: 0 },
+    DrawerTitle: { marginLeft: "1rem", marginTop: "1rem" },
     DrawerHeader: {
       display: "flex",
       alignItems: "center",
@@ -74,12 +68,10 @@ const useStyles = makeStyles((theme: Theme) => {
   }
 
   return createStyles({
+    Hide: { display: "none" },
     ...Content,
     ...AppBar,
     ...Drawer,
-    hide: {
-      display: "none",
-    },
   })
 })
 
