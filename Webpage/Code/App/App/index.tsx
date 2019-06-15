@@ -19,7 +19,7 @@ import useStyles from "../Header/Styles"
  */
 const App: FunctionComponent = () => {
   const TopicsData = useContext(IndexDataContext)
-  const drawerSituation = useState(true)
+  const drawerSituation = useState(false)
   const [isDrawerOpen] = drawerSituation
   const classes = useStyles()
 

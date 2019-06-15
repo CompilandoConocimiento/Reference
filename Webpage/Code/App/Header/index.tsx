@@ -1,10 +1,9 @@
 import React from "react"
+import { Link } from "react-router-dom"
+
 import clsx from "clsx"
 import { useTheme } from "@material-ui/core/styles"
-import Drawer from "@material-ui/core/Drawer"
-import { AppBar, Toolbar } from "@material-ui/core"
-
-import { Link } from "react-router-dom"
+import { AppBar, Toolbar, Drawer, Hidden } from "@material-ui/core"
 
 import List from "@material-ui/core/List"
 import Typography from "@material-ui/core/Typography"
@@ -42,6 +41,12 @@ export default function PersistentDrawerLeft() {
     setOpen(false)
   }
 
+  const [mobileOpen, setMobileOpen] = React.useState(false)
+
+  function handleDrawerToggle() {
+    setMobileOpen(!mobileOpen)
+  }
+
   return (
     <React.Fragment>
       <AppBar
@@ -56,53 +61,83 @@ export default function PersistentDrawerLeft() {
             aria-label="Open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButtonDesktop, open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
+
+          <IconButton
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={handleDrawerToggle}
+            edge="start"
+            className={clsx(classes.menuButtonMobile, mobileOpen && classes.hide)}
+          >
+            <Home />
+          </IconButton>
+
           <Typography variant="h6" noWrap className={classes.title}>
             Compilando Conocimiento
           </Typography>
-          <IconButton color="inherit">
-            <Link to="">
-              <Home />
-            </Link>
+          <IconButton color="inherit" component={Link} to={""}>
+            <Home />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+
+      <nav className={classes.drawer}>
+        <Hidden smUp implementation="css">
+          <Drawer
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            Hola
+          </Drawer>
+        </Hidden>
+
+        <Hidden xsDown implementation="css">
+          <Drawer
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <List>
+              {["All mail", "Trash", "Spam"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </Hidden>
+      </nav>
     </React.Fragment>
   )
 }
