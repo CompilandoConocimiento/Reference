@@ -2,13 +2,16 @@ import React from "react"
 import clsx from "clsx"
 import { useTheme } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
+import { AppBar, Toolbar } from "@material-ui/core"
+
 import List from "@material-ui/core/List"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+
+import { Home } from "@material-ui/icons"
+
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 
@@ -22,7 +25,7 @@ import MailIcon from "@material-ui/icons/Mail"
 
 import useStyles from "./Styles"
 
-import {isDrawerOpenDesktopContext} from "../App/Wrapper"
+import { isDrawerOpenDesktopContext } from "../App/Wrapper"
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles()
@@ -55,9 +58,12 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
+          <Typography variant="h6" noWrap className={classes.title}>
+            Compilando Conocimiento
           </Typography>
+          <IconButton color="inherit">
+            <Home />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
