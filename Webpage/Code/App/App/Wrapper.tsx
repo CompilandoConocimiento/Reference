@@ -1,10 +1,13 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, Dispatch, SetStateAction } from "react"
 import { HashRouter } from "react-router-dom"
 
 import { createMuiTheme } from "@material-ui/core/styles"
 import { ThemeProvider } from "@material-ui/styles"
 import TopicsData from "../../Data/TopicsData"
 
+type correctType = [boolean, Dispatch<SetStateAction<boolean>>]
+const warnUser = () => console.warn("Error: isDrawerOpenDesktopContext ")
+const isDrawerOpenDesktopContext = React.createContext([false, warnUser] as correctType)
 
 const theme = createMuiTheme({
   palette: {
@@ -30,6 +33,6 @@ const Wrapper: FunctionComponent = ({ children }) => {
   )
 }
 
-export { IndexDataContext }
+export { IndexDataContext, isDrawerOpenDesktopContext }
 
 export default Wrapper

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext, useCallback } from "react"
+import React, { FunctionComponent, useContext, useCallback, useState } from "react"
 import ReactDOM from "react-dom"
 import { Switch, Route, RouteComponentProps } from "react-router-dom"
 
@@ -6,12 +6,11 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import clsx from "clsx"
 
 import Header from "../Header"
-import Footer from "../Footer"
 import Home from "../Home"
 import AlgorithmsPicker from "../AlgorithmsPicker"
 import { ErrorMessage } from "../Helpers"
 
-import Wrapper, { IndexDataContext } from "./Wrapper"
+import Wrapper, { IndexDataContext, isDrawerOpenDesktopContext } from "./Wrapper"
 import useStyles from "../Header/Styles"
 
 /**
@@ -20,6 +19,8 @@ import useStyles from "../Header/Styles"
  */
 const App: FunctionComponent = () => {
   const TopicsData = useContext(IndexDataContext)
+  const drawerSituation = useState(true)
+  const [isDrawerOpen] = drawerSituation
   const classes = useStyles()
 
   const renderAlgorithmPicker = useCallback(
@@ -37,21 +38,22 @@ const App: FunctionComponent = () => {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      <isDrawerOpenDesktopContext.Provider value={drawerSituation}>
+        <Header />
 
-      <Header />
-
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: false,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/Topic/:topicLink" render={renderAlgorithmPicker} />
-          <Route path="/:SomethingElse" component={Home} />
-        </Switch>
-      </main>
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: isDrawerOpen,
+          })}
+        >
+          <div className={classes.drawerHeader} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/Topic/:topicLink" render={renderAlgorithmPicker} />
+            <Route path="/:SomethingElse" component={Home} />
+          </Switch>
+        </main>
+      </isDrawerOpenDesktopContext.Provider>
     </div>
   )
 }

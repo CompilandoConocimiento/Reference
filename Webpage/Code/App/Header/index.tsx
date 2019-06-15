@@ -22,10 +22,12 @@ import MailIcon from "@material-ui/icons/Mail"
 
 import useStyles from "./Styles"
 
+import {isDrawerOpenDesktopContext} from "../App/Wrapper"
+
 export default function PersistentDrawerLeft() {
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useContext(isDrawerOpenDesktopContext)
 
   function handleDrawerOpen() {
     setOpen(true)
