@@ -4,6 +4,8 @@ import { useTheme } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
 import { AppBar, Toolbar } from "@material-ui/core"
 
+import { Link } from "react-router-dom"
+
 import List from "@material-ui/core/List"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
@@ -62,7 +64,9 @@ export default function PersistentDrawerLeft() {
             Compilando Conocimiento
           </Typography>
           <IconButton color="inherit">
-            <Home />
+            <Link to="">
+              <Home />
+            </Link>
           </IconButton>
         </Toolbar>
       </AppBar>
