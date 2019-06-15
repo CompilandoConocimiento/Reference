@@ -30,9 +30,9 @@ const Header = () => {
   const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
   const handleMobileDrawerToggle = () => setMobileOpen(!mobileOpen)
 
-  const AppBarStyle = clsx(Styles.appBar, desktopOpen && Styles.appBarShift)
-  const toggleDesktopButtonStyle = clsx(Styles.menuButtonDesktop, desktopOpen && Styles.hide)
-  const toggleMobileButtonStyle = clsx(Styles.menuButtonMobile, mobileOpen && Styles.hide)
+  const AppBarStyle = clsx(Styles.AppBar, desktopOpen && Styles.AppBarShift)
+  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, desktopOpen && Styles.hide)
+  const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.hide)
 
   return (
     <React.Fragment>
@@ -40,7 +40,7 @@ const Header = () => {
         <Toolbar>
           <DrawerIcon onClick={handleDesktopDrawerToggle} className={toggleDesktopButtonStyle} />
           <DrawerIcon onClick={handleMobileDrawerToggle} className={toggleMobileButtonStyle} />
-          <Typography variant="h6" noWrap className={Styles.title}>
+          <Typography variant="h6" noWrap className={Styles.AppBarTitle}>
             Compilando Conocimiento
           </Typography>
           <IconButton color="inherit" component={Link} to={""}>

@@ -3,7 +3,6 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
 const drawerWidth = `16rem`
 
 const useStyles = makeStyles((theme: Theme) => {
-
   const Content = {
     Root: { display: "flex" },
     SpaceForTheHeader: theme.mixins.toolbar,
@@ -25,13 +24,45 @@ const useStyles = makeStyles((theme: Theme) => {
     },
   }
 
-  return createStyles({
-    ...Content,
-    appBar: {
+  const AppBar = {
+    AppBar: {
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+    },
+    AppBarShift: {
+      width: `calc(100% - ${drawerWidth})`,
+      marginLeft: drawerWidth,
+      transition: theme.transitions.create(["margin", "width"], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    AppBarTitle: {
+      flexGrow: 1,
+    },
+    MenuButtonDesktop: {
+      marginRight: theme.spacing(2),
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    MenuButtonMobile: {
+      marginRight: theme.spacing(2),
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
+    },
+  }
+
+  const Drawer = {
+    Drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+    DrawerPaper: {
+      width: drawerWidth,
     },
     DrawerHeader: {
       display: "flex",
@@ -40,38 +71,14 @@ const useStyles = makeStyles((theme: Theme) => {
       ...theme.mixins.toolbar,
       justifyContent: "flex-end",
     },
-    appBarShift: {
-      width: `calc(100% - ${drawerWidth})`,
-      marginLeft: drawerWidth,
-      transition: theme.transitions.create(["margin", "width"], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButtonDesktop: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.down("sm")]: {
-        display: "none",
-      },
-    },
-    menuButtonMobile: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        display: "none",
-      },
-    },
+  }
+
+  return createStyles({
+    ...Content,
+    ...AppBar,
+    ...Drawer,
     hide: {
       display: "none",
-    },
-    title: {
-      flexGrow: 1,
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
     },
   })
 })
