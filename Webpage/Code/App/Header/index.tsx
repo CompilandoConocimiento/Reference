@@ -1,82 +1,46 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core"
+import { Home, Menu } from "@material-ui/icons"
 import clsx from "clsx"
-import { useTheme } from "@material-ui/core/styles"
-import { AppBar, Toolbar, Drawer, Hidden } from "@material-ui/core"
-
-import List from "@material-ui/core/List"
-import Typography from "@material-ui/core/Typography"
-import Divider from "@material-ui/core/Divider"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
-
-import { Home } from "@material-ui/icons"
-
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
-import ChevronRightIcon from "@material-ui/icons/ChevronRight"
-
-import ListItem from "@material-ui/core/ListItem"
-
-import ListItemIcon from "@material-ui/core/ListItemIcon"
-import ListItemText from "@material-ui/core/ListItemText"
-
-import InboxIcon from "@material-ui/icons/MoveToInbox"
-import MailIcon from "@material-ui/icons/Mail"
-
-import useStyles from "./Styles"
 
 import { isDrawerOpenDesktopContext } from "../App/Wrapper"
+import useHeaderStyles from "./Styles"
+import DrawerSideMenu from "./DrawerSideMenu"
 
-export default function PersistentDrawerLeft() {
-  const classes = useStyles()
-  const theme = useTheme()
-  const [open, setOpen] = React.useContext(isDrawerOpenDesktopContext)
+const DrawerIcon = ({ onClick, className }) => (
+  <IconButton
+    edge="start"
+    color="inherit"
+    aria-label="Open drawer"
+    onClick={onClick}
+    className={className}
+  >
+    <Menu />
+  </IconButton>
+)
 
-  function handleDrawerOpen() {
-    setOpen(true)
-  }
+const Header = () => {
+  const Styles = useHeaderStyles()
 
-  function handleDrawerClose() {
-    setOpen(false)
-  }
-
+  const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  function handleDrawerToggle() {
-    setMobileOpen(!mobileOpen)
-  }
+  const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
+  const handleMobileDrawerToggle = () => setMobileOpen(!mobileOpen)
+
+  const AppBarStyle = clsx(Styles.appBar, desktopOpen && Styles.appBarShift)
+  const toggleDesktopButtonStyle = clsx(Styles.menuButtonDesktop, desktopOpen && Styles.hide)
+  const toggleMobileButtonStyle = clsx(Styles.menuButtonMobile, mobileOpen && Styles.hide)
 
   return (
     <React.Fragment>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
+      <AppBar position="fixed" className={AppBarStyle}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButtonDesktop, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerToggle}
-            edge="start"
-            className={clsx(classes.menuButtonMobile, mobileOpen && classes.hide)}
-          >
-            <Home />
-          </IconButton>
-
-          <Typography variant="h6" noWrap className={classes.title}>
+          <DrawerIcon onClick={handleDesktopDrawerToggle} className={toggleDesktopButtonStyle} />
+          <DrawerIcon onClick={handleMobileDrawerToggle} className={toggleMobileButtonStyle} />
+          <Typography variant="h6" noWrap className={Styles.title}>
             Compilando Conocimiento
           </Typography>
           <IconButton color="inherit" component={Link} to={""}>
@@ -85,59 +49,9 @@ export default function PersistentDrawerLeft() {
         </Toolbar>
       </AppBar>
 
-      <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
-          <Drawer
-            variant="temporary"
-            anchor={theme.direction === "rtl" ? "right" : "left"}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            Hola
-          </Drawer>
-        </Hidden>
-
-        <Hidden xsDown implementation="css">
-          <Drawer
-            variant="persistent"
-            anchor="left"
-            open={open}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-          >
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-              </IconButton>
-            </div>
-            <Divider />
-            <List>
-              {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <List>
-              {["All mail", "Trash", "Spam"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
-        </Hidden>
-      </nav>
+      <DrawerSideMenu mobileOpen={mobileOpen} handleMobileDrawerToggle={handleMobileDrawerToggle} />
     </React.Fragment>
   )
 }
+
+export default Header

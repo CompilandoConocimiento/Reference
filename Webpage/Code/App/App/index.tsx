@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useContext, useCallback, useState } from "react"
 import ReactDOM from "react-dom"
+import React, { FunctionComponent, useContext, useState } from "react"
 import { Switch, Route, RouteComponentProps } from "react-router-dom"
 
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -11,58 +11,52 @@ import AlgorithmsPicker from "../AlgorithmsPicker"
 import { ErrorMessage } from "../Helpers"
 
 import Wrapper, { IndexDataContext, isDrawerOpenDesktopContext } from "./Wrapper"
-import useStyles from "../Header/Styles"
+import useHeaderStyles from "../Header/Styles"
 
 /**
  * This is a wrapper of all the app, the header, the footer and
- * the content.
+ * the content. It also moves if we have the drawer open
  */
 const App: FunctionComponent = () => {
-  const TopicsData = useContext(IndexDataContext)
   const drawerSituation = useState(false)
   const [isDrawerOpen] = drawerSituation
-  const classes = useStyles()
 
-  const renderAlgorithmPicker = useCallback(
-    (props: RouteComponentProps<{ topicLink: string }>) => {
-      const topicLink = props.match.params.topicLink
-      const topic = TopicsData.find(Topic => Topic.link === topicLink)
+  const Styles = useHeaderStyles()
+  const ContentMargin = clsx(Styles.Content, { [Styles.ContentShift]: isDrawerOpen })
 
-      if (!topic) return <ErrorMessage />
+  const TopicsData = useContext(IndexDataContext)
 
-      return <AlgorithmsPicker TopicData={topic} />
-    },
-    [TopicsData]
-  )
+  type RouteDataTopicLink = RouteComponentProps<{ topicLink: string }>
+  const showAlgorithmPicker = (props: RouteDataTopicLink) => {
+    const topicLink = props.match.params.topicLink
+    const topic = TopicsData.find(Topic => Topic.link === topicLink)
+    if (!topic) return <ErrorMessage />
+
+    return <AlgorithmsPicker TopicData={topic} />
+  }
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <isDrawerOpenDesktopContext.Provider value={drawerSituation}>
-        <Header />
+    <Wrapper>
+      <div className={Styles.Root}>
+        <CssBaseline />
+        <isDrawerOpenDesktopContext.Provider value={drawerSituation}>
+          <Header />
 
-        <main
-          className={clsx(classes.content, {
-            [classes.contentShift]: isDrawerOpen,
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/Topic/:topicLink" render={renderAlgorithmPicker} />
-            <Route path="/:SomethingElse" component={Home} />
-          </Switch>
-        </main>
-      </isDrawerOpenDesktopContext.Provider>
-    </div>
+          <main className={ContentMargin}>
+            <div className={Styles.SpaceForTheHeader} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/Topic/:topicLink" render={showAlgorithmPicker} />
+              <Route path="/:SomethingElse" component={Home} />
+            </Switch>
+          </main>
+        </isDrawerOpenDesktopContext.Provider>
+      </div>
+    </Wrapper>
   )
 }
 
-export { IndexDataContext }
+const DOMNode = document.getElementById("ReactApp")
+ReactDOM.render(<App />, DOMNode)
 
-ReactDOM.render(
-  <Wrapper>
-    <App />
-  </Wrapper>,
-  document.getElementById("ReactApp")
-)
+export { IndexDataContext }
