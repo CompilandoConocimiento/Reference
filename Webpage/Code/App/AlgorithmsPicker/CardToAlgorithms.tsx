@@ -7,11 +7,7 @@ import { toTop as onClick } from "../Helpers"
 import { TopicData } from "../../Data/"
 
 import useCardStyle from "./Styles"
-
-import { red, indigo, cyan, green, brown, deepPurple } from "@material-ui/core/colors/"
-const colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], brown[600]].sort(
-  () => Math.random() - 0.5
-)
+import { Colors } from "../App/Styles"
 
 /**
  * Render a list of buttons of a given topic.
@@ -30,7 +26,7 @@ const CardOfSubTopics: React.FunctionComponent<{
       <br />
 
       {props.TopicData.Algorithms.map(({ link, name }, index) => {
-        const style = { backgroundColor: colors[index % colors.length] }
+        const style = { backgroundColor: Colors[index % Colors.length] }
         const to = props.baseLink + link
         const buttonsProps = { to, onClick, style, component: Link }
 

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => {
       marginLeft: theme.spacing(2),
       flexGrow: 1,
     },
-    AppBar: {
+    AppBarStyle: {
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,

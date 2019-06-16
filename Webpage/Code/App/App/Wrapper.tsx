@@ -6,7 +6,7 @@ import { CssBaseline } from "@material-ui/core"
 
 import Data from "../../Data/TopicsData"
 import useHeaderStyles from "../Header/Styles"
-import Theme from "./Styles"
+import { Theme } from "./Styles"
 
 type changeDrawer = Dispatch<SetStateAction<boolean>>
 const ChangeDrawerSituationDesktopContext = React.createContext<changeDrawer>(() => {})

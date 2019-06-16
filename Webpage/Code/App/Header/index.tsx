@@ -1,7 +1,7 @@
-import React from "react"
+import React, { Dispatch, SetStateAction } from "react"
 import { Link } from "react-router-dom"
 
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core"
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core"
 import { Home, Menu } from "@material-ui/icons"
 
 import clsx from "clsx"
@@ -10,52 +10,55 @@ import { DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext } fr
 import useHeaderStyles from "./Styles"
 import DrawerSideMenu from "./DrawerSideMenu"
 
-const DrawerIcon = ({ onClick, className }) => (
-  <IconButton
-    edge="start"
-    color="inherit"
-    aria-label="Open drawer"
-    onClick={onClick}
-    className={className}
-  >
-    <Menu />
-  </IconButton>
-)
+type changeDrawer = [boolean, Dispatch<SetStateAction<boolean>>]
+const DrawerSituationMobileContext = React.createContext<changeDrawer>([false, () => {}])
 
 const Header = () => {
-  const Styles = useHeaderStyles()
+  const HeaderStyle = useHeaderStyles()
+  const { AppBarShift, AppBarTitle, AppBarStyle } = HeaderStyle
+  const { Hide, MenuButtonDesktop, MenuButtonMobile } = HeaderStyle
 
-  const isDrawerOpen = React.useContext(DrawerSituationDesktopContext)
+  const isDesktopDrawerOpen = React.useContext(DrawerSituationDesktopContext)
   const setDesktopOpen = React.useContext(ChangeDrawerSituationDesktopContext)
-  const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  const desktopDrawerToggle = () => setDesktopOpen(!isDrawerOpen)
-  const mobileDrawerToggle = () => setMobileOpen(!mobileOpen)
-  const closeMobileDrawer = () => setMobileOpen(false)
+  const DrawerSituationMobile = React.useState(false)
+  const [isMobileOpen, setMobileOpen] = DrawerSituationMobile
 
-  const AppBarStyle = clsx(Styles.AppBar, isDrawerOpen && Styles.AppBarShift)
-  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, isDrawerOpen && Styles.Hide)
-  const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.Hide)
+  const DesktopButtonStyle = clsx(MenuButtonDesktop, isDesktopDrawerOpen && Hide)
+  const MobileButtonStyle = clsx(MenuButtonMobile, isMobileOpen && Hide)
 
   return (
     <React.Fragment>
-      <AppBar position="fixed" className={AppBarStyle}>
+      <AppBar position="fixed" className={clsx(AppBarStyle, isDesktopDrawerOpen && AppBarShift)}>
         <Toolbar>
-          <DrawerIcon onClick={desktopDrawerToggle} className={toggleDesktopButtonStyle} />
-          <DrawerIcon onClick={mobileDrawerToggle} className={toggleMobileButtonStyle} />
-          <Typography variant="h5" noWrap className={Styles.AppBarTitle}>
+          <DrawerIcon onClick={() => setDesktopOpen(val => !val)} className={DesktopButtonStyle} />
+          <DrawerIcon onClick={() => setMobileOpen(val => !val)} className={MobileButtonStyle} />
+
+          <Typography variant="h5" noWrap className={AppBarTitle}>
             <span style={{ fontWeight: 500 }}>Competitive</span>{" "}
             <span style={{ fontWeight: 300 }}>Reference</span>
           </Typography>
+
           <IconButton color="inherit" component={Link} to={""}>
             <Home />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      <DrawerSideMenu mobileOpen={mobileOpen} closeMobileDrawer={closeMobileDrawer} />
+      <DrawerSituationMobileContext.Provider value={DrawerSituationMobile}>
+        <DrawerSideMenu />
+      </DrawerSituationMobileContext.Provider>
     </React.Fragment>
   )
 }
 
+function DrawerIcon({ onClick, className }) {
+  return (
+    <IconButton edge="start" color="inherit" aria-label="Open Drawer" {...{ onClick, className }}>
+      <Menu />
+    </IconButton>
+  )
+}
+
+export { DrawerSituationMobileContext }
 export default Header

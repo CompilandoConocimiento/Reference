@@ -3,17 +3,13 @@ import React, { useContext, FunctionComponent } from "react"
 import { Grid, Typography, Button } from "@material-ui/core"
 import CardToTopic from "./CardToTopic"
 
-import { red, indigo, cyan, green, brown, deepPurple } from "@material-ui/core/colors/"
 import { DataContext } from "../App"
+import { Colors } from "../App/Styles"
 
 const Book: FunctionComponent<{ src: string; href: string }> = ({ src, href }) => (
   <Button href={href} target="_blank" style={{ backgroundColor: "transparent" }}>
     <img style={{ maxWidth: "100%" }} src={src} />
   </Button>
-)
-
-const colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], brown[600]].sort(
-  () => Math.random() - 0.5
 )
 
 const Home: React.FunctionComponent = () => {
@@ -26,7 +22,7 @@ const Home: React.FunctionComponent = () => {
           <CardToTopic
             name={Topic.name}
             routeLink={Topic.link}
-            backgroundColor={colors[index % colors.length]}
+            backgroundColor={Colors[index % Colors.length]}
           />
         </Grid>
       ))}
