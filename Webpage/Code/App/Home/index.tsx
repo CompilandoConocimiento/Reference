@@ -5,7 +5,7 @@ import CardToTopic from "./CardToTopic"
 
 import { ThemeProvider } from "@material-ui/styles"
 import { useTheme, responsiveFontSizes } from "@material-ui/core/styles"
-
+import { red, indigo, cyan, green, brown } from "@material-ui/core/colors/"
 import { IndexDataContext } from "../App"
 
 const Book: FunctionComponent<{ src: string; href: string }> = ({ src, href }) => (
@@ -14,7 +14,9 @@ const Book: FunctionComponent<{ src: string; href: string }> = ({ src, href }) =
   </Button>
 )
 
-const colors = ["red", "indigo", "cyan", "green", "brown"].sort(() => Math.random() - 0.5)
+const colors = [red[600], indigo[700], cyan[800], green[600], brown[600]].sort(
+  () => Math.random() - 0.5
+)
 
 const Home: React.FunctionComponent = () => {
   const IndexData = useContext(IndexDataContext)

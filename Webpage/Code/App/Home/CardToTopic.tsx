@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from "react"
+import React, { FunctionComponent } from "react"
 import { withRouter } from "react-router-dom"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -15,12 +15,7 @@ interface CardProps {
 }
 
 type CardToTopicType = FunctionComponent<CardProps & RouteComponentProps>
-const CardToTopic: CardToTopicType = ({
-  backgroundColor,
-  name,
-  history,
-  routeLink,
-}) => {
+const CardToTopic: CardToTopicType = ({ backgroundColor, name, history, routeLink }) => {
   const link = () => history.push(`/Topic/${routeLink}/`)
   const Styles = useCardStyles()
 
