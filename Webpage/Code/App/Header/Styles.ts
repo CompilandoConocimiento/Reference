@@ -25,7 +25,10 @@ const useStyles = makeStyles((theme: Theme) => {
   }
 
   const AppBar = {
-    AppBarTitle: { flexGrow: 1 },
+    AppBarTitle: {
+      marginLeft: theme.spacing(2),
+      flexGrow: 1,
+    },
     AppBar: {
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
@@ -40,31 +43,16 @@ const useStyles = makeStyles((theme: Theme) => {
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    MenuButtonDesktop: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.down("xs")]: {
-        display: "none",
-      },
-    },
-    MenuButtonMobile: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        display: "none",
-      },
-    },
+    MenuButtonDesktop: { [theme.breakpoints.down("xs")]: { display: "none" } },
+    MenuButtonMobile: { [theme.breakpoints.up("sm")]: { display: "none" } },
   }
 
   const Drawer = {
-    DrawerPaper: { width: drawerWidth },
     Drawer: { width: drawerWidth, flexShrink: 0 },
-    DrawerTitle: { marginLeft: "1rem", marginTop: "1rem" },
-    DrawerHeader: {
-      display: "flex",
-      alignItems: "center",
-      padding: "0 8px",
-      ...theme.mixins.toolbar,
-      justifyContent: "flex-end",
-    },
+    DrawerPaper: { width: drawerWidth },
+    DrawerTitle: { fontWeight: 600, fontSize: "1.5rem" },
+    DrawerTopic: { fontWeight: 600 },
+    DrawerAlgorithm: { paddingLeft: theme.spacing(4) },
   }
 
   return createStyles({
