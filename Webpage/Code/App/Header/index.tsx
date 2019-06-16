@@ -6,7 +6,7 @@ import { Home, Menu } from "@material-ui/icons"
 
 import clsx from "clsx"
 
-import { isDrawerOpenDesktopContext } from "../App/"
+import { DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext } from "../App/"
 import useHeaderStyles from "./Styles"
 import DrawerSideMenu from "./DrawerSideMenu"
 
@@ -25,15 +25,16 @@ const DrawerIcon = ({ onClick, className }) => (
 const Header = () => {
   const Styles = useHeaderStyles()
 
-  const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
+  const isDrawerOpen = React.useContext(DrawerSituationDesktopContext)
+  const setDesktopOpen = React.useContext(ChangeDrawerSituationDesktopContext)
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  const desktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
+  const desktopDrawerToggle = () => setDesktopOpen(!isDrawerOpen)
   const mobileDrawerToggle = () => setMobileOpen(!mobileOpen)
   const closeMobileDrawer = () => setMobileOpen(false)
 
-  const AppBarStyle = clsx(Styles.AppBar, desktopOpen && Styles.AppBarShift)
-  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, desktopOpen && Styles.Hide)
+  const AppBarStyle = clsx(Styles.AppBar, isDrawerOpen && Styles.AppBarShift)
+  const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, isDrawerOpen && Styles.Hide)
   const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.Hide)
 
   return (

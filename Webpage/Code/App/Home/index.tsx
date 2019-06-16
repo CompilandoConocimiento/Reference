@@ -4,7 +4,7 @@ import { Grid, Typography, Button } from "@material-ui/core"
 import CardToTopic from "./CardToTopic"
 
 import { red, indigo, cyan, green, brown, deepPurple } from "@material-ui/core/colors/"
-import { IndexDataContext } from "../App"
+import { DataContext } from "../App"
 
 const Book: FunctionComponent<{ src: string; href: string }> = ({ src, href }) => (
   <Button href={href} target="_blank" style={{ backgroundColor: "transparent" }}>
@@ -17,7 +17,7 @@ const colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], b
 )
 
 const Home: React.FunctionComponent = () => {
-  const IndexData = useContext(IndexDataContext)
+  const IndexData = useContext(DataContext)
 
   return (
     <Grid container spacing={4}>

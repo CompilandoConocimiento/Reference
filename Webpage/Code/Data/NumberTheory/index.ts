@@ -1,3 +1,5 @@
+
+import React from "react"
 import { TopicData } from "../index"
 
 
@@ -9,7 +11,7 @@ const NumberTheoryData: TopicData = {
         {
             name: "Binary Exponentiation",
             link: "BinaryExponentation",
-            module: () => import("./BinaryExponentation"),
+            component: React.lazy(() => import('./BinaryExponentation'))
         }
         
     ]

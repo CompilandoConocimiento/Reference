@@ -5,18 +5,21 @@ import { ChevronLeft, ChevronRight, ExpandLess, ExpandMore } from "@material-ui/
 import { Collapse, List, ListItem, ListItemText, IconButton } from "@material-ui/core"
 import { useTheme } from "@material-ui/core/styles"
 
-import { IndexDataContext, isDrawerOpenDesktopContext } from "../App"
+import { DataContext } from "../App"
+import { DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext } from "../App"
+
 import useHeaderStyles from "./Styles"
 
 const ListTopics: FunctionComponent<{
   mobileOpen: boolean
   closeMobileDrawer: () => void
 }> = props => {
-  const IndexData = useContext(IndexDataContext)
+  const IndexData = useContext(DataContext)
   const theme = useTheme()
   const Styles = useHeaderStyles()
 
-  const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
+  const desktopOpen = React.useContext(DrawerSituationDesktopContext)
+  const setDesktopOpen = React.useContext(ChangeDrawerSituationDesktopContext)
   const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
 
   const [TopicsClosed, toggleOpen] = useReducer((oldState: Array<boolean>, id: number) => {

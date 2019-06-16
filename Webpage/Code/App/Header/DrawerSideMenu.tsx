@@ -6,7 +6,7 @@ import { useTheme } from "@material-ui/core/styles"
 import ListOfTopics from "./ListOfTopics"
 import useHeaderStyles from "./Styles"
 
-import { isDrawerOpenDesktopContext } from "../App/"
+import { DrawerSituationDesktopContext } from "../App/"
 
 const DrawerSideMenu: FunctionComponent<{
   mobileOpen: boolean
@@ -15,7 +15,7 @@ const DrawerSideMenu: FunctionComponent<{
   const Styles = useHeaderStyles()
   const theme = useTheme()
 
-  const [desktopOpen] = React.useContext(isDrawerOpenDesktopContext)
+  const desktopOpen = React.useContext(DrawerSituationDesktopContext)
 
   const anchor = theme.direction === "rtl" ? "right" : "left"
   const classes = { paper: Styles.DrawerPaper }

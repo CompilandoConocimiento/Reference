@@ -8,21 +8,29 @@ const useStyles = makeStyles((theme: Theme) => {
     SpaceForTheHeader: theme.mixins.toolbar,
     Content: {
       flexGrow: 1,
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
       paddingTop: theme.spacing(6),
       marginLeft: `-${drawerWidth}`,
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+      [theme.breakpoints.up("sm")]: {
+        paddingLeft: theme.spacing(6),
+        paddingRight: theme.spacing(6),
+      },
       [theme.breakpoints.up("md")]: {
-        paddingLeft: theme.spacing(10),
-        paddingRight: theme.spacing(10),
+        paddingLeft: theme.spacing(14),
+        paddingRight: theme.spacing(14),
       },
       [theme.breakpoints.up("lg")]: {
-        paddingLeft: theme.spacing(10),
-        paddingRight: theme.spacing(18),
+        paddingLeft: theme.spacing(24),
+        paddingRight: theme.spacing(24),
+      },
+      [theme.breakpoints.up("xl")]: {
+        paddingLeft: theme.spacing(30),
+        paddingRight: theme.spacing(30),
       },
     },
     ContentShift: {
