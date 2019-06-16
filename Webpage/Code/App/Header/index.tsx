@@ -24,6 +24,7 @@ const DrawerIcon = ({ onClick, className }) => (
   </IconButton>
 )
 
+
 const Header = () => {
   let theme = useTheme()
   theme = responsiveFontSizes(theme)
@@ -33,8 +34,9 @@ const Header = () => {
   const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
-  const handleMobileDrawerToggle = () => setMobileOpen(!mobileOpen)
+  const desktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
+  const mobileDrawerToggle = () => setMobileOpen(!mobileOpen)
+  const closeMobileDrawer = () => setMobileOpen(false)
 
   const AppBarStyle = clsx(Styles.AppBar, desktopOpen && Styles.AppBarShift)
   const toggleDesktopButtonStyle = clsx(Styles.MenuButtonDesktop, desktopOpen && Styles.Hide)
@@ -44,8 +46,8 @@ const Header = () => {
     <ThemeProvider theme={theme}>
       <AppBar position="fixed" className={AppBarStyle}>
         <Toolbar>
-          <DrawerIcon onClick={handleDesktopDrawerToggle} className={toggleDesktopButtonStyle} />
-          <DrawerIcon onClick={handleMobileDrawerToggle} className={toggleMobileButtonStyle} />
+          <DrawerIcon onClick={desktopDrawerToggle} className={toggleDesktopButtonStyle} />
+          <DrawerIcon onClick={mobileDrawerToggle} className={toggleMobileButtonStyle} />
           <Typography variant="h5" noWrap className={Styles.AppBarTitle}>
             <span style={{ fontWeight: 500 }}>Competitive</span>{" "}
             <span style={{ fontWeight: 300 }}>Reference</span>
@@ -56,7 +58,7 @@ const Header = () => {
         </Toolbar>
       </AppBar>
 
-      <DrawerSideMenu mobileOpen={mobileOpen} handleMobileDrawerToggle={handleMobileDrawerToggle} />
+      <DrawerSideMenu mobileOpen={mobileOpen} closeMobileDrawer={closeMobileDrawer} />
     </ThemeProvider>
   )
 }

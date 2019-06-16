@@ -10,7 +10,7 @@ import { isDrawerOpenDesktopContext } from "../App/"
 
 const DrawerSideMenu: FunctionComponent<{
   mobileOpen: boolean
-  handleMobileDrawerToggle: () => void
+  closeMobileDrawer: () => void
 }> = props => {
   const Styles = useHeaderStyles()
   const theme = useTheme()
@@ -28,16 +28,16 @@ const DrawerSideMenu: FunctionComponent<{
           anchor={anchor}
           classes={classes}
           open={props.mobileOpen}
-          onClose={props.handleMobileDrawerToggle}
+          onClose={props.closeMobileDrawer}
           ModalProps={{ keepMounted: true }}
         >
-          <ListOfTopics />
+          <ListOfTopics {...props} />
         </Drawer>
       </Hidden>
 
       <Hidden xsDown implementation="css">
         <Drawer variant="persistent" anchor={anchor} classes={classes} open={desktopOpen}>
-          <ListOfTopics />
+          <ListOfTopics {...props} />
         </Drawer>
       </Hidden>
     </nav>

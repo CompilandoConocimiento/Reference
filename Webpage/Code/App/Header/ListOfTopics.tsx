@@ -8,7 +8,10 @@ import { useTheme } from "@material-ui/core/styles"
 import { IndexDataContext, isDrawerOpenDesktopContext } from "../App"
 import useHeaderStyles from "./Styles"
 
-const ListTopics: FunctionComponent = () => {
+const ListTopics: FunctionComponent<{
+  mobileOpen: boolean
+  closeMobileDrawer: () => void
+}> = props => {
   const IndexData = useContext(IndexDataContext)
   const theme = useTheme()
   const Styles = useHeaderStyles()
@@ -66,6 +69,7 @@ const ListTopics: FunctionComponent = () => {
                   {Topic.Algorithms.map(algorithm => (
                     <ListItem
                       button
+                      onClick={() => props.closeMobileDrawer()}
                       key={algorithm.name}
                       alignItems={"flex-start"}
                       component={Link}
