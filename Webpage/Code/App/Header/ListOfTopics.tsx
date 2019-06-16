@@ -1,15 +1,12 @@
-import React, { useContext, FunctionComponent } from "react"
-import { IndexDataContext } from "../App"
-
-import { ChevronLeft, ChevronRight } from "@material-ui/icons"
-
-import { List, ListItem, ListItemText, IconButton } from "@material-ui/core"
+import React, { FunctionComponent, useContext, useReducer } from "react"
 import { Link } from "react-router-dom"
-import { ExpandLess, ExpandMore } from "@material-ui/icons"
 
+import { ChevronLeft, ChevronRight, ExpandLess, ExpandMore } from "@material-ui/icons"
+import { Collapse, List, ListItem, ListItemText, IconButton } from "@material-ui/core"
 import { useTheme } from "@material-ui/core/styles"
+
+import { IndexDataContext, isDrawerOpenDesktopContext } from "../App"
 import useHeaderStyles from "./Styles"
-import { isDrawerOpenDesktopContext } from "../App/Wrapper"
 
 const ListTopics: FunctionComponent = () => {
   const IndexData = useContext(IndexDataContext)
@@ -19,50 +16,72 @@ const ListTopics: FunctionComponent = () => {
   const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
   const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
 
+  const [TopicsOpened, toggleOpen] = useReducer((oldState: Array<boolean>, id: number) => {
+    const newState = [...oldState]
+    newState[id] = !newState[id]
+
+    return newState
+  }, [])
+
   return (
     <React.Fragment>
       <List>
         <ListItem alignItems={"flex-start"}>
           <ListItemText
-            primaryTypographyProps={{ variant: "h5", className: Styles.DrawerTitle }}
             primary={"Topics"}
+            primaryTypographyProps={{ variant: "h5", className: Styles.DrawerTitle }}
           />
           <IconButton
+            edge="end"
             className={Styles.MenuButtonDesktop}
-            edge={"end"}
             onClick={handleDesktopDrawerToggle}
           >
             {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
           </IconButton>
         </ListItem>
 
-        {IndexData.map(Topic => {
+        {IndexData.map((Topic, id) => {
           const baseLink = `/Topic/${Topic.link}/`
+
           return (
             <React.Fragment key={Topic.name}>
-              <ListItem alignItems={"flex-start"} button component={Link} to={baseLink}>
+              <ListItem alignItems="center" button component={Link} to={baseLink}>
                 <ListItemText
-                  primaryTypographyProps={{ variant: "subtitle2" }}
                   primary={Topic.name}
+                  primaryTypographyProps={{ variant: "subtitle2", className: Styles.DrawerTopic }}
                 />
-                {open != null ? open ? <ExpandLess /> : <ExpandMore /> : null}
+                <IconButton
+                  edge="end"
+                  onClick={e => {
+                    toggleOpen(id)
+                    e.preventDefault()
+                  }}
+                >
+                  {TopicsOpened[id] ? <ExpandLess /> : <ExpandMore />}
+                </IconButton>
               </ListItem>
 
-              {Topic.Algorithms.map(algorithm => (
-                <ListItem
-                  key={algorithm.name}
-                  alignItems={"flex-start"}
-                  button
-                  component={Link}
-                  to={baseLink + algorithm.link}
-                >
-                  <ListItemText
-                    primaryTypographyProps={{ variant: "subtitle2" }}
-                    primary={algorithm.name}
-                  />
-                  {open != null ? open ? <ExpandLess /> : <ExpandMore /> : null}
-                </ListItem>
-              ))}
+              <Collapse in={TopicsOpened[id]} timeout="auto" unmountOnExit>
+                <List disablePadding>
+                  {Topic.Algorithms.map(algorithm => (
+                    <ListItem
+                      button
+                      key={algorithm.name}
+                      alignItems={"flex-start"}
+                      component={Link}
+                      to={baseLink + algorithm.link}
+                    >
+                      <ListItemText
+                        primaryTypographyProps={{
+                          variant: "subtitle2",
+                          className: Styles.DrawerAlgorithm,
+                        }}
+                        primary={algorithm.name}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
             </React.Fragment>
           )
         })}

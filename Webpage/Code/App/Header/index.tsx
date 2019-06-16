@@ -8,7 +8,7 @@ import { ThemeProvider } from "@material-ui/styles"
 
 import clsx from "clsx"
 
-import { isDrawerOpenDesktopContext } from "../App/Wrapper"
+import { isDrawerOpenDesktopContext } from "../App/"
 import useHeaderStyles from "./Styles"
 import DrawerSideMenu from "./DrawerSideMenu"
 

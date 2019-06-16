@@ -6,7 +6,7 @@ import { useTheme } from "@material-ui/core/styles"
 import ListOfTopics from "./ListOfTopics"
 import useHeaderStyles from "./Styles"
 
-import { isDrawerOpenDesktopContext } from "../App/Wrapper"
+import { isDrawerOpenDesktopContext } from "../App/"
 
 const DrawerSideMenu: FunctionComponent<{
   mobileOpen: boolean

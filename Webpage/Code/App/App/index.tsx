@@ -59,4 +59,4 @@ const App: FunctionComponent = () => {
 const DOMNode = document.getElementById("ReactApp")
 ReactDOM.render(<App />, DOMNode)
 
-export { IndexDataContext }
+export { IndexDataContext, isDrawerOpenDesktopContext }

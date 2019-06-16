@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => {
     Drawer: { width: drawerWidth, flexShrink: 0 },
     DrawerPaper: { width: drawerWidth },
     DrawerTitle: { fontWeight: 600, fontSize: "1.5rem" },
-    DrawerTopic: { fontWeight: 600 },
+    DrawerTopic: { paddingLeft: theme.spacing(2), fontWeight: 600 },
     DrawerAlgorithm: { paddingLeft: theme.spacing(4) },
   }
 
