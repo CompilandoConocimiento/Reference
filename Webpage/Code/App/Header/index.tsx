@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core"
 import { Home, Menu } from "@material-ui/icons"
-import { useTheme, responsiveFontSizes } from "@material-ui/core/styles"
-import { ThemeProvider } from "@material-ui/styles"
 
 import clsx from "clsx"
 
@@ -24,11 +22,7 @@ const DrawerIcon = ({ onClick, className }) => (
   </IconButton>
 )
 
-
 const Header = () => {
-  let theme = useTheme()
-  theme = responsiveFontSizes(theme)
-
   const Styles = useHeaderStyles()
 
   const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
@@ -43,7 +37,7 @@ const Header = () => {
   const toggleMobileButtonStyle = clsx(Styles.MenuButtonMobile, mobileOpen && Styles.Hide)
 
   return (
-    <ThemeProvider theme={theme}>
+    <React.Fragment>
       <AppBar position="fixed" className={AppBarStyle}>
         <Toolbar>
           <DrawerIcon onClick={desktopDrawerToggle} className={toggleDesktopButtonStyle} />
@@ -59,7 +53,7 @@ const Header = () => {
       </AppBar>
 
       <DrawerSideMenu mobileOpen={mobileOpen} closeMobileDrawer={closeMobileDrawer} />
-    </ThemeProvider>
+    </React.Fragment>
   )
 }
 

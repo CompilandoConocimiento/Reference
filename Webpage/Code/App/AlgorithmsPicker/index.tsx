@@ -13,9 +13,9 @@ import { TopicData } from "../../Data"
  *
  * @param TopicData The Topic
  */
-const AlgorithmsPicker: FunctionComponent<{ TopicData: TopicData }> = ({TopicData}) => {
+const AlgorithmsPicker: FunctionComponent<{ TopicData: TopicData }> = ({ TopicData }) => {
   const baseLink = `/Topic/${TopicData.link}/`
-  const CardToSubTopic = () => <CardToSubTopics {...{baseLink, TopicData}} />
+  const CardToSubTopic = () => <CardToSubTopics {...{ baseLink, TopicData }} />
   return (
     <Switch>
       <Route exact path={baseLink} render={CardToSubTopic} />

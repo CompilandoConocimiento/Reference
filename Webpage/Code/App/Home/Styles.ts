@@ -5,7 +5,7 @@ const useStyles = makeStyles(() =>
     Card: {
       cursor: "pointer",
       borderRadius: "1.2rem",
-      padding: "1.2rem",
+      padding: "2rem",
       "&:hover": {
         boxShadow: "0 4px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.23);",
       },

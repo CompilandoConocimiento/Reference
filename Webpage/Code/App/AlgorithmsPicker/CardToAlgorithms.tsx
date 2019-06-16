@@ -1,19 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+import { Paper, Box, Typography, Button } from "@material-ui/core"
+
 import { toTop as onClick } from "../Helpers"
 import { TopicData } from "../../Data/"
 
-const colors = [
-  "red lighten-2",
-  "indigo lighten-2",
-  "cyan lighten-1",
-  "green lighten-2",
-  "orange lighten-2",
-  "brown lighten-2",
-].sort(() => Math.random() - 0.5)
+import useCardStyle from "./Styles"
 
-const buttonClassname = "hoverable btn-large col s12 m8 l6 offset-m2 offset-l3 "
+import { red, indigo, cyan, green, brown, deepPurple } from "@material-ui/core/colors/"
+const colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], brown[600]].sort(
+  () => Math.random() - 0.5
+)
 
 /**
  * Render a list of buttons of a given topic.
@@ -22,24 +20,28 @@ const buttonClassname = "hoverable btn-large col s12 m8 l6 offset-m2 offset-l3 "
 const CardOfSubTopics: React.FunctionComponent<{
   TopicData: TopicData
   baseLink: string
-}> = props => (
-  <div className="container">
-    <div className="card-panel center">
-      <h4 className="blue-grey-text text-darken-3">{props.TopicData.name}</h4>
-      <br />
+}> = props => {
+  const Styles = useCardStyle()
+  return (
+    <Paper className={Styles.Paper}>
+      <Typography gutterBottom variant="h4">
+        <Box fontWeight={500}>{props.TopicData.name}</Box>
+      </Typography>
       <br />
 
-      {props.TopicData.Algorithms.map((Algorithm, index) => {
-        const className = buttonClassname + colors[index % colors.length]
-        const to = props.baseLink + Algorithm.link
+      {props.TopicData.Algorithms.map(({ link, name }, index) => {
+        const style = { backgroundColor: colors[index % colors.length] }
+        const to = props.baseLink + link
+        const buttonsProps = { to, onClick, style, component: Link }
+
         return (
-          <div className="row" key={Algorithm.link}>
-            <Link {...{ className, to, onClick }}>{Algorithm.name}</Link>
-          </div>
+          <Button variant="contained" key={name} className={Styles.Button} {...buttonsProps}>
+            {name}
+          </Button>
         )
       })}
-    </div>
-  </div>
-)
+    </Paper>
+  )
+}
 
 export default CardOfSubTopics

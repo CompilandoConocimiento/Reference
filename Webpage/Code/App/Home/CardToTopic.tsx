@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from "react"
-import { withRouter } from "react-router-dom"
-import Card from "@material-ui/core/Card"
-import CardContent from "@material-ui/core/CardContent"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
 import { RouteComponentProps } from "react-router"
+import { withRouter } from "react-router-dom"
+
+import { Paper, Button, Typography } from "@material-ui/core"
 
 import useCardStyles from "./Styles"
 
@@ -20,17 +18,15 @@ const CardToTopic: CardToTopicType = ({ backgroundColor, name, history, routeLin
   const Styles = useCardStyles()
 
   return (
-    <Card className={Styles.Card} style={{ backgroundColor }} onClick={link}>
-      <CardContent>
-        <Typography className={Styles.Text} gutterBottom variant="h4">
-          {name}
-        </Typography>
-        <div className={Styles.Divider} />
-        <Button className={Styles.Text} size="medium" color="primary">
-          CHECK IT OUT!
-        </Button>
-      </CardContent>
-    </Card>
+    <Paper className={Styles.Card} style={{ backgroundColor }} onClick={link}>
+      <Typography className={Styles.Text} gutterBottom variant="h4">
+        {name}
+      </Typography>
+      <div className={Styles.Divider} />
+      <Button className={Styles.Text} size="medium" color="primary">
+        CHECK IT OUT!
+      </Button>
+    </Paper>
   )
 }
 
