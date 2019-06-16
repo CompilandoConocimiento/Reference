@@ -19,7 +19,7 @@ const ListTopics: FunctionComponent<{
   const [desktopOpen, setDesktopOpen] = React.useContext(isDrawerOpenDesktopContext)
   const handleDesktopDrawerToggle = () => setDesktopOpen(!desktopOpen)
 
-  const [TopicsOpened, toggleOpen] = useReducer((oldState: Array<boolean>, id: number) => {
+  const [TopicsClosed, toggleOpen] = useReducer((oldState: Array<boolean>, id: number) => {
     const newState = [...oldState]
     newState[id] = !newState[id]
 
@@ -48,7 +48,13 @@ const ListTopics: FunctionComponent<{
 
           return (
             <React.Fragment key={Topic.name}>
-              <ListItem alignItems="center" button component={Link} to={baseLink}>
+              <ListItem
+                alignItems="center"
+                button
+                onClick={() => props.closeMobileDrawer()}
+                component={Link}
+                to={baseLink}
+              >
                 <ListItemText
                   primary={Topic.name}
                   primaryTypographyProps={{ variant: "subtitle2", className: Styles.DrawerTopic }}
@@ -57,14 +63,14 @@ const ListTopics: FunctionComponent<{
                   edge="end"
                   onClick={e => {
                     toggleOpen(id)
-                    e.preventDefault()
+                    e.stopPropagation()
                   }}
                 >
-                  {TopicsOpened[id] ? <ExpandLess /> : <ExpandMore />}
+                  {TopicsClosed[id] ? <ExpandMore /> : <ExpandLess />}
                 </IconButton>
               </ListItem>
 
-              <Collapse in={TopicsOpened[id]} timeout="auto" unmountOnExit>
+              <Collapse in={!TopicsClosed[id]} timeout="auto" unmountOnExit>
                 <List disablePadding>
                   {Topic.Algorithms.map(algorithm => (
                     <ListItem

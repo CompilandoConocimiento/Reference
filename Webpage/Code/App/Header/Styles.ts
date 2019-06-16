@@ -4,16 +4,26 @@ const drawerWidth = `16rem`
 
 const useStyles = makeStyles((theme: Theme) => {
   const Content = {
-    Root: { display: "flex" },
+    Root: { display: "flex", flexGrow: 1 },
     SpaceForTheHeader: theme.mixins.toolbar,
     Content: {
       flexGrow: 1,
-      padding: theme.spacing(3),
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+      paddingTop: theme.spacing(6),
       marginLeft: `-${drawerWidth}`,
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+      [theme.breakpoints.up("md")]: {
+        paddingLeft: theme.spacing(10),
+        paddingRight: theme.spacing(10),
+      },
+      [theme.breakpoints.up("lg")]: {
+        paddingLeft: theme.spacing(10),
+        paddingRight: theme.spacing(18),
+      },
     },
     ContentShift: {
       marginLeft: 0,

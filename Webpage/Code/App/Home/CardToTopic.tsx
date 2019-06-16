@@ -1,40 +1,42 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, {FunctionComponent} from "react"
+import { withRouter } from "react-router-dom"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import Button from "@material-ui/core/Button"
+import Typography from "@material-ui/core/Typography"
+import { RouteComponentProps } from "react-router"
+
+import useCardStyles from "./Styles"
 
 interface CardProps {
   name: string
-  materializeCSSColor: string
-  link: string
-  radius: string
+  backgroundColor: string
+  routeLink: string
 }
-const CardToTopic: React.FunctionComponent<CardProps> = props => {
-  const cardActionStyle = {
-    borderTop: "2px solid rgba(255, 255, 255, 0.3)",
-    borderRadius: `0rem 0rem ${props.radius} ${props.radius}`,
-  }
 
-  const cardStyle = {
-    height: "100%",
-    display: "grid",
-    borderRadius: `${props.radius} ${props.radius} ${props.radius} ${props.radius}`,
-  }
+type CardToTopicType = FunctionComponent<CardProps & RouteComponentProps>
+const CardToTopic: CardToTopicType = ({
+  backgroundColor,
+  name,
+  history,
+  routeLink,
+}) => {
+  const link = () => history.push(`/Topic/${routeLink}/`)
+  const Styles = useCardStyles()
 
   return (
-    <Link
-      to={`/Topic/${props.link}/`}
-      onClick={() => scroll(0, 0)}
-      style={cardStyle}
-      className={`card hoverable white-text ${props.materializeCSSColor}`}
-    >
-      <div className="card-content">
-        <div className="card-title">{props.name}</div>
-      </div>
-
-      <div className="card-action" style={cardActionStyle}>
-        CHECK IT OUT!
-      </div>
-    </Link>
+    <Card className={Styles.Card} style={{ backgroundColor }} onClick={link}>
+      <CardContent>
+        <Typography className={Styles.Text} gutterBottom variant="h4">
+          {name}
+        </Typography>
+        <div className={Styles.Divider} />
+        <Button className={Styles.Text} size="medium" color="primary">
+          CHECK IT OUT!
+        </Button>
+      </CardContent>
+    </Card>
   )
 }
 
-export default CardToTopic
+export default withRouter(CardToTopic)
