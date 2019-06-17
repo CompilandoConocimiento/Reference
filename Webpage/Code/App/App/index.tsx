@@ -21,7 +21,6 @@ import useHeaderStyles from "../Header/Styles"
 const App: FunctionComponent = () => {
   const TopicsData = useContext(DataContext)
   const isDesktopDrawerOpen = useContext(DrawerSituationDesktopContext)
-  console.log(isDesktopDrawerOpen)
 
   const Styles = useHeaderStyles()
   const ContentMargin = clsx(Styles.Content, { [Styles.ContentShift]: isDesktopDrawerOpen })
@@ -51,6 +50,11 @@ const App: FunctionComponent = () => {
 }
 
 const DOMNode = document.getElementById("ReactApp")
-ReactDOM.render(<Wrapper><App /></Wrapper>, DOMNode)
+ReactDOM.render(
+  <Wrapper>
+    <App />
+  </Wrapper>,
+  DOMNode
+)
 
 export { DataContext, DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext }

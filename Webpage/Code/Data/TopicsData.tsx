@@ -1,4 +1,4 @@
-import { TopicData } from "./index"
+import { TopicData } from "./Types"
 
 //import DynamicProgramming from './DynamicProgramming'
 //import Search             from './Search'

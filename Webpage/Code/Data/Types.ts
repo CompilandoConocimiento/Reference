@@ -1,22 +1,14 @@
-/** A set of a name and a link  */
-export interface NameLink { 
-  /** The name of a thing */
-  name: string,
-  /** The link name to this thing in ReactRouter*/
-  link: string
+import React from "react"
+
+interface NameLink { link: string, name: string }
+
+interface AlgorithmData extends NameLink {
+  Component: React.LazyExoticComponent<React.FunctionComponent>
 }
 
-/** All the Data of an Algorithm  */
-export interface AlgorithmData extends NameLink {
-  /** a function that return the module loaded */
-  module: () => React.LazyExoticComponent<React.ComponentType<any>>
-} 
-
-/** All the Data of an Topic, aka a set of algorithms  */
-export interface TopicData extends NameLink {
-  /** All the algorithms that have the topic */
-  Algorithms: AlgorithmData[],
-
-  /** And http link to the directory that holds the algorithms */
-  linkToDirectoryCode: string,
+interface TopicData extends NameLink {
+  Algorithms: Array<AlgorithmData>
+  linkToDirectoryCode: string
 }
+
+export { NameLink, AlgorithmData, TopicData }
