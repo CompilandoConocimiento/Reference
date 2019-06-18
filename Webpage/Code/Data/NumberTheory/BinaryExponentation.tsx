@@ -3,8 +3,7 @@ import React, { FunctionComponent } from "react"
 import { Typography, Box } from "@material-ui/core"
 import { InlineMath, BlockMath } from "react-katex"
 
-import SyntaxHighlighter from "react-syntax-highlighter"
-import { rainbow } from "react-syntax-highlighter/dist/esm/styles/hljs"
+import Code from "../../App/AlgorithmVisualizer/ShowCode"
 
 const Component: FunctionComponent = () => {
   return (
@@ -21,8 +20,8 @@ const Component: FunctionComponent = () => {
         {String.raw`
             base ^ {exponent} = 
             \begin{cases}
-            (base^2)^{\; \frac{exponent}{2}}             & \text{if exponent is even}  \\
-            base \; (base^2)^{\; \frac{exponent-1}{2}}   & \text{if exponent is odd}   \\
+            (base^2)^{\space \frac{exponent}{2}}             & \text{if exponent is even}  \\
+            base \space (base^2)^{\space \frac{exponent-1}{2}}   & \text{if exponent is odd}   \\
             \end{cases}
         `}
       </BlockMath>
@@ -34,33 +33,13 @@ const Component: FunctionComponent = () => {
         {String.raw`
             x^n = 
             \begin{cases}
-            (x^2)^{\; \frac{n}{2}}           & \text{if n is even}  \\
-            x \; (x^2)^{\; \frac{n-1}{2}}    & \text{if n is odd}   \\
+            (x^2)^{\space \frac{n}{2}}           & \text{if n is even}  \\
+            x \space (x^2)^{\space \frac{n-1}{2}}    & \text{if n is odd}   \\
             \end{cases}
         `}
       </BlockMath>
 
-      <SyntaxHighlighter
-        language="javascript"
-        style={rainbow}
-        customStyle={{
-          padding: "1.2rem",
-          marginTop: "1.5rem",
-          marginBottom: "1.5rem",
-          borderRadius: "0.8rem",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        }}
-      >
-        {`template <typename integer, typename unsignedInteger>
-integer RecursiveBinaryExp (integer x, unsignedInteger n) {
-    if (n == 0) return 1;                                         
-    if (n == 1) return x;                                           
-
-    if (n % 2 == 0) return RecursiveBinaryExp(x * x,  n / 2);           
-    else return (x * RecursiveBinaryExp(x * x, (n-1) / 2));  
-} 
-        `}
-      </SyntaxHighlighter>
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[1, 8]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Simple Optimizations</Box>
@@ -80,6 +59,8 @@ integer RecursiveBinaryExp (integer x, unsignedInteger n) {
           exponent.
         </li>
       </ul>
+
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[10, 25]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Optimizations</Box>
@@ -122,13 +103,17 @@ integer RecursiveBinaryExp (integer x, unsignedInteger n) {
         last digit will be 1, so exponent & 1 give true only if the last digit was 1.
       </p>
 
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[27, 39]} />
+
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Modular Exponentation</Box>
       </Typography>
 
       <p>
-        This is to do <InlineMath math="base^{exponent} \mod n" />
+        This is to do <InlineMath math="base^{exponent}  \space \space \mod \space n" />
       </p>
+
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[41, 54]} />
     </div>
   )
 }

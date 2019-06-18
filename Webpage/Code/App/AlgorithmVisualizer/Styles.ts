@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme: Theme) =>
     ArticleTitle: {
       textAlign: "center",
       marginBottom: "2.5rem",
-      fontSize: "small"
+      fontSize: "small",
     },
     ArticleBody: {
       [theme.breakpoints.up("sm")]: { fontSize: "inherit" },

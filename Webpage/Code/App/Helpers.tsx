@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 
-import { Paper, Box, Typography } from "@material-ui/core"
+import { Paper, Box, Typography, LinearProgress } from "@material-ui/core"
 import useCardStyle from "./AlgorithmsPicker/Styles"
 
 /**
@@ -11,13 +11,7 @@ export const toTop = () => window.scroll({ top: 0, behavior: "smooth" })
 /**
  * A component to call when loading something
  */
-export const Loading: FunctionComponent = () => (
-  <div style={{ width: "100%", padding: "4% 10% 4% 10%" }}>
-    <div className="progress" style={{ height: "16px", borderRadius: "8px" }}>
-      <div className="indeterminate green lighten-1" />
-    </div>
-  </div>
-)
+export const Loading: FunctionComponent = () => <LinearProgress style={{height: "16px", borderRadius: "8px"}} />
 
 /**
  * A component to call when something went wrong
