@@ -6,8 +6,6 @@ const Colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], b
   () => Math.random() - 0.5
 )
 
-
-
 const Theme = responsiveFontSizes(
   createMuiTheme({
     palette: {
