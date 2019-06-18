@@ -11,6 +11,7 @@ const Styles = {
   padding: "1.2rem",
   marginTop: "1.5rem",
   marginBottom: "1.5rem",
+  maxWidth: "100%",
   borderRadius: "0.8rem",
   boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
 }

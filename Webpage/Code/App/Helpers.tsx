@@ -11,7 +11,8 @@ export const toTop = () => window.scroll({ top: 0, behavior: "smooth" })
 /**
  * A component to call when loading something
  */
-export const Loading: FunctionComponent = () => <LinearProgress style={{height: "16px", borderRadius: "8px"}} />
+const style = { height: "16px", borderRadius: "8px", marginBottom: "3rem", marginTop: "2rem" }
+export const Loading: FunctionComponent = () => <LinearProgress style={style} />
 
 /**
  * A component to call when something went wrong

@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) => {
     SpaceForTheHeader: theme.mixins.toolbar,
     Content: {
       flexGrow: 1,
-      width: "100vw",
+      maxWidth: "100%",
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
       paddingTop: theme.spacing(4),
@@ -35,11 +35,15 @@ const useStyles = makeStyles((theme: Theme) => {
       },
     },
     ContentShift: {
-      marginLeft: 0,
+      [theme.breakpoints.up("sm")]: {
+        marginLeft: 0,
+      maxWidth: `calc(100% - ${drawerWidth})`,
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
+      },
+      
     },
   }
 
@@ -55,12 +59,14 @@ const useStyles = makeStyles((theme: Theme) => {
       }),
     },
     AppBarShift: {
-      width: `calc(100% - ${drawerWidth})`,
-      marginLeft: drawerWidth,
-      transition: theme.transitions.create(["margin", "width"], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
+      [theme.breakpoints.up("sm")]: {
+        width: `calc(100% - ${drawerWidth})`,
+        marginLeft: drawerWidth,
+        transition: theme.transitions.create(["margin", "width"], {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+      },
     },
     MenuButtonDesktop: { [theme.breakpoints.down("xs")]: { display: "none" } },
     MenuButtonMobile: { [theme.breakpoints.up("sm")]: { display: "none" } },
