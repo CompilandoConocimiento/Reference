@@ -3,6 +3,7 @@ import React, { useState, useCallback, useContext } from "react"
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab/"
 import { Snackbar } from "@material-ui/core/"
 import { Edit, ArrowUpward, ArrowDownward, Palette } from "@material-ui/icons"
+import { green, red, purple } from "@material-ui/core/colors"
 
 import { EditCodeStyleContext, CodeStyleContext } from "../AlgorithmVisualizer"
 import usetyles, { themes } from "./Styles"
@@ -66,19 +67,19 @@ const FAB = () => {
         open={isFABOpen}
       >
         <SpeedDialAction
-          icon={<ArrowDownward />}
+          icon={<ArrowDownward style={{ color: red[500] }} />}
           tooltipTitle={"Smaller font"}
           tooltipOpen
           onClick={() => changeFontSize(-0.1)}
         />
         <SpeedDialAction
-          icon={<ArrowUpward />}
+          icon={<ArrowUpward style={{ color: green[500] }} />}
           tooltipTitle={"Bigger font"}
           tooltipOpen
           onClick={() => changeFontSize(0.1)}
         />
         <SpeedDialAction
-          icon={<Palette />}
+          icon={<Palette style={{ color: purple[500] }} />}
           tooltipTitle={"Change theme"}
           tooltipOpen
           onClick={changetoNextStyle}
