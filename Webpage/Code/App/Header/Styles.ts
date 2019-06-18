@@ -37,13 +37,12 @@ const useStyles = makeStyles((theme: Theme) => {
     ContentShift: {
       [theme.breakpoints.up("sm")]: {
         marginLeft: 0,
-      maxWidth: `calc(100% - ${drawerWidth})`,
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
+        maxWidth: `calc(100% - ${drawerWidth})`,
+        transition: theme.transitions.create("margin", {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
       },
-      
     },
   }
 

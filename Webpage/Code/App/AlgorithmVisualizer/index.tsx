@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Suspense, useState, Dispatch, SetStateAction } from "react"
+import React, { FunctionComponent, Suspense, useState } from "react"
 
 import { Typography, Box } from "@material-ui/core"
 
@@ -7,42 +7,55 @@ import { Loading } from "../Helpers"
 
 import useStyles from "./Styles"
 
-interface CodeStateType {
-  [key: string]: Array<string>
-}
-type ContextType = [CodeStateType, Dispatch<SetStateAction<CodeStateType>>]
-const CodeDataContext = React.createContext<ContextType>([{}, () => {}])
-const LinkContext = React.createContext<string>("")
+const linkToServer = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
 
-interface VisualizerProps {
-  AlgorithmData: AlgorithmData
-  TopicLink: string
-}
+type ContextCodeType = [{ [key: string]: Array<string> }, (fileName: string) => void]
+const defaultValue = [{}, (fileName: string) => console.log(fileName)] as ContextCodeType
+const CodeDataContext = React.createContext(defaultValue)
 
-const AlgorithmVisualizer: FunctionComponent<VisualizerProps> = ({ AlgorithmData, TopicLink }) => {
+const defaultStyle = { fontSize: "1rem", style: "dracula" }
+const CodeStyleContext = React.createContext(defaultStyle)
+
+type VisualizerType = FunctionComponent<{ AlgorithmData: AlgorithmData; TopicLink: string }>
+const AlgorithmVisualizer: VisualizerType = ({ AlgorithmData, TopicLink }) => {
   const Styles = useStyles()
-  const CodeState = useState<CodeStateType>({})
 
-  const linkToServer = "https://raw.githubusercontent.com/CompilandoConocimiento/Reference/master"
-  const baseLink = `${linkToServer}/Code/${TopicLink}`
+  const [codeStyle] = useState(defaultStyle)
+  const [codeFilesData, changeCodeFileData] = useState<{ [key: string]: Array<string> }>({})
+  const getCodeData = (fileName: string) => {
+    const linkToFile = `${linkToServer}/Code/${TopicLink}/${fileName}`
+    fetch(linkToFile)
+      .then(response => response.text())
+      .then(text => text.split("\n"))
+      .then(lines =>
+        changeCodeFileData(codeData => {
+          const newData = { ...codeData }
+          newData[fileName] = lines
+          return newData
+        })
+      )
+  }
 
   return (
-    <CodeDataContext.Provider value={CodeState}>
-      <LinkContext.Provider value={baseLink}>
-        <div className={Styles.ArticleTitle}>
-          <Typography gutterBottom variant="h4">
-            <Box fontWeight={500}>{AlgorithmData.name}</Box>
-          </Typography>
-        </div>
-        <div className={Styles.ArticleBody}>
-          <Suspense fallback={<Loading />}>
-            <AlgorithmData.Component />
-          </Suspense>
-        </div>
-      </LinkContext.Provider>
-    </CodeDataContext.Provider>
+    <React.Fragment>
+      <div className={Styles.ArticleTitle}>
+        <Typography gutterBottom variant="h4">
+          <Box fontWeight={500}>{AlgorithmData.name}</Box>
+        </Typography>
+      </div>
+
+      <div className={Styles.ArticleBody}>
+        <Suspense fallback={<Loading />}>
+          <CodeDataContext.Provider value={[codeFilesData, getCodeData]}>
+            <CodeStyleContext.Provider value={codeStyle}>
+              <AlgorithmData.Component />
+            </CodeStyleContext.Provider>
+          </CodeDataContext.Provider>
+        </Suspense>
+      </div>
+    </React.Fragment>
   )
 }
 
-export { CodeDataContext, LinkContext }
+export { CodeDataContext, CodeStyleContext }
 export default AlgorithmVisualizer
