@@ -2,7 +2,7 @@
  * Copy code fragment to clipboard
  * @param Text The code fragment
  */
-export function copyText(Text: string[]) {
+export function copyText(Text: Array<string>) {
   function areCommentsVisible() {
     const comment = document.querySelector(".hljs-comment") as HTMLElement
     return comment ? comment.style.display === "none" : false

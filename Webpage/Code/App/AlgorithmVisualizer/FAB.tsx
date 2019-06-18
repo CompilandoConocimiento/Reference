@@ -1,64 +1,92 @@
-import React from "react"
-import * as Styles from "./Styles.css"
+import React, { useState, useCallback, useContext } from "react"
 
-export interface FABElement {
-  color: string
-  icon: string
-  closeOnClick: boolean
-  onClick: () => void
+import { SpeedDial, SpeedDialAction } from "@material-ui/lab/"
+import { Snackbar } from "@material-ui/core/"
+import { Edit, ArrowUpward, ArrowDownward, Palette } from "@material-ui/icons"
+import { green, red, purple } from "@material-ui/core/colors"
+
+import { EditCodeStyleContext, CodeStyleContext } from "../AlgorithmVisualizer"
+import usetyles, { themes } from "./Styles"
+
+const FAB = () => {
+  const Styles = usetyles()
+  const codeStyle = useContext(CodeStyleContext)
+  const [isFABOpen, changeFABStatus] = useState(false)
+  const [isSnackbarOpen, changeOpenSnackbar] = useState(false)
+  const changeCodeStyle = useContext(EditCodeStyleContext)
+
+  const handleOpenSnackbar = useCallback(() => changeOpenSnackbar(true), [])
+  const handleCloseSnackbar = useCallback(() => changeOpenSnackbar(false), [])
+  const toggleOpenFAB = useCallback(() => changeFABStatus(open => !open), [])
+  const handleOpenFAB = useCallback(() => changeFABStatus(true), [])
+  const handleCloseFAB = useCallback(() => changeFABStatus(false), [])
+  const changeFontSize = useCallback(
+    (step: number) =>
+      changeCodeStyle(style => {
+        const newStyle = { ...style }
+        const oldFontSize = parseFloat(style.fontSize.substring(0, style.fontSize.length - 3))
+        newStyle.fontSize = `${Math.max(oldFontSize + step, 0.2)}rem`
+        return newStyle
+      }),
+    [changeCodeStyle]
+  )
+  const changetoNextStyle = useCallback(
+    () =>
+      changeCodeStyle(style => {
+        const newStyle = { ...style }
+        const index = themes.findIndex(theme => theme === style.style) + 1
+        newStyle.style = themes[index % themes.length]
+
+        handleOpenSnackbar()
+
+        return newStyle
+      }),
+    [changeCodeStyle, handleOpenSnackbar]
+  )
+
+  return (
+    <React.Fragment>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        open={isSnackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        message={<span>Theme changed to {codeStyle.style}</span>}
+      />
+      <SpeedDial
+        ariaLabel="SpeedDial tooltip example"
+        className={Styles.FAB}
+        hidden={false}
+        icon={<Edit />}
+        onBlur={handleCloseFAB}
+        onClick={toggleOpenFAB}
+        onClose={handleCloseFAB}
+        onFocus={handleOpenFAB}
+        onMouseEnter={handleOpenFAB}
+        onMouseLeave={handleCloseFAB}
+        open={isFABOpen}
+      >
+        <SpeedDialAction
+          icon={<ArrowDownward style={{ color: red[500] }} />}
+          tooltipTitle={"Smaller font"}
+          tooltipOpen
+          onClick={() => changeFontSize(-0.1)}
+        />
+        <SpeedDialAction
+          icon={<ArrowUpward style={{ color: green[500] }} />}
+          tooltipTitle={"Bigger font"}
+          tooltipOpen
+          onClick={() => changeFontSize(0.1)}
+        />
+        <SpeedDialAction
+          icon={<Palette style={{ color: purple[500] }} />}
+          tooltipTitle={"Change theme"}
+          tooltipOpen
+          onClick={changetoNextStyle}
+        />
+      </SpeedDial>
+    </React.Fragment>
+  )
 }
 
-/**
- * A MaterializeCSS  Button
- */
-const FABButton: React.FunctionComponent<FABElement & { closeFAB: any }> = props => (
-  <li>
-    <a
-      className={"btn-floating " + props.color}
-      onClick={() => {
-        props.onClick()
-        props.closeOnClick && props.closeFAB()
-      }}
-    >
-      <i className="material-icons">{props.icon}</i>
-    </a>
-  </li>
-)
-
-/**
- * A MaterializeCSS FAB
- */
-interface FABProps {
-  FABElements: FABElement[]
-}
-interface FABState {
-  FAB?: M.FloatingActionButton
-}
-
-export default class FAB extends React.Component<FABProps, FABState> {
-  constructor(props: { FABElements: FABElement[] }) {
-    super(props)
-    this.state = {}
-  }
-
-  componentDidMount() {
-    const FABNode = document.getElementById("FAB")!
-    this.setState({ FAB: M.FloatingActionButton.init(FABNode, {}) })
-  }
-
-  // Just delete closeFAB
-  render() {
-    return (
-      <div id="FAB" className="fixed-action-btn">
-        <a className="btn-floating btn-large red">
-          <i className="large material-icons">mode_edit</i>
-        </a>
-        <ul className={Styles.UnSelectable}>
-          {this.props.FABElements.map((element, index) => (
-            <FABButton key={index} {...element} closeFAB={() => {}} />
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
+export default FAB
