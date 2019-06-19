@@ -5,7 +5,9 @@ import CardToSubTopics from "./CardToAlgorithms"
 import AlgorithmVisualizer from "../AlgorithmVisualizer"
 
 import { ErrorMessage } from "../Helpers"
-import { TopicData } from "../../Data"
+import { TopicData } from "../../Data/Types"
+
+const TopicDataLinkContext = React.createContext("")
 
 /**
  * Find if the topic link is valid, and then choose if we should call the
@@ -22,16 +24,20 @@ const AlgorithmsPicker: FunctionComponent<{ TopicData: TopicData }> = ({ TopicDa
       <Route
         path={baseLink + `:algorithm/`}
         render={props => {
-          const AlgorithmData = TopicData.Algorithms.find(
-            algorithm => algorithm.link === props.match.params.algorithm
-          )
+          const desired = props.match.params.algorithm
+          const AlgorithmData = TopicData.Algorithms.find(algorithm => algorithm.link === desired)
 
           if (!AlgorithmData) return <ErrorMessage />
-          return <AlgorithmVisualizer AlgorithmData={AlgorithmData} TopicLink={TopicData.link} />
+          return (
+            <TopicDataLinkContext.Provider value={TopicData.link}>
+              <AlgorithmVisualizer AlgorithmData={AlgorithmData} />
+            </TopicDataLinkContext.Provider>
+          )
         }}
       />
     </Switch>
   )
 }
 
+export { TopicDataLinkContext }
 export default AlgorithmsPicker

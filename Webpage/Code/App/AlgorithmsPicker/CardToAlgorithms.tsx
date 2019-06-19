@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { Paper, Box, Typography, Button } from "@material-ui/core"
 
 import { toTop as onClick } from "../Helpers"
-import { TopicData } from "../../Data/"
+import { TopicData } from "../../Data/Types"
 
 import useCardStyle from "./Styles"
 import { Colors } from "../App/Styles"

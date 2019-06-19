@@ -4,19 +4,14 @@ const drawerWidth = `16rem`
 
 const useStyles = makeStyles((theme: Theme) => {
   const Content = {
-    Root: { display: "flex", flexGrow: 1 },
+    Root: { display: "flex", minHeight: "100vh" },
     SpaceForTheHeader: theme.mixins.toolbar,
-    Content: {
-      flexGrow: 1,
-      maxWidth: "100%",
+    ContentPadding: {
+      paddingTop: theme.spacing(4),
+
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
-      paddingTop: theme.spacing(4),
-      marginLeft: `-${drawerWidth}`,
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
+      
       [theme.breakpoints.up("sm")]: {
         paddingLeft: theme.spacing(6),
         paddingRight: theme.spacing(6),
@@ -33,6 +28,17 @@ const useStyles = makeStyles((theme: Theme) => {
         paddingLeft: theme.spacing(36),
         paddingRight: theme.spacing(36),
       },
+    },
+    Content: {
+      display: "flex" as "flex",
+      flexDirection: "column" as "column",
+      maxWidth: "100%",
+      flexGrow: 1,
+      marginLeft: `-${drawerWidth}`,
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
     },
     ContentShift: {
       [theme.breakpoints.up("sm")]: {

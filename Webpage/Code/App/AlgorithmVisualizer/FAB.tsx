@@ -5,7 +5,7 @@ import { Snackbar } from "@material-ui/core/"
 import { Edit, ArrowUpward, ArrowDownward, Palette } from "@material-ui/icons"
 import { green, red, purple } from "@material-ui/core/colors"
 
-import { EditCodeStyleContext, CodeStyleContext } from "../AlgorithmVisualizer"
+import { EditCodeStyleContext, CodeStyleContext } from "../App"
 import usetyles, { themes } from "./Styles"
 
 const FAB = () => {
