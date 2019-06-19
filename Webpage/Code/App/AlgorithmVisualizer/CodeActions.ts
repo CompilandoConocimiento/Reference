@@ -2,7 +2,7 @@
  * Copy code fragment to clipboard
  * @param Text The code fragment
  */
-export function copyText(Text: Array<string>) {
+const copyText = (Text: Array<string>) => {
   function areCommentsVisible() {
     const comment = document.querySelector(".hljs-comment") as HTMLElement
     return comment ? comment.style.display === "none" : false
@@ -23,6 +23,6 @@ export function copyText(Text: Array<string>) {
 
   const realText = areCommentsVisible() ? Text.map(line => line.split("//")[0]) : Text
   copyTextToClipboard(realText.join("\n"))
-  M.Toast.dismissAll()
-  M.toast({ html: "Code copied ;)" })
 }
+
+export default copyText

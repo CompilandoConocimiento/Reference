@@ -7,7 +7,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       color: "white",
       width: "100%",
-      maxWidth: "22rem"
+      maxWidth: "22rem",
+      fontSize: "1.2rem",
+      fontWeight: 600,
     },
   })
 )

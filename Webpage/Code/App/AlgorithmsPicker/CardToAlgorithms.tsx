@@ -31,9 +31,11 @@ const CardOfSubTopics: React.FunctionComponent<{
         const buttonsProps = { to, onClick, style, component: Link }
 
         return (
-          <Button variant="contained" key={name} className={Styles.Button} {...buttonsProps}>
-            {name}
-          </Button>
+          <div key={name} style={{padding: "1rem"}}>
+            <Button variant="contained" className={Styles.Button} {...buttonsProps}>
+              {name}
+            </Button>
+          </div>
         )
       })}
     </Paper>
