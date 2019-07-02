@@ -495,19 +495,10 @@
 \clearpage
 
 
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
-% ///////////////////////////      THINGS TO LEARN / TO DO                 /////////////////////////////////
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
 \part{Things to Learn / To Do}
     
-    % ===============================================================================
-    % ===================               C++                    ======================
-    % ===============================================================================
     \chapter{C++}
 
-        % =========================================================
-        % ==========            INTEGRALS            ==============
-        % =========================================================
         \section{Integrals}
         
             \subsection{int vs long vs long long}
@@ -577,41 +568,45 @@
                 \end{lstlisting}
 
                             
-        
-    
-
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
-% ////////////////////////////////         NUMBER THEORY                   /////////////////////////////////
-% //////////////////////////////////////////////////////////////////////////////////////////////////////////
 \part{Number Theory}
 
 
-    % ===============================================================================
-    % ===================               PRIMES                 ======================
-    % ===============================================================================
     \chapter{Primes}
     
-
-        % =========================================================
-        % ==========      DEFINICION DE ESCALAR      ==============
-        % =========================================================
         \section{Sieve of Eratosthenes}
 
-            % =========================================================
-            % ==========      DEFINICION DE ESCALAR      ==============
-            % =========================================================
             \subsection{Get the Boolean Version}
 
                 \lstinputlisting[language=c++, linerange={4-22}, gobble=16]
                 {../../Code/NumberTheory/SieveOfEratosthenes.cpp}
 
-            % =========================================================
-            % ==========      DEFINICION DE ESCALAR      ==============
-            % =========================================================
             \subsection{Get the Vector of Primes}
 
                 \lstinputlisting[language=c++, linerange={25-46}, gobble=16]
                 {../../Code/NumberTheory/SieveOfEratosthenes.cpp}
+
+\part{Graphs}
+
+\chapter{Simple Graphs}
+
+    \section{GraphRepresentations}
+
+        \subsection{GraphAdjacencyList}
+            \lstinputlisting[language=c++, linerange={2-38}, gobble=16]
+            {../../Code/Graphs/GraphRepresentations.cpp}
+
+        \subsection{PonderateGraph}
+            \lstinputlisting[language=c++, linerange={40-60}, gobble=16]
+            {../../Code/Graphs/GraphRepresentations.cpp}
+
+    \section{UnionFind - Dijoined set}
+        \subsection{Simple UnionFind}
+            \lstinputlisting[language=c++, linerange={1-35}, gobble=16]
+            {../../Code/Graphs/UnionFind.cpp}
+        
+        \subsection{Real UnionFind}
+            \lstinputlisting[language=c++, linerange={37-89}, gobble=16]
+            {../../Code/Graphs/UnionFind.cpp}
 
         
 \end{document}

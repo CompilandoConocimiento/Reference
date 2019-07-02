@@ -1,6 +1,5 @@
 #include <iostream>
 #include <numeric>
-
 #include <vector>
 
 class SimpleUnionFind {
@@ -26,7 +25,7 @@ class SimpleUnionFind {
     return nodesInComponent[findParentNode(u)];
   }
 
-  auto joinSets(int u, int v) -> void {
+  auto joinComponents(int u, int v) -> void {
     int setU = findParentNode(u), setV = findParentNode(v);
     if (setU == setV) return;
 
@@ -76,7 +75,7 @@ class UnionFind {
     return nodesInComponent[findParentNode(node)];
   }
 
-  auto joinComponent(ID nodeA, ID nodeB) -> void {
+  auto joinComponents(ID nodeA, ID nodeB) -> void {
     ID setA {findParentNode(nodeA)}, setB {findParentNode(nodeB)};
 
     if (setA == setB) return;

@@ -51,10 +51,10 @@ class PonderateGraph {
   std::vector<node<nodeID, weight>> edges;
 
  public:
-  void addEdge(nodeID fromThisNode, nodeID toThisNode, weight cost) {
-    edges.push_back({fromThisNode, toThisNode, cost});
+  auto addEdge(nodeID fromThisNode, nodeID toThisNode, weight cost) -> void {
+    edges.emplace_back({fromThisNode, toThisNode, cost});
   }
 
-  auto KruskalMinimumExpansionTree(nodeID maxNodeID)
+  auto KruskalMinimumExpansionTree(nodeID nodesInGraph)
       -> std::pair<set<nodeID>, weight>;
 };
