@@ -37,13 +37,11 @@ class GraphAdjacencyList {
   auto DFS(nodeID initialNode, fn functionToCall) -> void;
 };
 
-
 #include <set>
 
 template <typename nodeID, typename weight>
 struct node {
-  nodeID from;
-  nodeID to;
+  nodeID from, to;
   weight cost;
 };
 
