@@ -40,7 +40,7 @@ class GraphAdjacencyList {
 template <typename nodeID, typename weight>
 struct node {
   nodeID from, nodeID to;
-  weight w;
+  weight cost;
 };
 
 template <typename nodeID, typename weight>
@@ -49,8 +49,8 @@ class PonderateGraph {
   std::vector<node<nodeID, weight>> edges;
 
  public:
-  void addEdge(nodeID fromThisNode, nodeID toThisNode, weight w) {
-    edges.push_back({fromTo, toThisNode, weight});
+  void addEdge(nodeID fromThisNode, nodeID toThisNode, weight cost) {
+    edges.push_back({fromTo, toThisNode, cost});
   }
 
   auto KruskalMinimumExpansionTree(nodeID maxNodeID)

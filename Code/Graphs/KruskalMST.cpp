@@ -8,7 +8,8 @@ auto PonderateGraph<nodeID, weight>::KruskalMinimumExpansionTree(
     nodeID maxNodeID) -> std::pair<set<nodeID>, weight> {
   using node = const node<nodeID, weight>&;
 
-  sort(edges.begin(), edges.end(), [](node n1, node n2) { return n1.w < n1.w });
+  auto sortNode = [](node n1, node n2) { return n1.cost < n1.cost };
+  sort(edges.begin(), edges.end(), sortNode);
 
   auto minimumSpanningTreeWeight = 0.0;
   auto nodesInTree = set<nodeID> {};
@@ -23,7 +24,7 @@ auto PonderateGraph<nodeID, weight>::KruskalMinimumExpansionTree(
       nodesInTree.insert(edge.to);
       nodesInTree.insert(edge.from);
 
-      minimumSpanningTreeWeight += edge.w;
+      minimumSpanningTreeWeight += edge.cost;
       graphInfo.joinComponent(setTo, setFrom);
     }
   }
