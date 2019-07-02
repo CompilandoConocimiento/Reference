@@ -1,34 +1,32 @@
-/*===================================================================================================
-===========================         BFS: BREADTH FIRST SEARCH        ================================
-===================================================================================================*/
-#include <algorithm>                                                       //Include Libraries
-#include "UnionFind-DisjointSet";
+#include <algorithm>
+#include <set>
+#include "GraphRepresentations.cpp";
+#include "UnionFind.cpp";
 
-/*===================================================================
-=========     KRUSKAL - MINIMUM SPANNING WEIGHT         =============
-===================================================================*/
-pair<double, vector< pair<int, int> > > PonderateGraph::KruskalMST() {      //Begin the function
+template <typename nodeID, typename weight>
+auto PonderateGraph<nodeID, weight>::KruskalMinimumExpansionTree(
+    nodeID maxNodeID) -> std::pair<set<nodeID>, weight> {
+  using node = const node<nodeID, weight>&;
 
-    double MinimumSpanningTree = 0;                                         //Initialize result
-    sort(Edges.begin(), Edges.end());                                       //Sort in increasing by cost
-    UnionFind SomeDisjointSet(NumberOfNodes);                               //Create disjoint sets
-    vector<pair<int, int> > Nodes;                                          //Create the Nodes
+  sort(edges.begin(), edges.end(), [](node n1, node n2) { return n1.w < n1.w });
 
-    for (auto Edge : Edges) {                                               //Iterate through all sorted edges
-        
-        int u = Edge.second.first;                                          //Simple name
-        int v = Edge.second.second;                                         //Simple name
- 
-        int SetU = SomeDisjointSet.SuperParent(u);                          //Get the parent
-        int SetV = SomeDisjointSet.SuperParent(v);                          //Get the parent
- 
-        if (SetU != SetV) {                                                 //Check if edge is creating cycle
-            Nodes.push_back({u, v});                                        //Add the node
-            MinimumSpanningTree += Edge.first;                              //Update MST weight
-            SomeDisjointSet.Join(SetU, SetV);                               //Merge two sets
-        }
+  auto minimumSpanningTreeWeight = 0.0;
+  auto nodesInTree = set<nodeID> {};
+  auto graphInfo = UnionFind {maxNodeID};
 
+  for (node edge : edges) {
+    auto setTo {graphInfo.findParentNode(edge.to)};
+    auto setFrom {graphInfo.findParentNode(edge.from)};
+
+    // check if edge is creating cycle
+    if (setTo != setFrom) {
+      nodesInTree.insert(edge.to);
+      nodesInTree.insert(edge.from);
+
+      minimumSpanningTreeWeight += edge.w;
+      graphInfo.joinComponent(setTo, setFrom);
     }
+  }
 
-    return {MinimumSpanningTree, Nodes};                                    //Now return the data
+  return {nodesInTree, minimumSpanningTreeWeight};
 }

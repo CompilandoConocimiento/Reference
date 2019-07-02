@@ -11,7 +11,8 @@ auto GraphAdjacencyList<nodeID, fn>::BFS(nodeID initialNode, fn functionToCall) 
   std::queue<int> nodesToProcess({initialNode});
 
   while (not nodesToProcess.empty()) {
-    auto node {nodesToProcess.front()}, nodesToProcess.pop();
+    auto node {nodesToProcess.front()};
+    nodesToProcess.pop();
 
     if (not visited[node]) {
       functionToCall(node, visited);

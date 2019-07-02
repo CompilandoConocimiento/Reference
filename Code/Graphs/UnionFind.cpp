@@ -53,6 +53,12 @@ class UnionFind {
   std::vector<numCount> nodesInComponent;
   std::vector<numRank> rank;
 
+ public:
+  UnionFind(ID numNodes) : nodesInComponent(numNodes, 1), rank(numNodes, 0) {
+    parent.resize(numNodes);  // Delete if parentContainer is a map
+    while (--numNodes) parent[numNodes] = numNodes;
+  }
+
   // Get the representant node ID from a component
   auto findParentNode(ID node) -> ID {
     ID& nodeParent = parent[node];
@@ -60,12 +66,6 @@ class UnionFind {
 
     nodeParent = findParentNode(nodeParent);
     return nodeParent;
-  }
-
- public:
-  UnionFind(ID numNodes) : nodesInComponent(numNodes, 1), rank(numNodes, 0) {
-    parent.resize(numNodes);  // Delete if parentContainer is a map
-    while (--numNodes) parent[numNodes] = numNodes;
   }
 
   auto existPath(ID nodeA, ID nodeB) -> bool {
@@ -76,7 +76,7 @@ class UnionFind {
     return nodesInComponent[findParentNode(node)];
   }
 
-  auto joinSets(ID nodeA, ID nodeB) -> void {
+  auto joinComponent(ID nodeA, ID nodeB) -> void {
     ID setA {findParentNode(nodeA)}, setB {findParentNode(nodeB)};
 
     if (setA == setB) return;

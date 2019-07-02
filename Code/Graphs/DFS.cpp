@@ -11,14 +11,15 @@ auto GraphAdjacencyList<nodeID, fn>::DFS(nodeID initialNode, fn functionToCall) 
   std::stack<int> nodesToProcess({initialNode});
 
   while (not nodesToProcess.empty()) {
-    auto node {nodesToProcess.top()}, nodesToProcess.pop();
+    auto node {nodesToProcess.top()};
+    nodesToProcess.pop();
 
     if (not visited[node]) {
       functionToCall(node, visited);
       visited[node] = true;
     }
 
-    for (auto& adjacentNode : AdjacencyList[node])
+    for (auto& adjacentNode : adjacencyLists[node])
       if (not visited[adjacentNode]) nodesToProcess.push(adjacentNode);
   }
 }
