@@ -1,55 +1,82 @@
-#include <array>
 #include <functional>
+#include <vector>
 
-template <size_t MAX_SIZE, typename element = int, typename index = int,
-          typename function = std::plus<int>,
-          typename functionInverse = std::minus<int>>
+#include <iostream>
 
+using std::cin;
+using std::cout;
+using std::endl;
+
+/**
+ *
+ * You have an array (starting with 0 or you can use buildFromArray),
+ * you can use FenwickTree to get the sum of all elements in a range
+ * also, you can increase a position by a value
+ *
+ */
+template <typename element = int, typename index = int>
 class FenwickTree {
-  using elements = std::array<element, MAX_SIZE>;
+ private:
+  const int MAX_SIZE;
+  std::vector<element> bit {};
+
   static auto getNext(index i) -> index { return i | (i + 1); }
 
- private:
-  elements bit;
-
  public:
-  // build from array in O(n), indexed in 0
-  FenwickTree(const elements& data) {
-    for (index i {}; i < MAX_N; ++i) {
-      bit[i] = data[i];
+  FenwickTree(int MAX_SIZE = 100000) : MAX_SIZE {MAX_SIZE}, bit(MAX_SIZE, 0) {}
+
+  auto buildFromArray(const std::vector<element>& data) -> void {
+    for (index i {}; i < MAX_SIZE; ++i) {
+      bit[i] = bit[i] + data[i];
       const auto nextIndex {getNext(i)};
-      if (nextIndex < MAX_N) bit[nextIndex] += bit[i];
+      if (nextIndex < MAX_SIZE) bit[nextIndex] = bit[i] + bit[nextIndex];
     }
   }
 
-  // single element increment
-  auto update(index position, element value) -> void {
-    while (position <= MAX_SIZE) {
-      bit[position] += value;
+  // get the sum from [0, end]
+  auto sum(int end) -> element const {
+    element answer {};
+    while (end >= 0) {
+      answer = answer + bit[end];
+      end = (end & (end + 1)) - 1;
+    }
+    return answer;
+  }
+
+  // get the sum from [start, end]
+  auto sum(index start, index end) -> element const {
+    return sum(end) - sum(start - 1);
+  }
+
+  // increase the position by a value
+  auto increase(index position, element value) -> void {
+    while (position < MAX_SIZE) {
+      bit[position] = bit[position] + value;
       position = getNext(position);
     }
   }
 
-  // range query, [0, end]
-  auto query(int end) -> element const {
-    T answer {};
-    while (end >= 0) {
-      answer += bit[end];
-      end = (end & (end + 1)) - 1;
-    }
-
-    return answer;
+  void showArray() {
+    cout << "[";
+    for (int i {}; i < MAX_SIZE; ++i) cout << sum(i, i) << ", ";
+    cout << "]" << endl;
   }
 
-  // range query, [start, end]
-  auto query(index start, index end) -> element const {
-    return query(end) - query(start - 1);
+  void showPrefixArray() {
+    cout << "[";
+    for (int i {}; i < MAX_SIZE; ++i) cout << sum(i) << ", ";
+    cout << "]" << endl;
   }
 };
 
 int main() {
-	array<4, 3> {{}}
-  auto f = FenwickTree<3> {{gy[]};
+  const int sizeOfRange {5};
+  auto f = FenwickTree<> {sizeOfRange};
+  f.increase(0, 4);
+  f.showArray();
+  f.showPrefixArray();
+
+  cout << f.sum(0, 4) << endl;
 
   return 0;
 }
