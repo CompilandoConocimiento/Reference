@@ -37,9 +37,13 @@ class GraphAdjacencyList {
   auto DFS(nodeID initialNode, fn functionToCall) -> void;
 };
 
+
+#include <set>
+
 template <typename nodeID, typename weight>
 struct node {
-  nodeID from, nodeID to;
+  nodeID from;
+  nodeID to;
   weight cost;
 };
 
@@ -50,7 +54,7 @@ class PonderateGraph {
 
  public:
   void addEdge(nodeID fromThisNode, nodeID toThisNode, weight cost) {
-    edges.push_back({fromTo, toThisNode, cost});
+    edges.push_back({fromThisNode, toThisNode, cost});
   }
 
   auto KruskalMinimumExpansionTree(nodeID maxNodeID)
