@@ -12,10 +12,17 @@
 \contentsline {subsection}{\numberline {2.1.1}Get the Boolean Version}{5}{subsection.2.1.1}% 
 \contentsline {subsection}{\numberline {2.1.2}Get the Vector of Primes}{5}{subsection.2.1.2}% 
 \contentsline {part}{III\hspace {1em}Graphs}{6}{part.3}% 
-\contentsline {chapter}{\numberline {3}Simple Graphs}{7}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}GraphRepresentations}{7}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}GraphAdjacencyList}{7}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}PonderateGraph}{7}{subsection.3.1.2}% 
-\contentsline {section}{\numberline {3.2}UnionFind - Dijoined set}{8}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Simple UnionFind}{8}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Real UnionFind}{8}{subsection.3.2.2}% 
+\contentsline {chapter}{\numberline {3}Data Structures}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Fenwick Tree}{7}{section.3.1}% 
+\contentsline {chapter}{\numberline {4}Simple Graphs}{9}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}GraphRepresentations}{9}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}GraphAdjacencyList}{9}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}PonderateGraph}{9}{subsection.4.1.2}% 
+\contentsline {section}{\numberline {4.2}BFS}{10}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}DFS}{10}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}UnionFind - Disjoined set}{10}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Simple UnionFind}{10}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Real UnionFind}{11}{subsection.4.4.2}% 
+\contentsline {section}{\numberline {4.5}UnionFind - Disjoined set}{11}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Simple UnionFind}{11}{subsection.4.5.1}% 
+\contentsline {section}{\numberline {4.6}Kruskal: Minimum Spanning Tree}{12}{section.4.6}% 
