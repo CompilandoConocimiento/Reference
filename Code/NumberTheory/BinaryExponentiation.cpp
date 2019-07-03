@@ -30,7 +30,7 @@ auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
   auto solution = integer {1};
 
   while (exponent > 0) {
-    if (exponent % 2) solution = base * solution;
+    if (exponent & 1) solution = base * solution;
 
     base = base * base;
     exponent = exponent >> 1;
