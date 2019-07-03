@@ -60,7 +60,7 @@ const Component: FunctionComponent = () => {
         </li>
       </ul>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[10, 25]} />
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[10, 26]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Optimizations</Box>
@@ -103,7 +103,7 @@ const Component: FunctionComponent = () => {
         last digit will be 1, so exponent & 1 give true only if the last digit was 1.
       </p>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[27, 39]} />
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[28, 40]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Modular Exponentation</Box>
@@ -113,7 +113,7 @@ const Component: FunctionComponent = () => {
         This is to do <InlineMath math="base^{exponent}  \space \space \mod \space n" />
       </p>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[41, 54]} />
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[42, 56]} />
     </div>
   )
 }
