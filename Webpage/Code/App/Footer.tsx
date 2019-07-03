@@ -26,48 +26,36 @@ const Footer: FunctionComponent = () => {
             <Typography variant="subtitle1" gutterBottom>
               Links:
             </Typography>
-            <Typography variant="body2">
-              <ul className={mainStyles.FooterUL}>
-                <li>
-                  <Typography>
-                    <Box display="inline" fontWeight={600}>
-                      Author:{" "}
-                      <Link
-                        className={mainStyles.Links}
-                        href={"https://SoyOscarRH.github.io"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        SoyOscarRH
-                      </Link>
-                    </Box>
-                  </Typography>
-                </li>
-                <li>
-                  <Typography>
-                    <Box display="inline" fontWeight={600}>
-                      Source code:{" "}
-                      <Link
-                        className={mainStyles.Links}
-                        href={"https://github.com/CompilandoConocimiento/Reference"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Github
-                      </Link>
-                    </Box>
-                  </Typography>
-                </li>
-              </ul>
-            </Typography>
+            <ul className={mainStyles.FooterUL}>
+              <li>
+                Author:{" "}
+                <Link
+                  className={mainStyles.Links}
+                  href={"https://SoyOscarRH.github.io"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SoyOscarRH
+                </Link>
+              </li>
+              <li>
+                Source code:{" "}
+                <Link
+                  className={mainStyles.Links}
+                  href={"https://github.com/CompilandoConocimiento/Reference"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github
+                </Link>
+              </li>
+            </ul>
           </Grid>
         </Grid>
       </div>
 
       <div className={mainStyles.FooterEnd}>
-        <Box fontWeight={800}>
-          Made by CompilandoConocimiento.
-        </Box>
+        <Box fontWeight={800}>Made by CompilandoConocimiento.</Box>
         Making the world a happier place
       </div>
     </footer>

@@ -2,6 +2,7 @@ import { makeStyles, Theme as ThemeType, createStyles } from "@material-ui/core/
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 
 import { red, blueGrey, indigo, cyan, green, brown, deepPurple } from "@material-ui/core/colors/"
+import { fontSize } from "@material-ui/system";
 
 const Colors = [red[600], indigo[700], deepPurple[800], cyan[800], green[600], brown[600]].sort(
   () => Math.random() - 0.5
@@ -45,6 +46,8 @@ const useMainStyles = makeStyles((theme: ThemeType) => {
     FooterUL: {
       marginTop: 0,
       paddingLeft: "1rem",
+      fontWeight: 600,
+      fontSize: "0.9rem"
     },
     Links: {
       color: "white",

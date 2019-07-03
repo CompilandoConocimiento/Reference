@@ -4,7 +4,7 @@ auto binaryExponentation(integer x, unsignedInteger n) -> integer {
   if (n == 1) return x;
 
   if (n % 2 == 0) return binaryExponentation(x * x, n / 2);
-  return (x * binaryExponentation(x * x, (n - 1) / 2));
+  return x * binaryExponentation(x * x, (n - 1) / 2);
 }
 
 template <typename integer, typename unsignedInteger>
@@ -30,7 +30,7 @@ auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
   auto solution = integer {1};
 
   while (exponent > 0) {
-    if (exponent & 1) solution = base * solution;
+    if (exponent % 2) solution = base * solution;
 
     base = base * base;
     exponent = exponent >> 1;

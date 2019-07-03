@@ -13,9 +13,14 @@ const Component: FunctionComponent = () => {
       </Typography>
 
       <p>
-        This function will performe <InlineMath math="base^{exponent}" /> but a little bit more fast
-        using exponentiation by squaring. The idea is to see this way of expressing exponentiation:
+        This function will performe <InlineMath math="base^{exponent}" /> but a little bit more
+        fast; this will not do <InlineMath math="base * base * base * base ..." /> and so on "
+        <InlineMath math="exponent" />" times but rather just <InlineMath math="O(log(exponent))" />{" "}
+        operations. This technique is called exponentiation by squaring.
       </p>
+
+      <p>The idea is to see this way of expressing exponentiation:</p>
+
       <BlockMath>
         {String.raw`
             base ^ {exponent} = 
@@ -26,7 +31,7 @@ const Component: FunctionComponent = () => {
         `}
       </BlockMath>
       <p>
-        Or if you like small variable names we can say that <InlineMath math="base = x" /> y{" "}
+        Or if you like small variable names we can say that <InlineMath math="base = x" /> and{" "}
         <InlineMath math="exponent = n" />:
       </p>
       <BlockMath>
@@ -47,16 +52,30 @@ const Component: FunctionComponent = () => {
 
       <p>Now we want to eliminate the recursion and modify a little bit the idea:</p>
       <ul>
-        <li>
-          If exponent is odd, first do <InlineMath math="solution = base * solution" />, now, we
-          have to delete 1 to the exponent, so the exponent is even, so we can just say that the
-          base is <InlineMath math="base = base^2" /> and that the exponent is just the half of the
-          original exponent.
+        <li style={{marginBottom: "0.7rem"}}>
+          Instead of making a recursive function we will do an iterative function, to do this we use
+          a while loop with the stop condition being when the exponent is 0; this represents that we
+          have made all the operations necessary so we can just safely return{" "}
+          <InlineMath math="solution" />.
         </li>
-        <li>
-          If exponent is even, so we can just say that the base is{" "}
-          <InlineMath math="base = base^2" /> and that the exponent is just the half of the original
-          exponent.
+        <li style={{marginBottom: "0.7rem"}}>
+          Now, for each step in the recursive call we have to check if the exponent is odd, in this
+          case we had this expression:{" "}
+          <InlineMath math="x^n = x \space (x^2)^{\space \frac{n-1}{2}}" />.
+          <br />
+          So now, we have to keep in mind we need to multiply the result by the current{" "}
+          <InlineMath math="base" />, that super simple now because we only need to update the{" "}
+          <InlineMath math="solution" /> by a factor of <InlineMath math="base" />.
+        </li>
+        <li style={{marginBottom: "0.7rem"}}>
+          Either way, the base in the next recursive call will be square of the current one, so we
+          do that.
+        </li>
+        <li style={{marginBottom: "0.7rem"}}>
+          Finally, remember that <InlineMath math="\frac{exponent}{2}" /> is doing a integer
+          division, so in reality it is doing{" "}
+          <InlineMath math="\lfloor \frac{exponent}{2} \rfloor" /> and that is exaclty what we
+          wanted because it handles correctly both cases, odd and even exponent.
         </li>
       </ul>
 
