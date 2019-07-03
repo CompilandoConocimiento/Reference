@@ -7,22 +7,23 @@
 \contentsline {subsection}{\numberline {1.1.3}Bits}{3}{subsection.1.1.3}% 
 \contentsline {subsection}{\numberline {1.1.4}Fast I / O}{3}{subsection.1.1.4}% 
 \contentsline {part}{II\hspace {1em}Number Theory}{4}{part.2}% 
-\contentsline {chapter}{\numberline {2}Primes}{5}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Sieve of Eratosthenes}{5}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Get the Boolean Version}{5}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.1.2}Get the Vector of Primes}{5}{subsection.2.1.2}% 
-\contentsline {part}{III\hspace {1em}Graphs}{6}{part.3}% 
-\contentsline {chapter}{\numberline {3}Data Structures}{7}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Fenwick Tree}{7}{section.3.1}% 
-\contentsline {chapter}{\numberline {4}Simple Graphs}{9}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}GraphRepresentations}{9}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}GraphAdjacencyList}{9}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}PonderateGraph}{9}{subsection.4.1.2}% 
-\contentsline {section}{\numberline {4.2}BFS}{10}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}DFS}{10}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}UnionFind - Disjoined set}{10}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Simple UnionFind}{10}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Real UnionFind}{11}{subsection.4.4.2}% 
-\contentsline {section}{\numberline {4.5}UnionFind - Disjoined set}{11}{section.4.5}% 
-\contentsline {subsection}{\numberline {4.5.1}Simple UnionFind}{11}{subsection.4.5.1}% 
-\contentsline {section}{\numberline {4.6}Kruskal: Minimum Spanning Tree}{12}{section.4.6}% 
+\contentsline {chapter}{\numberline {2}General}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Binary Exponentiation}{5}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Modular Binary Exponentiation}{5}{section.2.2}% 
+\contentsline {chapter}{\numberline {3}Primes}{6}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Sieve of Eratosthenes}{6}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Get the Boolean Version}{6}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Get the Vector of Primes}{6}{subsection.3.1.2}% 
+\contentsline {part}{III\hspace {1em}Graphs}{7}{part.3}% 
+\contentsline {chapter}{\numberline {4}Data Structures}{8}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Fenwick Tree}{8}{section.4.1}% 
+\contentsline {chapter}{\numberline {5}Simple Graphs}{10}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}GraphRepresentations}{10}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}PonderateGraph}{10}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}GraphAdjacencyList}{10}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}BFS}{11}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}DFS}{11}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Kruskal: Minimum Spanning Tree}{11}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}UnionFind - Disjoined set}{12}{section.5.5}% 
+\contentsline {subsection}{\numberline {5.5.1}Simple UnionFind}{12}{subsection.5.5.1}% 
+\contentsline {subsection}{\numberline {5.5.2}Real UnionFind}{12}{subsection.5.5.2}% 

@@ -11,11 +11,11 @@
     \def\ProjectNameLink{\ProjectAuthorLink/Reference}                  %Link to Proyect
 
     % *********   DOCUMENT ITSELF   **************
-    \documentclass[11pt, fleqn, twocolumn]{report}                  %Type of docuemtn and size of font and left eq
+    \documentclass[11pt, fleqn]{report}                             %Type of docuemtn and size of font and left eq
     \usepackage[english]{babel}                                     %Please use spanish
     \usepackage[utf8]{inputenc}                                     %Please use spanish - UFT
     \usepackage[margin = 0.6in, landscape]{geometry}                %Margins and Geometry pacakge
-    \usepackage{ifthen, lipsum}                                             %Allow simple programming
+    \usepackage{ifthen, lipsum}                                     %Allow simple programming
     \usepackage{hyperref}                                           %Create MetaData for a PDF and LINKS!
     \usepackage{pdfpages}                                           %Create MetaData for a PDF and LINKS!
     \hypersetup{pageanchor = false}                                 %Solve 'double page 1' warnings in build
@@ -486,6 +486,8 @@
 \nopagecolor                                                        %Use to restore the color to white
 
 
+\begin{multicols}{2}
+
 % =====================================================
 % ========                INDICE              =========
 % =====================================================
@@ -570,6 +572,19 @@
                             
 \part{Number Theory}
 
+    \chapter{General}
+
+        \section{Binary Exponentiation}
+            \lstinputlisting[language=c++, linerange={28-40}, gobble=12]
+            {../../Code/NumberTheory/BinaryExponentiation.cpp}
+
+        \vfill\null
+        \columnbreak
+
+        \section{Modular Binary Exponentiation}
+            \lstinputlisting[language=c++, linerange={42-56}, gobble=12]
+            {../../Code/NumberTheory/BinaryExponentiation.cpp}
+
 
     \chapter{Primes}
     
@@ -579,6 +594,9 @@
 
                 \lstinputlisting[language=c++, linerange={4-22}, gobble=16]
                 {../../Code/NumberTheory/SieveOfEratosthenes.cpp}
+
+                \vfill\null
+                \columnbreak
 
             \subsection{Get the Vector of Primes}
 
@@ -597,13 +615,19 @@
 
     \section{GraphRepresentations}
 
-        \subsection{GraphAdjacencyList}
-            \lstinputlisting[language=c++, linerange={2-38}, gobble=16]
-            {../../Code/Graphs/GraphRepresentations.cpp}
-
         \subsection{PonderateGraph}
             \lstinputlisting[language=c++, linerange={40-60}, gobble=16]
             {../../Code/Graphs/GraphRepresentations.cpp}
+
+            \vfill\null
+            \columnbreak
+
+        \subsection{GraphAdjacencyList}
+            \lstinputlisting[language=c++, linerange={2-38}, gobble=16]
+            {../../Code/Graphs/GraphRepresentations.cpp}
+            
+            \vfill\null
+            \columnbreak
 
     \section{BFS}
         \lstinputlisting[language=c++, gobble=12]
@@ -613,23 +637,25 @@
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Graphs/DFS.cpp}
 
+    \section{Kruskal: Minimum Spanning Tree}
+        \lstinputlisting[language=c++, gobble=12]
+        {../../Code/Graphs/KruskalMST.cpp}
+
     \section{UnionFind - Disjoined set}
         \subsection{Simple UnionFind}
             \lstinputlisting[language=c++, linerange={1-35}, gobble=16]
             {../../Code/Graphs/UnionFind.cpp}
+
+            \vfill\null
+            \columnbreak
         
         \subsection{Real UnionFind}
             \lstinputlisting[language=c++, linerange={37-89}, gobble=16]
             {../../Code/Graphs/UnionFind.cpp}
-
-            \section{UnionFind - Disjoined set}
-            \subsection{Simple UnionFind}
-                \lstinputlisting[language=c++, linerange={1-35}, gobble=16]
-                {../../Code/Graphs/UnionFind.cpp}
             
-    \section{Kruskal: Minimum Spanning Tree}
-        \lstinputlisting[language=c++, gobble=12]
-        {../../Code/Graphs/KruskalMST.cpp}
+   
+
+\end{multicols}
 
         
 \end{document}
