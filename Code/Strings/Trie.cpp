@@ -1,32 +1,52 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-using namespace std;
+#include <array>
+#include <string>
 
-struct TrieNode {
-    bool isEndOfWord = false;
-    unordered_map<char, TrieNode*> next;
+template <typename index, size_t alphabetSize = 27>
+struct Trie {
+  bool isEndOfWord;
+  std::array<Trie*, alphabetSize> next;
 
-	void addWord(const string& word) {
-		TrieNode* node = this;
+  Trie() : isEndOfWord {false} { next.fill(nullptr); }
 
-		for (auto character : word) {
-			if (!node->next[character]) 
-				node->next[character] = new TrieNode;
-			
-			node = node->next[character];
-		}
+  static auto nextIndex(char character) -> int { return character - 'a'; }
 
-		node->isEndOfWord = true;
-	}
+  auto addWord(const std::string& word) -> void {
+    auto* node = this;
 
-	bool search(const string& word) {
-		TrieNode* node = this;
-		
-		for (size_t i = 0; i < word.size(); i++) {
-			if (node->next[word[i]] == nullptr) return false;
-			node = node->next[word[i]];
-		}
-		return node != nullptr and node->isEndOfWord;
-	}
+    for (auto character : word) {
+      auto* nextNode = node->next[nextIndex(character)];
+      if (not nextNode) nextNode = new Trie;
+      node = nextNode;
+    }
+
+    node->isEndOfWord = true;
+  }
+
+  auto search(const std::string& word) -> bool const {
+    auto* node = this;
+
+    for (auto character : word) {
+      auto* nextNode = node->next[nextIndex(character)];
+      if (not nextNode) return false;
+      node = nextNode;
+    }
+
+    return node->isEndOfWord;
+  }
 };
+
+#include <iostream>
+auto main() -> int {
+  Trie<int, 26> t {};
+  auto s1 = std::string {"hola"};
+  auto s2 = std::string {"holaq"};
+  auto s3 = std::string {"hoaw"};
+
+  t.addWord(s1);
+  t.addWord(s2);
+  t.addWord(s3);
+
+  std::cout << t.search("sas") << std::endl;
+  std::cout << t.search("hola") << std::endl;
+  std::cout << t.search("holaq") << std::endl;
+}
