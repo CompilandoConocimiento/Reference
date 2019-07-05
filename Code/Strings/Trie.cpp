@@ -4,47 +4,29 @@ using namespace std;
 
 struct Trie {
   bool isEndOfWord = false;
-  unordered_map<char, Trie*> next;
-
-  static auto nextIndex(char character) -> int { return character - 'a'; }
+  std::unordered_map<char, Trie*> next;
 
   auto addWord(const std::string& word) -> void {
     auto* node = this;
 
     for (auto character : word) {
-      auto* nextNode = node->next[nextIndex(character)];
-      if (not nextNode) nextNode = new Trie;
+      auto& nextNode = node->next[character];
+      if (!nextNode) nextNode = new Trie;
       node = nextNode;
     }
 
     node->isEndOfWord = true;
   }
 
-  auto search(const std::string& word) -> bool const {
+  auto search(const std::string& word) -> bool {
     auto* node = this;
 
     for (auto character : word) {
-      auto* nextNode = node->next[nextIndex(character)];
-      if (not nextNode) return false;
+      const auto nextNode = node->next[character];
+      if (!nextNode) return false;
       node = nextNode;
     }
 
     return node->isEndOfWord;
   }
 };
-
-#include <iostream>
-auto main() -> int {
-  Trie t {};
-  auto s1 = std::string {"hola"};
-  auto s2 = std::string {"holaq"};
-  auto s3 = std::string {"hoaw"};
-
-  t.addWord(s1);
-  t.addWord(s2);
-  t.addWord(s3);
-
-  std::cout << t.search("sas") << std::endl;
-  std::cout << t.search("hola") << std::endl;
-  std::cout << t.search("holaq") << std::endl;
-}
