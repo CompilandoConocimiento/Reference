@@ -1,12 +1,10 @@
-#include <array>
 #include <string>
+#include <unordered_map>
+using namespace std;
 
-template <typename index, size_t alphabetSize = 27>
 struct Trie {
-  bool isEndOfWord;
-  std::array<Trie*, alphabetSize> next;
-
-  Trie() : isEndOfWord {false} { next.fill(nullptr); }
+  bool isEndOfWord = false;
+  unordered_map<char, Trie*> next;
 
   static auto nextIndex(char character) -> int { return character - 'a'; }
 
@@ -37,7 +35,7 @@ struct Trie {
 
 #include <iostream>
 auto main() -> int {
-  Trie<int, 26> t {};
+  Trie t {};
   auto s1 = std::string {"hola"};
   auto s2 = std::string {"holaq"};
   auto s3 = std::string {"hoaw"};
