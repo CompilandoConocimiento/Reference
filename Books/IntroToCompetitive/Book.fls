@@ -383,6 +383,8 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
@@ -429,6 +431,10 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def

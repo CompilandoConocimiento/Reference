@@ -738,7 +738,7 @@
                     dimensiona (vector) no será más costoso que si lo hubieras hecho tu desde ensamblador.
 
 
-                \item \textbf{Tienes a la biblioteca estandar, la gran std::* a tu lado}
+                \item \textbf{Tienes a la biblioteca estándar, la gran std::* a tu lado}
 
                     Esta es otra gran ventaja, ya que siguiendo con la mentalidad de abstracciones sin costo extra tenemos
                     gracias a la gran libreria estándar un montón de cosas que no tenemos que hacer desde cero, desde
@@ -748,12 +748,14 @@
                     Así podemos dejar los algoritmos básicos al lenguaje y enfocarnos en las cosas que son de verdad interesantes.
 
 
-                \item \textbf{Es \Quote{statically typed and compiled}, el compilador es tu amigo}
+                \item \textbf{Es \Quote{statically typed and compiled}; el compilador es tu amigo}
 
                     Otra ventaja más, podemos siempre confiar en el compilador, en que si nuestro programa compila muy probablemente
                     está haciendo lo que debe hacer (cosa que no podemos esperar con python por ejemplo), el compilador es tu amigo,
                     te dira en donde te equivocaste, en donde puede que hayas querido decir otra cosa y muchas veces te dará
-                    consejos, además, tras bambalinas está transformando tu código en algo que la computadora puede de verdad
+                    consejos.
+                    
+                    Además, tras bambalinas está transformando tu código en algo que la computadora puede de verdad
                     entender y además usará toda la información que le diste para muchas veces incluso mejorar tu código en vez
                     de solo \Quote{traducirlo} y optimizarlo de maneras que me sorprenden personalmente.
 
@@ -764,7 +766,7 @@
                     C es uno de los lenguajes más conocidos por lo que puede que la sintaxis de \Cpp sea
                     más fácil que entender la sintaxis de Haskell, de Kotlin o Prolog, por ejemplo. 
                     
-                    Otra ventaja es que al estar basados en C conserva muchas de las ventajas de C como su portabilidad, 
+                    Otra ventaja es que al estar basado en C conserva muchas de las ventajas de C como su portabilidad, 
                     su velocidad de ejecución  y la capacidad de tener un gran control de todos los recursos del sistema 
                     (memoria y tiempo de vida de un objecto, cough cough Java y su recolector de basura)
 
@@ -902,7 +904,7 @@
             \begin{lstlisting}[language=C++, gobble=16]
                 //New badass C++
                 auto p = make_shared<circle> (42);
-                vector<shape*> v = load_shapes();
+                auto v = vector<shape*> {load_shapes()};
 
                 for (auto& s : v) {
                     if (s and *s == *p)
@@ -1006,9 +1008,9 @@
             podemos tener variables que almacen lo que nosotros entenderemos, como números enteros
             o que almacenen cadenas o que almacenen una secuencia de racionales, etc...
 
-            Como sabes en programación, tu eres el que elige el nombre de las variables y aunque puede
+            Como sabes en programación, tú eres el que elige el nombre de las variables y aunque puede
             ser lo que quieras, como \textCode{x, y, someNumber, patata} intenta elegir nombres que expresen
-            lo que esta variable guardará como por ejemplo \textCode{numberOfDays, sizeOfSquare, words}. 
+            lo que esta variable guardará como por ejemplo \textCode{numberOfDays, sizeOfSquare, words, isTurnOfAlice}. 
 
             Bueno, \Cpp es un lenguaje de tipado estatico (static typing), es decir que todo momento el compilador,
             para poder transformar tu programa a algo que una computadora pueda entender, tiene
@@ -1080,10 +1082,10 @@
                 \subsubsection{auto: Se sútil}
 
                     Si es que es obvio que tipo de dato debería ser entonces puedes usar \textCode{auto}
-                    que lo que nos dice es, compilador, yo se que eres un inteligente, anda, 
-                    tu solito sabes de que tipo de dato es esta variable para que te lo repito yo.
+                    que lo que nos dice es: \textit{compilador, yo se que eres un inteligente, anda, 
+                    tu solito sabes de que tipo de dato es esta variable; ¿para que te lo repito yo?}
                     
-                    Y se hace hastante similar:
+                    Y la sintaxis es bastante similar:
                     \begin{lstlisting}[language=C++, gobble=24]
                         auto someNumber = 20;        //someNumber is int
                         auto someText = "Hi baby";   //someText is const char* (this is sad)
@@ -1189,7 +1191,7 @@
                         auto character {'a'};                   // character is a char!
                         char number {23};                       // number is a char!
 
-                        // Things that are true
+                        // Examples: Things that are true
                         ('a' == 97) and ('z' == 122);           // ASCII is just numbers
                         ('A' == 65) and ('Z' == 90);            // ASCII is just numbers
                         ('A' + 1 == 'B') and ('Z' - 1 == 'Y');  // You can do arithmetic
@@ -1198,6 +1200,9 @@
                         char minValue {-128};
                         char maxValue {127};
                     \end{lstlisting}
+
+                    También es importante recalcar que podemos hacer aritmética con variables de este tipo
+                    de dato como lo muestro en los ejemplos.
 
 
                 % ============================================
@@ -1477,15 +1482,31 @@
             % ============================================
             % =====         DIVISION ENTERA         ======
             % ============================================
+            \clearpage
             \subsection{División entera}
 
                 Una cosa que a mucha gente le cuesta es la división y no porque
-                sea una operación difícil sino porque en \Cpp dependiendo de los
-                valores a los que se la apliquemos se comportara de manera o de otra,
-                si es que ambos valores son punto flotante entonces hara lo que esperas
-                por ejemplo \textCode{1.0 / 2.0 = 0.5}, pero \textCode{1 / 2 != 0.5} porque
-                si aplicas la división a dos enteros entonces hara la división entera, es decir
-                va a redondeo al entero proximo mas pequeño.
+                sea una operación difícil sino porque en \Cpp (y en muchos otros lenguajes de programación)
+                dependiendo del tipo de dato de las variables a la que se lo  apliquemos se comportara 
+                de manera o de otra.
+
+                Mira:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    std::cout << 5 / 2 << std::endl;    // prints 2     :o
+                    std::cout << 5.0 / 2 << std::endl;  // prints 2.5   :o
+                \end{lstlisting}
+
+
+                Las reglas son:
+                \begin{itemize}
+                    \item  
+                        Si es que al menos uno de ellos es un punto flotante entonces hara lo que esperas
+                        por ejemplo \textCode{1.0 / 2.0 = 0.5}
+                    \item  
+                        Si es que ambos son \Quote{integrals} (es decir enteros), entonces lo que haraá seraá hacer un
+                        redondeo hacia abajo, conocido también como piso, es decir
+                        va a redondeo al entero proximo mas pequeño.
+                \end{itemize}
 
                 Hay que tener cuidado con eso.
 
@@ -1821,7 +1842,8 @@
                         \end{itemize}
 
                     \item Se puede hacer \textCode{if (a = b)} en cuyo caso lo que comparará el 
-                        \textCode{if} es el resultado de la asignación.
+                        \textCode{if} es el resultado de la asignación, es decir checa si 
+                        \textCode{b} es \Quote{verdadero}.
                 \end{itemize}
 
                 % ============================================
@@ -2258,6 +2280,13 @@
             Además con esta nueva sintaxis incluso podemos ignorar tipo de dato de regreso si es que el
             compilador puede inferirlo.
 
+            Ambas son exactamente igual.
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto doubleIt(int number) {     //Since C++14
+                    return number * 2;
+                }
+            \end{lstlisting}
+
             Ademas hace que todo vaya mas en sintonía con las lambdas.
 
             
@@ -2383,11 +2412,12 @@
             % ============================================
             \subsection{Recursion}
 
+        % =========================================================
+        % ==========            TEMPLATES                ==========
+        % =========================================================
+        \clearpage
+        \section{Templates}
 
-            % ============================================
-            % ====             TEMPLATES        ==========
-            % ============================================
-            \subsection{Templates}
 
 
         % =========================================================
@@ -2470,26 +2500,24 @@
 
                     \item \textbf{Puedes leer enteros de manera aún mas rápida}:
                         \begin{lstlisting}[language=C++, gobble=28]
-                            template <class T>  
-                            inline void getNumberFast(T &result) {                   
-                                T number {};                                                      
-                                T sign {1};
-
-                                char currentDigit {getchar_unlocked()};
-                                
-                                while(currentDigit < '0' or currentDigit > '9') {
-                                    currentDigit = getchar_unlocked(); 
-                                    if (currentDigit == '-')  sign = -1;                     
-                                }
-
-                                while ('0' <= currentDigit and currentDigit <= '9') {          
-                                    number = (number << 3) + (number << 1);
-                                    number += currentDigit - '0';  
-                                    currentDigit = getchar_unlocked();                             
-                                }
-
-                                if (sign) result = -number;
-                                else result = number;
+                            template <class number>
+                            inline auto getNumberFast() -> number {
+                              auto number = number {};
+                              auto isNegative = false;
+                              auto currentDigit = char {getchar_unlocked()};
+                            
+                              while (currentDigit < '0' or currentDigit > '9') {
+                                currentDigit = getchar_unlocked();
+                                if (currentDigit == '-') isNegative = true;
+                              }
+                            
+                              while ('0' <= currentDigit and currentDigit <= '9') {
+                                number = (number << 3) + (number << 1);
+                                number += currentDigit - '0';
+                                currentDigit = getchar_unlocked();
+                              }
+                            
+                              return isNegative? -number : number;
                             }
                         \end{lstlisting}
 
@@ -2497,22 +2525,25 @@
                         \begin{lstlisting}[language=C++, gobble=28]
                             #include <vector>
 
-                            int numberOfElements;
-                            getNumberFast(numberOfElements);
+                            auto numberOfElements = getNumberFast<int>();
 
                             std::vector<int> elements {};
                             elements.resize(numberOfElements);
 
-                            for (size_t i {}; i < numberOfElements; ++i) 
-                            getNumberFast(elements[i]);
+                            for (auto i = size_t{}; i < numberOfElements; ++i) 
+                            elements[i] = getNumberFast<int>();
                         \end{lstlisting}
 
-                    \item \textbf{Quizá debas usar \textCode{\textbackslash n} en vez de \textCode{std::cin}}
+                    \clearpage
+                    \item \textbf{Quizá debas usar \textCode{\textbackslash n} en vez de \textCode{std::endl}}
                         
                         Si no necesitas hacer 
-                        \textCode{flush}, y recuerda que hacer \textCode{flush} es tomar la información que 
-                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir 
-                        y no solo guardarlo en un buffet temporal y guardarlo después.
+                        \textCode{flush}, entonces segurante no necesites \textCode{std::endl}
+                        
+                        Recuerda que hacer \textCode{flush} es tomar la información que 
+                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir.
+
+                        Pues por defecto se guarda en un buffet temporal y se guardar de verdad después.
                 \end{itemize}
 
 
@@ -2540,7 +2571,7 @@
             % ============================================
             \subsubsection{(AAA) Almost always auto}
 
-                Desde hace unos años se esta dando una forma estandar de inicializar cosas en \Cpp
+                Desde hace unos años se esta dando una forma estándar de inicializar cosas en \Cpp
                 que se basa en seguir este patrón:
                 \begin{lstlisting}[language=C++, gobble=20]
                     // For declaring types
@@ -3448,14 +3479,24 @@
                         \end{lstlisting}
 
                     \item 
-                        Conservan el ordén
+                        Conservan el ordén:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            auto someMap = map<int, string> {
+                                {15, "fifteen"},
+                                {0, "null"},
+                                {8, "eight"},
+                            };
+
+                            for (const auto& p : someMap) cout << p.first << '\n';
+                            // Will print 0, 8, 15
+                        \end{lstlisting}
                 \end{itemize}
 
 
                 % ============================================
                 % ====          UNORDERED MAP        =========
                 % ============================================
-                \subsection{std::unordered_map}
+                \subsection{std::unordered\_map}
         
 
 
@@ -3478,7 +3519,7 @@
             % ============================================
             % ====          UNORDERED SET        =========
             % ============================================
-            \subsection{std::unordered_set}
+            \subsection{std::unordered\_set}
 
 
     % ===============================================================================
@@ -3717,7 +3758,7 @@
                     
                         Con esto también se explica una forma que hacemos para saber si un número es 
                         par o impar:
-                        \begin{lstlisting}[language=C++, gobble=32]
+                        \begin{lstlisting}[language=C++, gobble=28]
                             if (number & 1) {
                                 // odd
                             }
@@ -4041,7 +4082,7 @@
         \section{LSB}
 
             Definimos al $lsb(a)$ como el bit menos significativo del número en binario,
-            por lo tanto podemos definirla como:  $lsb(a) := a & -a$, suponiendo que 
+            por lo tanto podemos definirla como:  $lsb(a) := a \& -a$, suponiendo que 
             los negativos en nuestra computadora esten programados por complemento a dos.
             
             
@@ -4127,7 +4168,9 @@
         https://stackoverflow.com/questions/15927033/what-is-the-correct-way-of-using-c11s-range-based-for
 
     \bibitem{NicoJosuttis} 
-        Nicolai Josuttis, https://twitter.com/NicoJosuttis
+        https://twitter.com/NicoJosuttis
+        
+        \textit{Nicolai Josuttis}. 
 
 
 \end{thebibliography}

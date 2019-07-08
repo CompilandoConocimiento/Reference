@@ -535,6 +535,12 @@
 
             \subsection{Bits}
 
+                \begin{itemize}
+                    \item $x << y = x * 2^y$
+                    \item $x >> y = \left \lfloor \dfrac{x}{2^y} \right \rfloor$
+                \end{itemize}
+
+
             \subsection{Fast I / O}
 
                 \begin{lstlisting}[language=C++, gobble=20]
@@ -546,26 +552,24 @@
                 \end{lstlisting}
 
                 \begin{lstlisting}[language=C++, gobble=20]
-                    template <class T>  
-                    inline void getNumberFast(T &result) {                   
-                        T number {};                                                      
-                        T sign {1};
-
-                        char currentDigit {getchar_unlocked()};
-                        
-                        while(currentDigit < '0' or currentDigit > '9') {
-                            currentDigit = getchar_unlocked(); 
-                            if (currentDigit == '-')  sign = -1;                     
+                    template <class number>
+                    inline auto getNumberFast() -> number {
+                        auto number = number {};
+                        auto isNegative = false;
+                        auto currentDigit = char {getchar_unlocked()};
+                    
+                        while (currentDigit < '0' or currentDigit > '9') {
+                            currentDigit = getchar_unlocked();
+                            if (currentDigit == '-') isNegative = true;
                         }
-
-                        while ('0' <= currentDigit and currentDigit <= '9') {          
+                    
+                        while ('0' <= currentDigit and currentDigit <= '9') {
                             number = (number << 3) + (number << 1);
-                            number += currentDigit - '0';  
-                            currentDigit = getchar_unlocked();                             
+                            number += currentDigit - '0';
+                            currentDigit = getchar_unlocked();
                         }
-
-                        if (sign) result = -number;
-                        else result = number;
+                    
+                        return isNegative? -number : number;
                     }
                 \end{lstlisting}
 
