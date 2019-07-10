@@ -2407,11 +2407,6 @@
                     \cite{shaharmikeLambdas}
 
 
-            % ============================================
-            % ====            RECURSION         ==========
-            % ============================================
-            \subsection{Recursion}
-
         % =========================================================
         % ==========            TEMPLATES                ==========
         % =========================================================
@@ -2425,6 +2420,12 @@
         % =========================================================
         \clearpage
         \section{La entrada / salida en \Cpp}
+
+            % ============================================
+            % ====          INTRODUCCION        ==========
+            % ============================================
+            \subsection{Introducción}
+
 
             % ============================================
             % ====             TEMPLATES        ==========
@@ -2499,27 +2500,8 @@
                         \Quote{flushing of std::cout before std::cin accepts an input}. 
 
                     \item \textbf{Puedes leer enteros de manera aún mas rápida}:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            template <class number>
-                            inline auto getNumberFast() -> number {
-                              auto number = number {};
-                              auto isNegative = false;
-                              auto currentDigit = char {getchar_unlocked()};
-                            
-                              while (currentDigit < '0' or currentDigit > '9') {
-                                currentDigit = getchar_unlocked();
-                                if (currentDigit == '-') isNegative = true;
-                              }
-                            
-                              while ('0' <= currentDigit and currentDigit <= '9') {
-                                number = (number << 3) + (number << 1);
-                                number += currentDigit - '0';
-                                currentDigit = getchar_unlocked();
-                              }
-                            
-                              return isNegative? -number : number;
-                            }
-                        \end{lstlisting}
+                        \lstinputlisting[language=c++, gobble=24]
+                        {../../Code/Tricks/FastNumberInput.cpp}
 
                         Puedes usarla de esta manera:
                         \begin{lstlisting}[language=C++, gobble=28]
@@ -2530,8 +2512,7 @@
                             std::vector<int> elements {};
                             elements.resize(numberOfElements);
 
-                            for (auto i = size_t{}; i < numberOfElements; ++i) 
-                            elements[i] = getNumberFast<int>();
+                            for (auto& element : elements) element = getNumberFast<int>();
                         \end{lstlisting}
 
                     \clearpage
@@ -2594,14 +2575,6 @@
                 (como por ejemplo), \textCode{atomic, array, unique\_ptr}. Por lo que usalo con cuidado
                 y en general recomiendo solo usarlo cuando lo estamos declarando variables sencillas y no 
                 contenedores, pero no puedo negar que se ve hermoso y tiene un par de ventajas importantes.
-
-
-
-        % =========================================================
-        % ==========         VERDADEROS ARRAYS           ==========
-        % =========================================================
-        \clearpage
-        \section{Si quieres un programa rápido: Verdaderos arrays}  
 
             
         % =========================================================
@@ -2936,6 +2909,20 @@
 
                 Una frase que me gusta es esta: \textCode{Using auto\&\& or universal references 
                 has the advantage that you captures what you get}.
+
+                Algo que hay que tener en cuenta es que añadir \textCode{const} vuelve a hacer
+                que \textCode{\&\&} funcione como una \textCode{rvalues reference}.
+
+                Ve este ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    template <typename T>
+                    void bar(const T&& i);
+
+                    int number {};
+
+                    bar(3);                 //Ok called with an rvalue
+                    bar(number);            //Error: called with an lvalue
+                \end{lstlisting}
                 
             % ============================================
             % ==========          &&            ==========
@@ -3236,6 +3223,76 @@
     \clearpage
     \chapter{Arrays}
 
+        {
+            \large
+            \textCode{
+                Un array es la estructura de datos mas sencilla que hay, pero quizá la más útil
+                de todas: es la gran olvidada e infravalorada.
+            }
+        }
+
+        % =========================================================
+        % ==========             IDEA ABSTRACTA          ==========
+        % =========================================================
+        \clearpage
+        \section{Una idea abstracta}
+
+            Un \textCode{array} es un conjunto de elementos del mismo tipo, contiguo en memoria,
+            al ser contiguo la idea para acceder a los elementos es decir, dame el 1 elemento, 
+            dame el 5 elemento, dame el 10 elemento.
+
+
+
+        
+        % =========================================================
+        % ==========             ARRAY                   ==========
+        % =========================================================
+        \section{std::array}
+
+            En \Cpp si quieres crear un arreglo de elementos contiguo y \textbf{conoces 
+            en tiempo de compilación el tamaño de dicho arreglo} entonces puedes usar
+            \textCode{std::array}.
+
+            % ============================================
+            % ====           INICIALIZAR        ==========
+            % ============================================
+            \subsection{Inicialización}
+
+                \begin{itemize}
+                    \item Si quieres declarar un array, es super sencillo:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            std::array<type, sizeOfTheArray> arrayName;
+                        \end{lstlisting}
+
+                    \item Se parece a los arreglos de C, pero mejor.
+                        
+                        Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            array<int, 4> a1;            // Ok, 4 elements, all are undefined
+                            array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
+                            array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
+                        \end{lstlisting}
+
+                        Pero ten cuidado al inicializar un array de \Quote{cosas} vas a necesitar 
+                        un par de parentesis más:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            using complex = std::complex<int>
+                            vector<complex> v1 {{1, 2}, {3, 4}};      
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                            
+                            array<complex, 2> a2  {{1, 2}, {3, 4}};
+                            // Syntax error
+                            
+                            array<complex, 2> a2  {{{1, 2}, {3, 4}}};
+                            // Ok, 2 elements: [1+2i, 3+4i]
+                        \end{lstlisting}
+
+                        Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
+                        cuando y solo cuando estas inicializando cosas anidadamente.
+                \end{itemize}
+
+
+
         % =========================================================
         % ==========             VECTOR                  ==========
         % =========================================================
@@ -3305,50 +3362,25 @@
                             std::vector<int> elements {};
                             elements.resize(numberOfElements);
 
-                            for (size_t i {}; i < numberOfElements; ++i) cin >> elements[i];
+                            for (auto& element : elements) cin >> element;
                         \end{lstlisting}
                 
 
                 \end{itemize}
 
+        
         % =========================================================
-        % ==========             ARRAY                   ==========
+        % =======       ALGUNOS PROBLEMAS CLASICOS          =======
         % =========================================================
         \clearpage
-        \section{std::array}
+        \section{Algunos problemas clásicos}
 
-            % ============================================
-            % ====           INICIALIZAR        ==========
-            % ============================================
-            \subsection{Tips}
-
-                \begin{itemize}
-                    \item 
-                        
-                        Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            array<int, 4> a1;            // Ok, 4 elements, all are undefined
-                            array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
-                            array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
-                        \end{lstlisting}
-
-                        Además pasa algo raro:
-                        \begin{lstlisting}[language=C++, gobble=28]
-                            using complex = std::complex<int>
-                            vector<complex> v1 {{1, 2}, {3, 4}};      
-                            // Ok, 2 elements: [1+2i, 3+4i]
-                            
-                            array<complex, 2> a2  {{1, 2}, {3, 4}};
-                            // Syntax error
-                            
-                            array<complex, 2> a2  {{{1, 2}, {3, 4}}};
-                            // Ok, 2 elements: [1+2i, 3+4i]
-                        \end{lstlisting}
-
-                        Así que en resumen ten cuidado, necesitas un par mas de \textCode{\{ \} }
-                        cuando y solo cuando estas inicializando cosas anidadamente.
-                \end{itemize}
-
+            \begin{itemize}
+                \item 
+                    Encontrar el segundo menor elemento en un arreglo:
+                    \lstinputlisting[language=c++, gobble=24]
+                    {CodeExample/ArraySecondBest.cpp}
+            \end{itemize}
                
         % =========================================================
         % ==========             STRINGS                 ==========
@@ -3359,6 +3391,19 @@
         % ==========             STRINGS                 ==========
         % =========================================================
         \section{std::bitset}
+
+
+        % =========================================================
+        % ==========         VERDADEROS ARRAYS           ==========
+        % =========================================================
+        \clearpage
+        \section{Si quieres un programa rápido: Verdaderos arrays} 
+        
+    % ===============================================================================
+    % ==============       CONTENEDORES HETEROMORFOS          =======================
+    % ===============================================================================
+    \clearpage
+    \chapter{Contenedores heteromorfos}
 
         % =========================================================
         % ==========             VECTOR                  ==========
@@ -3891,6 +3936,11 @@
         % =========================================================
         \section{Factoriales}
 
+        % =========================================================
+        % =======               DIGIT SUM           ===============
+        % =========================================================
+        \section{Digit Sum}
+
 
 
     % ===============================================================================
@@ -4004,12 +4054,20 @@
 
                 De ahi nació la idea de clases.
             }
-            
+
+
         % =========================================================
         % ==========       CLASS & STRUCTS               ==========
         % =========================================================
         \clearpage
         \section{class \& structs}
+
+        % =========================================================
+        % ==========                   RAII              ==========
+        % =========================================================
+        \clearpage
+        \section{RAII}
+            
 
         % =========================================================
         % ==========          CONST METHODS              ==========

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  7 JUL 2019 20:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  10 JUL 2019 00:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -997,21 +997,26 @@ LaTeX Info: Redefining \% on input line 103.
 LaTeX Info: Redefining \. on input line 103.
 LaTeX Info: Redefining \% on input line 103.
  [3]
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
  [4]
-LaTeX Info: Redefining \. on input line 151.
-LaTeX Info: Redefining \% on input line 151.
-LaTeX Info: Redefining \. on input line 151.
-LaTeX Info: Redefining \% on input line 151.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
  [5]
 LaTeX Info: Redefining \. on input line 177.
 LaTeX Info: Redefining \% on input line 177.
 LaTeX Info: Redefining \. on input line 177.
 LaTeX Info: Redefining \% on input line 177.
- [6])
+ [6]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [7])
 \tf@toc=\write4
 \openout4 = `Book.toc'.
 
@@ -1019,17 +1024,17 @@ LaTeX Info: Redefining \. on input line 527.
 LaTeX Info: Redefining \% on input line 527.
 LaTeX Info: Redefining \. on input line 527.
 LaTeX Info: Redefining \% on input line 527.
- [7] [8
+ [8] [9
 
 
 ]
 Cap\'{\i }tulo 1.
-<Graphics/CpIntro.png, id=966, 963.6pt x 722.7pt>
+<Graphics/CpIntro.png, id=999, 963.6pt x 722.7pt>
 File: Graphics/CpIntro.png Graphic file (type png)
 <use Graphics/CpIntro.png>
 Package pdftex.def Info: Graphics/CpIntro.png  used on input line 543.
 (pdftex.def)             Requested size: 418.80373pt x 314.09627pt.
-[9
+[10
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) has been already used, duplicate ignored
@@ -1042,15 +1047,15 @@ LaTeX Info: Redefining \. on input line 618.
 LaTeX Info: Redefining \% on input line 618.
 LaTeX Info: Redefining \. on input line 618.
 LaTeX Info: Redefining \% on input line 618.
- [10
+ [11
 
 ]
-<Graphics/Example1.png, id=987, 749.80125pt x 668.4975pt>
+<Graphics/Example1.png, id=1020, 749.80125pt x 668.4975pt>
 File: Graphics/Example1.png Graphic file (type png)
 <use Graphics/Example1.png>
 Package pdftex.def Info: Graphics/Example1.png  used on input line 631.
 (pdftex.def)             Requested size: 176.33629pt x 157.20914pt.
-<Graphics/Example4.png, id=988, 948.54375pt x 588.1975pt>
+<Graphics/Example4.png, id=1021, 948.54375pt x 588.1975pt>
 File: Graphics/Example4.png Graphic file (type png)
 <use Graphics/Example4.png>
 Package pdftex.def Info: Graphics/Example4.png  used on input line 644.
@@ -1059,15 +1064,15 @@ LaTeX Info: Redefining \. on input line 649.
 LaTeX Info: Redefining \% on input line 649.
 LaTeX Info: Redefining \. on input line 649.
 LaTeX Info: Redefining \% on input line 649.
- [11
+ [12
 
  </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example1.png> </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example4.png>]
-<Graphics/Example2.png, id=999, 932.48375pt x 522.95375pt>
+<Graphics/Example2.png, id=1032, 932.48375pt x 522.95375pt>
 File: Graphics/Example2.png Graphic file (type png)
 <use Graphics/Example2.png>
 Package pdftex.def Info: Graphics/Example2.png  used on input line 655.
 (pdftex.def)             Requested size: 308.59187pt x 173.06203pt.
-<Graphics/Example3.png, id=1000, 810.02625pt x 715.67375pt>
+<Graphics/Example3.png, id=1033, 810.02625pt x 715.67375pt>
 File: Graphics/Example3.png Graphic file (type png)
 <use Graphics/Example3.png>
 Package pdftex.def Info: Graphics/Example3.png  used on input line 658.
@@ -1076,25 +1081,25 @@ LaTeX Info: Redefining \. on input line 671.
 LaTeX Info: Redefining \% on input line 671.
 LaTeX Info: Redefining \. on input line 671.
 LaTeX Info: Redefining \% on input line 671.
- [12 </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example2.png> </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example3.png>]
+ [13 </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example2.png> </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Example3.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 671.
- [13
+ [14
 
 ]
 Cap\'{\i }tulo 2.
-<Graphics/CppIntro.png, id=1015, 947.54pt x 560.0925pt>
+<Graphics/CppIntro.png, id=1047, 947.54pt x 560.0925pt>
 File: Graphics/CppIntro.png Graphic file (type png)
 <use Graphics/CppIntro.png>
 Package pdftex.def Info: Graphics/CppIntro.png  used on input line 680.
 (pdftex.def)             Requested size: 440.84746pt x 260.5856pt.
-[14
+[15
 
 
  </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/CppIntro.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 688.
-<Graphics/BjarneBebe.png, id=1021, 390.45876pt x 393.47pt>
+<Graphics/BjarneBebe.png, id=1053, 390.45876pt x 393.47pt>
 File: Graphics/BjarneBebe.png Graphic file (type png)
 <use Graphics/BjarneBebe.png>
 Package pdftex.def Info: Graphics/BjarneBebe.png  used on input line 698.
@@ -1103,7 +1108,7 @@ LaTeX Info: Redefining \. on input line 739.
 LaTeX Info: Redefining \% on input line 739.
 LaTeX Info: Redefining \. on input line 739.
 LaTeX Info: Redefining \% on input line 739.
- [15
+ [16
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
 
@@ -1115,25 +1120,25 @@ LaTeX Info: Redefining \. on input line 773.
 LaTeX Info: Redefining \% on input line 773.
 LaTeX Info: Redefining \. on input line 773.
 LaTeX Info: Redefining \% on input line 773.
- [16]
+ [17]
 LaTeX Info: Redefining \. on input line 814.
 LaTeX Info: Redefining \% on input line 814.
 LaTeX Info: Redefining \. on input line 814.
 LaTeX Info: Redefining \% on input line 814.
- [17
+ [18
 
 ]
-<Graphics/C.png, id=1051, 1204.5pt x 1204.5pt>
+<Graphics/C.png, id=1084, 1204.5pt x 1204.5pt>
 File: Graphics/C.png Graphic file (type png)
 <use Graphics/C.png>
 Package pdftex.def Info: Graphics/C.png  used on input line 824.
 (pdftex.def)             Requested size: 88.16814pt x 88.16486pt.
-<Graphics/Java.png, id=1052, 1204.5pt x 2138.99126pt>
+<Graphics/Java.png, id=1085, 1204.5pt x 2138.99126pt>
 File: Graphics/Java.png Graphic file (type png)
 <use Graphics/Java.png>
 Package pdftex.def Info: Graphics/Java.png  used on input line 842.
 (pdftex.def)             Requested size: 35.2686pt x 62.60033pt.
-<Graphics/Python.png, id=1053, 1027.84pt x 1027.84pt>
+<Graphics/Python.png, id=1086, 1027.84pt x 1027.84pt>
 File: Graphics/Python.png Graphic file (type png)
 <use Graphics/Python.png>
 Package pdftex.def Info: Graphics/Python.png  used on input line 857.
@@ -1142,7 +1147,7 @@ LaTeX Info: Redefining \. on input line 872.
 LaTeX Info: Redefining \% on input line 872.
 LaTeX Info: Redefining \. on input line 872.
 LaTeX Info: Redefining \% on input line 872.
- [18
+ [19
 
  </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/C.png> </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Java.png> </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Python.png>] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
@@ -1162,7 +1167,7 @@ LaTeX Info: Redefining \. on input line 915.
 LaTeX Info: Redefining \% on input line 915.
 LaTeX Info: Redefining \. on input line 915.
 LaTeX Info: Redefining \% on input line 915.
- [19
+ [20
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
@@ -1175,21 +1180,21 @@ LaTeX Info: Redefining \. on input line 945.
 LaTeX Info: Redefining \% on input line 945.
 LaTeX Info: Redefining \. on input line 945.
 LaTeX Info: Redefining \% on input line 945.
- [20
+ [21
 
 ]
 Cap\'{\i }tulo 3.
-[21
+[22
 
 
 ]
 Cap\'{\i }tulo 4.
-<Graphics/Warning.png, id=1125, 256.96pt x 256.96pt>
+<Graphics/Warning.png, id=1157, 256.96pt x 256.96pt>
 File: Graphics/Warning.png Graphic file (type png)
 <use Graphics/Warning.png>
 Package pdftex.def Info: Graphics/Warning.png  used on input line 957.
 (pdftex.def)             Requested size: 66.12442pt x 66.12578pt.
-[22
+[23
 
 
  </Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Graphics/Warning.png>] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1199,42 +1204,18 @@ LaTeX Info: Redefining \. on input line 1053.
 LaTeX Info: Redefining \% on input line 1053.
 LaTeX Info: Redefining \. on input line 1053.
 LaTeX Info: Redefining \% on input line 1053.
- [23
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 1115.
-LaTeX Info: Redefining \% on input line 1115.
-LaTeX Info: Redefining \. on input line 1115.
-LaTeX Info: Redefining \% on input line 1115.
  [24
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 1156.
-LaTeX Info: Redefining \% on input line 1156.
-LaTeX Info: Redefining \. on input line 1156.
-LaTeX Info: Redefining \% on input line 1156.
- [25] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 1211.
-LaTeX Info: Redefining \% on input line 1211.
-LaTeX Info: Redefining \. on input line 1211.
-LaTeX Info: Redefining \% on input line 1211.
- [26
+LaTeX Info: Redefining \. on input line 1115.
+LaTeX Info: Redefining \% on input line 1115.
+LaTeX Info: Redefining \. on input line 1115.
+LaTeX Info: Redefining \% on input line 1115.
+ [25
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1242,11 +1223,22 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 1276.
-LaTeX Info: Redefining \% on input line 1276.
-LaTeX Info: Redefining \. on input line 1276.
-LaTeX Info: Redefining \% on input line 1276.
+LaTeX Info: Redefining \. on input line 1156.
+LaTeX Info: Redefining \% on input line 1156.
+LaTeX Info: Redefining \. on input line 1156.
+LaTeX Info: Redefining \% on input line 1156.
+ [26] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 1211.
+LaTeX Info: Redefining \% on input line 1211.
+LaTeX Info: Redefining \. on input line 1211.
+LaTeX Info: Redefining \% on input line 1211.
  [27
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1256,12 +1248,25 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
+LaTeX Info: Redefining \. on input line 1276.
+LaTeX Info: Redefining \% on input line 1276.
+LaTeX Info: Redefining \. on input line 1276.
+LaTeX Info: Redefining \% on input line 1276.
+ [28
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
 LaTeX Info: Redefining \. on input line 1340.
 LaTeX Info: Redefining \% on input line 1340.
 LaTeX Info: Redefining \. on input line 1340.
 LaTeX Info: Redefining \% on input line 1340.
- [28]
-<Graphics/IEEEFP.png, id=1272, 1003.75pt x 83.31125pt>
+ [29]
+<Graphics/IEEEFP.png, id=1304, 1003.75pt x 83.31125pt>
 File: Graphics/IEEEFP.png Graphic file (type png)
 <use Graphics/IEEEFP.png>
 Package pdftex.def Info: Graphics/IEEEFP.png  used on input line 1351.
@@ -1273,7 +1278,7 @@ LaTeX Info: Redefining \. on input line 1386.
 LaTeX Info: Redefining \% on input line 1386.
 LaTeX Info: Redefining \. on input line 1386.
 LaTeX Info: Redefining \% on input line 1386.
- [29
+ [30
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 
@@ -1291,7 +1296,7 @@ LaTeX Info: Redefining \. on input line 1443.
 LaTeX Info: Redefining \% on input line 1443.
 LaTeX Info: Redefining \. on input line 1443.
 LaTeX Info: Redefining \% on input line 1443.
- [30
+ [31
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1302,7 +1307,7 @@ LaTeX Info: Redefining \. on input line 1485.
 LaTeX Info: Redefining \% on input line 1485.
 LaTeX Info: Redefining \. on input line 1485.
 LaTeX Info: Redefining \% on input line 1485.
- [31
+ [32
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1311,14 +1316,14 @@ LaTeX Info: Redefining \. on input line 1547.
 LaTeX Info: Redefining \% on input line 1547.
 LaTeX Info: Redefining \. on input line 1547.
 LaTeX Info: Redefining \% on input line 1547.
- [32
+ [33
 
 ]
 LaTeX Info: Redefining \. on input line 1563.
 LaTeX Info: Redefining \% on input line 1563.
 LaTeX Info: Redefining \. on input line 1563.
 LaTeX Info: Redefining \% on input line 1563.
- [33] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+ [34] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1337,7 +1342,7 @@ LaTeX Info: Redefining \. on input line 1631.
 LaTeX Info: Redefining \% on input line 1631.
 LaTeX Info: Redefining \. on input line 1631.
 LaTeX Info: Redefining \% on input line 1631.
- [34
+ [35
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1352,7 +1357,7 @@ LaTeX Info: Redefining \. on input line 1691.
 LaTeX Info: Redefining \% on input line 1691.
 LaTeX Info: Redefining \. on input line 1691.
 LaTeX Info: Redefining \% on input line 1691.
- [35] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+ [36] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1376,94 +1381,81 @@ LaTeX Info: Redefining \. on input line 1756.
 LaTeX Info: Redefining \% on input line 1756.
 LaTeX Info: Redefining \. on input line 1756.
 LaTeX Info: Redefining \% on input line 1756.
- [36] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+ [37] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 LaTeX Info: Redefining \. on input line 1802.
 LaTeX Info: Redefining \% on input line 1802.
 LaTeX Info: Redefining \. on input line 1802.
 LaTeX Info: Redefining \% on input line 1802.
- [37
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 1852.
-LaTeX Info: Redefining \% on input line 1852.
-LaTeX Info: Redefining \. on input line 1852.
-LaTeX Info: Redefining \% on input line 1852.
  [38
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 1879.
-LaTeX Info: Redefining \% on input line 1879.
-LaTeX Info: Redefining \. on input line 1879.
-LaTeX Info: Redefining \% on input line 1879.
+LaTeX Info: Redefining \. on input line 1852.
+LaTeX Info: Redefining \% on input line 1852.
+LaTeX Info: Redefining \. on input line 1852.
+LaTeX Info: Redefining \% on input line 1852.
  [39
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 1925.
-LaTeX Info: Redefining \% on input line 1925.
-LaTeX Info: Redefining \. on input line 1925.
-LaTeX Info: Redefining \% on input line 1925.
+LaTeX Info: Redefining \. on input line 1879.
+LaTeX Info: Redefining \% on input line 1879.
+LaTeX Info: Redefining \. on input line 1879.
+LaTeX Info: Redefining \% on input line 1879.
  [40
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 1987.
-LaTeX Info: Redefining \% on input line 1987.
-LaTeX Info: Redefining \. on input line 1987.
-LaTeX Info: Redefining \% on input line 1987.
+LaTeX Info: Redefining \. on input line 1925.
+LaTeX Info: Redefining \% on input line 1925.
+LaTeX Info: Redefining \. on input line 1925.
+LaTeX Info: Redefining \% on input line 1925.
  [41
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 2015.
-LaTeX Info: Redefining \% on input line 2015.
-LaTeX Info: Redefining \. on input line 2015.
-LaTeX Info: Redefining \% on input line 2015.
- [42] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2061.
-LaTeX Info: Redefining \% on input line 2061.
-LaTeX Info: Redefining \. on input line 2061.
-LaTeX Info: Redefining \% on input line 2061.
- [43
+LaTeX Info: Redefining \. on input line 1987.
+LaTeX Info: Redefining \% on input line 1987.
+LaTeX Info: Redefining \. on input line 1987.
+LaTeX Info: Redefining \% on input line 1987.
+ [42
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+)
+LaTeX Info: Redefining \. on input line 2015.
+LaTeX Info: Redefining \% on input line 2015.
+LaTeX Info: Redefining \. on input line 2015.
+LaTeX Info: Redefining \% on input line 2015.
+ [43] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2107.
-LaTeX Info: Redefining \% on input line 2107.
-LaTeX Info: Redefining \. on input line 2107.
-LaTeX Info: Redefining \% on input line 2107.
+LaTeX Info: Redefining \. on input line 2061.
+LaTeX Info: Redefining \% on input line 2061.
+LaTeX Info: Redefining \. on input line 2061.
+LaTeX Info: Redefining \% on input line 2061.
  [44
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1473,10 +1465,10 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2167.
-LaTeX Info: Redefining \% on input line 2167.
-LaTeX Info: Redefining \. on input line 2167.
-LaTeX Info: Redefining \% on input line 2167.
+LaTeX Info: Redefining \. on input line 2107.
+LaTeX Info: Redefining \% on input line 2107.
+LaTeX Info: Redefining \. on input line 2107.
+LaTeX Info: Redefining \% on input line 2107.
  [45
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1485,6 +1477,19 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 2167.
+LaTeX Info: Redefining \% on input line 2167.
+LaTeX Info: Redefining \. on input line 2167.
+LaTeX Info: Redefining \% on input line 2167.
+ [46
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1494,14 +1499,14 @@ LaTeX Info: Redefining \. on input line 2233.
 LaTeX Info: Redefining \% on input line 2233.
 LaTeX Info: Redefining \. on input line 2233.
 LaTeX Info: Redefining \% on input line 2233.
- [46
+ [47
 
 ]
 LaTeX Info: Redefining \. on input line 2241.
 LaTeX Info: Redefining \% on input line 2241.
 LaTeX Info: Redefining \. on input line 2241.
 LaTeX Info: Redefining \% on input line 2241.
- [47] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+ [48] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1516,42 +1521,37 @@ LaTeX Info: Redefining \. on input line 2296.
 LaTeX Info: Redefining \% on input line 2296.
 LaTeX Info: Redefining \. on input line 2296.
 LaTeX Info: Redefining \% on input line 2296.
- [48
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 2357.
-LaTeX Info: Redefining \% on input line 2357.
-LaTeX Info: Redefining \. on input line 2357.
-LaTeX Info: Redefining \% on input line 2357.
  [49
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2418.
-LaTeX Info: Redefining \% on input line 2418.
-LaTeX Info: Redefining \. on input line 2418.
-LaTeX Info: Redefining \% on input line 2418.
- [50]
-LaTeX Info: Redefining \. on input line 2418.
-LaTeX Info: Redefining \% on input line 2418.
-LaTeX Info: Redefining \. on input line 2418.
-LaTeX Info: Redefining \% on input line 2418.
+LaTeX Info: Redefining \. on input line 2357.
+LaTeX Info: Redefining \% on input line 2357.
+LaTeX Info: Redefining \. on input line 2357.
+LaTeX Info: Redefining \% on input line 2357.
+ [50
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 2413.
+LaTeX Info: Redefining \% on input line 2413.
+LaTeX Info: Redefining \. on input line 2413.
+LaTeX Info: Redefining \% on input line 2413.
  [51]
-LaTeX Info: Redefining \. on input line 2426.
-LaTeX Info: Redefining \% on input line 2426.
-LaTeX Info: Redefining \. on input line 2426.
-LaTeX Info: Redefining \% on input line 2426.
+LaTeX Info: Redefining \. on input line 2421.
+LaTeX Info: Redefining \% on input line 2421.
+LaTeX Info: Redefining \. on input line 2421.
+LaTeX Info: Redefining \% on input line 2421.
  [52
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1563,28 +1563,34 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2492.
-LaTeX Info: Redefining \% on input line 2492.
-LaTeX Info: Redefining \. on input line 2492.
-LaTeX Info: Redefining \% on input line 2492.
+LaTeX Info: Redefining \. on input line 2489.
+LaTeX Info: Redefining \% on input line 2489.
+LaTeX Info: Redefining \. on input line 2489.
+LaTeX Info: Redefining \% on input line 2489.
  [53
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 2504.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-utf8.def
+File: se-utf8.def 2016/05/16 v1.11 stringenc: UTF-8
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-iso-8859-1.def
+File: se-iso-8859-1.def 2016/05/16 v1.11 stringenc: ISO-8859-1
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2537.
-LaTeX Info: Redefining \% on input line 2537.
-LaTeX Info: Redefining \. on input line 2537.
-LaTeX Info: Redefining \% on input line 2537.
+LaTeX Info: Redefining \. on input line 2518.
+LaTeX Info: Redefining \% on input line 2518.
+LaTeX Info: Redefining \. on input line 2518.
+LaTeX Info: Redefining \% on input line 2518.
  [54]
-LaTeX Info: Redefining \. on input line 2553.
-LaTeX Info: Redefining \% on input line 2553.
-LaTeX Info: Redefining \. on input line 2553.
-LaTeX Info: Redefining \% on input line 2553.
+LaTeX Info: Redefining \. on input line 2534.
+LaTeX Info: Redefining \% on input line 2534.
+LaTeX Info: Redefining \. on input line 2534.
+LaTeX Info: Redefining \% on input line 2534.
  [55
 
 ]
@@ -1593,10 +1599,10 @@ Cap\'{\i }tulo 5.
 
 
 ]
-LaTeX Info: Redefining \. on input line 2566.
-LaTeX Info: Redefining \% on input line 2566.
-LaTeX Info: Redefining \. on input line 2566.
-LaTeX Info: Redefining \% on input line 2566.
+LaTeX Info: Redefining \. on input line 2547.
+LaTeX Info: Redefining \% on input line 2547.
+LaTeX Info: Redefining \. on input line 2547.
+LaTeX Info: Redefining \% on input line 2547.
  [57
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1604,26 +1610,34 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2603.
-LaTeX Info: Redefining \% on input line 2603.
-LaTeX Info: Redefining \. on input line 2603.
-LaTeX Info: Redefining \% on input line 2603.
+LaTeX Info: Redefining \. on input line 2583.
+LaTeX Info: Redefining \% on input line 2583.
+LaTeX Info: Redefining \. on input line 2583.
+LaTeX Info: Redefining \% on input line 2583.
  [58
-
-]
-LaTeX Info: Redefining \. on input line 2610.
-LaTeX Info: Redefining \% on input line 2610.
-LaTeX Info: Redefining \. on input line 2610.
-LaTeX Info: Redefining \% on input line 2610.
- [59
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2663.
-LaTeX Info: Redefining \% on input line 2663.
-LaTeX Info: Redefining \. on input line 2663.
-LaTeX Info: Redefining \% on input line 2663.
+LaTeX Info: Redefining \. on input line 2636.
+LaTeX Info: Redefining \% on input line 2636.
+LaTeX Info: Redefining \. on input line 2636.
+LaTeX Info: Redefining \% on input line 2636.
+ [59
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 2681.
+LaTeX Info: Redefining \% on input line 2681.
+LaTeX Info: Redefining \. on input line 2681.
+LaTeX Info: Redefining \% on input line 2681.
  [60
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1632,13 +1646,11 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2708.
-LaTeX Info: Redefining \% on input line 2708.
-LaTeX Info: Redefining \. on input line 2708.
-LaTeX Info: Redefining \% on input line 2708.
+LaTeX Info: Redefining \. on input line 2750.
+LaTeX Info: Redefining \% on input line 2750.
+LaTeX Info: Redefining \. on input line 2750.
+LaTeX Info: Redefining \% on input line 2750.
  [61
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1648,10 +1660,10 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2777.
-LaTeX Info: Redefining \% on input line 2777.
-LaTeX Info: Redefining \. on input line 2777.
-LaTeX Info: Redefining \% on input line 2777.
+LaTeX Info: Redefining \. on input line 2810.
+LaTeX Info: Redefining \% on input line 2810.
+LaTeX Info: Redefining \. on input line 2810.
+LaTeX Info: Redefining \% on input line 2810.
  [62
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1660,35 +1672,29 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 2837.
-LaTeX Info: Redefining \% on input line 2837.
-LaTeX Info: Redefining \. on input line 2837.
-LaTeX Info: Redefining \% on input line 2837.
- [63
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 2866.
+LaTeX Info: Redefining \% on input line 2866.
+LaTeX Info: Redefining \. on input line 2866.
+LaTeX Info: Redefining \% on input line 2866.
+ [63] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2893.
-LaTeX Info: Redefining \% on input line 2893.
-LaTeX Info: Redefining \. on input line 2893.
-LaTeX Info: Redefining \% on input line 2893.
- [64] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 2943.
-LaTeX Info: Redefining \% on input line 2943.
-LaTeX Info: Redefining \. on input line 2943.
-LaTeX Info: Redefining \% on input line 2943.
+LaTeX Info: Redefining \. on input line 2924.
+LaTeX Info: Redefining \% on input line 2924.
+LaTeX Info: Redefining \. on input line 2924.
+LaTeX Info: Redefining \% on input line 2924.
+ [64]
+LaTeX Info: Redefining \. on input line 2930.
+LaTeX Info: Redefining \% on input line 2930.
+LaTeX Info: Redefining \. on input line 2930.
+LaTeX Info: Redefining \% on input line 2930.
  [65] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1696,10 +1702,10 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 2998.
-LaTeX Info: Redefining \% on input line 2998.
-LaTeX Info: Redefining \. on input line 2998.
-LaTeX Info: Redefining \% on input line 2998.
+LaTeX Info: Redefining \. on input line 2985.
+LaTeX Info: Redefining \% on input line 2985.
+LaTeX Info: Redefining \. on input line 2985.
+LaTeX Info: Redefining \% on input line 2985.
  [66
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1713,10 +1719,10 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3064.
-LaTeX Info: Redefining \% on input line 3064.
-LaTeX Info: Redefining \. on input line 3064.
-LaTeX Info: Redefining \% on input line 3064.
+LaTeX Info: Redefining \. on input line 3051.
+LaTeX Info: Redefining \% on input line 3051.
+LaTeX Info: Redefining \. on input line 3051.
+LaTeX Info: Redefining \% on input line 3051.
  [67
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1732,10 +1738,10 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3122.
-LaTeX Info: Redefining \% on input line 3122.
-LaTeX Info: Redefining \. on input line 3122.
-LaTeX Info: Redefining \% on input line 3122.
+LaTeX Info: Redefining \. on input line 3109.
+LaTeX Info: Redefining \% on input line 3109.
+LaTeX Info: Redefining \. on input line 3109.
+LaTeX Info: Redefining \% on input line 3109.
  [68
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -1743,17 +1749,17 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3192.
-LaTeX Info: Redefining \% on input line 3192.
-LaTeX Info: Redefining \. on input line 3192.
-LaTeX Info: Redefining \% on input line 3192.
+LaTeX Info: Redefining \. on input line 3179.
+LaTeX Info: Redefining \% on input line 3179.
+LaTeX Info: Redefining \. on input line 3179.
+LaTeX Info: Redefining \% on input line 3179.
  [69
 
 ]
-LaTeX Info: Redefining \. on input line 3218.
-LaTeX Info: Redefining \% on input line 3218.
-LaTeX Info: Redefining \. on input line 3218.
-LaTeX Info: Redefining \% on input line 3218.
+LaTeX Info: Redefining \. on input line 3205.
+LaTeX Info: Redefining \% on input line 3205.
+LaTeX Info: Redefining \. on input line 3205.
+LaTeX Info: Redefining \% on input line 3205.
  [70] [71
 
 ]
@@ -1762,10 +1768,10 @@ Cap\'{\i }tulo 6.
 
 
 ]
-LaTeX Info: Redefining \. on input line 3236.
-LaTeX Info: Redefining \% on input line 3236.
-LaTeX Info: Redefining \. on input line 3236.
-LaTeX Info: Redefining \% on input line 3236.
+LaTeX Info: Redefining \. on input line 3223.
+LaTeX Info: Redefining \% on input line 3223.
+LaTeX Info: Redefining \. on input line 3223.
+LaTeX Info: Redefining \% on input line 3223.
  [73
 
 ]
@@ -1780,35 +1786,39 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3317.
-LaTeX Info: Redefining \% on input line 3317.
-LaTeX Info: Redefining \. on input line 3317.
-LaTeX Info: Redefining \% on input line 3317.
+LaTeX Info: Redefining \. on input line 3299.
+LaTeX Info: Redefining \% on input line 3299.
+LaTeX Info: Redefining \. on input line 3299.
+LaTeX Info: Redefining \% on input line 3299.
  [75
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3366.
-LaTeX Info: Redefining \% on input line 3366.
-LaTeX Info: Redefining \. on input line 3366.
-LaTeX Info: Redefining \% on input line 3366.
+LaTeX Info: Redefining \. on input line 3375.
+LaTeX Info: Redefining \% on input line 3375.
+LaTeX Info: Redefining \. on input line 3375.
+LaTeX Info: Redefining \% on input line 3375.
  [76
 
-]
-LaTeX Info: Redefining \. on input line 3372.
-LaTeX Info: Redefining \% on input line 3372.
-LaTeX Info: Redefining \. on input line 3372.
-LaTeX Info: Redefining \% on input line 3372.
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 3399.
+LaTeX Info: Redefining \% on input line 3399.
+LaTeX Info: Redefining \. on input line 3399.
+LaTeX Info: Redefining \% on input line 3399.
  [77
 
 ]
-LaTeX Info: Redefining \. on input line 3379.
-LaTeX Info: Redefining \% on input line 3379.
-LaTeX Info: Redefining \. on input line 3379.
-LaTeX Info: Redefining \% on input line 3379.
+LaTeX Info: Redefining \. on input line 3405.
+LaTeX Info: Redefining \% on input line 3405.
+LaTeX Info: Redefining \. on input line 3405.
+LaTeX Info: Redefining \% on input line 3405.
  [78
 
 ]
@@ -1816,231 +1826,231 @@ Cap\'{\i }tulo 8.
 [79
 
 
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 3452.
-LaTeX Info: Redefining \% on input line 3452.
-LaTeX Info: Redefining \. on input line 3452.
-LaTeX Info: Redefining \% on input line 3452.
+]
+LaTeX Info: Redefining \. on input line 3417.
+LaTeX Info: Redefining \% on input line 3417.
+LaTeX Info: Redefining \. on input line 3417.
+LaTeX Info: Redefining \% on input line 3417.
  [80
 
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 3506.
-LaTeX Info: Redefining \% on input line 3506.
-LaTeX Info: Redefining \. on input line 3506.
-LaTeX Info: Redefining \% on input line 3506.
- [81]
+]
+LaTeX Info: Redefining \. on input line 3424.
+LaTeX Info: Redefining \% on input line 3424.
+LaTeX Info: Redefining \. on input line 3424.
+LaTeX Info: Redefining \% on input line 3424.
+ [81
+
+]
 Cap\'{\i }tulo 9.
 [82
 
 
-]
-Cap\'{\i }tulo 10.
-[83
-
-
-]
-LaTeX Info: Redefining \. on input line 3540.
-LaTeX Info: Redefining \% on input line 3540.
-LaTeX Info: Redefining \. on input line 3540.
-LaTeX Info: Redefining \% on input line 3540.
- [84
-
-]
-LaTeX Info: Redefining \. on input line 3546.
-LaTeX Info: Redefining \% on input line 3546.
-LaTeX Info: Redefining \. on input line 3546.
-LaTeX Info: Redefining \% on input line 3546.
- [85
-
-]
-LaTeX Info: Redefining \. on input line 3552.
-LaTeX Info: Redefining \% on input line 3552.
-LaTeX Info: Redefining \. on input line 3552.
-LaTeX Info: Redefining \% on input line 3552.
- [86
-
-]
-LaTeX Info: Redefining \. on input line 3559.
-LaTeX Info: Redefining \% on input line 3559.
-LaTeX Info: Redefining \. on input line 3559.
-LaTeX Info: Redefining \% on input line 3559.
- [87
-
-] [88
-
-]
-Cap\'{\i }tulo 11.
-[89
-
-
-]
-Cap\'{\i }tulo 12.
-[90
-
-
-]
-Cap\'{\i }tulo 13.
-[91
-
-
-] [92
-
-]
-Cap\'{\i }tulo 14.
-[93
-
-
-]
-Cap\'{\i }tulo 15.
-[94
-
-
-]
-Cap\'{\i }tulo 16.
-[95
-
-
-]
-Cap\'{\i }tulo 17.
-[96
-
-
-] [97
-
-]
-Cap\'{\i }tulo 18.
-[98
-
-
-]
-Cap\'{\i }tulo 19.
-[99
-
-
-]
-Cap\'{\i }tulo 20.
-[100
-
-
-]
-Cap\'{\i }tulo 21.
-[101
-
-
-]
-Cap\'{\i }tulo 22.
-[102
-
-
-] [103
-
-]
-Cap\'{\i }tulo 23.
-[104
-
-
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3811.
-LaTeX Info: Redefining \% on input line 3811.
-LaTeX Info: Redefining \. on input line 3811.
-LaTeX Info: Redefining \% on input line 3811.
- [105
-
-]
-Cap\'{\i }tulo 24.
-[106
-
-
-]
-Cap\'{\i }tulo 25.
-[107
-
-
-]
-Cap\'{\i }tulo 26.
-[108
-
-
-]
-Overfull \vbox (0.4788pt too high) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 3899.
-LaTeX Info: Redefining \% on input line 3899.
-LaTeX Info: Redefining \. on input line 3899.
-LaTeX Info: Redefining \% on input line 3899.
- [109]
-Cap\'{\i }tulo 27.
-[110
-
-
-]
-Cap\'{\i }tulo 28.
-[111
-
-
-]
-Cap\'{\i }tulo 29.
-[112
-
-
-] [113
-
-]
-Cap\'{\i }tulo 30.
-[114
-
+LaTeX Info: Redefining \. on input line 3497.
+LaTeX Info: Redefining \% on input line 3497.
+LaTeX Info: Redefining \. on input line 3497.
+LaTeX Info: Redefining \% on input line 3497.
+ [83
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3986.
-LaTeX Info: Redefining \% on input line 3986.
-LaTeX Info: Redefining \. on input line 3986.
-LaTeX Info: Redefining \% on input line 3986.
- [115
+LaTeX Info: Redefining \. on input line 3551.
+LaTeX Info: Redefining \% on input line 3551.
+LaTeX Info: Redefining \. on input line 3551.
+LaTeX Info: Redefining \% on input line 3551.
+ [84]
+Cap\'{\i }tulo 10.
+[85
+
 
 ]
-LaTeX Info: Redefining \. on input line 3992.
-LaTeX Info: Redefining \% on input line 3992.
-LaTeX Info: Redefining \. on input line 3992.
-LaTeX Info: Redefining \% on input line 3992.
- [116
+Cap\'{\i }tulo 11.
+[86
+
+
+]
+LaTeX Info: Redefining \. on input line 3585.
+LaTeX Info: Redefining \% on input line 3585.
+LaTeX Info: Redefining \. on input line 3585.
+LaTeX Info: Redefining \% on input line 3585.
+ [87
+
+]
+LaTeX Info: Redefining \. on input line 3591.
+LaTeX Info: Redefining \% on input line 3591.
+LaTeX Info: Redefining \. on input line 3591.
+LaTeX Info: Redefining \% on input line 3591.
+ [88
+
+]
+LaTeX Info: Redefining \. on input line 3597.
+LaTeX Info: Redefining \% on input line 3597.
+LaTeX Info: Redefining \. on input line 3597.
+LaTeX Info: Redefining \% on input line 3597.
+ [89
+
+]
+LaTeX Info: Redefining \. on input line 3604.
+LaTeX Info: Redefining \% on input line 3604.
+LaTeX Info: Redefining \. on input line 3604.
+LaTeX Info: Redefining \% on input line 3604.
+ [90
+
+] [91
+
+]
+Cap\'{\i }tulo 12.
+[92
+
+
+]
+Cap\'{\i }tulo 13.
+[93
+
+
+]
+Cap\'{\i }tulo 14.
+[94
+
+
+] [95
+
+]
+Cap\'{\i }tulo 15.
+[96
+
+
+]
+Cap\'{\i }tulo 16.
+[97
+
+
+]
+Cap\'{\i }tulo 17.
+[98
+
+
+]
+Cap\'{\i }tulo 18.
+[99
+
+
+] [100
+
+]
+Cap\'{\i }tulo 19.
+[101
+
+
+]
+Cap\'{\i }tulo 20.
+[102
+
+
+]
+Cap\'{\i }tulo 21.
+[103
+
+
+]
+Cap\'{\i }tulo 22.
+[104
+
+
+]
+Cap\'{\i }tulo 23.
+[105
+
+
+] [106
+
+]
+Cap\'{\i }tulo 24.
+[107
+
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 3856.
+LaTeX Info: Redefining \% on input line 3856.
+LaTeX Info: Redefining \. on input line 3856.
+LaTeX Info: Redefining \% on input line 3856.
+ [108
+
+]
+Cap\'{\i }tulo 25.
+[109
+
+
+]
+Cap\'{\i }tulo 26.
+[110
+
+
+]
+Cap\'{\i }tulo 27.
+[111
+
+
+]
+Overfull \vbox (40.23282pt too high) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 3949.
+LaTeX Info: Redefining \% on input line 3949.
+LaTeX Info: Redefining \. on input line 3949.
+LaTeX Info: Redefining \% on input line 3949.
+ [112]
+Cap\'{\i }tulo 28.
+[113
+
+
+]
+Cap\'{\i }tulo 29.
+[114
+
+
+]
+Cap\'{\i }tulo 30.
+[115
+
+
+] [116
 
 ]
 Cap\'{\i }tulo 31.
 [117
 
 
-]
-LaTeX Info: Redefining \. on input line 4017.
-LaTeX Info: Redefining \% on input line 4017.
-LaTeX Info: Redefining \. on input line 4017.
-LaTeX Info: Redefining \% on input line 4017.
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 4036.
+LaTeX Info: Redefining \% on input line 4036.
+LaTeX Info: Redefining \. on input line 4036.
+LaTeX Info: Redefining \% on input line 4036.
  [118
 
 ]
-LaTeX Info: Redefining \. on input line 4023.
-LaTeX Info: Redefining \% on input line 4023.
-LaTeX Info: Redefining \. on input line 4023.
-LaTeX Info: Redefining \% on input line 4023.
+LaTeX Info: Redefining \. on input line 4042.
+LaTeX Info: Redefining \% on input line 4042.
+LaTeX Info: Redefining \. on input line 4042.
+LaTeX Info: Redefining \% on input line 4042.
  [119
 
 ]
@@ -2049,59 +2059,85 @@ Cap\'{\i }tulo 32.
 
 
 ]
+LaTeX Info: Redefining \. on input line 4068.
+LaTeX Info: Redefining \% on input line 4068.
+LaTeX Info: Redefining \. on input line 4068.
+LaTeX Info: Redefining \% on input line 4068.
+ [121
+
+]
+LaTeX Info: Redefining \. on input line 4075.
+LaTeX Info: Redefining \% on input line 4075.
+LaTeX Info: Redefining \. on input line 4075.
+LaTeX Info: Redefining \% on input line 4075.
+ [122
+
+]
+LaTeX Info: Redefining \. on input line 4081.
+LaTeX Info: Redefining \% on input line 4081.
+LaTeX Info: Redefining \. on input line 4081.
+LaTeX Info: Redefining \% on input line 4081.
+ [123
+
+]
 Cap\'{\i }tulo 33.
-[121
+[124
 
 
 ]
 Cap\'{\i }tulo 34.
-[122
+[125
 
-
-]
-LaTeX Info: Redefining \. on input line 4098.
-LaTeX Info: Redefining \% on input line 4098.
-LaTeX Info: Redefining \. on input line 4098.
-LaTeX Info: Redefining \% on input line 4098.
- [123
-
-] [124
 
 ]
 Cap\'{\i }tulo 35.
-[125
+[126
+
 
 ]
-LaTeX Info: Redefining \. on input line 4138.
-LaTeX Info: Redefining \% on input line 4138.
-LaTeX Info: Redefining \. on input line 4138.
-LaTeX Info: Redefining \% on input line 4138.
- [126
+LaTeX Info: Redefining \. on input line 4156.
+LaTeX Info: Redefining \% on input line 4156.
+LaTeX Info: Redefining \. on input line 4156.
+LaTeX Info: Redefining \% on input line 4156.
+ [127
+
+] [128
+
+]
+Cap\'{\i }tulo 36.
+[129
+
+]
+LaTeX Info: Redefining \. on input line 4196.
+LaTeX Info: Redefining \% on input line 4196.
+LaTeX Info: Redefining \. on input line 4196.
+LaTeX Info: Redefining \% on input line 4196.
+ [130
 
 ]
 \tf@thm=\write5
 \openout5 = `Book.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4179.
- [127
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4237.
+ [131
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4179.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4237.
  (/Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4179.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4179.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4237.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4237.
 Package rerunfilecheck Info: File `Book.out' has not changed.
-(rerunfilecheck)             Checksum: 6F3E0E8DE5A82923B1B25D81AAC80CBE;12617.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4179.
+(rerunfilecheck)             Checksum: CB905FE96557A5984C1BD92DEB2BFD57;12967.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4237.
  ) 
 Here is how much of TeX's memory you used:
- 26142 strings out of 492616
- 452918 string characters out of 6128982
- 762158 words of memory out of 5000000
- 28388 multiletter control sequences out of 15000+600000
+ 26256 strings out of 492616
+ 455020 string characters out of 6128982
+ 762164 words of memory out of 5000000
+ 28437 multiletter control sequences out of 15000+600000
  562485 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,13n,63p,1102b,2560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2110,10 +2146,10 @@ pdfTeX warning (dest): name{section.0.0} has been referenced but does not exist,
 pdfTeX warning (dest): name{chapter.0} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (128 pages, 2670308 bytes).
+Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (132 pages, 2678087 bytes).
 PDF statistics:
- 2902 PDF objects out of 2984 (max. 8388607)
- 2691 compressed objects within 27 object streams
- 1046 named destinations out of 1200 (max. 500000)
- 1469 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3005 PDF objects out of 3580 (max. 8388607)
+ 2789 compressed objects within 28 object streams
+ 1094 named destinations out of 1200 (max. 500000)
+ 1509 words of extra memory for PDF output out of 10000 (max. 10000000)
 

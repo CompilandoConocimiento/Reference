@@ -22,11 +22,12 @@ auto findSecond(const container& data) {
 
 auto main() -> int {
   using namespace std;
+  using number = const int;
 
-  vector<int> data1 {1, 4, 1};
+  vector<number> data1 {1, 4, 1};
   cout << findSecond(data1) << endl;  // 1
 
-  array<int, 5> data2 {1, 4, -1, 3, -5};
+  array<number, 5> data2 {1, 4, -1, 3, -5};
   cout << findSecond(data2) << endl;  // -1
 
   return 0;

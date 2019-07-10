@@ -533,13 +533,7 @@
                     uint64_t likeLong {};
                 \end{lstlisting}
 
-            \subsection{Bits}
-
-                \begin{itemize}
-                    \item $x << y = x * 2^y$
-                    \item $x >> y = \left \lfloor \dfrac{x}{2^y} \right \rfloor$
-                \end{itemize}
-
+            
 
             \subsection{Fast I / O}
 
@@ -551,27 +545,17 @@
                     cin.tie(nullptr);
                 \end{lstlisting}
 
-                \begin{lstlisting}[language=C++, gobble=20]
-                    template <class number>
-                    inline auto getNumberFast() -> number {
-                        auto number = number {};
-                        auto isNegative = false;
-                        auto currentDigit = char {getchar_unlocked()};
-                    
-                        while (currentDigit < '0' or currentDigit > '9') {
-                            currentDigit = getchar_unlocked();
-                            if (currentDigit == '-') isNegative = true;
-                        }
-                    
-                        while ('0' <= currentDigit and currentDigit <= '9') {
-                            number = (number << 3) + (number << 1);
-                            number += currentDigit - '0';
-                            currentDigit = getchar_unlocked();
-                        }
-                    
-                        return isNegative? -number : number;
-                    }
-                \end{lstlisting}
+                \subsubsection{Fast input of numbers}
+
+                    \lstinputlisting[language=c++, gobble=24]
+                    {../../Code/Tricks/FastNumberInput.cpp}
+            
+            \subsection{Bits}
+
+                \begin{itemize}
+                    \item $x << y = x * 2^y$
+                    \item $x >> y = \left \lfloor \dfrac{x}{2^y} \right \rfloor$
+                \end{itemize}
 
                             
 \part{Number Theory}
