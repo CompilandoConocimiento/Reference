@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  10 JUL 2019 00:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  10 JUL 2019 01:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1807,11 +1807,13 @@ LaTeX Info: Redefining \% on input line 3375.
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3399.
-LaTeX Info: Redefining \% on input line 3399.
-LaTeX Info: Redefining \. on input line 3399.
-LaTeX Info: Redefining \% on input line 3399.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
  [77
 
 ]
@@ -1819,74 +1821,72 @@ LaTeX Info: Redefining \. on input line 3405.
 LaTeX Info: Redefining \% on input line 3405.
 LaTeX Info: Redefining \. on input line 3405.
 LaTeX Info: Redefining \% on input line 3405.
- [78
+ [78]
+LaTeX Info: Redefining \. on input line 3411.
+LaTeX Info: Redefining \% on input line 3411.
+LaTeX Info: Redefining \. on input line 3411.
+LaTeX Info: Redefining \% on input line 3411.
+ [79
 
 ]
 Cap\'{\i }tulo 8.
-[79
+[80
 
 
 ]
-LaTeX Info: Redefining \. on input line 3417.
-LaTeX Info: Redefining \% on input line 3417.
-LaTeX Info: Redefining \. on input line 3417.
-LaTeX Info: Redefining \% on input line 3417.
- [80
-
-]
-LaTeX Info: Redefining \. on input line 3424.
-LaTeX Info: Redefining \% on input line 3424.
-LaTeX Info: Redefining \. on input line 3424.
-LaTeX Info: Redefining \% on input line 3424.
+LaTeX Info: Redefining \. on input line 3423.
+LaTeX Info: Redefining \% on input line 3423.
+LaTeX Info: Redefining \. on input line 3423.
+LaTeX Info: Redefining \% on input line 3423.
  [81
 
 ]
-Cap\'{\i }tulo 9.
-[82
-
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 3497.
-LaTeX Info: Redefining \% on input line 3497.
-LaTeX Info: Redefining \. on input line 3497.
-LaTeX Info: Redefining \% on input line 3497.
- [83
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-LaTeX Info: Redefining \. on input line 3551.
-LaTeX Info: Redefining \% on input line 3551.
-LaTeX Info: Redefining \. on input line 3551.
-LaTeX Info: Redefining \% on input line 3551.
- [84]
-Cap\'{\i }tulo 10.
-[85
-
+LaTeX Info: Redefining \. on input line 3430.
+LaTeX Info: Redefining \% on input line 3430.
+LaTeX Info: Redefining \. on input line 3430.
+LaTeX Info: Redefining \% on input line 3430.
+ [82
 
 ]
-Cap\'{\i }tulo 11.
+Cap\'{\i }tulo 9.
+[83
+
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 3503.
+LaTeX Info: Redefining \% on input line 3503.
+LaTeX Info: Redefining \. on input line 3503.
+LaTeX Info: Redefining \% on input line 3503.
+ [84
+
+] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Info: Redefining \. on input line 3557.
+LaTeX Info: Redefining \% on input line 3557.
+LaTeX Info: Redefining \. on input line 3557.
+LaTeX Info: Redefining \% on input line 3557.
+ [85]
+Cap\'{\i }tulo 10.
 [86
 
 
 ]
-LaTeX Info: Redefining \. on input line 3585.
-LaTeX Info: Redefining \% on input line 3585.
-LaTeX Info: Redefining \. on input line 3585.
-LaTeX Info: Redefining \% on input line 3585.
- [87
+Cap\'{\i }tulo 11.
+[87
+
 
 ]
 LaTeX Info: Redefining \. on input line 3591.
@@ -1903,136 +1903,143 @@ LaTeX Info: Redefining \% on input line 3597.
  [89
 
 ]
-LaTeX Info: Redefining \. on input line 3604.
-LaTeX Info: Redefining \% on input line 3604.
-LaTeX Info: Redefining \. on input line 3604.
-LaTeX Info: Redefining \% on input line 3604.
+LaTeX Info: Redefining \. on input line 3603.
+LaTeX Info: Redefining \% on input line 3603.
+LaTeX Info: Redefining \. on input line 3603.
+LaTeX Info: Redefining \% on input line 3603.
  [90
 
-] [91
+]
+LaTeX Info: Redefining \. on input line 3610.
+LaTeX Info: Redefining \% on input line 3610.
+LaTeX Info: Redefining \. on input line 3610.
+LaTeX Info: Redefining \% on input line 3610.
+ [91
+
+] [92
 
 ]
 Cap\'{\i }tulo 12.
-[92
-
-
-]
-Cap\'{\i }tulo 13.
 [93
 
 
 ]
-Cap\'{\i }tulo 14.
+Cap\'{\i }tulo 13.
 [94
 
 
-] [95
+]
+Cap\'{\i }tulo 14.
+[95
+
+
+] [96
 
 ]
 Cap\'{\i }tulo 15.
-[96
-
-
-]
-Cap\'{\i }tulo 16.
 [97
 
 
 ]
-Cap\'{\i }tulo 17.
+Cap\'{\i }tulo 16.
 [98
 
 
 ]
-Cap\'{\i }tulo 18.
+Cap\'{\i }tulo 17.
 [99
 
 
-] [100
+]
+Cap\'{\i }tulo 18.
+[100
+
+
+] [101
 
 ]
 Cap\'{\i }tulo 19.
-[101
-
-
-]
-Cap\'{\i }tulo 20.
 [102
 
 
 ]
-Cap\'{\i }tulo 21.
+Cap\'{\i }tulo 20.
 [103
 
 
 ]
-Cap\'{\i }tulo 22.
+Cap\'{\i }tulo 21.
 [104
 
 
 ]
-Cap\'{\i }tulo 23.
+Cap\'{\i }tulo 22.
 [105
 
 
-] [106
+]
+Cap\'{\i }tulo 23.
+[106
+
+
+] [107
 
 ]
 Cap\'{\i }tulo 24.
-[107
+[108
 
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 3856.
-LaTeX Info: Redefining \% on input line 3856.
-LaTeX Info: Redefining \. on input line 3856.
-LaTeX Info: Redefining \% on input line 3856.
- [108
+LaTeX Info: Redefining \. on input line 3862.
+LaTeX Info: Redefining \% on input line 3862.
+LaTeX Info: Redefining \. on input line 3862.
+LaTeX Info: Redefining \% on input line 3862.
+ [109
 
 ]
 Cap\'{\i }tulo 25.
-[109
-
-
-]
-Cap\'{\i }tulo 26.
 [110
 
 
 ]
-Cap\'{\i }tulo 27.
+Cap\'{\i }tulo 26.
 [111
+
+
+]
+Cap\'{\i }tulo 27.
+[112
 
 
 ]
 Overfull \vbox (40.23282pt too high) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 3949.
-LaTeX Info: Redefining \% on input line 3949.
-LaTeX Info: Redefining \. on input line 3949.
-LaTeX Info: Redefining \% on input line 3949.
- [112]
+LaTeX Info: Redefining \. on input line 3955.
+LaTeX Info: Redefining \% on input line 3955.
+LaTeX Info: Redefining \. on input line 3955.
+LaTeX Info: Redefining \% on input line 3955.
+ [113]
 Cap\'{\i }tulo 28.
-[113
-
-
-]
-Cap\'{\i }tulo 29.
 [114
 
 
 ]
-Cap\'{\i }tulo 30.
+Cap\'{\i }tulo 29.
 [115
 
 
-] [116
+]
+Cap\'{\i }tulo 30.
+[116
+
+
+] [117
 
 ]
 Cap\'{\i }tulo 31.
-[117
+[118
 
 
 ] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -2040,13 +2047,6 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-LaTeX Info: Redefining \. on input line 4036.
-LaTeX Info: Redefining \% on input line 4036.
-LaTeX Info: Redefining \. on input line 4036.
-LaTeX Info: Redefining \% on input line 4036.
- [118
-
-]
 LaTeX Info: Redefining \. on input line 4042.
 LaTeX Info: Redefining \% on input line 4042.
 LaTeX Info: Redefining \. on input line 4042.
@@ -2054,22 +2054,22 @@ LaTeX Info: Redefining \% on input line 4042.
  [119
 
 ]
+LaTeX Info: Redefining \. on input line 4048.
+LaTeX Info: Redefining \% on input line 4048.
+LaTeX Info: Redefining \. on input line 4048.
+LaTeX Info: Redefining \% on input line 4048.
+ [120
+
+]
 Cap\'{\i }tulo 32.
-[120
+[121
 
 
 ]
-LaTeX Info: Redefining \. on input line 4068.
-LaTeX Info: Redefining \% on input line 4068.
-LaTeX Info: Redefining \. on input line 4068.
-LaTeX Info: Redefining \% on input line 4068.
- [121
-
-]
-LaTeX Info: Redefining \. on input line 4075.
-LaTeX Info: Redefining \% on input line 4075.
-LaTeX Info: Redefining \. on input line 4075.
-LaTeX Info: Redefining \% on input line 4075.
+LaTeX Info: Redefining \. on input line 4074.
+LaTeX Info: Redefining \% on input line 4074.
+LaTeX Info: Redefining \. on input line 4074.
+LaTeX Info: Redefining \% on input line 4074.
  [122
 
 ]
@@ -2080,64 +2080,71 @@ LaTeX Info: Redefining \% on input line 4081.
  [123
 
 ]
-Cap\'{\i }tulo 33.
-[124
-
+LaTeX Info: Redefining \. on input line 4087.
+LaTeX Info: Redefining \% on input line 4087.
+LaTeX Info: Redefining \. on input line 4087.
+LaTeX Info: Redefining \% on input line 4087.
+ [124
 
 ]
-Cap\'{\i }tulo 34.
+Cap\'{\i }tulo 33.
 [125
 
 
 ]
-Cap\'{\i }tulo 35.
+Cap\'{\i }tulo 34.
 [126
 
 
 ]
-LaTeX Info: Redefining \. on input line 4156.
-LaTeX Info: Redefining \% on input line 4156.
-LaTeX Info: Redefining \. on input line 4156.
-LaTeX Info: Redefining \% on input line 4156.
- [127
+Cap\'{\i }tulo 35.
+[127
 
-] [128
+
+]
+LaTeX Info: Redefining \. on input line 4162.
+LaTeX Info: Redefining \% on input line 4162.
+LaTeX Info: Redefining \. on input line 4162.
+LaTeX Info: Redefining \% on input line 4162.
+ [128
+
+] [129
 
 ]
 Cap\'{\i }tulo 36.
-[129
+[130
 
 ]
-LaTeX Info: Redefining \. on input line 4196.
-LaTeX Info: Redefining \% on input line 4196.
-LaTeX Info: Redefining \. on input line 4196.
-LaTeX Info: Redefining \% on input line 4196.
- [130
+LaTeX Info: Redefining \. on input line 4202.
+LaTeX Info: Redefining \% on input line 4202.
+LaTeX Info: Redefining \. on input line 4202.
+LaTeX Info: Redefining \% on input line 4202.
+ [131
 
 ]
 \tf@thm=\write5
 \openout5 = `Book.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4237.
- [131
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4243.
+ [132
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4237.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4243.
  (/Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4237.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4237.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4243.
 Package rerunfilecheck Info: File `Book.out' has not changed.
 (rerunfilecheck)             Checksum: CB905FE96557A5984C1BD92DEB2BFD57;12967.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4237.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4243.
  ) 
 Here is how much of TeX's memory you used:
- 26256 strings out of 492616
- 455020 string characters out of 6128982
- 762164 words of memory out of 5000000
- 28437 multiletter control sequences out of 15000+600000
+ 26322 strings out of 492616
+ 456155 string characters out of 6128982
+ 770164 words of memory out of 5000000
+ 28456 multiletter control sequences out of 15000+600000
  562485 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,13n,63p,1102b,2560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2146,10 +2153,10 @@ pdfTeX warning (dest): name{section.0.0} has been referenced but does not exist,
 pdfTeX warning (dest): name{chapter.0} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (132 pages, 2678087 bytes).
+Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/IntroToCompetitive/Book.pdf (133 pages, 2682058 bytes).
 PDF statistics:
- 3005 PDF objects out of 3580 (max. 8388607)
- 2789 compressed objects within 28 object streams
- 1094 named destinations out of 1200 (max. 500000)
+ 3066 PDF objects out of 3580 (max. 8388607)
+ 2848 compressed objects within 29 object streams
+ 1138 named destinations out of 1200 (max. 500000)
  1509 words of extra memory for PDF output out of 10000 (max. 10000000)
 
