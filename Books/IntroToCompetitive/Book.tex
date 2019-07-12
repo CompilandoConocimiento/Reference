@@ -489,7 +489,7 @@
     {\textbf{\textsc{\Huge Compilando Conocimiento}}}\\[2.7cm]      %Name of project   
 
     % ============ NAME OF THE BOOK  ===============
-    \href{\Github/LibroAnalisisVectorial}                           %Link to Author
+    \href{\Github}                                                  %Link to Author
     {\fontsize{35}{46}\selectfont                                   %Set size
         \textbf{Introducción a lo\\[0.6cm] 
         que tienes que saber sobre \\[0.4cm]
@@ -940,10 +940,29 @@
             \cite{ModernCppWhatYouNeedToKnow}
 
     % ===============================================================================
-    % ==========       Instalando y corriendo programas de C++          =============
+    % ==========                 INSTALANDO C++                         =============
     % ===============================================================================
     \clearpage
-    \chapter{Instalando y corriendo programas de C++ y usar jueces}
+    \chapter{Instalando y corriendo programas de C++}
+
+        % =========================================================
+        % ========               INSTALAR C++        ==============
+        % =========================================================
+        \clearpage
+        \section{Instalar C++}
+
+        % =========================================================
+        % ========               CORRIENDO C++       ==============
+        % =========================================================
+        \clearpage
+        \section{Corriendo C++}
+
+        % =========================================================
+        % ========               JUECES EN LINEA     ==============
+        % =========================================================
+        \clearpage
+        \section{Jueces en línea}
+
 
 
     % ===============================================================================
@@ -2419,12 +2438,125 @@
         % ==========      ENTRADA / SALIDA EN C++        ==========
         % =========================================================
         \clearpage
-        \section{La entrada / salida en \Cpp}
+        \section{I / 0: La entrada / salida en \Cpp}
 
             % ============================================
-            % ====          INTRODUCCION        ==========
+            % ====          INTRODUCCION  COUT     ========
             % ============================================
-            \subsection{Introducción}
+            \subsection{Introducción a \textCode{std::cout}}
+                
+                En realidad la entrada y la salida en \Cpp es bastante sencillo, mira:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // In C
+                    #include <stdio.h>
+
+                    ...
+
+                    int a, b, c, d;
+                    printf("%d %d %d", a, b, c); 
+                \end{lstlisting}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // In C++
+                    #include <iostream>
+
+                    ...
+
+                    int a, b, c, d;
+                    std::cout << a << b << c;
+                \end{lstlisting}
+
+
+                Como te podrás dar cuenta no necesitas indicar el tipo de dato que vamos a imprimir, 
+                basta con que sea \Quote{imprimible}, o mas específicamente que sobrecarge el operador
+                \textCode{\<\<}. 
+                
+                Tampoco es necesario que todas las cosas que imprimamos a la vez tengan el mismo tipo de dato.
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto a = int{3};
+                    auto b = std::string{"hola"};
+                    std::cout << a << b;        // print: "3hola"
+                    std::cout << a << " " << b; // print: "3 hola"
+                \end{lstlisting}
+
+                Para dar un salto de línea podemos usar:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto a = int{3};
+                    auto b = std::string{"hola"};
+                    std::cout << a << "\n" << b;        
+                    /*
+                        print:
+                        "3
+                        hola"
+                    */
+
+                \end{lstlisting}
+
+                % ============================================
+                % ====          MODIFICADORES         ========
+                % ============================================
+                \subsubsection{Modificadores}
+
+                    Si quieres manipular la forma de imprimir cosas tienes que incluir 
+                    \textCode{iomanip}. 
+
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        #include <iomanip>
+                        #include <iostream>
+
+                        auto main() -> int {
+                            auto f = 301.14159;
+                            std::cout << std::setprecision(5) << f << '\n';
+                            std::cout << std::setprecision(9) << f << '\n';
+                            std::cout << std::fixed;
+                            std::cout << std::setprecision(5) << f << '\n';
+                            std::cout << std::setprecision(9) << f << '\n';
+                            return 0;
+                        }
+                    \end{lstlisting}
+
+                    Va a imprimir esto:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        301.14
+                        301.14159
+                        301.14159
+                        301.141590000
+                    \end{lstlisting}
+
+                    También puedes hacer esto:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        #include <iostream>     // std::cout, std::endl
+                        #include <iomanip>      // std::setbase
+
+                        int main () {
+                            std::cout << std::setbase(16) << 110 << std::endl;
+                            return 0;
+                        }
+                    \end{lstlisting}
+
+                    Va a imprimir esto:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        6e
+                    \end{lstlisting}
+
+                    \cite{CPPReference}
+
+            % ============================================
+            % ====          INTRODUCCION  CIN     ========
+            % ============================================
+            \subsection{Introducción a \textCode{std::cin}}
+            
+                Ahora si quieres leer información hacia tu programa puedes hacer algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto a = int{3};
+                    auto b = std::string{"hola"};
+                    std::cin >> a >> b;        
+                \end{lstlisting}
+
+                Y lo que leera sera un entero después un espacio o un salto de línea y luego una cadena de
+                texto hasta el siguiente espacio o salto de línea.
+                
+                Esto es importante, \textCode{cin} lee cada variable hasta un salto de línea o espacio.
 
 
             % ============================================
@@ -4235,6 +4367,9 @@
         https://twitter.com/NicoJosuttis
         
         \textit{Nicolai Josuttis}. 
+
+    \bibitem{CPPReference} 
+        https://en.cppreference.com/
 
 
 \end{thebibliography}
