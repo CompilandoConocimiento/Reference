@@ -2438,7 +2438,7 @@
         % ==========      ENTRADA / SALIDA EN C++        ==========
         % =========================================================
         \clearpage
-        \section{I / 0: La entrada / salida en \Cpp}
+        \section{I/O: La entrada / salida en \Cpp}
 
             % ============================================
             % ====          INTRODUCCION  COUT     ========
@@ -2469,7 +2469,7 @@
 
                 Como te podrás dar cuenta no necesitas indicar el tipo de dato que vamos a imprimir, 
                 basta con que sea \Quote{imprimible}, o mas específicamente que sobrecarge el operador
-                \textCode{\<\<}. 
+                $<<$.
                 
                 Tampoco es necesario que todas las cosas que imprimamos a la vez tengan el mismo tipo de dato.
                 \begin{lstlisting}[language=C++, gobble=20]
@@ -2548,21 +2548,139 @@
             
                 Ahora si quieres leer información hacia tu programa puedes hacer algo como:
                 \begin{lstlisting}[language=C++, gobble=20]
-                    auto a = int{3};
-                    auto b = std::string{"hola"};
-                    std::cin >> a >> b;        
+                    auto a = int{};
+                    auto b = std::string{};
+                    std::cin << a << b;        
                 \end{lstlisting}
 
                 Y lo que leera sera un entero después un espacio o un salto de línea y luego una cadena de
                 texto hasta el siguiente espacio o salto de línea.
+
+                Por ejemplo una entrada a este programa podría ser:
+                \begin{lstlisting}[language=C++, gobble=20]
+                   30 hola
+                \end{lstlisting}
+                \begin{lstlisting}[language=C++, gobble=20]
+                    -1212 elbebe
+                \end{lstlisting}
+                \begin{lstlisting}[language=C++, gobble=20]
+                    0
+                    leilan
+                \end{lstlisting}
                 
                 Esto es importante, \textCode{cin} lee cada variable hasta un salto de línea o espacio.
+
+                Generalmente en programación competiva, siempre en la misma entrada te dan cuantas lineas vas a
+                leer, no se si me explico, algo así:
+                \begin{figure}[h]
+                    \includegraphics[width=0.15\textwidth]{InputExample}
+                    \caption{Ejemplo de alguna entrada a algun problema, la verdad no importa cual realmente}
+                \end{figure}
+
+                Entonces podriamos hacer un código como esto:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <iostream>
+
+                    auto main() -> int {
+                        auto infoToRead = int{};
+                        std::cin >> infoToRead;
+
+                        int a, b;
+                        for (auto i = int{}; i < infoToRead; ++i) {
+                            std::cin >> a >> b;
+                            ...
+                        }
+
+                        return 0;
+                    }
+                \end{lstlisting}
+
+                Pero, ¿Qué es lo que pasa cuando no nos dan eso?
+                Por ejemplo supongamos que tenemos un montón de números:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    1 2 4 6 -10
+                \end{lstlisting}
+
+                Podemos usar este código:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto number = int{};
+                    while (std::cin >> number) {
+                        ...
+                    }
+                \end{lstlisting}
+
+                Esto funciona porque la expresión \textCode{while (std::cin >\/> \; number) } 
+                regresa \textCode{false} solo cuando ya no se puede leer mas.
+
+
+                % ============================================
+                % ====            GETLINE             ========
+                % ============================================
+                \subsubsection{std::getline}
+
+                    Ahora si lo que queremos es leer línea a línea
+                    podemos usar la función: \textCode{std::getline}
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        // syntax: std::getline(input, output);
+
+                        auto name = std::string{};
+                        std::getline(std::cin, name);
+                    \end{lstlisting}
+
+                % ============================================
+                % ====            ISTRINGSTREAM       ========
+                % ============================================
+                \subsubsection{std::istringstream}
+                    
+                    Supongamos que tenemos una montón de listas de números
+                    por ejemplo:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        1 2 4
+                        3 4
+                        2
+                        1 3 3 54 12
+                    \end{lstlisting}
+
+                    Esta entrada tiene 4 listas:
+                    \begin{itemize}
+                        \item 1 2 4
+                        \item 3 4
+                        \item 2
+                        \item 1 3 3 54 12
+                    \end{itemize}
+
+                    Como tienes varias listas no puedes aplicar la de
+                    \textCode{while (std::cin >\/> \; number) } porque aun puede leer más.
+
+                    Por lo que puedes hacer algo como:
+                    \begin{lstlisting}[language=C++, gobble=24]
+                        #include <iostream>
+                        #include <sstream>
+                        #include <vector>
+
+                        auto main() -> int {
+                        auto buffer = std::string {};
+                        while (getline(std::cin, buffer)) {
+                            auto bufferStream = std::istringstream {std::move(buffer)};
+                            
+                            auto list = std::vector<int> {};
+                            auto num = int {};
+                            while (bufferStream >> num) list.push_back(num);
+
+                            ... (use list)
+
+                        }
+                        
+                        return 0;
+                        }
+                    \end{lstlisting}
+
 
 
             % ============================================
             % ====             TEMPLATES        ==========
             % ============================================
-            \subsection{Hacerla lo más rápido posible}
+            \subsection{Hacer la I/O lo más rápido posible}
 
                 Hay dos grandes cosas que puedes hacer para hacer acelerar el entrada y la salida
                 de datos:

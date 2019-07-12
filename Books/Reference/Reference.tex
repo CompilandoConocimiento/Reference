@@ -16,7 +16,7 @@
     \usepackage[utf8]{inputenc}                                     %Please use spanish - UFT
     \usepackage[margin = 0.6in, landscape]{geometry}                %Margins and Geometry pacakge
     \usepackage{ifthen, lipsum}                                     %Allow simple programming
-    \usepackage{hyperref}                                           %Create MetaData for a PDF and LINKS!
+    \usepackage[hidelinks]{hyperref}                                %Allow to create hiperlinks and Fuck Firefox
     \usepackage{pdfpages}                                           %Create MetaData for a PDF and LINKS!
     \hypersetup{pageanchor = false}                                 %Solve 'double page 1' warnings in build
     \setlength{\parindent}{0pt}                                     %Eliminate ugly indentation
@@ -547,7 +547,7 @@
 
                 \subsubsection{Fast input of numbers}
 
-                    \lstinputlisting[language=c++, gobble=24]
+                    \lstinputlisting[language=c++, gobble=20]
                     {../../Code/Tricks/FastNumberInput.cpp}
             
             \subsection{Bits}
@@ -556,8 +556,68 @@
                     \item $x << y = x * 2^y$
                     \item $x >> y = \left \lfloor \dfrac{x}{2^y} \right \rfloor$
                 \end{itemize}
+                    
+                
+        \section{Input}
 
+            \subsection{Precision}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <iomanip>
+                    #include <iostream>
+
+                    auto main() -> int {
+                        using namespace std:
+
+                        auto f = 301.14159;
+                        cout << std::fixed;
+
+                        cout << setprecision(5) << f << '\n';   // 301.14159
+                        cout << setprecision(8) << f << '\n';   //  301.14159000     
+
+                        return 0;
+                    }
+                \end{lstlisting}
+
+            \subsection{Base}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <iostream>     // std::cout, std::endl
+                    #include <iomanip>      // std::setbase
+
+                    int main () {
+                        using namespace std:
+                        cout << std::setbase(16) << 110 << endl;    //6e
+                        return 0;
+                    }
+                \end{lstlisting}
+
+            \subsection{Read list of unknow data}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <iostream>
+                    #include <sstream>
+                    #include <vector>
+
+                    auto main() -> int {
+                        auto buffer = std::string {};
+                        while (getline(std::cin, buffer)) {
+                            auto bufferStream = std::istringstream {std::move(buffer)};
                             
+                            auto list = std::vector<int> {};
+                            auto num = int {};
+                            while (bufferStream >> num) list.push_back(num);
+
+                            ... (use list)
+                        }
+                        
+                    return 0;
+                    }
+                \end{lstlisting}
+
+                        
+
+
 \part{Number Theory}
 
     \chapter{General}

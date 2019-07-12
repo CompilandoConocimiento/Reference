@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  9 JUL 2019 21:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.15)  11 JUL 2019 23:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1010,23 +1010,29 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 556.
- [3] [4]
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [3] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [4] [5]
 Chapter 2.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) [5]
+) [6]
 Chapter 3.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) [6] [7]
+) [7] [8]
 Chapter 4.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) [8] [9]
+) [9] [10]
 Chapter 5.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1034,41 +1040,41 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) [10] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) [11] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
-) [12]
+) [12] (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [13]
 \tf@thm=\write5
 \openout5 = `Reference.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 649.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 649.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 709.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 709.
  (/Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 649.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 649.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 709.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 709.
 Package rerunfilecheck Info: File `Reference.out' has not changed.
-(rerunfilecheck)             Checksum: DE33F2A4E6CC4FEFCF4169E396DD3538;1772.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 649.
+(rerunfilecheck)             Checksum: 1C6D34EBE9B6F64874D6D83BA655870B;2023.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 709.
  ) 
 Here is how much of TeX's memory you used:
- 24604 strings out of 492616
- 422999 string characters out of 6128982
- 908323 words of memory out of 5000000
- 27672 multiletter control sequences out of 15000+600000
+ 24689 strings out of 492616
+ 424562 string characters out of 6128982
+ 908333 words of memory out of 5000000
+ 27704 multiletter control sequences out of 15000+600000
  554535 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,13n,63p,1098b,2470s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,13n,63p,1098b,2472s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx3583.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.pdf (14 pages, 307304 bytes).
+Output written on /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/Reference.pdf (15 pages, 309560 bytes).
 PDF statistics:
- 835 PDF objects out of 1000 (max. 8388607)
- 791 compressed objects within 8 object streams
- 468 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 916 PDF objects out of 1000 (max. 8388607)
+ 870 compressed objects within 9 object streams
+ 515 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
