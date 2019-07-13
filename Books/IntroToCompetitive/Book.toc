@@ -33,180 +33,187 @@
 \contentsline {subsubsection}{Fixed width (int32\_t, uint64\_t, ...)}{32}{section*.11}% 
 \contentsline {subsection}{\numberline {4.2.2}Floating Points: Puntos Flotantes}{33}{subsection.4.2.2}% 
 \contentsline {subsection}{\numberline {4.2.3}Complex: N\IeC {\'u}meros Complejos}{33}{subsection.4.2.3}% 
-\contentsline {section}{\numberline {4.3}Los otros tipos de datos fundamentales}{34}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}void}{34}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}bool}{34}{subsection.4.3.2}% 
-\contentsline {subsubsection}{Cambiar el valor de un bool}{34}{section*.12}% 
-\contentsline {section}{\numberline {4.4}Operadores}{35}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Operadores Aritm\IeC {\'e}ticos}{35}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Divisi\IeC {\'o}n entera}{36}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Lo que hay que saber del m\IeC {\'o}dulo: \texttt {\%} }{36}{subsection.4.4.3}% 
-\contentsline {subsubsection}{La respuesta para los puristas}{36}{section*.13}% 
-\contentsline {subsubsection}{Ejemplos}{36}{section*.14}% 
-\contentsline {subsection}{\numberline {4.4.4}Operadores Relacionales}{38}{subsection.4.4.4}% 
-\contentsline {subsection}{\numberline {4.4.5}Operadores L\IeC {\'o}gicos}{38}{subsection.4.4.5}% 
-\contentsline {subsection}{\numberline {4.4.6}Operadores L\IeC {\'o}gicos bit a bit}{39}{subsection.4.4.6}% 
-\contentsline {section}{\numberline {4.5}Sentencias de Control}{41}{section.4.5}% 
-\contentsline {subsection}{\numberline {4.5.1}Branching: Condicionales}{41}{subsection.4.5.1}% 
-\contentsline {subsubsection}{Condiciones}{42}{section*.15}% 
-\contentsline {subsubsection}{Operador Ternario}{43}{section*.16}% 
-\contentsline {section}{\numberline {4.6}Ciclos}{44}{section.4.6}% 
-\contentsline {subsection}{\numberline {4.6.1}While}{44}{subsection.4.6.1}% 
-\contentsline {subsubsection}{Do while}{44}{section*.17}% 
-\contentsline {subsection}{\numberline {4.6.2}For}{45}{subsection.4.6.2}% 
-\contentsline {subsection}{\numberline {4.6.3}Range for: \texttt {for (auto x : v)} }{45}{subsection.4.6.3}% 
-\contentsline {section}{\numberline {4.7}References and value types}{47}{section.4.7}% 
-\contentsline {subsection}{\numberline {4.7.1}Value types: Variables de valor}{47}{subsection.4.7.1}% 
-\contentsline {subsection}{\numberline {4.7.2}References: Referencias}{47}{subsection.4.7.2}% 
-\contentsline {subsubsection}{Problemas que solucionan}{48}{section*.18}% 
-\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{50}{section*.19}% 
-\contentsline {section}{\numberline {4.8}Funciones}{52}{section.4.8}% 
-\contentsline {subsection}{\numberline {4.8.1}Lambdas}{53}{subsection.4.8.1}% 
-\contentsline {subsubsection}{Lambdas como functors / classes}{54}{section*.20}% 
-\contentsline {section}{\numberline {4.9}Templates}{55}{section.4.9}% 
-\contentsline {section}{\numberline {4.10}I/O: La entrada / salida en \ignorespaces \texttt {C++} }{56}{section.4.10}% 
-\contentsline {subsection}{\numberline {4.10.1}Introducci\IeC {\'o}n a \texttt {std::cout} }{56}{subsection.4.10.1}% 
-\contentsline {subsubsection}{Modificadores}{56}{section*.21}% 
-\contentsline {subsection}{\numberline {4.10.2}Introducci\IeC {\'o}n a \texttt {std::cin} }{57}{subsection.4.10.2}% 
-\contentsline {subsubsection}{std::getline}{59}{section*.22}% 
-\contentsline {subsubsection}{std::istringstream}{59}{section*.23}% 
-\contentsline {subsection}{\numberline {4.10.3}Hacer la I/O lo m\IeC {\'a}s r\IeC {\'a}pido posible}{60}{subsection.4.10.3}% 
-\contentsline {chapter}{\numberline {5}Cosas Avanzadas de \ignorespaces \texttt {C++} }{64}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}using vs typedef}{65}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Sobre inicializar}{66}{section.5.2}% 
-\contentsline {subsubsection}{(AAA) Almost always auto}{66}{section*.24}% 
-\contentsline {section}{\numberline {5.3}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{67}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}const}{68}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}lvalues vs rvalues categories}{69}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}References types: Tipos de referencias}{70}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}lvalue references}{70}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}const lvalue references}{70}{subsection.5.6.2}% 
-\contentsline {subsection}{\numberline {5.6.3}rvalue references}{71}{subsection.5.6.3}% 
-\contentsline {subsection}{\numberline {5.6.4}Universal References / Fowarding References}{72}{subsection.5.6.4}% 
-\contentsline {subsection}{\numberline {5.6.5}auto vs auto\& vs const auto\& vs auto\&\&}{74}{subsection.5.6.5}% 
-\contentsline {subsubsection}{auto decay}{74}{section*.25}% 
-\contentsline {subsubsection}{Modificadores del \texttt {auto} }{75}{section*.26}% 
-\contentsline {subsection}{\numberline {5.6.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{76}{subsection.5.6.6}% 
-\contentsline {section}{\numberline {5.7}Enums}{76}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Semantics}{77}{section.5.8}% 
-\contentsline {subsection}{\numberline {5.8.1}Value Semantics}{77}{subsection.5.8.1}% 
-\contentsline {subsection}{\numberline {5.8.2}Move Semantics}{77}{subsection.5.8.2}% 
-\contentsline {part}{III\hspace {1em}Estructuras de Datos b\IeC {\'a}sicas y los containers en \ignorespaces \texttt {C++} }{79}{part.3}% 
-\contentsline {chapter}{\numberline {6}Introducci\IeC {\'o}n}{80}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Los contendedores en si}{81}{section.6.1}% 
-\contentsline {chapter}{\numberline {7}Arrays}{82}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Una idea abstracta}{83}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}std::array}{83}{section.7.2}% 
-\contentsline {subsection}{\numberline {7.2.1}Inicializaci\IeC {\'o}n}{83}{subsection.7.2.1}% 
-\contentsline {section}{\numberline {7.3}std::vector}{84}{section.7.3}% 
-\contentsline {subsection}{\numberline {7.3.1}Inicializaci\IeC {\'o}n}{84}{subsection.7.3.1}% 
-\contentsline {subsection}{\numberline {7.3.2}Como es que logra autodimensionarse}{84}{subsection.7.3.2}% 
-\contentsline {subsection}{\numberline {7.3.3}Cosas que puedes hacer}{84}{subsection.7.3.3}% 
-\contentsline {subsection}{\numberline {7.3.4}Tips}{84}{subsection.7.3.4}% 
-\contentsline {section}{\numberline {7.4}Algunos problemas cl\IeC {\'a}sicos}{85}{section.7.4}% 
-\contentsline {section}{\numberline {7.5}std::string}{86}{section.7.5}% 
-\contentsline {section}{\numberline {7.6}std::bitset}{86}{section.7.6}% 
-\contentsline {section}{\numberline {7.7}Si quieres un programa r\IeC {\'a}pido: Verdaderos arrays}{87}{section.7.7}% 
-\contentsline {chapter}{\numberline {8}Contenedores heteromorfos}{88}{chapter.8}% 
-\contentsline {section}{\numberline {8.1}std::pair}{89}{section.8.1}% 
-\contentsline {section}{\numberline {8.2}std::tuple}{90}{section.8.2}% 
-\contentsline {chapter}{\numberline {9}Contenedores asociativos}{91}{chapter.9}% 
-\contentsline {section}{\numberline {9.1}std::map}{92}{section.9.1}% 
-\contentsline {subsection}{\numberline {9.1.1}Inicializaci\IeC {\'o}n}{92}{subsection.9.1.1}% 
-\contentsline {subsection}{\numberline {9.1.2}Tips}{92}{subsection.9.1.2}% 
-\contentsline {subsection}{\numberline {9.1.3}std::unordered\_map}{93}{subsection.9.1.3}% 
-\contentsline {chapter}{\numberline {10}Contenedores \IeC {\'u}nicos}{94}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}std::set}{94}{section.10.1}% 
-\contentsline {subsection}{\numberline {10.1.1}std::unordered\_set}{94}{subsection.10.1.1}% 
-\contentsline {chapter}{\numberline {11}Contenedores de orden}{95}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Stacks LIFO: Pilas}{96}{section.11.1}% 
-\contentsline {section}{\numberline {11.2}Queue FIFO: Colas}{97}{section.11.2}% 
-\contentsline {section}{\numberline {11.3}Dequeue: \IeC {\textquestiondown }Porqu\IeC {\'e} no las dos?}{98}{section.11.3}% 
-\contentsline {section}{\numberline {11.4}Heap}{99}{section.11.4}% 
-\contentsline {part}{IV\hspace {1em}Ideas de las Ciencias de la Computaci\IeC {\'o}n}{100}{part.4}% 
-\contentsline {chapter}{\numberline {12}La Complejidad}{101}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Cotas y Notaciones}{101}{section.12.1}% 
-\contentsline {subsection}{\numberline {12.1.1}Big O Notation: Notaci\IeC {\'o}n de O grande}{101}{subsection.12.1.1}% 
-\contentsline {chapter}{\numberline {13}Optimizaci\IeC {\'o}n}{102}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}L\IeC {\'\i }mites de Tiempo de Ejecuci\IeC {\'o}n}{102}{section.13.1}% 
-\contentsline {section}{\numberline {13.2}L\IeC {\'\i }mites de Memoria}{102}{section.13.2}% 
-\contentsline {chapter}{\numberline {14}Problemas NP}{103}{chapter.14}% 
-\contentsline {part}{V\hspace {1em}Algoritmos Generales y std::algorithms}{104}{part.5}% 
-\contentsline {chapter}{\numberline {15}No lo hagas tu todo desde cero: std::algorithms}{105}{chapter.15}% 
-\contentsline {chapter}{\numberline {16}Search: B\IeC {\'u}squedas}{106}{chapter.16}% 
-\contentsline {section}{\numberline {16.1}Linear Search: B\IeC {\'u}squeda Lineal}{106}{section.16.1}% 
-\contentsline {section}{\numberline {16.2}Binary Search: B\IeC {\'u}squeda Binaria}{106}{section.16.2}% 
-\contentsline {section}{\numberline {16.3}Ternary Search: B\IeC {\'u}squeda Ternaria}{106}{section.16.3}% 
-\contentsline {section}{\numberline {16.4}Upper Bound}{106}{section.16.4}% 
-\contentsline {section}{\numberline {16.5}Lower Bound}{106}{section.16.5}% 
-\contentsline {chapter}{\numberline {17}Sorting: Ordenamiento por Comparaciones}{107}{chapter.17}% 
-\contentsline {section}{\numberline {17.1}Merge Sort}{107}{section.17.1}% 
-\contentsline {section}{\numberline {17.2}Quick Sort}{107}{section.17.2}% 
-\contentsline {section}{\numberline {17.3}Stable Sort}{107}{section.17.3}% 
-\contentsline {section}{\numberline {17.4}Partial Sort}{107}{section.17.4}% 
-\contentsline {chapter}{\numberline {18}Sorting: Ordenamiento NO por Comparaciones}{108}{chapter.18}% 
-\contentsline {section}{\numberline {18.1}Bucket Sort}{108}{section.18.1}% 
-\contentsline {part}{VI\hspace {1em}T\IeC {\'e}cnicas de Soluci\IeC {\'o}n}{109}{part.6}% 
-\contentsline {chapter}{\numberline {19}Ad-Hoc}{110}{chapter.19}% 
-\contentsline {chapter}{\numberline {20}Recursividad y BackTracking}{111}{chapter.20}% 
-\contentsline {chapter}{\numberline {21}Divide and Conquer: Divide y Vencer\IeC {\'a}s}{112}{chapter.21}% 
-\contentsline {chapter}{\numberline {22}Greedy}{113}{chapter.22}% 
-\contentsline {chapter}{\numberline {23}Programaci\IeC {\'o}n Din\IeC {\'a}mica}{114}{chapter.23}% 
-\contentsline {part}{VII\hspace {1em}Programaci\IeC {\'o}n es solo matem\IeC {\'a}ticas aplicadas}{115}{part.7}% 
-\contentsline {chapter}{\numberline {24}Binary: Explotando el Binario}{116}{chapter.24}% 
-\contentsline {section}{\numberline {24.1}Bits}{117}{section.24.1}% 
-\contentsline {subsection}{\numberline {24.1.1}Introducci\IeC {\'o}n}{117}{subsection.24.1.1}% 
-\contentsline {subsection}{\numberline {24.1.2}Manejo de Bits: Utilidades que podemos hacer con ellos}{117}{subsection.24.1.2}% 
-\contentsline {subsubsection}{Mascara de bits}{117}{section*.27}% 
-\contentsline {section}{\numberline {24.2}Conversiones entre Sistemas (HEX, OCT)}{117}{section.24.2}% 
-\contentsline {section}{\numberline {24.3}Binary Exponentiation: Exponenciacion Binaria}{117}{section.24.3}% 
-\contentsline {section}{\numberline {24.4}Binary Multiplication: Multiplicaci\IeC {\'o}n Binaria}{117}{section.24.4}% 
-\contentsline {chapter}{\numberline {25}Hash y manejo de strings}{118}{chapter.25}% 
-\contentsline {chapter}{\numberline {26}Roots: Encontrar Ra\IeC {\'\i }ces de ecuaciones}{119}{chapter.26}% 
-\contentsline {section}{\numberline {26.1}Newton - Ranphson}{119}{section.26.1}% 
-\contentsline {chapter}{\numberline {27}Teor\IeC {\'\i }a de N\IeC {\'u}meros}{120}{chapter.27}% 
-\contentsline {section}{\numberline {27.1}Divisibilidad}{121}{section.27.1}% 
-\contentsline {subsection}{\numberline {27.1.1}Euclides}{121}{subsection.27.1.1}% 
-\contentsline {subsection}{\numberline {27.1.2}Criterios de Divisibilidad}{121}{subsection.27.1.2}% 
-\contentsline {section}{\numberline {27.2}Modulos}{121}{section.27.2}% 
-\contentsline {section}{\numberline {27.3}Fibonacci}{121}{section.27.3}% 
-\contentsline {section}{\numberline {27.4}N\IeC {\'u}meros de Catal\IeC {\'a}n}{121}{section.27.4}% 
-\contentsline {section}{\numberline {27.5}Primos y Factores}{121}{section.27.5}% 
-\contentsline {subsection}{\numberline {27.5.1}Eratosthenes Sieve: Criba de Erat\IeC {\'o}stenes}{121}{subsection.27.5.1}% 
-\contentsline {subsection}{\numberline {27.5.2}Prime Factorization: Factorizaci\IeC {\'o}n}{121}{subsection.27.5.2}% 
-\contentsline {subsection}{\numberline {27.5.3}Divisores}{121}{subsection.27.5.3}% 
-\contentsline {subsection}{\numberline {27.5.4}Euler Totient: La Phi de Euler}{121}{subsection.27.5.4}% 
-\contentsline {section}{\numberline {27.6}Factoriales}{121}{section.27.6}% 
-\contentsline {section}{\numberline {27.7}Digit Sum}{121}{section.27.7}% 
-\contentsline {chapter}{\numberline {28}Probabilidad}{122}{chapter.28}% 
-\contentsline {section}{\numberline {28.1}Inclusi\IeC {\'o}n Exclusi\IeC {\'o}n}{122}{section.28.1}% 
-\contentsline {section}{\numberline {28.2}Permutaciones y combinaciones}{122}{section.28.2}% 
-\contentsline {chapter}{\numberline {29}C\IeC {\'a}lculo}{123}{chapter.29}% 
-\contentsline {section}{\numberline {29.1}Series aritm\IeC {\'e}tica y geom\IeC {\'e}tricas}{123}{section.29.1}% 
-\contentsline {chapter}{\numberline {30}Geometr\IeC {\'\i }a}{124}{chapter.30}% 
-\contentsline {part}{VIII\hspace {1em}Estructuras de Datos Avanzadas}{125}{part.8}% 
-\contentsline {chapter}{\numberline {31}Pointers: Apuntadores}{126}{chapter.31}% 
-\contentsline {section}{\numberline {31.1}Pointers (C Style)}{127}{section.31.1}% 
-\contentsline {section}{\numberline {31.2}Smart pointers}{128}{section.31.2}% 
-\contentsline {chapter}{\numberline {32}Tipos de datos definidos por nosotros}{129}{chapter.32}% 
-\contentsline {section}{\numberline {32.1}class \& structs}{130}{section.32.1}% 
-\contentsline {section}{\numberline {32.2}RAII}{131}{section.32.2}% 
-\contentsline {section}{\numberline {32.3}const methods}{132}{section.32.3}% 
-\contentsline {chapter}{\numberline {33}Linked Lists: Listas Enlazadas}{133}{chapter.33}% 
-\contentsline {chapter}{\numberline {34}Binary Trees: Arboles Binarios}{134}{chapter.34}% 
-\contentsline {section}{\numberline {34.1}BTS: Arboles de B\IeC {\'u}squeda}{134}{section.34.1}% 
-\contentsline {section}{\numberline {34.2}AVL - RedBlackTree: Arboles Autobalanceables}{134}{section.34.2}% 
-\contentsline {section}{\numberline {34.3}Trie}{134}{section.34.3}% 
-\contentsline {section}{\numberline {34.4}LCA: Last common ancestor}{134}{section.34.4}% 
-\contentsline {chapter}{\numberline {35}Segment Tree}{135}{chapter.35}% 
-\contentsline {section}{\numberline {35.1}Ideas principales}{135}{section.35.1}% 
-\contentsline {section}{\numberline {35.2}FenwickTree / BIT: Binary Indexed Tree}{136}{section.35.2}% 
-\contentsline {section}{\numberline {35.3}Problema de motivaci\IeC {\'o}n: Prefix sums with update}{136}{section.35.3}% 
-\contentsline {section}{\numberline {35.4}LSB}{136}{section.35.4}% 
-\contentsline {part}{IX\hspace {1em}Grafos y Flujos}{137}{part.9}% 
-\contentsline {chapter}{\numberline {36}Grafos y Gr\IeC {\'a}ficas}{138}{chapter.36}% 
-\contentsline {section}{\numberline {36.1}Representaciones}{138}{section.36.1}% 
-\contentsline {section}{\numberline {36.2}BFS: Breadth-first Search}{138}{section.36.2}% 
-\contentsline {section}{\numberline {36.3}DFS: Depth-first Search}{138}{section.36.3}% 
-\contentsline {section}{\numberline {36.4}Dijsktra: Camino m\IeC {\'a}s cercano}{138}{section.36.4}% 
-\contentsline {section}{\numberline {36.5}Union Find / DSU: Disjoint Set Union}{139}{section.36.5}% 
+\contentsline {subsection}{\numberline {4.2.4}Utilidades}{34}{subsection.4.2.4}% 
+\contentsline {section}{\numberline {4.3}Los otros tipos de datos fundamentales}{35}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}void}{35}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}bool}{35}{subsection.4.3.2}% 
+\contentsline {subsubsection}{Cambiar el valor de un bool}{35}{section*.12}% 
+\contentsline {section}{\numberline {4.4}Operadores}{36}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Operadores Aritm\IeC {\'e}ticos}{36}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Divisi\IeC {\'o}n entera}{37}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Lo que hay que saber del m\IeC {\'o}dulo: \texttt {\%} }{37}{subsection.4.4.3}% 
+\contentsline {subsubsection}{La respuesta para los puristas}{37}{section*.13}% 
+\contentsline {subsubsection}{Ejemplos}{37}{section*.14}% 
+\contentsline {subsection}{\numberline {4.4.4}Operadores Relacionales}{39}{subsection.4.4.4}% 
+\contentsline {subsection}{\numberline {4.4.5}Operadores L\IeC {\'o}gicos}{39}{subsection.4.4.5}% 
+\contentsline {subsection}{\numberline {4.4.6}Operadores L\IeC {\'o}gicos bit a bit}{40}{subsection.4.4.6}% 
+\contentsline {section}{\numberline {4.5}Sentencias de Control}{42}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Branching: Condicionales}{42}{subsection.4.5.1}% 
+\contentsline {subsubsection}{Condiciones}{43}{section*.15}% 
+\contentsline {subsubsection}{Operador Ternario}{44}{section*.16}% 
+\contentsline {section}{\numberline {4.6}Ciclos}{45}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}While}{45}{subsection.4.6.1}% 
+\contentsline {subsubsection}{Do while}{45}{section*.17}% 
+\contentsline {subsection}{\numberline {4.6.2}For}{46}{subsection.4.6.2}% 
+\contentsline {subsection}{\numberline {4.6.3}Range for: \texttt {for (auto x : v)} }{46}{subsection.4.6.3}% 
+\contentsline {section}{\numberline {4.7}References and value types}{48}{section.4.7}% 
+\contentsline {subsection}{\numberline {4.7.1}Value types: Variables de valor}{48}{subsection.4.7.1}% 
+\contentsline {subsection}{\numberline {4.7.2}References: Referencias}{48}{subsection.4.7.2}% 
+\contentsline {subsubsection}{Problemas que solucionan}{49}{section*.18}% 
+\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{51}{section*.19}% 
+\contentsline {section}{\numberline {4.8}Funciones}{53}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}Tips}{53}{section.4.9}% 
+\contentsline {subsection}{\numberline {4.9.1}Lambdas}{55}{subsection.4.9.1}% 
+\contentsline {subsubsection}{Lambdas como functors / classes}{56}{section*.20}% 
+\contentsline {section}{\numberline {4.10}Templates}{57}{section.4.10}% 
+\contentsline {subsection}{\numberline {4.10.1}Sintaxis}{58}{subsection.4.10.1}% 
+\contentsline {subsection}{\numberline {4.10.2}Valores por defecto a la hora de declararlas}{59}{subsection.4.10.2}% 
+\contentsline {subsection}{\numberline {4.10.3}Parametrizar cosas que no son \texttt {type} }{60}{subsection.4.10.3}% 
+\contentsline {section}{\numberline {4.11}I/O: La entrada / salida en \ignorespaces \texttt {C++} }{61}{section.4.11}% 
+\contentsline {subsection}{\numberline {4.11.1}Introducci\IeC {\'o}n a \texttt {std::cout} }{61}{subsection.4.11.1}% 
+\contentsline {subsubsection}{Modificadores}{61}{section*.21}% 
+\contentsline {subsection}{\numberline {4.11.2}Introducci\IeC {\'o}n a \texttt {std::cin} }{62}{subsection.4.11.2}% 
+\contentsline {subsubsection}{std::getline}{64}{section*.22}% 
+\contentsline {subsubsection}{std::istringstream}{64}{section*.23}% 
+\contentsline {subsection}{\numberline {4.11.3}Hacer la I/O lo m\IeC {\'a}s r\IeC {\'a}pido posible}{65}{subsection.4.11.3}% 
+\contentsline {chapter}{\numberline {5}Cosas Avanzadas de \ignorespaces \texttt {C++} }{68}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}using}{69}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Sobre inicializar}{70}{section.5.2}% 
+\contentsline {subsubsection}{(AAA) Almost always auto}{70}{section*.24}% 
+\contentsline {section}{\numberline {5.3}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{71}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}const}{72}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}lvalues vs rvalues categories}{73}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}References types: Tipos de referencias}{74}{section.5.6}% 
+\contentsline {subsection}{\numberline {5.6.1}lvalue references}{74}{subsection.5.6.1}% 
+\contentsline {subsection}{\numberline {5.6.2}const lvalue references}{74}{subsection.5.6.2}% 
+\contentsline {subsection}{\numberline {5.6.3}rvalue references}{75}{subsection.5.6.3}% 
+\contentsline {subsection}{\numberline {5.6.4}Universal References / Fowarding References}{76}{subsection.5.6.4}% 
+\contentsline {subsection}{\numberline {5.6.5}auto vs auto\& vs const auto\& vs auto\&\&}{78}{subsection.5.6.5}% 
+\contentsline {subsubsection}{auto decay}{78}{section*.25}% 
+\contentsline {subsubsection}{Modificadores del \texttt {auto} }{79}{section*.26}% 
+\contentsline {subsection}{\numberline {5.6.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{80}{subsection.5.6.6}% 
+\contentsline {section}{\numberline {5.7}Enums}{80}{section.5.7}% 
+\contentsline {section}{\numberline {5.8}Semantics}{81}{section.5.8}% 
+\contentsline {subsection}{\numberline {5.8.1}Value Semantics}{81}{subsection.5.8.1}% 
+\contentsline {subsection}{\numberline {5.8.2}Move Semantics}{81}{subsection.5.8.2}% 
+\contentsline {part}{III\hspace {1em}Estructuras de Datos b\IeC {\'a}sicas y los containers en \ignorespaces \texttt {C++} }{83}{part.3}% 
+\contentsline {chapter}{\numberline {6}Introducci\IeC {\'o}n}{84}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Los contendedores en si}{85}{section.6.1}% 
+\contentsline {chapter}{\numberline {7}Arrays}{86}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Una idea abstracta}{87}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}std::array}{87}{section.7.2}% 
+\contentsline {subsection}{\numberline {7.2.1}Inicializaci\IeC {\'o}n}{87}{subsection.7.2.1}% 
+\contentsline {section}{\numberline {7.3}std::vector}{88}{section.7.3}% 
+\contentsline {subsection}{\numberline {7.3.1}Inicializaci\IeC {\'o}n}{88}{subsection.7.3.1}% 
+\contentsline {subsection}{\numberline {7.3.2}Como es que logra autodimensionarse}{88}{subsection.7.3.2}% 
+\contentsline {subsection}{\numberline {7.3.3}Cosas que puedes hacer}{88}{subsection.7.3.3}% 
+\contentsline {subsection}{\numberline {7.3.4}Tips}{88}{subsection.7.3.4}% 
+\contentsline {section}{\numberline {7.4}Algunos problemas cl\IeC {\'a}sicos}{89}{section.7.4}% 
+\contentsline {section}{\numberline {7.5}std::string}{90}{section.7.5}% 
+\contentsline {section}{\numberline {7.6}std::bitset}{90}{section.7.6}% 
+\contentsline {section}{\numberline {7.7}Si quieres un programa r\IeC {\'a}pido: Verdaderos arrays}{91}{section.7.7}% 
+\contentsline {chapter}{\numberline {8}Contenedores heteromorfos}{92}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}std::pair}{93}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}std::tuple}{94}{section.8.2}% 
+\contentsline {chapter}{\numberline {9}Contenedores asociativos}{95}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}std::map}{96}{section.9.1}% 
+\contentsline {subsection}{\numberline {9.1.1}Inicializaci\IeC {\'o}n}{96}{subsection.9.1.1}% 
+\contentsline {subsection}{\numberline {9.1.2}Tips}{96}{subsection.9.1.2}% 
+\contentsline {subsection}{\numberline {9.1.3}std::unordered\_map}{97}{subsection.9.1.3}% 
+\contentsline {chapter}{\numberline {10}Contenedores \IeC {\'u}nicos}{98}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}std::set}{98}{section.10.1}% 
+\contentsline {subsection}{\numberline {10.1.1}std::unordered\_set}{98}{subsection.10.1.1}% 
+\contentsline {chapter}{\numberline {11}Contenedores de orden}{99}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Stacks LIFO: Pilas}{100}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Queue FIFO: Colas}{101}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}Dequeue: \IeC {\textquestiondown }Porqu\IeC {\'e} no las dos?}{102}{section.11.3}% 
+\contentsline {section}{\numberline {11.4}Heap}{103}{section.11.4}% 
+\contentsline {part}{IV\hspace {1em}Ideas de las Ciencias de la Computaci\IeC {\'o}n}{104}{part.4}% 
+\contentsline {chapter}{\numberline {12}La Complejidad}{105}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Cotas y Notaciones}{105}{section.12.1}% 
+\contentsline {subsection}{\numberline {12.1.1}Big O Notation: Notaci\IeC {\'o}n de O grande}{105}{subsection.12.1.1}% 
+\contentsline {chapter}{\numberline {13}Optimizaci\IeC {\'o}n}{106}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}L\IeC {\'\i }mites de Tiempo de Ejecuci\IeC {\'o}n}{106}{section.13.1}% 
+\contentsline {section}{\numberline {13.2}L\IeC {\'\i }mites de Memoria}{106}{section.13.2}% 
+\contentsline {chapter}{\numberline {14}Problemas NP}{107}{chapter.14}% 
+\contentsline {part}{V\hspace {1em}Algoritmos Generales y std::algorithms}{108}{part.5}% 
+\contentsline {chapter}{\numberline {15}No lo hagas tu todo desde cero: std::algorithms}{109}{chapter.15}% 
+\contentsline {chapter}{\numberline {16}Search: B\IeC {\'u}squedas}{110}{chapter.16}% 
+\contentsline {section}{\numberline {16.1}Linear Search: B\IeC {\'u}squeda Lineal}{110}{section.16.1}% 
+\contentsline {section}{\numberline {16.2}Binary Search: B\IeC {\'u}squeda Binaria}{110}{section.16.2}% 
+\contentsline {section}{\numberline {16.3}Ternary Search: B\IeC {\'u}squeda Ternaria}{110}{section.16.3}% 
+\contentsline {section}{\numberline {16.4}Upper Bound}{110}{section.16.4}% 
+\contentsline {section}{\numberline {16.5}Lower Bound}{110}{section.16.5}% 
+\contentsline {chapter}{\numberline {17}Sorting: Ordenamiento por Comparaciones}{111}{chapter.17}% 
+\contentsline {section}{\numberline {17.1}Merge Sort}{111}{section.17.1}% 
+\contentsline {section}{\numberline {17.2}Quick Sort}{111}{section.17.2}% 
+\contentsline {section}{\numberline {17.3}Stable Sort}{111}{section.17.3}% 
+\contentsline {section}{\numberline {17.4}Partial Sort}{111}{section.17.4}% 
+\contentsline {chapter}{\numberline {18}Sorting: Ordenamiento NO por Comparaciones}{112}{chapter.18}% 
+\contentsline {section}{\numberline {18.1}Bucket Sort}{112}{section.18.1}% 
+\contentsline {part}{VI\hspace {1em}T\IeC {\'e}cnicas de Soluci\IeC {\'o}n}{113}{part.6}% 
+\contentsline {chapter}{\numberline {19}Ad-Hoc}{114}{chapter.19}% 
+\contentsline {chapter}{\numberline {20}Recursividad y BackTracking}{115}{chapter.20}% 
+\contentsline {chapter}{\numberline {21}Divide and Conquer: Divide y Vencer\IeC {\'a}s}{116}{chapter.21}% 
+\contentsline {chapter}{\numberline {22}Greedy}{117}{chapter.22}% 
+\contentsline {chapter}{\numberline {23}Programaci\IeC {\'o}n Din\IeC {\'a}mica}{118}{chapter.23}% 
+\contentsline {part}{VII\hspace {1em}Programaci\IeC {\'o}n es solo matem\IeC {\'a}ticas aplicadas}{119}{part.7}% 
+\contentsline {chapter}{\numberline {24}Binary: Explotando el Binario}{120}{chapter.24}% 
+\contentsline {section}{\numberline {24.1}Bits}{121}{section.24.1}% 
+\contentsline {subsection}{\numberline {24.1.1}Introducci\IeC {\'o}n}{121}{subsection.24.1.1}% 
+\contentsline {subsection}{\numberline {24.1.2}Manejo de Bits: Utilidades que podemos hacer con ellos}{121}{subsection.24.1.2}% 
+\contentsline {subsubsection}{Mascara de bits}{121}{section*.27}% 
+\contentsline {section}{\numberline {24.2}Conversiones entre Sistemas (HEX, OCT)}{121}{section.24.2}% 
+\contentsline {section}{\numberline {24.3}Binary Exponentiation: Exponenciacion Binaria}{121}{section.24.3}% 
+\contentsline {section}{\numberline {24.4}Binary Multiplication: Multiplicaci\IeC {\'o}n Binaria}{121}{section.24.4}% 
+\contentsline {chapter}{\numberline {25}Hash y manejo de strings}{122}{chapter.25}% 
+\contentsline {chapter}{\numberline {26}Roots: Encontrar Ra\IeC {\'\i }ces de ecuaciones}{123}{chapter.26}% 
+\contentsline {section}{\numberline {26.1}Newton - Ranphson}{123}{section.26.1}% 
+\contentsline {chapter}{\numberline {27}Teor\IeC {\'\i }a de N\IeC {\'u}meros}{124}{chapter.27}% 
+\contentsline {section}{\numberline {27.1}Divisibilidad}{125}{section.27.1}% 
+\contentsline {subsection}{\numberline {27.1.1}Euclides}{125}{subsection.27.1.1}% 
+\contentsline {subsection}{\numberline {27.1.2}Criterios de Divisibilidad}{125}{subsection.27.1.2}% 
+\contentsline {section}{\numberline {27.2}Modulos}{125}{section.27.2}% 
+\contentsline {section}{\numberline {27.3}Fibonacci}{125}{section.27.3}% 
+\contentsline {section}{\numberline {27.4}N\IeC {\'u}meros de Catal\IeC {\'a}n}{125}{section.27.4}% 
+\contentsline {section}{\numberline {27.5}Primos y Factores}{125}{section.27.5}% 
+\contentsline {subsection}{\numberline {27.5.1}Eratosthenes Sieve: Criba de Erat\IeC {\'o}stenes}{125}{subsection.27.5.1}% 
+\contentsline {subsection}{\numberline {27.5.2}Prime Factorization: Factorizaci\IeC {\'o}n}{125}{subsection.27.5.2}% 
+\contentsline {subsection}{\numberline {27.5.3}Divisores}{125}{subsection.27.5.3}% 
+\contentsline {subsection}{\numberline {27.5.4}Euler Totient: La Phi de Euler}{125}{subsection.27.5.4}% 
+\contentsline {section}{\numberline {27.6}Factoriales}{125}{section.27.6}% 
+\contentsline {section}{\numberline {27.7}Digit Sum}{125}{section.27.7}% 
+\contentsline {chapter}{\numberline {28}Probabilidad}{126}{chapter.28}% 
+\contentsline {section}{\numberline {28.1}Inclusi\IeC {\'o}n Exclusi\IeC {\'o}n}{126}{section.28.1}% 
+\contentsline {section}{\numberline {28.2}Permutaciones y combinaciones}{126}{section.28.2}% 
+\contentsline {chapter}{\numberline {29}C\IeC {\'a}lculo}{127}{chapter.29}% 
+\contentsline {section}{\numberline {29.1}Series aritm\IeC {\'e}tica y geom\IeC {\'e}tricas}{127}{section.29.1}% 
+\contentsline {chapter}{\numberline {30}Geometr\IeC {\'\i }a}{128}{chapter.30}% 
+\contentsline {part}{VIII\hspace {1em}Estructuras de Datos Avanzadas}{129}{part.8}% 
+\contentsline {chapter}{\numberline {31}Pointers: Apuntadores}{130}{chapter.31}% 
+\contentsline {section}{\numberline {31.1}Pointers (C Style)}{131}{section.31.1}% 
+\contentsline {section}{\numberline {31.2}Smart pointers}{132}{section.31.2}% 
+\contentsline {chapter}{\numberline {32}Tipos de datos definidos por nosotros}{133}{chapter.32}% 
+\contentsline {section}{\numberline {32.1}class \& structs}{134}{section.32.1}% 
+\contentsline {section}{\numberline {32.2}RAII}{135}{section.32.2}% 
+\contentsline {section}{\numberline {32.3}const methods}{136}{section.32.3}% 
+\contentsline {section}{\numberline {32.4}Declaraci\IeC {\'o}n e implementaci\IeC {\'o}n separadas}{137}{section.32.4}% 
+\contentsline {section}{\numberline {32.5}Template Specialization}{138}{section.32.5}% 
+\contentsline {chapter}{\numberline {33}Linked Lists: Listas Enlazadas}{139}{chapter.33}% 
+\contentsline {chapter}{\numberline {34}Binary Trees: Arboles Binarios}{140}{chapter.34}% 
+\contentsline {section}{\numberline {34.1}BTS: Arboles de B\IeC {\'u}squeda}{140}{section.34.1}% 
+\contentsline {section}{\numberline {34.2}AVL - RedBlackTree: Arboles Autobalanceables}{140}{section.34.2}% 
+\contentsline {section}{\numberline {34.3}Trie}{140}{section.34.3}% 
+\contentsline {section}{\numberline {34.4}LCA: Last common ancestor}{140}{section.34.4}% 
+\contentsline {chapter}{\numberline {35}Segment Tree}{141}{chapter.35}% 
+\contentsline {section}{\numberline {35.1}Ideas principales}{141}{section.35.1}% 
+\contentsline {section}{\numberline {35.2}FenwickTree / BIT: Binary Indexed Tree}{142}{section.35.2}% 
+\contentsline {section}{\numberline {35.3}Problema de motivaci\IeC {\'o}n: Prefix sums with update}{142}{section.35.3}% 
+\contentsline {section}{\numberline {35.4}LSB}{142}{section.35.4}% 
+\contentsline {part}{IX\hspace {1em}Grafos y Flujos}{143}{part.9}% 
+\contentsline {chapter}{\numberline {36}Grafos y Gr\IeC {\'a}ficas}{144}{chapter.36}% 
+\contentsline {section}{\numberline {36.1}Representaciones}{144}{section.36.1}% 
+\contentsline {section}{\numberline {36.2}BFS: Breadth-first Search}{144}{section.36.2}% 
+\contentsline {section}{\numberline {36.3}DFS: Depth-first Search}{144}{section.36.3}% 
+\contentsline {section}{\numberline {36.4}Dijsktra: Camino m\IeC {\'a}s cercano}{144}{section.36.4}% 
+\contentsline {section}{\numberline {36.5}Union Find / DSU: Disjoint Set Union}{145}{section.36.5}% 

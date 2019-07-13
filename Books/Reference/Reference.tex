@@ -533,7 +533,18 @@
                     uint64_t likeLong {};
                 \end{lstlisting}
 
-            
+            \subsection{Max \& min}
+
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <limits>       // std::numeric_limits
+                    
+                    int main () {
+                        const auto minVal = std::numeric_limits<int>::min();
+                        const auto maxVal = std::numeric_limits<int>::max();
+                        return 0;
+                    }
+                \end{lstlisting}
+
 
             \subsection{Fast I / O}
 
@@ -614,9 +625,6 @@
                     return 0;
                     }
                 \end{lstlisting}
-
-                        
-
 
 \part{Number Theory}
 

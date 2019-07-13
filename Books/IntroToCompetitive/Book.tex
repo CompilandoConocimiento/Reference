@@ -1398,6 +1398,30 @@
                 Nunca lo he ocupado de manera personal y no creo que sea el momento, en un texto introductorio
                 de \Cpp, pero si un día lo necesitas, recuerda que \Cpp ya lo tiene integrado.
 
+
+            % ============================================
+            % =============   UTILIDADES     =============
+            % ============================================
+            \clearpage
+            \subsection{Utilidades}
+
+                Puedes obtener el máximo y el mínimo de cualquier tipo de dato entero así:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    #include <iostream>     // std::cout
+                    #include <limits>       // std::numeric_limits
+
+                    int main () {
+                        const auto minVal = std::numeric_limits<int>::min();
+                        const auto maxVal = std::numeric_limits<int>::max();
+                        
+                        std::cout << "Minimum value for int: " << minVal << '\n';
+                        std::cout << "Maximum value for int: " << maxVal << '\n';
+                        
+                        return 0;
+                    }
+                \end{lstlisting}
+            
+
             
         % =========================================================
         % ======           OTROS TIPOS DE DATOS            ========
@@ -2308,6 +2332,48 @@
 
             Ademas hace que todo vaya mas en sintonía con las lambdas.
 
+            % =========================================================
+            % ==========            TEMPLATES                ==========
+            % =========================================================
+            \section{Tips}
+
+                \begin{itemize}
+                    \item \textCode{inline}
+
+                        Si tu función es algo que podrías reemplazar en donde la llamaste, 
+                        algo como: 
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // Before
+                            #include <iostream> 
+                            auto cube(int s) { return s * s * s; } 
+                            
+                            int main() { 
+                                std::cout << "The cube of 3 is: " << cube(3) << "\n"; 
+                                return 0; 
+                            }
+                        \end{lstlisting}
+
+                        Entonces puedes usar \textCode{inline} que lo que hace es darle una pista al compilador
+                        de que ni siquiera haga todo el proceso de llamar a la función sino simplemente copie y
+                        pegue su contenido.
+
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            // After
+                            #include <iostream> 
+                            inline auto cube(int s) { return s * s * s; } 
+                            
+                            int main() { 
+                                std::cout << "The cube of 3 is: " << cube(3) << "\n";
+                                // Same as:
+                                std::cout << "The cube of 3 is: " << 3 * 3 * 3 << "\n";
+
+                                return 0; 
+                            }
+                        \end{lstlisting}
+
+
+                \end{itemize}
+
             
             % ============================================
             % ====             LAMBDAS          ==========
@@ -2432,6 +2498,192 @@
         \clearpage
         \section{Templates}
 
+            Uno de los temas más importante en este sección es hablar sobre esto.
+            Primero te mostraré un problema:
+
+            Supongamos que quieres hacer una función llamada ReLU, algo como:
+            \begin{figure}[h]
+                \includegraphics[width=0.5\textwidth]{ReLU}
+                \caption{ReLU: Rectified Linear Unit - una función usada en el machine learning}
+            \end{figure}
+
+            Podiamos implementarla así:
+            \begin{lstlisting}[language=C++, gobble=16]
+                double ReLU(double input) {
+                    return input > 0? input : 0;
+                }
+            \end{lstlisting}
+
+            Ahora, supongamos que tenemos que soportar que esta función acepte
+            \textCode{int, float, etc...}. ¿Qué hacemos? ¿hacer 3 funciones iguales?
+
+            Si estas con la mentalidad de C entonces puedes pensar:
+            \begin{lstlisting}[language=C++, gobble=16]
+                // FUCK*NG MACROS!
+                #define ReLU(a)((a) > 0? (a) : 0)
+            \end{lstlisting}
+
+            Pero... primero que nada, esto se ve horrible, y segundo, no estas creando una función 
+            sino esta haciendo un reemplazo de texto, por lo que puede que pasen cosas medio raras:
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto a = 3.0;
+                auto result = ReLU(a);  // Works result = 3
+                //same as:
+                auto result = (a) > 0? (a) : 0;  
+            \end{lstlisting}
+
+            Pero que pasa si pongo esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto a = 3.0;
+                auto result = ReLU(++a);  // Not works result = 5 WTF!!!!
+                //same as:
+                auto result = (++a) > 0? (++a) : 0;  
+            \end{lstlisting}
+
+            Así que no, macros no.
+            Te presento \textCode{templates} que lo que nos permite es parametrizar una función (en el futuro
+            te enseñare a hacerlo con una clase / struct).
+
+            Esto es útil si lo que tenemos son muchas funciones que hacen exactamente lo mismo pero 
+            que cambian con el tipo de dato que reciben.
+            \begin{lstlisting}[language=C++, gobble=16]
+                template <typename number>
+                number ReLU(number input) {
+                    return input > 0? input : 0;
+                }
+            \end{lstlisting}
+
+            Para usarlas esta es la sintaxis:
+            \begin{lstlisting}[language=C++, gobble=16]
+                int main () {
+                    int a = 3.5;
+                    int result1 = ReLU<int>(a);  // complete name
+                    int result2 = ReLU(a);       // Let the compiler do the work
+                }
+            \end{lstlisting}
+
+            Algo importante es que todo este proceso se hace en tiempo de compilación por lo que no hace tu programa
+            mas lento, además tienes al compilador de tu lado, por lo que si tienes un error el compilador puede ayudarte
+            a encontrarlo.
+
+            Puedes pensar que lo que hacemos al declarar un \textCode{template} es como hacer una plantilla
+            para funciones, ahora cuando hacemos la línea: \textCode{int result1 = ReLU<int>(a)}
+            el compilador dice, mira necesitamos una función donde \textCode{number = int}, es decir tras bambalinas
+            el compilador crea una función como esta, reemplazando \textCode{number} con \textCode{int}
+            \begin{lstlisting}[language=C++, gobble=16]
+                int ReLU(int input) {
+                    return input > 0? input : 0;
+                }
+            \end{lstlisting}
+
+            Si te das cuenta la sintaxis es bastante sencilla, pero aun asi vamos a explicarla con más detalle, pues
+            fue de las cosas que mas me costo y la verdad es que no hay muchos lenguajes que tienen esta sintaxis.
+
+            % ============================================
+            % ====               SINTAXIS       ==========
+            % ============================================
+            \subsection{Sintaxis}
+
+                Una \textCode{template} tiene esta sintaxis:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    // template a function
+                    template <typename type1, typename type2, typename type3...>
+                    auto someFunction(...) {
+                        ...
+                    }
+
+                    // template a class / struct
+                    template <typename type1, typename type2, typename type3...>
+                    class / struct someName {
+                        ...
+                    }
+                \end{lstlisting}
+
+                Ahora, ¿Qué es lo que hace esto? Pues lo que permite dependiendo del tipo 
+                de dato que necesitemos el compilador generar por nosotros tantas versiones de esta función / programa
+                como necesitemos.
+
+                Ahora, la linea \textCode{template <typename type1, typename type2, typename type3...>} 
+                tiene que ir justo antes del inicio de una función o una clase y solo afectara a es clase o función. 
+
+                Veamos otro ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    template <typename val>
+                    struct node {
+                        val data;
+                        node<val>* next = nullptr;
+                    };
+                                        
+                    auto main() -> int {
+                        auto n1 = node<int>{1};
+                        auto n2 = node<std::string>{"hi"};
+
+                        return 0;
+                    }
+
+                \end{lstlisting}
+                
+
+            % ============================================
+            % ====      VALOR POR DEFECTO       ==========
+            % ============================================
+            \subsection{Valores por defecto a la hora de declararlas}
+
+                Ahora si quieres darles valor por defecto a cosas la sintaxis es bastante sencilla:
+                Ve por ejemplo esta función, no te preocupes por enteder como funciona por dentro o que hace
+                pero si como es que podemos darles valor por defecto:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    template <typename integer, typename unsignedInteger = unsigned int>
+                    auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
+                        auto solution = integer {1};
+
+                        while (exponent > 0) {
+                            if (exponent & 1) solution = base * solution;
+
+                            base = base * base;
+                            exponent = exponent >> 1;
+                        }
+
+                        return solution;
+                    }
+                \end{lstlisting}
+
+                Entonces como ahora tenemos valores por defecto podemos hacer algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int main() {
+                        cout << binaryExponentation<int>(3, 4) << endl;
+                        return 0;
+                    }
+                \end{lstlisting}
+
+                Y el compilador entederá que \textCode{integer = int} y que 
+                \textCode{unsignedInteger = unsigned int}
+
+            % ============================================
+            % ====      VALOR POR DEFECTO       ==========
+            % ============================================
+            \subsection{Parametrizar cosas que no son \textCode{type}}
+
+                No solo podemos parametrizar tipos en sí, sino también cualquier variable, 
+                por ejemplo:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    template <typename element, size_t size>
+                    struct myArray {
+                        element data[size];  
+                        ...
+                    };
+                \end{lstlisting}
+
+                Por lo que ahora podríamos hacer algo como:
+                \begin{lstlisting}[language=C++, gobble=20]
+                    int main() {
+                        myArray<int, 10> a {};
+                        return 0;
+                    }
+                \end{lstlisting}
+
+                Que si te das cuenta es mas o menos la misma técnica que usa \textCode{std::array}.
+
 
 
         % =========================================================
@@ -2550,7 +2802,7 @@
                 \begin{lstlisting}[language=C++, gobble=20]
                     auto a = int{};
                     auto b = std::string{};
-                    std::cin << a << b;        
+                    std::cin >> a >> b;        
                 \end{lstlisting}
 
                 Y lo que leera sera un entero después un espacio o un salto de línea y luego una cadena de
@@ -2643,10 +2895,10 @@
 
                     Esta entrada tiene 4 listas:
                     \begin{itemize}
-                        \item 1 2 4
-                        \item 3 4
+                        \item 1, 2, 4
+                        \item 3, 4
                         \item 2
-                        \item 1 3 3 54 12
+                        \item 1, 3, 3, 54, 12
                     \end{itemize}
 
                     Como tienes varias listas no puedes aplicar la de
@@ -2765,16 +3017,19 @@
                             for (auto& element : elements) element = getNumberFast<int>();
                         \end{lstlisting}
 
-                    \clearpage
                     \item \textbf{Quizá debas usar \textCode{\textbackslash n} en vez de \textCode{std::endl}}
                         
-                        Si no necesitas hacer 
-                        \textCode{flush}, entonces segurante no necesites \textCode{std::endl}
+                        Si no necesitas hacer \textCode{flush}, entonces segurante no necesites
+                        \textCode{std::endl}.
                         
                         Recuerda que hacer \textCode{flush} es tomar la información que 
-                        esta en un buffer y escribirlo de verdad en la terminal o el archivo al que debe de ir.
+                        esta en un buffer y escribirlo de verdad en la salida estandar, en la terminal 
+                        o el archivo al que debe de ir.
 
-                        Pues por defecto se guarda en un buffet temporal y se guardar de verdad después.
+                        Pues por defecto se guarda en un buffet temporal (que es mas rápido) 
+                        y se guardar en el lugar al que debe de ir al final.
+
+                        Generalmente esta optimización es hasta el doble de rápida que \textCode{std::endl}.
                 \end{itemize}
 
 
@@ -2785,10 +3040,39 @@
     \chapter{Cosas Avanzadas de \Cpp}
 
         % =========================================================
-        % ==========         USING VS TYPEDEF            ==========
+        % ==========              USING                  ==========
         % =========================================================
         \clearpage
-        \section{using vs typedef}  
+        \section{using}  
+
+            Creo que si sabes algo de C entonces conoces typedef, que lo que nos permite es darles nuevos nombres a 
+            tipos de datos, por ejemplo:
+            \begin{lstlisting}[language=C++, gobble=16]
+                typedef int MyInt;
+            \end{lstlisting}
+
+            En \Cpp11 y en adelante tenemos otra forma de expresar la misma idea, que en lo único que cambia es
+            la sintaxis pero la idea es la misma y creo (personalmente) que es mucho mas entendible:
+            \begin{lstlisting}[language=C++, gobble=16]
+                using MyInt = int;
+                using vi = std::vector<int>;
+
+                int main () {
+                    auto x = MyInt{1}; // x is an int
+                    auto y = vi{}; // y is an std::vector of ints
+                }
+            \end{lstlisting}
+
+            Además \textCode{using} es compatible con \textCode{templates} logrando hacer cosas como esta:
+            \begin{lstlisting}[language=C++, gobble=16]
+                template <typename T> 
+                using matrix = std::vector<std::vector<T>>;
+
+                int main () {
+                    auto m = matrix<int>{}; // m is an vector of vectors of int
+                }
+            \end{lstlisting}
+
 
 
         % =========================================================
@@ -4330,7 +4614,19 @@
         % =========================================================
         \clearpage
         \section{const methods}
-            
+
+        % =========================================================
+        % =====      DECLARATION AND IMPLEMENTATION        ========
+        % =========================================================
+        \clearpage
+        \section{Declaración e implementación separadas}
+
+        % =========================================================
+        % =====          TEMPLATE SPECIALIZATION           ========
+        % =========================================================
+        \clearpage
+        \section{Template Specialization}
+
     % ===============================================================================
     % ===========         LINKED LIST: LISTAS ENLAZADAS               ===============
     % ===============================================================================

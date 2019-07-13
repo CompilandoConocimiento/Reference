@@ -290,6 +290,8 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/../../Code/Tricks/FastNumberInput.cpp
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
@@ -305,11 +307,11 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/eccc0900.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/eccc1000.tfm
 INPUT /Users/soyoscarrh/Documents/Projects/Reference/Books/Reference/../../Code/NumberTheory/BinaryExponentiation.cpp
