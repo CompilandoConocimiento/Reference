@@ -2,9 +2,19 @@
 #include <iostream>
 #include <vector>
 
-template <typename T>
-using matrix = std::vector<std::vector<T>>;
+enum class direction : int { up = 0, down, left, right };
 
 int main() {
-  auto m = matrix<int> {};  // m is an vector of vector of int
+  auto currentDirection = direction::up;
+  switch (currentDirection) {
+    case direction::up:
+      break;
+    case direction::down:
+      break;
+    case direction::left:
+      break;
+    case direction::right:
+      break;
+  }
+  return 0;
 }

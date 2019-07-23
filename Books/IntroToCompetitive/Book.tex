@@ -3634,7 +3634,93 @@
         % =========================================================
         % =============            ENUMS             ==============
         % =========================================================
+        \clearpage
         \section{Enums}
+
+            En la programación a veces necesitamos variables que solo puedan 
+            tener un número limitado de valores, por ejemplo \textCode{arriba, abajo, derecha, izquierda},
+            o \textCode{oveja, lobo, tierra} o \textCode{RED, GREEN, BLUE}, cosas así, una idea es
+            hacer algo como esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                int currentDirection = 1;       //  0 is up
+                int currentDirection = -1;      // -1 is down
+            \end{lstlisting}
+
+            Pero estas de acuerdo que no estamos expresando nuestras intenciones en código sino
+            en los comentarios y nunca deberíamos hacer eso, el código es la verdad absoluta
+            y los comentarios solo una ayuda, nunca deberían ser una pieza fundamental.
+
+            Por lo tanto en C++ tenemos otra forma de hacer esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                enum class direction { up, down, left, right };
+                enum class colors { red, green, blue };
+            \end{lstlisting}
+
+            Y gracias a esto podemos ya manejar todo de manera correcta:
+            \begin{lstlisting}[language=C++, gobble=16]
+                enum class direction { up, down, left, right };
+                
+                ...
+                
+                auto currentDirection = direction::up;
+            \end{lstlisting}
+
+            Podemos usar un switch con ellas:
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto currentDirection = direction::up;
+                switch (currentDirection) {
+                    case direction::up: 
+                        break;
+                    
+                    case direction::down: 
+                        break;
+                    
+                    case direction::left: 
+                        break;
+                    
+                    case direction::right: 
+                        break;
+                }
+            \end{lstlisting}
+
+
+            Recuerda que tras bambalina un \textCode{enum class} es solo un entero, pero \Cpp
+            se encarga de ocultar todo ese desastre, pero claro, como es \Cpp, siempre puedes
+            abrir la caja de las maravillas y ver como es que funciona todo esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                // telling compiler the underling type of direction
+                enum class direction: char { up, down, left, right };
+            \end{lstlisting}
+
+            Recuerda que por defecto es los \textCode{enum class} son \textCode{int}.
+
+            Además también puedes hacer esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                enum class direction: char { 
+                    up = 'U', 
+                    down = 'D', 
+                    left = 'L',  
+                    right = 'R', 
+                };
+            \end{lstlisting}
+
+            Y decirle al compilador cual es el valor tras bambalinas que queremos que tenga
+            cada enum.
+
+            Este por defecto empieza en 0, o su equivalente en cada tipo.
+
+            Puedes también hacer esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                enum class direction : int { up = 3, down, left, right };
+            \end{lstlisting}
+
+            Y lo que hara es que \textCode{up = 3}, \textCode{down = 4}, \textCode{left = 5}, 
+            \textCode{right = 6}.
+
+            Puedes transformar un \textCode{enum class} en cualquier otro tipo usando algo así:
+            \begin{lstlisting}[language=C++, gobble=16]
+                auto underlingType = static_cast<direction>(currentDirection);
+            \end{lstlisting}
 
 
         % =========================================================
