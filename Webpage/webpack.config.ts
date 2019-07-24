@@ -20,7 +20,7 @@ const Configuration: Configuration = {
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader' },
+          { loader: "style-loader" },
           {
             loader: "dts-css-modules-loader",
             options: {
