@@ -62,7 +62,7 @@
 \contentsline {subsubsection}{Problemas que solucionan}{49}{section*.18}% 
 \contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{51}{section*.19}% 
 \contentsline {section}{\numberline {4.8}Funciones}{53}{section.4.8}% 
-\contentsline {section}{\numberline {4.9}Tips}{53}{section.4.9}% 
+\contentsline {section}{\numberline {4.9}Tips}{54}{section.4.9}% 
 \contentsline {subsection}{\numberline {4.9.1}Lambdas}{55}{subsection.4.9.1}% 
 \contentsline {subsubsection}{Lambdas como functors / classes}{56}{section*.20}% 
 \contentsline {section}{\numberline {4.10}Templates}{57}{section.4.10}% 
