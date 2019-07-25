@@ -3,40 +3,29 @@
 #include <unordered_map>
 #include <vector>
 
-template <typename container>
-auto findSecond(const container& data) {
+using namespace std;
+
+template <typename container, typename index = int>
+auto firstUnique(const container& values) -> index {
   using element = typename container::value_type;
+  auto seen = std::unordered_map<element, char> {};
 
-  enum class found : char { one_time, more_than_1_time };
-  auto state = std::unordered_map<element, found> {};
-
-  for (const auto val : data) {
-    auto situation = state.find(val);
-    if (situation == end(state)) {
-      state.insert({val, found::one_time});
-    } else if (situation->second == found::one_time)
-      situation->second = found::more_than_1_time;
+  for (auto value : values) {
+    auto& timesSeen = seen[value];
+    if (timesSeen < 2) ++timesSeen;
   }
 
-  for (const auto val : data) {
-    auto situation = state.find(val);
-    if (
-      situation != end(state) and 
-      situation->second == found::one_time) {
-      return val;
-    }
+  index result {};
+  for (auto value : values) {
+    if (seen[value] == 1) return result;
+    result++;
   }
 
-  // Maybe throw or something
-  return element {};
-};
+  return -1;
+}
 
 auto main() -> int {
-  using namespace std;
-  using number = int;
-
-  vector<number> data1 {1, 4, 1, 0};
-  cout << findSecond(data1) << endl;  // 1
-
+  auto values = std::vector<int> {1, 4, 1, 0};
+  cout << firstUnique(values, false) << endl;  // 4
   return 0;
 }

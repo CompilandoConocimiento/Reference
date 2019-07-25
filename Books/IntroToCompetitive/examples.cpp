@@ -1,20 +1,18 @@
-#include <iomanip>
-#include <iostream>
-#include <vector>
-
-enum class direction : int { up = 0, down, left, right };
+#include <map>
+#include <string>
+using namespace std;
 
 int main() {
-  auto currentDirection = direction::up;
-  switch (currentDirection) {
-    case direction::up:
-      break;
-    case direction::down:
-      break;
-    case direction::left:
-      break;
-    case direction::right:
-      break;
+  map<int, string> someMap {
+      {0, "null"},
+      {8, "eight"},
+      {15, "fifteen"},
+  };
+
+  auto element = someMap.find(9);
+
+  if (element != end(someMap) and (*element).second == "nine") {
+
   }
   return 0;
 }

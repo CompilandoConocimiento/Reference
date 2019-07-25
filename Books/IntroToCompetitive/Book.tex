@@ -3816,10 +3816,6 @@
                 como un temporal, es decir, es un objecto que esta a punto de ser destruido.
                 
 
-
-
-
-
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
 % ///////////////////                   ESTRUCTURAS DE DATOS                       /////////////////////////
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3837,6 +3833,45 @@
         % =========================================================
         \clearpage
         \section{Los contendedores en si}
+
+            \begin{wrapfigure}{l}{0.30\textwidth}
+                \centering
+                \includegraphics[width=0.3\textwidth]{ContainerBaskets}
+            \end{wrapfigure}
+
+            La abstracción fundamental que te da un contenedor es la de guardar y organizar
+            información por ti.
+
+            Podemos verlos como una canasta donde poner manzanas.
+            
+            En \Cpp en general, todos los elementos dentro de un contenedor tiene que ser del
+            mismo tipo.
+
+            La parte de la abstracción (osea la cosa por la que se va a preocupar el container 
+            y no tu) más interesante es que este se encarga de todo el proceso de adquirir y manejar
+            así como de organizar dicha información en memoria.
+
+            Generalmente los contenedores se escriben como una \textCode{templated class} por lo
+            que en escencia puedes crearlos para guardar cualquier tipo de dato que quieras, propio del
+            sistema o tuyo.
+
+            Puedes acceder a cada elemento usando una llave y en \Cpp puedes usar
+            la idea de iteradores para ir visitando elemento por elemento dentro del contenedor.
+
+            Podemos separar a los contendedores segun su tipo, por ejemplo:
+            \begin{itemize}
+                \item \textbf{Secuenciales}:
+                
+                    Son aquellos en los que el usuario decide en que lugar en memoria
+                    va cada elemento dentro del contenedor.
+
+                \item \textbf{Asociativos}:
+                
+                    Son aquellos en los que tu no tienes decisión en donde estará ese
+                    elemento en memoria, sino que es el mismo valor del elemento el
+                    que determina donde debe ir dentro del contenedor.
+            \end{itemize}
+
 
     % ===============================================================================
     % ================              ARRAYS            ===============================
@@ -3858,11 +3893,13 @@
         \clearpage
         \section{Una idea abstracta}
 
+            \begin{wrapfigure}{R}{0.20\textwidth}
+                \includegraphics[width=0.2\textwidth]{ArrayApples}
+            \end{wrapfigure}
+
             Un \textCode{array} es un conjunto de elementos del mismo tipo, contiguo en memoria,
-            al ser contiguo la idea para acceder a los elementos es decir, dame el 1 elemento, 
-            dame el 5 elemento, dame el 10 elemento.
-
-
+            al ser contiguo la idea para acceder a los elementos es decir, la llave que usaremos para 
+            obtener un elemento, será si lugar dentro del montón.
 
         
         % =========================================================
@@ -3878,13 +3915,12 @@
             % ====           INICIALIZAR        ==========
             % ============================================
             \subsection{Inicialización}
-
                 \begin{itemize}
                     \item Si quieres declarar un array, es super sencillo:
                         \begin{lstlisting}[language=C++, gobble=28]
                             std::array<type, sizeOfTheArray> arrayName;
                         \end{lstlisting}
-
+                    
                     \item Se parece a los arreglos de C, pero mejor.
                         
                         Nota que \textCode{array}, se comporta de una manera parecida a los arrays de C:
@@ -3892,9 +3928,22 @@
                             array<int, 4> a1;            // Ok, 4 elements, all are undefined
                             array<int, 4> a2 {};         // Ok, 4 elements: [0, 0, 0, 0]
                             array<int, 4> a3 {1, 2};     // Ok, 4 elements: [1, 2, 0, 0]
+                            array<int, 3> a3 {1, 2, 5};  // Ok, 3 elements: [1, 2, 5]
                         \end{lstlisting}
 
-                        Pero ten cuidado al inicializar un array de \Quote{cosas} vas a necesitar 
+                \end{itemize}
+
+                
+            % ============================================
+            % ====                  TIPS        ==========
+            % ============================================
+            \subsection{Tips}
+
+                \begin{itemize}
+
+                    \item 
+                    
+                        Ten cuidado al inicializar un array de \Quote{cosas} vas a necesitar 
                         un par de parentesis más:
                         \begin{lstlisting}[language=C++, gobble=28]
                             using complex = std::complex<int>
@@ -3912,13 +3961,17 @@
                         cuando y solo cuando estas inicializando cosas anidadamente.
                 \end{itemize}
 
-
-
         % =========================================================
         % ==========             VECTOR                  ==========
         % =========================================================
         \clearpage
         \section{std::vector}
+
+            Si lo que necesitas es algo parecido a un array, pero no estas seguro del tamaño del array
+            en tiempo de compilación o es que dicho contenedor necesita crecer de manera dinámica
+            entonces puedes usar \textCode{std::vector}.
+
+            Que en resumén es practicamente igual que usar un arreglo pero que se autodimensiona solo. :D
 
             % ============================================
             % ====           INICIALIZAR        ==========
@@ -3951,17 +4004,15 @@
             % ===============================================================================
             \subsection{Como es que logra autodimensionarse}
 
+                No entraremos en muchos detalles, pero tras bambalinas lo que hace es tener un arreglo
+                que tiene el tamaño de un múltiplo de 2, y cuando se queda sin espacio lo que hace
+                es crear un arreglo del doble de tamaño y copia elemento a elemento las cosas al 
+                nuevo arreglo.
 
+                Y uno puede pensar que este copiar y pegar puede ser costoso y lento, y lo es, pero
+                como lo hace cada múltiplo de 2, para un número lo suficientemente grande se vuelve
+                insignificante.
 
-            % ============================================
-            % ====      COSAS QUE PUEDES HACER     =======
-            % ============================================
-            \subsection{Cosas que puedes hacer}
-
-                \begin{itemize}
-                    \item 
-                \end{itemize}
-               
 
             % ============================================
             % ====                TIPS          ==========
@@ -4002,22 +4053,36 @@
                     \lstinputlisting[language=c++, gobble=24]
                     {CodeExample/ArraySecondBest.cpp}
 
+                \clearpage
+
                 \item 
                     Encontrar el primer elemento que no se repite en un
                     arreglo:
+
                     \lstinputlisting[language=c++, gobble=24]
                     {CodeExample/FindFirstNonRepetingElement.cpp}
             \end{itemize}
-               
-        % =========================================================
-        % ==========             STRINGS                 ==========
-        % =========================================================
-        \section{std::string}
 
         % =========================================================
-        % ==========             STRINGS                 ==========
+        % ==========       NO VERDADEROS ARRAYS          ==========
         % =========================================================
-        \section{std::bitset}
+        \clearpage
+        \section{Cosas que parecen arrays} 
+               
+            % =========================================================
+            % ==========             STRING                  ==========
+            % =========================================================
+            \subsection{std::string}
+
+            % ============================================
+            % ==========        BITSET             =======
+            % ============================================
+            \subsection{std::bitset}
+
+            % ============================================
+            % ==========        VALARRAY           =======
+            % ============================================
+            \subsection{std::valarray}
 
 
         % =========================================================
@@ -4131,7 +4196,8 @@
 
                         Si quieres buscar en un contenedor así puedes usar:
                         \begin{lstlisting}[language=C++, gobble=28]
-                            if (someMap.find(9) == "nine") {   
+                            auto element = someMap.find(9);
+                            if (element != end(someMap) and (*element).second == "nine") {
                                 ...
                             }
                         \end{lstlisting}
