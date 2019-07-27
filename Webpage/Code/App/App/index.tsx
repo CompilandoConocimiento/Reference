@@ -9,8 +9,8 @@ import Home from "../Home"
 import Footer from "../Footer"
 import AlgorithmsPicker from "../AlgorithmsPicker"
 
-import Wrapper, { DataContext } from "./Wrapper"
-import { DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext } from "./Wrapper"
+import DrawerWrapper, { DataContext } from "./DrawerWrapper"
+import { DrawerSituationDesktopContext, ChangeDrawerSituationDesktopContext } from "./DrawerWrapper"
 import { ErrorMessage } from "../Helpers"
 
 import useHeaderStyles from "../Header/Styles"
@@ -93,9 +93,9 @@ const App: FunctionComponent = () => {
 
 const DOMNode = document.getElementById("ReactApp")
 ReactDOM.render(
-  <Wrapper>
+  <DrawerWrapper>
     <App />
-  </Wrapper>,
+  </DrawerWrapper>,
   DOMNode
 )
 
