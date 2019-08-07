@@ -910,6 +910,7 @@
                     if (s and *s == *p)
                         cout << *s << "is a match" << '\n';
                 }
+                // cleanup is done automatically
             \end{lstlisting}
 
             \clearpage
@@ -929,7 +930,7 @@
             Y en \Cpp mira como sería:
             \begin{lstlisting}[language=C++, gobble=16]
                 auto mean(const Sequence& seq) {
-                    auto n {0.0};
+                    auto n = 0.0;
                     for (auto x : seq)
                         n += x;
                     return n / seq.size();
@@ -3816,6 +3817,14 @@
                 como un temporal, es decir, es un objecto que esta a punto de ser destruido.
                 
 
+        % =========================================================
+        % ==========           STACK VS HEAP              =========
+        % =========================================================
+        \clearpage
+        \section{Tipos de memoria: Stack vs Heap} 
+
+
+
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
 % ///////////////////                   ESTRUCTURAS DE DATOS                       /////////////////////////
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4090,6 +4099,91 @@
         % =========================================================
         \clearpage
         \section{Si quieres un programa rápido: Verdaderos arrays} 
+
+            Algo muy importante de \Cpp es que tenemos memoria contigua por defecto.
+
+            Y en esta sección intentare explicar como es que eso es muy importante.
+
+            Primero que nada, si es que a ti te importa que tu código vaya rápido entonces
+            tienes que usar arrays, lo más que puedas, y si, arrays de verdad, no cosas
+            como \textCode{ArrayList}, que no lo haces es ser mas bien un arreglo de punteros.
+
+            La razón es que si estaras visitando muchos elementos de verdad que te conviene
+            visitarlos en orden, osea visitar un elemento y luego visitar a su vecino de al lado
+            y luego al de al lado del vecino y asi.
+
+            Creo que una imágen explicará mucho mas, para esto vamos a imaginar un un ejemplo,
+            quiero hacer un arreglo de pares de números, entonces cuando hiciera esto en Java pasaría esto:
+
+            \begin{lstlisting}[language=Java, gobble=16]
+                // Java or C#
+                class Pair {
+                    ...
+                }
+
+                ArrayList<Pair> arr = new ArrayList<Pair>();
+            \end{lstlisting}
+
+            \begin{figure}[h]
+                \includegraphics[width=0.65\textwidth]{ArrayJava}
+                \caption{Mira que lo es contiguo en memoria no son los objectos en si, sino las referencias}
+            \end{figure}
+
+            Y mira, podemos expresar la misma idea en \Cpp:
+            \begin{lstlisting}[language=C++, gobble=16]
+                class pair {
+                    ...
+                };
+
+                auto arr = vector<unique_ptr<pair>> {}; 
+            \end{lstlisting}
+
+            Pero eso no es lo que hacemos normalmente, sino que hacemos esto:
+            \begin{lstlisting}[language=C++, gobble=16]
+                class pair {
+                    ...
+                };
+
+                auto arr = vector<pair> {a, b, c, d}; 
+            \end{lstlisting}
+
+            Y con esto lograriamos esto:
+            \begin{figure}[h]
+                \includegraphics[width=0.65\textwidth]{VectorCpp}
+            \end{figure}
+
+            Esto es muy importante porque cuando visitemos uno a uno entonces no iremos saltando como ranas
+            por la memoria, sino que nos iremos moviendo un lugar a la vez de manera predecible.
+
+            Pero, ¿porqué esto es importante?
+
+            Porque en las computadoras existe algo llamado el \textCode{prefetcher} que lo que hace es ver
+            patrones en tu código, y dice, mira pediste esta dirección de memoria, voy a tener que esperar
+            a la RAM para que me la traiga, pero de aquí a que me la trae voy a apostar a que vas a pedir
+            la siguiente posición de memoria o la anterior, voy a ir pedirlas de una vez también.
+
+            Por lo tanto, al tener nuestros elementos adjacentes en memoria logramos hacer que el 
+            \textCode{prefetcher} acepte muchas veces, cosa que no ocurre si usamos \textCode{Java} y sus 
+            \textCode{ArrayList}.
+
+            Esto no da una gran ventaja en la velocidad, pero si es que quieres aun mas, puedes usar un arreglo
+            estatico si es que sabes el tamaño del array en tiempo de compilación.
+
+            \begin{lstlisting}[language=C++, gobble=16]
+                class pair {
+                    ...
+                };
+
+                array<pair, 4> {a, b, c, d} arr; 
+            \end{lstlisting}
+
+            \begin{figure}[h]
+                \includegraphics[width=0.65\textwidth]{ArrayCpp}
+            \end{figure}
+
+            \cite{ModernCppWhatYouNeedToKnow}
+
+        
         
     % ===============================================================================
     % ==============       CONTENEDORES HETEROMORFOS          =======================
