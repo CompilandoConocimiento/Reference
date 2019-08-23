@@ -18,85 +18,84 @@
 \contentsline {section}{\numberline {3.3}Jueces en l\IeC {\'\i }nea}{25}{section.3.3}% 
 \contentsline {chapter}{\numberline {4}Bases del Lenguaje Moderno}{26}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Variables}{27}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Declaraciones e Inicializaci\IeC {\'o}n}{27}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Declaraciones e Inicializaci\IeC {\'o}n (y \texttt {auto} )}{27}{subsection.4.1.1}% 
 \contentsline {subsubsection}{Se directo con el tipo de dato}{28}{section*.2}% 
 \contentsline {subsubsection}{auto: Se s\IeC {\'u}til}{28}{section*.3}% 
-\contentsline {subsubsection}{Uniform (brace) Inicialization: Inicializaci\IeC {\'o}n uniforme}{29}{section*.4}% 
-\contentsline {section}{\numberline {4.2}Tipos de datos num\IeC {\'e}ricos}{30}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Integers / Integrals: Enteros}{30}{subsection.4.2.1}% 
-\contentsline {subsubsection}{char}{30}{section*.5}% 
-\contentsline {subsubsection}{int}{31}{section*.6}% 
-\contentsline {subsubsection}{long long}{31}{section*.7}% 
-\contentsline {subsubsection}{unsigned}{31}{section*.8}% 
-\contentsline {subsubsection}{short}{32}{section*.9}% 
-\contentsline {subsubsection}{std::size\_t}{32}{section*.10}% 
-\contentsline {subsubsection}{Fixed width (int32\_t, uint64\_t, ...)}{32}{section*.11}% 
-\contentsline {subsection}{\numberline {4.2.2}Floating Points: Puntos Flotantes}{33}{subsection.4.2.2}% 
-\contentsline {subsection}{\numberline {4.2.3}Complex: N\IeC {\'u}meros Complejos}{33}{subsection.4.2.3}% 
-\contentsline {subsection}{\numberline {4.2.4}Utilidades}{34}{subsection.4.2.4}% 
-\contentsline {section}{\numberline {4.3}Los otros tipos de datos fundamentales}{35}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}void}{35}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}bool}{35}{subsection.4.3.2}% 
-\contentsline {subsubsection}{Cambiar el valor de un bool}{35}{section*.12}% 
-\contentsline {section}{\numberline {4.4}Operadores}{36}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Operadores Aritm\IeC {\'e}ticos}{36}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Divisi\IeC {\'o}n entera}{37}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Lo que hay que saber del m\IeC {\'o}dulo: \texttt {\%} }{37}{subsection.4.4.3}% 
-\contentsline {subsubsection}{La respuesta para los puristas}{37}{section*.13}% 
-\contentsline {subsubsection}{Ejemplos}{37}{section*.14}% 
-\contentsline {subsection}{\numberline {4.4.4}Operadores Relacionales}{39}{subsection.4.4.4}% 
-\contentsline {subsection}{\numberline {4.4.5}Operadores L\IeC {\'o}gicos}{39}{subsection.4.4.5}% 
-\contentsline {subsection}{\numberline {4.4.6}Operadores L\IeC {\'o}gicos bit a bit}{40}{subsection.4.4.6}% 
-\contentsline {section}{\numberline {4.5}Sentencias de Control}{42}{section.4.5}% 
-\contentsline {subsection}{\numberline {4.5.1}Branching: Condicionales}{42}{subsection.4.5.1}% 
-\contentsline {subsubsection}{Condiciones}{43}{section*.15}% 
-\contentsline {subsubsection}{Operador Ternario}{44}{section*.16}% 
-\contentsline {section}{\numberline {4.6}Ciclos}{45}{section.4.6}% 
-\contentsline {subsection}{\numberline {4.6.1}While}{45}{subsection.4.6.1}% 
-\contentsline {subsubsection}{Do while}{45}{section*.17}% 
-\contentsline {subsection}{\numberline {4.6.2}For}{46}{subsection.4.6.2}% 
-\contentsline {subsection}{\numberline {4.6.3}Range for: \texttt {for (auto x : v)} }{46}{subsection.4.6.3}% 
-\contentsline {section}{\numberline {4.7}References and value types}{48}{section.4.7}% 
-\contentsline {subsection}{\numberline {4.7.1}Value types: Variables de valor}{48}{subsection.4.7.1}% 
-\contentsline {subsection}{\numberline {4.7.2}References: Referencias}{48}{subsection.4.7.2}% 
-\contentsline {subsubsection}{Problemas que solucionan}{49}{section*.18}% 
-\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{51}{section*.19}% 
-\contentsline {section}{\numberline {4.8}Funciones}{53}{section.4.8}% 
-\contentsline {section}{\numberline {4.9}Tips}{54}{section.4.9}% 
-\contentsline {subsection}{\numberline {4.9.1}Lambdas}{55}{subsection.4.9.1}% 
-\contentsline {subsubsection}{Lambdas como functors / classes}{56}{section*.20}% 
-\contentsline {section}{\numberline {4.10}Templates}{57}{section.4.10}% 
-\contentsline {subsection}{\numberline {4.10.1}Sintaxis}{58}{subsection.4.10.1}% 
-\contentsline {subsection}{\numberline {4.10.2}Valores por defecto a la hora de declararlas}{59}{subsection.4.10.2}% 
-\contentsline {subsection}{\numberline {4.10.3}Parametrizar cosas que no son \texttt {type} }{60}{subsection.4.10.3}% 
-\contentsline {section}{\numberline {4.11}I/O: La entrada / salida en \ignorespaces \texttt {C++} }{61}{section.4.11}% 
-\contentsline {subsection}{\numberline {4.11.1}Introducci\IeC {\'o}n a \texttt {std::cout} }{61}{subsection.4.11.1}% 
-\contentsline {subsubsection}{Modificadores}{61}{section*.21}% 
-\contentsline {subsection}{\numberline {4.11.2}Introducci\IeC {\'o}n a \texttt {std::cin} }{62}{subsection.4.11.2}% 
-\contentsline {subsubsection}{std::getline}{64}{section*.22}% 
-\contentsline {subsubsection}{std::istringstream}{64}{section*.23}% 
-\contentsline {subsection}{\numberline {4.11.3}Hacer la I/O lo m\IeC {\'a}s r\IeC {\'a}pido posible}{65}{subsection.4.11.3}% 
-\contentsline {chapter}{\numberline {5}Cosas Avanzadas de \ignorespaces \texttt {C++} }{68}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}using}{69}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Sobre inicializar}{70}{section.5.2}% 
-\contentsline {subsubsection}{(AAA) Almost always auto}{70}{section*.24}% 
-\contentsline {section}{\numberline {5.3}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{71}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}const}{72}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}lvalues vs rvalues categories}{73}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}References types: Tipos de referencias}{74}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}lvalue references}{74}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}const lvalue references}{74}{subsection.5.6.2}% 
-\contentsline {subsection}{\numberline {5.6.3}rvalue references}{75}{subsection.5.6.3}% 
-\contentsline {subsection}{\numberline {5.6.4}Universal References / Fowarding References}{76}{subsection.5.6.4}% 
-\contentsline {subsection}{\numberline {5.6.5}auto vs auto\& vs const auto\& vs auto\&\&}{78}{subsection.5.6.5}% 
-\contentsline {subsubsection}{auto decay}{78}{section*.25}% 
-\contentsline {subsubsection}{Modificadores del \texttt {auto} }{79}{section*.26}% 
-\contentsline {subsection}{\numberline {5.6.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{80}{subsection.5.6.6}% 
-\contentsline {section}{\numberline {5.7}Enums}{81}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Semantics}{83}{section.5.8}% 
-\contentsline {subsection}{\numberline {5.8.1}Value Semantics}{83}{subsection.5.8.1}% 
-\contentsline {subsection}{\numberline {5.8.2}Move Semantics}{83}{subsection.5.8.2}% 
-\contentsline {section}{\numberline {5.9}Tipos de memoria: Stack vs Heap}{85}{section.5.9}% 
+\contentsline {subsection}{\numberline {4.1.2}Uniform (brace) Inicialization: Inicializaci\IeC {\'o}n uniforme}{29}{subsection.4.1.2}% 
+\contentsline {subsubsection}{(AAA) Almost always auto}{29}{section*.4}% 
+\contentsline {section}{\numberline {4.2}Tipos de datos num\IeC {\'e}ricos}{31}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Integers / Integrals: Enteros}{31}{subsection.4.2.1}% 
+\contentsline {subsubsection}{char}{31}{section*.5}% 
+\contentsline {subsubsection}{int}{32}{section*.6}% 
+\contentsline {subsubsection}{long long}{32}{section*.7}% 
+\contentsline {subsubsection}{unsigned}{32}{section*.8}% 
+\contentsline {subsubsection}{short}{33}{section*.9}% 
+\contentsline {subsubsection}{std::size\_t}{33}{section*.10}% 
+\contentsline {subsubsection}{Fixed width (int32\_t, uint64\_t, ...)}{33}{section*.11}% 
+\contentsline {subsection}{\numberline {4.2.2}Floating Points: Puntos Flotantes}{34}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Complex: N\IeC {\'u}meros Complejos}{34}{subsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Utilidades}{35}{subsection.4.2.4}% 
+\contentsline {section}{\numberline {4.3}Los otros tipos de datos fundamentales}{36}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}void}{36}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}bool}{36}{subsection.4.3.2}% 
+\contentsline {subsubsection}{Cambiar el valor de un bool}{36}{section*.12}% 
+\contentsline {section}{\numberline {4.4}Operadores}{37}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Operadores Aritm\IeC {\'e}ticos}{37}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Divisi\IeC {\'o}n entera}{38}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Lo que hay que saber del m\IeC {\'o}dulo: \texttt {\%} }{38}{subsection.4.4.3}% 
+\contentsline {subsubsection}{La respuesta para los puristas}{38}{section*.13}% 
+\contentsline {subsubsection}{Ejemplos}{38}{section*.14}% 
+\contentsline {subsection}{\numberline {4.4.4}Operadores Relacionales}{40}{subsection.4.4.4}% 
+\contentsline {subsection}{\numberline {4.4.5}Operadores L\IeC {\'o}gicos}{40}{subsection.4.4.5}% 
+\contentsline {subsection}{\numberline {4.4.6}Operadores L\IeC {\'o}gicos bit a bit}{41}{subsection.4.4.6}% 
+\contentsline {section}{\numberline {4.5}Sentencias de Control}{43}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Branching: Condicionales}{43}{subsection.4.5.1}% 
+\contentsline {subsubsection}{Condiciones}{44}{section*.15}% 
+\contentsline {subsubsection}{Operador Ternario}{45}{section*.16}% 
+\contentsline {section}{\numberline {4.6}Ciclos}{46}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}While}{46}{subsection.4.6.1}% 
+\contentsline {subsubsection}{Do while}{46}{section*.17}% 
+\contentsline {subsection}{\numberline {4.6.2}For}{47}{subsection.4.6.2}% 
+\contentsline {subsection}{\numberline {4.6.3}Range for: \texttt {for (auto x : v)} }{47}{subsection.4.6.3}% 
+\contentsline {section}{\numberline {4.7}References and value types}{49}{section.4.7}% 
+\contentsline {subsection}{\numberline {4.7.1}Value types: Variables de valor}{49}{subsection.4.7.1}% 
+\contentsline {subsection}{\numberline {4.7.2}References: Referencias}{49}{subsection.4.7.2}% 
+\contentsline {subsubsection}{Problemas que solucionan}{50}{section*.18}% 
+\contentsline {subsubsection}{References vs Pointer: Referencias vs Punteros}{52}{section*.19}% 
+\contentsline {section}{\numberline {4.8}Funciones}{54}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}Tips}{55}{section.4.9}% 
+\contentsline {subsection}{\numberline {4.9.1}Lambdas}{56}{subsection.4.9.1}% 
+\contentsline {subsubsection}{Lambdas como functors / classes}{57}{section*.20}% 
+\contentsline {section}{\numberline {4.10}Templates}{58}{section.4.10}% 
+\contentsline {subsection}{\numberline {4.10.1}Sintaxis}{59}{subsection.4.10.1}% 
+\contentsline {subsection}{\numberline {4.10.2}Valores por defecto a la hora de declararlas}{60}{subsection.4.10.2}% 
+\contentsline {subsection}{\numberline {4.10.3}Parametrizar cosas que no son \texttt {type} }{61}{subsection.4.10.3}% 
+\contentsline {section}{\numberline {4.11}I/O: La entrada / salida en \ignorespaces \texttt {C++} }{62}{section.4.11}% 
+\contentsline {subsection}{\numberline {4.11.1}Introducci\IeC {\'o}n a \texttt {std::cout} }{62}{subsection.4.11.1}% 
+\contentsline {subsubsection}{Modificadores}{62}{section*.21}% 
+\contentsline {subsection}{\numberline {4.11.2}Introducci\IeC {\'o}n a \texttt {std::cin} }{63}{subsection.4.11.2}% 
+\contentsline {subsubsection}{std::getline}{65}{section*.22}% 
+\contentsline {subsubsection}{std::istringstream}{65}{section*.23}% 
+\contentsline {subsection}{\numberline {4.11.3}Hacer la I/O lo m\IeC {\'a}s r\IeC {\'a}pido posible}{66}{subsection.4.11.3}% 
+\contentsline {chapter}{\numberline {5}Cosas Avanzadas de \ignorespaces \texttt {C++} }{69}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}using}{70}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Lifetime: La mejor caracter\IeC {\'\i }stica de \ignorespaces \texttt {C++} : \texttt { \} } }{71}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}const}{72}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}lvalues vs rvalues categories}{73}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}References types: Tipos de referencias}{74}{section.5.5}% 
+\contentsline {subsection}{\numberline {5.5.1}lvalue references}{74}{subsection.5.5.1}% 
+\contentsline {subsection}{\numberline {5.5.2}const lvalue references}{74}{subsection.5.5.2}% 
+\contentsline {subsection}{\numberline {5.5.3}rvalue references}{75}{subsection.5.5.3}% 
+\contentsline {subsection}{\numberline {5.5.4}Universal References / Fowarding References}{76}{subsection.5.5.4}% 
+\contentsline {subsection}{\numberline {5.5.5}auto vs auto\& vs const auto\& vs auto\&\&}{78}{subsection.5.5.5}% 
+\contentsline {subsubsection}{auto decay}{78}{section*.24}% 
+\contentsline {subsubsection}{Modificadores del \texttt {auto} }{79}{section*.25}% 
+\contentsline {subsection}{\numberline {5.5.6} \texttt {for (auto\& x : v)} vs \texttt {for (auto\&\& x : v)} }{80}{subsection.5.5.6}% 
+\contentsline {section}{\numberline {5.6}Enums}{81}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}Semantics}{83}{section.5.7}% 
+\contentsline {subsection}{\numberline {5.7.1}Value Semantics}{83}{subsection.5.7.1}% 
+\contentsline {subsection}{\numberline {5.7.2}Move Semantics}{83}{subsection.5.7.2}% 
+\contentsline {section}{\numberline {5.8}Tipos de memoria: Stack vs Heap}{85}{section.5.8}% 
 \contentsline {part}{III\hspace {1em}Estructuras de Datos b\IeC {\'a}sicas y los containers en \ignorespaces \texttt {C++} }{86}{part.3}% 
 \contentsline {chapter}{\numberline {6}Introducci\IeC {\'o}n}{87}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Los contendedores en si}{88}{section.6.1}% 
@@ -165,7 +164,7 @@
 \contentsline {section}{\numberline {24.1}Bits}{128}{section.24.1}% 
 \contentsline {subsection}{\numberline {24.1.1}Introducci\IeC {\'o}n}{128}{subsection.24.1.1}% 
 \contentsline {subsection}{\numberline {24.1.2}Manejo de Bits: Utilidades que podemos hacer con ellos}{128}{subsection.24.1.2}% 
-\contentsline {subsubsection}{Mascara de bits}{128}{section*.27}% 
+\contentsline {subsubsection}{Mascara de bits}{128}{section*.26}% 
 \contentsline {section}{\numberline {24.2}Conversiones entre Sistemas (HEX, OCT)}{128}{section.24.2}% 
 \contentsline {section}{\numberline {24.3}Binary Exponentiation: Exponenciacion Binaria}{128}{section.24.3}% 
 \contentsline {section}{\numberline {24.4}Binary Multiplication: Multiplicaci\IeC {\'o}n Binaria}{128}{section.24.4}% 

@@ -1039,7 +1039,7 @@
             % ============================================
             % ====   DECLARACIONES E INICIALIZACION   ====
             % ============================================
-            \subsection{Declaraciones e Inicialización}
+            \subsection{Declaraciones e Inicialización (y \textCode{auto})}
 
                 El primer paso para poder usar una variable será el de declararla, es decir
                 aquí entre nos es decirle al compilador que le de a un fragmento de memoria 
@@ -1124,51 +1124,87 @@
                     Total, lo que pasa en \Cpp es que además de esa forma de inicializar variables tenemos
                     una forma que si tiene un nombre especial.
 
-                % ============================================
-                % ======            SE SUTIL            ======
-                % ============================================
-                \subsubsection{Uniform (brace) Inicialization: Inicialización uniforme}
+            % ============================================
+            % ======       UNIFORM INIZIALITION     ======
+            % ============================================
+            \subsection{Uniform (brace) Inicialization: Inicialización uniforme}
 
-                    Y lo que nos da esto es una misma sintaxis, quiza esto sea un tema algo complejo
-                    para unos y no te preocupes si no entiendes esto por completo por ahora.
+                Y lo que nos da esto es una misma sintaxis, quiza esto sea un tema algo complejo
+                para unos y no te preocupes si no entiendes esto por completo por ahora.
 
-                    Total, lo que pasa es que en \Cpp moderno existe la sintaxis 
-                    \textCode{type wea \{something\}} donde lo que hacemos es poner entre estas cosas
-                    \textCode{ \{ \} } el valor con el que queremos inicializar nuestra variable y dependiendo
-                    de que sea nuestra variable puedes simplemente asignarla o llamar al constructor con estos
-                    parámetro.
+                Total, lo que pasa es que en \Cpp moderno existe la sintaxis 
+                \textCode{type wea \{something\}} donde lo que hacemos es poner entre estas cosas
+                \textCode{ \{ \} } el valor con el que queremos inicializar nuestra variable y dependiendo
+                de que sea nuestra variable puedes simplemente asignarla o llamar al constructor con estos
+                parámetro.
 
-                    Total, es solo una forma mas bonita de hacer las cosas.
-                    \begin{lstlisting}[language=C++, gobble=24]
-                        auto someNumber {20};   
-                        string someText {"Hi baby"};
-                        // this call a someClass constructor
-                        someClass object {"some parameter", someNumber};
-                        vector<int> numbers {1, 2, 3, 4, 5, 6};
-                    \end{lstlisting}
+                Total, es solo una forma mas bonita de hacer las cosas.
+                \begin{lstlisting}[language=C++, gobble=20]
+                    auto someNumber {20};   
+                    string someText {"Hi baby"};
+                    // this call a someClass constructor
+                    someClass object {"some parameter", someNumber};
+                    vector<int> numbers {1, 2, 3, 4, 5, 6};
+                \end{lstlisting}
 
-                    Además ayuda en varias cosas:
-                    \begin{itemize}
-                        \item 
-                            Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                vector<int> days ();   
-                            \end{lstlisting}
+                Además ayuda en varias cosas:
+                \begin{itemize}
+                    \item 
+                        Supón que quieres inicializar por defecto un vector, entonces puedes hacer como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days ();   
+                        \end{lstlisting}
 
-                            Expecto que esto es la declaración de una función llamada \textCode{days} que no 
-                            recibe nada y regresa un vector.
+                        Expecto que esto es la declaración de una función llamada \textCode{days} que no 
+                        recibe nada y regresa un vector.
 
-                            En la antigüedad podríamos hacer algo como:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                vector<int> days = vector<int>();   
-                            \end{lstlisting}
+                        En la antigüedad podríamos hacer algo como:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days = vector<int>();   
+                        \end{lstlisting}
 
-                            Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                vector<int> days {};   
-                            \end{lstlisting}
+                        Pero ahora algo mucho mas sencillo gracias a uniform inicialization:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            vector<int> days {};   
+                        \end{lstlisting}
 
-                    \end{itemize}
+                \end{itemize}
+
+            % ============================================
+            % ======               AAA              ======
+            % ============================================
+            \subsubsection{(AAA) Almost always auto}
+
+            Desde hace unos años se esta dando una forma estándar de inicializar cosas en \Cpp
+            que se basa en seguir este patrón:
+            \begin{lstlisting}[language=C++, gobble=16]
+                // For declaring types
+                using T = ...;
+
+                // For declaring variables
+                auto x = ...;
+                auto y = type{...};
+            \end{lstlisting}
+
+            Por ejemplo:
+            \begin{lstlisting}[language=C++, gobble=16]
+                int i = 42;                           ->   auto i = 42;
+                long v = 42;                          ->   auto v = long {42};
+                Costumer c {"Jim"};                   ->   auto c = Costumer {"Jim"};
+                vector<int>::iterator p = v.cbegin(); ->   auto p = v.cbegin();
+            \end{lstlisting}
+
+        Esta es una muy buena idea, hace la declaración de variables muy consistente, sobretodo,
+        porque tiene las ventajas de las dos ultimas ideas anteriores:
+        \begin{itemize}
+            \item Usar \textCode{auto} todo lo posible, haciendo tu código mas fácil de entender, mas fácil
+                de iterar y también mas corto.
+            \item Usar \textCode{brace initialization}.
+        \end{itemize}
+
+        Eso si, hay que ser consistente de que esta forma de declarar es una mala idea en cosas
+        queson caras de copiar o que no se pueden mover
+        (como por ejemplo), \textCode{atomic, array, unique\_ptr}. 
 
         % =========================================================
         % ======         TIPOS DE DATOS NUMERICOS          ========
@@ -3077,42 +3113,7 @@
 
 
 
-        % =========================================================
-        % ==========         SOBRE INICIALIZAR           ==========
-        % =========================================================
-        \clearpage
-        \section{Sobre inicializar}  
 
-            % ============================================
-            % ======               AAA              ======
-            % ============================================
-            \subsubsection{(AAA) Almost always auto}
-
-                Desde hace unos años se esta dando una forma estándar de inicializar cosas en \Cpp
-                que se basa en seguir este patrón:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    // For declaring types
-                    using T = ...;
-
-                    // For declaring variables
-                    auto x = ...;
-                    auto y = type{...};
-                \end{lstlisting}
-
-                Por ejemplo:
-                \begin{lstlisting}[language=C++, gobble=20]
-                    int i = 42;                           ->   auto i = 42;
-                    long v = 42;                          ->   auto v = long {42};
-                    Costumer c {"Jim"};                   ->   auto c = Costumer {"Jim"};
-                    vector<int>::iterator p = v.cbegin(); ->   auto p = v.cbegin();
-                \end{lstlisting}
-
-                Un gran problema con esta idea son cosas que son caras de copiar o que no se pueden mover
-                (como por ejemplo), \textCode{atomic, array, unique\_ptr}. Por lo que usalo con cuidado
-                y en general recomiendo solo usarlo cuando lo estamos declarando variables sencillas y no 
-                contenedores, pero no puedo negar que se ve hermoso y tiene un par de ventajas importantes.
-
-            
         % =========================================================
         % ==========            LIFETIME                 ==========
         % =========================================================
