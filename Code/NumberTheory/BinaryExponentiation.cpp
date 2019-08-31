@@ -42,7 +42,7 @@ auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
 template <typename integer, typename uinteger>
 auto modularBinaryExponentation(integer base, uinteger exponent, uinteger n)
     -> integer {
-  integer solution {1};
+  auto solution = integer {1};
   base = base % n;
 
   while (exponent > 0) {
