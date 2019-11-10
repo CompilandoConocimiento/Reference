@@ -2,9 +2,9 @@
 #include <vector>
 
 /**
- * You have many nodes (ie, node 2 with  4, 5, 8).
- * Use UnionFind to find if 2 nodes are connected or how
- * many nodes are in a connected to a given node.
+ * You have many nodes connected (ie, node 2 with 4 and 8).
+ * Use UnionFind to find if 2 nodes are connected or and
+ * how many nodes can I go to from a given node.
  */
 template <typename id = int>
 class UnionFind {
