@@ -1,3 +1,5 @@
+#include <cstdio>
+
 template <class number>
 inline auto getNumberFast() -> number {
   auto result = number {};

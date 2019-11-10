@@ -1,3 +1,3 @@
-bool lowestBit( int n ){
-    return ( n & ( -n ) );
-} 
+bool lowest_on_bit(int number) { 
+    return (number bitand (-number)); 
+}

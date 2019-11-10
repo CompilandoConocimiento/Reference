@@ -554,6 +554,7 @@
                     
                     // No merge cin / cout
                     cin.tie(nullptr);
+                    cout.tie(nullptr);
                 \end{lstlisting}
 
                 \subsubsection{Fast input of numbers}
@@ -686,65 +687,55 @@
             \columnbreak
 
     \section{BFS}
-        \lstinputlisting[language=c++, gobble=12]
+        \lstinputlisting[language=c++, gobble=12, linerange={8-25}]
         {../../Code/Graphs/BFS.cpp}
 
     \section{DFS}
-        \lstinputlisting[language=c++, gobble=12]
+        \lstinputlisting[language=c++, gobble=12, linerange={8-25}]
         {../../Code/Graphs/DFS.cpp}
 
     \section{Kruskal: Minimum Spanning Tree}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Graphs/KruskalMST.cpp}
 
-    \section{UnionFind - Disjoined set}
-        \subsection{Simple UnionFind}
-            \lstinputlisting[language=c++, linerange={1-35}, gobble=16]
-            {../../Code/Graphs/UnionFind.cpp}
+    \pagebreak
 
-            \vfill\null
-            \columnbreak
-        
-        \subsection{Real UnionFind}
-            \lstinputlisting[language=c++, linerange={37-89}, gobble=16]
-            {../../Code/Graphs/UnionFind.cpp}
+    \section{UnionFind - Disjoined set}
+        \lstinputlisting[language=c++, linerange={1-40}, gobble=12]
+        {../../Code/Graphs/UnionFind.cpp}
             
 \part{Bits}
     \chapter{Bit manipulation}
     \section{Count on bits}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/CountOnBits.cpp}
-        \vfill\null 
     
     \section{Know if k-th bit is on}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/GetIfKthBitIsOn.cpp}
-        \vfill\null 
 
     \section{Turn on k-th bit}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/TurnOnKthBit.cpp}
-        \vfill\null 
+
+        \vfill\null
         \columnbreak
+
     \section{Turn off k-th bit}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/TurnOffKthBit.cpp}
-        \vfill\null 
   
     \section{Toggle k-th bit (from off to on and viceversa)}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/ToggleKthBit.cpp}
-        \vfill\null 
 
     \section{Get the LSB}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/GetLSB.cpp}
-        \vfill\null 
   
     \section{Turn on the first K bits}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/TurnOnFirstKBits.cpp}
-        \vfill\null 
  
 \end{multicols}
 

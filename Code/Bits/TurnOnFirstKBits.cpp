@@ -1,3 +1,3 @@
-int setFirstK( int k ){
-    return ( ( 1 << k ) - 1 );
-} 
+int set_first_K_bits(int place) { 
+  return ((1 << place) - 1); 
+}

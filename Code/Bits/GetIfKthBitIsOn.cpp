@@ -1,3 +1,3 @@
-bool isSet( int n, int k ){
-    return ( n & ( 1 << k ) );
+bool is_on(int number, int place) { 
+    return (number bitand (1 << place)); 
 }
