@@ -36,15 +36,15 @@ auto binaryExponentation(integer base, integer exponent) -> integer {
 }
 
 template <typename integer>
-auto modularBinaryExponentation(integer base, integer exponent, integer n)
+auto modularBinaryExponentation(integer base, integer exponent, integer mod)
     -> integer {
   auto solution = integer {1};
-  base = base % n;
+  base = base % mod;
 
   while (exponent > 0) {
-    if (exponent & 1) solution = (base * solution) % n;
+    if (exponent & 1) solution = (base * solution) % mod;
 
-    base = (base * base) % n;
+    base = (base * base) % mod;
     exponent = exponent >> 1;
   }
 

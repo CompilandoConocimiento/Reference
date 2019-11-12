@@ -25,7 +25,7 @@ const Component: FunctionComponent = () => {
         {String.raw`
             base ^ {exponent} = 
             \begin{cases}
-            (base^2)^{\space \frac{exponent}{2}}             & \text{if exponent is even}  \\
+            (base^2)^{\space \frac{exponent}{2}}                 & \text{if exponent is even}  \\
             base \space (base^2)^{\space \frac{exponent-1}{2}}   & \text{if exponent is odd}   \\
             \end{cases}
         `}
@@ -55,14 +55,14 @@ const Component: FunctionComponent = () => {
         <li style={{ marginBottom: "0.7rem" }}>
           <p>
             Instead of making a recursive function we will do an iterative function, to do this we
-            use a while loop with the stop condition being when the exponent is 0; this represents
+            use a while loop with the stop condition being the exponent equal to zero; this represents
             that we have made all the operations necessary so we can just safely return{" "}
             <InlineMath math="solution" />.
           </p>
         </li>
         <li style={{ marginBottom: "0.7rem" }}>
           <p>
-            In general the base in the next recursive call will be square of the current one, so we
+            In general the base in the next recursive call will be square of the current one, so we will
             do that.
           </p>
         </li>
@@ -81,23 +81,26 @@ const Component: FunctionComponent = () => {
           </p>
 
           <p>
-            So now, we have to keep in mind we need to multiply the result of the next consecutive
-            recursive calls by the current exponent, so we need a place to store those bases, we are
+            So now, when we see an odd exponent we need to multiply the result of the next consecutive
+            recursive calls by the current exponent, therefore need a place to store those bases, we are
             going to use <InlineMath math="solution" /> for that.
           </p>
         </li>
         <li>
-          Finally you may be thinking the same thing as me: what happen if we have a exponent of the
-          form <InlineMath math="2^n" /> so there are never odd exponents and therefore we never
-          update the solution?
-          <br />
-          Well, remember that <InlineMath math="2^3 = 8 = 1 * 8" />, or more in general{" "}
-          <InlineMath math="2^n = 1 * 2^n" />, so we will eventually update solution, when we reach{" "}
-          <InlineMath math="exponent = 1" />.
+          <p>
+            Finally you may be thinking the same thing as me: What would happen if we have a exponent of
+            the form <InlineMath math="2^n" />, so there are never odd exponents and therefore we
+            never update the solution?
+          </p>
+          <p>
+            Well, remember that <InlineMath math="2^3 = 8 = 1 * 8" />, or more in general{" "}
+            <InlineMath math="2^n = 1 * 2^n" />, so we will eventually update solution, when we
+            reach <InlineMath math="exponent = 1" />.
+          </p>
         </li>
       </ul>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[10, 26]} />
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[10, 22]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Optimizations</Box>
@@ -120,14 +123,8 @@ const Component: FunctionComponent = () => {
         </li>
       </ul>
       <p>
-        This optimizations are using the bitwise operations. I claim that{" "}
-        <InlineMath math="e = \frac{e-1}{2}" /> and <InlineMath math="e = \frac{e}{2}" /> are equal
-        to <InlineMath math="e = e >> 1" />
-      </p>
-      <p>
-        This is easy to proof, because <InlineMath math="e = e >> 1" /> delete the least significant
-        bit, so the last bit does not really matter. So you find that at the end it does not matter
-        if it is odd or even this will always give you the correct answer.
+        This optimizations are using the bitwise operations, that mean it is a lot faster that a division.
+        note that many C++ compilers will to optimization automatically.
       </p>
 
       <Typography gutterBottom variant="subtitle1">
@@ -140,7 +137,11 @@ const Component: FunctionComponent = () => {
         last digit will be 1, so exponent & 1 give true only if the last digit was 1.
       </p>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[28, 40]} />
+      <p>
+        So now we arrive to the final implementation we use:
+      </p>
+
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[24, 36]} />
 
       <Typography gutterBottom variant="h5">
         <Box fontWeight={800}>Modular Exponentation</Box>
@@ -150,7 +151,7 @@ const Component: FunctionComponent = () => {
         This is to do <InlineMath math="base^{exponent}  \space \space \mod \space n" />
       </p>
 
-      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[42, 56]} />
+      <Code language={"cpp"} fileName={"BinaryExponentiation.cpp"} lines={[38, 52]} />
     </div>
   )
 }
