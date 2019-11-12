@@ -1,5 +1,5 @@
-template <typename integer, typename unsignedInteger>
-auto binaryExponentation(integer x, unsignedInteger n) -> integer {
+template <typename integer>
+auto binaryExponentation(const integer x, const integer n) -> integer {
   if (n == 0) return 1;
   if (n == 1) return x;
 
@@ -7,30 +7,26 @@ auto binaryExponentation(integer x, unsignedInteger n) -> integer {
   return x * binaryExponentation(x * x, (n - 1) / 2);
 }
 
-template <typename integer, typename unsignedInteger>
-auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
+template <typename integer>
+auto binaryExponentation(integer base, integer exponent) -> integer {
   auto solution = integer {1};
 
   while (exponent > 0) {
-    if (exponent & 1) {
-      solution = base * solution;
-      base = base * base;
-    } else {
-      base = base * base;
-    }
+    if (exponent % 2 == 1) solution *= base;
 
+    base = base * base;
     exponent = exponent / 2;
   }
 
   return solution;
 }
 
-template <typename integer, typename unsignedInteger>
-auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
+template <typename integer>
+auto binaryExponentation(integer base, integer exponent) -> integer {
   auto solution = integer {1};
 
   while (exponent > 0) {
-    if (exponent & 1) solution = base * solution;
+    if (exponent & 1) solution *= base;
 
     base = base * base;
     exponent = exponent >> 1;
@@ -39,8 +35,8 @@ auto binaryExponentation(integer base, unsignedInteger exponent) -> integer {
   return solution;
 }
 
-template <typename integer, typename uinteger>
-auto modularBinaryExponentation(integer base, uinteger exponent, uinteger n)
+template <typename integer>
+auto modularBinaryExponentation(integer base, integer exponent, integer n)
     -> integer {
   auto solution = integer {1};
   base = base % n;

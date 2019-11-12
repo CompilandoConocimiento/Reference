@@ -11,6 +11,8 @@ export interface SelectProps
   displayEmpty?: boolean;
   IconComponent?: React.ElementType;
   input?: React.ReactNode;
+  labelId?: string;
+  labelWidth?: number;
   MenuProps?: Partial<MenuProps>;
   multiple?: boolean;
   native?: boolean;
@@ -26,11 +28,14 @@ export interface SelectProps
 export type SelectClassKey =
   | 'root'
   | 'select'
+  | 'filled'
+  | 'outlined'
   | 'selectMenu'
   | 'disabled'
   | 'icon'
-  | 'filled'
-  | 'outlined';
+  | 'iconOpen'
+  | 'iconFilled'
+  | 'iconOutlined';
 
 declare const Select: React.ComponentType<SelectProps>;
 

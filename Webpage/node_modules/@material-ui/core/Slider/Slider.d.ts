@@ -21,9 +21,11 @@ export interface SliderProps
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-valuetext'?: string;
+  color?: 'primary' | 'secondary';
   component?: React.ElementType<React.HTMLAttributes<HTMLSpanElement>>;
   defaultValue?: number | number[];
   disabled?: boolean;
+  getAriaLabel?: (index: number) => string;
   getAriaValueText?: (value: number, index: number) => string;
   marks?: boolean | Mark[];
   max?: number;
@@ -34,6 +36,7 @@ export interface SliderProps
   orientation?: 'horizontal' | 'vertical';
   step?: number | null;
   ThumbComponent?: React.ElementType<React.HTMLAttributes<HTMLSpanElement>>;
+  track?: 'normal' | false | 'inverted';
   value?: number | number[];
   ValueLabelComponent?: React.ElementType<ValueLabelProps>;
   valueLabelDisplay?: 'on' | 'auto' | 'off';
@@ -42,13 +45,19 @@ export interface SliderProps
 
 export type SliderClassKey =
   | 'root'
+  | 'colorPrimary'
+  | 'colorSecondary'
   | 'marked'
   | 'vertical'
   | 'rtl'
   | 'disabled'
   | 'rail'
   | 'track'
+  | 'trackFalse'
+  | 'trackInverted'
   | 'thumb'
+  | 'thumbColorPrimary'
+  | 'thumbColorSecondary'
   | 'valueLabel'
   | 'mark'
   | 'markActive'

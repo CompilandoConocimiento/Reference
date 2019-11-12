@@ -688,7 +688,9 @@
         \section{Grandes ventajas de \Cpp}
 
             Hay muchas razones por las cuales \Cpp es uno de los lenguajes más usados en
-            la modernidad en la programación competitiva (si no es que el más).
+            la modernidad en la programación competitiva, si no es que el más,
+            \Link{https://youtu.be/5yFkAG6lOSg}{si no me crees dale click}.
+
 
             Puedes escuchar un video muy bonito para mi sobre porque elegir este lenguaje:
 
@@ -857,8 +859,8 @@
                     \includegraphics[width=0.12\textwidth]{Python}
                 \end{wrapfigure}
 
-                Python es un gran lenguaje pero tiene todas las de perder en programción competitiva pues
-                a ser interpretado y debilmente tipado, sus programas acaban siendo muy lentos incluso usando el 
+                Python es un gran lenguaje pero tiene todas las de perder en programación competitiva pues
+                a ser interpretado y de tipado dinamico, sus programas acaban siendo muy lentos incluso usando el 
                 algoritmo correcto, eso si, hay varias aplicaciones útiles de Python, como que todos los
                 enteros tienen infinita precisión por defecto (aka \textCode{BigInteger} como en Java).
 
@@ -957,6 +959,29 @@
         % =========================================================
         \clearpage
         \section{Corriendo C++}
+
+            Una vez todo lo necesario este instalado, para correr recomiendo el siguiente
+            comando:
+            \begin{lstlisting}[language=C++, gobble=16]
+                g++ -Wall -Wextra -Wshadow -Wpedantic 
+                    -fsanitize=undefined -fsanitize=address 
+                    -O2 -std=c++11 code.cpp
+            \end{lstlisting}
+
+            Ahora vamos por partes:
+            \begin{itemize}
+                \item \textCode{Wall, Wextra, Wshadow, Wpedantic}: son banderas que le indican al compilador
+                que queremos que sea lo mas precavido con nuestro codigo, que queremos que nos muestre todos
+                los errores que podriamos tener.
+                \item \textCode{fsanitize=undefined, fsanitize=address}: Son banderas que 
+                que nos permiten habilitar un detector rápido que busca partes de tu codigo que sean \Quote{undefined behavior},
+                hablare de ello mas adelante si te interesa, pero en resumen hace que el compilador busque bugs muy obvios por ti.
+                \item \textCode{O2}: Nos permite activar el optimizador, O2 es justo el mismo nivel que se usa
+                en muchísimos jueces en linea por lo que es util activarlo. 
+                \item \textCode{std=c++11}: Nos permite cambiar la versión de \Cpp a usar, por defecto esta bien usar 11, 
+                a menos que esten en Codeforces y te puedas dar el lujo de usar la 17.
+            \end{itemize}
+
 
         % =========================================================
         % ========               JUECES EN LINEA     ==============
@@ -2702,7 +2727,8 @@
             % ============================================
             \subsection{Parametrizar cosas que no son \textCode{type}}
 
-                No solo podemos parametrizar tipos en sí, sino también cualquier variable, 
+                No solo podemos parametrizar tipos en sí, sino también podemos colocar variables
+                que representan un número (integrals), 
                 por ejemplo:
                 \begin{lstlisting}[language=C++, gobble=20]
                     template <typename element, size_t size>
@@ -2989,30 +3015,28 @@
 
                         Veamos un ejemplo:
 
-                        \begin{Indentation}[2em] 
-                            Antes:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                cout << "Hello";
-                                printf("World");
-                                cout << "Ciao";  
+                        Antes:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            cout << "Hello";
+                            printf("World");
+                            cout << "Ciao";  
 
-                                // Will always print "HelloWorldCiao"
-                            \end{lstlisting}
+                            // Will always print "HelloWorldCiao"
+                        \end{lstlisting}
 
-                            Después:
-                            \begin{lstlisting}[language=C++, gobble=32]
-                                ios::sync_with_stdio(false);   
+                        Después:
+                        \begin{lstlisting}[language=C++, gobble=28]
+                            ios::sync_with_stdio(false);   
 
-                                cout << "Hello";
-                                printf("World");
-                                cout << "Ciao";  
+                            cout << "Hello";
+                            printf("World");
+                            cout << "Ciao";  
 
-                                // Will maybe print:
-                                //    -  "HelloCiaoWorld"
-                                //    -  "HelloWorldCiao"
-                                //    -  "CiaoHelloWorld"
-                            \end{lstlisting}
-                        \end{Indentation}
+                            // Will print some of the following:
+                            //    -  "HelloCiaoWorld"
+                            //    -  "HelloWorldCiao"
+                            //    -  "CiaoHelloWorld"
+                        \end{lstlisting}
 
                         Pero recuerda que si siempre usas la entrada y salida de \Cpp no hay problema:
                         \begin{lstlisting}[language=C++, gobble=28]

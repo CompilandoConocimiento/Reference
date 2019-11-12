@@ -5,8 +5,8 @@ import { ModalProps } from '../Modal';
 import { TransitionHandlerProps, TransitionProps } from '../transitions/transition';
 
 export interface PopoverOrigin {
-  horizontal: 'left' | 'center' | 'right' | number;
   vertical: 'top' | 'center' | 'bottom' | number;
+  horizontal: 'left' | 'center' | 'right' | number;
 }
 
 export interface PopoverPosition {
@@ -18,7 +18,7 @@ export type PopoverReference = 'anchorEl' | 'anchorPosition' | 'none';
 
 export interface PopoverProps
   extends StandardProps<ModalProps & Partial<TransitionHandlerProps>, PopoverClassKey, 'children'> {
-  action?: (actions: PopoverActions) => void;
+  action?: React.Ref<PopoverActions>;
   anchorEl?: null | Element | ((element: Element) => Element);
   anchorOrigin?: PopoverOrigin;
   anchorPosition?: PopoverPosition;
@@ -28,7 +28,6 @@ export interface PopoverProps
   getContentAnchorEl?: null | ((element: Element) => Element);
   marginThreshold?: number;
   modal?: boolean;
-  ModalClasses?: ModalProps['classes'];
   PaperProps?: Partial<PaperProps>;
   role?: string;
   transformOrigin?: PopoverOrigin;
@@ -37,7 +36,7 @@ export interface PopoverProps
   TransitionProps?: TransitionProps;
 }
 
-export type PopoverClassKey = 'paper';
+export type PopoverClassKey = 'root' | 'paper';
 
 export interface PopoverActions {
   updatePosition(): void;

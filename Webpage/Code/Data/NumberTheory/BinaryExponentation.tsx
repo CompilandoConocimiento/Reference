@@ -13,9 +13,9 @@ const Component: FunctionComponent = () => {
       </Typography>
 
       <p>
-        This function will performe <InlineMath math="base^{exponent}" /> but a little bit more
-        fast; this will not do <InlineMath math="base * base * base * base ..." /> and so on "
-        <InlineMath math="exponent" />" times but rather just <InlineMath math="O(log(exponent))" />{" "}
+        This function will performe <InlineMath math="base^{exponent}" /> but a lot faster; this
+        will not do the obvious "<InlineMath math="base * base * base * base ..." />" and so on
+        <InlineMath math="exponent" /> times but rather just <InlineMath math="log(exponent)" />{" "}
         operations. This technique is called exponentiation by squaring.
       </p>
 
@@ -52,30 +52,48 @@ const Component: FunctionComponent = () => {
 
       <p>Now we want to eliminate the recursion and modify a little bit the idea:</p>
       <ul>
-        <li style={{marginBottom: "0.7rem"}}>
-          Instead of making a recursive function we will do an iterative function, to do this we use
-          a while loop with the stop condition being when the exponent is 0; this represents that we
-          have made all the operations necessary so we can just safely return{" "}
-          <InlineMath math="solution" />.
+        <li style={{ marginBottom: "0.7rem" }}>
+          <p>
+            Instead of making a recursive function we will do an iterative function, to do this we
+            use a while loop with the stop condition being when the exponent is 0; this represents
+            that we have made all the operations necessary so we can just safely return{" "}
+            <InlineMath math="solution" />.
+          </p>
         </li>
-        <li style={{marginBottom: "0.7rem"}}>
-          Now, for each step in the recursive call we have to check if the exponent is odd, in this
-          case we had this expression:{" "}
-          <InlineMath math="x^n = x \space (x^2)^{\space \frac{n-1}{2}}" />.
+        <li style={{ marginBottom: "0.7rem" }}>
+          <p>
+            In general the base in the next recursive call will be square of the current one, so we
+            do that.
+          </p>
+        </li>
+        <li style={{ marginBottom: "0.7rem" }}>
+          <p>
+            Also remember that <InlineMath math="\frac{exponent}{2}" /> is doing a integer division,
+            so in reality it is doing <InlineMath math="\lfloor \frac{exponent}{2} \rfloor" /> and
+            that is exaclty what we wanted because it handles correctly both cases, odd and even
+            exponent.
+          </p>
+        </li>
+        <li style={{ marginBottom: "0.7rem" }}>
+          <p>
+            Now, the special part here is when the exponent is odd, in this case remember the
+            expression <InlineMath math="x^n = x \space (x^2)^{\space \frac{n-1}{2}}" />.
+          </p>
+
+          <p>
+            So now, we have to keep in mind we need to multiply the result of the next consecutive
+            recursive calls by the current exponent, so we need a place to store those bases, we are
+            going to use <InlineMath math="solution" /> for that.
+          </p>
+        </li>
+        <li>
+          Finally you may be thinking the same thing as me: what happen if we have a exponent of the
+          form <InlineMath math="2^n" /> so there are never odd exponents and therefore we never
+          update the solution?
           <br />
-          So now, we have to keep in mind we need to multiply the result by the current{" "}
-          <InlineMath math="base" />, that super simple now because we only need to update the{" "}
-          <InlineMath math="solution" /> by a factor of <InlineMath math="base" />.
-        </li>
-        <li style={{marginBottom: "0.7rem"}}>
-          Either way, the base in the next recursive call will be square of the current one, so we
-          do that.
-        </li>
-        <li style={{marginBottom: "0.7rem"}}>
-          Finally, remember that <InlineMath math="\frac{exponent}{2}" /> is doing a integer
-          division, so in reality it is doing{" "}
-          <InlineMath math="\lfloor \frac{exponent}{2} \rfloor" /> and that is exaclty what we
-          wanted because it handles correctly both cases, odd and even exponent.
+          Well, remember that <InlineMath math="2^3 = 8 = 1 * 8" />, or more in general{" "}
+          <InlineMath math="2^n = 1 * 2^n" />, so we will eventually update solution, when we reach{" "}
+          <InlineMath math="exponent = 1" />.
         </li>
       </ul>
 
