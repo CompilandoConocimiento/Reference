@@ -1,2 +1,12 @@
-*.DS_Store
+# Executable files
 *.out
+
+# Mac DS Store
+.DS_Store
+*.DS_Store
+**/.DS_Store
+
+# Test cases
+.input
+**/.input
+*.input
