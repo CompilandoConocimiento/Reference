@@ -33,11 +33,9 @@ struct point {
 
   // Operations
   auto norm() -> number const { return { x * x + y * y }; }
-
   auto length() -> number const { return sqrtl(norm()); }
 
   auto perpendicular() -> point const { return {-y, x}; }
-
   auto unit() -> point const { return (*this) / length(); }
 
   auto rotate(number angle) -> point const {
