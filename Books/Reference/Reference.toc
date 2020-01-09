@@ -41,7 +41,7 @@
 \contentsline {section}{\numberline {6.7}Get the LSB}{16}{section.6.7}% 
 \contentsline {section}{\numberline {6.8}Turn on the first K bits}{16}{section.6.8}% 
 \contentsline {part}{V\hspace {1em}Geometry}{17}{part.5}% 
-\contentsline {chapter}{\numberline {7}Lines and points}{18}{chapter.7}% 
+\contentsline {chapter}{\numberline {7}Data Structures}{18}{chapter.7}% 
 \contentsline {section}{\numberline {7.1}Options}{18}{section.7.1}% 
 \contentsline {section}{\numberline {7.2}Decimnal}{18}{section.7.2}% 
 \contentsline {section}{\numberline {7.3}Points}{18}{section.7.3}% 

@@ -361,9 +361,9 @@
 
     \newcommand{\fontCode}        { \ttfamily\bfseries }            %Use: \fontCode for font
     \newcommand{\fontCodeTiny}    { \fontCode\tiny }                %Sizes
-    \newcommand{\fontCodeFoot}    { \fontCode\footnotesize }        %Sizes
     \newcommand{\fontCodeScript}  { \fontCode\scriptsize }          %Sizes
-    \newcommand{\fontCodeCostume} { \fontCode\fontsize{4}{2} }      %Sizes
+    \newcommand{\fontCodeFoot}    { \fontCode\footnotesize }        %Sizes
+    \newcommand{\fontCodeCostume} { \fontCode\fontsize{7}{10}\selectfont }      %Sizes
 
 
 
@@ -412,7 +412,7 @@
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStyleSolarized} {                     %This is Code Style
         backgroundcolor     = \color{SolarizedBase},                %Background Color  
-        basicstyle          = \fontCodeFoot\color{SolarizedFont},   %Style of text
+        basicstyle          = \fontCodeCostume\color{SolarizedFont}, %Style of text
         commentstyle        = \color{Green300MD},                   %Comment style
         stringstyle         = \color{Teal700MD},                    %String style
         keywordstyle        = \color{Blue700MD},                    %keywords style
@@ -741,22 +741,20 @@
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Bits/TurnOnFirstKBits.cpp}
 
-
-
 \part{Geometry}
 
-    \chapter{Lines and points}
+\chapter{Data Structures}
 
     \section{Options}
         \lstinputlisting[language=c++, gobble=12]
         {../../Code/Geometry/Options.cpp}
 
     \section{Decimnal}
-        \lstinputlisting[language=c++, gobble=12, basicstyle=\fontCodeFoot\color{SolarizedFont}]
+        \lstinputlisting[language=c++, gobble=12]
         {../../Code/Geometry/Decimal.cpp}
 
     \section{Points}
-        \lstinputlisting[language=c++, gobble=12, basicstyle=\fontCodeFoot\color{SolarizedFont}]
+        \lstinputlisting[language=c++, gobble=12]
         {../../Code/Geometry/Point.cpp}
  
 \end{multicols}
