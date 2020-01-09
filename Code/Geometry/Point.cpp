@@ -2,7 +2,7 @@ template <typename number>
 struct point {
   number x, y;
 
-  point(number x = 0, number y = 0) : x(x), y(y) {}
+  point(number x = 0, number y = 0) : x {x}, y {y} {}
 
   point operator+(const point& p) const { return {x + p.x, y + p.y}; }
   point operator-(const point& p) const { return {x - p.x, y - p.y}; }
@@ -23,7 +23,7 @@ struct point {
   bool operator<=(const point& p) const { return (*this == p) or *this < p; }
   bool operator>=(const point& p) const { return (*this == p) or *this > p; }
 
-  friend std::istream& operator>>(std::istream& is, const point& p) {
+  friend std::istream& operator>>(std::istream& is, point& p) {
     return is >> p.x >> p.y;
   }
 
@@ -46,10 +46,16 @@ struct point {
 
 template <typename T>
 auto dot(const point<T>& p, const point<T>& q) -> point<T> {
-  return { p.x* q.x + p.y* q.y };
+  return {p.x * p.x + p.y * p.y};
 }
 
 template <typename T>
-auto cross(const point<T>& p, const point<T>& q) -> point<T> {
-  return { p.x* q.y - p.y* q.x };
+auto cross(const point<T>& p, const point<T>& q) -> T {
+  return {p.x * q.y - p.y * q.x};
+}
+
+template <typename T>
+auto area(const point<T>& a, const point<T>& b, const point<T>& c) -> T {
+  const auto ab = b - a, ac = c - a;
+  return 0.5 * cross(ab, ac);
 }
