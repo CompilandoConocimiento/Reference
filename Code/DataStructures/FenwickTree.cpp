@@ -1,82 +1,37 @@
-#include <functional>
-#include <vector>
-
-#include <iostream>
-
-using std::cin;
-using std::cout;
-using std::endl;
-
-/**
- *
- * You have an array (starting with 0 or you can use buildFromArray),
- * you can use FenwickTree to get the sum of all elements in a range
- * also, you can increase a position by a value
- *
- */
-template <typename element = int, typename index = int>
-class FenwickTree {
+template <typename T = int>
+class fenwick_tree {
  private:
-  const int MAX_SIZE;
-  std::vector<element> bit {};
+  const int n;
+  vector<T> nodes;
 
-  static auto getNext(index i) -> index { return i | (i + 1); }
+  static auto get_next(const int i) -> int { return i bitor (i + 1); }
 
  public:
-  FenwickTree(int MAX_SIZE = 100000) : MAX_SIZE {MAX_SIZE}, bit(MAX_SIZE, 0) {}
+  fenwick_tree(int n) : n(n), nodes(n, 0) {}
 
-  auto buildFromArray(const std::vector<element>& data) -> void {
-    for (index i {}; i < MAX_SIZE; ++i) {
-      bit[i] = bit[i] + data[i];
-      const auto nextIndex {getNext(i)};
-      if (nextIndex < MAX_SIZE) bit[nextIndex] = bit[i] + bit[nextIndex];
+  auto build(const vector<T>& data) -> void {
+    for (auto i = 0; i < n; ++i) {
+      nodes[i] = nodes[i] + data[i];
+      const auto next_index = get_next(i);
+      if (next_index < n) nodes[next_index] = nodes[i] + nodes[next_index];
     }
   }
 
-  // get the sum from [0, end]
-  auto sum(int end) -> element const {
-    element answer {};
+  auto sum(int end) -> T const {  // get the sum from [0, end]
+    auto answer = T {};
     while (end >= 0) {
-      answer = answer + bit[end];
-      end = (end & (end + 1)) - 1;
+      answer = answer + nodes[end];
+      end = (end bitand (end + 1)) - 1;
     }
     return answer;
   }
 
-  // get the sum from [start, end]
-  auto sum(index start, index end) -> element const {
+  auto sum(const int start, const int end) -> T const {
     return sum(end) - sum(start - 1);
   }
 
-  // increase the position by a value
-  auto increase(index position, element value) -> void {
-    while (position < MAX_SIZE) {
-      bit[position] = bit[position] + value;
-      position = getNext(position);
-    }
-  }
-
-  void showArray() {
-    cout << "[";
-    for (int i {}; i < MAX_SIZE; ++i) cout << sum(i, i) << ", ";
-    cout << "]" << endl;
-  }
-
-  void showPrefixArray() {
-    cout << "[";
-    for (int i {}; i < MAX_SIZE; ++i) cout << sum(i) << ", ";
-    cout << "]" << endl;
+  auto increase(const int position, const T value) -> void {  // increase the position by a val
+    for (auto p = position; p < n; p = get_next(p))
+      nodes[p] = nodes[p] + value;
   }
 };
-
-int main() {
-  const int sizeOfRange {5};
-  auto f = FenwickTree<> {sizeOfRange};
-  f.increase(0, 4);
-  f.showArray();
-  f.showPrefixArray();
-
-  cout << f.sum(0, 4) << endl;
-
-  return 0;
-}
