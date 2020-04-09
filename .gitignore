@@ -10,3 +10,6 @@
 .input
 **/.input
 *.input
+
+# Frontend
+node_modules
