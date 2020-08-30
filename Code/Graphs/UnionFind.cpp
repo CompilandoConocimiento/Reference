@@ -7,37 +7,32 @@
  * how many nodes can I go to from a given node.
  */
 template <typename id = int>
-class UnionFind {
- private:
-  std::vector<id> connected_nodes, parent, rank;
+class union_find {
+  vector<id> num_connected_nodes_of, parent_of, rank_of;
 
  public:
-  UnionFind(id n) : connected_nodes(n, 1), parent(n), rank(n, 0) {
-    while (--n) parent[n] = n;
+  union_find(const id num_nodes)
+      : num_connected_nodes_of(num_nodes, 1), parent_of(num_nodes), rank_of(num_nodes, 0) {
+    for (id i = 0; i < num_nodes; ++i) { parent_of[i] = i; }
   }
 
-  auto findComponentID(id u) -> id {
-    if (parent[u] == u) return u;
-    return parent[u] = findComponentID(parent[u]);
+  auto get_component_id(const int u) -> int {
+    if (parent_of[u] != u) { parent_of[u] = get_component_id(parent_of[u]); }
+    return parent_of[u];
   }
 
-  auto inSameComponent(id u, id v) -> bool {
-    return findComponentID(v) == findComponentID(u);
+  auto join_components(const id u, const id v) -> void {
+    auto id_of_u = get_component_id(u), id_of_v = get_component_id(v);
+    if (id_of_u == id_of_v) return;
+
+    if (rank_of[id_of_u] > rank_of[id_of_v]) swap(id_of_u, id_of_v);
+
+    parent_of[id_of_u] = parent_of[id_of_v];
+    num_connected_nodes_of[id_of_v] += num_connected_nodes_of[id_of_u];
+    if (rank_of[id_of_u] == rank_of[id_of_v]) ++rank_of[id_of_v];
   }
 
-  auto numberOfElementsConnectedTo(id u) -> int {
-    return connected_nodes[findComponentID(u)];
-  }
-
-  auto joinComponents(id u, id v) -> void {
-    auto setU = findComponentID(u), setV = findComponentID(v);
-    if (setU == setV) return;
-
-    if (rank[setU] > rank[setV]) std::swap(setU, setV);
-
-    parent[setU] = setV;
-    connected_nodes[setV] += connected_nodes[setU];
-
-    if (rank[setU] == rank[setV]) ++rank[setU];
+  auto num_elements_connected_to(const id u) -> int {
+    return num_connected_nodes_of[get_component_id(u)];
   }
 };

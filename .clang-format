@@ -1,16 +1,19 @@
-# GOOGLE
-Language: Cpp
+---
 BasedOnStyle: Google
-
-# Basic style
 ColumnLimit: 100
 IndentWidth: 2
 
-# My style
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Always
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+---
+Language: Cpp
+
 SpaceBeforeCpp11BracedList: true
 Cpp11BracedListStyle: true
-AllowShortCaseLabelsOnASingleLine: true
 
-# Pointer style
 DerivePointerAlignment: false
 PointerAlignment: Left
