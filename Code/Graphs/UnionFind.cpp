@@ -3,22 +3,22 @@
 
 /**
  * You have many nodes connected (ie, node 2 with 4 and 8).
- * Use UnionFind to find if 2 nodes are connected or and
+ * Use union_find to find if 2 nodes are connected or and
  * how many nodes can I go to from a given node.
  */
 template <typename id = int>
 class union_find {
   vector<id> num_connected_nodes_of, parent_of, rank_of;
 
+  auto get_component_id(const id u) -> id {
+    if (parent_of[u] != u) { parent_of[u] = get_component_id(parent_of[u]); }
+    return parent_of[u];
+  }
+
  public:
   union_find(const id num_nodes)
       : num_connected_nodes_of(num_nodes, 1), parent_of(num_nodes), rank_of(num_nodes, 0) {
     for (id i = 0; i < num_nodes; ++i) { parent_of[i] = i; }
-  }
-
-  auto get_component_id(const int u) -> int {
-    if (parent_of[u] != u) { parent_of[u] = get_component_id(parent_of[u]); }
-    return parent_of[u];
   }
 
   auto join_components(const id u, const id v) -> void {
